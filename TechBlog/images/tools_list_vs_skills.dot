@@ -1,0 +1,73 @@
+digraph ToolsListVsSkills {
+    graph [
+        rankdir=TB
+        bgcolor="transparent"
+        fontname="Helvetica Neue"
+        fontsize=11
+        pad=0.5
+        nodesep=0.5
+        ranksep=0.6
+        compound=true
+    ]
+
+    node [
+        fontname="Helvetica Neue"
+        fontsize=10
+        style="filled,rounded"
+        shape=box
+        penwidth=0
+        margin="0.15,0.1"
+    ]
+
+    edge [
+        fontname="Helvetica Neue"
+        fontsize=9
+        penwidth=1.5
+    ]
+
+    // AI
+    ai [label="AI" fillcolor="#dbeafe" fontcolor="#1e40af" width=1.5]
+
+    // 2つの経路
+    subgraph cluster_toolslist {
+        label="tools/list"
+        labelloc=t
+        style="rounded,filled"
+        color="#e5e7eb"
+        fillcolor="#f8fafc"
+        fontcolor="#1e40af"
+        penwidth=1
+
+        tl_know [label="APIを知る" fillcolor="#dbeafe" fontcolor="#1e40af"]
+        tl_result [label="使うかは\nAI次第" fillcolor="#fef3c7" fontcolor="#92400e"]
+    }
+
+    subgraph cluster_skills {
+        label="Skills"
+        labelloc=t
+        style="rounded,filled"
+        color="#e5e7eb"
+        fillcolor="#f0fdf4"
+        fontcolor="#166534"
+        penwidth=1
+
+        sk_rule [label="ルールを\n強制" fillcolor="#bbf7d0" fontcolor="#166534"]
+        sk_result [label="必ずMCPを\n使用" fillcolor="#bbf7d0" fontcolor="#166534"]
+    }
+
+    // 結果
+    mcp [label="MCP API" fillcolor="#dbeafe" fontcolor="#1e40af" width=1.5]
+    script [label="エディタ\nスクリプト" fillcolor="#fecaca" fontcolor="#dc2626"]
+
+    // エッジ
+    ai -> tl_know [lhead=cluster_toolslist]
+    ai -> sk_rule [lhead=cluster_skills]
+
+    tl_know -> tl_result
+    sk_rule -> sk_result
+
+    tl_result -> mcp [style=dashed color="#6b7280" label="選択"]
+    tl_result -> script [style=dashed color="#6b7280" label="選択"]
+
+    sk_result -> mcp [color="#166534" style=bold]
+}

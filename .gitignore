@@ -1,0 +1,14 @@
+# macOS
+.DS_Store
+._*
+
+# Temporary files
+*.tmp
+temp.html
+
+# Deploy directories (managed by separate repos)
+TechBlog/zenn_deploy/
+TechBlog/qiita_deploy/
+
+# PDF output
+TechBlog/PDF/*.pdf

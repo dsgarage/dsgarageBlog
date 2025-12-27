@@ -1,0 +1,75 @@
+// Graphviz共通スタイル定義（モダンテック風）
+// PDFのCSSカラーパレットに準拠
+//
+// 使い方: このファイルのスタイル設定を新しい.dotにコピー
+
+// === グラフ全体設定 ===
+graph [
+    rankdir=LR
+    bgcolor="transparent"
+    fontname="Helvetica Neue"
+    fontsize=11
+    pad=0.8
+    nodesep=0.5
+    ranksep=1.0
+]
+
+// === ノード共通設定 ===
+node [
+    fontname="Helvetica Neue"
+    fontsize=10
+    style="filled,rounded"
+    shape=box
+    penwidth=0
+    margin="0.12,0.08"
+]
+
+// === エッジ共通設定 ===
+edge [
+    fontname="Helvetica Neue"
+    fontsize=9
+    penwidth=1.2
+    arrowsize=0.6
+]
+
+// === カラーパレット（CSS準拠） ===
+//
+// Primary（青系）- 強調・アクティブ要素
+//   背景: #dbeafe  テキスト: #1e40af
+//   クラスタ背景: #f8fafc  ボーダー: #e5e7eb
+//
+// Neutral（グレー系）- 非アクティブ・背景要素
+//   背景: #f3f4f6  テキスト: #4b5563
+//   クラスタ背景: #fafafa  ラベル: #6b7280
+//
+// Accent（アンバー系）- 警告・注意
+//   背景: #fef3c7  テキスト: #92400e
+//
+// 接続線
+//   破線: #cbd5e1（届かない・ブロック）
+//   実線: #94a3b8（通常の接続）
+
+// === クラスタ（グループ）テンプレート ===
+//
+// subgraph cluster_name {
+//     label="ラベル"
+//     labelloc=t
+//     labeljust=c
+//     style="rounded,filled"
+//     color="#e5e7eb"
+//     fillcolor="#f8fafc"  // or #fafafa
+//     fontcolor="#1e40af"  // or #6b7280
+//     fontsize=11
+//     penwidth=1
+// }
+
+// === ノードテンプレート ===
+//
+// Primary:  [fillcolor="#dbeafe" fontcolor="#1e40af"]
+// Neutral:  [fillcolor="#f3f4f6" fontcolor="#4b5563"]
+// Accent:   [fillcolor="#fef3c7" fontcolor="#92400e"]
+
+// === エッジテンプレート ===
+//
+// 通常:     [color="#94a3b8"]
+// ブロック: [style=dashed color="#cbd5e1" arrowhead=none]

@@ -1,0 +1,510 @@
+---
+title: "AI・MCP・Unityの関係性"
+subtitle: "AIはなぜUnityを「直接」操作できないのか"
+author: "dsgarage"
+date: "2025-12-28"
+---
+
+# AI・MCP・Unityの関係性
+
+**カテゴリ**: UniMCP4CC / AI開発 / アーキテクチャ解説
+
+---
+
+## お知らせ
+
+本記事で解説するアーキテクチャは、以下のリポジトリで実装されています。
+
+https://github.com/dsgarage/UniMCP4CC
+
+---
+
+## はじめに
+
+「AIは何でもできる」
+
+2025年現在、この認識を持っている方は少なくありません。
+実際、AIはコードを書き、文章を書き、画像を生成し、会話もできます。
+
+では、**AIはUnityでゲームを作れるでしょうか？**
+
+答えは「Yes、ただし条件付き」です。
+その条件を理解するために、まずUnity Editorが何なのかを整理しましょう。
+
+---
+
+## Unity Editorとは何か
+
+![Unity Editor](./images/unity_editor_screenshot.png)
+
+Unity Editorは、ゲームを作るための**GUIアプリケーション**です。
+みなさん、あまり具体的な認知をされていないと思いますが、エディッタ拡張などで出てくる名前空間「UnityEditoer」は、Unity本体そのもののです。
+出だしのキャリアの頃は、「Unityの完成度は70%」という話もよく聞きました。自分で拡張することを前提とする考え方です。
+
+その中で、開発者は以下のような操作を行います：
+
+- Hierarchyウィンドウでオブジェクトを選択する
+- Inspectorウィンドウで値を変更する
+- Sceneビューでオブジェクトをドラッグして配置する
+- メニューからPrefabを作成する
+- Play ボタンを押してゲームを実行する
+
+これらはすべて**マウスとキーボードを使った操作**です。
+
+Unity Editorは、人間がGUIを通じて操作することを前提に設計されています。
+
+---
+
+## Unity Editorの「もう一つの顔」：バッチモード
+
+ここで「バッチモードがあるじゃないか」と思った方もいるかもしれません。
+
+Unity Editorには**バッチモード**という機能があります。
+GUIを表示せずに、コマンドラインからUnityを実行できます。
+
+```bash
+Unity -batchmode -executeMethod MyBuildScript.Build -quit
+```
+
+CI/CDパイプラインでのビルド自動化などに使われます。
+
+では、バッチモードがあればAIもUnityを操作できるのでしょうか？
+
+---
+
+## バッチモードの限界
+
+バッチモードでできることは**限定的**です。
+
+| できること | できないこと |
+|:---|:---|
+| ビルドの実行 | Sceneの編集 |
+| アセットのインポート | GameObjectの作成・配置 |
+| テストの実行 | Inspectorでの値変更 |
+| スクリプトの実行 | リアルタイムなプレビュー |
+
+バッチモードは「事前に決められた処理を実行する」ためのものです。
+「Playerを作成して、位置を(0, 1, 0)にして、Rigidbodyを追加して」といった**対話的な操作**には向いていません。
+
+また、バッチモードではUnity Editorを一度起動し、処理が終わったら終了します。
+「ちょっと試して、結果を見て、修正する」という開発のサイクルには使えません。
+
+---
+
+## AIの「できること」と「できないこと」
+
+ここで、AIの特性を整理しましょう。
+
+### AIができること
+
+```
+[入力] テキスト（質問、指示、コード）
+   ↓
+[処理] 言語モデルによる推論
+   ↓
+[出力] テキスト（回答、コード、説明）
+```
+
+AIは**テキストを受け取り、テキストを返す**システムです。
+
+- C#スクリプトを生成する → できる
+- エラーメッセージを解析する → できる
+- 設計をアドバイスする → できる
+
+### AIができないこと
+
+- マウスを動かす → できない
+- ボタンをクリックする → できない
+- ウィンドウを見る → できない
+- Unity Editorを操作する → **できない**
+
+AIには「目」も「手」もありません。
+画面を見ることも、操作することもできません。
+
+---
+
+## 「AIがコードを書ける」と「AIがUnityを操作できる」は別の話
+
+ここが重要なポイントです。
+
+AIは優秀なC#スクリプトを書けます。
+
+```csharp
+public class PlayerController : MonoBehaviour
+{
+    [SerializeField] private float moveSpeed = 5f;
+
+    void Update()
+    {
+        float h = Input.GetAxis("Horizontal");
+        float v = Input.GetAxis("Vertical");
+        transform.Translate(new Vector3(h, 0, v) * moveSpeed * Time.deltaTime);
+    }
+}
+```
+
+しかし、このスクリプトを書いただけでは何も起きません。
+
+ゲームとして動かすには：
+
+1. スクリプトをProjectに保存する
+2. GameObjectを作成する
+3. スクリプトをアタッチする
+4. 必要なコンポーネントを追加する
+5. Inspectorで値を設定する
+6. Sceneを保存する
+
+これらはすべて**Unity Editorの操作**です。
+AIが直接行うことはできません。
+
+---
+
+## MCPという「橋渡し」
+
+ここで登場するのがMCP（Model Context Protocol）です。
+
+MCPは、AIと外部ツールをつなぐための**標準プロトコル**です。
+Anthropic社が策定し、さまざまなツールとの連携に使われています。
+
+MCPの役割を一言で表すと：
+
+**「AIの言葉を、ツールが理解できるAPI呼び出しに変換する」**
+
+```
+AI: 「Playerという名前のGameObjectを作成して」
+       ↓
+MCP: これは unity.gameobject.create を呼ぶべきだな
+       ↓
+API: { method: "unity.gameobject.create", params: { name: "Player" } }
+       ↓
+Unity: new GameObject("Player"); を実行
+       ↓
+結果: { success: true, instanceId: 12345 }
+       ↓
+AI: 「GameObjectを作成しました」
+```
+
+MCPがあることで、AIは**間接的に**Unity Editorを操作できるようになります。
+
+---
+
+## アーキテクチャ全体像
+
+UniMCP4CCの実装をもとに、全体像を示します。
+
+![AI-MCP-Unity通信フロー](./images/ai_mcp_unity_flow.png)
+
+| 層 | コンポーネント | 役割 |
+|:---|:---|:---|
+| AI層 | Claude Code | 自然言語を解釈し、APIを判断 |
+| プロトコル層 | MCP Bridge（Node.js） | JSON-RPCへの変換・通信管理 |
+| サーバー層 | Unity MCP Server | リクエスト受信・API実行（350以上） |
+| 実行層 | Unity Editor | GameObject/Component等の実際の操作 |
+
+通信はすべて**JSON形式**で行われ、各層間で以下のプロトコルが使われます：
+
+- Claude ↔ MCP Bridge: **stdio**（標準入出力）
+- MCP Bridge ↔ Unity: **HTTP/WebSocket**（JSON-RPC 2.0）
+
+---
+
+## なぜ「サーバー」が必要なのか
+
+「Unity Editorの中にサーバー？」と思われるかもしれません。
+
+Unity Editorは通常、外部からの操作を受け付けません。
+セキュリティの観点からも、勝手に操作されては困ります。
+
+しかし、UniMCP4CCをインストールすると、Unity Editor内に小さなHTTPサーバーが起動します。
+このサーバーが**外部からのリクエストを受け付ける窓口**になります。
+
+```
+外部（MCP Bridge）
+    ↓ HTTPリクエスト
+Unity MCP Server（ポート5051）
+    ↓ Unity Editor APIを呼び出し
+Unity Editor
+    ↓ 操作を実行
+Scene / GameObject / Component
+```
+
+サーバーはUnity Editorと同じプロセス内で動作するため、Editor APIを自由に呼び出せます。
+
+---
+
+## なぜ「JSON」なのか
+
+ここまでの説明で、何度も `{ }` で囲まれたデータが登場しました。
+これは**JSON（JavaScript Object Notation）**という形式です。
+
+### JSONとは
+
+JSONは、データを表現するための**テキスト形式**です。
+
+```json
+{
+  "name": "Player",
+  "position": { "x": 0, "y": 1, "z": 0 },
+  "components": ["Transform", "Rigidbody"]
+}
+```
+
+人間が読んでも、プログラムが読んでも理解できます。
+
+### なぜJSONが選ばれるのか
+
+AI・MCP・Unityの通信でJSONが使われる理由は、**異なるシステム間の「共通言語」**として優れているからです。
+
+| システム | 実装言語 | JSONの扱い |
+|:---|:---|:---|
+| Claude（AI） | - | テキストとして生成・解析できる |
+| MCP Bridge | JavaScript/Node.js | ネイティブでサポート |
+| Unity MCP Server | C# | JsonUtility / Newtonsoft.Json |
+
+それぞれ異なる言語で実装されていますが、JSONならすべてが理解できます。
+
+### JSONが持つ特性
+
+**1. 人間が読める**
+
+```json
+{ "method": "unity.gameobject.create", "params": { "name": "Player" } }
+```
+
+これを見れば「GameObjectを作成する、名前はPlayer」とわかります。
+バイナリ形式では、このような可読性は得られません。
+
+**2. 構造化されている**
+
+キーと値のペア、配列、ネストにより、複雑なデータも表現できます。
+
+```json
+{
+  "result": {
+    "instanceId": 12345,
+    "name": "Player",
+    "transform": {
+      "position": { "x": 0, "y": 1, "z": 0 }
+    }
+  }
+}
+```
+
+**3. 軽量**
+
+XMLのように冗長なタグがなく、必要最小限の記述で済みます。
+
+```xml
+<!-- XML の場合 -->
+<result>
+  <instanceId>12345</instanceId>
+  <name>Player</name>
+</result>
+```
+
+```json
+// JSON の場合
+{ "result": { "instanceId": 12345, "name": "Player" } }
+```
+
+### AIとJSONの相性
+
+AIは**テキストを扱うシステム**です。
+JSONもテキスト形式なので、AIは自然にJSONを生成・解析できます。
+
+```
+AIへの入力: 「Playerを作成して」
+
+AIの出力（内部的に）:
+{
+  "method": "unity.gameobject.create",
+  "params": { "name": "Player" }
+}
+```
+
+AIは自然言語をJSON形式のAPI呼び出しに「翻訳」しているのです。
+
+この特性があるからこそ、MCPという仕組みが成り立っています。
+
+---
+
+## tools/list：AIが「何ができるか」を知る仕組み
+
+MCPには**tools/list**という重要な仕組みがあります。
+
+AIがUnityに接続すると、最初に「何ができますか？」と問い合わせます。
+Unity MCP Serverは、利用可能なすべてのAPIをリストで返します。
+
+```json
+{
+  "tools": [
+    {
+      "name": "unity.gameobject.create",
+      "description": "GameObjectを作成します",
+      "inputSchema": {
+        "properties": {
+          "name": { "type": "string", "description": "オブジェクト名" },
+          "parent": { "type": "string", "description": "親オブジェクトのパス" }
+        },
+        "required": ["name"]
+      }
+    },
+    {
+      "name": "unity.component.add",
+      "description": "コンポーネントを追加します",
+      "inputSchema": { ... }
+    }
+    // ... 350以上のAPI
+  ]
+}
+```
+
+このリストがあるから、AIは「GameObjectを作成するには`unity.gameobject.create`を使う」と判断できます。
+
+もしこのリストがなければ、AIは何ができるかわからず、従来の方法（スクリプトを書いて手動で設定する）を提案してしまいます。
+
+---
+
+## 実際の操作例
+
+「Playerを作成してRigidbodyを追加して」という指示がどう処理されるか、4つのステップで見ていきましょう。
+
+### Step 1: AIが指示を解析する
+
+ユーザーが自然言語で指示を出します。
+
+> 「Playerを作成してRigidbodyを追加して」
+
+AIはこの文章を解析し、**何をすべきか**を判断します。
+tools/listで取得したAPI一覧と照らし合わせ、以下のように分解します。
+
+| やるべきこと | 使うAPI |
+|:---|:---|
+| GameObjectを作成する | `unity.gameobject.create` |
+| Rigidbodyを追加する | `unity.component.add` |
+
+AIは「まずGameObjectを作り、次にComponentを追加する」という**実行順序**も自動的に判断します。
+
+### Step 2: GameObjectを作成する
+
+AIがMCP Bridgeを通じてUnityにリクエストを送ります。
+
+**送信されるJSON:**
+
+```json
+{
+  "jsonrpc": "2.0",
+  "method": "unity.gameobject.create",
+  "params": { "name": "Player" },
+  "id": 1
+}
+```
+
+Unity MCP Serverがこれを受け取ると、内部で以下のC#コードが実行されます。
+
+```csharp
+var obj = new GameObject("Player");
+```
+
+Hierarchyに「Player」という空のGameObjectが作成されます。
+
+**Unityからの応答:**
+
+```json
+{
+  "result": { "instanceId": 12345, "name": "Player" }
+}
+```
+
+`instanceId`はUnity内部でオブジェクトを一意に識別するIDです。
+AIはこの応答を受け取り、作成が成功したことを確認します。
+
+### Step 3: Rigidbodyを追加する
+
+続いて、AIは作成したPlayerにRigidbodyコンポーネントを追加します。
+
+**送信されるJSON:**
+
+```json
+{
+  "method": "unity.component.add",
+  "params": {
+    "gameObjectPath": "Player",
+    "componentType": "Rigidbody"
+  }
+}
+```
+
+`gameObjectPath`で対象オブジェクトを指定し、`componentType`で追加するコンポーネントを指定します。
+
+Unity MCP Server内部では以下が実行されます。
+
+```csharp
+var obj = GameObject.Find("Player");
+obj.AddComponent<Rigidbody>();
+```
+
+InspectorにRigidbodyコンポーネントが追加され、物理演算が有効になります。
+
+**Unityからの応答:**
+
+```json
+{
+  "result": { "componentType": "Rigidbody", "added": true }
+}
+```
+
+### Step 4: AIがユーザーに報告する
+
+すべての操作が完了したら、AIは結果をユーザーに報告します。
+
+> 「Playerオブジェクトを作成し、Rigidbodyコンポーネントを追加しました。Hierarchyに表示されているはずです。」
+
+この時点で、Unity Editor上には物理演算が有効なPlayerオブジェクトが存在しています。
+ユーザーはUnity Editorを見ながら、AIと対話しながら開発を進められます。
+
+---
+
+## この仕組みのメリット
+
+### 1. リアルタイムな対話
+
+バッチモードと違い、Unity Editorを起動したまま操作できます。
+「作成して」「ちょっと違う、位置を変えて」「いい感じ、保存して」という対話が可能です。
+
+### 2. すべてのEditor機能にアクセス
+
+Unity Editor APIで可能なことは、ほぼすべてMCP経由で実行できます。
+GUIでできることは、APIでもできるからです。
+
+### 3. AIの知識を活用
+
+AIはUnityの使い方を知っています。
+「物理演算を使いたい」と言えば、Rigidbodyを追加すべきだと判断できます。
+
+---
+
+## まとめ
+
+| 要素 | 役割 |
+|:---|:---|
+| **AI** | 自然言語を理解し、何をすべきか判断する |
+| **MCP** | AIの判断を、実行可能なAPI呼び出しに変換する |
+| **Unity MCP Server** | API呼び出しを受け取り、Unity Editorを操作する |
+| **Unity Editor** | 実際の操作（GameObject作成等）を実行する |
+
+AIは「直接」Unityを操作することはできません。
+しかし、MCPという橋渡しを通じて「間接的に」操作することは可能です。
+
+この仕組みがあることで、自然言語でUnity Editorを操作できるようになります。
+
+---
+
+## 参考リンク
+
+* [UniMCP4CC GitHub](https://github.com/dsgarage/UniMCP4CC)
+* [Model Context Protocol](https://modelcontextprotocol.io/)
+* [MCP仕様: Tools](https://modelcontextprotocol.io/specification/2025-06-18/server/tools)
+* [Unity バッチモード](https://docs.unity3d.com/Manual/CommandLineArguments.html)
+
+---

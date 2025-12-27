@@ -1,0 +1,84 @@
+digraph AIMCPUnityFlow {
+    graph [
+        rankdir=TB
+        bgcolor="white"
+        fontname="Helvetica Neue"
+        fontsize=12
+        pad=0.3
+        nodesep=0.5
+        ranksep=0.6
+        dpi=150
+    ]
+
+    node [
+        fontname="Helvetica Neue"
+        fontsize=11
+        style="filled,rounded"
+        shape=box
+        penwidth=1.5
+        margin="0.25,0.15"
+    ]
+
+    edge [
+        fontname="Helvetica Neue"
+        fontsize=10
+        penwidth=1.5
+    ]
+
+    // Layer nodes
+    claude [
+        label="Claude Code\n（AI）"
+        fillcolor="#dbeafe"
+        color="#3b82f6"
+        fontcolor="#1e40af"
+    ]
+
+    mcp [
+        label="MCP Bridge\n（Node.js）"
+        fillcolor="#fef3c7"
+        color="#f59e0b"
+        fontcolor="#92400e"
+    ]
+
+    server [
+        label="Unity MCP Server\n（Editor内）"
+        fillcolor="#bbf7d0"
+        color="#22c55e"
+        fontcolor="#166534"
+    ]
+
+    unity [
+        label="Unity Editor\n（実行）"
+        fillcolor="#d1fae5"
+        color="#10b981"
+        fontcolor="#065f46"
+    ]
+
+    // Forward flow
+    claude -> mcp [
+        label="stdio\nJSON-RPC"
+        color="#6b7280"
+        fontcolor="#374151"
+    ]
+
+    mcp -> server [
+        label="HTTP/WebSocket\nJSON-RPC 2.0"
+        color="#6b7280"
+        fontcolor="#374151"
+    ]
+
+    server -> unity [
+        label="Editor API"
+        color="#6b7280"
+        fontcolor="#374151"
+    ]
+
+    // Return flow (invisible for layout, shown with curved edge)
+    unity -> claude [
+        label="結果を返す"
+        style=dashed
+        color="#9ca3af"
+        fontcolor="#6b7280"
+        constraint=false
+    ]
+}

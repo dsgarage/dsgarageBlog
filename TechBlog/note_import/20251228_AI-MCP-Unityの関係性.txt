@@ -1,0 +1,377 @@
+TITLE: AI・MCP・Unityの関係性
+DATE: 12/28/2025 12:00:00
+STATUS: Draft
+ALLOW COMMENTS: 1
+CONVERT BREAKS: markdown
+-----
+BODY:
+
+
+**カテゴリ**: UniMCP4CC / AI開発 / アーキテクチャ解説
+
+---
+
+## お知らせ
+
+本記事で解説するアーキテクチャは、以下のリポジトリで実装されています。
+
+https://github.com/dsgarage/UniMCP4CC
+
+---
+
+## はじめに
+
+「AIにUnityでゲームを作ってもらう」
+
+この一文は、2025年現在でも誤解を招きやすい表現です。
+AIはC#スクリプトを書けます。しかし、**Unity Editorを操作することはできません**。
+
+本記事では、AI・MCP・Unityの3者がどのような関係にあり、なぜMCPが必要なのかを、実際のアーキテクチャをもとに解説します。
+
+---
+
+## 3者の役割
+
+まず、それぞれが何をするものかを整理します。
+
+| 要素 | 役割 | できること |
+|:---|:---|:---|
+| **AI（Claude等）** | 自然言語を理解し、指示を解釈する | テキスト生成、コード生成、判断 |
+| **MCP** | AIとツールをつなぐプロトコル | API呼び出し、結果の受け渡し |
+| **Unity Editor** | ゲーム開発環境 | Scene編集、GameObject操作、ビルド |
+
+重要なのは、**AIは直接Unity Editorにアクセスできない**という点です。
+
+---
+
+## なぜAIはUnityを操作できないのか
+
+AIは基本的に「テキストの入出力」しかできません。
+
+```
+[入力] ユーザーの質問・指示（テキスト）
+   ↓
+[処理] AIモデルによる推論
+   ↓
+[出力] 回答・コード（テキスト）
+```
+
+Unity Editorは**GUIアプリケーション**です。
+ボタンをクリックしたり、Inspectorで値を変更したり、Hierarchyでオブジェクトをドラッグしたりします。
+
+AIにはマウスもキーボードもありません。
+画面を見ることもできません。
+
+つまり、**AIとUnityは住んでいる世界が違う**のです。
+
+---
+
+## MCPという「通訳」
+
+MCP（Model Context Protocol）は、AIとツールをつなぐための**標準プロトコル**です。
+
+AIが「GameObjectを作成して」と言ったとき、MCPがそれを「Unity EditorのAPIを呼び出す」という操作に変換します。
+
+```
+AI: 「Playerという名前のGameObjectを作成して」
+       ↓
+MCP: unity.gameobject.create({ name: "Player" })
+       ↓
+Unity: new GameObject("Player");
+       ↓
+MCP: { success: true, instanceId: 12345 }
+       ↓
+AI: 「GameObjectを作成しました」
+```
+
+MCPは**通訳**です。
+AIの言葉をUnityが理解できる形式に変換し、Unityの結果をAIが理解できる形式に戻します。
+
+---
+
+## アーキテクチャ全体像
+
+UniMCP4CCの実装をもとに、全体像を示します。
+
+![AI-MCP-Unity通信フロー](./images/ai_mcp_unity_flow.png)
+
+```
+┌─────────────────────────────────────────────────────┐
+│                   Claude Code                        │
+│                  （AIアシスタント）                   │
+│                                                      │
+│  「Playerオブジェクトを作成して、                    │
+│    Rigidbodyを追加して、mass を 2 に設定して」       │
+└──────────────────────┬──────────────────────────────┘
+                       │ stdio（標準入出力）
+                       ▼
+┌─────────────────────────────────────────────────────┐
+│                   MCP Bridge                         │
+│                  （Node.js）                         │
+│                                                      │
+│  ・MCPプロトコルの実装                               │
+│  ・JSON-RPC 2.0 形式への変換                         │
+│  ・Unityへのリクエスト転送                           │
+└──────────────────────┬──────────────────────────────┘
+                       │ HTTP / WebSocket
+                       ▼
+┌─────────────────────────────────────────────────────┐
+│                  Unity MCP Server                    │
+│                （Unity Editor内）                    │
+│                                                      │
+│  ・APIルーティング                                   │
+│  ・Unity Editor APIの呼び出し                        │
+│  ・結果のJSON化                                      │
+└──────────────────────┬──────────────────────────────┘
+                       │
+                       ▼
+┌─────────────────────────────────────────────────────┐
+│                  Unity Editor                        │
+│                                                      │
+│  ・GameObject作成                                    │
+│  ・Component追加                                     │
+│  ・プロパティ変更                                    │
+│  ・Scene保存                                         │
+└─────────────────────────────────────────────────────┘
+```
+
+---
+
+## 各層の詳細
+
+### 1. Claude Code（AI層）
+
+AIは自然言語で指示を受け取り、どのAPIを呼ぶべきかを判断します。
+
+```
+入力: 「Playerオブジェクトを作成して」
+
+AIの判断:
+  → unity.gameobject.create を呼び出すべき
+  → パラメータは { name: "Player" }
+```
+
+この判断ができるのは、MCPの**tools/list**機能のおかげです。
+AIはセッション開始時に「何ができるか」のリストを受け取り、それをもとに適切なAPIを選択します。
+
+### 2. MCP Bridge（プロトコル層）
+
+MCP BridgeはNode.jsで実装されており、2つの役割を持ちます。
+
+**役割1: プロトコル変換**
+
+```javascript
+// AIからの入力（MCP形式）
+{
+  method: "tools/call",
+  params: {
+    name: "unity.gameobject.create",
+    arguments: { name: "Player" }
+  }
+}
+
+// Unityへの出力（JSON-RPC形式）
+{
+  jsonrpc: "2.0",
+  method: "unity.gameobject.create",
+  params: { name: "Player" },
+  id: 1
+}
+```
+
+**役割2: 接続管理**
+
+- Unityとの接続状態を監視（ヘルスチェック）
+- ポートの動的検出
+- エラー時のリトライ処理
+
+### 3. Unity MCP Server（Unity層）
+
+Unity Editor内で動作するサーバーです。
+HTTPとWebSocketの2つのエンドポイントを提供します。
+
+```csharp
+// リクエストを受け取り、適切なControllerに振り分け
+if (method == "unity.gameobject.create")
+{
+    return GameObjectController.Create(paramsJson, id);
+}
+else if (method == "unity.component.add")
+{
+    return ComponentController.Add(paramsJson, id);
+}
+// ... 350以上のAPIをルーティング
+```
+
+### 4. Unity Editor API（実行層）
+
+最終的に、UnityのC# APIが呼び出されます。
+
+```csharp
+// GameObjectController.Create() の内部
+var obj = new GameObject(name);
+if (!string.IsNullOrEmpty(parent))
+{
+    var parentObj = GameObject.Find(parent);
+    obj.transform.SetParent(parentObj.transform);
+}
+return JsonRpcResponse.Success(new {
+    instanceId = obj.GetInstanceID(),
+    name = obj.name
+}, id);
+```
+
+---
+
+## tools/list：AIが「何ができるか」を知る仕組み
+
+MCPの重要な機能の1つが**tools/list**です。
+
+AIがUnityに接続すると、まず「何ができるか」を問い合わせます。
+
+```json
+// tools/list のレスポンス（抜粋）
+{
+  "tools": [
+    {
+      "name": "unity.gameobject.create",
+      "description": "GameObjectを作成します",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "name": { "type": "string", "description": "GameObject名" },
+          "parent": { "type": "string", "description": "親のパス（省略可）" }
+        },
+        "required": ["name"]
+      }
+    },
+    {
+      "name": "unity.component.add",
+      "description": "コンポーネントを追加します",
+      "inputSchema": { ... }
+    }
+    // ... 350以上のAPI定義
+  ]
+}
+```
+
+このリストがあるから、AIは「GameObjectを作成するには`unity.gameobject.create`を使えばいい」と判断できます。
+
+---
+
+## 実際の通信フロー
+
+「Playerを作成してRigidbodyを追加」という指示がどう処理されるか、具体的に見てみましょう。
+
+### Step 1: AIの判断
+
+```
+ユーザー: 「Playerを作成してRigidbodyを追加して」
+
+AIの思考:
+  1. GameObjectを作成する → unity.gameobject.create
+  2. Rigidbodyを追加する → unity.component.add
+  この順番で実行しよう
+```
+
+### Step 2: GameObject作成
+
+```
+AI → MCP Bridge:
+  tools/call: unity.gameobject.create({ name: "Player" })
+
+MCP Bridge → Unity:
+  POST /api/mcp
+  { "method": "unity.gameobject.create", "params": { "name": "Player" } }
+
+Unity → MCP Bridge:
+  { "result": { "instanceId": 12345, "name": "Player" } }
+
+MCP Bridge → AI:
+  成功: Player (ID: 12345) を作成しました
+```
+
+### Step 3: Component追加
+
+```
+AI → MCP Bridge:
+  tools/call: unity.component.add({
+    gameObjectPath: "Player",
+    componentType: "Rigidbody"
+  })
+
+MCP Bridge → Unity:
+  POST /api/mcp
+  { "method": "unity.component.add", ... }
+
+Unity → MCP Bridge:
+  { "result": { "componentType": "Rigidbody", "added": true } }
+
+MCP Bridge → AI:
+  成功: Rigidbody を追加しました
+```
+
+### Step 4: AIの応答
+
+```
+AI → ユーザー:
+  「Playerオブジェクトを作成し、Rigidbodyコンポーネントを追加しました。」
+```
+
+---
+
+## なぜ3層構造なのか
+
+「AIから直接Unityを呼べばいいのでは？」という疑問があるかもしれません。
+
+3層構造にしている理由は以下の通りです。
+
+### 1. プロトコルの標準化
+
+MCPはAnthropicが策定した**標準プロトコル**です。
+Unity以外のツール（VSCode、GitHub、Slack等）も同じプロトコルで接続できます。
+
+```
+Claude ─┬─ MCP ─── Unity
+        ├─ MCP ─── VSCode
+        ├─ MCP ─── GitHub
+        └─ MCP ─── Slack
+```
+
+### 2. 責務の分離
+
+- **AI**: 判断と指示
+- **MCP Bridge**: 通信とプロトコル変換
+- **Unity Server**: API実装と実行
+
+それぞれが自分の仕事に集中できます。
+
+### 3. 拡張性
+
+新しいAPIを追加するとき、AI側の変更は不要です。
+Unity側にAPIを追加し、tools/listに登録するだけで、AIは自動的に新機能を認識します。
+
+---
+
+## まとめ
+
+| 要素 | 役割 | 比喩 |
+|:---|:---|:---|
+| **AI** | 指示を理解し、何をすべきか判断する | 監督 |
+| **MCP** | AIとUnityの間で通訳する | 通訳 |
+| **Unity** | 実際の作業を行う | 作業員 |
+
+AIは「何をしたいか」を言葉で伝え、MCPがそれを「どう実行するか」に変換し、Unityが実行します。
+
+この3者の連携により、自然言語でUnity Editorを操作できるようになります。
+
+---
+
+## 参考リンク
+
+* [UniMCP4CC GitHub](https://github.com/dsgarage/UniMCP4CC)
+* [Model Context Protocol](https://modelcontextprotocol.io/)
+* [MCP仕様: Tools](https://modelcontextprotocol.io/specification/2025-06-18/server/tools)
+
+---
+-----
