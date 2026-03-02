@@ -1,0 +1,127 @@
+digraph batch_parallel {
+    rankdir=TB
+    bgcolor="transparent"
+    fontname="Helvetica Neue"
+    fontsize=11
+    pad=0.8
+    nodesep=0.5
+    ranksep=0.7
+
+    node [
+        fontname="Helvetica Neue"
+        fontsize=10
+        style="filled,rounded"
+        shape=box
+        penwidth=0
+        margin="0.15,0.1"
+    ]
+
+    edge [
+        fontname="Helvetica Neue"
+        fontsize=9
+        penwidth=1.2
+        arrowsize=0.6
+        color="#94a3b8"
+    ]
+
+    // Phase 1: ユーザー入力
+    input [label="/batch <変更指示>" fillcolor="#dbeafe" fontcolor="#1e40af" shape=box]
+
+    // Phase 2: 調査・計画
+    subgraph cluster_plan {
+        label="  Phase 1-2: 調査・計画  "
+        labelloc=t
+        labeljust=c
+        style="rounded,filled"
+        color="#e5e7eb"
+        fillcolor="#f8fafc"
+        fontcolor="#1e40af"
+        fontsize=10
+        penwidth=1
+
+        explore [label="Explore\nエージェント" fillcolor="#dbeafe" fontcolor="#1e40af"]
+        decompose [label="ユニット分解\n(5〜30単位)" fillcolor="#dbeafe" fontcolor="#1e40af"]
+        approve [label="計画を提示\nユーザー承認" fillcolor="#fef3c7" fontcolor="#92400e"]
+    }
+
+    // Phase 3: 並列実行
+    subgraph cluster_workers {
+        label="  Phase 3: 並列実行（各ワーカー = 独立 git worktree）  "
+        labelloc=t
+        labeljust=c
+        style="rounded,filled"
+        color="#e5e7eb"
+        fillcolor="#f0fdf4"
+        fontcolor="#166534"
+        fontsize=10
+        penwidth=1
+
+        subgraph cluster_w1 {
+            label="Worker 1"
+            labelloc=t
+            style="rounded,filled"
+            color="#bbf7d0"
+            fillcolor="#ffffff"
+            fontcolor="#166534"
+            fontsize=9
+            penwidth=1
+
+            w1_impl [label="実装" fillcolor="#dbeafe" fontcolor="#1e40af"]
+            w1_test [label="テスト" fillcolor="#f3f4f6" fontcolor="#4b5563"]
+            w1_simp [label="/simplify" fillcolor="#fef3c7" fontcolor="#92400e"]
+            w1_pr [label="PR #1" fillcolor="#bbf7d0" fontcolor="#166534"]
+
+            w1_impl -> w1_test -> w1_simp -> w1_pr
+        }
+
+        subgraph cluster_w2 {
+            label="Worker 2"
+            labelloc=t
+            style="rounded,filled"
+            color="#bbf7d0"
+            fillcolor="#ffffff"
+            fontcolor="#166534"
+            fontsize=9
+            penwidth=1
+
+            w2_impl [label="実装" fillcolor="#dbeafe" fontcolor="#1e40af"]
+            w2_test [label="テスト" fillcolor="#f3f4f6" fontcolor="#4b5563"]
+            w2_simp [label="/simplify" fillcolor="#fef3c7" fontcolor="#92400e"]
+            w2_pr [label="PR #2" fillcolor="#bbf7d0" fontcolor="#166534"]
+
+            w2_impl -> w2_test -> w2_simp -> w2_pr
+        }
+
+        subgraph cluster_w3 {
+            label="Worker N"
+            labelloc=t
+            style="rounded,filled"
+            color="#bbf7d0"
+            fillcolor="#ffffff"
+            fontcolor="#166534"
+            fontsize=9
+            penwidth=1
+
+            w3_impl [label="実装" fillcolor="#dbeafe" fontcolor="#1e40af"]
+            w3_test [label="テスト" fillcolor="#f3f4f6" fontcolor="#4b5563"]
+            w3_simp [label="/simplify" fillcolor="#fef3c7" fontcolor="#92400e"]
+            w3_pr [label="PR #N" fillcolor="#bbf7d0" fontcolor="#166534"]
+
+            w3_impl -> w3_test -> w3_simp -> w3_pr
+        }
+    }
+
+    // Phase 4: 集約
+    result [label="結果集約\nN個のPR URL一覧" fillcolor="#bbf7d0" fontcolor="#166534"]
+
+    // Edges
+    input -> explore
+    explore -> decompose
+    decompose -> approve
+    approve -> w1_impl
+    approve -> w2_impl
+    approve -> w3_impl
+    w1_pr -> result
+    w2_pr -> result
+    w3_pr -> result
+}

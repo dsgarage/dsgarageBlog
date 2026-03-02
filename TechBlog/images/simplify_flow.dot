@@ -1,0 +1,62 @@
+digraph simplify_flow {
+    rankdir=LR
+    bgcolor="transparent"
+    fontname="Helvetica Neue"
+    fontsize=11
+    pad=0.8
+    nodesep=0.6
+    ranksep=0.8
+
+    node [
+        fontname="Helvetica Neue"
+        fontsize=10
+        style="filled,rounded"
+        shape=box
+        penwidth=0
+        margin="0.15,0.1"
+    ]
+
+    edge [
+        fontname="Helvetica Neue"
+        fontsize=9
+        penwidth=1.2
+        arrowsize=0.6
+        color="#94a3b8"
+    ]
+
+    // Nodes
+    impl [label="機能を実装" fillcolor="#dbeafe" fontcolor="#1e40af"]
+    commit1 [label="git commit\n(実装)" fillcolor="#dbeafe" fontcolor="#1e40af"]
+    simplify [label="/simplify\n実行" fillcolor="#fef3c7" fontcolor="#92400e"]
+    review [label="git diff\nで確認" fillcolor="#f3f4f6" fontcolor="#4b5563"]
+    commit2 [label="git commit\n(改善)" fillcolor="#dbeafe" fontcolor="#1e40af"]
+    pr [label="PR作成" fillcolor="#bbf7d0" fontcolor="#166534"]
+
+    // /simplify の内部処理（サブグラフ）
+    subgraph cluster_simplify {
+        label="  /simplify が自動実行する3つのチェック  "
+        labelloc=b
+        labeljust=c
+        style="rounded,dashed"
+        color="#e5e7eb"
+        fillcolor="#fefce8"
+        fontcolor="#92400e"
+        fontsize=9
+        penwidth=1
+
+        reuse [label="再利用性\nチェック" fillcolor="#fef3c7" fontcolor="#92400e"]
+        quality [label="品質\nチェック" fillcolor="#fef3c7" fontcolor="#92400e"]
+        efficiency [label="効率性\nチェック" fillcolor="#fef3c7" fontcolor="#92400e"]
+    }
+
+    // Edges
+    impl -> commit1
+    commit1 -> simplify
+    simplify -> reuse [style=dashed color="#d97706"]
+    simplify -> quality [style=dashed color="#d97706"]
+    simplify -> efficiency [style=dashed color="#d97706"]
+    reuse -> review [style=invis]
+    simplify -> review
+    review -> commit2
+    commit2 -> pr
+}

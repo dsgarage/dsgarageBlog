@@ -90,7 +90,7 @@ rm -f "${SCRIPT_DIR}/${BASENAME}_temp.html"
 
 # Convert to PDF with weasyprint
 echo "Converting to PDF..."
-~/.pyenv/versions/3.10.7/bin/python -m weasyprint "$HTML_FILE" "$PDF_FILE" --stylesheet="${SCRIPT_DIR}/style.css" 2>&1 | grep -v "^WARNING:" || true
+~/.pyenv/versions/3.11.0/bin/python -m weasyprint "$HTML_FILE" "$PDF_FILE" --stylesheet="${SCRIPT_DIR}/style.css" 2>&1 | grep -v "^WARNING:" || true
 
 # Clean up HTML temp file
 rm -f "$HTML_FILE"

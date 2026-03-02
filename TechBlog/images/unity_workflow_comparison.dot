@@ -1,0 +1,75 @@
+digraph unity_workflow_comparison {
+    rankdir=TB
+    bgcolor="transparent"
+    fontname="Helvetica Neue"
+    fontsize=11
+    pad=0.8
+    nodesep=0.4
+    ranksep=0.6
+
+    node [
+        fontname="Helvetica Neue"
+        fontsize=10
+        style="filled,rounded"
+        shape=box
+        penwidth=0
+        margin="0.15,0.1"
+    ]
+
+    edge [
+        fontname="Helvetica Neue"
+        fontsize=9
+        penwidth=1.2
+        arrowsize=0.6
+        color="#94a3b8"
+    ]
+
+    // === 従来のワークフロー ===
+    subgraph cluster_before {
+        label="  従来のワークフロー  "
+        labelloc=t
+        labeljust=c
+        style="rounded,filled"
+        color="#fca5a5"
+        fillcolor="#fef2f2"
+        fontcolor="#991b1b"
+        fontsize=11
+        penwidth=1.5
+
+        b_impl [label="実装\n60分" fillcolor="#f3f4f6" fontcolor="#4b5563"]
+        b_review [label="手動レビュー\n30分" fillcolor="#fecaca" fontcolor="#991b1b"]
+        b_fix [label="手動修正\n20分" fillcolor="#fecaca" fontcolor="#991b1b"]
+        b_commit [label="コミット" fillcolor="#f3f4f6" fontcolor="#4b5563"]
+        b_pr [label="PR作成" fillcolor="#f3f4f6" fontcolor="#4b5563"]
+
+        b_impl -> b_review -> b_fix -> b_commit -> b_pr
+    }
+
+    // === 新ワークフロー ===
+    subgraph cluster_after {
+        label="  /simplify + /batch 導入後  "
+        labelloc=t
+        labeljust=c
+        style="rounded,filled"
+        color="#86efac"
+        fillcolor="#f0fdf4"
+        fontcolor="#166534"
+        fontsize=11
+        penwidth=1.5
+
+        a_impl [label="実装\n60分" fillcolor="#dbeafe" fontcolor="#1e40af"]
+        a_commit1 [label="コミット" fillcolor="#dbeafe" fontcolor="#1e40af"]
+        a_simplify [label="/simplify\n2〜3分" fillcolor="#fef3c7" fontcolor="#92400e"]
+        a_confirm [label="差分確認\n5分" fillcolor="#dbeafe" fontcolor="#1e40af"]
+        a_pr [label="PR作成" fillcolor="#bbf7d0" fontcolor="#166534"]
+
+        a_impl -> a_commit1 -> a_simplify -> a_confirm -> a_pr
+    }
+
+    // 時間比較ラベル
+    time_before [label="合計: 約110分" fillcolor="#fecaca" fontcolor="#991b1b" shape=ellipse]
+    time_after [label="合計: 約68分\n(38%短縮)" fillcolor="#bbf7d0" fontcolor="#166534" shape=ellipse]
+
+    b_pr -> time_before [style=dashed color="#fca5a5"]
+    a_pr -> time_after [style=dashed color="#86efac"]
+}
