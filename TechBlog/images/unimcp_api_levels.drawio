@@ -1,0 +1,117 @@
+<mxGraphModel>
+  <root>
+    <mxCell id="0"/>
+    <mxCell id="1" parent="0"/>
+    <mxCell id="bg" value="" style="rounded=1;whiteSpace=wrap;fillColor=#1a1a2e;strokeColor=none;arcSize=6;" vertex="1" parent="1">
+      <mxGeometry x="0" y="0" width="700" height="520" as="geometry"/>
+    </mxCell>
+    <mxCell id="title" value="API レベルシステム — AIが自分で道具を選ぶ" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontColor=#e0e0e0;fontSize=17;fontStyle=1;" vertex="1" parent="1">
+      <mxGeometry x="115" y="12" width="470" height="32" as="geometry"/>
+    </mxCell>
+    <mxCell id="s1_num" value="1" style="ellipse;whiteSpace=wrap;fillColor=#7c4dff;strokeColor=none;fontColor=#ffffff;fontSize=16;fontStyle=1;" vertex="1" parent="1">
+      <mxGeometry x="30" y="65" width="36" height="36" as="geometry"/>
+    </mxCell>
+    <mxCell id="s1_box" value="" style="rounded=1;whiteSpace=wrap;fillColor=#2d1b69;strokeColor=#7c4dff;strokeWidth=1.5;arcSize=10;" vertex="1" parent="1">
+      <mxGeometry x="80" y="55" width="270" height="56" as="geometry"/>
+    </mxCell>
+    <mxCell id="s1_text" value="tools/list（初回）" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontColor=#b388ff;fontSize=14;fontStyle=1;" vertex="1" parent="1">
+      <mxGeometry x="92" y="58" width="150" height="25" as="geometry"/>
+    </mxCell>
+    <mxCell id="s1_desc" value="Level 1 の基本APIだけが返る（60〜80個）" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontColor=#ce93d8;fontSize=11;" vertex="1" parent="1">
+      <mxGeometry x="92" y="82" width="250" height="20" as="geometry"/>
+    </mxCell>
+    <mxCell id="l1_badge" value="Level 1" style="rounded=1;whiteSpace=wrap;fillColor=#4caf50;strokeColor=none;fontColor=#ffffff;fontSize=12;fontStyle=1;arcSize=30;" vertex="1" parent="1">
+      <mxGeometry x="380" y="58" width="75" height="28" as="geometry"/>
+    </mxCell>
+    <mxCell id="l1_items" value="Scene / GameObject / Material ..." style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontColor=#a5d6a7;fontSize=10;" vertex="1" parent="1">
+      <mxGeometry x="465" y="60" width="210" height="22" as="geometry"/>
+    </mxCell>
+    <mxCell id="l2_badge_dim" value="Level 2" style="rounded=1;whiteSpace=wrap;fillColor=#37474f;strokeColor=#546e7a;fontColor=#78909c;fontSize=12;fontStyle=1;arcSize=30;" vertex="1" parent="1">
+      <mxGeometry x="380" y="88" width="75" height="24" as="geometry"/>
+    </mxCell>
+    <mxCell id="l2_dim" value="ParticleSystem（未ロード）" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontColor=#78909c;fontSize=10;" vertex="1" parent="1">
+      <mxGeometry x="465" y="88" width="160" height="22" as="geometry"/>
+    </mxCell>
+    <mxCell id="arrow1" value="" style="endArrow=classic;html=1;strokeColor=#ffab40;strokeWidth=2;" edge="1" parent="1">
+      <mxGeometry relative="1" as="geometry">
+        <mxPoint x="48" y="105" as="sourcePoint"/>
+        <mxPoint x="48" y="145" as="targetPoint"/>
+      </mxGeometry>
+    </mxCell>
+    <mxCell id="s2_num" value="2" style="ellipse;whiteSpace=wrap;fillColor=#ff6f00;strokeColor=none;fontColor=#ffffff;fontSize=16;fontStyle=1;" vertex="1" parent="1">
+      <mxGeometry x="30" y="150" width="36" height="36" as="geometry"/>
+    </mxCell>
+    <mxCell id="s2_box" value="" style="rounded=1;whiteSpace=wrap;fillColor=#3e2723;strokeColor=#ff8f00;strokeWidth=1.5;arcSize=10;" vertex="1" parent="1">
+      <mxGeometry x="80" y="140" width="580" height="56" as="geometry"/>
+    </mxCell>
+    <mxCell id="s2_icon" value="🤖" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=20;" vertex="1" parent="1">
+      <mxGeometry x="90" y="148" width="40" height="40" as="geometry"/>
+    </mxCell>
+    <mxCell id="s2_text" value="Claude Code:「パーティクルの操作が必要だ」" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontColor=#ffcc80;fontSize=14;fontStyle=1;" vertex="1" parent="1">
+      <mxGeometry x="130" y="143" width="400" height="25" as="geometry"/>
+    </mxCell>
+    <mxCell id="s2_desc" value="AIが文脈から必要なカテゴリを自分で判断" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontColor=#ffab91;fontSize=11;" vertex="1" parent="1">
+      <mxGeometry x="130" y="168" width="260" height="20" as="geometry"/>
+    </mxCell>
+    <mxCell id="arrow2" value="" style="endArrow=classic;html=1;strokeColor=#ffab40;strokeWidth=2;" edge="1" parent="1">
+      <mxGeometry relative="1" as="geometry">
+        <mxPoint x="48" y="195" as="sourcePoint"/>
+        <mxPoint x="48" y="235" as="targetPoint"/>
+      </mxGeometry>
+    </mxCell>
+    <mxCell id="s3_num" value="3" style="ellipse;whiteSpace=wrap;fillColor=#00bcd4;strokeColor=none;fontColor=#ffffff;fontSize=16;fontStyle=1;" vertex="1" parent="1">
+      <mxGeometry x="30" y="240" width="36" height="36" as="geometry"/>
+    </mxCell>
+    <mxCell id="s3_box" value="" style="rounded=1;whiteSpace=wrap;fillColor=#1b3a4b;strokeColor=#00bcd4;strokeWidth=1.5;arcSize=10;" vertex="1" parent="1">
+      <mxGeometry x="80" y="230" width="270" height="56" as="geometry"/>
+    </mxCell>
+    <mxCell id="s3_text" value="tools/list { category: &quot;particle&quot; }" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontColor=#4dd0e1;fontSize=13;fontStyle=1;fontFamily=Courier New;" vertex="1" parent="1">
+      <mxGeometry x="92" y="233" width="252" height="22" as="geometry"/>
+    </mxCell>
+    <mxCell id="s3_desc" value="ParticleSystem の57個のAPIが返る" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontColor=#80cbc4;fontSize=11;" vertex="1" parent="1">
+      <mxGeometry x="92" y="258" width="220" height="20" as="geometry"/>
+    </mxCell>
+    <mxCell id="l2_badge_active" value="Level 2" style="rounded=1;whiteSpace=wrap;fillColor=#00bcd4;strokeColor=none;fontColor=#ffffff;fontSize=12;fontStyle=1;arcSize=30;" vertex="1" parent="1">
+      <mxGeometry x="380" y="234" width="75" height="28" as="geometry"/>
+    </mxCell>
+    <mxCell id="l2_active_text" value="57 APIs ロード完了!" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontColor=#4dd0e1;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+      <mxGeometry x="465" y="236" width="130" height="22" as="geometry"/>
+    </mxCell>
+    <mxCell id="api_list" value="" style="rounded=1;whiteSpace=wrap;fillColor=#263238;strokeColor=#37474f;strokeWidth=1;arcSize=8;" vertex="1" parent="1">
+      <mxGeometry x="380" y="262" width="280" height="75" as="geometry"/>
+    </mxCell>
+    <mxCell id="api_items" value="particleSystem.create&#xa;particleSystem.setMain&#xa;particleSystem.setEmission&#xa;particleSystem.setShape  ... +53 more" style="text;html=1;align=left;verticalAlign=top;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontColor=#80cbc4;fontSize=10;fontFamily=Courier New;" vertex="1" parent="1">
+      <mxGeometry x="390" y="265" width="260" height="68" as="geometry"/>
+    </mxCell>
+    <mxCell id="arrow3" value="" style="endArrow=classic;html=1;strokeColor=#ffab40;strokeWidth=2;" edge="1" parent="1">
+      <mxGeometry relative="1" as="geometry">
+        <mxPoint x="48" y="285" as="sourcePoint"/>
+        <mxPoint x="48" y="355" as="targetPoint"/>
+      </mxGeometry>
+    </mxCell>
+    <mxCell id="s4_num" value="4" style="ellipse;whiteSpace=wrap;fillColor=#66bb6a;strokeColor=none;fontColor=#ffffff;fontSize=16;fontStyle=1;" vertex="1" parent="1">
+      <mxGeometry x="30" y="360" width="36" height="36" as="geometry"/>
+    </mxCell>
+    <mxCell id="s4_box" value="" style="rounded=1;whiteSpace=wrap;fillColor=#1b4332;strokeColor=#66bb6a;strokeWidth=1.5;arcSize=10;" vertex="1" parent="1">
+      <mxGeometry x="80" y="350" width="580" height="56" as="geometry"/>
+    </mxCell>
+    <mxCell id="s4_text" value="Claude Code: 必要なAPIを選んで操作を実行" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontColor=#81c784;fontSize=14;fontStyle=1;" vertex="1" parent="1">
+      <mxGeometry x="92" y="353" width="370" height="25" as="geometry"/>
+    </mxCell>
+    <mxCell id="s4_desc" value="create → setMain → setEmission → setShape → play" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontColor=#a5d6a7;fontSize=11;fontFamily=Courier New;" vertex="1" parent="1">
+      <mxGeometry x="92" y="378" width="360" height="20" as="geometry"/>
+    </mxCell>
+    <mxCell id="insight_box" value="" style="rounded=1;whiteSpace=wrap;fillColor=#1a237e;strokeColor=#5c6bc0;strokeWidth=1.5;arcSize=12;" vertex="1" parent="1">
+      <mxGeometry x="80" y="430" width="580" height="70" as="geometry"/>
+    </mxCell>
+    <mxCell id="insight_icon" value="💡" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=22;" vertex="1" parent="1">
+      <mxGeometry x="90" y="440" width="40" height="40" as="geometry"/>
+    </mxCell>
+    <mxCell id="insight_title" value="ポイント" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontColor=#9fa8da;fontSize=13;fontStyle=1;" vertex="1" parent="1">
+      <mxGeometry x="130" y="435" width="70" height="22" as="geometry"/>
+    </mxCell>
+    <mxCell id="insight_text" value="AIが自分で判断して必要なツールを取りに行く。&#xa;コンテキストウィンドウという有限リソースの中で、AIが最も効果的に作業できるよう設計。" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontColor=#c5cae9;fontSize=11;" vertex="1" parent="1">
+      <mxGeometry x="130" y="456" width="520" height="36" as="geometry"/>
+    </mxCell>
+  </root>
+</mxGraphModel>
