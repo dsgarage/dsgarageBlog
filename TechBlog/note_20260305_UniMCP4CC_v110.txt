@@ -1,0 +1,435 @@
+TITLE: UniMCP4CC v1.1.0 — MCP Bridgeの全貌とParticleSystem API追加
+DATE: 03/05/2026 12:00:00
+STATUS: Draft
+ALLOW COMMENTS: 1
+CONVERT BREAKS: markdown
+-----
+BODY:
+
+
+## はじめに
+
+「Claude Codeに"ParticleSystemを追加して"と言ったのに、何も起きなかった」
+
+Unity開発でClaude Codeを使っていると、こうした状況に遭遇します。Claude Codeは優秀なAIエージェントですが、Unity Editorを**直接操作する手段**を持ちません。C#スクリプトの生成はできても、Hierarchyにオブジェクトを配置する、Inspectorのパラメータを変える、Play Modeで動作を確認する——こうしたUnity Editor固有の操作はClaude Code単体ではできないのです。
+
+この問題を解決するのがMCP（Model Context Protocol）であり、Unity Editor側のMCPサーバーとClaude Codeを**橋渡し**するのがMCP Bridgeです。
+
+本記事では、UniMCP4CC v1.1.0のアップデート内容を解説しますが、まず最も重要な基盤であるMCP Bridgeの仕組みを詳しく解説します。MCP Bridgeが何をしているかを理解すれば、接続断やポート不一致といったトラブルの大半は自力で解決できるようになります。
+
+:::message
+**Unity開発者の方へ**
+
+Claude Codeは強力なツールですが、Unity Editorを直接操作することはできません。
+この問題を解決するのが**UniMCP4CC**（Unity MCP Server for Claude Code）です。
+
+- GitHub: [dsgarage/UniMCP4CC](https://github.com/dsgarage/UniMCP4CC)
+- 対応Unity: Unity 6以降
+- ライセンス: MIT
+:::
+
+---
+
+## MCP Bridgeとは何か
+
+### Claude CodeとUnity Editorの間にある壁
+
+Claude Codeはターミナル上で動くAIエージェントです。ファイルの読み書き、gitの操作、シェルコマンドの実行ができます。しかし、Unity Editorはこれらとは独立したGUIアプリケーションです。
+
+```
+Claude Code (ターミナル)        Unity Editor (GUI)
+┌──────────────────┐       ┌──────────────────┐
+│  ファイル操作     │       │  Scene操作       │
+│  git操作         │   ??  │  Inspector操作   │
+│  シェルコマンド   │ ───→  │  Play Mode制御   │
+│                  │       │  Asset管理       │
+└──────────────────┘       └──────────────────┘
+    ここまでは得意            ここは手が届かない
+```
+
+この「??」の部分——つまり「Claude CodeのAI判断をUnity Editorの操作に変換する」役割を担うのが**MCP Bridge**です。
+
+### MCP Bridgeのアーキテクチャ
+
+MCP Bridgeは Node.js で動作する軽量なプロセスです。Claude Codeとは**stdio（標準入出力）**で通信し、Unity Editorとは**HTTP**で通信します。
+
+```
+Claude Code                MCP Bridge (Node.js)           Unity Editor
+┌──────────┐    stdio     ┌──────────────────┐   HTTP    ┌──────────┐
+│          │ ──────────→  │                  │ ───────→  │          │
+│  AI判断  │  JSON-RPC    │  プロトコル変換   │  POST     │  API実行 │
+│          │ ←──────────  │                  │ ←───────  │          │
+└──────────┘              └──────────────────┘           └──────────┘
+                                  ↑
+                          .unity-mcp-runtime.json
+                          （ポート番号の発見）
+```
+
+**ポイント: MCP Bridgeは「通訳者」**です。Claude Codeが「シーンのオブジェクト一覧を見せて」と言うと、MCP Bridgeはそれを `unity.scene.list` というJSON-RPCリクエストに変換し、Unity EditorのHTTPサーバーに送信します。Unity Editorからの応答を受け取ると、Claude Codeが理解できる形式に戻して返します。
+
+### ポート発見の仕組み — なぜ接続が切れるのか
+
+MCP Bridgeが Unity Editor に接続するには、Unity Editor がどのポートでHTTPサーバーを立てているかを知る必要があります。この情報は `.unity-mcp-runtime.json` というファイルに書かれています。
+
+```json
+{
+  "httpPort": 5051,
+  "wsPort": 5050,
+  "projectName": "MyUnityProject",
+  "projectPath": "/Users/dev/MyUnityProject",
+  "processId": 12345,
+  "startedAt": "2026-03-05T10:00:00Z"
+}
+```
+
+**v1.1.0のMCP Bridgeは4段階のフォールバック**でこのファイルを探します：
+
+| 優先度 | 検出方法 | 説明 |
+|:---:|:---|:---|
+| 1 | `UNITY_PROJECT_PATH` 環境変数 | `.claude.json` の `env` で明示指定 |
+| 2 | index.js のファイルパスから推定 | UPMパッケージ構造を逆算 |
+| 3 | `process.cwd()`（カレントディレクトリ） | 後方互換性 |
+| 4 | `UNITY_HTTP_URL` 環境変数 or デフォルト `localhost:5051` | 最終手段 |
+
+**接続が切れる最大の原因**は、Unity Editorを再起動するとポート番号が変わることです。MCP Bridgeは `.unity-mcp-runtime.json` を再読み込みして新しいポートに自動追従しますが、このファイルが見つからない場合は接続できません。
+
+### 1プロジェクト = 1インスタンスが基本
+
+以前のバージョンでは複数の Unity プロジェクトをまとめて1つの MCP Bridge で扱うことを想定していましたが、**v1.1.0 からは1プロジェクト・1インスタンスを基本とします**。
+
+理由は明確です：
+
+1. **ポート競合の回避**: 複数プロジェクトが同じポート帯を使うと衝突する
+2. **接続の安定性**: 1対1の方がランタイム設定ファイルの検出が確実
+3. **デバッグの容易さ**: 問題発生時にどのプロジェクトの問題か一目で分かる
+
+Claude Codeの `.claude.json` で接続先を明示指定するのが最も確実です：
+
+```json
+{
+  "mcpServers": {
+    "unity": {
+      "command": "node",
+      "args": ["Packages/com.dsgarage.unimcp4cc/Server/mcp-bridge/index.js"],
+      "env": {
+        "UNITY_PROJECT_PATH": "/Users/dev/MyUnityProject"
+      }
+    }
+  }
+}
+```
+
+---
+
+## MCPとの接続が切れるとき — 原因と対処法
+
+Unity開発中、MCPとの接続が切れることがあります。ここでは主な原因とその対処法をまとめます。
+
+### 原因1: Unity Editorの再起動
+
+**症状**: Claude Codeが「Unity MCP serverに接続できません」と返す
+
+Unity Editorを再起動すると、MCPサーバーも再起動します。新しいポート番号が `.unity-mcp-runtime.json` に書き込まれますが、MCP Bridge側が古いポートを掴んだままになることがあります。
+
+**対処法**: MCP Bridgeを再起動する
+
+```bash
+# Claude Code内で実行
+/mcp
+# または、claude.json のMCPサーバーを再接続
+```
+
+### 原因2: Domain Reload（スクリプトのコンパイル）
+
+**症状**: 操作中に突然レスポンスが返ってこなくなる
+
+UnityでC#スクリプトを保存すると、Domain Reloadが発生します。この間、Unity内部のすべてのstaticフィールドがリセットされ、MCPサーバーも一時的に停止します。
+
+**対処法**: 数秒待って再試行する。UniMCP4CCは `[InitializeOnLoad]` で自動復帰するため、Domain Reload完了後に自動で再接続されます。
+
+### 原因3: HTTP Empty Reply
+
+**症状**: `curl: (52) Empty reply from server` エラー
+
+Unity EditorのHTTPリスナーは、メインスレッドでのみ応答します。重い処理（大量のオブジェクト操作、ビルドなど）の実行中はHTTPリクエストに応答できません。
+
+**対処法**:
+- WebSocket（ポート5050）を優先的に使用する（MCP Bridge経由なら自動）
+- 直接HTTPを叩く場合は、処理が完了するのを待ってからリトライ
+
+### 原因4: `.unity-mcp-runtime.json` が見つからない
+
+**症状**: MCP Bridgeのログに `Using fallback URL` と表示される
+
+MCP Bridgeがランタイム設定ファイルを発見できなかった場合、デフォルトの `localhost:5051` にフォールバックします。
+
+**対処法**:
+1. Unity Editorで MCP > Start Server を確認
+2. `.claude.json` に `UNITY_PROJECT_PATH` を明示指定
+3. Unity プロジェクトのルートに `.unity-mcp-runtime.json` が存在するか確認
+
+```bash
+# 設定ファイルの存在確認
+cat /path/to/your/project/.unity-mcp-runtime.json
+```
+
+### 接続状態の確認方法
+
+接続が正常かどうかは、以下のコマンドで確認できます：
+
+```bash
+# HTTPエンドポイントの確認
+curl http://localhost:5051/health
+
+# WebSocketの確認（Python）
+python3 -c "
+import socket
+s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+s.settimeout(3)
+try:
+    s.connect(('127.0.0.1', 5050))
+    print('WebSocket: OK')
+except:
+    print('WebSocket: NG')
+s.close()
+"
+```
+
+---
+
+## v1.1.0 の新機能
+
+### ParticleSystem API — 57個のAPI追加
+
+v1.1.0の目玉は、ParticleSystem全24モジュールに対応する57個のAPIです。
+
+Claude Codeに「炎のパーティクルを作って」と指示すると、MCP経由で以下のような操作が実行されます：
+
+```
+1. unity.particleSystem.create       → ParticleSystemオブジェクト作成
+2. unity.particleSystem.setMain      → 基本パラメータ（duration, startSpeed等）
+3. unity.particleSystem.setEmission  → 放出レート設定
+4. unity.particleSystem.setShape     → 放出形状（Cone, Sphere等）
+5. unity.particleSystem.setColorOverLifetime → 色の変化
+6. unity.particleSystem.setSizeOverLifetime  → サイズの変化
+```
+
+すべてUndo対応済みで、操作を取り消せます。
+
+#### 対応モジュール一覧
+
+| カテゴリ | モジュール | API数 |
+|:---|:---|:---:|
+| **コア** | Create, List, GetInfo, Play, Stop, Delete, Simulate | 7 |
+| **基本** | Main, Emission, Shape | 6 |
+| **運動** | VelocityOverLifetime, ForceOverLifetime | 4 |
+| **外観** | ColorOverLifetime, SizeOverLifetime, RotationOverLifetime | 6 |
+| **高度** | Noise, Collision, Trigger | 6 |
+| **サブシステム** | TextureSheetAnimation, Trails, Lights, CustomData | 8 |
+| **描画** | Renderer | 2 |
+
+**各モジュールに Get/Set の両方を提供**しているため、Inspect → Apply ワークフロー（確認してから変更）に完全準拠しています。
+
+### AIが自分で「使う道具」を選ぶ — APIレベルシステム
+
+UniMCP4CCには現在180を超えるAPIがあります。これをClaude Codeに全部一度に渡したらどうなるでしょうか？
+
+答えは**コンテキストウィンドウの圧迫**です。Claude Codeは会話の文脈（コンテキスト）を保持する容量に限りがあります。180個のAPIの名前・説明・パラメータ定義をすべてロードすると、それだけで本来の作業に使えるコンテキストが減ってしまいます。人間に例えるなら、工具箱の中身を全部テーブルに広げた状態で作業するようなものです。
+
+UniMCP4CCではこの問題を**APIレベルシステム**で解決しています。
+
+| レベル | 説明 | 初回ロード | API数の目安 |
+|:---:|:---|:---:|:---:|
+| **Level 1** | 基本API（常に公開） | される | 60〜80 |
+| **Level 2** | カテゴリ別API（必要時に公開） | されない | カテゴリ別 |
+| **Level 3** | パッケージ依存API（パッケージ存在時のみ） | されない | パッケージ別 |
+
+**ParticleSystem の57個のAPIはLevel 2です。** Level 1ではありません。
+
+これは意図的な設計判断です。ParticleSystem APIは57個もあり、これをLevel 1（初回ロード）に含めると、Claude Codeが最初にツール一覧を取得する時点で大量のスキーマ情報がコンテキストに載ってしまいます。シーンの基本操作やGameObject操作をしたいだけのユーザーにとって、ParticleSystemのモジュール別Get/Setは不要なノイズになります。
+
+#### AIが必要なときに自分で道具を取りに行く
+
+Claude Codeが「パーティクルを作りたい」と判断した場合の流れは以下のようになります：
+
+```
+1. tools/list（初回）
+   → Level 1 の基本APIだけが返る（60〜80個）
+   → ParticleSystem APIは含まれない
+
+2. Claude Code: 「パーティクルの操作が必要だ」
+   → tools/list { category: "particle" } を自分で呼ぶ
+
+3. tools/list（カテゴリ指定）
+   → ParticleSystem の57個のAPIが返る
+
+4. Claude Code: 必要なAPIを選んで操作を実行
+```
+
+**ポイントは、AIが自分で判断して必要なツールを取りに行く**ということです。人間の作業者が「今からパーティクルを扱うから、あの引き出しから道具を出そう」と判断するのと同じです。
+
+これは単なる技術的制約の回避ではなく、**AIの効率的な動作を設計する**という考え方です。コンテキストウィンドウという有限リソースの中で、AIが最も効果的に作業できるように、道具の提示方法自体を設計しています。
+
+他のパッケージ依存API（Timeline、Cinemachine、Recorder等）も同様にLevel 2〜3に配置されており、必要なときにだけロードされます。UniMCP4CCのAPI数が今後さらに増えても、この仕組みがあるためClaude Codeの作業効率は維持されます。
+
+### VersionCompatibility API — パッケージ互換性チェック
+
+「このプロジェクトにRecorderは入ってる？Cinemachineのバージョンは？」
+
+Claude Codeがこうした疑問に即答できるようにする API です。1回の呼び出しで、プロジェクトに導入されているパッケージのバージョン情報を一括取得します。
+
+```json
+{
+  "status": "ok",
+  "unityVersion": "6000.0.38f1",
+  "mcpServerVersion": "0.9.32",
+  "totalApiCount": 180,
+  "packages": [
+    {
+      "name": "ParticleSystem",
+      "packageId": "Built-in",
+      "isAvailable": true,
+      "apiCount": 57
+    },
+    {
+      "name": "Recorder",
+      "packageId": "com.unity.recorder",
+      "isAvailable": true,
+      "apiCount": 23,
+      "defineSymbol": "UNITY_RECORDER"
+    },
+    {
+      "name": "Cinemachine",
+      "packageId": "com.unity.cinemachine",
+      "isAvailable": true,
+      "apiCount": 43,
+      "defineSymbol": "CINEMACHINE_2_OR_NEWER"
+    }
+  ]
+}
+```
+
+これにより、Claude Codeは利用可能なAPIを正確に把握した上で操作を提案できます。「Recorderが入っていないのに録画APIを呼ぼうとする」といったエラーを事前に回避できるようになりました。
+
+### Recorder バージョン検出
+
+Unity Recorder のバージョンによってAPIの挙動が異なります。v1.1.0では `GetStatus` APIに `recorderVersion` と `isRecorder5` フィールドを追加しました。
+
+```csharp
+// Recorder 5.x の場合
+{
+  "packageInstalled": true,
+  "recorderVersion": "5.x",
+  "isRecorder5": true
+}
+
+// Recorder 2.x-4.x の場合
+{
+  "packageInstalled": true,
+  "recorderVersion": "2.x-4.x",
+  "isRecorder5": false
+}
+```
+
+Recorder 5.0 ではAPIに破壊的変更が入っているため、Claude Codeがバージョンを判定してから適切なAPIを選択できるようにしています。
+
+### MCP Bridge の改善
+
+前述の通り、v1.1.0ではMCP BridgeのUnityプロジェクト検出ロジックを大幅に改善しました。
+
+**v1.0.7以前:**
+- `process.cwd()` からの `.unity-mcp-runtime.json` 読み込みのみ
+- 環境変数 `UNITY_HTTP_URL` によるフォールバック
+
+**v1.1.0:**
+- 4段階のフォールバック（環境変数 → ファイルパス推定 → cwd → デフォルト）
+- `UNITY_PROJECT_PATH` 環境変数のサポート
+- ランタイム設定ファイル読み込みの共通化
+
+---
+
+## versionDefines の拡充
+
+Unity の Assembly Definition (asmdef) ファイルに、以下の条件コンパイルシンボルを追加しました：
+
+| シンボル | パッケージ | バージョン |
+|:---|:---|:---|
+| `RECORDER_5_0_OR_NEWER` | com.unity.recorder | 5.0.0+ |
+| `CINEMACHINE_3_1_OR_NEWER` | com.unity.cinemachine | 3.1.0+ |
+| `TEXTMESHPRO_3_0_OR_NEWER` | com.unity.textmeshpro | 3.0.0+ |
+| `TEXTMESHPRO_UGUI_MERGED` | com.unity.ugui | 2.0.0+ |
+| `UNITASK_AVAILABLE` | com.cysharp.unitask | 2.0.0+ |
+
+これらにより、パッケージのバージョンに応じて適切なコードパスが選択されます。たとえば Recorder 5.x と 4.x ではAPIが異なるため、`#if RECORDER_5_0_OR_NEWER` で分岐しています。
+
+---
+
+## インストール方法
+
+Unity Package Manager の「Add package from git URL」で以下を入力：
+
+```
+https://github.com/dsgarage/UniMCP4CC.git
+```
+
+特定バージョンを指定する場合：
+
+```
+https://github.com/dsgarage/UniMCP4CC.git#v1.1.0
+```
+
+### MCP Bridge のセットアップ
+
+インストール後、Claude Code の `.claude.json` にMCPサーバーを登録します：
+
+```json
+{
+  "mcpServers": {
+    "unity": {
+      "command": "node",
+      "args": ["Packages/com.dsgarage.unimcp4cc/Server/mcp-bridge/index.js"],
+      "env": {
+        "UNITY_PROJECT_PATH": "/path/to/your/unity/project"
+      }
+    }
+  }
+}
+```
+
+`UNITY_PROJECT_PATH` にはUnityプロジェクトの絶対パスを指定してください。
+
+---
+
+## まとめ
+
+| 項目 | v1.0.7 | v1.1.0 |
+|:---|:---|:---|
+| コアDLLサイズ | 916KB | 1,379KB |
+| ParticleSystem API | なし | 57個（全24モジュール） |
+| VersionCompatibility | なし | パッケージ互換性一括チェック |
+| Recorder バージョン検出 | なし | recorderVersion / isRecorder5 |
+| MCP Bridge プロジェクト検出 | 1段階 | 4段階フォールバック |
+| プロジェクト運用方針 | 複数プロジェクト想定 | **1プロジェクト・1インスタンス** |
+
+### 結論
+
+MCP Bridgeは、Claude CodeとUnity Editorをつなぐ「通訳者」です。その仕組みを理解することが、安定したAI駆動Unity開発の第一歩です。
+
+v1.1.0では、ParticleSystem全モジュールへの対応とバージョン互換性チェックにより、Claude Codeが「今このプロジェクトで何ができるか」を正確に把握した上で操作できるようになりました。
+
+---
+
+## 次のステップ
+
+- [UniMCP4CC v1.1.0をインストールする](https://github.com/dsgarage/UniMCP4CC)
+- 既存ユーザーは Package Manager で Update を実行
+- 接続に問題がある場合は `.claude.json` に `UNITY_PROJECT_PATH` を明示指定
+
+---
+
+## 参考リンク
+
+- [UniMCP4CC GitHub](https://github.com/dsgarage/UniMCP4CC)
+- [MCP（Model Context Protocol）公式](https://modelcontextprotocol.io/)
+- [Claude Code 公式ドキュメント](https://docs.anthropic.com/en/docs/claude-code)
+-----
