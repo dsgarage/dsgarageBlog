@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>dsgarage Tech Notes</title>
+    <meta
+      name="description"
+      content="dsgarage の GitHub Pages 向け技術記事一覧。論文解説や実装ノートを記事単位で追加していくための公開トップページです。"
+    >
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="hero home-hero">
+        <p class="eyebrow">dsgarage / GitHub Pages</p>
+        <h1>Tech Notes</h1>
+        <p class="hero-subtitle">
+          論文解説、実装ノート、設計メモを GitHub Pages で公開していくためのトップページです。
+          今後は記事ごとに `articles/&lt;slug&gt;/index.html` を追加していく運用にします。
+        </p>
+      </header>
+
+      <main class="home-main">
+        <section class="section">
+          <div class="section-head">
+            <div>
+              <p class="eyebrow">Published</p>
+              <h2>記事一覧</h2>
+            </div>
+            <p class="section-note">公開物は `docs/` 配下だけで閉じる構成です。</p>
+          </div>
+
+          <div class="article-list">
+            <article class="article-item featured">
+              <div class="article-item-copy">
+                <p class="article-meta">2026-03-11 / Paper Breakdown</p>
+                <h3>BiMotion論文解説: B-splineでテキストから3Dキャラを自然に動かす</h3>
+                <p>
+                  可変長モーションを B-spline 制御点へ圧縮し、固定容量モデルでも長く意味の通った
+                  3Dアニメーションを生成できるようにした論文の整理。
+                </p>
+                <div class="hero-actions">
+                  <a class="button primary" href="articles/bimotion/index.html">記事を読む</a>
+                  <a class="button secondary" href="assets/bimotion/bimotion_summary_ja.pdf">要約PDF</a>
+                </div>
+              </div>
+              <a class="article-thumb" href="articles/bimotion/index.html">
+                <img src="assets/bimotion/fig01_overview.png" alt="BiMotion article cover">
+              </a>
+            </article>
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="section-head">
+            <div>
+              <p class="eyebrow">Structure</p>
+              <h2>今後の追加ルール</h2>
+            </div>
+          </div>
+
+          <div class="card-grid">
+            <article class="info-card">
+              <h3>記事本体</h3>
+              <p>`docs/articles/&lt;slug&gt;/index.html` に置く。各記事は独立パスにする。</p>
+            </article>
+            <article class="info-card">
+              <h3>画像とPDF</h3>
+              <p>`docs/assets/&lt;slug&gt;/...` にまとめる。記事外参照を避ける。</p>
+            </article>
+            <article class="info-card">
+              <h3>トップ更新</h3>
+              <p>`docs/index.html` の記事一覧にカードを1件追加する。</p>
+            </article>
+            <article class="info-card">
+              <h3>原稿管理</h3>
+              <p>元原稿は `TechBlog/` の Markdown を継続利用する。</p>
+            </article>
+          </div>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>

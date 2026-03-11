@@ -1,0 +1,378 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>BiMotion論文解説 | B-splineでテキストから3Dキャラを動かす</title>
+    <meta
+      name="description"
+      content="BiMotion: B-spline Motion for Text-guided Dynamic 3D Character Generation の日本語解説。可変長モーションをB-spline制御点で圧縮し、固定容量モデルで高品質な3Dアニメーションを生成する設計を整理します。"
+    >
+    <link rel="stylesheet" href="../../styles.css">
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="hero">
+        <p class="eyebrow">Paper Breakdown / arXiv:2602.18873v2 / 2026-03-11</p>
+        <h1>BiMotion論文解説</h1>
+        <p class="hero-subtitle">
+          B-splineでテキストから3Dキャラを自然に動かす。
+          この論文の本質は、モデルを巨大化することではなく、
+          モーションを「フレーム列」から「連続曲線」へ持ち替えたことにあります。
+        </p>
+        <div class="hero-actions">
+          <a class="button primary" href="https://arxiv.org/abs/2602.18873">arXivを見る</a>
+          <a class="button secondary" href="../../assets/bimotion/bimotion_summary_ja.pdf">日本語要約PDF</a>
+          <a class="button secondary" href="../../index.html">記事一覧へ戻る</a>
+        </div>
+        <div class="hero-grid">
+          <article class="metric-card">
+            <span class="metric-label">Core Idea</span>
+            <strong>B-spline制御点</strong>
+            <p>可変長モーションを固定長へ圧縮し、あとから任意長へ再サンプリングする。</p>
+          </article>
+          <article class="metric-card">
+            <span class="metric-label">Dataset</span>
+            <strong>BIMO</strong>
+            <p>38,944シーケンス、3,682,790フレームの注釈付きメッシュモーション。</p>
+          </article>
+          <article class="metric-card">
+            <span class="metric-label">Inference</span>
+            <strong>4.383秒</strong>
+            <p>A100上で高速生成。AnimateAnyMeshやV2M4より軽く速い。</p>
+          </article>
+        </div>
+      </header>
+
+      <main class="content-grid">
+        <aside class="side-note">
+          <div class="toc">
+            <p class="toc-title">目次</p>
+            <a href="#problem">何が問題だったか</a>
+            <a href="#idea">BiMotionのアイデア</a>
+            <a href="#pipeline">パイプライン</a>
+            <a href="#results">結果</a>
+            <a href="#meaning">実務上の意味</a>
+            <a href="#limits">限界</a>
+          </div>
+          <div class="paper-box">
+            <p class="paper-box-title">論文情報</p>
+            <p>BiMotion: B-spline Motion for Text-guided Dynamic 3D Character Generation</p>
+            <p>arXiv v2: 2026年3月2日</p>
+          </div>
+        </aside>
+
+        <article class="article">
+          <section class="section">
+            <h2>この論文は何をやろうとしているのか</h2>
+            <p>
+              この論文がやろうとしているのは、
+              <strong>長くて複雑な動作指示を、既存の3Dメッシュに対して自然なアニメーションとして成立させること</strong>です。
+            </p>
+            <p>
+              たとえば「しゃがむ、跳ぶ、回る、着地する」のような複数段階の動きは、
+              従来法だと途中で切れたり、動きが弱くなったり、カクついたりしやすい。
+              BiMotion はこの問題に対して、フレームをそのまま並べて扱うのではなく、
+              <strong>動きそのものを滑らかな曲線として圧縮して持つ</strong>ことで対応します。
+            </p>
+            <p>
+              著者側の一文要約をそのまま言い換えれば、これは
+              <strong>テキスト条件の動的3D生成において、フレームごとに個別処理していたことによるボトルネックを、B-spline ベースのモーション表現で乗り越えようとする研究</strong>
+              です。
+            </p>
+          </section>
+
+          <section class="section intro-figure">
+            <img src="../../assets/bimotion/fig01_overview.png" alt="BiMotion overview figure">
+            <p class="caption">
+              Figure 1. 既存法は離散的な時系列サンプリングに寄りやすく、BiMotionは連続B-spline曲線でより意味の通った軌跡を生成する。
+            </p>
+          </section>
+
+          <section class="section">
+            <h2>先に用語を軽く整理</h2>
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>用語</th>
+                    <th>この記事での意味</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>B-spline</td>
+                    <td>少数の点から滑らかな曲線を作る表現。ここでは「動きの軌跡をコンパクトに持つ方法」</td>
+                  </tr>
+                  <tr>
+                    <td>制御点</td>
+                    <td>曲線の形を決める基準点。各フレームそのものではない</td>
+                  </tr>
+                  <tr>
+                    <td>feed-forward</td>
+                    <td>1回の推論で結果を出すタイプ。速いが、扱える入力形式に制約が入りやすい</td>
+                  </tr>
+                  <tr>
+                    <td>VAE</td>
+                    <td>データをいったん小さな表現に圧縮し、そこから復元する学習器</td>
+                  </tr>
+                  <tr>
+                    <td>潜在表現 / latent</td>
+                    <td>圧縮後の内部表現。人間向けの画像ではなく、モデル向けの要約データ</td>
+                  </tr>
+                  <tr>
+                    <td>diffusion / flow</td>
+                    <td>ノイズから少しずつ望む結果へ近づける生成のやり方</td>
+                  </tr>
+                  <tr>
+                    <td>トポロジ</td>
+                    <td>メッシュのつながり方。頂点数や面の構成が変わると別トポロジになる</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <section class="section" id="problem">
+            <h2>何が問題だったのか</h2>
+            <p>
+              既存の text-guided 3D animation は高速ですが、多くが固定長の入力しか扱えません。
+              その結果、長い動作は切り詰められ、短い動作は間引かれ、複数の意味を含む動作指示が途中で壊れます。
+            </p>
+            <p>
+              ここでいう <strong>feed-forward 型</strong> とは、1回の推論でまとめて答えを出す方式です。
+              速い反面、入力の長さや形式に強い制約が入りやすい、という背景があります。
+            </p>
+            <div class="card-grid">
+              <article class="info-card">
+                <h3>固定長入力</h3>
+                <p>「しゃがむ → 跳ぶ → 回る → 着地」のような長いモーション全体をそのまま持ちにくい。</p>
+              </article>
+              <article class="info-card">
+                <h3>離散フレーム表現</h3>
+                <p>時間的に連続な運動を、点列として雑に扱うため、ぎこちなさや破綻が出やすい。</p>
+              </article>
+              <article class="info-card">
+                <h3>メッシュ依存コスト</h3>
+                <p>頂点数やトポロジ依存の処理が重く、複雑な対象ほど推論コストが増えやすい。</p>
+              </article>
+            </div>
+          </section>
+
+          <section class="section" id="idea">
+            <h2>BiMotionのアイデア</h2>
+            <p>
+              BiMotionは、各頂点の運動をフレーム列として持つ代わりに、
+              <strong>B-splineの制御点</strong>として持ちます。重要なのは、
+              生成器の内部容量を増やすのではなく、<strong>モーション表現を連続曲線へ置き換える</strong>ことです。
+            </p>
+            <p>
+              制御点は「各フレームの位置そのもの」ではなく、
+              「その間をどう動くかを決める基準点」と考えると分かりやすいです。
+            </p>
+            <div class="highlight-box">
+              <p class="highlight-label">要点</p>
+              <p>
+                固定16フレームの断片を直接生成するのではなく、
+                「16個前後の制御点で運動の意味を持たせる」。
+                その後で必要なフレーム長に再サンプリングする。
+              </p>
+            </div>
+            <div class="split-grid">
+              <article>
+                <h3>B-splineが向く理由</h3>
+                <ul>
+                  <li>連続で微分可能なので軌跡が自然</li>
+                  <li>局所制御できるので編集に強い</li>
+                  <li>時間再パラメータ化で任意長へ伸縮できる</li>
+                </ul>
+              </article>
+              <article>
+                <h3>論文の主張</h3>
+                <p>
+                  ボトルネックは「モデル能力不足」だけではなく、
+                  <strong>モーションを離散フレームで持っていること</strong>そのものにある。
+                </p>
+              </article>
+            </div>
+          </section>
+
+          <section class="section figure-stack" id="pipeline">
+            <h2>パイプライン</h2>
+            <figure>
+              <img src="../../assets/bimotion/fig02_pipeline.png" alt="BiMotion pipeline figure">
+              <figcaption>Figure 2. 学習時は差分系列を制御点に圧縮し、推論時はテキストと初期形状から制御点を復元する。</figcaption>
+            </figure>
+            <div class="timeline">
+              <div>
+                <span>Train</span>
+                <p>頂点差分を B-spline 制御点へ圧縮し、VAE でモーション潜在へ落とす。VAEは「いったん小さく要約してから戻す装置」と考えるとよい。</p>
+              </div>
+              <div>
+                <span>Condition</span>
+                <p>初期メッシュとテキストを条件に、flow/diffusion ベースで潜在を生成する。これはノイズから少しずつ望む動きへ近づける生成法だ。</p>
+              </div>
+              <div>
+                <span>Decode</span>
+                <p>制御点を復元し、B-spline から任意長のメッシュ列へ再投影する。</p>
+              </div>
+            </div>
+
+            <figure>
+              <img src="../../assets/bimotion/fig03_vae.png" alt="B-spline VAE figure">
+              <figcaption>Figure 3. B-spline VAE。初期形状特徴と制御点特徴を組み合わせ、モーション潜在を学習する。</figcaption>
+            </figure>
+
+            <div class="card-grid">
+              <article class="info-card">
+                <h3>Laplacian正則化</h3>
+                <p>短い系列でも制御点が暴れないよう、滑らかな変化を保つ。要するに「ギザギザな軌跡になりにくくする」調整。</p>
+              </article>
+              <article class="info-card">
+                <h3>Normal Fusion</h3>
+                <p>位置だけで見分けにくい近接部位を、法線情報で分離しやすくする。法線は「面がどちらを向いているか」の情報。</p>
+              </article>
+              <article class="info-card">
+                <h3>Control-PE</h3>
+                <p>粗い動作と細かい残差を両方保持する階層的制御点埋め込みを導入する。全体の流れと細部の揺れを別レイヤーで持つイメージ。</p>
+              </article>
+              <article class="info-card">
+                <h3>Rigidity / Correspondence</h3>
+                <p>再投影後の軌跡と局所形状を監視し、最終メッシュとして破綻しにくくする。ここでの損失は「正解とのズレの大きさ」だ。</p>
+              </article>
+            </div>
+          </section>
+
+          <section class="section" id="results">
+            <h2>結果</h2>
+            <figure>
+              <img src="../../assets/bimotion/fig04_comparison.png" alt="Qualitative comparison figure">
+              <figcaption>Figure 4. 定性的比較。BiMotionはテキスト条件に合った大きな運動と安定した形状を出しやすい。</figcaption>
+            </figure>
+
+            <div class="result-cards">
+              <article class="result-card">
+                <span>Overall Consistency</span>
+                <strong>0.187</strong>
+              </article>
+              <article class="result-card">
+                <span>Dynamic Degree</span>
+                <strong>0.800</strong>
+              </article>
+              <article class="result-card">
+                <span>User Study</span>
+                <strong>4.095 / 4.062 / 4.048</strong>
+              </article>
+            </div>
+
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>手法</th>
+                    <th>OC ↑</th>
+                    <th>SC ↑</th>
+                    <th>TF ↑</th>
+                    <th>AQ ↑</th>
+                    <th>DD ↑</th>
+                    <th>Time ↓</th>
+                    <th>Peak GPU ↓</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>GVFDiffusion</td>
+                    <td>0.167</td>
+                    <td>0.920</td>
+                    <td>0.986</td>
+                    <td>0.505</td>
+                    <td>0.650</td>
+                    <td>2.141m</td>
+                    <td>14.057GB</td>
+                  </tr>
+                  <tr>
+                    <td>AnimateAnyMesh</td>
+                    <td>0.155</td>
+                    <td>0.951</td>
+                    <td>0.993</td>
+                    <td>0.514</td>
+                    <td>0.100</td>
+                    <td>16.847s</td>
+                    <td>3.102GB</td>
+                  </tr>
+                  <tr>
+                    <td>V2M4</td>
+                    <td>0.175</td>
+                    <td>0.876</td>
+                    <td>0.986</td>
+                    <td>0.478</td>
+                    <td>0.750</td>
+                    <td>1.672h</td>
+                    <td>48.416GB</td>
+                  </tr>
+                  <tr class="emphasis-row">
+                    <td>BiMotion</td>
+                    <td>0.187</td>
+                    <td>0.948</td>
+                    <td>0.995</td>
+                    <td>0.529</td>
+                    <td>0.800</td>
+                    <td>4.383s</td>
+                    <td>1.246GB</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p class="caption">
+              指標の読み方も補足すると、OCは「テキストと全体として合っているか」、SCは「見た目の主体が途中で別物になっていないか」、
+              TFは「時間方向のちらつきの少なさ」、AQは「見た目の品質」、DDは「どれだけしっかり動いているか」です。
+            </p>
+
+            <figure>
+              <img src="../../assets/bimotion/fig05_10_ablations.png" alt="Ablations and robustness figure">
+              <figcaption>Figures 5-10. B-spline表現、Laplacian正則化、Normal Fusion、局所剛性損失などの効果を分解して検証している。</figcaption>
+            </figure>
+          </section>
+
+          <section class="section" id="meaning">
+            <h2>実務上の意味</h2>
+            <div class="card-grid">
+              <article class="info-card">
+                <h3>表現設計がまだ強い</h3>
+                <p>Backbone を大きくする前に、可変長時系列を何で表すかを見直す価値がある。Backboneはモデル本体の中心部分のこと。</p>
+              </article>
+              <article class="info-card">
+                <h3>既存アセットと相性がいい</h3>
+                <p>初期メッシュを与えて動かす方式なので、既存の3D資産ライブラリと接続しやすい。</p>
+              </article>
+              <article class="info-card">
+                <h3>応用範囲が広い</h3>
+                <p>カメラ軌道、変形、VFXの時系列など、他の可変長生成にも転用しやすい考え方。</p>
+              </article>
+            </div>
+          </section>
+
+          <section class="section" id="limits">
+            <h2>限界</h2>
+            <ul class="limit-list">
+              <li>高周波で複雑なモーションは、制御点数が少ないと表現しきれない。</li>
+              <li>固定メッシュ前提なので、トポロジ変化を伴う運動には対応しない。</li>
+              <li>大規模データと計算資源への依存は依然ある。</li>
+            </ul>
+          </section>
+
+          <section class="section summary">
+            <h2>結論</h2>
+            <p>
+              BiMotion は、3Dアニメーション生成における本質的な制約を
+              「モデルサイズ」ではなく「モーション表現」の側から崩した論文です。
+              長い動作を固定容量モデルで扱いたいなら、フレーム列をそのまま生成するのではなく、
+              <strong>意味を持った連続表現へ圧縮してから生成する</strong>。
+              この方針は今後もかなり再利用されるはずです。
+            </p>
+          </section>
+        </article>
+      </main>
+    </div>
+  </body>
+</html>
