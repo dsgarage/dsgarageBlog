@@ -29,6 +29,7 @@ body {
     linear-gradient(180deg, #f8f2e8 0%, #f0e9df 55%, #ebe3d9 100%);
   font-family: "Avenir Next", "Hiragino Sans", "Yu Gothic", sans-serif;
   line-height: 1.75;
+  -webkit-text-size-adjust: 100%;
 }
 
 img {
@@ -39,6 +40,18 @@ img {
 
 a {
   color: inherit;
+}
+
+p,
+li,
+td,
+th,
+figcaption,
+.hero-subtitle,
+.section-note,
+.paper-box p,
+.toc a {
+  overflow-wrap: anywhere;
 }
 
 .page-shell {
@@ -113,12 +126,14 @@ a {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  min-width: 0;
   min-width: 170px;
   padding: 12px 18px;
   border-radius: 999px;
   border: 1px solid var(--line);
   text-decoration: none;
   font-weight: 700;
+  text-align: center;
 }
 
 .button.primary {
@@ -149,6 +164,7 @@ a {
 .paper-box,
 .toc,
 .highlight-box {
+  min-width: 0;
   padding: 18px;
   border: 1px solid var(--line);
   border-radius: var(--radius);
@@ -289,14 +305,20 @@ a {
 .article {
   display: grid;
   gap: 22px;
+  min-width: 0;
 }
 
 .section {
+  min-width: 0;
   padding: 28px;
   border-radius: 30px;
   border: 1px solid rgba(255, 255, 255, 0.5);
   background: var(--paper);
   box-shadow: var(--shadow);
+}
+
+figure {
+  margin: 0;
 }
 
 .section h2 {
@@ -374,6 +396,7 @@ figcaption {
 
 .table-wrap {
   overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
   margin: 18px 0 8px;
 }
 
@@ -454,6 +477,15 @@ th {
     border-radius: 24px;
   }
 
+  .hero h1 {
+    max-width: none;
+    font-size: clamp(2rem, 9vw, 3rem);
+  }
+
+  .hero-subtitle {
+    font-size: 0.98rem;
+  }
+
   .card-grid,
   .split-grid,
   .side-note {
@@ -466,5 +498,68 @@ th {
 
   .hero-actions .button {
     width: 100%;
+  }
+
+  table {
+    min-width: 560px;
+  }
+}
+
+@media (max-width: 430px) {
+  .page-shell {
+    width: min(100vw - 14px, 100%);
+    padding-top: 10px;
+  }
+
+  .hero,
+  .section {
+    padding: 18px;
+    border-radius: 20px;
+  }
+
+  .eyebrow {
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+  }
+
+  .hero h1 {
+    font-size: clamp(1.75rem, 8.8vw, 2.5rem);
+    line-height: 1.02;
+  }
+
+  .no-break {
+    white-space: normal;
+  }
+
+  .metric-card,
+  .info-card,
+  .result-card,
+  .paper-box,
+  .toc,
+  .highlight-box {
+    padding: 15px;
+  }
+
+  .author-callout img {
+    width: 120px;
+    height: 120px;
+  }
+
+  .section h2 {
+    font-size: clamp(1.45rem, 7vw, 1.9rem);
+  }
+
+  .section h3 {
+    font-size: 1.14rem;
+  }
+
+  table {
+    min-width: 500px;
+    font-size: 0.88rem;
+  }
+
+  th,
+  td {
+    padding: 10px 11px;
   }
 }
