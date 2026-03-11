@@ -91,6 +91,10 @@ a {
   max-width: 10ch;
 }
 
+.no-break {
+  white-space: nowrap;
+}
+
 .hero-subtitle {
   max-width: 64ch;
   margin: 20px 0 0;
