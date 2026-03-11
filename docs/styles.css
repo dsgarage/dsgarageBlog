@@ -256,6 +256,21 @@ a {
   border-radius: 20px;
 }
 
+.author-callout {
+  display: grid;
+  grid-template-columns: 160px minmax(0, 1fr);
+  gap: 20px;
+  align-items: center;
+}
+
+.author-callout img {
+  width: 160px;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 22px;
+  border: 1px solid var(--line);
+}
+
 .side-note {
   position: sticky;
   top: 24px;
@@ -415,6 +430,15 @@ th {
   .result-cards,
   .article-item {
     grid-template-columns: 1fr;
+  }
+
+  .author-callout {
+    grid-template-columns: 1fr;
+  }
+
+  .author-callout img {
+    width: 140px;
+    height: 140px;
   }
 }
 

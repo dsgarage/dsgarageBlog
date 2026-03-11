@@ -7,6 +7,8 @@ date: "2026-03-11"
 
 # BiMotion論文解説: B-splineでテキストから3Dキャラを自然に動かす
 
+![Jason J. Corso](images/jason-j-corso.jpg)
+
 この論文は、University of Michigan の **Jason J. Corso 教授**が著者として参加し、Xでも紹介していた研究です。Corso 氏はコンピュータビジョン分野の研究者であり、同時に Voxel51 の共同創業者でもあります。そのため、この論文も「純粋な理論研究」だけでなく、実際の3D生成ワークフローにどう効くかという視点で読むと理解しやすいです。
 
 この論文がやろうとしているのは、**長くて複雑な動作指示を、既存の3Dメッシュに対して自然なアニメーションとして成立させること**です。
@@ -280,4 +282,5 @@ BiMotion の価値は次の3点に集約できます。
 
 - [arXiv: BiMotion: B-spline Motion for Text-guided Dynamic 3D Character Generation](https://arxiv.org/abs/2602.18873)
 - [Project Page: BiMotion](https://wangmiaowei.github.io/BiMotion.github.io/)
+- [Jason J. Corso - University of Michigan](https://web.eecs.umich.edu/~jjcorso/)
 - [日本語要約PDF](PDF/bimotion_summary_ja.pdf)
