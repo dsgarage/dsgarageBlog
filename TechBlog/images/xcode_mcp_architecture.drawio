@@ -1,0 +1,97 @@
+<mxGraphModel dx="1200" dy="680" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1200" pageHeight="500" math="0" shadow="0">
+  <root>
+    <mxCell id="0"/>
+    <mxCell id="1" parent="0"/>
+    <mxCell id="t" value="Xcode 26.3 MCP アーキテクチャ" style="text;html=1;fontSize=18;fontStyle=1;fontColor=#333333;align=center;" vertex="1" parent="1">
+      <mxGeometry x="300" y="10" width="600" height="35" as="geometry"/>
+    </mxCell>
+
+    <mxCell id="dev" value="&lt;font style='font-size:24px'&gt;👨‍💻&lt;/font&gt;&lt;br&gt;&lt;b&gt;開発者&lt;/b&gt;&lt;br&gt;&lt;font style='font-size:10px;color:#666'&gt;ゴールを伝える&lt;br&gt;結果を確認する&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=12;shadow=1;" vertex="1" parent="1">
+      <mxGeometry x="30" y="70" width="140" height="100" as="geometry"/>
+    </mxCell>
+    <mxCell id="claudemd" value="&lt;b&gt;CLAUDE.md&lt;/b&gt;&lt;br&gt;&lt;font style='font-size:10px;color:#666'&gt;プロジェクト固有の指示&lt;/font&gt;" style="shape=note;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=11;size=14;shadow=1;" vertex="1" parent="1">
+      <mxGeometry x="30" y="200" width="140" height="50" as="geometry"/>
+    </mxCell>
+    <mxCell id="skills" value="&lt;b&gt;Skills（7種）&lt;/b&gt;&lt;br&gt;&lt;font style='font-size:9px;color:#666'&gt;ios-build-test / ios-simplify&lt;br&gt;ios-batch / ios-preview-check&lt;br&gt;ios-doc-fix / ios-file-ops&lt;br&gt;ios-diagnostics&lt;/font&gt;" style="shape=note;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=11;size=14;shadow=1;" vertex="1" parent="1">
+      <mxGeometry x="30" y="275" width="140" height="90" as="geometry"/>
+    </mxCell>
+
+    <mxCell id="claude" value="&lt;b&gt;Claude Code&lt;/b&gt;&lt;br&gt;&lt;font style='font-size:10px;color:#666'&gt;Claude Agent SDK&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=14;shadow=1;" vertex="1" parent="1">
+      <mxGeometry x="240" y="70" width="180" height="55" as="geometry"/>
+    </mxCell>
+    <mxCell id="sub1" value="Reuse" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;shadow=1;" vertex="1" parent="1">
+      <mxGeometry x="240" y="160" width="55" height="30" as="geometry"/>
+    </mxCell>
+    <mxCell id="sub2" value="Quality" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;shadow=1;" vertex="1" parent="1">
+      <mxGeometry x="302" y="160" width="55" height="30" as="geometry"/>
+    </mxCell>
+    <mxCell id="sub3" value="Efficiency" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;shadow=1;" vertex="1" parent="1">
+      <mxGeometry x="364" y="160" width="55" height="30" as="geometry"/>
+    </mxCell>
+    <mxCell id="sub_label" value="&lt;font style='font-size:9px;color:#6c8ebf'&gt;/simplify 並列エージェント&lt;/font&gt;" style="text;html=1;align=center;" vertex="1" parent="1">
+      <mxGeometry x="240" y="192" width="180" height="16" as="geometry"/>
+    </mxCell>
+    <mxCell id="batch_box" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F0FE;strokeColor=#6c8ebf;dashed=1;dashPattern=3 3;" vertex="1" parent="1">
+      <mxGeometry x="240" y="220" width="180" height="55" as="geometry"/>
+    </mxCell>
+    <mxCell id="w1" value="Worker 1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=9;shadow=1;" vertex="1" parent="1">
+      <mxGeometry x="248" y="240" width="50" height="25" as="geometry"/>
+    </mxCell>
+    <mxCell id="w2" value="Worker 2" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=9;shadow=1;" vertex="1" parent="1">
+      <mxGeometry x="305" y="240" width="50" height="25" as="geometry"/>
+    </mxCell>
+    <mxCell id="w3" value="Worker N" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=9;shadow=1;" vertex="1" parent="1">
+      <mxGeometry x="362" y="240" width="50" height="25" as="geometry"/>
+    </mxCell>
+    <mxCell id="batch_label" value="&lt;font style='font-size:9px;color:#6c8ebf'&gt;/batch 並列ワーカー（git worktree）&lt;/font&gt;" style="text;html=1;align=center;" vertex="1" parent="1">
+      <mxGeometry x="240" y="222" width="180" height="16" as="geometry"/>
+    </mxCell>
+    <mxCell id="pr" value="&lt;b&gt;PR 作成&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;shadow=1;" vertex="1" parent="1">
+      <mxGeometry x="280" y="310" width="100" height="35" as="geometry"/>
+    </mxCell>
+
+    <mxCell id="bridge" value="&lt;b&gt;mcpbridge&lt;/b&gt;&lt;br&gt;&lt;font style='font-size:10px;color:#555'&gt;stdio / JSON-RPC&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=14;shadow=1;" vertex="1" parent="1">
+      <mxGeometry x="500" y="140" width="160" height="55" as="geometry"/>
+    </mxCell>
+    <mxCell id="xpc" value="&lt;b&gt;XPC&lt;/b&gt;&lt;br&gt;&lt;font style='font-size:9px;color:#555'&gt;プロセス間通信&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;shadow=1;" vertex="1" parent="1">
+      <mxGeometry x="525" y="260" width="110" height="45" as="geometry"/>
+    </mxCell>
+
+    <mxCell id="xc_build" value="&lt;b&gt;Build&lt;/b&gt;&lt;br&gt;&lt;font style='font-size:9px'&gt;BuildProject&lt;br&gt;GetBuildLog&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=10;shadow=1;" vertex="1" parent="1">
+      <mxGeometry x="730" y="60" width="120" height="55" as="geometry"/>
+    </mxCell>
+    <mxCell id="xc_test" value="&lt;b&gt;Test&lt;/b&gt;&lt;br&gt;&lt;font style='font-size:9px'&gt;RunAllTests&lt;br&gt;RunSomeTests&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=10;shadow=1;" vertex="1" parent="1">
+      <mxGeometry x="860" y="60" width="120" height="55" as="geometry"/>
+    </mxCell>
+    <mxCell id="xc_file" value="&lt;b&gt;File Ops&lt;/b&gt;&lt;br&gt;&lt;font style='font-size:9px'&gt;Read / Write / Update&lt;br&gt;LS / Glob / Grep&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=10;shadow=1;" vertex="1" parent="1">
+      <mxGeometry x="990" y="60" width="120" height="55" as="geometry"/>
+    </mxCell>
+    <mxCell id="xc_preview" value="&lt;b&gt;Preview&lt;/b&gt;&lt;br&gt;&lt;font style='font-size:9px'&gt;RenderPreview&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=10;shadow=1;" vertex="1" parent="1">
+      <mxGeometry x="730" y="135" width="120" height="45" as="geometry"/>
+    </mxCell>
+    <mxCell id="xc_diag" value="&lt;b&gt;Diagnostics&lt;/b&gt;&lt;br&gt;&lt;font style='font-size:9px'&gt;NavigatorIssues&lt;br&gt;RefreshCodeIssues&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=10;shadow=1;" vertex="1" parent="1">
+      <mxGeometry x="860" y="135" width="120" height="55" as="geometry"/>
+    </mxCell>
+    <mxCell id="xc_doc" value="&lt;b&gt;Docs&lt;/b&gt;&lt;br&gt;&lt;font style='font-size:9px'&gt;DocumentationSearch&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=10;shadow=1;" vertex="1" parent="1">
+      <mxGeometry x="990" y="135" width="120" height="45" as="geometry"/>
+    </mxCell>
+    <mxCell id="xc_repl" value="&lt;b&gt;REPL&lt;/b&gt;&lt;br&gt;&lt;font style='font-size:9px'&gt;ExecuteSnippet&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=10;shadow=1;" vertex="1" parent="1">
+      <mxGeometry x="730" y="200" width="120" height="40" as="geometry"/>
+    </mxCell>
+    <mxCell id="xc_win" value="&lt;b&gt;Discovery&lt;/b&gt;&lt;br&gt;&lt;font style='font-size:9px'&gt;ListWindows&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=10;shadow=1;" vertex="1" parent="1">
+      <mxGeometry x="860" y="200" width="120" height="40" as="geometry"/>
+    </mxCell>
+    <mxCell id="xcode_app" value="&lt;b&gt;Xcode 26.3&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFE599;strokeColor=#d6b656;fontSize=15;fontStyle=1;shadow=1;" vertex="1" parent="1">
+      <mxGeometry x="820" y="280" width="220" height="50" as="geometry"/>
+    </mxCell>
+
+    <mxCell id="e1" style="rounded=1;strokeColor=#9673a6;strokeWidth=2;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="dev" target="claude"><mxGeometry relative="1" as="geometry"/></mxCell>
+    <mxCell id="e2" style="rounded=1;strokeColor=#6c8ebf;strokeWidth=2;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="claude" target="bridge"><mxGeometry relative="1" as="geometry"/></mxCell>
+    <mxCell id="e3" style="rounded=1;strokeColor=#82b366;strokeWidth=2;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="bridge" target="xpc"><mxGeometry relative="1" as="geometry"/></mxCell>
+    <mxCell id="e4" style="rounded=1;strokeColor=#d6b656;strokeWidth=2;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="xpc" target="xcode_app"><mxGeometry relative="1" as="geometry"/></mxCell>
+
+    <mxCell id="label_proto" value="&lt;font style='font-size:10px;color:#82b366'&gt;&lt;b&gt;MCP Protocol&lt;/b&gt;&lt;br&gt;JSON-RPC / stdio&lt;br&gt;API キー不要&lt;br&gt;ローカル完結&lt;/font&gt;" style="text;html=1;align=center;" vertex="1" parent="1">
+      <mxGeometry x="480" y="340" width="140" height="60" as="geometry"/>
+    </mxCell>
+  </root>
+</mxGraphModel>

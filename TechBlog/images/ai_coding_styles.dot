@@ -1,0 +1,105 @@
+// AIを使った開発スタイルのスペクトラム
+digraph ai_coding_styles {
+    graph [
+        rankdir=LR
+        bgcolor="transparent"
+        fontname="Helvetica Neue"
+        fontsize=11
+        pad=0.5
+        nodesep=0.4
+        ranksep=0.8
+        label="AIを使った開発スタイルのスペクトラム"
+        labelloc=t
+        fontcolor="#1e40af"
+        fontsize=14
+    ]
+
+    node [
+        fontname="Helvetica Neue"
+        fontsize=10
+        style="filled,rounded"
+        shape=box
+        penwidth=0
+        margin="0.15,0.1"
+    ]
+
+    edge [
+        fontname="Helvetica Neue"
+        fontsize=9
+        penwidth=1.5
+        arrowsize=0.7
+        color="#94a3b8"
+    ]
+
+    // 左端ラベル
+    human [
+        label="人間主導"
+        shape=plaintext
+        fillcolor="transparent"
+        fontcolor="#6b7280"
+        fontsize=10
+    ]
+
+    // 4つのスタイル
+    ai_assist [
+        label="AI補助\nコーディング\n─────────\nコードは\n人間が書く"
+        fillcolor="#dbeafe"
+        fontcolor="#1e40af"
+    ]
+
+    ai_collab [
+        label="AI協働\nコーディング\n─────────\nコードを\n一緒に作る"
+        fillcolor="#bfdbfe"
+        fontcolor="#1e40af"
+    ]
+
+    ai_driven [
+        label="AIドリブン\nコーディング\n─────────\nコードを\nレビューする"
+        fillcolor="#93c5fd"
+        fontcolor="#1e3a8a"
+    ]
+
+    vibe [
+        label="バイブ\nコーディング\n─────────\nコードを\n見ない"
+        fillcolor="#60a5fa"
+        fontcolor="#ffffff"
+    ]
+
+    // 右端ラベル
+    ai [
+        label="AI主導"
+        shape=plaintext
+        fillcolor="transparent"
+        fontcolor="#6b7280"
+        fontsize=10
+    ]
+
+    // 接続
+    human -> ai_assist [arrowhead=none]
+    ai_assist -> ai_collab
+    ai_collab -> ai_driven
+    ai_driven -> vibe
+    vibe -> ai [arrowhead=none]
+
+    // 例を下に配置
+    subgraph cluster_examples {
+        label=""
+        style=invis
+
+        ex1 [label="例: Copilot補完" fillcolor="#f3f4f6" fontcolor="#4b5563" fontsize=8]
+        ex2 [label="例: Claude Code\n（レビューあり）" fillcolor="#f3f4f6" fontcolor="#4b5563" fontsize=8]
+        ex3 [label="例: エージェント\n型開発" fillcolor="#f3f4f6" fontcolor="#4b5563" fontsize=8]
+        ex4 [label="例: Karpathy氏\n提唱スタイル" fillcolor="#f3f4f6" fontcolor="#4b5563" fontsize=8]
+    }
+
+    // 例との接続（破線）
+    ai_assist -> ex1 [style=dashed color="#cbd5e1" arrowhead=none]
+    ai_collab -> ex2 [style=dashed color="#cbd5e1" arrowhead=none]
+    ai_driven -> ex3 [style=dashed color="#cbd5e1" arrowhead=none]
+    vibe -> ex4 [style=dashed color="#cbd5e1" arrowhead=none]
+
+    // ランク指定
+    {rank=same; human; ai_assist}
+    {rank=same; ai; vibe}
+    {rank=same; ex1; ex2; ex3; ex4}
+}

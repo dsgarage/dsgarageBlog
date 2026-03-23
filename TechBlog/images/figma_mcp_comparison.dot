@@ -1,0 +1,70 @@
+digraph comparison {
+    rankdir=LR
+    bgcolor="transparent"
+    fontname="Helvetica Neue"
+    fontsize=11
+    pad=0.8
+    nodesep=0.6
+    ranksep=0.8
+
+    node [
+        fontname="Helvetica Neue"
+        fontsize=10
+        style="filled,rounded"
+        shape=box
+        penwidth=0
+        margin="0.15,0.1"
+    ]
+
+    edge [
+        fontname="Helvetica Neue"
+        fontsize=9
+        penwidth=1.2
+        arrowsize=0.6
+        color="#94a3b8"
+    ]
+
+    // --- 従来ワークフロー ---
+    subgraph cluster_traditional {
+        label="  従来のワークフロー（手動）  "
+        labelloc=t
+        labeljust=c
+        style="rounded,filled"
+        color="#e5e7eb"
+        fillcolor="#fafafa"
+        fontcolor="#6b7280"
+        fontsize=10
+        penwidth=1
+
+        T1 [label="Figma\nデザイン" fillcolor="#f3f4f6" fontcolor="#4b5563"]
+        T2 [label="人間の目で\n値を読み取り" fillcolor="#f3f4f6" fontcolor="#4b5563"]
+        T3 [label="Unity Editor\n手入力" fillcolor="#f3f4f6" fontcolor="#4b5563"]
+        T4 [label="UI 完成\n30〜60分/画面" fillcolor="#fef3c7" fontcolor="#92400e"]
+
+        T1 -> T2 [label="目視"]
+        T2 -> T3 [label="手動転写"]
+        T3 -> T4 [label="微調整"]
+    }
+
+    // --- Figma MCP ワークフロー ---
+    subgraph cluster_mcp {
+        label="  Figma MCP 導入後（自動）  "
+        labelloc=t
+        labeljust=c
+        style="rounded,filled"
+        color="#e5e7eb"
+        fillcolor="#f8fafc"
+        fontcolor="#1e40af"
+        fontsize=10
+        penwidth=1
+
+        M1 [label="Figma\nデザイン" fillcolor="#dbeafe" fontcolor="#1e40af"]
+        M2 [label="Figma MCP\nget_design_context" fillcolor="#dbeafe" fontcolor="#1e40af"]
+        M3 [label="Claude Code\nUXML/USS生成" fillcolor="#dbeafe" fontcolor="#1e40af"]
+        M4 [label="UI 完成\n2〜3分/画面" fillcolor="#bbf7d0" fontcolor="#166534"]
+
+        M1 -> M2 [label="自動取得"]
+        M2 -> M3 [label="AI変換"]
+        M3 -> M4 [label="配置確認"]
+    }
+}

@@ -1,0 +1,42 @@
+digraph single_flow {
+    rankdir=LR
+    bgcolor="transparent"
+    fontname="Helvetica Neue"
+    fontsize=11
+    pad=0.8
+    nodesep=0.6
+    ranksep=0.8
+
+    node [
+        fontname="Helvetica Neue"
+        fontsize=10
+        style="filled,rounded"
+        shape=box
+        penwidth=0
+        margin="0.15,0.1"
+    ]
+
+    edge [
+        fontname="Helvetica Neue"
+        fontsize=9
+        penwidth=1.2
+        arrowsize=0.6
+        color="#94a3b8"
+    ]
+
+    // ステップ
+    S1 [label="Figma URL\nを貼る" fillcolor="#f3f4f6" fontcolor="#4b5563"]
+    S2 [label="get_design_context\nデザイン取得" fillcolor="#dbeafe" fontcolor="#1e40af"]
+    S3 [label="Claude Code\nUXML/USS生成" fillcolor="#dbeafe" fontcolor="#1e40af"]
+    S4 [label="/simplify\n品質チェック" fillcolor="#fef3c7" fontcolor="#92400e"]
+    S5 [label="Unity Editor\n配置・確認" fillcolor="#bbf7d0" fontcolor="#166534"]
+
+    // メインフロー
+    S1 -> S2 [label="MCP呼出"]
+    S2 -> S3 [label="React→UXML"]
+    S3 -> S4 [label="自動レビュー"]
+    S4 -> S5 [label="コミット"]
+
+    // フィードバックループ
+    S5 -> S2 [label="ズレ発見時\nget_screenshotで再比較" style=dashed color="#cbd5e1" constraint=false]
+}

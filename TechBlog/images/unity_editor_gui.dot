@@ -1,0 +1,81 @@
+digraph UnityEditorGUI {
+    graph [
+        rankdir=TB
+        bgcolor="white"
+        fontname="Hiragino Sans"
+        label="Unity Editor - GUIアプリケーション"
+        labelloc="t"
+        fontsize=20
+        fontcolor="#333333"
+        pad=0.5
+        nodesep=0.8
+        ranksep=1.0
+    ]
+
+    node [
+        fontname="Hiragino Sans"
+        fontsize=12
+        shape=box
+        style="rounded,filled"
+    ]
+
+    edge [
+        fontname="Hiragino Sans"
+        fontsize=10
+    ]
+
+    // 1. Claude Code capabilities (top)
+    subgraph cluster_claude {
+        label="Claude Codeの能力"
+        style="rounded,filled"
+        fillcolor="#fce4ec"
+        color="#c2185b"
+        fontsize=14
+
+        abilities [
+            label="ファイルの読み書き ✓  |  ターミナルコマンド ✓  |  GUIの操作 ✗"
+            fillcolor="#fff"
+            color="#c2185b"
+            shape=record
+        ]
+    }
+
+    // 2. Unity Editor windows (middle)
+    subgraph cluster_editor {
+        label="Unity Editor"
+        style="rounded,filled"
+        fillcolor="#f5f5f5"
+        color="#666666"
+        fontsize=16
+
+        windows [
+            label="{Hierarchy|・Main Camera\l・Directional Light\l・Player\l}|{Scene View|[3D空間表示]}|{Inspector|Transform\l Position: (0,0,0)\l Rotation: (0,0,0)\l}"
+            fillcolor="#ffffff"
+            color="#666666"
+            shape=record
+        ]
+    }
+
+    // 3. Note (bottom)
+    input_note [
+        label="マウス・キーボード操作が前提"
+        shape=box
+        style="rounded,filled"
+        fillcolor="#ffecb3"
+        color="#ffa000"
+        fontsize=14
+    ]
+
+    // Connections
+    abilities -> windows [
+        label="GUIは操作不可"
+        style=dashed
+        color="#c62828"
+        fontcolor="#c62828"
+    ]
+
+    windows -> input_note [
+        style=dashed
+        color="#999999"
+    ]
+}

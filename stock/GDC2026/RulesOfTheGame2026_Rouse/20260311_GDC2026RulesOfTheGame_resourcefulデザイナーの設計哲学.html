@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>GDC 2026: Rules of the Game —
+百戦錬磨の6人が語る「設計の掟」</title>
+    <link rel="stylesheet" href="/Users/daisuketsukada/Documents/dsgarageBlog/TechBlog/style.css">
+</head>
+<body>
+<div class="cover">
+    <h1>GDC 2026: Rules of the Game —
+百戦錬磨の6人が語る「設計の掟」</h1>
+    <p class="subtitle">Rules of the Game 2026: Revealing Techniques
+from Resourceful Designers</p>
+    <div class="meta">
+        <p>2026-03-11</p>
+        <p>dsgarage</p>
+    </div>
+</div>
+<div class="toc">
+    <h2>目次</h2>
+<ul>
+<li><a href="#gdc-2026-rules-of-the-game-百戦錬磨の6人が語る設計の掟"
+id="toc-gdc-2026-rules-of-the-game-百戦錬磨の6人が語る設計の掟">GDC
+2026: Rules of the Game — 百戦錬磨の6人が語る「設計の掟」</a>
+<ul>
+<li><a href="#セッション概要"
+id="toc-セッション概要">セッション概要</a></li>
+<li><a href="#rules-of-the-gameとは何か"
+id="toc-rules-of-the-gameとは何か">「Rules of the
+Game」とは何か</a></li>
+<li><a href="#セッション詳報" id="toc-セッション詳報">セッション詳報</a>
+<ul>
+<li><a href="#イントロ1033"
+id="toc-イントロ1033">イントロ（10:33〜）</a></li>
+<li><a href="#信頼は通貨だ-trust-as-a-currency"
+id="toc-信頼は通貨だ-trust-as-a-currency">「信頼は通貨だ」— Trust as a
+Currency</a></li>
+<li><a href="#イノベーションスペクトラム-革新の最適地点を探す"
+id="toc-イノベーションスペクトラム-革新の最適地点を探す">「イノベーション・スペクトラム」—
+革新の最適地点を探す</a></li>
+<li><a href="#問いを立てることが掟だ-joel-burgesssoft-rains"
+id="toc-問いを立てることが掟だ-joel-burgesssoft-rains">「問いを立てることが掟だ」—
+Joel Burgess（Soft Rains）</a></li>
+<li><a
+href="#コンテンツなしで意味のある選択を作る-ashley-ruhlbroadsword-online-games"
+id="toc-コンテンツなしで意味のある選択を作る-ashley-ruhlbroadsword-online-games">「コンテンツなしで意味のある選択を作る」—
+Ashley Ruhl（Broadsword Online Games）</a></li>
+<li><a
+href="#プレイヤーの時間は戦場だ-xalavier-nelson-jrstrange-scaffold"
+id="toc-プレイヤーの時間は戦場だ-xalavier-nelson-jrstrange-scaffold">「プレイヤーの時間は戦場だ」—
+Xalavier Nelson Jr（Strange Scaffold）</a></li>
+</ul></li>
+<li><a href="#スピーカー紹介と設計哲学"
+id="toc-スピーカー紹介と設計哲学">スピーカー紹介と設計哲学</a>
+<ul>
+<li><a href="#richard-rouse-iiifarbridge"
+id="toc-richard-rouse-iiifarbridge">Richard Rouse
+III（FarBridge）</a></li>
+<li><a href="#xalavier-nelson-jrstrange-scaffold"
+id="toc-xalavier-nelson-jrstrange-scaffold">Xalavier Nelson Jr（Strange
+Scaffold）</a></li>
+<li><a href="#ashley-ruhlbroadsword-online-games"
+id="toc-ashley-ruhlbroadsword-online-games">Ashley Ruhl（Broadsword
+Online Games）</a></li>
+<li><a href="#theresa-duringertemple-gates"
+id="toc-theresa-duringertemple-gates">Theresa Duringer（Temple
+Gates）</a></li>
+<li><a href="#joel-burgesssoft-rains"
+id="toc-joel-burgesssoft-rains">Joel Burgess（Soft Rains）</a></li>
+<li><a href="#steve-meretzkypeoplefun"
+id="toc-steve-meretzkypeoplefun">Steve Meretzky（PeopleFun）</a></li>
+</ul></li>
+<li><a href="#resourcefulとは何か6名に共通するもの"
+id="toc-resourcefulとは何か6名に共通するもの">「Resourceful」とは何か——6名に共通するもの</a></li>
+<li><a href="#microtalks形式の設計的価値"
+id="toc-microtalks形式の設計的価値">Microtalks形式の設計的価値</a></li>
+<li><a href="#まとめ" id="toc-まとめ">まとめ</a></li>
+<li><a href="#次のステップ" id="toc-次のステップ">次のステップ</a></li>
+<li><a
+href="#rules-of-the-game-シリーズの過去の回はgdc-vaultgdcの過去講演アーカイブサイト有料会員向けだが一部の講演は無料で公開されているで視聴可能です各スピーカーの掟を自分のプロジェクトに当てはめてみることが最も実践的な活用方法です"
+id="toc-rules-of-the-game-シリーズの過去の回はgdc-vaultgdcの過去講演アーカイブサイト有料会員向けだが一部の講演は無料で公開されているで視聴可能です各スピーカーの掟を自分のプロジェクトに当てはめてみることが最も実践的な活用方法です">Rules
+of the Game シリーズの過去の回はGDC
+Vault（GDCの過去講演アーカイブサイト。有料会員向けだが、一部の講演は無料で公開されている）で視聴可能です。各スピーカーの掟を自分のプロジェクトに当てはめてみることが、最も実践的な活用方法です。</a></li>
+<li><a href="#参考リンク" id="toc-参考リンク">参考リンク</a></li>
+</ul></li>
+</ul>
+</div>
+<div class="content" data-date="2026-03-11">
+<h1 id="gdc-2026-rules-of-the-game-百戦錬磨の6人が語る設計の掟">GDC
+2026: Rules of the Game — 百戦錬磨の6人が語る「設計の掟」</h1>
+<p>「ゲームをうまく作るための法則などない」——そう感じたことはありませんか。</p>
+<p>しかし、何百本ものゲームを世に送り出してきたデザイナーたちは、失敗と試行錯誤の末に<strong>自分だけの掟（ルール）</strong>を見つけています。それは教科書に載っていない、現場で血を流して得た知恵です。</p>
+<p>GDC
+2026のDesignトラック（ゲームデザインの理論と実践に特化した講演群で、GDCの中でも特にゲームデザイナーの参加率が高い中核トラック）で毎年恒例となっているマイクロトーク形式のセッション
+<strong>“Rules of the Game 2026: Revealing Techniques from Resourceful
+Designers”</strong> が、2026年3月11日（水）10:30〜11:30にRoom 3005 West
+Hallで開催されました。</p>
+<p>今年のテーマは
+<strong>「Resourceful（限られた資源で最大の成果を出す、機転の利く）デザイナー」</strong>。6名のスピーカーがそれぞれ約10分ずつ、自身のキャリアから導き出した設計の掟を披露しました。</p>
+<p>本記事では、現地のトランスクリプトをもとに各スピーカーの「掟」を解説します。</p>
+<figure>
+<img src="images/gdc2026_rotg_five_rules.jpg"
+alt="セッション全体の要点を先に提示した「5つの掟」スライド" />
+<figcaption
+aria-hidden="true">セッション全体の要点を先に提示した「5つの掟」スライド</figcaption>
+</figure>
+<hr />
+<h2 id="セッション概要">セッション概要</h2>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th style="text-align: left;">項目</th>
+<th style="text-align: left;">内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>タイトル</strong></td>
+<td style="text-align: left;">Rules of the Game 2026: Revealing
+Techniques from Resourceful Designers</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>トラック</strong></td>
+<td style="text-align: left;">Design</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>形式</strong></td>
+<td
+style="text-align: left;">Microtalks（マイクロトーク：1人あたり5〜15分の短い講演を複数人が連続で行う形式。6名、各約10分）</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>日時</strong></td>
+<td style="text-align: left;">2026年3月11日（水）10:30–11:30</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>場所</strong></td>
+<td style="text-align: left;">Room 3005, West Hall</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>対象レベル</strong></td>
+<td style="text-align: left;">Intermediate</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>パスタイプ</strong></td>
+<td style="text-align: left;">Festival Pass / Game Changer
+Pass（GDCは参加パスの種類によって聴講できるセッションが異なる。このセッションは上位パスが必要）</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="rules-of-the-gameとは何か">「Rules of the Game」とは何か</h2>
+<p>“Rules of the Game”
+は、GDCで20年以上続く人気マイクロトークセッションです。2000年代前半から続くこのシリーズは、GDCのDesignトラックの中でも最も歴史の長いセッションのひとつで、毎年異なるサブテーマのもと、複数のゲームデザイナーが登壇し、それぞれ
+<strong>「自分がゲームを作るうえで信じているルール」</strong>
+を短く鋭く語ります。</p>
+<p>このセッションの特徴は3つあります：</p>
+<ol type="1">
+<li><strong>個人の掟</strong>:
+一般論ではなく、そのデザイナー固有のルール</li>
+<li><strong>圧縮された知恵</strong>:
+10分という制約が、余分な説明を削ぎ落とす</li>
+<li><strong>多様性</strong>:
+異なるジャンル・キャリアの人物が集まることで、対比が生まれる</li>
+</ol>
+<p>「Resourceful」というサブテーマは、限られたリソース（時間、予算、人員、技術）の中でいかに創意工夫するかという姿勢を指します。日本語で「機転が利く」「やりくり上手」と訳されることもありますが、単なる倹約ではなく「制約を創造性の燃料にする」というニュアンスを含みます。インディから大手まで、全員に共通するサバイバルスキルです。</p>
+<hr />
+<h2 id="セッション詳報">セッション詳報</h2>
+<h3 id="イントロ1033">イントロ（10:33〜）</h3>
+<p>セッション冒頭、進行役（Richard Rouse
+III）がこのセッションの趣旨を語りました。</p>
+<p>「弱いプレイヤーと、強すぎるプレイヤーとでは、苦しみの種類がまったく異なる」という切り口から始まり、ゲームデザイナーに向けてこう問いかけました。</p>
+<blockquote>
+<p>プレイヤーの手の中でルールが壊れていく瞬間を考えたことがあるか。ルールが消去される場面はどこか。そしてどこまで革新的になれば、それが裏目に出るか。</p>
+</blockquote>
+<p>今年のテーマは<strong>「反直感的なルール」</strong>。教科書どおりにやることが正解ではない場面を、各スピーカーが掘り下げます。</p>
+<figure>
+<img src="images/gdc2026_rotg_opening_quotes.jpg"
+alt="セッション冒頭で示された「Pizzazz First, Polish Later（まず華やかさ、磨くのは後）」などのキーワード。10:33頃のオープニングスライド" />
+<figcaption aria-hidden="true">セッション冒頭で示された「Pizzazz First,
+Polish
+Later（まず華やかさ、磨くのは後）」などのキーワード。10:33頃のオープニングスライド</figcaption>
+</figure>
+<hr />
+<h3 id="信頼は通貨だ-trust-as-a-currency">「信頼は通貨だ」— Trust as a
+Currency</h3>
+<p>最初のスピーカーが語ったのは、ゲームデザインにおける<strong>「信頼（Trust）」の経済学</strong>でした。</p>
+<figure>
+<img src="images/gdc2026_rotg_trust_title.jpg"
+alt="Theresa Duringer のトーク導入。10:35頃の「Trust」タイトルスライド" />
+<figcaption aria-hidden="true">Theresa Duringer
+のトーク導入。10:35頃の「Trust」タイトルスライド</figcaption>
+</figure>
+<h4 id="信頼は稼ぎ使い失う">信頼は稼ぎ、使い、失う</h4>
+<blockquote>
+<p>信頼は通貨だ。稼いで、投資して、使って、燃やすこともできる。</p>
+</blockquote>
+<p>最も基本的な信頼の稼ぎ方は、<strong>プレイヤーの期待に応えること</strong>です。ジャンルの慣習に従い、アクセシビリティを整備する。これだけで信頼の残高は積み上がっていきます。</p>
+<p>一方、チェーンの中の小さなミスひとつで信頼は崩壊します。そして「信頼破産（Trust
+Bankruptcy——プレイヤーの信頼残高がゼロになり、もうこのゲームを信用できないと見切りをつけること）」に陥れば、プレイヤーはゲームを去ります。</p>
+<h4 id="uiこそが信頼の最前線">UIこそが信頼の最前線</h4>
+<p>「ターン制ゲームにおけるUndoボタンとPauseボタン」を具体例に挙げました。</p>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th style="text-align: left;">UIの要素</th>
+<th style="text-align: left;">信頼への効果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Undoボタン</strong></td>
+<td
+style="text-align: left;">「やり直せる」安心感がプレイヤーを大胆にする</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Pauseボタン</strong></td>
+<td
+style="text-align: left;">自分のペースでプレイできる自律性を保証する</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>ヘルプ・メニュー</strong></td>
+<td style="text-align: left;">慣習に沿った案内が迷子を作らない</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>セーブ /
+チェックポイント</strong></td>
+<td
+style="text-align: left;">失敗からのリカバリーを支援し、挑戦を促す</td>
+</tr>
+</tbody>
+</table>
+<p>Undoがあるだけで、プレイヤーはより早く、より積極的にプレイするようになります。「安全網がある」と知っているから、リスクを取れる。</p>
+<h4 id="ハードコア向けだけでは不十分">ハードコア向けだけでは不十分</h4>
+<p>「ハードコアプレイヤーはそんなもの必要ない」という声があります。しかし、<strong>安全網のないゲームは、多くのプレイヤーを最初から切り捨てている</strong>。</p>
+<h4
+id="テイクアウェイ持ち帰るべき要点-早く渡せ遅らせるな">テイクアウェイ（持ち帰るべき要点）:
+早く渡せ、遅らせるな</h4>
+<blockquote>
+<p>「それは後半の報酬として取っておこう」という発想は捨てろ。信頼を築くツールを遅らせることに意味はない。早い段階で渡せ。</p>
+</blockquote>
+<p>慣習に従い、安全網を整備し、プレイヤーに信頼の残高を積ませること。そうすれば、誰も取り残されない。</p>
+<h4 id="信頼は一貫性から積み上がる">信頼は一貫性から積み上がる</h4>
+<blockquote>
+<p>信頼は期待に応え続けることで積まれる。一度ではなく、何度も何度も繰り返すことで。</p>
+</blockquote>
+<p>システムを「見える化」することも重要です。たとえばターン制ゲームにおける<strong>ダメージ予告サークル</strong>（攻撃が当たる範囲を事前に表示するUI）は、「このゲームはちゃんと教えてくれる」という信頼を生みます。メカニクスの可読性そのものが信頼の素材になります。</p>
+<figure>
+<img src="images/gdc2026_rotg_trust_example.jpg"
+alt="Temple Gates の実例。信頼を稼ぐ UI と可読性を示すプレイ画面スライド" />
+<figcaption aria-hidden="true">Temple Gates の実例。信頼を稼ぐ UI
+と可読性を示すプレイ画面スライド</figcaption>
+</figure>
+<h4 id="積んだ信頼は使うもの">積んだ信頼は「使う」もの</h4>
+<p>ここが本セッションの核心です。</p>
+<blockquote>
+<p>信頼を積んだら、何に使えるか？</p>
+</blockquote>
+<p>慣習どおりに積み上げた期待を、意図的に<strong>裏切る</strong>。それがパンチラインになります。</p>
+<blockquote>
+<p>慣習で期待を積み上げ、それを覆すパンチラインを打て。
+使われた信頼が、あなたのゲームで最も記憶に残る瞬間を作る。それがプレイヤーがプレイし続ける本当の理由だ。</p>
+</blockquote>
+<p>これを彼女は <strong>「献身のレシピ（a recipe for
+devotion——プレイヤーがゲームに心から入れ込むようになる処方箋）」</strong>
+と表現しました。信頼を賢く使うことがプレイヤーの熱狂的な愛着を生む。</p>
+<h4 id="信頼には予算がある">信頼には予算がある</h4>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th style="text-align: left;">フェーズ</th>
+<th style="text-align: left;">何をするか</th>
+<th style="text-align: left;">結果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">稼ぐ</td>
+<td
+style="text-align: left;">慣習を守る、期待に応える、UIを整備する</td>
+<td style="text-align: left;">信頼残高が増える</td>
+</tr>
+<tr>
+<td style="text-align: left;">使う</td>
+<td
+style="text-align: left;">期待を覆す、驚きを与える、ドラマを作る</td>
+<td
+style="text-align: left;">残高は減るが、記憶に残る瞬間が生まれる</td>
+</tr>
+<tr>
+<td style="text-align: left;">破産</td>
+<td style="text-align: left;">使いすぎる、稼がずに使う</td>
+<td style="text-align: left;">プレイヤーが去る</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>信頼支出は投資だ。使うたびに見返りがある。しかし予算には限りがある。ドラマチックな瞬間のために取っておけ。</p>
+</blockquote>
+<h4
+id="罰則的なターンタイマーは信頼を燃やす">罰則的なターンタイマーは信頼を燃やす</h4>
+<p>ターン制ゲームにおける反例として、<strong>罰則的なターンタイマー</strong>が挙げられました。</p>
+<p>Undoボタンが信頼を積むのに対し、ターンタイマーは逆の効果をもたらします。プレイヤーに常時プレッシャーをかけ、「考える余裕」を奪い、不安を生みます。特にマルチプレイヤーゲームでは、チーム全体に緊張が伝播します。信頼を稼ぐ設計と、燃やす設計の典型的な対比です。</p>
+<h4 id="外部要因も信頼残高に影響する">外部要因も信頼残高に影響する</h4>
+<blockquote>
+<p>あなたのゲームは孤立して存在しているわけではない。ジャンル全体の評判、業界への先入観——あなたがコントロールできない外部要因があなたの信頼予算に影響している。</p>
+</blockquote>
+<p>F2P（Free-to-Play、基本無料）ゲーム、モバイルゲームなど、プレイヤーが最初から警戒心を持つジャンルでは、<strong>信頼残高がマイナスからのスタート</strong>になることがあります。しかし克服はできる。</p>
+<blockquote>
+<p>信頼マイナスから始まるのは覚悟のうえだ。それを取り戻すために懸命に稼げ。できる。</p>
+</blockquote>
+<h4 id="締めの言葉">締めの言葉</h4>
+<blockquote>
+<p>Go earn your players’ trust, and then spend it to make something
+glorious.
+（さあ、プレイヤーの信頼を稼いで、それを惜しみなく使って、輝くような体験を作れ。）</p>
+</blockquote>
+<hr />
+<h3
+id="イノベーションスペクトラム-革新の最適地点を探す">「イノベーション・スペクトラム」—
+革新の最適地点を探す</h3>
+<p>2番目のスピーカー（Steve
+Meretzky。1980年代にInfocomでテキストアドベンチャーの黄金期を築いた伝説的デザイナー）は、40年以上のキャリアから得た問いを投げかけました。</p>
+<blockquote>
+<p>私が新しいゲームの制作を始めるとき、最初に考えるのはひとつのことだ。このゲームは、私が頭の中に持っている<strong>イノベーション・スペクトラム（革新度の連続的なスケール）</strong>のどこに位置するか。</p>
+</blockquote>
+<h4 id="スペクトラムの両端">スペクトラムの両端</h4>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">位置</th>
+<th style="text-align: left;">内容</th>
+<th style="text-align: left;">リスク</th>
+<th style="text-align: left;">リターン</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">クローン側</td>
+<td style="text-align: left;">既存の成功作を強く参照する</td>
+<td style="text-align: left;">低い</td>
+<td style="text-align: left;">低め</td>
+</tr>
+<tr>
+<td style="text-align: left;">中間</td>
+<td
+style="text-align: left;">馴染みやすさを残しつつ一部を新しくする</td>
+<td style="text-align: left;">中程度</td>
+<td style="text-align: left;">中程度</td>
+</tr>
+<tr>
+<td style="text-align: left;">前例なし側</td>
+<td style="text-align: left;">誰も見たことがない体験を狙う</td>
+<td style="text-align: left;">高い</td>
+<td style="text-align: left;">高い</td>
+</tr>
+</tbody>
+</table>
+<p>Meretzkyの問いは単純です。新作がこのスペクトラムのどこを狙うのかを、最初に明確にしておくべきだということです。</p>
+<p>「誰も見たことがないもの」の例として、自身のキャリア——特に <em>The
+Hitchhiker’s Guide to the
+Galaxy</em>（1984年、SF作家ダグラス・アダムスとの共作で生まれたテキストアドベンチャーの金字塔。原作小説の不条理なユーモアをゲームメカニクスに織り込んだ先駆的作品）などを挙げました。</p>
+<blockquote>
+<p>大成功を収めた。なぜなら誰も見たことがなかったから。</p>
+</blockquote>
+<p>しかし——</p>
+<blockquote>
+<p>本当のことを言えば、私たちは両極端の間のどこかを狙いたい。では、<strong>正確にどこ</strong>なのか？</p>
+</blockquote>
+<h4 id="革新には利点がある">革新には利点がある</h4>
+<p>革新的であることの価値は2つ。<strong>「話題になる」</strong>（マーケティング力）と<strong>「長期的な影響力を持てる」</strong>こと。しかし、当然リスクも高い。</p>
+<figure>
+<img src="images/gdc2026_rotg_innovation_benefits.jpg"
+alt="Steve Meretzky が整理した「革新の利点」。10:49頃の benefits of innovation スライド" />
+<figcaption aria-hidden="true">Steve Meretzky
+が整理した「革新の利点」。10:49頃の benefits of innovation
+スライド</figcaption>
+</figure>
+<h4
+id="クローンにも合理性がある3つのケース">クローンにも合理性がある——3つのケース</h4>
+<p>では、クローン側に振り切るのが合理的な場面はあるのか。Meretzkyは具体例を3つ挙げました。</p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th style="text-align: left;">ケース</th>
+<th style="text-align: left;">事例</th>
+<th style="text-align: left;">結果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">① プラットフォーム関係を活かす</td>
+<td style="text-align: left;">Zynga + Facebook →
+FarmVille（2009年、Facebookゲーム全盛期を牽引した農場シミュレーション）、その後クローンを量産（FrontierVilleなど）</td>
+<td style="text-align: left;">Facebookとの関係が参入障壁に</td>
+</tr>
+<tr>
+<td style="text-align: left;">② ジャンル適応</td>
+<td style="text-align: left;">Epic/Fortnite →
+バトルロイヤル（PUBGが切り拓いたジャンル）を模倣・改良</td>
+<td style="text-align: left;">大成功したが「安っぽい」と批判も</td>
+</tr>
+<tr>
+<td style="text-align: left;">③ 成熟市場への参入</td>
+<td style="text-align: left;">既存の大ヒットジャンルへの後追い</td>
+<td style="text-align: left;">中程度の成功にとどまることが多い</td>
+</tr>
+</tbody>
+</table>
+<p>ただし、いずれのケースも「安っぽく見える」というリスクを抱えています。</p>
+<h4
+id="革新はゲームデザインだけじゃない">革新は「ゲームデザイン」だけじゃない</h4>
+<p>ここが最も重要な洞察です。</p>
+<blockquote>
+<p>革新はゲームデザインだけに当てはまるわけではない。<strong>ビジネスモデル</strong>、<strong>プラットフォーム</strong>、<strong>配信方法</strong>——これらも革新の軸になりえる。</p>
+</blockquote>
+<p>Meretzkyの自身の経験から：</p>
+<ul>
+<li><strong>2000年頃</strong>:
+LANカフェ・トーナメント型ゲーム配信のスタートアップに参加。ゲームは馴染みのあるものでも、<strong>遊び方</strong>が革新だった</li>
+<li><strong>2016〜2018年</strong>: Facebook Messenger Instant
+Gamesにゲームを提供。マルチプレイヤーを作ったが、大半がソロでプレイ。「ソーシャル性」が革新軸と思っていたが、<strong>プラットフォーム自体</strong>が革新だった</li>
+</ul>
+<figure>
+<img src="images/gdc2026_rotg_innovation_balance.jpg"
+alt="Steve Meretzky が示したバランス感覚。10:50頃の「One third the same, one third improved, one third new」スライド" />
+<figcaption aria-hidden="true">Steve Meretzky
+が示したバランス感覚。10:50頃の「One third the same, one third improved,
+one third new」スライド</figcaption>
+</figure>
+<h4
+id="meretzkyが現在試みているバランス">Meretzkyが現在試みているバランス</h4>
+<blockquote>
+<p>私が今試みているのはこうだ——<strong>入りやすい</strong>（既存に馴染みやすい）、しかし<strong>何か新しいものを感じる</strong>。</p>
+</blockquote>
+<p>これがイノベーション・スペクトラムにおける彼の現在地です。40年以上の実験の末に辿り着いた仮説は、シンプルながら深い。</p>
+<h4
+id="締めの言葉笑いありの正直な結論">締めの言葉（笑いありの正直な結論）</h4>
+<blockquote>
+<p>何十年もやってきたが、答えは出せていない。カジュアルなグローバルパズルゲームの場合、正解は23.7%だ。</p>
+</blockquote>
+<p>もちろんこれはジョークです。「正確な数字などない」というオチで締めくくりました。結論は明快です——<strong>イノベーションの正解量は文脈次第。自分のゲームと対象プレイヤーに合わせて考えるしかない。</strong></p>
+<hr />
+<h3
+id="問いを立てることが掟だ-joel-burgesssoft-rains">「問いを立てることが掟だ」—
+Joel Burgess（Soft Rains）</h3>
+<p>3番目のスピーカーはJoel Burgess（Soft Rains）。Bethesda Game
+Studios（<em>The Elder Scrolls</em> シリーズや <em>Fallout</em>
+シリーズで知られる、オープンワールドRPGの代名詞的スタジオ）時代に
+<em>Skyrim</em>（2011年発売、全世界で6,000万本以上を販売した歴史的ヒット作）と
+<em>Fallout 4</em>
+のレベルデザインを率いた後、独立したデザイナーです。</p>
+<blockquote>
+<p>今日、みなさんと共有したいのはこれだけです。それは問いです。</p>
+</blockquote>
+<p><strong>掟は問いを立てること</strong>——これがBurgessのルールです。</p>
+<h4 id="核心の問い">核心の問い</h4>
+<blockquote>
+<p>ゲームを反復改善しているとき、大きな変更を加えようとしているとき、問え。<strong>「自分はその必要性を本当に信じているか？（Do
+you believe the need?）」</strong></p>
+</blockquote>
+<p>この問いが彼のマントラになりました。変えたいという衝動に、ブレーキをかけるための問いです。</p>
+<h4 id="キャリア初期の体験">キャリア初期の体験</h4>
+<p>駆け出しの頃、あるレベルに不満を感じてイテレーション（設計→実装→テスト→修正を繰り返す反復改善のプロセス）を何度も何度も重ね続けました。夜遅くまで作業しながら、フラストレーションの中で同じ場所を繰り返し直し続けた。</p>
+<p>その経験が教えてくれたのは、<strong>自分の変更したい衝動に懐疑的になること</strong>の重要性でした。</p>
+<blockquote>
+<p>なぜ自分はこれを変えたいのか。なぜ自分はこのバブルの中にいるのか。</p>
+</blockquote>
+<h4
+id="核心の問いより良くなるのかそれともただ違うだけか">核心の問い：「より良くなるのか、それとも”ただ違う”だけか？」</h4>
+<p>衝動を感じるたびに、Burgessはこう自問するようになりました。</p>
+<blockquote>
+<p><strong>“Better, or just
+different?”</strong>（より良くなるのか、それともただ変わるだけか？）</p>
+</blockquote>
+<p>これが彼のマントラです。「変える」ことと「改善する」ことは別物です。変更を重ねるほどゲームが不安定になることもある。「止める」選択が正解なこともある。</p>
+<figure>
+<img src="images/gdc2026_rotg_better_or_different.jpg"
+alt="Joel Burgess の核心フレーズ。10:54頃の「Better? or just Different?」スライド" />
+<figcaption aria-hidden="true">Joel Burgess
+の核心フレーズ。10:54頃の「Better? or just
+Different?」スライド</figcaption>
+</figure>
+<h4 id="新鮮な目を使え">新鮮な目を使え</h4>
+<p>本当に問題があるのかどうかを確かめる最善の方法は、<strong>初めてプレイする人に見せること</strong>——すなわちプレイテスト（開発中のゲームを第三者に遊んでもらい、フィードバックを得るテスト手法）です。自分では問題に見えていたものが、実は問題ではなかったと気づく——逆もある。自分のバブルの外に出ることで、問いへの答えが見えてきます。</p>
+<figure>
+<img src="images/gdc2026_rotg_judge_the_work.jpg"
+alt="Joel Burgess が示した評価の基準。Sid Meier（『シヴィライゼーション』シリーズの生みの親）の「Double it or cut it in half（倍にするか半分にしろ——中途半端な調整は意味がない）」を引いた判断スライド" />
+<figcaption aria-hidden="true">Joel Burgess が示した評価の基準。Sid
+Meier（『シヴィライゼーション』シリーズの生みの親）の「Double it or cut
+it in
+half（倍にするか半分にしろ——中途半端な調整は意味がない）」を引いた判断スライド</figcaption>
+</figure>
+<h4 id="問いを立てることが質を上げる">問いを立てることが質を上げる</h4>
+<blockquote>
+<p>「Better, or just
+different?」を習慣にすることで、自分の作業プロセスが良くなる。チームの時間が守られる。プレイヤーにより良いものが届く。</p>
+</blockquote>
+<hr />
+<h3
+id="コンテンツなしで意味のある選択を作る-ashley-ruhlbroadsword-online-games">「コンテンツなしで意味のある選択を作る」—
+Ashley Ruhl（Broadsword Online Games）</h3>
+<p>4番目のスピーカーはAshley Ruhl。Broadsword Online
+Gamesで15年、<em>Ultima
+Online</em>（1997年発売、MMORPGというジャンルそのものを切り拓いた先駆的タイトル）などの長寿MMOのコンテンツデザインを担ってきた実践者です。</p>
+<blockquote>
+<p>今日話したいのは、<strong>意味のある選択</strong>についてです。ただし——コンテンツを追加しなくても、プレイヤーの体験を表面上大きく変えなくても、意味のある選択は作れる。</p>
+</blockquote>
+<p>MMOの長期運営では、常に新コンテンツを追加できるわけではありません。限られたリソースの中で、プレイヤーに「自分が選んでいる」という感覚を与えることが、Ruhlの専門領域です。</p>
+<figure>
+<img src="images/gdc2026_rotg_fake_choices.jpg"
+alt="Ashley Ruhl のトーク導入。11:00頃の「Create “Fake” Choices That Matter」スライド" />
+<figcaption aria-hidden="true">Ashley Ruhl
+のトーク導入。11:00頃の「Create “Fake” Choices That
+Matter」スライド</figcaption>
+</figure>
+<h4 id="意味のある選択の伝統的定義">「意味のある選択」の伝統的定義</h4>
+<p>ゲームデザインにおいて「意味のある選択」の一般的な定義はこうです。</p>
+<blockquote>
+<p>異なる選択をしたとき、ゲームが大きく変わること。</p>
+</blockquote>
+<p>しかしRuhlはこの定義に疑問を呈します。</p>
+<h4 id="種類の選択とそのコスト">2種類の選択とそのコスト</h4>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th style="text-align: left;">種類</th>
+<th style="text-align: left;">特徴</th>
+<th style="text-align: left;">コスト</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>分岐選択</strong>（Diverging
+choice）</td>
+<td
+style="text-align: left;">選択によってゲームの内容が実際に分かれる</td>
+<td
+style="text-align: left;">指数的に増大（全パスのコンテンツが必要）</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>幻の選択</strong>（Illusion
+choice）</td>
+<td style="text-align: left;">見た目は選択肢だが、結果はほぼ同じ</td>
+<td style="text-align: left;">最小限</td>
+</tr>
+</tbody>
+</table>
+<p>分岐選択はコンテンツ量が指数的に増えます。長期運営のMMOでは現実的に維持できません。</p>
+<h4
+id="幻の選択でも感情的な深みは持てる">幻の選択でも、感情的な深みは持てる</h4>
+<blockquote>
+<p>選択が意味を持つのは、<strong>その瞬間に意味があると感じたとき</strong>だ。ゲームが実際に変わることではない。</p>
+</blockquote>
+<p>「幻の選択」であっても、適切に設計すれば分岐選択と同等の感情的インパクトを持てます。なぜなら、<strong>変わるのはゲームの内容ではなく、プレイヤーの頭の中のストーリー</strong>だからです。プレイヤーの想像力が空白を埋める。</p>
+<p>典型的な例が「このキャラクターはこの選択を覚えている」というテキスト通知——いわゆるTelltaleスタイル（Telltale
+Gamesが <em>The Walking Dead</em>
+等で確立した演出。選択後に「〇〇はあなたの行動を覚えている」と表示し、選択の重みを印象づける手法）です。ゲームが実際に変わらなくても、「ここは重要な場面だ」というシグナルを送るだけで、プレイヤーは選択に意味を感じます。</p>
+<figure>
+<img src="images/gdc2026_rotg_illusion_choice_example.jpg"
+alt="Ashley Ruhl が示した Illusion Choices の具体例。Mass Effect の会話 UI を用いたロールプレイスライド" />
+<figcaption aria-hidden="true">Ashley Ruhl が示した Illusion Choices
+の具体例。Mass Effect の会話 UI
+を用いたロールプレイスライド</figcaption>
+</figure>
+<h4 id="幻の選択が特に機能する場面">幻の選択が特に機能する場面</h4>
+<p>プレイヤーが「これは幻の選択だ」と知っていても機能します。それどころか、そのことがロールプレイの<strong>自由</strong>を生みます。「間違いの選択はない」と知っているから、キャラクターとして自由に投資できる。</p>
+<blockquote>
+<p>選択はコンテンツの分岐についてではない。<strong>プレイヤーがストーリーをどう認識するか</strong>に接続することについてだ。</p>
+</blockquote>
+<h4 id="選択ライティングの視点転換">選択ライティングの視点転換</h4>
+<p>選択肢を書くとき、多くのデザイナーは「この選択は何を変えるか」を考えます。Ruhlが提案するのは別の問いです。</p>
+<blockquote>
+<p><strong>「このドラマのこの瞬間に、私のキャラクターはなぜこの選択をするのか？」</strong></p>
+</blockquote>
+<p>機械的な結果ではなく、キャラクターの動機から選択を設計する。これが、コンテンツなしで意味を生み出す方法です。</p>
+<blockquote>
+<p>選択は、プレイヤーが感情的に完結したと感じれば意味を持つ。</p>
+</blockquote>
+<figure>
+<img src="images/gdc2026_rotg_choices_matter_quote.jpg"
+alt="Ashley Ruhl の結論スライド。選択は分岐量ではなく、その瞬間の意味づけで決まると示している" />
+<figcaption aria-hidden="true">Ashley Ruhl
+の結論スライド。選択は分岐量ではなく、その瞬間の意味づけで決まると示している</figcaption>
+</figure>
+<hr />
+<h3
+id="プレイヤーの時間は戦場だ-xalavier-nelson-jrstrange-scaffold">「プレイヤーの時間は戦場だ」—
+Xalavier Nelson Jr（Strange Scaffold）</h3>
+<p>最後のスピーカーはXalavier Nelson Jr（Strange Scaffold）。<em>El
+Paso, Elsewhere</em>（ノワール風マックス・ペイン系TPS）、<em>Space
+Warlord Organ Trading
+Simulator</em>（臓器を商品として取引するという挑発的なコンセプトのシミュレーター）などの異色作で知られるインディデザイナーです。</p>
+<blockquote>
+<p>私の掟はひとつだ。</p>
+</blockquote>
+<figure>
+<img src="images/gdc2026_rotg_xalavier_title.jpg"
+alt="Xalavier Nelson Jr の自己紹介スライド。11:20頃の登壇パート開始時点" />
+<figcaption aria-hidden="true">Xalavier Nelson Jr
+の自己紹介スライド。11:20頃の登壇パート開始時点</figcaption>
+</figure>
+<h4
+id="私たちは時間とお金を奪い合っている">私たちは「時間」と「お金」を奪い合っている</h4>
+<p>Nelsonが出発点に置くのは、ゲーム業界の現実への冷徹な認識です。</p>
+<blockquote>
+<p>私たちはプレイヤーの注意だけでなく、時間と、お金を奪い合っている。</p>
+</blockquote>
+<p>競合はゲームだけではありません。InstagramもYouTubeも、あらゆるコンテンツが同じ時間とお金を争っています。そして過去10年でこの競争は急速に激化しています。</p>
+<h4
+id="新しい情報は敵対的に処理される">新しい情報は「敵対的」に処理される</h4>
+<p>ここが彼のトークの核心です。</p>
+<blockquote>
+<p>新しい情報はニュートラルに処理されるのではない。<strong>敵対的</strong>なものとして処理される。</p>
+</blockquote>
+<p>プレイヤーが新しいゲームを開いたとき、脳は「このゲームを学ぶコスト」を無意識に計算します。そのコストが高いと判断されると、拒絶反応が起きる。新しいゲームは「面白そう」な前に「めんどくさい」と感じられる。</p>
+<blockquote>
+<p>もしあなたのゲームの最初の体験がこの前提に基づいて設計されていなければ、プロジェクトに壊滅的な影響を与えうる。</p>
+</blockquote>
+<h4 id="atlas-design-すべてを語れるものにする">Atlas Design —
+すべてを「語れるもの」にする</h4>
+<blockquote>
+<p>私はこれを <strong>「Atlas
+Design（地図帳設計——プロジェクトの全要素を”語れるもの”として地図のように俯瞰する設計思想）」</strong>
+と呼んでいる。プロジェクトのあらゆる要素について問え：「これは開発の<strong>前・中・後</strong>に、話題にして共有できるか？」</p>
+</blockquote>
+<p>ゲームの機能だけでなく、使っているツール、カットした機能、なぜそう作ったかの理由——すべてがコミュニケーションの素材になります。Strange
+Scaffoldは実際に、開発のあらゆる場面でこのアプローチを実践しています。</p>
+<h4 id="デザインは通信である">デザインは通信である</h4>
+<blockquote>
+<p>デザインとは通信だ。人々が気にかける理由を作ることだ。</p>
+</blockquote>
+<p>プレイヤーはゲームの「意図」を感じ取ります。たとえ気に入らなかったとしても、「このチームは意図を持って作っている」と分かれば、それ自体が信頼になる。</p>
+<h4 id="万本の現実">2万本の現実</h4>
+<blockquote>
+<p>Steamでは昨年、2万本のゲームがリリースされた。</p>
+</blockquote>
+<p>あなたのゲームに素晴らしい瞬間があっても、誰もそれを知らなければ存在しないも同然です。Metroidvania（<em>メトロイド</em>
+と <em>キャッスルヴァニア（悪魔城ドラキュラ）</em>
+を組み合わせた造語で、探索型2Dアクションの代名詞）というジャンル名を誰もが知っていても、あなたのゲームのその瞬間を誰も知らない——それが現実です。</p>
+<h4 id="締めの言葉-1">締めの言葉</h4>
+<blockquote>
+<p><strong>Give your players reasons to give a shit.</strong>
+（プレイヤーに「このゲームを気にかける理由」を与えろ。そうすれば来てくれる、留まってくれる、もっと気にかける理由を自ら探してくれる。）</p>
+</blockquote>
+<hr />
+<h2 id="スピーカー紹介と設計哲学">スピーカー紹介と設計哲学</h2>
+<h3 id="richard-rouse-iiifarbridge">Richard Rouse III（FarBridge）</h3>
+<p><strong>専門</strong>: ナラティブデザイン、ステルスゲーム、ホラー</p>
+<p>FarBridgeの共同創業者。代表作に <em>The Church in the
+Darkness</em>（2019年）、<em>The
+Suffering</em>（2004年）。Ubisoft、Midway を経て独立。著書 <em>Game
+Design: Theory and Practice</em>
+はゲームデザイン教育の定番テキストです。</p>
+<p>Rouseの設計哲学で一貫しているのは
+<strong>「プレイヤーに選択肢を与えるが、結果に責任を持たせる」</strong>
+という姿勢です。<em>The Church in the Darkness</em>
+ではプレイヤーのプレイスタイルによってエンディングが分岐し、正解のない道徳的判断を迫ります。</p>
+<blockquote>
+<p>設計者は神ではなく、庭師だ。植物が育つ空間を作るのが仕事であり、花の形を決めるのはプレイヤー自身だ。</p>
+</blockquote>
+<hr />
+<h3 id="xalavier-nelson-jrstrange-scaffold">Xalavier Nelson Jr（Strange
+Scaffold）</h3>
+<p><strong>専門</strong>:
+インディゲーム、実験的ナラティブ、持続可能な開発プロセス</p>
+<p>Strange Scaffold の創業者。<em>El Paso, Elsewhere</em>、<em>An
+Airport for Aliens Currently Run by Dogs</em>、<em>Space Warlord Organ
+Trading Simulator</em> など、コンセプトの尖った作品群で知られます。</p>
+<p>Nelsonが強調するのは
+<strong>「チームの持続可能性と創作の誠実さ」</strong>。ゲームジャム（通常24〜72時間という超短期間でゲームを作り上げるイベント）のような短期開発と長期プロジェクトを組み合わせたスタジオ運営を実践し、クランチ（リリース前に過酷な長時間労働を強いる業界の悪習）文化を拒否する姿勢でも注目されています。</p>
+<p>「Resourceful」という観点では、大規模予算なしで感情的インパクトを出す手法——テキスト演出、音の使い方、スコープ（開発範囲。何を作り、何を作らないかの線引き）の選択——を磨き上げてきたデザイナーです。</p>
+<hr />
+<h3 id="ashley-ruhlbroadsword-online-games">Ashley Ruhl（Broadsword
+Online Games）</h3>
+<p><strong>専門</strong>: MMORPG、ライブサービス、ロングテール運営</p>
+<p>Broadsword Online Games は、<em>Ultima Online</em> と <em>Dark Age of
+Camelot</em>（2001年発売のRvR——Realm vs
+Realm、3勢力対抗型PvP——を特徴とするMMORPG）を現在も運営する老舗スタジオです。両タイトルは20年以上稼働を続けており、Ruhlはその現役コンテンツデザイナーです。</p>
+<p>「Resourceful」なMMO運営の現実は過酷です。小規模チームで数十万行のレガシーコードと戦いながら、アクティブなプレイヤーコミュニティを満足させ続けなければなりません。</p>
+<p>Ruhlの掟は、こうした <strong>「終わりなきメンテナンス」</strong>
+の中で学んだ優先順位付けと、コミュニティとの信頼構築の手法にあると考えられます。</p>
+<hr />
+<h3 id="theresa-duringertemple-gates">Theresa Duringer（Temple
+Gates）</h3>
+<p><strong>専門</strong>:
+ボードゲームのデジタル化、モバイルゲームデザイン</p>
+<p>Temple Gates Gamesの共同創業者。<em>Pandemic</em>
+のデジタル版、EA/Zoinkと協業した <em>Lost in Random</em>
+のカードシステムデザインに携わりました。</p>
+<p>Duringerの専門は
+<strong>「アナログゲームの本質を損なわずにデジタルに変換する」</strong>
+こと。ボードゲームはルールが透明で、プレイヤーはシステム全体を把握できます。対してデジタルゲームは裏側を隠せる。この違いをどう活かすか——それが彼女の設計軸です。</p>
+<blockquote>
+<p>ボードゲームのプレイヤーはルールブックを読む。デジタルゲームのプレイヤーは読まない。この前提で設計を逆算しなければならない。</p>
+</blockquote>
+<hr />
+<h3 id="joel-burgesssoft-rains">Joel Burgess（Soft Rains）</h3>
+<p><strong>専門</strong>:
+レベルデザイン、オープンワールド、システムデザイン</p>
+<p>Bethesda Game Studios で <em>The Elder Scrolls V: Skyrim</em> と
+<em>Fallout 4</em> のレベルデザインリードを務めた後、独立してSoft
+Rainsを設立。レベルデザインとは、ゲーム内のマップ・ステージ・ダンジョンなどの空間を設計する専門職で、プレイヤーの動線や発見体験を意図的に構築する仕事です。</p>
+<p>Burgessがキャリアを通じて探求してきたのは
+<strong>「プレイヤーが世界を発見する瞬間の設計」</strong>
+です。Skyrimの山の稜線から見える遺跡、Falloutの廃墟に残された物語——それらは偶然の産物ではなく、精緻な意図の産物です。環境ストーリーテリング（テキストや台詞ではなく、オブジェクトの配置や空間の構成だけで物語を語る手法）の名手として、海外のGDC講演でも頻繁に引き合いに出される人物です。</p>
+<p>インディ移行後のSoft
+Rainsでは、大スタジオとは異なる制約の中で同様の体験をどう生み出すかという問いに向き合っています。「Resourceful」という言葉が最も似合うスピーカーのひとりです。</p>
+<hr />
+<h3 id="steve-meretzkypeoplefun">Steve Meretzky（PeopleFun）</h3>
+<p><strong>専門</strong>:
+インタラクティブフィクション、ワードゲーム、ゲームデザイン史</p>
+<p>Infocom時代（1980年代）に <em>The Hitchhiker’s Guide to the
+Galaxy</em>（ダグラス・アダムスとの共作）、<em>Planetfall</em>
+などのテキストアドベンチャーを手がけた伝説的ゲームデザイナー。現在はPeopleFun（ワードゲームスタジオ）に在籍。Infocomは1979年に設立されたテキストアドベンチャー専門のスタジオで、グラフィックが一切ない純粋なテキスト入力型ゲームで1980年代のPC市場を席巻しました。日本でいえばファミコン以前のPCゲーム黄金期にあたる時代です。</p>
+<p>Meretzkyが体現するのは <strong>「時代を超える設計原則」</strong>
+です。UIもグラフィックもなく、テキストだけで何百万人を熱中させたInfocomの手法は、現代のゲームデザインにも通じる本質を持っています。</p>
+<p>40年以上のキャリアを持つ彼が語る「掟」は、最新技術に依存しない普遍的な知恵であることが期待されます。</p>
+<hr />
+<h2
+id="resourcefulとは何か6名に共通するもの">「Resourceful」とは何か——6名に共通するもの</h2>
+<p>6名のバックグラウンドは大きく異なりますが、<strong>「Resourceful（機転が利く）」</strong>
+という共通テーマで結ばれています。</p>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th style="text-align: left;">条件</th>
+<th style="text-align: left;">具体例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">制約を言い訳にしない</td>
+<td
+style="text-align: left;">予算がないならスコープを絞る。人員が少ないなら優先順位を徹底する。技術が古いなら得意な設計で補う</td>
+</tr>
+<tr>
+<td style="text-align: left;">失敗から抽出する</td>
+<td
+style="text-align: left;">うまくいかなかった体験を掟に変換する。プレイテストの失敗から設計原則を見つける</td>
+</tr>
+<tr>
+<td style="text-align: left;">本質を見抜く</td>
+<td
+style="text-align: left;">流行ではなくプレイヤーの本質的欲求を見る。最新技術ではなく体験の核心を押さえる。</td>
+</tr>
+</tbody>
+</table>
+<p>Infocomのテキストゲームから現代のMMO運営まで、時代とジャンルを越えて生き残っているデザイナーたちに共通するのは「手段を選ばない創意工夫」ではなく、<strong>「目的に対する一貫したこだわり」</strong>
+です。</p>
+<hr />
+<h2 id="microtalks形式の設計的価値">Microtalks形式の設計的価値</h2>
+<p>このセッションがMicrotalks形式を採用していること自体、設計上の意図があります。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">通常の講演（60分）</th>
+<th style="text-align: left;">Microtalks（10分 × 6名）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">1つのテーマを深掘り</td>
+<td style="text-align: left;">6つの視点を横断</td>
+</tr>
+<tr>
+<td style="text-align: left;">文脈の積み上げが可能</td>
+<td style="text-align: left;">圧縮された核心のみ</td>
+</tr>
+<tr>
+<td style="text-align: left;">1名のキャリアに集中</td>
+<td style="text-align: left;">多様なバックグラウンドを比較</td>
+</tr>
+<tr>
+<td style="text-align: left;">体系的な学習</td>
+<td style="text-align: left;">直感的な洞察の刺激</td>
+</tr>
+</tbody>
+</table>
+<p>Microtalksは、設計的にも「認知負荷の分散」をうまく使っています。10分ごとに話者と視点が変わることで、聴衆の注意力がリセットされ、集中力が維持されます。6人分の知恵を1時間で吸収できる、密度の高い形式です。</p>
+<hr />
+<h2 id="まとめ">まとめ</h2>
+<p>“Rules of the Game”
+セッションが毎年GDCで愛される理由は明快です。<strong>「自分の掟」を持つデザイナーの言葉には、再現性があるからです。</strong></p>
+<p>方法論ではなく姿勢。ツールではなく判断基準。それを6名のベテランが凝縮して語る1時間は、キャリアを問わずすべてのゲームデザイナーにとって刺激になります。</p>
+<p>今年の6名の掟をまとめます。</p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th style="text-align: left;">スピーカー</th>
+<th style="text-align: left;">掟</th>
+<th style="text-align: left;">核心メッセージ</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Richard Rouse III</strong></td>
+<td style="text-align: left;">反直感的ルールを問い続けよ</td>
+<td
+style="text-align: left;">どこまで革新的になれば裏目に出るか。ルールが壊れる瞬間を設計者は知れ</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>スピーカー1（Theresa
+Duringer）</strong></td>
+<td style="text-align: left;">信頼は通貨</td>
+<td
+style="text-align: left;">慣習・Undo・可読性で積み上げ、期待を覆すパンチラインで使え。破産を避けよ</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Steve Meretzky</strong></td>
+<td style="text-align: left;">イノベーション・スペクトラムを持て</td>
+<td
+style="text-align: left;">クローンと前例なしの間のどこを狙うか。革新はデザインだけでなく、ビジネスモデル・プラットフォームでも起きる</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Joel Burgess</strong></td>
+<td style="text-align: left;">Better, or just different?</td>
+<td
+style="text-align: left;">変えたい衝動に懐疑的になれ。それは「より良く」なるのか、ただ「違う」だけか</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Ashley Ruhl</strong></td>
+<td style="text-align: left;">幻の選択でも意味を持てる</td>
+<td
+style="text-align: left;">選択は分岐しなくていい。プレイヤーの感情と認識の中で意味が生まれれば十分</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Xalavier Nelson Jr</strong></td>
+<td style="text-align: left;">プレイヤーに気にかける理由を与えよ</td>
+<td style="text-align: left;">新情報は敵対的に処理される。Atlas
+Designで開発の全瞬間を語れるものにせよ</td>
+</tr>
+</tbody>
+</table>
+<p><strong>「掟」は制約ではなく、自由の源泉です。</strong>
+ルールを自ら決めているデザイナーだけが、迷わず次の一手を打てる。</p>
+<hr />
+<h2 id="次のステップ">次のステップ</h2>
+<h2
+id="rules-of-the-game-シリーズの過去の回はgdc-vaultgdcの過去講演アーカイブサイト有料会員向けだが一部の講演は無料で公開されているで視聴可能です各スピーカーの掟を自分のプロジェクトに当てはめてみることが最も実践的な活用方法です">Rules
+of the Game シリーズの過去の回はGDC
+Vault（GDCの過去講演アーカイブサイト。有料会員向けだが、一部の講演は無料で公開されている）で視聴可能です。各スピーカーの掟を自分のプロジェクトに当てはめてみることが、最も実践的な活用方法です。</h2>
+<h2 id="参考リンク">参考リンク</h2>
+<ul>
+<li><a href="https://schedule.gdconf.com/">GDC 2026
+公式スケジュール</a></li>
+<li><a href="https://gdcvault.com/">GDC Vault — Rules of the Game
+過去セッション</a></li>
+<li><a href="https://www.routledge.com/">Richard Rouse III — Game
+Design: Theory and Practice</a></li>
+<li><a href="https://strange-scaffold.itch.io/">Xalavier Nelson Jr —
+Strange Scaffold</a></li>
+<li><a href="https://www.softrains.com/">Joel Burgess — Soft
+Rains</a></li>
+<li><a href="https://if-archive.org/">Steve Meretzky — Infocom
+Archives</a></li>
+</ul>
+</div>
+</body>
+</html>

@@ -1,0 +1,106 @@
+<mxGraphModel dx="1422" dy="762" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1400" pageHeight="680" math="0" shadow="0">
+  <root>
+    <mxCell id="0"/>
+    <mxCell id="1" parent="0"/>
+    <mxCell id="title1" value="MCP がない世界" style="text;html=1;fontSize=20;fontStyle=1;fontColor=#FF6B6B;align=center;" vertex="1" parent="1">
+      <mxGeometry x="100" y="20" width="460" height="40" as="geometry"/>
+    </mxCell>
+    <mxCell id="title2" value="MCP がある世界" style="text;html=1;fontSize=20;fontStyle=1;fontColor=#4ECDC4;align=center;" vertex="1" parent="1">
+      <mxGeometry x="800" y="20" width="460" height="40" as="geometry"/>
+    </mxCell>
+    <mxCell id="divider" value="" style="line;strokeWidth=2;strokeColor=#999999;dashed=1;" vertex="1" parent="1">
+      <mxGeometry x="690" y="20" width="1" height="640" as="geometry"/>
+    </mxCell>
+
+    <mxCell id="dev1" value="&lt;font style='font-size:28px'&gt;👨‍💻&lt;/font&gt;&lt;br&gt;&lt;b&gt;開発者&lt;/b&gt;" style="text;html=1;align=center;fontSize=13;" vertex="1" parent="1">
+      <mxGeometry x="280" y="70" width="100" height="65" as="geometry"/>
+    </mxCell>
+    <mxCell id="ai1" value="&lt;b&gt;AI エージェント&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=13;fontStyle=1;arcSize=20;shadow=1;" vertex="1" parent="1">
+      <mxGeometry x="60" y="190" width="180" height="50" as="geometry"/>
+    </mxCell>
+    <mxCell id="xcode1" value="&lt;b&gt;Xcode&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=13;fontStyle=1;arcSize=20;shadow=1;" vertex="1" parent="1">
+      <mxGeometry x="420" y="190" width="180" height="50" as="geometry"/>
+    </mxCell>
+    <mxCell id="a1a" value="① 指示" style="rounded=1;strokeColor=#FF6B6B;fontColor=#FF6B6B;fontSize=11;strokeWidth=2;entryX=0.5;entryY=0;exitX=0;exitY=1;" edge="1" parent="1" source="dev1" target="ai1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="a1b" value="② コード提案" style="rounded=1;strokeColor=#FF6B6B;fontColor=#FF6B6B;fontSize=11;dashed=1;exitX=1;exitY=0;entryX=0.25;entryY=1;" edge="1" parent="1" source="ai1" target="dev1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="a1c" value="③ 手動コピペ" style="rounded=1;strokeColor=#FF6B6B;fontColor=#FF6B6B;fontSize=11;strokeWidth=2;exitX=1;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="dev1" target="xcode1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="a1d" value="④ エラー確認" style="rounded=1;strokeColor=#FF6B6B;fontColor=#FF6B6B;fontSize=11;dashed=1;exitX=0;exitY=0;entryX=0.75;entryY=1;" edge="1" parent="1" source="xcode1" target="dev1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="pain1" value="&lt;font color='#CC0000'&gt;AI はビルド結果を&lt;br&gt;知らない&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFE0E0;strokeColor=#FF6B6B;fontSize=11;dashed=1;dashPattern=5 5;" vertex="1" parent="1">
+      <mxGeometry x="40" y="290" width="150" height="45" as="geometry"/>
+    </mxCell>
+    <mxCell id="pain2" value="&lt;font color='#CC0000'&gt;コンテキスト&lt;br&gt;スイッチの繰り返し&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFE0E0;strokeColor=#FF6B6B;fontSize=11;dashed=1;dashPattern=5 5;" vertex="1" parent="1">
+      <mxGeometry x="210" y="290" width="150" height="45" as="geometry"/>
+    </mxCell>
+    <mxCell id="pain3" value="&lt;font color='#CC0000'&gt;プレビューが&lt;br&gt;見えない&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFE0E0;strokeColor=#FF6B6B;fontSize=11;dashed=1;dashPattern=5 5;" vertex="1" parent="1">
+      <mxGeometry x="380" y="290" width="150" height="45" as="geometry"/>
+    </mxCell>
+    <mxCell id="flow_left" value="&lt;b&gt;開発者がハブになる手動ワークフロー&lt;/b&gt;&lt;br&gt;&lt;br&gt;1. AI にコード生成を依頼&lt;br&gt;2. 出力をコピーして Xcode に貼り付け&lt;br&gt;3. ビルドしてエラーを確認&lt;br&gt;4. エラーを AI に伝えて修正依頼&lt;br&gt;5. 修正コードをまたコピペ…&lt;br&gt;&lt;br&gt;&lt;font color='#CC0000'&gt;&lt;b&gt;繰り返しのたびに集中力が途切れる&lt;/b&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF5F5;strokeColor=#FFAAAA;fontSize=12;align=left;spacingLeft=14;spacingRight=14;verticalAlign=top;spacingTop=10;" vertex="1" parent="1">
+      <mxGeometry x="80" y="380" width="320" height="240" as="geometry"/>
+    </mxCell>
+
+    <mxCell id="dev2" value="&lt;font style='font-size:28px'&gt;👨‍💻&lt;/font&gt;&lt;br&gt;&lt;b&gt;開発者&lt;/b&gt;" style="text;html=1;align=center;fontSize=13;" vertex="1" parent="1">
+      <mxGeometry x="980" y="70" width="100" height="65" as="geometry"/>
+    </mxCell>
+    <mxCell id="ai2" value="&lt;b&gt;AI エージェント&lt;/b&gt;&lt;br&gt;&lt;font style='font-size:11px;color:#666'&gt;Claude Code&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=13;arcSize=20;shadow=1;" vertex="1" parent="1">
+      <mxGeometry x="940" y="190" width="180" height="50" as="geometry"/>
+    </mxCell>
+    <mxCell id="mcp" value="&lt;b&gt;MCP&lt;/b&gt;&lt;br&gt;&lt;font style='font-size:11px;color:#555'&gt;mcpbridge&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=14;arcSize=20;shadow=1;" vertex="1" parent="1">
+      <mxGeometry x="940" y="305" width="180" height="50" as="geometry"/>
+    </mxCell>
+    <mxCell id="xcode2" value="&lt;b&gt;Xcode 26.3&lt;/b&gt;&lt;br&gt;&lt;font style='font-size:11px;color:#555'&gt;20 MCP ツール&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=14;arcSize=20;shadow=1;" vertex="1" parent="1">
+      <mxGeometry x="940" y="420" width="180" height="50" as="geometry"/>
+    </mxCell>
+    <mxCell id="a2a" value="ゴールを伝える" style="rounded=1;strokeColor=#4ECDC4;fontColor=#4ECDC4;fontSize=12;strokeWidth=2;" edge="1" parent="1" source="dev2" target="ai2">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="a2b" value="MCP Protocol" style="rounded=1;strokeColor=#82b366;fontColor=#82b366;fontSize=12;strokeWidth=2;" edge="1" parent="1" source="ai2" target="mcp">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="a2c" value="XPC" style="rounded=1;strokeColor=#d6b656;fontColor=#d6b656;fontSize=12;strokeWidth=2;" edge="1" parent="1" source="mcp" target="xcode2">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+
+    <mxCell id="tools_bg" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F0FFF0;strokeColor=#82b366;dashed=1;" vertex="1" parent="1">
+      <mxGeometry x="740" y="280" width="170" height="210" as="geometry"/>
+    </mxCell>
+    <mxCell id="tools_title" value="&lt;font style='font-size:11px;color:#82b366'&gt;&lt;b&gt;20 ツール&lt;/b&gt;&lt;/font&gt;" style="text;html=1;align=center;" vertex="1" parent="1">
+      <mxGeometry x="740" y="283" width="170" height="20" as="geometry"/>
+    </mxCell>
+    <mxCell id="t1" value="BuildProject" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;" vertex="1" parent="1">
+      <mxGeometry x="750" y="308" width="72" height="25" as="geometry"/>
+    </mxCell>
+    <mxCell id="t2" value="RunTests" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;" vertex="1" parent="1">
+      <mxGeometry x="828" y="308" width="72" height="25" as="geometry"/>
+    </mxCell>
+    <mxCell id="t3" value="RenderPreview" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;" vertex="1" parent="1">
+      <mxGeometry x="750" y="340" width="72" height="25" as="geometry"/>
+    </mxCell>
+    <mxCell id="t4" value="DocSearch" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;" vertex="1" parent="1">
+      <mxGeometry x="828" y="340" width="72" height="25" as="geometry"/>
+    </mxCell>
+    <mxCell id="t5" value="XcodeRead" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;" vertex="1" parent="1">
+      <mxGeometry x="750" y="372" width="72" height="25" as="geometry"/>
+    </mxCell>
+    <mxCell id="t6" value="XcodeUpdate" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;" vertex="1" parent="1">
+      <mxGeometry x="828" y="372" width="72" height="25" as="geometry"/>
+    </mxCell>
+    <mxCell id="t7" value="GetBuildLog" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;" vertex="1" parent="1">
+      <mxGeometry x="750" y="404" width="72" height="25" as="geometry"/>
+    </mxCell>
+    <mxCell id="t8" value="... +13" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;fontStyle=2;" vertex="1" parent="1">
+      <mxGeometry x="828" y="404" width="72" height="25" as="geometry"/>
+    </mxCell>
+
+    <mxCell id="flow_right" value="&lt;b&gt;AI が自律的にツールを使うワークフロー&lt;/b&gt;&lt;br&gt;&lt;br&gt;1. 開発者がゴールを伝える&lt;br&gt;2. AI がコードを書く&lt;br&gt;3. AI が自分でビルドして確認&lt;br&gt;4. AI がエラーを読んで自分で修正&lt;br&gt;5. AI がプレビューを見て UI を調整&lt;br&gt;&lt;br&gt;&lt;font color='#00AA00'&gt;&lt;b&gt;開発者は完成を待つだけ&lt;/b&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F0FFF0;strokeColor=#82b366;fontSize=12;align=left;spacingLeft=14;spacingRight=14;verticalAlign=top;spacingTop=10;" vertex="1" parent="1">
+      <mxGeometry x="740" y="520" width="320" height="120" as="geometry"/>
+    </mxCell>
+  </root>
+</mxGraphModel>

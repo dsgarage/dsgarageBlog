@@ -1,0 +1,39 @@
+graph LR
+    subgraph "Claude Code 連携アーキテクチャ"
+        CC["Claude Code"]
+
+        subgraph "Layer 1: Google Ads MCP"
+            GMCP["Google Ads\nMCP Server"]
+            GAPI["Google Ads API\nキャンペーン分析\nGAQL クエリ"]
+        end
+
+        subgraph "Layer 2: Firebase MCP"
+            FMCP["Firebase\nMCP Server"]
+            RC["Remote Config\n広告フラグ管理"]
+            CR["Crashlytics\nクラッシュ調査"]
+            FS["Firestore\nデータ読み書き"]
+        end
+
+        subgraph "Layer 3: claude-ads スキル"
+            ADS["/ads audit\n186項目チェック"]
+            AG1["Agent 1\nGoogle分析"]
+            AG2["Agent 2\nMeta分析"]
+            AG3["Agent 3\nYouTube分析"]
+            AG4["Agent 4\n予算分析"]
+            AG5["Agent 5\nクリエイティブ"]
+            AG6["Agent 6\nCV分析"]
+        end
+
+        OUT["統合レポート\nHealth Score\nアクションプラン"]
+    end
+
+    CC --> GMCP --> GAPI
+    CC --> FMCP --> RC & CR & FS
+    CC --> ADS --> AG1 & AG2 & AG3 & AG4 & AG5 & AG6
+    AG1 & AG2 & AG3 & AG4 & AG5 & AG6 --> OUT
+
+    style CC fill:#6C5CE7,stroke:#333,color:#fff
+    style GMCP fill:#4285F4,stroke:#333,color:#fff
+    style FMCP fill:#FFCA28,stroke:#333,color:#000
+    style ADS fill:#00B894,stroke:#333,color:#fff
+    style OUT fill:#E17055,stroke:#333,color:#fff

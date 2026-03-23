@@ -1,0 +1,59 @@
+// TTYガード 3層防御 — AIエージェント対策
+digraph tty_guard {
+    rankdir=TB
+    bgcolor="transparent"
+    fontname="Helvetica Neue"
+    fontsize=11
+    pad=0.5
+    nodesep=0.4
+    ranksep=0.5
+
+    node [
+        fontname="Helvetica Neue"
+        fontsize=10
+        style="filled,rounded"
+        shape=box
+        penwidth=0
+        margin="0.12,0.08"
+        height=0.4
+    ]
+
+    edge [
+        fontname="Helvetica Neue"
+        fontsize=9
+        penwidth=1.2
+        arrowsize=0.6
+        color="#94a3b8"
+    ]
+
+    // 攻撃者
+    attacker [label="AIエージェント\n（非対話環境）" fillcolor="#fef3c7" fontcolor="#92400e"]
+
+    // 3層ガード
+    subgraph cluster_guards {
+        label="  TTYガード（3層防御）  "
+        labelloc=t
+        labeljust=c
+        style="rounded,filled"
+        color="#e5e7eb"
+        fillcolor="#f8fafc"
+        fontcolor="#1e40af"
+        fontsize=10
+        penwidth=1
+
+        g1 [label="Layer 1: stdout ブロック\n--plain/--show を非TTYで拒否" fillcolor="#dbeafe" fontcolor="#1e40af"]
+        g2 [label="Layer 2: clipboard ブロック\n非TTYでコピーをスキップ" fillcolor="#dbeafe" fontcolor="#1e40af"]
+        g3 [label="Layer 3: exec ルート\nそもそも出力しない" fillcolor="#dbeafe" fontcolor="#1e40af"]
+    }
+
+    // 結果
+    blocked [label="アクセス拒否\nexit code 2" fillcolor="#bbf7d0" fontcolor="#166534"]
+    secret [label="APIキー\n（Keychain内）" fillcolor="#bbf7d0" fontcolor="#166534"]
+
+    // エッジ
+    attacker -> g1 [label="lkr get --plain" color="#cbd5e1" style=dashed]
+    attacker -> g2 [label="pbpaste" color="#cbd5e1" style=dashed]
+    g1 -> blocked
+    g2 -> blocked
+    g3 -> secret [label="exec経由のみ"]
+}

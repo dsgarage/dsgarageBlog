@@ -1,0 +1,251 @@
+TITLE: Anthropic公式skill-creatorでスキルを自作する
+DATE: 03/06/2026 12:00:00
+STATUS: Draft
+ALLOW COMMENTS: 1
+CONVERT BREAKS: markdown
+-----
+BODY:
+
+
+「Claude Codeのスキルを作りたいけど、どう書けばいいか分からない」——そんな経験はありませんか？
+
+SKILL.mdのフォーマット、descriptionの書き方、テストケースの設計。スキルを「動く」レベルにするだけでも試行錯誤が必要で、「良い」スキルに仕上げるにはさらに反復が要ります。
+
+本記事では、Anthropicが公式リポジトリで公開している**skill-creator**を解説します。スキルの設計からテスト・評価・改善までを体系的に進められるメタスキルです。2026年2月の最新更新も含めて紹介します。
+
+---
+
+## skill-creatorとは
+
+### 概要
+
+**skill-creator**は、Claude Codeのスキルを作成・改善するためのスキルです。「スキルを作るスキル」というメタ的な位置づけです。
+
+公式リポジトリ: [anthropics/skills](https://github.com/anthropics/skills/tree/main/skills/skill-creator)
+
+### 何ができるか
+
+| 機能 | 説明 |
+|:---|:---|
+| **スキル新規作成** | ユーザーの意図をヒアリングしてSKILL.mdを生成 |
+| **テスト実行** | テストプロンプトでスキルを実行し、結果を評価 |
+| **定量ベンチマーク** | with-skill / without-skill の比較、pass rate・トークン数・実行時間を計測 |
+| **反復改善** | フィードバックに基づいてスキルを書き直し、再テスト |
+| **description最適化** | トリガー精度を上げるため、descriptionを自動チューニング |
+
+---
+
+## スキル作成の全体フロー
+
+skill-creatorが導くワークフローは以下の5ステップです。
+
+```
+Step 1: 意図の整理
+├── 何をさせたいか
+├── いつトリガーすべきか
+├── 期待する出力形式
+└── テストケースが必要か判断
+
+Step 2: SKILL.md のドラフト作成
+├── frontmatter（name, description）
+├── 本文（手順・パターン・例）
+└── bundled resources（scripts/, references/, assets/）
+
+Step 3: テスト実行
+├── 2-3個のテストプロンプトを作成
+├── with-skill と without-skill（ベースライン）を並列実行
+└── 結果を eval-viewer で確認
+
+Step 4: 評価とフィードバック
+├── 定性評価（出力を目視確認）
+├── 定量評価（assertions による自動判定）
+└── ベンチマーク（pass_rate, tokens, duration）
+
+Step 5: 改善と再テスト
+├── フィードバックを反映してSKILL.mdを修正
+├── 再実行 → 再評価
+└── 満足するまで繰り返し
+```
+
+---
+
+## SKILL.mdの構造
+
+skill-creatorが生成するスキルは、以下の構造を持ちます。
+
+```
+skill-name/
+├── SKILL.md          （必須）スキル本体
+│   ├── YAML frontmatter（name, description）
+│   └── Markdown instructions
+├── scripts/          （任意）決定的・反復的な処理用スクリプト
+├── references/       （任意）必要に応じて読み込むドキュメント
+└── assets/           （任意）テンプレート・アイコン等
+```
+
+### Progressive Disclosure（段階的読み込み）
+
+スキルの情報は3段階で読み込まれます。
+
+| レベル | 内容 | タイミング |
+|:---|:---|:---|
+| **Level 1** | name + description（約100語） | 常にコンテキストに存在 |
+| **Level 2** | SKILL.md本文（500行以内推奨） | スキルがトリガーされた時 |
+| **Level 3** | bundled resources（無制限） | 必要に応じて読み込み |
+
+このため、descriptionはトリガー判定の要です。SKILL.md本文は500行以内に収め、詳細はreferencesに分離するのがベストプラクティスです。
+
+---
+
+## 2026年2月の最新更新
+
+### PR #350: compatibility フィールド追加（2026-02-06）
+
+SKILL.mdのfrontmatterに`compatibility`フィールドが追加されました。
+
+```yaml
+---
+name: my-skill
+description: "スキルの説明"
+compatibility: "requires python3, pandoc"
+---
+```
+
+スキルが特定のツールや依存関係を必要とする場合に明記できます。バリデーション（`quick_validate.py`）も対応済みです。
+
+### その他の変更
+
+| 変更内容 | 詳細 |
+|:---|:---|
+| **用語統一** | "hyphen-case" → "kebab-case" に変更 |
+| **スキル名の最大長** | 40文字 → 64文字に拡大 |
+| **スクリプト実行権限** | 6つのスクリプトに `chmod +x` を付与 |
+
+### PR #465: 最新ビルドのエクスポート（2026-02-25）
+
+skill-creatorとdocxスキルの最新ビルドがエクスポートされました。
+
+---
+
+## description最適化の仕組み
+
+descriptionはスキルのトリガー精度を決める最重要パラメータです。skill-creatorには、これを自動最適化する機能があります。
+
+### 最適化プロセス
+
+```
+1. トリガー評価クエリを20個生成
+   ├── should-trigger: 8-10個（発火すべきプロンプト）
+   └── should-not-trigger: 8-10個（発火すべきでないプロンプト）
+
+2. ユーザーが評価セットをレビュー・編集
+
+3. 自動最適化ループ実行
+   ├── 60% train / 40% test に分割
+   ├── 各クエリを3回実行して安定したトリガー率を計測
+   ├── Claude（extended thinking）が改善案を提案
+   └── 最大5イテレーション
+
+4. テストスコアが最も高いdescriptionを採用
+```
+
+### 良い評価クエリの条件
+
+skill-creatorは、評価クエリに**リアリティ**を求めます。
+
+```
+悪い例: "Format this data"
+         → 抽象的すぎて何もテストできない
+
+良い例: "ok so my boss just sent me this xlsx file
+         (its in my downloads, called something like
+         'Q4 sales final FINAL v2.xlsx') and she wants me
+         to add a column that shows the profit margin..."
+         → 実際のユーザーが書きそうな具体的なプロンプト
+```
+
+should-not-triggerのクエリは、**キーワードが近いが意図が違う**ものが有効です。明らかに無関係なクエリ（例: PDFスキルに対して「フィボナッチを書いて」）は、テストとして価値がありません。
+
+---
+
+## スキル執筆のコツ
+
+skill-creatorのSKILL.mdから読み取れる、良いスキルを書くためのポイントです。
+
+### 1. WHYを説明する
+
+```
+悪い例: "ALWAYS use snake_case for variable names."
+
+良い例: "Use snake_case for variable names — this project follows
+         PEP 8 conventions, and mixed naming styles cause linting
+         errors in CI."
+```
+
+ALWAYSやNEVERの連発は黄信号です。なぜそうすべきかを説明すれば、モデルは文脈を理解して柔軟に対応できます。
+
+### 2. descriptionは少し「押し」を強くする
+
+Claudeはスキルを「使わない」方向に偏りがちです。descriptionには、トリガーすべき具体的なコンテキストを明記します。
+
+```yaml
+# 弱い
+description: "ダッシュボード構築スキル"
+
+# 強い
+description: "ダッシュボード構築スキル。ユーザーがダッシュボード、
+データ可視化、社内メトリクス、データ表示について言及した場合に
+使用すること。明示的に「ダッシュボード」と言わなくても発動する。"
+```
+
+### 3. 繰り返しパターンはスクリプト化する
+
+テスト実行で全てのケースが同じヘルパースクリプトを自前で書いていたら、それは`scripts/`にバンドルすべきサインです。
+
+---
+
+## 実際に使ってみる
+
+### インストール
+
+skill-creatorを使うには、リポジトリからスキルディレクトリを取得します。
+
+```bash
+# リポジトリをクローン
+git clone https://github.com/anthropics/skills.git
+
+# スキルディレクトリを配置
+cp -r skills/skills/skill-creator ~/.claude/skills/
+```
+
+### 使い方
+
+Claude Codeで以下のように話しかけるだけです。
+
+```
+「ユニットテストを自動生成するスキルを作りたい」
+```
+
+skill-creatorが意図をヒアリングし、SKILL.mdのドラフト作成→テスト→評価→改善のサイクルを導いてくれます。
+
+---
+
+## まとめ
+
+| ポイント | 内容 |
+|:---|:---|
+| **何ができるか** | スキルの新規作成・テスト・評価・改善・description最適化 |
+| **最新更新** | compatibilityフィールド追加、スキル名64文字化、kebab-case統一 |
+| **核心** | 「書いて終わり」ではなく、テスト→フィードバック→改善の反復ループ |
+| **description** | トリガー精度の要。自動最適化機能で60%train/40%testの分割評価が可能 |
+
+スキルは一度作れば何度でも再利用できます。skill-creatorを使えば、その品質を体系的に高められます。自分だけのワークフローを持っているなら、スキル化を検討してみてください。
+
+---
+
+## 参考リンク
+
+- [anthropics/skills - GitHub](https://github.com/anthropics/skills)
+- [skill-creator](https://github.com/anthropics/skills/tree/main/skills/skill-creator)
+- [Claude Code Skills ドキュメント](https://docs.anthropic.com/en/docs/claude-code/skills)
+-----

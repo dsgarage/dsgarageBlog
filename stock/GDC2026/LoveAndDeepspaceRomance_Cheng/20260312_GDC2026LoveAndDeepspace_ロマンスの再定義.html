@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>GDC 2026: Love and Deepspace —
+乙女ゲームのロマンスを再定義した「戦闘」と「日常」の設計哲学</title>
+    <link rel="stylesheet" href="/Users/daisuketsukada/Documents/dsgarageBlog/TechBlog/style.css">
+</head>
+<body>
+<div class="cover">
+    <h1>GDC 2026: Love and Deepspace —
+乙女ゲームのロマンスを再定義した「戦闘」と「日常」の設計哲学</h1>
+    <p class="subtitle">Redefining What Romance Can Be in ‘Love and
+Deepspace’</p>
+    <div class="meta">
+        <p>2026-03-12</p>
+        <p>dsgarage</p>
+    </div>
+</div>
+<div class="toc">
+    <h2>目次</h2>
+<ul>
+<li><a
+href="#gdc-2026-love-and-deepspace-乙女ゲームのロマンスを再定義した戦闘と日常の設計哲学"
+id="toc-gdc-2026-love-and-deepspace-乙女ゲームのロマンスを再定義した戦闘と日常の設計哲学">GDC
+2026: Love and Deepspace —
+乙女ゲームのロマンスを再定義した「戦闘」と「日常」の設計哲学</a>
+<ul>
+<li><a href="#セッション情報"
+id="toc-セッション情報">セッション情報</a></li>
+<li><a href="#乙女ゲームとは何か-ニッチからメインストリームへ"
+id="toc-乙女ゲームとは何か-ニッチからメインストリームへ">乙女ゲームとは何か
+— ニッチからメインストリームへ</a></li>
+<li><a href="#love-and-deepspace-の挑戦-従来のロマンスの枠を超える"
+id="toc-love-and-deepspace-の挑戦-従来のロマンスの枠を超える">Love and
+Deepspace の挑戦 — 従来のロマンスの枠を超える</a></li>
+<li><a href="#part-1-combat-as-romance-一緒に戦うことがロマンスになる"
+id="toc-part-1-combat-as-romance-一緒に戦うことがロマンスになる">Part 1:
+Combat as Romance — 一緒に戦うことがロマンスになる</a>
+<ul>
+<li><a href="#ロマンス-戦闘という非常識"
+id="toc-ロマンス-戦闘という非常識">ロマンス ×
+戦闘という「非常識」</a></li>
+<li><a href="#デュアルキャラクター戦闘システム"
+id="toc-デュアルキャラクター戦闘システム">デュアルキャラクター戦闘システム</a></li>
+<li><a href="#年間の進化-拒絶から共感へ"
+id="toc-年間の進化-拒絶から共感へ">4年間の進化 — 拒絶から共感へ</a></li>
+<li><a href="#改善の5ステップ"
+id="toc-改善の5ステップ">改善の5ステップ</a></li>
+<li><a href="#開発者自身の戦い"
+id="toc-開発者自身の戦い">開発者自身の「戦い」</a></li>
+</ul></li>
+<li><a href="#part-2-everyday-life-as-romance-日常がロマンスになる"
+id="toc-part-2-everyday-life-as-romance-日常がロマンスになる">Part 2:
+Everyday Life as Romance — 日常がロマンスになる</a>
+<ul>
+<li><a href="#ライフシミュレーションシステム"
+id="toc-ライフシミュレーションシステム">ライフシミュレーションシステム</a></li>
+<li><a href="#デザイン哲学-好きな人と日常を共有したい"
+id="toc-デザイン哲学-好きな人と日常を共有したい">デザイン哲学 —
+「好きな人と日常を共有したい」</a></li>
+<li><a href="#ゲームを超えたライフスタイルアプリ的機能"
+id="toc-ゲームを超えたライフスタイルアプリ的機能">ゲームを超えたライフスタイルアプリ的機能</a></li>
+<li><a href="#プレイタイムとパーソナライズされたデート"
+id="toc-プレイタイムとパーソナライズされたデート">プレイタイムとパーソナライズされたデート</a></li>
+<li><a href="#quality-time-companion-mode-現実の孤独に寄り添う"
+id="toc-quality-time-companion-mode-現実の孤独に寄り添う">Quality Time
+Companion Mode — 現実の孤独に寄り添う</a></li>
+<li><a href="#home-system-生活感のあるリアリズム"
+id="toc-home-system-生活感のあるリアリズム">Home System —
+生活感のあるリアリズム</a></li>
+<li><a href="#arvr-仮想と現実の境界を超える"
+id="toc-arvr-仮想と現実の境界を超える">AR/VR —
+仮想と現実の境界を超える</a></li>
+</ul></li>
+<li><a href="#設計原則-現実のパートナーができることそれ以上を"
+id="toc-設計原則-現実のパートナーができることそれ以上を">設計原則 —
+現実のパートナーができること、それ以上を</a></li>
+<li><a href="#まとめ-ロマンスの再定義"
+id="toc-まとめ-ロマンスの再定義">まとめ — ロマンスの再定義</a></li>
+</ul></li>
+</ul>
+</div>
+<div class="content" data-date="2026-03-12">
+<h1
+id="gdc-2026-love-and-deepspace-乙女ゲームのロマンスを再定義した戦闘と日常の設計哲学">GDC
+2026: Love and Deepspace —
+乙女ゲームのロマンスを再定義した「戦闘」と「日常」の設計哲学</h1>
+<blockquote>
+<p>本記事は、GDC（Game Developers
+Conference＝世界最大のゲーム開発者向けカンファレンス。毎年3月にサンフランシスコで開催され、技術・デザイン・ビジネスなど多岐にわたるセッションが行われる）2026
+での講演内容をもとに構成しています。</p>
+</blockquote>
+<p>「ロマンスゲームに本格的な戦闘システムを入れる」と聞いて、あなたはどう感じるだろうか。2020年の開発初期デモが公開された時、プレイヤーの反応は「over
+the
+top（やりすぎ）」「cringy（痛い）」「awkward（ぎこちない）」と圧倒的にネガティブだった。しかし2024年の正式ローンチ後、同じゲームに対するプレイヤーの声は「This
+is God!!!（これは神!!!）」「the Mermaid Card is truly the pinnacle of
+aesthetic and technical
+excellence（人魚カードは美学と技術の頂点）」へと劇的に変わった。</p>
+<p>中国のInfold Games（Papergames）が開発した『Love and
+Deepspace（恋与深空）』は、ローンチから2年で<strong>全世界8,000万人以上のプレイヤー</strong>を獲得し、<strong>Best
+Mobile Game</strong>を受賞した。乙女ゲーム（Otome
+Game）というニッチなジャンルを、いかにして主流のゲーム市場へと押し上げたのか。その鍵は、従来のロマンスゲームの常識を打ち破る「Combat
+as Romance（戦闘としてのロマンス）」と「Everyday Life as
+Romance（日常としてのロマンス）」という2つの柱にあった。</p>
+<figure>
+<img src="IMG_5037.jpg"
+alt="スライド: Our Journey — From Skepticism to Acclaim" />
+<figcaption aria-hidden="true">スライド: Our Journey — From Skepticism
+to Acclaim</figcaption>
+</figure>
+<h2 id="セッション情報">セッション情報</h2>
+<ul>
+<li><strong>イベント</strong>: GDC Festival of Gaming 2026</li>
+<li><strong>日時</strong>: Thursday, March 12, 2026 | 1:50pm -
+2:50pm</li>
+<li><strong>タイトル</strong>: Redefining What Romance Can Be in ‘Love
+and Deepspace’</li>
+<li><strong>スピーカー</strong>: Lizi Cheng（Infold Games /
+Papergames）</li>
+<li><strong>会場</strong>: Room 2005, West Hall</li>
+<li><strong>パス</strong>: Festival Pass, Game Changer Pass</li>
+<li><strong>レベル</strong>: Entry-Level（入門者向け）</li>
+<li><strong>トラック</strong>: Design</li>
+<li><strong>形式</strong>:
+Lecture（レクチャー＝スピーカーが聴衆に向けて発表する講演形式）</li>
+</ul>
+<hr />
+<h2
+id="乙女ゲームとは何か-ニッチからメインストリームへ">乙女ゲームとは何か
+— ニッチからメインストリームへ</h2>
+<figure>
+<img src="IMG_5038.jpg"
+alt="スライド: Otome Games — From Niche to Mainstream" />
+<figcaption aria-hidden="true">スライド: Otome Games — From Niche to
+Mainstream</figcaption>
+</figure>
+<p>セッション冒頭、Lizi Cheng は乙女ゲーム（Otome
+Game）というジャンルの説明から始めた。</p>
+<blockquote>
+<p>“Otome games are a sub-genre of romance games with romance at its
+core. In these games, players embark on their own adventures, they
+encounter one or more charismatic male characters and develop romantic
+relationships with them.”
+（乙女ゲームはロマンスを核とするロマンスゲームのサブジャンルだ。プレイヤーは自分自身の冒険に出かけ、1人以上の魅力的な男性キャラクターに出会い、恋愛関係を築いていく。）</p>
+</blockquote>
+<p>乙女ゲームは美しいビジュアル、豊かなストーリー、魅力的なキャラクターを特徴とし、ゲームプレイの中心はテキストベースのインタラクションだ。プレイヤーはラブインタレスト（恋愛対象キャラクター）との関わりを通じて物語を進め、ファンアート、ファンフィクション、AMV（Anime
+Music Video）など活発な二次創作コミュニティを形成する。</p>
+<p>しかし従来の乙女ゲームは、限られたリソースで開発されることが多く、テキストとビジュアルノベル形式に特化した小規模なタイトルが主流だった。</p>
+<blockquote>
+<p>“As a result, they typically have been developed with more limited
+resources, focusing primarily on these smaller scopes and teams.”
+（結果として、小規模なスコープとチームに焦点を当て、より限られたリソースで開発されることが一般的だった。）</p>
+</blockquote>
+<p>この構造を変えたのが、Infold Games（Papergames）の前作『Mr. Love:
+Queen’s
+Choice（恋与制作人）』だった。同作は中国の乙女ゲーム市場をメインストリームへと押し上げる基盤を築いた。</p>
+<hr />
+<h2 id="love-and-deepspace-の挑戦-従来のロマンスの枠を超える">Love and
+Deepspace の挑戦 — 従来のロマンスの枠を超える</h2>
+<figure>
+<img src="IMG_5044.jpg" alt="スライド: Love and Deepspace タイトル" />
+<figcaption aria-hidden="true">スライド: Love and Deepspace
+タイトル</figcaption>
+</figure>
+<p>『Love and
+Deepspace』の開発にあたり、チームが最初に問うたのはシンプルだが大胆な問いだった。</p>
+<blockquote>
+<p>“So when we began developing Love and Deepspace, our first question
+was, how do we reach players who have never engaged with this genre
+before?” （Love and
+Deepspaceの開発を始めたとき、最初の問いは「このジャンルに触れたことのないプレイヤーにどう届けるか」だった。）</p>
+</blockquote>
+<figure>
+<img src="IMG_5039.jpg" alt="スライド: 5人のラブインタレスト" />
+<figcaption aria-hidden="true">スライド:
+5人のラブインタレスト</figcaption>
+</figure>
+<p>Love and
+Deepspaceは近未来を舞台にしたロマンスゲームだ。プレイヤーはラブインタレストと対面でインタラクションでき、一緒にワークアウトしたり、勉強したり、リラックスしたり、さらにはモンスターと戦ったりもできる。</p>
+<p>チームが目指したのは、従来のロマンティックなシナリオを超え、あらゆるタイプのプレイヤーを惹きつけること。</p>
+<blockquote>
+<p>“We want all different types of players to fall in love with the game
+and our love interest. To this end, we try many unexpected or even
+counterintuitive types of gameplay that are never before seen in this
+genre.”
+（あらゆるタイプのプレイヤーにゲームとラブインタレストを好きになってほしい。そのために、このジャンルでは前例のない、予想外で直感に反するタイプのゲームプレイを数多く試みた。）</p>
+</blockquote>
+<figure>
+<img src="IMG_5045.jpg"
+alt="スライド: Our Approach — Combat as Romance / Everyday Life as Romance" />
+<figcaption aria-hidden="true">スライド: Our Approach — Combat as
+Romance / Everyday Life as Romance</figcaption>
+</figure>
+<p>その結果たどり着いたのが、セッションの2つの柱となるアプローチだ。</p>
+<ul>
+<li><strong>Combat as Romance</strong>（戦闘としてのロマンス）</li>
+<li><strong>Everyday Life as
+Romance</strong>（日常としてのロマンス）</li>
+</ul>
+<hr />
+<h2 id="part-1-combat-as-romance-一緒に戦うことがロマンスになる">Part 1:
+Combat as Romance — 一緒に戦うことがロマンスになる</h2>
+<figure>
+<img src="IMG_5046.jpg"
+alt="スライド: Combat as Romance — Romance = Fighting Side by Side" />
+<figcaption aria-hidden="true">スライド: Combat as Romance — Romance =
+Fighting Side by Side</figcaption>
+</figure>
+<h3 id="ロマンス-戦闘という非常識">ロマンス × 戦闘という「非常識」</h3>
+<p>Love and
+Deepspaceには、本格的なリアルタイム戦闘システムが搭載されている。プレイヤーは超能力（Evol）を使い、Wanderers（ワンダラーズ）と呼ばれる地球外モンスターとラブインタレストとともに戦う。</p>
+<blockquote>
+<p>“Maybe right now you’re thinking, whoa, isn’t this supposed to be a
+romance game? But I promise you after you experience it, the integration
+of romance and combat actually makes a lot of sense. And this design is
+rooted in our unique understanding of romance.”
+（今あなたは「え、これロマンスゲームじゃないの？」と思っているかもしれない。でも約束する、体験すればロマンスと戦闘の統合は実に理にかなっている。そしてこの設計は、ロマンスに対する私たちの独自の理解に根ざしている。）</p>
+</blockquote>
+<p>チームの信念は明快だった。ロマンスとは楽しい時だけを共有することではない。</p>
+<blockquote>
+<p>“Fighting side by side can also be the pinnacle of romance.”
+（一緒に戦うこともまた、ロマンスの頂点になりうる。）</p>
+</blockquote>
+<p>危機的瞬間で鍛えられた信頼と感情は忘れられないものになる。そしてチームは、恋人同士の<strong>対等で互いに支え合う関係</strong>を強調した。</p>
+<blockquote>
+<p>“The emotional bonds are strengthened. The trust and feelings forged
+in moments of crisis become unforgettable. And we also emphasize equal
+and mutual support between lovers.”
+（感情的な絆は強化される。危機の瞬間に鍛えられた信頼と感情は忘れられないものになる。そして私たちは恋人同士の対等で互いに支え合う関係を重視している。）</p>
+</blockquote>
+<h3
+id="デュアルキャラクター戦闘システム">デュアルキャラクター戦闘システム</h3>
+<p>この思想を具現化するため、チームは「一緒に戦う体験」を中心に据えたデュアルキャラクター戦闘システムを設計した。</p>
+<blockquote>
+<p>“And that’s why we designed a dual character combat system centered
+around the experience of fighting side by side.”
+（だからこそ、一緒に戦う体験を中心としたデュアルキャラクター戦闘システムを設計した。）</p>
+</blockquote>
+<p>プレイヤーは常に頼れるパートナーが隣にいることを感じられる。戦闘中も一人ではなく、誰かがいつも支えてくれる。</p>
+<blockquote>
+<p>“Someone is always there to support you. In our early concepts,
+fighting alongside the one you love is kind of like spice — it’s
+exciting.”
+（誰かがいつもそばで支えてくれる。初期コンセプトでは、愛する人と一緒に戦うことはスパイスのようなもの——わくわくするものだと考えていた。）</p>
+</blockquote>
+<h3 id="年間の進化-拒絶から共感へ">4年間の進化 — 拒絶から共感へ</h3>
+<figure>
+<img src="IMG_5052.jpg"
+alt="スライド: Rejection to Resonance, All in 4 Years" />
+<figcaption aria-hidden="true">スライド: Rejection to Resonance, All in
+4 Years</figcaption>
+</figure>
+<p>しかし理想の実現は容易ではなかった。Cheng
+は2020年の初期デモと2024年のローンチ版を比較して見せた。</p>
+<figure>
+<img src="IMG_5047.jpg"
+alt="スライド: Combat as Romance — 2020 vs. 2025 Gameplay Comparison" />
+<figcaption aria-hidden="true">スライド: Combat as Romance — 2020
+vs. 2025 Gameplay Comparison</figcaption>
+</figure>
+<blockquote>
+<p>“But that was easier said than done. How does it actually work to
+develop a gameplay that conveys love through combat?”
+（しかしそれは言うは易く行うは難し。戦闘で愛を伝えるゲームプレイを実際にどう開発するのか？）</p>
+</blockquote>
+<p>2020年版への反応は壊滅的だった。</p>
+<blockquote>
+<p>“People thought it was over the top. It was poorly executed. Battle
+was awkward and even funny in an embarrassing way.”
+（やりすぎだと思われた。出来が悪かった。戦闘はぎこちなく、恥ずかしい意味で笑えるものだった。）</p>
+</blockquote>
+<p>プレイヤーからは「cringy（痛い）」という評価が圧倒的だった。しかし2024年のローンチ後、評価は劇的に好転した。</p>
+<blockquote>
+<p>“Players were not only more receptive but were also able to genuinely
+appreciate the emotional experience of fighting side by side.”
+（プレイヤーはより受容的になっただけでなく、一緒に戦う感情的体験を心から評価できるようになった。）</p>
+</blockquote>
+<h3 id="改善の5ステップ">改善の5ステップ</h3>
+<figure>
+<img src="IMG_5053.jpg"
+alt="スライド: Combat as Romance — How We Improved Character Design &amp; Gameplay" />
+<figcaption aria-hidden="true">スライド: Combat as Romance — How We
+Improved Character Design &amp; Gameplay</figcaption>
+</figure>
+<p>この転換はどのように実現されたのか。Cheng
+は5つのステップに分解して説明した。</p>
+<h4 id="step-1-魅力的なキャラクター-crush-worthy-characters">Step 1:
+魅力的なキャラクター — “Crush-Worthy Characters”</h4>
+<figure>
+<img src="IMG_5053.jpg"
+alt="スライド: Step 1 — Reshaping Characters Without Compromising Core Temperament（2020 vs 2024）" />
+<figcaption aria-hidden="true">スライド: Step 1 — Reshaping Characters
+Without Compromising Core Temperament（2020 vs 2024）</figcaption>
+</figure>
+<p>最初の問題はシンプルだった。</p>
+<blockquote>
+<p>“The first question we had to address was pretty straightforward.
+They just weren’t hot enough.”
+（最初に取り組むべき問題はかなり単純だった。キャラクターが十分に魅力的でなかった。）</p>
+</blockquote>
+<p>ロマンティックな引力と感情的スパークを生み出せなければ、何も機能しない。チームは根本原因を分析し、モバイルゲームの常識が足かせになっていることを発見した。</p>
+<blockquote>
+<p>“We were lowering our visual ambitions from the early on. We thought
+we had to follow typical mobile game standards… but this assumption was
+actually holding us back.”
+（初期段階からビジュアルの目標を下げていた。典型的なモバイルゲーム基準に従うべきだと思っていたが、この思い込みが実は足を引っ張っていた。）</p>
+</blockquote>
+<p>戦略を転換し、<strong>コンソールレベルの品質を先に追求</strong>してからモバイル最適化する方針に変更。キャラクターをゼロから再構築した。</p>
+<blockquote>
+<p>“We then rebuilt our characters from the ground up, increasing each
+love interest’s polygon count to 102K and raising the rig to over 500
+bones. These were levels typically reserved for PC or console games.”
+（キャラクターをゼロから再構築した。各ラブインタレストのポリゴン数を10万2千に増やし、リグを500ボーン以上に引き上げた。これらはPC・コンソールゲームに通常用いられる水準だ。）</p>
+</blockquote>
+<h4
+id="step-2-自然なロマンスの発展-organic-authentic-romance-development">Step
+2: 自然なロマンスの発展 — “Organic, Authentic Romance Development”</h4>
+<p>ビジュアル改善後の次の課題は、キャラクターのパーソナリティを深め、段階的な親密感を設計すること。</p>
+<blockquote>
+<p>“Redefining relationships by creating a gradual sense of intimacy.”
+（段階的な親密感を作ることで関係性を再定義する。）</p>
+</blockquote>
+<h4
+id="step-3-一貫したストーリーテリング-coherent-consistent-storytelling">Step
+3: 一貫したストーリーテリング — “Coherent, Consistent Storytelling”</h4>
+<p>2020年版で「cringe」と評価された根本原因は、インタラクション自体ではなく<strong>タイミング</strong>にあった。</p>
+<blockquote>
+<p>“It wasn’t that the intimate interactions themselves were cringe. It
+was that the timing did not match the player’s expectations.”
+（親密なインタラクション自体が痛いのではなかった。タイミングがプレイヤーの期待と合っていなかったのだ。）</p>
+</blockquote>
+<p>開発者はプレイヤーと同じ背景知識を共有していない。これは見落としがちな落とし穴だ。</p>
+<blockquote>
+<p>“Players don’t share the same background knowledge that we have. And
+so we should craft the order of events carefully.”
+（プレイヤーは私たちと同じ背景知識を持っていない。だからイベントの提示順序を慎重に設計すべきだ。）</p>
+</blockquote>
+<p>チームはコンテンツを再構成した。序盤は<strong>抑制的でフォーマル</strong>な関係にし、戦闘の緊張感と調和させた。ナラティブの進行と段階的な感情の発展を通じて互いの理解を深め、感情的基盤が確立された<strong>後に</strong>より親密な戦闘インタラクションを導入した。</p>
+<blockquote>
+<p>“After that emotional foundation is established, we introduce more
+varied and intimate combat interactions, guided by each character’s
+identity and backstory. So that these moments can emerge naturally
+within the combat.”
+（感情的基盤が確立された後に、各キャラクターのアイデンティティとバックストーリーに導かれた、より多様で親密な戦闘インタラクションを導入する。こうした瞬間が戦闘の中で自然に生まれるように。）</p>
+</blockquote>
+<h4 id="step-4-ポートレートからランドスケープへの戦闘モード切替">Step 4:
+ポートレートからランドスケープへの戦闘モード切替</h4>
+<p>ロマンスの親密感を保つためポートレートモード（縦画面）を採用していたが、戦闘にそのまま適用すると問題が生じた。</p>
+<blockquote>
+<p>“This assumption was actually in conflict with the combat gameplay…
+characters work closely, but at the sacrifice of a wider field of view.
+This makes it difficult to read the battlefield and track enemy
+behavior.”
+（この前提は実際には戦闘ゲームプレイと矛盾していた。キャラクターは近くに映るが、広い視野が犠牲になる。戦場を把握し敵の行動を追跡することが困難になる。）</p>
+</blockquote>
+<p>複数回のイテレーションを経て、チームは大胆な決断を下した。<strong>戦闘時はランドスケープ（横画面）に動的に切り替える</strong>。</p>
+<blockquote>
+<p>“After multiple iterations, we made a bold decision to switch combat
+into landscape mode, transitioning from portrait to landscape when
+players are entering battle.”
+（複数回のイテレーションを経て、戦闘をランドスケープモードに切り替えるという大胆な決断をした。プレイヤーが戦闘に入る際にポートレートからランドスケープへ移行する。）</p>
+</blockquote>
+<p>結果として、ポートレートでロマンスの親密感を、ランドスケープで戦闘の操作性を両立できた。最初はプレイヤーも少し戸惑ったが、切り替え頻度を慎重にコントロールしたことで素早く適応した。</p>
+<p>面白いエピソードも生まれた。</p>
+<blockquote>
+<p>“If you see someone switching their phone between portrait and
+landscape mode frequently, they are probably playing this game. This was
+a fun surprise for us. We love that this became a distinctive feature of
+the gameplay experience.”
+（誰かが縦と横の画面切り替えを頻繁にしていたら、おそらくこのゲームをプレイしている。これは楽しいサプライズだった。これがゲームプレイ体験の特徴的なシグネチャーになったことが嬉しい。）</p>
+</blockquote>
+<h4 id="step-5-没入感のためのディテール">Step 5:
+没入感のためのディテール</h4>
+<p>戦闘体験をさらに磨くため、チームは協力的なインタラクションの細部にこだわった。</p>
+<ul>
+<li><strong>合体攻撃</strong>:
+プレイヤーとラブインタレストがタイミングを合わせて必殺技を繰り出し、より大きなダメージを与える</li>
+<li><strong>身を挺した防御</strong>:
+ラブインタレストが攻撃からプレイヤーを庇う</li>
+<li><strong>感情的リアクション</strong>:
+プレイヤーが攻撃されると怒り、一時的に攻撃力が上昇</li>
+<li><strong>戦闘中の会話</strong>:
+チームメイトのように互いの状態を確認し合う</li>
+</ul>
+<blockquote>
+<p>“We were ultimately able to deliver a combat experience where players
+genuinely feel like they are fighting alongside him, in a way that feels
+right.”
+（最終的に、プレイヤーが「本当に一緒に戦っている」と実感できる戦闘体験を、自然な形で届けることができた。）</p>
+</blockquote>
+<h3 id="開発者自身の戦い">開発者自身の「戦い」</h3>
+<figure>
+<img src="IMG_5048.jpg"
+alt="スライド: キャラクター紹介 — 沈星回（Xavier）" />
+<figcaption aria-hidden="true">スライド: キャラクター紹介 —
+沈星回（Xavier）</figcaption>
+</figure>
+<p>セッション中には戦闘モンタージュ映像も上映され、進化の集大成が披露された。Cheng
+は開発過程を振り返り、こう語った。</p>
+<blockquote>
+<p>“The process of creating the romantic combat experience — as
+developers we also feel like going through a combat of our own. We’ve
+accepted new challenges and never gave up. Failure in game development
+isn’t something to be scared of. You just try again.”
+（ロマンティックな戦闘体験を作るプロセスは、開発者としても自分たち自身の戦いを経験しているようなものだった。新しい挑戦を受け入れ、決して諦めなかった。ゲーム開発において失敗は怖れるものではない。ただもう一度やり直せばいい。）</p>
+</blockquote>
+<hr />
+<h2 id="part-2-everyday-life-as-romance-日常がロマンスになる">Part 2:
+Everyday Life as Romance — 日常がロマンスになる</h2>
+<p>セッション後半では、もう一つの柱「Everyday Life as
+Romance」が語られた。</p>
+<blockquote>
+<p>“Life can be romantic. And romance can be present in everyday
+rituals.”
+（日常はロマンチックになりうる。そしてロマンスは日々の習慣の中に存在しうる。）</p>
+</blockquote>
+<h3
+id="ライフシミュレーションシステム">ライフシミュレーションシステム</h3>
+<p>Love and
+Deepspaceでは、精巧なライフシミュレーションシステムにより、プレイヤーがゲーム内で<strong>日常の伴侶体験</strong>を味わえる。</p>
+<blockquote>
+<p>“We designed an intricate life-simulation system that allows players
+to experience genuine daily companionship within the game. This system
+covers all aspects of life.”
+（プレイヤーがゲーム内で真の日常的な伴侶体験を味わえる精巧なライフシミュレーションシステムを設計した。このシステムは生活のあらゆる側面をカバーする。）</p>
+</blockquote>
+<p>具体的な機能は多岐にわたる。</p>
+<ul>
+<li><strong>ファッション</strong>:
+ラブインタレストの服を選び、毎日異なるコーディネートを楽しむ</li>
+<li><strong>食事のアドバイス</strong>:
+何を食べるか迷ったら、ラブインタレストにおすすめを聞ける</li>
+<li><strong>ARコンパニオンモード</strong>:
+勉強中、ジム、就寝時にARで現実世界にラブインタレストを召喚</li>
+</ul>
+<h3 id="デザイン哲学-好きな人と日常を共有したい">デザイン哲学 —
+「好きな人と日常を共有したい」</h3>
+<blockquote>
+<p>“Our design approach is based on the idea that when it comes to
+someone you love, you want to spend time together and share details
+about your daily life with him.”
+（私たちのデザインアプローチは、好きな人と一緒に過ごし、日常の細かいことを共有したいという思いに基づいている。）</p>
+</blockquote>
+<p>チームは従来のゲームプレイの枠にとどまらず、日常生活を起点として、ラブインタレストと過ごす方法を継続的に拡張した。</p>
+<h3
+id="ゲームを超えたライフスタイルアプリ的機能">ゲームを超えたライフスタイルアプリ的機能</h3>
+<p>驚くべきことに、Love and
+Deepspaceは通常ライフスタイルアプリにしかない機能まで搭載している。</p>
+<blockquote>
+<p>“We even developed features that are typically found only in
+lifestyle apps — game notebooks, schedule reminders, and you can even
+track your period in there.”
+（ライフスタイルアプリにしか通常見られない機能まで開発した——ゲーム内ノートブック、スケジュールリマインダー、さらには生理周期のトラッキングまでできる。）</p>
+</blockquote>
+<p>これらの機能はすべて「日常生活」というテーマの下に統一され、実用性と高いカスタマイズ性を備えている。</p>
+<blockquote>
+<p>“Focusing on practical details and offering a high degree of
+customization and creative freedom.”
+（実用的なディテールに焦点を当て、高度なカスタマイズ性と創造的自由度を提供する。）</p>
+</blockquote>
+<h3
+id="プレイタイムとパーソナライズされたデート">プレイタイムとパーソナライズされたデート</h3>
+<p>ゲーム内にはリアルなデートをシミュレーションする「プレイタイム機能」もある。ボードゲームを一緒に遊んだり、カップル写真を撮ったり、クレーンゲームを楽しんだりできる。</p>
+<p>重要なのは、<strong>各キャラクターの個性がデートの体験に反映される</strong>こと。チームは高度にパーソナライズされたビヘイビアツリー（行動木＝AIの意思決定を階層的に構造化する手法）システムを構築した。</p>
+<blockquote>
+<p>“Each character has a distinct personality — dating each of them
+should feel different.”
+（各キャラクターには異なる個性がある。それぞれとのデートは異なる体験であるべきだ。）</p>
+</blockquote>
+<p>クレーンゲームの例が印象的だった。</p>
+<ul>
+<li><strong>Xavier（沈星回）</strong>:
+おおらかで楽天的、少しぼんやりしている。リラックスした雰囲気でゲームを楽しむ</li>
+<li><strong>Zayne（黎深）</strong>:
+職業柄（心臓外科医）、正確で決断力のある動き。静かにプレイヤーをサポートする</li>
+<li><strong>Rafayel</strong>:
+活発で超熱心。夢中になりすぎて順番を忘れることも</li>
+<li><strong>4人目のキャラクター</strong>:
+意外にもゲームを楽しみ、高い腕前でプレイヤーに教えてくれる</li>
+</ul>
+<figure>
+<img src="IMG_5049.jpg"
+alt="スライド: キャラクター紹介 — 黎深（Zayne）Evol: 冰" />
+<figcaption aria-hidden="true">スライド: キャラクター紹介 —
+黎深（Zayne）Evol: 冰</figcaption>
+</figure>
+<figure>
+<img src="IMG_5050.jpg" alt="スライド: 黎深の戦闘シーン" />
+<figcaption aria-hidden="true">スライド: 黎深の戦闘シーン</figcaption>
+</figure>
+<blockquote>
+<p>“Because of these rich character settings, players gradually come to
+understand the love of spending time with each of them. These details
+are extremely effective and important for both character and
+relationship building.”
+（これらの豊かなキャラクター設定により、プレイヤーはそれぞれと過ごす時間の喜びを徐々に理解していく。こうしたディテールはキャラクターと関係性の構築の両方において極めて効果的で重要だ。）</p>
+</blockquote>
+<h3 id="quality-time-companion-mode-現実の孤独に寄り添う">Quality Time
+Companion Mode — 現実の孤独に寄り添う</h3>
+<p>Love and
+Deepspaceが独自なのは、ゲーム内だけでなく<strong>現実の生活</strong>にまで踏み込んでいる点だ。</p>
+<blockquote>
+<p>“Have you ever felt alone while studying, working, exercising? Once
+something good happens to you, wish there were someone you could share
+with. That sense of loneliness — in many ways, that’s exactly what a
+partner is meant to do.”
+（勉強中、仕事中、運動中に孤独を感じたことはないだろうか。何かいいことがあった時、誰かに共有したいと思ったことは。その孤独感——多くの意味で、それこそまさにパートナーの存在意義だ。）</p>
+</blockquote>
+<p>「Quality Time Companion
+Mode」では、仕事・勉強・運動・休憩中にラブインタレストを呼び出せる。</p>
+<blockquote>
+<p>“Sometimes even just glancing up and meeting his eyes during your
+short break can bring a sense of warmth and comfort.”
+（休憩中にふと見上げて目が合うだけで、温かさと安心感をもたらしてくれることがある。）</p>
+</blockquote>
+<h3 id="home-system-生活感のあるリアリズム">Home System —
+生活感のあるリアリズム</h3>
+<p>2025年12月には画期的な「Home
+System」がローンチされた。プレイヤーはゲーム内に<strong>自分だけの空間</strong>を持ち、ラブインタレストとロマンチックなインタラクションや日常の儀式を体験できる。</p>
+<blockquote>
+<p>“The heart of the system is a strong sense of lived-in realism.”
+（システムの核心は、生活感のあるリアリズムだ。）</p>
+</blockquote>
+<p>特別な日には空に花火が上がるなど、細かくも意味のあるディテールが多数設計されている。</p>
+<blockquote>
+<p>“Many players have said that within this space, they were able to
+experience true happiness. As developers, this response means a lot to
+us.”
+（多くのプレイヤーがこの空間の中で本当の幸福を体験できたと語っている。開発者として、この反応は私たちにとって非常に大きな意味がある。）</p>
+</blockquote>
+<h3 id="arvr-仮想と現実の境界を超える">AR/VR —
+仮想と現実の境界を超える</h3>
+<p>チームはAR（拡張現実）とVR（仮想現実）も活用し、仮想と現実世界の境界を打破している。</p>
+<blockquote>
+<p>“We leverage AR and VR to break the barriers between virtual and real
+world.” （ARとVRを活用して、仮想と現実世界の境界を打ち破る。）</p>
+</blockquote>
+<figure>
+<img src="IMG_5043.jpg"
+alt="スライド: Home Systemのロマンチックなインタラクション" />
+<figcaption aria-hidden="true">スライド: Home
+Systemのロマンチックなインタラクション</figcaption>
+</figure>
+<hr />
+<h2 id="設計原則-現実のパートナーができることそれ以上を">設計原則 —
+現実のパートナーができること、それ以上を</h2>
+<p>セッション全体を貫く設計原則が、最後に明確に語られた。</p>
+<blockquote>
+<p>“We want our love interest to do everything a real-life partner can
+do and more. Those things a real boyfriend struggles with, he will try
+his best.”
+（ラブインタレストには、現実のパートナーができることすべて、そしてそれ以上をさせたい。現実の彼氏が苦手なことでも、ゲーム内では全力で挑戦する。）</p>
+</blockquote>
+<p>この言葉には、チームの設計思想が凝縮されている。ゲームの中のパートナーは、現実のパートナーシップが持つ温かさ、信頼、共有の喜びを再現しつつ、現実では難しい「理想のパートナー体験」を提供する。</p>
+<hr />
+<h2 id="まとめ-ロマンスの再定義">まとめ — ロマンスの再定義</h2>
+<p>Love and
+Deepspaceの成功は、乙女ゲームの常識を3つの点で打ち破ったことにある。</p>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th style="text-align: left;">従来の常識</th>
+<th style="text-align: left;">Love and Deepspace のアプローチ</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">ロマンスはテキストベース</td>
+<td
+style="text-align: left;"><strong>リアルタイム戦闘</strong>でロマンスを表現</td>
+</tr>
+<tr>
+<td style="text-align: left;">ゲーム内で完結</td>
+<td
+style="text-align: left;"><strong>ARコンパニオン・生理トラッカー</strong>など現実生活に拡張</td>
+</tr>
+<tr>
+<td style="text-align: left;">モバイルゲーム品質</td>
+<td
+style="text-align: left;"><strong>ポリゴン10万2千・500ボーン</strong>のコンソール級キャラクター</td>
+</tr>
+</tbody>
+</table>
+<p>Cheng が語った「Failure in game development isn’t something to be
+scared of. You just try
+again.（ゲーム開発において失敗は怖れるものではない。ただもう一度やり直せばいい。）」という言葉は、2020年の壊滅的な反応から4年で8,000万プレイヤーを獲得するまでの旅路を端的に表している。</p>
+<blockquote>
+<p>“And bring more happiness to all of our players. And this concludes
+my talk. Thank you so much for your attention.”
+（すべてのプレイヤーにもっと幸せを届けたい。以上で私の講演を終わります。ご清聴ありがとうございました。）</p>
+</blockquote>
+<p>ロマンスゲームの可能性を拡張し続けるLove and
+Deepspace。その挑戦はまだ続いている。</p>
+</div>
+</body>
+</html>

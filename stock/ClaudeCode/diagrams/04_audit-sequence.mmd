@@ -1,0 +1,25 @@
+sequenceDiagram
+    participant U as User
+    participant CC as Claude Code
+    participant A1 as Google Agent
+    participant A2 as Meta Agent
+    participant A3 as YouTube Agent
+    participant A4 as Budget Agent
+    participant A5 as Creative Agent
+    participant A6 as Conv Agent
+
+    U->>CC: /ads audit
+    CC->>A1: Google Ads Analysis
+    CC->>A2: Meta Ads Analysis
+    CC->>A3: YouTube Analysis
+    CC->>A4: Budget Analysis
+    CC->>A5: Creative Audit
+    CC->>A6: Conversion Check
+    A1-->>CC: Google Report
+    A2-->>CC: Meta Report
+    A3-->>CC: YouTube Report
+    A4-->>CC: Budget Report
+    A5-->>CC: Creative Report
+    A6-->>CC: Conversion Report
+    CC->>CC: Merge + Score
+    CC-->>U: Health Score 72/100 + Action Plan

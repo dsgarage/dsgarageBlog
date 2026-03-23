@@ -1,0 +1,126 @@
+<mxGraphModel>
+  <root>
+    <mxCell id="0"/>
+    <mxCell id="1" parent="0"/>
+    <mxCell id="title" value="&lt;b&gt;See-through フレームワーク: 2段階学習パイプライン&lt;/b&gt;" style="text;html=1;fontSize=16;align=center;verticalAlign=middle;fillColor=none;strokeColor=none;fontColor=#333333;" vertex="1" parent="1">
+      <mxGeometry x="120" y="10" width="560" height="30" as="geometry"/>
+    </mxCell>
+    <mxCell id="input" value="&lt;b&gt;入力画像 I&lt;/b&gt;&#xa;&#xa;アニメイラスト&#xa;(H x W x 3)" style="rounded=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;html=1;whiteSpace=wrap;verticalAlign=top;spacingTop=5;" vertex="1" parent="1">
+      <mxGeometry x="20" y="70" width="130" height="90" as="geometry"/>
+    </mxCell>
+    <mxCell id="td_label" value="&lt;b&gt;前処理: 透明度デコーダ学習&lt;/b&gt;" style="text;html=1;fontSize=12;align=left;fillColor=none;strokeColor=none;fontColor=#6c8ebf;" vertex="1" parent="1">
+      <mxGeometry x="180" y="50" width="250" height="20" as="geometry"/>
+    </mxCell>
+    <mxCell id="vae_enc" value="&lt;b&gt;SDXL VAE&lt;/b&gt;&#xa;エンコーダ ε_x&#xa;(Frozen)" style="rounded=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+      <mxGeometry x="190" y="70" width="120" height="60" as="geometry"/>
+    </mxCell>
+    <mxCell id="vae_dec" value="&lt;b&gt;SDXL VAE&lt;/b&gt;&#xa;デコーダ D_x&#xa;(Frozen)" style="rounded=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+      <mxGeometry x="350" y="70" width="120" height="60" as="geometry"/>
+    </mxCell>
+    <mxCell id="trans_dec" value="&lt;b&gt;透明度デコーダ&lt;/b&gt;&#xa;D_a&#xa;(学習対象)" style="rounded=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+      <mxGeometry x="510" y="70" width="120" height="60" as="geometry"/>
+    </mxCell>
+    <mxCell id="rgba_out" value="&lt;b&gt;RGBA&lt;/b&gt;&#xa;復元" style="rounded=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=10;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+      <mxGeometry x="670" y="70" width="80" height="60" as="geometry"/>
+    </mxCell>
+    <mxCell id="a_in_vae" style="strokeColor=#333;strokeWidth=2;endArrow=block;endFill=1;" edge="1" parent="1" source="input" target="vae_enc">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="a_vae_dec" style="strokeColor=#333;strokeWidth=2;endArrow=block;endFill=1;" edge="1" parent="1" source="vae_enc" target="vae_dec">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="a_dec_trans" style="strokeColor=#333;strokeWidth=2;endArrow=block;endFill=1;" edge="1" parent="1" source="vae_dec" target="trans_dec">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="a_trans_rgba" style="strokeColor=#333;strokeWidth=2;endArrow=block;endFill=1;" edge="1" parent="1" source="trans_dec" target="rgba_out">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="sep1" value="" style="line;strokeColor=#999;strokeWidth=1;dashed=1;dashPattern=8 4;" vertex="1" parent="1">
+      <mxGeometry x="20" y="175" width="730" height="10" as="geometry"/>
+    </mxCell>
+    <mxCell id="s1_label" value="&lt;b&gt;Stage 1: 単一ボディパーツ抽出&lt;/b&gt; (Local)" style="text;html=1;fontSize=12;align=left;fillColor=none;strokeColor=none;fontColor=#b85450;" vertex="1" parent="1">
+      <mxGeometry x="20" y="195" width="300" height="20" as="geometry"/>
+    </mxCell>
+    <mxCell id="s1_input" value="&lt;b&gt;入力画像 I&lt;/b&gt;&#xa;+&#xa;クラスラベル c_k&#xa;(例: &quot;hair&quot;)" style="rounded=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=10;html=1;whiteSpace=wrap;verticalAlign=top;spacingTop=3;" vertex="1" parent="1">
+      <mxGeometry x="20" y="225" width="130" height="80" as="geometry"/>
+    </mxCell>
+    <mxCell id="s1_unet" value="&lt;b&gt;SDXL U-Net&lt;/b&gt;&#xa;(ファインチューン)&#xa;&#xa;画像条件: τ_I(I)&#xa;クラス条件: τ_C(c_k)&#xa;ε-prediction" style="rounded=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;html=1;whiteSpace=wrap;verticalAlign=top;spacingTop=3;" vertex="1" parent="1">
+      <mxGeometry x="210" y="220" width="170" height="90" as="geometry"/>
+    </mxCell>
+    <mxCell id="s1_decode" value="&lt;b&gt;D_x + D_a&lt;/b&gt;&#xa;デコード" style="rounded=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+      <mxGeometry x="440" y="235" width="100" height="60" as="geometry"/>
+    </mxCell>
+    <mxCell id="s1_out" value="&lt;b&gt;単一パーツ&lt;/b&gt;&#xa;RGBA レイヤー&#xa;L̂_k" style="rounded=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=10;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+      <mxGeometry x="600" y="235" width="110" height="60" as="geometry"/>
+    </mxCell>
+    <mxCell id="a_s1_1" style="strokeColor=#333;strokeWidth=2;endArrow=block;endFill=1;" edge="1" parent="1" source="s1_input" target="s1_unet">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="a_s1_2" style="strokeColor=#333;strokeWidth=2;endArrow=block;endFill=1;" edge="1" parent="1" source="s1_unet" target="s1_decode">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="a_s1_3" style="strokeColor=#333;strokeWidth=2;endArrow=block;endFill=1;" edge="1" parent="1" source="s1_decode" target="s1_out">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="sep2" value="" style="line;strokeColor=#999;strokeWidth=1;dashed=1;dashPattern=8 4;" vertex="1" parent="1">
+      <mxGeometry x="20" y="335" width="730" height="10" as="geometry"/>
+    </mxCell>
+    <mxCell id="s2_label" value="&lt;b&gt;Stage 2: 整合的ボディパーツ分解&lt;/b&gt; (Global)" style="text;html=1;fontSize=12;align=left;fillColor=none;strokeColor=none;fontColor=#82b366;" vertex="1" parent="1">
+      <mxGeometry x="20" y="355" width="350" height="20" as="geometry"/>
+    </mxCell>
+    <mxCell id="s2_input" value="&lt;b&gt;入力画像 I&lt;/b&gt;&#xa;+&#xa;全クラスラベル&#xa;C = {c_1,...,c_N}" style="rounded=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=10;html=1;whiteSpace=wrap;verticalAlign=top;spacingTop=3;" vertex="1" parent="1">
+      <mxGeometry x="20" y="385" width="130" height="80" as="geometry"/>
+    </mxCell>
+    <mxCell id="s2_unet" value="&lt;b&gt;SDXL U-Net&lt;/b&gt;&#xa;+&#xa;&lt;b&gt;Body Part Consistency&#xa;Module (BPCM)&lt;/b&gt;&#xa;&#xa;N パーツを c 次元に&#xa;スタックして同時デノイズ" style="rounded=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;html=1;whiteSpace=wrap;verticalAlign=top;spacingTop=3;" vertex="1" parent="1">
+      <mxGeometry x="200" y="380" width="190" height="110" as="geometry"/>
+    </mxCell>
+    <mxCell id="bpcm_box" value="&lt;b&gt;BPCM&lt;/b&gt;&#xa;パーツ次元 c に沿って&#xa;アテンション実行" style="rounded=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=9;html=1;whiteSpace=wrap;dashed=1;" vertex="1" parent="1">
+      <mxGeometry x="210" y="500" width="170" height="45" as="geometry"/>
+    </mxCell>
+    <mxCell id="a_bpcm" style="strokeColor=#b85450;strokeWidth=1;endArrow=block;endFill=1;dashed=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="s2_unet" target="bpcm_box">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="s2_decode" value="&lt;b&gt;D_x + D_a&lt;/b&gt;&#xa;全パーツ&#xa;デコード" style="rounded=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+      <mxGeometry x="450" y="400" width="100" height="60" as="geometry"/>
+    </mxCell>
+    <mxCell id="s2_out" value="&lt;b&gt;19パーツ全て&lt;/b&gt;&#xa;整合的 RGBA&#xa;レイヤーセット&#xa;{L̂_1,...,L̂_N}" style="rounded=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=10;html=1;whiteSpace=wrap;verticalAlign=top;spacingTop=3;" vertex="1" parent="1">
+      <mxGeometry x="610" y="390" width="120" height="80" as="geometry"/>
+    </mxCell>
+    <mxCell id="a_s2_1" style="strokeColor=#333;strokeWidth=2;endArrow=block;endFill=1;" edge="1" parent="1" source="s2_input" target="s2_unet">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="a_s2_2" style="strokeColor=#333;strokeWidth=2;endArrow=block;endFill=1;" edge="1" parent="1" source="s2_unet" target="s2_decode">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="a_s2_3" style="strokeColor=#333;strokeWidth=2;endArrow=block;endFill=1;" edge="1" parent="1" source="s2_decode" target="s2_out">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="depth_label" value="&lt;b&gt;+ 擬似深度推論&lt;/b&gt;" style="text;html=1;fontSize=11;align=left;fillColor=none;strokeColor=none;fontColor=#9673a6;" vertex="1" parent="1">
+      <mxGeometry x="20" y="560" width="200" height="20" as="geometry"/>
+    </mxCell>
+    <mxCell id="marigold" value="&lt;b&gt;Marigold&lt;/b&gt;&#xa;(ファインチューン)&#xa;+&#xa;BPCM" style="rounded=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+      <mxGeometry x="200" y="560" width="130" height="70" as="geometry"/>
+    </mxCell>
+    <mxCell id="depth_out" value="&lt;b&gt;擬似深度マップ&lt;/b&gt;&#xa;{D_1,...,D_N}&#xa;描画順序" style="rounded=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=10;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+      <mxGeometry x="400" y="560" width="130" height="70" as="geometry"/>
+    </mxCell>
+    <mxCell id="kmeans" value="&lt;b&gt;K-Means&lt;/b&gt;&#xa;(K=2)&#xa;前面/背面分割" style="rounded=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=10;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+      <mxGeometry x="590" y="560" width="120" height="70" as="geometry"/>
+    </mxCell>
+    <mxCell id="a_d1" style="strokeColor=#333;strokeWidth=2;endArrow=block;endFill=1;" edge="1" parent="1" source="marigold" target="depth_out">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="a_d2" style="strokeColor=#333;strokeWidth=2;endArrow=block;endFill=1;" edge="1" parent="1" source="depth_out" target="kmeans">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="final" value="&lt;b&gt;2.5D キャラクターモデル&lt;/b&gt;&#xa;&#xa;層化 RGBA レイヤー&#xa;+ 描画順序&#xa;→ アニメーション可能" style="rounded=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;html=1;whiteSpace=wrap;verticalAlign=top;spacingTop=5;strokeWidth=2;" vertex="1" parent="1">
+      <mxGeometry x="260" y="670" width="250" height="80" as="geometry"/>
+    </mxCell>
+    <mxCell id="a_rgba_final" style="strokeColor=#9673a6;strokeWidth=2;endArrow=block;endFill=1;edgeStyle=orthogonalEdgeStyle;exitX=0.5;exitY=1;entryX=0.7;entryY=0;" edge="1" parent="1" source="s2_out" target="final">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="a_km_final" style="strokeColor=#d6b656;strokeWidth=2;endArrow=block;endFill=1;edgeStyle=orthogonalEdgeStyle;exitX=0.5;exitY=1;entryX=0.9;entryY=0;" edge="1" parent="1" source="kmeans" target="final">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+  </root>
+</mxGraphModel>

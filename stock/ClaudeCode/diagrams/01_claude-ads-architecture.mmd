@@ -1,0 +1,36 @@
+graph TB
+    subgraph "claude-ads 5層アーキテクチャ"
+        L5["Layer 5: テンプレート層\n11業界別戦略フレームワーク"]
+        L4["Layer 4: 参照層\nRAGパターン オンデマンド知識読込"]
+        L3["Layer 3: エージェント層\n6並行サブエージェント"]
+        L2["Layer 2: サブスキル層\nプラットフォーム別深層分析"]
+        L1["Layer 1: オーケストレーター層\nコマンドルーティング"]
+    end
+
+    subgraph "対応プラットフォーム"
+        G["Google Ads"]
+        M["Meta Ads"]
+        Y["YouTube"]
+        LI["LinkedIn"]
+        T["TikTok"]
+        MS["Microsoft Ads"]
+    end
+
+    subgraph "出力"
+        HS["Health Score\n0-100"]
+        AP["優先アクションプラン"]
+        RP["詳細レポート"]
+    end
+
+    L5 --> L4 --> L3 --> L2 --> L1
+    L1 --> G & M & Y & LI & T & MS
+    L3 --> HS & AP & RP
+
+    style L5 fill:#4A90D9,stroke:#333,color:#fff
+    style L4 fill:#5BA0E9,stroke:#333,color:#fff
+    style L3 fill:#6CB0F9,stroke:#333,color:#fff
+    style L2 fill:#7DC0FF,stroke:#333,color:#000
+    style L1 fill:#8ED0FF,stroke:#333,color:#000
+    style HS fill:#2ECC71,stroke:#333,color:#fff
+    style AP fill:#E67E22,stroke:#333,color:#fff
+    style RP fill:#9B59B6,stroke:#333,color:#fff

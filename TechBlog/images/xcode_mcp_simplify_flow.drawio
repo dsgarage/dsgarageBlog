@@ -1,0 +1,88 @@
+<mxGraphModel dx="1200" dy="500" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1200" pageHeight="440" math="0" shadow="0">
+  <root>
+    <mxCell id="0"/>
+    <mxCell id="1" parent="0"/>
+    <mxCell id="t" value="/ios-simplify ワークフロー" style="text;html=1;fontSize=16;fontStyle=1;fontColor=#333;align=center;" vertex="1" parent="1">
+      <mxGeometry x="350" y="5" width="500" height="30" as="geometry"/>
+    </mxCell>
+
+    <mxCell id="ph1_bg" value="" style="rounded=1;fillColor=#F5F0FF;strokeColor=#9673a6;dashed=1;" vertex="1" parent="1">
+      <mxGeometry x="15" y="40" width="320" height="385" as="geometry"/>
+    </mxCell>
+    <mxCell id="ph1_l" value="&lt;b&gt;Phase 1-2: /simplify 標準&lt;/b&gt;" style="text;html=1;fontSize=11;fontColor=#9673a6;align=center;" vertex="1" parent="1">
+      <mxGeometry x="15" y="42" width="320" height="18" as="geometry"/>
+    </mxCell>
+    <mxCell id="ph2_bg" value="" style="rounded=1;fillColor=#F0FFF0;strokeColor=#82b366;dashed=1;" vertex="1" parent="1">
+      <mxGeometry x="365" y="40" width="820" height="385" as="geometry"/>
+    </mxCell>
+    <mxCell id="ph2_l" value="&lt;b&gt;Phase 3: Xcode MCP 拡張検証&lt;/b&gt;" style="text;html=1;fontSize=11;fontColor=#82b366;align=center;" vertex="1" parent="1">
+      <mxGeometry x="365" y="42" width="820" height="18" as="geometry"/>
+    </mxCell>
+
+    <mxCell id="start" value="&lt;b&gt;変更ファイル特定&lt;/b&gt;&lt;br&gt;&lt;font style='font-size:9px'&gt;git diff&lt;/font&gt;" style="ellipse;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=11;shadow=1;" vertex="1" parent="1">
+      <mxGeometry x="95" y="70" width="155" height="45" as="geometry"/>
+    </mxCell>
+    <mxCell id="reuse" value="&lt;b&gt;再利用性&lt;/b&gt;&lt;br&gt;&lt;font style='font-size:9px'&gt;重複パターン検出&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;shadow=1;" vertex="1" parent="1">
+      <mxGeometry x="25" y="155" width="95" height="45" as="geometry"/>
+    </mxCell>
+    <mxCell id="quality" value="&lt;b&gt;品質&lt;/b&gt;&lt;br&gt;&lt;font style='font-size:9px'&gt;命名・構造確認&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;shadow=1;" vertex="1" parent="1">
+      <mxGeometry x="125" y="155" width="95" height="45" as="geometry"/>
+    </mxCell>
+    <mxCell id="efficiency" value="&lt;b&gt;効率性&lt;/b&gt;&lt;br&gt;&lt;font style='font-size:9px'&gt;不要処理検出&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;shadow=1;" vertex="1" parent="1">
+      <mxGeometry x="225" y="155" width="95" height="45" as="geometry"/>
+    </mxCell>
+    <mxCell id="par" value="&lt;font style='font-size:9px;color:#6c8ebf'&gt;|| 並列実行&lt;/font&gt;" style="text;html=1;align=center;" vertex="1" parent="1">
+      <mxGeometry x="115" y="130" width="80" height="18" as="geometry"/>
+    </mxCell>
+    <mxCell id="apply" value="&lt;b&gt;修正適用&lt;/b&gt;&lt;br&gt;&lt;font style='font-size:9px'&gt;XcodeUpdate&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=11;shadow=1;" vertex="1" parent="1">
+      <mxGeometry x="105" y="240" width="130" height="40" as="geometry"/>
+    </mxCell>
+
+    <mxCell id="build" value="&lt;b&gt;ビルド検証&lt;/b&gt;&lt;br&gt;&lt;font style='font-size:9px'&gt;BuildProject&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;shadow=1;" vertex="1" parent="1">
+      <mxGeometry x="390" y="75" width="130" height="40" as="geometry"/>
+    </mxCell>
+    <mxCell id="warn" value="&lt;b&gt;警告チェック&lt;/b&gt;&lt;br&gt;&lt;font style='font-size:9px'&gt;ListNavigatorIssues&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;shadow=1;" vertex="1" parent="1">
+      <mxGeometry x="550" y="75" width="130" height="40" as="geometry"/>
+    </mxCell>
+    <mxCell id="preview" value="&lt;b&gt;プレビュー回帰&lt;/b&gt;&lt;br&gt;&lt;font style='font-size:9px'&gt;RenderPreview&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;shadow=1;" vertex="1" parent="1">
+      <mxGeometry x="710" y="75" width="130" height="40" as="geometry"/>
+    </mxCell>
+    <mxCell id="test" value="&lt;b&gt;テストパス&lt;/b&gt;&lt;br&gt;&lt;font style='font-size:9px'&gt;RunSomeTests&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;shadow=1;" vertex="1" parent="1">
+      <mxGeometry x="870" y="75" width="130" height="40" as="geometry"/>
+    </mxCell>
+    <mxCell id="api" value="&lt;b&gt;API 最新性&lt;/b&gt;&lt;br&gt;&lt;font style='font-size:9px'&gt;DocSearch&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;shadow=1;" vertex="1" parent="1">
+      <mxGeometry x="1030" y="75" width="130" height="40" as="geometry"/>
+    </mxCell>
+
+    <mxCell id="build_fail" value="&lt;font color='#CC0000' style='font-size:9px'&gt;&lt;b&gt;Fail → GetBuildLog&lt;br&gt;で修正 → 再ビルド&lt;/b&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=9;" vertex="1" parent="1">
+      <mxGeometry x="390" y="150" width="130" height="40" as="geometry"/>
+    </mxCell>
+    <mxCell id="preview_note" value="&lt;font style='font-size:20px'&gt;📱&lt;/font&gt;&lt;br&gt;&lt;font style='font-size:9px;color:#666'&gt;スクリーンショットで&lt;br&gt;UI 確認&lt;/font&gt;" style="text;html=1;align=center;" vertex="1" parent="1">
+      <mxGeometry x="715" y="120" width="120" height="55" as="geometry"/>
+    </mxCell>
+
+    <mxCell id="report" value="&lt;b&gt;レポート出力&lt;/b&gt;&lt;br&gt;&lt;font style='font-size:9px'&gt;再利用性 / 品質 / 効率性 / ビルド / 警告 / プレビュー / テスト / API&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF9E6;strokeColor=#d6b656;fontSize=11;shadow=1;" vertex="1" parent="1">
+      <mxGeometry x="620" y="260" width="300" height="45" as="geometry"/>
+    </mxCell>
+    <mxCell id="done" value="&lt;b&gt;git diff 確認 → commit → PR&lt;/b&gt;" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFE599;strokeColor=#d6b656;fontSize=12;shadow=1;" vertex="1" parent="1">
+      <mxGeometry x="640" y="345" width="260" height="50" as="geometry"/>
+    </mxCell>
+
+    <mxCell id="e0a" style="rounded=1;strokeColor=#9673a6;exitX=0.25;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="start" target="reuse"><mxGeometry relative="1" as="geometry"/></mxCell>
+    <mxCell id="e0b" style="rounded=1;strokeColor=#9673a6;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="start" target="quality"><mxGeometry relative="1" as="geometry"/></mxCell>
+    <mxCell id="e0c" style="rounded=1;strokeColor=#9673a6;exitX=0.75;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="start" target="efficiency"><mxGeometry relative="1" as="geometry"/></mxCell>
+    <mxCell id="e1a" style="rounded=1;strokeColor=#9673a6;exitX=0.5;exitY=1;entryX=0.25;entryY=0;" edge="1" parent="1" source="reuse" target="apply"><mxGeometry relative="1" as="geometry"/></mxCell>
+    <mxCell id="e1b" style="rounded=1;strokeColor=#9673a6;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="quality" target="apply"><mxGeometry relative="1" as="geometry"/></mxCell>
+    <mxCell id="e1c" style="rounded=1;strokeColor=#9673a6;exitX=0.5;exitY=1;entryX=0.75;entryY=0;" edge="1" parent="1" source="efficiency" target="apply"><mxGeometry relative="1" as="geometry"/></mxCell>
+    <mxCell id="e2" style="rounded=1;strokeColor=#82b366;strokeWidth=2;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="apply" target="build"><mxGeometry relative="1" as="geometry"/></mxCell>
+    <mxCell id="e2f" style="rounded=1;strokeColor=#b85450;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="build" target="build_fail"><mxGeometry relative="1" as="geometry"/></mxCell>
+    <mxCell id="e3" style="rounded=1;strokeColor=#82b366;strokeWidth=2;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="build" target="warn"><mxGeometry relative="1" as="geometry"/></mxCell>
+    <mxCell id="e4" style="rounded=1;strokeColor=#82b366;strokeWidth=2;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="warn" target="preview"><mxGeometry relative="1" as="geometry"/></mxCell>
+    <mxCell id="e5" style="rounded=1;strokeColor=#82b366;strokeWidth=2;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="preview" target="test"><mxGeometry relative="1" as="geometry"/></mxCell>
+    <mxCell id="e6" style="rounded=1;strokeColor=#82b366;strokeWidth=2;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="test" target="api"><mxGeometry relative="1" as="geometry"/></mxCell>
+    <mxCell id="e7" style="rounded=1;strokeColor=#d6b656;strokeWidth=2;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="api" target="report">
+      <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1095" y="240"/><mxPoint x="770" y="240"/></Array></mxGeometry>
+    </mxCell>
+    <mxCell id="e8" style="rounded=1;strokeColor=#d6b656;strokeWidth=2;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="report" target="done"><mxGeometry relative="1" as="geometry"/></mxCell>
+  </root>
+</mxGraphModel>

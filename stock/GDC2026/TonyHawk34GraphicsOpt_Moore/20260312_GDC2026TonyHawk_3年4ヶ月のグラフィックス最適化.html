@@ -1,0 +1,2245 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>GDC 2026: 3年4ヶ月のグラフィックス最適化 — Tony Hawk's Pro
+Skater 3+4 マルチプラットフォーム戦記</title>
+    <link rel="stylesheet" href="/Users/daisuketsukada/Documents/dsgarageBlog/TechBlog/style.css">
+</head>
+<body>
+<div class="cover">
+    <h1>GDC 2026: 3年4ヶ月のグラフィックス最適化 — Tony Hawk's Pro
+Skater 3+4 マルチプラットフォーム戦記</h1>
+    <p class="subtitle">3 Years and 4 Months of Graphics Optimization in
+Tony Hawk’s Pro Skater 3+4</p>
+    <div class="meta">
+        <p>2026-03-12</p>
+        <p>dsgarage</p>
+    </div>
+</div>
+<div class="toc">
+    <h2>目次</h2>
+<ul>
+<li><a
+href="#gdc-2026-3年4ヶ月のグラフィックス最適化-tony-hawks-pro-skater-34-マルチプラットフォーム戦記"
+id="toc-gdc-2026-3年4ヶ月のグラフィックス最適化-tony-hawks-pro-skater-34-マルチプラットフォーム戦記">GDC
+2026: 3年4ヶ月のグラフィックス最適化 — Tony Hawk’s Pro Skater 3+4
+マルチプラットフォーム戦記</a>
+<ul>
+<li><a href="#本セッションの技術的位置づけ"
+id="toc-本セッションの技術的位置づけ">本セッションの技術的位置づけ</a></li>
+<li><a href="#セッション概要"
+id="toc-セッション概要">セッション概要</a></li>
+<li><a href="#プロジェクトの背景-なぜ6プラットフォーム対応は大変なのか"
+id="toc-プロジェクトの背景-なぜ6プラットフォーム対応は大変なのか">1.
+プロジェクトの背景 – なぜ6プラットフォーム対応は大変なのか</a>
+<ul>
+<li><a href="#スケートゲーム特有の描画課題"
+id="toc-スケートゲーム特有の描画課題">スケートゲーム特有の描画課題</a></li>
+<li><a href="#つのプラットフォーム"
+id="toc-つのプラットフォーム">6つのプラットフォーム</a></li>
+<li><a href="#前作からの引き継ぎ"
+id="toc-前作からの引き継ぎ">前作からの引き継ぎ</a></li>
+</ul></li>
+<li><a
+href="#タイルベースシャドウ分類-日向のピクセルにシャドウ計算は無駄"
+id="toc-タイルベースシャドウ分類-日向のピクセルにシャドウ計算は無駄">2.
+タイルベースシャドウ分類 – 「日向のピクセルにシャドウ計算は無駄」</a>
+<ul>
+<li><a href="#どんな問題か" id="toc-どんな問題か">どんな問題か</a></li>
+<li><a href="#スライドの詳細"
+id="toc-スライドの詳細">スライドの詳細</a></li>
+<li><a href="#トレードオフ-コンピュートベース分類の利点と欠点"
+id="toc-トレードオフ-コンピュートベース分類の利点と欠点">トレードオフ:
+コンピュートベース分類の利点と欠点</a></li>
+<li><a href="#結果-期待ほどではなかった"
+id="toc-結果-期待ほどではなかった">結果:
+「期待ほどではなかった」</a></li>
+</ul></li>
+<li><a
+href="#クラスタードライティングの高速化-flat-bit-array-とスカラー化"
+id="toc-クラスタードライティングの高速化-flat-bit-array-とスカラー化">3.
+クラスタードライティングの高速化 – Flat Bit Array とスカラー化</a>
+<ul>
+<li><a href="#どんな問題か-1"
+id="toc-どんな問題か-1">どんな問題か</a></li>
+<li><a href="#スライドの詳細-flat-bit-array-culling"
+id="toc-スライドの詳細-flat-bit-array-culling">スライドの詳細: Flat Bit
+Array Culling</a></li>
+<li><a href="#効果-タイル分類と組み合わせて期待通りに"
+id="toc-効果-タイル分類と組み合わせて期待通りに">効果:
+タイル分類と組み合わせて「期待通り」に</a></li>
+</ul></li>
+<li><a href="#コンピュートバリアの排除-リングバッファ方式"
+id="toc-コンピュートバリアの排除-リングバッファ方式">4.
+コンピュートバリアの排除 – リングバッファ方式</a>
+<ul>
+<li><a href="#どんな問題か-2"
+id="toc-どんな問題か-2">どんな問題か</a></li>
+<li><a href="#解決策-リングバッファ"
+id="toc-解決策-リングバッファ">解決策: リングバッファ</a></li>
+</ul></li>
+<li><a
+href="#gcn-アセンブリマイクロ最適化-同じコードでも書き方で速度が変わる"
+id="toc-gcn-アセンブリマイクロ最適化-同じコードでも書き方で速度が変わる">5.
+GCN アセンブリマイクロ最適化 –
+「同じコードでも、書き方で速度が変わる」</a>
+<ul>
+<li><a href="#どんな問題か-3"
+id="toc-どんな問題か-3">どんな問題か</a></li>
+<li><a href="#スライドの詳細-one-more-micro-optimization"
+id="toc-スライドの詳細-one-more-micro-optimization">スライドの詳細: One
+More Micro Optimization</a></li>
+<li><a href="#なぜ1命令の差が重要なのか"
+id="toc-なぜ1命令の差が重要なのか">なぜ1命令の差が重要なのか</a></li>
+<li><a href="#原因-hlsl-の型宣言" id="toc-原因-hlsl-の型宣言">原因: HLSL
+の型宣言</a></li>
+</ul></li>
+<li><a
+href="#switch-2-対応-遅れてきた新プラットフォームと-rasterized-quads"
+id="toc-switch-2-対応-遅れてきた新プラットフォームと-rasterized-quads">6.
+Switch 2 対応 – 「遅れてきた新プラットフォーム」と Rasterized Quads</a>
+<ul>
+<li><a href="#switch-2-がもたらした新たな課題"
+id="toc-switch-2-がもたらした新たな課題">Switch 2
+がもたらした新たな課題</a></li>
+<li><a href="#スライドの詳細-rasterized-quads"
+id="toc-スライドの詳細-rasterized-quads">スライドの詳細: Rasterized
+Quads</a></li>
+<li><a href="#技術的メカニズム"
+id="toc-技術的メカニズム">技術的メカニズム</a></li>
+<li><a href="#タイル化との組み合わせ"
+id="toc-タイル化との組み合わせ">16×16 タイル化との組み合わせ</a></li>
+<li><a href="#switch-2-での実測結果"
+id="toc-switch-2-での実測結果">Switch 2 での実測結果</a></li>
+</ul></li>
+<li><a
+href="#シェーダーパーミュテーション削減-バリエーションが多すぎると-gpu-が遊ぶ"
+id="toc-シェーダーパーミュテーション削減-バリエーションが多すぎると-gpu-が遊ぶ">7.
+シェーダーパーミュテーション削減 – 「バリエーションが多すぎると GPU
+が遊ぶ」</a>
+<ul>
+<li><a href="#どんな問題か-4"
+id="toc-どんな問題か-4">どんな問題か</a></li>
+<li><a href="#解決策" id="toc-解決策">解決策</a></li>
+<li><a href="#効果" id="toc-効果">効果</a></li>
+</ul></li>
+<li><a
+href="#自動パフォーマンスダッシュボード-6プラットフォーム-全ステージを毎晩チェック"
+id="toc-自動パフォーマンスダッシュボード-6プラットフォーム-全ステージを毎晩チェック">8.
+自動パフォーマンスダッシュボード – 「6プラットフォーム ×
+全ステージを毎晩チェック」</a>
+<ul>
+<li><a href="#どんな問題か-5"
+id="toc-どんな問題か-5">どんな問題か</a></li>
+<li><a href="#スライドの詳細-data-collection-and-visualization"
+id="toc-スライドの詳細-data-collection-and-visualization">スライドの詳細:
+Data Collection and Visualization</a></li>
+<li><a href="#ダッシュボードの運用"
+id="toc-ダッシュボードの運用">ダッシュボードの運用</a></li>
+</ul></li>
+<li><a
+href="#turning-analysis-into-action-データを集めるだけでは最適化は進まない"
+id="toc-turning-analysis-into-action-データを集めるだけでは最適化は進まない">9.
+Turning Analysis Into Action –
+「データを集めるだけでは最適化は進まない」</a>
+<ul>
+<li><a href="#スライドの詳細-1"
+id="toc-スライドの詳細-1">スライドの詳細</a></li>
+<li><a href="#ストライクプランの運用"
+id="toc-ストライクプランの運用">ストライクプランの運用</a></li>
+</ul></li>
+<li><a href="#ケーススタディ-tokyo-ステージ-最も困難なレベル"
+id="toc-ケーススタディ-tokyo-ステージ-最も困難なレベル">10.
+ケーススタディ: Tokyo ステージ – 「最も困難なレベル」</a>
+<ul>
+<li><a href="#ダイナミックベイクドライティングの動的切り替え"
+id="toc-ダイナミックベイクドライティングの動的切り替え">ダイナミック/ベイクドライティングの動的切り替え</a></li>
+<li><a href="#スライドの詳細-ライトマップパッキング"
+id="toc-スライドの詳細-ライトマップパッキング">スライドの詳細:
+ライトマップパッキング</a></li>
+</ul></li>
+<li><a href="#重複メッシュ検出-見た目は完璧コストは倍"
+id="toc-重複メッシュ検出-見た目は完璧コストは倍">11. 重複メッシュ検出 –
+「見た目は完璧、コストは倍」</a>
+<ul>
+<li><a href="#スライドの詳細-2"
+id="toc-スライドの詳細-2">スライドの詳細</a></li>
+<li><a href="#なぜ重要か" id="toc-なぜ重要か">なぜ重要か</a></li>
+</ul></li>
+<li><a href="#その他の最適化" id="toc-その他の最適化">12.
+その他の最適化</a>
+<ul>
+<li><a href="#テクスチャアップロード最適化コンソール-uma"
+id="toc-テクスチャアップロード最適化コンソール-uma">テクスチャアップロード最適化（コンソール
+UMA）</a></li>
+<li><a href="#depth-bounds-test-の有効化"
+id="toc-depth-bounds-test-の有効化">Depth Bounds Test の有効化</a></li>
+</ul></li>
+<li><a
+href="#on-the-cutting-room-floor-やりたかったが出荷に間に合わなかった"
+id="toc-on-the-cutting-room-floor-やりたかったが出荷に間に合わなかった">13.
+On the Cutting Room Floor –
+「やりたかったが、出荷に間に合わなかった」</a>
+<ul>
+<li><a href="#スライドの詳細-3"
+id="toc-スライドの詳細-3">スライドの詳細</a></li>
+</ul></li>
+<li><a href="#まとめ-3年4ヶ月から得られる5つの教訓"
+id="toc-まとめ-3年4ヶ月から得られる5つの教訓">まとめ –
+3年4ヶ月から得られる5つの教訓</a>
+<ul>
+<li><a href="#エンジンをゲームに合わせてカスタマイズせよ"
+id="toc-エンジンをゲームに合わせてカスタマイズせよ">1.
+エンジンをゲームに合わせてカスタマイズせよ</a></li>
+<li><a href="#仮定を検証せよ" id="toc-仮定を検証せよ">2.
+仮定を検証せよ</a></li>
+<li><a href="#データ収集と行動のギャップを埋めよ"
+id="toc-データ収集と行動のギャップを埋めよ">3.
+データ収集と行動のギャップを埋めよ</a></li>
+<li><a href="#コンテンツバリデーションは全エンジンに必須"
+id="toc-コンテンツバリデーションは全エンジンに必須">4.
+コンテンツバリデーションは全エンジンに必須</a></li>
+<li><a href="#最適化はチーム全体の責務"
+id="toc-最適化はチーム全体の責務">5. 最適化はチーム全体の責務</a></li>
+</ul></li>
+<li><a
+href="#unity-エンジニアのための対応ガイド-各最適化を-unity-でどう実現するか"
+id="toc-unity-エンジニアのための対応ガイド-各最適化を-unity-でどう実現するか">Unity
+エンジニアのための対応ガイド – 各最適化を Unity でどう実現するか</a>
+<ul>
+<li><a href="#対応表-unreal-unity" id="toc-対応表-unreal-unity">対応表:
+Unreal → Unity</a></li>
+<li><a href="#タイルベースシャドウ分類-unity-shadow-のカスケード最適化"
+id="toc-タイルベースシャドウ分類-unity-shadow-のカスケード最適化">1.
+タイルベースシャドウ分類 → Unity: Shadow のカスケード最適化</a></li>
+<li><a href="#クラスタードライティング-unity-forward-hdrp-light-cluster"
+id="toc-クラスタードライティング-unity-forward-hdrp-light-cluster">2.
+クラスタードライティング → Unity: Forward+ / HDRP Light Cluster</a></li>
+<li><a
+href="#コンピュートバリアの排除-unity-asyncgpureadback-とバリア設計"
+id="toc-コンピュートバリアの排除-unity-asyncgpureadback-とバリア設計">3.
+コンピュートバリアの排除 → Unity: AsyncGPUReadback とバリア設計</a></li>
+<li><a
+href="#gcn-アセンブリ最適化-unity-shader-variant-とプラットフォーム別プロファイル"
+id="toc-gcn-アセンブリ最適化-unity-shader-variant-とプラットフォーム別プロファイル">4.
+GCN アセンブリ最適化 → Unity: Shader Variant
+とプラットフォーム別プロファイル</a></li>
+<li><a
+href="#rasterized-quads-unity-srp-batcher-gpu-instancing-の最適化"
+id="toc-rasterized-quads-unity-srp-batcher-gpu-instancing-の最適化">5.
+Rasterized Quads → Unity: SRP Batcher / GPU Instancing の最適化</a></li>
+<li><a
+href="#シェーダーパーミュテーション削減-unity-shader-variant-爆発の防止"
+id="toc-シェーダーパーミュテーション削減-unity-shader-variant-爆発の防止">6.
+シェーダーパーミュテーション削減 → Unity: Shader Variant
+爆発の防止</a></li>
+<li><a
+href="#パフォーマンスダッシュボード-unity-performance-testing-framework-ci"
+id="toc-パフォーマンスダッシュボード-unity-performance-testing-framework-ci">7.
+パフォーマンスダッシュボード → Unity: Performance Testing Framework +
+CI</a></li>
+<li><a href="#ストライクプラン-unity-scene-単位のプロファイルレポート"
+id="toc-ストライクプラン-unity-scene-単位のプロファイルレポート">8.
+ストライクプラン → Unity: Scene 単位のプロファイルレポート</a></li>
+<li><a href="#ライトマップパッキング-unity-lightmapper-設定の最適化"
+id="toc-ライトマップパッキング-unity-lightmapper-設定の最適化">9.
+ライトマップパッキング → Unity: Lightmapper 設定の最適化</a></li>
+<li><a
+href="#重複メッシュ検出-unity-editorscript-によるコンテンツバリデーション"
+id="toc-重複メッシュ検出-unity-editorscript-によるコンテンツバリデーション">10.
+重複メッシュ検出 → Unity: EditorScript
+によるコンテンツバリデーション</a></li>
+<li><a href="#unity-エンジニアへのまとめ"
+id="toc-unity-エンジニアへのまとめ">Unity エンジニアへのまとめ</a></li>
+</ul></li>
+<li><a href="#参考情報" id="toc-参考情報">参考情報</a>
+<ul>
+<li><a href="#unity-公式ドキュメント参照先"
+id="toc-unity-公式ドキュメント参照先">Unity
+公式ドキュメント参照先</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</div>
+<div class="content" data-date="2026-03-12">
+<h1
+id="gdc-2026-3年4ヶ月のグラフィックス最適化-tony-hawks-pro-skater-34-マルチプラットフォーム戦記">GDC
+2026: 3年4ヶ月のグラフィックス最適化 — Tony Hawk’s Pro Skater 3+4
+マルチプラットフォーム戦記</h1>
+<p>スケートゲームの描画は、一見シンプルに見えてエンジニアリング上の難題を抱えている。プレイヤーがトリックを決めながら高速に移動するカメラは、毎フレーム大量の新しいジオメトリを描画しなければならない。開放的なスケートパークには数百のダイナミックライト、複雑なフォリッジ、遠景まで広がるステージが存在する。それを
+Switch 1 のような低スペック機から、PS5 / Xbox Series X の 120fps
+モードまで、<strong>6つのプラットフォーム ×
+数十ステージの全組み合わせ</strong>で安定させる必要がある。</p>
+<p>Blizzard Albany（旧 Vicarious Visions）の John Moore
+氏は、このセッションで「うまくいった最適化」と「期待外れだった最適化」の両方を率直に共有した。30分という短い講演ながら、GPU
+の最深部にあるアセンブリ命令の違いから、アーティストとの協業プロセスまで、レンダリングエンジニアの3年4ヶ月が凝縮されていた。</p>
+<p>トランスクリプトとスライド写真をもとにレポートする。</p>
+<blockquote>
+<p><strong>GDC（Game Developers Conference）</strong>:
+毎年3月にサンフランシスコで開催される世界最大のゲーム開発者向けカンファレンス。</p>
+</blockquote>
+<h3 id="本セッションの技術的位置づけ">本セッションの技術的位置づけ</h3>
+<p>本セッションは <strong>Unreal Engine
+のレンダリングパイプラインを深くカスタマイズ</strong>した事例の発表だ。Unreal
+Engine
+はソースコードが公開されており、エンジンの描画パイプライン（ディファードシェーディング、ライティング、シャドウ計算など）に直接手を入れることができる。Moore
+氏は Unreal
+のディファードライトシェーダーのパーミュテーション構造を変更し、クラスタードライティングのデータ構造を独自に書き換え、さらに
+GPU アーキテクチャごとにアセンブリレベルのチューニングを行っている。</p>
+<p>Unity エンジニアにとっては、<strong>SRP（Scriptable Render
+Pipeline）のカスタマイズ + カスタムシェーダーの低レベル最適化 +
+エディタ拡張によるコンテンツバリデーション</strong>
+に相当する範囲の話だ。ただし Unreal
+はエンジンソースに直接アクセスできるため、Unity の SRP
+カスタマイズより深い階層まで踏み込んでいる点に留意されたい。記事末尾に、各最適化手法の
+Unity における対応策をまとめた。</p>
+<hr />
+<h2 id="セッション概要">セッション概要</h2>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th style="text-align: left;">項目</th>
+<th style="text-align: left;">内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">タイトル</td>
+<td style="text-align: left;">3 Years and 4 Months of Graphics
+Optimization in ‘Tony Hawk’s Pro Skater 3+4’</td>
+</tr>
+<tr>
+<td style="text-align: left;">スピーカー</td>
+<td style="text-align: left;">John Moore, Principal Rendering
+Engineer</td>
+</tr>
+<tr>
+<td style="text-align: left;">所属</td>
+<td style="text-align: left;">Blizzard Albany（旧 Vicarious
+Visions）</td>
+</tr>
+<tr>
+<td style="text-align: left;">トラック</td>
+<td style="text-align: left;">Programming</td>
+</tr>
+<tr>
+<td style="text-align: left;">形式</td>
+<td style="text-align: left;">Lecture（30分）</td>
+</tr>
+<tr>
+<td style="text-align: left;">日時</td>
+<td style="text-align: left;">2026年3月12日（木）16:30 - 17:00</td>
+</tr>
+<tr>
+<td style="text-align: left;">対象レベル</td>
+<td style="text-align: left;">Intermediate〜Advanced</td>
+</tr>
+</tbody>
+</table>
+<p>Moore 氏は前作 Tony Hawk’s Pro Skater 1+2 でも GDC 2020 で「3D + GPU
+Optimization」というセッションを発表しており、今回はその「続編」にあたる。前作で確立したシャドウ分類や環境リフレクション最適化をベースに、今作ではクラスタードライティングの根本的再設計、GCN
+アセンブリレベルのチューニング、Switch 2
+という新プラットフォームへの対応、そしてデータドリブンなパフォーマンス管理体制の構築まで踏み込んだ。</p>
+<hr />
+<h2 id="プロジェクトの背景-なぜ6プラットフォーム対応は大変なのか">1.
+プロジェクトの背景 – なぜ6プラットフォーム対応は大変なのか</h2>
+<h3 id="スケートゲーム特有の描画課題">スケートゲーム特有の描画課題</h3>
+<p>Tony Hawk シリーズの描画が難しい理由は、一般的な TPS（Third-Person
+Shooter）とは異なるカメラの動きにある:</p>
+<ul>
+<li><strong>高速なカメラ移動</strong>:
+トリック中のカメラはスケートパーク全体を一瞬で見渡す。遠景のカリング（描画対象から除外する処理）が効きにくい</li>
+<li><strong>開放的なレベルデザイン</strong>: 壁や建物で視界を遮る FPS
+と異なり、スケートパークは見通しが良く、一度に描画するオブジェクト数が多い</li>
+<li><strong>120fps モード</strong>: Gen9（PS5 / Xbox Series X）では
+120fps をサポート。フレームバジェット（1フレームに使える時間）が通常の
+16.6ms から <strong>8.3ms</strong> に半減し、最適化の圧力が倍増する</li>
+</ul>
+<h3 id="つのプラットフォーム">6つのプラットフォーム</h3>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th style="text-align: left;">プラットフォーム</th>
+<th style="text-align: left;">GPU アーキテクチャ</th>
+<th style="text-align: left;">主な制約</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Xbox One / PS4</strong></td>
+<td style="text-align: left;">AMD GCN（Wave64）</td>
+<td style="text-align: left;">メモリ・GPU
+性能が最もタイト。前世代だが依然としてユーザーベースが大きい</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Xbox Series S</strong></td>
+<td style="text-align: left;">AMD RDNA 2</td>
+<td style="text-align: left;">Gen9
+のエントリーモデル。解像度と性能のバランス</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Xbox Series X / PS5</strong></td>
+<td style="text-align: left;">AMD RDNA 2</td>
+<td style="text-align: left;">120fps モードの維持が最大の課題</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Switch 1</strong></td>
+<td style="text-align: left;">NVIDIA Maxwell 系</td>
+<td
+style="text-align: left;">全プラットフォーム中で最も低スペック。Dynamic
+Resolution（動的解像度調整）必須</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Switch 2</strong></td>
+<td style="text-align: left;">NVIDIA 次世代（Wave32）</td>
+<td
+style="text-align: left;">開発サイクル後半に公表。既存のAMDベース最適化が通用しない</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>PC</strong></td>
+<td style="text-align: left;">多種多様</td>
+<td style="text-align: left;">古い GCN から最新 GPU
+まで幅広いハードウェアレンジ</td>
+</tr>
+</tbody>
+</table>
+<p>Moore 氏は冒頭で重要な前提を述べた:</p>
+<blockquote>
+<p>「この講演は最適化の話だが、ゲーム固有のコンテキストが重要だ。<strong>どんなエンジンも、そのゲームが必要とする形では出荷されない。</strong>
+ライセンスエンジンの共有コードベースには効率的なメリットがあるが、タイトル固有のカスタマイズは常に必要だ。」</p>
+</blockquote>
+<h3 id="前作からの引き継ぎ">前作からの引き継ぎ</h3>
+<p>GDC 2020
+の前作セッションでは、シャドウバッファによるタイル分類、環境リフレクションの最適化、SSR（Screen
+Space
+Reflections：画面上の情報だけで映り込みを計算する手法）の効率化などを発表した。今作ではこれらを
+Unreal Engine のディファードシェーディングパイプライン（Deferred
+Shading：ジオメトリ描画とライティング計算を分離する描画手法）にさらに深く統合し、全プラットフォームで推し進めた。</p>
+<hr />
+<h2 id="タイルベースシャドウ分類-日向のピクセルにシャドウ計算は無駄">2.
+タイルベースシャドウ分類 – 「日向のピクセルにシャドウ計算は無駄」</h2>
+<h3 id="どんな問題か">どんな問題か</h3>
+<p>太陽光（ディレクショナルライト）の影を計算するには、画面上の全ピクセルに対して「このピクセルは影の中か？」を判定する必要がある。これは<strong>シャドウバッファ</strong>（光源の視点から見た深度情報を格納したテクスチャ）を参照する処理で、フレームバジェットの中で大きな比重を占める。</p>
+<p>しかし、実際の画面を見ると: -
+空や屋根の上面のように<strong>確実に日向</strong>のエリアが大量にある -
+建物の影が完全にかかった<strong>確実に日陰</strong>のエリアもある -
+影の境目に位置する<strong>混在エリア</strong>だけが、本当にシャドウ計算が必要</p>
+<p>前作では独立したパスでタイル分類を行っていたが、今作ではクラスタードライティングのクラシファイヤシェーダー（後述）に統合し、シャドウバッファの解析を追加。各タイルを3つに分類する。</p>
+<h3 id="スライドの詳細">スライドの詳細</h3>
+<figure>
+<img src="slides/IMG_0994.jpg" alt="タイル分類の可視化" />
+<figcaption aria-hidden="true">タイル分類の可視化</figcaption>
+</figure>
+<p>スライドのタイトルは <strong>「TILE CLASSIFICATION: DIRECT
+LIGHTING」</strong>。左右に2つの画面が並んでいる。</p>
+<p><strong>左側</strong>: ゲーム内のスケートパーク – 前作でも使われた
+Warehouse
+ステージの可視化。シャドウバッファの値がシアン（水色）のトーンで表示されており、影の境界線がくっきりと見える。中央にスケーターのシルエットが小さく映っている。</p>
+<p><strong>右側</strong>:
+同じシーンにタイル分類の結果をオーバーレイした可視化。ゲームの
+HUD（SCORE: 0、SPECIAL、タイマー
+1:23）が見え、実際のゲームプレイ中のフレームであることがわかる。スライド上に赤いラベルと矢印で以下の注釈が付いている:</p>
+<ul>
+<li><strong>「FULLY LIT (SKIP SHADOW BUFFER SAMPLE)」</strong> –
+画面上部・右側の<strong>黄色〜緑のタイル群</strong>を指す。完全に日向と判定されたタイルで、シャドウバッファのサンプリングを完全にスキップする</li>
+<li><strong>「FULLY SHADOWED (SKIP TILE)」</strong> –
+画面下部・左側の<strong>暗い領域のタイル</strong>を指す。完全に日陰と判定されたタイルで、タイル全体のシャドウ計算をスキップする</li>
+</ul>
+<p>黄色と緑の間にある<strong>くすんだ色のタイル</strong>が
+Mixed（混在）で、これだけが通常のシャドウ計算を実行する。影の不連続面（影の境界線）に沿った薄いバンドのみが
+Mixed になっていることがわかる。</p>
+<h3 id="トレードオフ-コンピュートベース分類の利点と欠点">トレードオフ:
+コンピュートベース分類の利点と欠点</h3>
+<p>前作のトップダウン分類パスを完全に廃止せず、クラシファイヤシェーダーに統合する形をとった理由は、コンピュートベースの分類には以下のトレードオフがあったためだ:</p>
+<ul>
+<li><strong>利点</strong>: クラシファイヤとの統合でパス数が減り、GPU
+タイムラインの空きスロットを活用できる</li>
+<li><strong>欠点</strong>: メモリバリア（GPU
+のメモリ同期命令）のコスト、ランダムアクセスパターンによるキャッシュ効率の低下</li>
+<li><strong>GCN 固有の問題</strong>:
+<code>DeviceMemoryBarrier</code>（UAVメモリバリア）はワークグループ内の同期しか保証せず、異なるディスパッチグループ間ではフルGPUフラッシュが必要</li>
+</ul>
+<h3 id="結果-期待ほどではなかった">結果: 「期待ほどではなかった」</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">項目</th>
+<th style="text-align: left;">数値</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">分類処理のコスト</td>
+<td style="text-align: left;">~0.25ms</td>
+</tr>
+<tr>
+<td style="text-align: left;">ディレクショナルライティングの改善</td>
+<td style="text-align: left;">~0.06ms</td>
+</tr>
+</tbody>
+</table>
+<p>Moore
+氏は正直に「期待ほどの改善ではなかった」と述べた。分類自体は0.25ms
+で終わるが、得られる改善が 0.06ms では投資対効果が薄い。原因は、Unreal
+Engine
+のライティングシェーダーが多数の<strong>パーミュテーション</strong>（ライトの種類や設定の組み合わせごとに生成される別バージョンのシェーダー）に分かれており、各パーミュテーション内の分岐処理が依然として重かったためだ。</p>
+<p>この「期待外れ」が、次のクラスタードライティング改善への直接の動機となった。</p>
+<hr />
+<h2 id="クラスタードライティングの高速化-flat-bit-array-とスカラー化">3.
+クラスタードライティングの高速化 – Flat Bit Array とスカラー化</h2>
+<h3 id="どんな問題か-1">どんな問題か</h3>
+<p>本作のステージには1ビューあたり最大 <strong>264
+個のダイナミックライト</strong>（街灯、ネオン、車のヘッドライトなど）、1クラスタあたり最大
+<strong>30
+ライト</strong>が存在する。各ピクセルに「どのライトが影響するか」を判定するために、<strong>クラスタードライティング</strong>（3D空間をブロックに分割し、各ブロックに影響するライトリストを事前計算する手法）を使っている。</p>
+<p>前作ではライトリストを<strong>リンクリスト</strong>（各ノードが次のノードを指すチェーン構造）で管理していた。Gen8
+/ Gen9 では機能していたが、Switch 1 の 30fps ターゲットや Gen9 の 120fps
+モードでは、以下の問題が顕著になった:</p>
+<ul>
+<li><strong>メモリアクセスがバラバラ</strong>:
+リストのノードを辿るたびにメモリの異なる位置にジャンプする。GPU
+は大量のスレッドが同じアドレスを読むときに最も効率的なので、不規則なアクセスは帯域の無駄遣い</li>
+<li><strong>スカラー化ができない</strong>: GPU は通常 32〜64
+スレッドを束（<strong>Wave /
+ウェーブ</strong>）にして同時実行する。束の全員が同じデータを読むなら、1回の読み込みで済む（「スカラー化」）。しかしリンクリストでは各スレッドが異なるノードを参照するため、スカラー化が効かない</li>
+</ul>
+<p><img src="slides/diagram_flat_bit_array.png"
+alt="リンクリスト vs Flat Bit Array の比較" /> <em>左:
+リンクリスト方式ではメモリアクセスが不規則でキャッシュが効かない。右:
+Flat Bit Array では 2×uint32 の固定サイズで管理し、WaveAllBitOr()
+で全スレッドのビットマスクを統合してスカラー化する</em></p>
+<h3 id="スライドの詳細-flat-bit-array-culling">スライドの詳細: Flat Bit
+Array Culling</h3>
+<figure>
+<img src="slides/IMG_0997.jpg" alt="Flat Bit Array カリング" />
+<figcaption aria-hidden="true">Flat Bit Array カリング</figcaption>
+</figure>
+<p>スライドのタイトルは <strong>「FLAT BIT ARRAY
+CULLING」</strong>。背景にシェーダーのソースコードが表示され、3つの赤いラベルが矢印で重要箇所を示している。コードを上から順に読み解く:</p>
+<h4 id="ラベル1-single-probe-fast-path上部">ラベル1: 「SINGLE PROBE FAST
+PATH」（上部）</h4>
+<pre class="hlsl"><code>// fast path when there is only 1 probe in scene
+#if !(USE_FLAT_BIT_ARRAY_CULLING) &amp;&amp; defined(USE_SINGLE_REFLECTION_PROBE)
+    &amp;&amp; USE_SINGLE_REFLECTION_PROBE
+    NumCapturesAffectingTile = 1;
+#endif</code></pre>
+<p>リフレクションプローブ（環境の映り込みを計算するためのキャプチャポイント）が1つだけの場合、クラスタデータの読み込み自体をスキップする高速パス。Gen9
+のシーンではこのケースが多い。<code>NumCapturesAffectingTile = 1</code>
+とハードコードすることで、クラスタ構造の走査を完全に省略する。</p>
+<h4 id="中央部-2つのコードパスの対比">中央部: 2つのコードパスの対比</h4>
+<pre class="hlsl"><code>#if USE_FLAT_BIT_ARRAY_CULLING
+    // iterate each word in the bitmask array
+    LOOP
+    for (uint BitMaskIndex = 0; BitMaskIndex &lt; NUM_CULLED_LIGHTS_GRID_STRIDE;
+         BitMaskIndex++)
+#else
+    // Accumulate reflections from captures affecting this tile,
+    // applying largest captures first so that the smallest ones
+    // display on top
+    LOOP
+    for (uint TileCaptureIndex = 0;
+         TileCaptureIndex &lt; NumCapturesAffectingTile;
+         TileCaptureIndex++)
+#endif</code></pre>
+<p><code>#if USE_FLAT_BIT_ARRAY_CULLING</code>
+で新方式（ビットマスク配列のイテレーション）と旧方式（リンクリストの走査）を切り替えている。新方式の
+<code>NUM_CULLED_LIGHTS_GRID_STRIDE</code> は <strong>2</strong>（2つの
+32-bit 整数 = 64 ライト分）。</p>
+<h4 id="ラベル2-fixed-size-two-32-bit-arrays">ラベル2: 「FIXED SIZE: TWO
+32-BIT ARRAYS」</h4>
+<pre class="hlsl"><code>uint BitMask = FlatArrayBitMasks[BitMaskIndex];</code></pre>
+<p>各クラスタのライト情報を、たった <strong>2つの uint32</strong>（合計
+64
+ビット）で管理する。各ビットが1つのライトに対応し、ビットが立っていれば「そのライトは影響する」。リンクリストと比較して固定サイズなのでメモリ割り当てが予測可能で、キャッシュに乗りやすい。</p>
+<h4 id="ラベル3-scalarized-loop下部">ラベル3: 「SCALARIZED
+LOOP」（下部）</h4>
+<pre class="hlsl"><code>#if COMPILER_SUPPORTS_TO_SCALAR_MEMORY &amp;&amp; COMPILER_SUPPORTS_WAVE_BIT_ORAND
+    // unify to scalar loads / and registers across tile in the
+    // light bitmask, even if that means a few extra probes on
+    // some pixels
+    BitMask = ToScalarMemory(WaveAllBitOr(BitMask));
+#endif
+    while ( BitMask != 0 )
+    {
+        uint BitIndex = firstbitlow( BitMask );
+        uint CaptureIndex = 32 * BitMaskIndex + BitIndex;
+        BitMask ^= ( 1 &lt;&lt; BitIndex );</code></pre>
+<p>ここが Flat Bit Array の核心だ。<code>WaveAllBitOr(BitMask)</code> は
+Wave 内の<strong>全スレッドのビットマスクを OR
+演算で統合</strong>する組み込み関数。これにより:</p>
+<ol type="1">
+<li>Wave 内の全スレッドが<strong>同じ BitMask</strong>
+を持つことになる</li>
+<li>全員が同じライトを同じ順番で処理するため、ループが<strong>スカラー化</strong>される</li>
+<li>メモリロードがベクターレジスタ（各スレッド個別）からスカラーレジスタ（Wave
+全体で共有）に昇格し、帯域使用量が劇的に減る</li>
+</ol>
+<p>コメントに「even if that means a few extra probes on some
+pixels（一部のピクセルで余分なプローブを処理することになっても）」とあるのは重要な設計判断だ。隣のスレッドが必要としないライトも処理することになるが、スカラー化による帯域削減のほうが遥かに大きいというトレードオフだ。</p>
+<p><code>firstbitlow()</code>
+でセットされている最下位ビットのインデックスを取得し、<code>BitMask ^= (1 &lt;&lt; BitIndex)</code>
+でそのビットをクリアして次のライトに進む。</p>
+<h3 id="効果-タイル分類と組み合わせて期待通りに">効果:
+タイル分類と組み合わせて「期待通り」に</h3>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th style="text-align: left;">項目</th>
+<th style="text-align: left;">改善量</th>
+<th style="text-align: left;">解説</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">リフレクションパス</td>
+<td style="text-align: left;">~0.25ms 改善</td>
+<td style="text-align: left;">Wave
+のオクピュパンシー（稼働率）向上による</td>
+</tr>
+<tr>
+<td style="text-align: left;">Single Probe Fast Path</td>
+<td style="text-align: left;">0.05〜0.14ms 節約</td>
+<td style="text-align: left;">タイル分類との複合効果</td>
+</tr>
+<tr>
+<td style="text-align: left;">コードパス</td>
+<td style="text-align: left;">統一化</td>
+<td style="text-align: left;">全パーミュテーションが同じ Flat Bit Array
+のコードに一本化</td>
+</tr>
+</tbody>
+</table>
+<p>Moore 氏は「タイル分類単体では物足りなかったが、Flat Bit Array
+と組み合わせて初めて期待通りの結果になった」と述べた。<strong>複数の最適化の相乗効果で目標を達成する</strong>
+– これがマルチプラットフォーム最適化の現実だ。</p>
+<hr />
+<h2 id="コンピュートバリアの排除-リングバッファ方式">4.
+コンピュートバリアの排除 – リングバッファ方式</h2>
+<h3 id="どんな問題か-2">どんな問題か</h3>
+<p>クラスタードライティングでは、複数のコンピュートシェーダーが連鎖的に実行される。前段の出力を後段が参照するため、「前段が書き終わるまで後段は待て」という同期（<strong>コンピュートバリア</strong>）が必要だ。しかし:</p>
+<ul>
+<li><code>DeviceMemoryBarrier</code> はワークグループ（GPU
+の小さな実行単位）内のメモリ同期しか保証しない</li>
+<li>異なるディスパッチグループ間の同期には Full GPU Flush
+が必要で、パイプライン全体がストールする</li>
+<li>特に Xbox One / PS4
+世代では、このストールがフレームバジェットを圧迫していた</li>
+</ul>
+<h3 id="解決策-リングバッファ">解決策: リングバッファ</h3>
+<p>バリアの代わりに<strong>リングバッファ</strong>（循環バッファ）を導入。書き込み位置をフレームごとにずらすことで、前段の出力と後段の入力が同じメモリ位置を参照しない構造にした:</p>
+<pre><code>フレーム 0: スロット A に書き込み → スロット C を読む
+フレーム 1: スロット B に書き込み → スロット A を読む
+フレーム 2: スロット C に書き込み → スロット B を読む
+// 書き込みと読み込みが絶対に衝突しないので、バリア不要</code></pre>
+<p>少量の追加メモリ（リングサイズ分のバッファ）と引き換えに、GPU
+の占有率を維持できる。別のディスパッチや適切なクリア処理との組み合わせも可能。Moore
+氏はこの手法を「Rumbleverse 時代から改善を重ねてきた」と述べた。</p>
+<p><img src="slides/diagram_ring_buffer.png"
+alt="リングバッファによるバリア排除" /> <em>上:
+従来方式ではディスパッチ間にバリア（GPU
+Flush）が挟まりパイプラインがストールする。下:
+リングバッファ方式では書き込みと読み込みが常に異なるスロットを参照するため、バリアが不要</em></p>
+<hr />
+<h2
+id="gcn-アセンブリマイクロ最適化-同じコードでも書き方で速度が変わる">5.
+GCN アセンブリマイクロ最適化 –
+「同じコードでも、書き方で速度が変わる」</h2>
+<h3 id="どんな問題か-3">どんな問題か</h3>
+<p>HLSL（GPU
+のシェーダー言語）で同じ処理を書いても、<strong>バッファの型宣言</strong>によってコンパイラが生成するアセンブリ（GPU
+が実際に実行する機械語）が大きく変わることがある。Moore
+氏は「Rumbleverse 時代に学んだ教訓だが、前作 1+2 で本格的に着手し、3+4
+でようやく大きなマイルストーンに達した」と述べた。</p>
+<h3 id="スライドの詳細-one-more-micro-optimization">スライドの詳細: One
+More Micro Optimization</h3>
+<figure>
+<img src="slides/IMG_1003.jpg" alt="GCN アセンブリ比較" />
+<figcaption aria-hidden="true">GCN アセンブリ比較</figcaption>
+</figure>
+<p>スライドのタイトルは <strong>「ONE MORE MICRO
+OPTIMIZATION」</strong>。左右に2つの GCN
+アセンブリコード列が並列表示されている。</p>
+<p><strong>上部のヘッダ情報</strong>（両列共通）:</p>
+<pre><code>// CS running as Hu CS (Click here for instruction set d)
+// Shader Address: 0x00031C000
+// Shader Size: 960 bytes（左）/ 916 bytes（右）
+// VGPRs: 24, SGPRs: 32, User SGPRs: 7
+// shader-main // DOP: Shader(EndDirect)</code></pre>
+<p>シェーダーサイズが左（非最適）960 bytes → 右（最適）<strong>916
+bytes</strong> と44バイト削減されていることがわかる。</p>
+<p><strong>左列（非最適パス）</strong> –
+赤いラベルが2つの命令を指す:</p>
+<ul>
+<li><strong>「BUFFER_LOAD_FORMAT_X」</strong>:
+<code>buffer_load_format_x v3, v[8:11], s[24:27], 0 idxen</code> –
+これは<strong>ベクターメモリ命令</strong>。ライトインデックスバッファからデータを読み、結果をベクターレジスタ（v3）に格納する。ベクターレジスタは
+Wave 内の各スレッドが個別に持つレジスタ</li>
+<li><strong>「V_READFIRSTLANE_B32」</strong>:
+<code>v_readfirstlane_b32 s0, v3</code> – ベクターレジスタ v3
+の値をスカラーレジスタ s0 にコピーする命令。Wave
+内の全スレッドが同じ値を参照するはずなので、先頭レーンの値をスカラーに昇格させる</li>
+</ul>
+<p>合計 <strong>2命令</strong>。ベクター →
+スカラーの2段階で、1命令分のレイテンシと命令スロットが無駄になっている。</p>
+<p><strong>右列（最適パス）</strong> – 赤いラベルが1つの命令を指す:</p>
+<ul>
+<li><strong>「S_BUFFER_LOAD_DWORD」</strong>:
+<code>s_buffer_load_dword s1, s[8:11], s0</code> –
+<strong>スカラーメモリ命令</strong>。最初からスカラーレジスタ（s1）に直接ロードする。中間のベクター操作が不要</li>
+</ul>
+<p>合計
+<strong>1命令</strong>。同じデータを取得するのに、命令数が半減している。</p>
+<h3 id="なぜ1命令の差が重要なのか">なぜ1命令の差が重要なのか</h3>
+<p>この処理は<strong>ディファードライティング</strong>の中で実行される –
+つまり画面上の全ピクセルで走るシェーダーだ:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">解像度</th>
+<th style="text-align: left;">ピクセル数</th>
+<th style="text-align: left;">120fps バジェット</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">1080p</td>
+<td style="text-align: left;">~200万</td>
+<td style="text-align: left;">8.3ms</td>
+</tr>
+<tr>
+<td style="text-align: left;">4K</td>
+<td style="text-align: left;">~800万</td>
+<td style="text-align: left;">8.3ms</td>
+</tr>
+</tbody>
+</table>
+<p>1命令の差が200万〜800万回掛け算される。さらにディファードライティングにはライトタイプごとの複数パーミュテーションがあるため、差は累積する。</p>
+<h3 id="原因-hlsl-の型宣言">原因: HLSL の型宣言</h3>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th style="text-align: left;">HLSL での書き方</th>
+<th style="text-align: left;">コンパイラが生成するアセンブリ</th>
+<th style="text-align: left;">命令数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td
+style="text-align: left;"><code>StructuredBuffer&lt;uint&gt;</code></td>
+<td style="text-align: left;"><code>buffer_load_format_x</code> +
+<code>v_readfirstlane_b32</code></td>
+<td style="text-align: left;">2命令</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>ByteAddressBuffer</code> +
+手動オフセット</td>
+<td style="text-align: left;"><code>s_buffer_load_dword</code></td>
+<td style="text-align: left;">1命令</td>
+</tr>
+</tbody>
+</table>
+<p><code>StructuredBuffer&lt;uint&gt;</code>
+はコンパイラに「各要素が構造化データ」と解釈され、ベクターロードが選択されやすい。<code>ByteAddressBuffer</code>
+はバイト単位の生アクセスで、コンパイラがスカラーロードを選びやすい。同じデータを読んでいるのに、型宣言だけでアセンブリが変わる。</p>
+<blockquote>
+<p><strong>パフォーマンスクリティカルなシェーダーでは、必ずコンパイラのアセンブリ出力を確認せよ。HLSL
+の書き方が「正しい」かどうかと、最適なアセンブリが生成されるかどうかは別問題だ。</strong></p>
+</blockquote>
+<hr />
+<h2
+id="switch-2-対応-遅れてきた新プラットフォームと-rasterized-quads">6.
+Switch 2 対応 – 「遅れてきた新プラットフォーム」と Rasterized Quads</h2>
+<h3 id="switch-2-がもたらした新たな課題">Switch 2
+がもたらした新たな課題</h3>
+<p>Switch 2 は開発サイクルの後半に公表された。Moore
+氏は「遅いスタートだったが、ローンチ日に高品質で出荷するという強い意志があった」と述べている。</p>
+<p>問題は、Switch 2 がそれまでの全コンソール（AMD GCN / RDNA
+ベース）とは根本的に異なるアーキテクチャだったことだ:</p>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th style="text-align: left;">特性</th>
+<th style="text-align: left;">PS4 / Xbox One（GCN）</th>
+<th style="text-align: left;">Switch 2（NVIDIA）</th>
+<th style="text-align: left;">影響</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">GPU メーカー</td>
+<td style="text-align: left;">AMD</td>
+<td style="text-align: left;">NVIDIA</td>
+<td style="text-align: left;">シェーダーの挙動が根本的に異なる</td>
+</tr>
+<tr>
+<td style="text-align: left;">Wave サイズ</td>
+<td style="text-align: left;">64（Wave64）</td>
+<td style="text-align: left;">32（Warp）</td>
+<td style="text-align: left;">ビット操作のパターンが変わる</td>
+</tr>
+<tr>
+<td style="text-align: left;">VK_NV_fill_rectangle</td>
+<td style="text-align: left;">非対応</td>
+<td style="text-align: left;">対応</td>
+<td style="text-align: left;">新しい描画最適化が可能に</td>
+</tr>
+</tbody>
+</table>
+<p>多くの最適化コードは Wave
+サイズの変更だけで動作したが、<strong>SSR（Screen Space
+Reflections）</strong> が最も重いビューで <strong>3倍遅く</strong>
+なるという深刻な問題が発生。これを解決したのが Rasterized Quads だ。</p>
+<h3 id="スライドの詳細-rasterized-quads">スライドの詳細: Rasterized
+Quads</h3>
+<figure>
+<img src="slides/IMG_1006.jpg" alt="Rasterized Quads の比較図" />
+<figcaption aria-hidden="true">Rasterized Quads の比較図</figcaption>
+</figure>
+<p>スライドのタイトルは <strong>「RASTERIZED
+QUADS」</strong>。上部に5つのポイント、下部に視覚的な比較図がある。</p>
+<p><strong>スライド上部のテキスト</strong>:</p>
+<ol type="1">
+<li>「Rasterizing quads with <strong>DrawIndirect</strong> instead of
+DispatchIndirect allows efficient usage of blending hardware and thread
+ordering of the hardware rasterizer」–
+DrawIndirect（ラスタライザ経由の描画）を使うことで、ハードウェアのブレンディング機能とスレッドオーダリングを活用できる</li>
+<li>「2-triangle quads results in overshading along triangle edge –
+<strong>problem becomes worse the smaller the quads are</strong>」–
+2三角形方式のオーバーシェーディングは、タイルサイズが小さくなるほど悪化する（エッジ比率が増えるため）</li>
+<li>「NVIDIA GPUs have supported quad primitives for some time – see
+<strong>VK_NV_fill_rectangle</strong>」– NVIDIA は VK_NV_fill_rectangle
+拡張でこの機能をサポート</li>
+<li>「Works as a new rasterization mode where each triangle has its
+<strong>bounding rectangle rasterized</strong>」–
+三角形の代わりにバウンディング矩形をラスタライズする新モード</li>
+<li>「<strong>Switch 2 rendering API conveniently exposes
+this</strong>」– Switch 2 の描画 API がこの機能を提供</li>
+</ol>
+<p><strong>下部の比較図</strong>:</p>
+<p><strong>左図</strong>: 8×8
+のタイルを2つの三角形で描画。対角線のエッジに沿って<strong>黄色のセル</strong>（ヘルパーピクセル）が表示されている。GPU
+はピクセルシェーダーを 2×2 の Quad 単位で実行するため、三角形のエッジが
+Quad
+の一部しかカバーしない場合でも全4ピクセルが実行される。エッジ外のピクセルが「ヘルパーレーン」で、計算結果は破棄されるが
+GPU リソースは消費する。</p>
+<pre><code>8X8 2-TRIANGLE TILE
+78 PIXELS
+(16 HELPER PIXELS)
+25% OVERSHADING</code></pre>
+<p><strong>右図</strong>: 同じ 8×8
+タイルを1つの矩形で描画。全セルが<strong>緑色</strong>（有効ピクセル）で、黄色のヘルパーピクセルがゼロ。</p>
+<pre><code>8X8 1-RECT TILE
+64 PIXELS
+(0 HELPER PIXELS)
+0% OVERSHADING</code></pre>
+<h3 id="技術的メカニズム">技術的メカニズム</h3>
+<p><code>VK_NV_fill_rectangle</code>
+は、三角形のバウンディング矩形をそのまま塗りつぶすラスタライゼーションモードだ。通常のラスタライザは三角形の内側だけを塗るが、このモードでは矩形全体を塗る。結果として:</p>
+<ol type="1">
+<li>三角形のエッジが存在しないので、ヘルパーレーンが<strong>完全にゼロ</strong>になる</li>
+<li><code>DrawIndirect</code>（GPU駆動の描画命令）と組み合わせることで、ハードウェアラスタライザのブレンディングとスレッドオーダリングをそのまま活用できる</li>
+<li>手動のブレンド処理やリング状のアーティファクトが発生しない</li>
+</ol>
+<h3 id="タイル化との組み合わせ">16×16 タイル化との組み合わせ</h3>
+<p>オーバーシェーディングが 0% になったことで、タイルサイズを 8×8 →
+<strong>16×16</strong>
+に拡大できた。スライドのポイント2にある通り「タイルが小さいほどオーバーシェーディングが悪化する」ので、逆にタイルを大きくすることでクラシファイヤパスの実行量が
+<strong>1/4</strong> に削減される。</p>
+<h3 id="switch-2-での実測結果">Switch 2 での実測結果</h3>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th style="text-align: left;">項目</th>
+<th style="text-align: left;">結果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Rasterized Quads の効果</td>
+<td style="text-align: left;">パスによって <strong>20〜70%
+改善</strong>（SSR で最大効果）</td>
+</tr>
+<tr>
+<td style="text-align: left;">出荷品質</td>
+<td style="text-align: left;">Day 1
+のローンチタイトルとして十分なパフォーマンス</td>
+</tr>
+<tr>
+<td style="text-align: left;">唯一出荷しなかった最適化</td>
+<td style="text-align: left;"><code>WaveAllBitOr</code> を使った Flat
+Bit Array のスカラー化。Switch 2 ではクロスレーン操作が非効率だった</td>
+</tr>
+</tbody>
+</table>
+<p>Moore 氏はプラットフォームごとに最適化の取捨選択を行った。GCN
+で効果的だった Wave64 スカラー化は、Switch 2 の Wave32
+では逆効果になる場合があり、出荷しない判断をしている。</p>
+<hr />
+<h2
+id="シェーダーパーミュテーション削減-バリエーションが多すぎると-gpu-が遊ぶ">7.
+シェーダーパーミュテーション削減 – 「バリエーションが多すぎると GPU
+が遊ぶ」</h2>
+<h3 id="どんな問題か-4">どんな問題か</h3>
+<p>Unreal Engine
+のディファードライトシェーダーは、条件の組み合わせごとに別バージョン（パーミュテーション）を生成する:</p>
+<ul>
+<li>ライトの種類: ポイント / スポット / ディレクショナル</li>
+<li><code>USE_LIGHT_FUNCTION</code> の ON/OFF</li>
+<li>シャドウの有無</li>
+<li>その他多数</li>
+</ul>
+<p>パーミュテーション数が多いと、各パーミュテーションを実行する GPU
+スレッド数が少なくなり、<strong>GPU
+の実行ユニットが半分遊んでいる</strong>状態（低オクピュパンシー）になる。さらに、タイル分類の効果が減殺される
+–
+多くのタイルが複数のパーミュテーションにまたがるため「未分類」に落ちてしまう。</p>
+<h3 id="解決策">解決策</h3>
+<p>ライトタイプごとに異なるパーミュテーションを生成するのではなく、ランタイムの
+<code>if</code>
+分岐で処理を切り替えるようにシェーダーを統合。パーミュテーション数が減ることで、各パーミュテーションに割り当てられる
+GPU スレッド数が増え、稼働率が向上した。</p>
+<h3 id="効果">効果</h3>
+<p>約 <strong>0.4ms</strong>
+の改善を確認。タイル分類で「未分類」ピクセルの割合が高いビューほど効果が大きかった。Moore
+氏は「前作 1+2 の時から見つけたかった最適化だが、3+4
+でようやくたどり着いた」と述べた。</p>
+<hr />
+<h2
+id="自動パフォーマンスダッシュボード-6プラットフォーム-全ステージを毎晩チェック">8.
+自動パフォーマンスダッシュボード – 「6プラットフォーム ×
+全ステージを毎晩チェック」</h2>
+<h3 id="どんな問題か-5">どんな問題か</h3>
+<p>6プラットフォーム ×
+数十ステージの全組み合わせを人力で確認するのは不可能だ。レベルデザイナーが毎日コンテンツを追加する中で、「昨日のコミットで
+Tokyo ステージの Switch 1 だけ 3ms
+遅くなった」といったリグレッション（性能劣化）を素早く検知する仕組みが必要だった。</p>
+<h3
+id="スライドの詳細-data-collection-and-visualization">スライドの詳細:
+Data Collection and Visualization</h3>
+<figure>
+<img src="slides/IMG_1010.jpg" alt="パフォーマンスダッシュボード" />
+<figcaption aria-hidden="true">パフォーマンスダッシュボード</figcaption>
+</figure>
+<p>スライドのタイトルは <strong>「DATA COLLECTION AND
+VISUALIZATION」</strong>。Moore 氏が Python
+で構築したブラウザベースのダッシュボード「<strong>Combo Gauntlet Data
+Browser</strong>」のスクリーンショットが全面に表示されている。</p>
+<p><strong>左上の設定パネル</strong>: - Time Series: <strong>GPU
+Time</strong> - Statistic: <strong>95th
+Percentile</strong>（上位5%の最悪フレーム） - CL | Date: <strong>CL:
+47530 | Date: 11/22/2024</strong> - □ Show Delta To Current</p>
+<p><strong>右上のパネル</strong>: Current Selection
+で特定のセルが選択されている状態（Config: Xbox One, Map:
+College）。「<strong>Plot Details</strong>」「<strong>Show
+History</strong>」「<strong>Play
+Video</strong>」のボタンがあり、詳細な分析が可能。</p>
+<p><strong>メインテーブル</strong>:
+行が<strong>全マップ</strong>（19ステージ）、列が<strong>全プラットフォーム</strong>の巨大なマトリクスだ。</p>
+<p>列ヘッダ（左から）: Map/Config → <strong>Xbox One</strong> →
+<strong>PS4</strong> → <strong>XSS Performance</strong> → <strong>XSS
+Quality</strong> → <strong>XSX Performance</strong> → <strong>XSX
+Quality</strong> → <strong>PS5 Performance</strong> → <strong>PS5
+Quality</strong> → <strong>Switch</strong> → <strong>Switch
+2</strong></p>
+<p>行に並ぶマップ名を読み取ると:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">マップ</th>
+<th style="text-align: left;">Xbox One</th>
+<th style="text-align: left;">PS4</th>
+<th style="text-align: left;">Switch</th>
+<th style="text-align: left;">Switch 2</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Airport</td>
+<td style="text-align: left;">14.75</td>
+<td style="text-align: left;">13.83</td>
+<td style="text-align: left;">33.19</td>
+<td style="text-align: left;">15.43</td>
+</tr>
+<tr>
+<td style="text-align: left;">Alcatraz</td>
+<td style="text-align: left;">15.90</td>
+<td style="text-align: left;">13.95</td>
+<td style="text-align: left;">32.90</td>
+<td style="text-align: left;">19.29</td>
+</tr>
+<tr>
+<td style="text-align: left;">Canada</td>
+<td style="text-align: left;">16.40</td>
+<td style="text-align: left;">14.55</td>
+<td style="text-align: left;">43.36</td>
+<td style="text-align: left;">18.34</td>
+</tr>
+<tr>
+<td style="text-align: left;">College</td>
+<td style="text-align: left;">19.21</td>
+<td style="text-align: left;">16.49</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">15.99</td>
+</tr>
+<tr>
+<td style="text-align: left;">CruiseShip</td>
+<td style="text-align: left;">15.89</td>
+<td style="text-align: left;">14.63</td>
+<td style="text-align: left;">35.42</td>
+<td style="text-align: left;">15.82</td>
+</tr>
+<tr>
+<td style="text-align: left;">Foundry</td>
+<td style="text-align: left;">15.92</td>
+<td style="text-align: left;">13.70</td>
+<td style="text-align: left;">33.25</td>
+<td style="text-align: left;">17.88</td>
+</tr>
+<tr>
+<td style="text-align: left;">Kona</td>
+<td style="text-align: left;">16.01</td>
+<td style="text-align: left;">14.54</td>
+<td style="text-align: left;">46.29</td>
+<td style="text-align: left;">19.90</td>
+</tr>
+<tr>
+<td style="text-align: left;">London</td>
+<td style="text-align: left;">16.76</td>
+<td style="text-align: left;">16.01</td>
+<td style="text-align: left;">42.26</td>
+<td style="text-align: left;">18.30</td>
+</tr>
+<tr>
+<td style="text-align: left;">LosAngeles</td>
+<td style="text-align: left;">16.50</td>
+<td style="text-align: left;">14.43</td>
+<td style="text-align: left;">39.98</td>
+<td style="text-align: left;">17.05</td>
+</tr>
+<tr>
+<td style="text-align: left;">MovieStudio</td>
+<td style="text-align: left;">14.00</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">32.19</td>
+<td style="text-align: left;">16.29</td>
+</tr>
+<tr>
+<td style="text-align: left;">Pinball</td>
+<td style="text-align: left;">17.24</td>
+<td style="text-align: left;">15.83</td>
+<td style="text-align: left;">47.14</td>
+<td style="text-align: left;">19.26</td>
+</tr>
+<tr>
+<td style="text-align: left;">Rio</td>
+<td style="text-align: left;">17.14</td>
+<td style="text-align: left;">15.83</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">19.26</td>
+</tr>
+<tr>
+<td style="text-align: left;">SanFrancisco</td>
+<td style="text-align: left;">16.29</td>
+<td style="text-align: left;">14.84</td>
+<td style="text-align: left;">42.86</td>
+<td style="text-align: left;">19.14</td>
+</tr>
+<tr>
+<td style="text-align: left;">Shipyard</td>
+<td style="text-align: left;">15.63</td>
+<td style="text-align: left;">13.75</td>
+<td style="text-align: left;">33.26</td>
+<td style="text-align: left;">18.70</td>
+</tr>
+<tr>
+<td style="text-align: left;">SkaterIsland</td>
+<td style="text-align: left;">16.25</td>
+<td style="text-align: left;">15.37</td>
+<td style="text-align: left;">33.02</td>
+<td style="text-align: left;">19.24</td>
+</tr>
+<tr>
+<td style="text-align: left;">Suburbia</td>
+<td style="text-align: left;">15.00</td>
+<td style="text-align: left;">12.89</td>
+<td style="text-align: left;">33.09</td>
+<td style="text-align: left;">18.34</td>
+</tr>
+<tr>
+<td style="text-align: left;">Tokyo</td>
+<td style="text-align: left;">16.05</td>
+<td style="text-align: left;">12.83</td>
+<td style="text-align: left;">32.51</td>
+<td style="text-align: left;">15.83</td>
+</tr>
+<tr>
+<td style="text-align: left;">WaterPark</td>
+<td style="text-align: left;">16.19</td>
+<td style="text-align: left;">14.39</td>
+<td style="text-align: left;">37.48</td>
+<td style="text-align: left;">18.15</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Zoo</strong></td>
+<td style="text-align: left;"><strong>19.91</strong></td>
+<td style="text-align: left;"><strong>16.92</strong></td>
+<td style="text-align: left;"><strong>58.80</strong></td>
+<td style="text-align: left;"><strong>17.02</strong></td>
+</tr>
+</tbody>
+</table>
+<p>セルは色分けされている: <strong>緑</strong> =
+バジェット内、<strong>黄色</strong> = 注意、<strong>赤/オレンジ</strong>
+= バジェットオーバー。一目で分かるのは:</p>
+<ul>
+<li><strong>Switch 列が最も赤い</strong>: 33〜58ms の範囲で、Zoo が
+58.80ms と突出。16.6ms（60fps）の3倍以上で、Dynamic Resolution
+が限界に達している</li>
+<li><strong>Xbox One / PS4 は概ね 14〜19ms</strong>: 16.6ms
+バジェットに対して微妙なラインの値が多い</li>
+<li><strong>Switch 2 は 15〜19ms</strong>: Switch 1
+より大幅に改善しているが、まだ最適化の余地がある</li>
+</ul>
+<h3 id="ダッシュボードの運用">ダッシュボードの運用</h3>
+<ol type="1">
+<li><strong>毎晩の自動スモークテスト</strong>:
+全ステージを全プラットフォームで自動実行し、デザイナーが設定したカメラパスでプロファイルデータを収集。特定のコミット（CL番号）に対してトリガーでき、リグレッションの原因特定が可能</li>
+<li><strong>95th パーセンタイル表示</strong>:
+平均値ではなく最悪ケースで評価。Moore
+氏は「バジェット内フレーム率だけでは、ホットスポットがどれほど深刻か分からない」と述べた</li>
+<li><strong>セルクリックで詳細展開</strong>: Dynamic Resolution
+の下限に達しているフレーム、CPU
+スレッドによるブロック箇所がタイムラインで特定できる</li>
+<li><strong>ローカル実行対応</strong>:
+エンジニアがローカルで最適化した結果を同じブラウザに読み込み、ナイトリーデータと比較。「推測」ではなく「計測」で判断</li>
+</ol>
+<hr />
+<h2
+id="turning-analysis-into-action-データを集めるだけでは最適化は進まない">9.
+Turning Analysis Into Action –
+「データを集めるだけでは最適化は進まない」</h2>
+<p>Moore
+氏がセッション中で最も力を込めて語ったのが、このセクションだった。技術的な最適化よりも、<strong>データをどう行動に変えるか</strong>というプロセスの話だ。</p>
+<p><img src="slides/diagram_optimization_cycle.png"
+alt="データドリブン最適化サイクル" /> <em>Moore
+氏の最適化プロセス全体像。データ収集→可視化→分析→ストライクプラン→協業実行→検証の循環サイクル。ストライクプランなしでアーティストに丸投げすると、出荷に必要以上にコンテンツが痩せるアンチパターンに陥る</em></p>
+<h3 id="スライドの詳細-1">スライドの詳細</h3>
+<figure>
+<img src="slides/IMG_1013.jpg" alt="分析から行動へ" />
+<figcaption aria-hidden="true">分析から行動へ</figcaption>
+</figure>
+<p>スライドのタイトルは <strong>「TURNING ANALYSIS INTO
+ACTION」</strong>。4つのポイントが列挙されている:</p>
+<ol type="1">
+<li><p><strong>「Needed to efficiently communicate the work needing to
+be done on stages to get them shippable on all platforms and
+configurations」</strong> –
+全ステージを全プラットフォーム・全設定でシッパブルにするための作業を、チームに効率的に伝達する必要があった</p></li>
+<li><p><strong>「Direction is critical to content optimization. If
+artists merely cut until all the counters turn green →」</strong>
+ここから<strong>赤太字</strong>で: <strong>「the cuts will be more
+severe than needed to ship the stage」</strong> –
+<strong>方針（Direction）がコンテンツ最適化には不可欠。もしアーティストがカウンターが緑になるまで切り続けるだけなら、出荷に必要以上の削減になってしまう。</strong>
+これはスライド中で唯一赤太字で強調されたフレーズで、Moore
+氏がこのセッションで最も伝えたかったメッセージだ</p></li>
+<li><p><strong>「Highly effective to have engineers author strike plan
+docs for stages that described the problems the stage was facing and
+suggest potential paths to optimization」</strong> –
+エンジニアが各ステージの問題を記述し、最適化パスを提案する「ストライクプラン」ドキュメントが非常に効果的だった</p></li>
+<li><p><strong>「In practice, optimization often is most effective as a
+joint effort of code and content modifications」</strong> –
+実際にはコード修正とコンテンツ修正の協業が最も効果的</p></li>
+</ol>
+<p><strong>スライド下部</strong>:
+8枚のストライクプランドキュメントのサムネイルが横に並んでいる。左から3枚はテキスト中心のドキュメント（問題の記述と分析）、中央には「More
+Studio Optimizers」というタイトルのものと「Set Importance/Final Targets
+on Client Platform
+(GPUTimePerFrame)」というタイトルのもの、右側にはステージのスクリーンショット付きの具体的なプランが表示されている。</p>
+<h3 id="ストライクプランの運用">ストライクプランの運用</h3>
+<p>エンジニアがステージごとに作成する「最適化処方箋」:</p>
+<ol type="1">
+<li><strong>問題の診断</strong>: ダッシュボードの数値をもとに「Tokyo
+ステージの Switch 1 では、ライトマップのインスタンシング効率が悪く CPU
+時間が 2ms 超過」のように具体的に記述</li>
+<li><strong>改善候補の提案</strong>:
+定量的な選択肢を複数提示（「フォリッジ密度 20% 減で 1ms
+改善」「ライトマップ解像度変更で 0.5ms」など）</li>
+<li><strong>判断はアーティストに委ねる</strong>:
+どの選択肢を採用するか、品質との妥協点はアーティストが決める</li>
+</ol>
+<p>この協業モデルが重要な理由:
+アーティストに「全部緑にしろ」と丸投げすると、最も削りやすいが最もビジュアルインパクトの大きい要素（フォリッジ、ライティング）から削っていくため、<strong>出荷に必要以上にコンテンツが痩せる</strong>。エンジニアが「何を削ればどれだけ軽くなるか」の技術的指針を示すことで、アーティストは最もインパクトの少ない削り方を選べる。</p>
+<hr />
+<h2 id="ケーススタディ-tokyo-ステージ-最も困難なレベル">10.
+ケーススタディ: Tokyo ステージ – 「最も困難なレベル」</h2>
+<p>Tokyo
+は本作の中で最もパフォーマンス的に困難なステージだった。密集した建物、大量のネオンサイン（ダイナミックライト）、複雑なフォリッジが組み合わさり、特に
+Switch 1 と Xbox One で深刻な問題を抱えていた。</p>
+<h3
+id="ダイナミックベイクドライティングの動的切り替え">ダイナミック/ベイクドライティングの動的切り替え</h3>
+<p>プラットフォームの性能に応じて、同じライトを「ダイナミック（毎フレームリアルタイム計算）」と「ベイクド（事前計算してライトマップに焼き込み）」に切り替える仕組みを導入した:</p>
+<blockquote>
+<p>「プラットフォームによって、より多くのライトをベイクドにすることでランタイムの計算コストを削減している。」</p>
+</blockquote>
+<p>Switch 1 ではネオンサインの大部分をベイクドライトにすることで、Tokyo
+の夜景の雰囲気を保ちつつ GPU 負荷を抑えている。3段階のライティング LOD
+で、プラットフォームに応じて適切な品質レベルを選択する。</p>
+<h3 id="スライドの詳細-ライトマップパッキング">スライドの詳細:
+ライトマップパッキング</h3>
+<figure>
+<img src="slides/IMG_1017.jpg"
+alt="Tokyo ステージのライトマップパッキング" />
+<figcaption aria-hidden="true">Tokyo
+ステージのライトマップパッキング</figcaption>
+</figure>
+<p>スライドのタイトルは <strong>「CASE STUDY:
+TOKYO」</strong>、サブタイトルは <strong>「Solution 2: Rework lightmap
+packing」</strong>。</p>
+<p><strong>3つのポイント</strong>:</p>
+<ol type="1">
+<li><p><strong>「Increase atlas page size – can have a negative effect
+on texture streaming. Mitigated by clamping top mip on most memory
+constrained platforms」</strong> –
+アトラスページサイズを拡大。テクスチャストリーミングへの悪影響はメモリ制約のあるプラットフォーム（Switch
+1）でトップ
+MIP（最高解像度のミップマップレベル）をクランプ（制限）することで緩和</p></li>
+<li><p><strong>「Change packing logic to favor instancability of meshes
+within a page over spatial locality. Can result less optimal packing of
+charts!」</strong> –
+パッキングロジックを<strong>空間的局所性より、インスタンサビリティ（同じメッシュをバッチ描画できる性質）</strong>優先に変更。チャート（個々のライトマップ矩形）のパッキング効率は若干低下する可能性がある</p></li>
+<li><p><strong>「Saved 2 ms of CPU time on Switch in Tokyo in our most
+challenging views」</strong> – 結果: <strong>Switch 上で CPU 時間 2ms
+を削減</strong>（最も困難なビューで計測）</p></li>
+</ol>
+<p><strong>下部のソースコード</strong>: C++
+のライトマップマージロジックが表示されている。<code>//@lgs(lgsocr) - START</code>
+から <code>END</code> までのブロック:</p>
+<div class="sourceCode" id="cb9"><pre
+class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co">// merge lightmaps of identical meshes into the same group</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> TargetIndex <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> TargetIndex <span class="op">&lt;</span> PendingLightMaps<span class="op">.</span>Num<span class="op">();</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>     TargetIndex<span class="op">++)</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> CandidateIndex <span class="op">=</span> TargetIndex <span class="op">+</span> <span class="dv">1</span><span class="op">;</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>         CandidateIndex <span class="op">&lt;</span> PendingLightMaps<span class="op">.</span>Num<span class="op">();</span> CandidateIndex<span class="op">++)</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>    <span class="op">{</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="op">((</span>PendingLightMaps<span class="op">[</span>CandidateIndex<span class="op">].</span>Outer</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>                <span class="op">==</span> PendingLightMaps<span class="op">[</span>TargetIndex<span class="op">].</span>Outer<span class="op">)</span></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>            <span class="op">&amp;&amp;</span> <span class="op">(</span>PendingLightMaps<span class="op">[</span>CandidateIndex<span class="op">].</span>InstancingHash</span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>                <span class="op">==</span> PendingLightMaps<span class="op">[</span>TargetIndex<span class="op">].</span>InstancingHash<span class="op">)</span></span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>            <span class="op">&amp;&amp;</span> <span class="op">(</span>PendingLightMaps<span class="op">[</span>CandidateIndex<span class="op">].</span>LightmapFlags</span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>                <span class="op">==</span> PendingLightMaps<span class="op">[</span>TargetIndex<span class="op">].</span>LightmapFlags<span class="op">)</span></span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>            <span class="op">&amp;&amp;</span> <span class="op">(</span>PendingLightMaps<span class="op">[</span>CandidateIndex<span class="op">].</span>Allocations<span class="op">.</span>Num<span class="op">()</span></span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>                <span class="op">==</span> <span class="dv">1</span><span class="op">))</span></span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>        <span class="op">{</span></span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>            <span class="at">const</span> FBoxSphereBounds NewBounds <span class="op">=</span></span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>                PendingLightMaps<span class="op">[</span>TargetIndex<span class="op">].</span>Bounds</span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a>                <span class="op">+</span> PendingLightMaps<span class="op">[</span>CandidateIndex<span class="op">].</span>Bounds<span class="op">;</span></span>
+<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a>            <span class="co">// Don&#39;t pack together lightmaps that are too far apart</span></span>
+<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a>            <span class="dt">float</span> MaxDistance <span class="op">=</span> MaxLightmapRadius <span class="op">*</span> <span class="fl">2.0</span><span class="bu">f</span><span class="op">;</span></span>
+<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a>            <span class="co">// but double the distance constraint to encourage instancing</span></span>
+<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> <span class="op">(</span>NewBounds<span class="op">.</span>SphereRadius <span class="op">&lt;=</span> MaxDistance</span>
+<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a>                <span class="op">||</span> NewBounds<span class="op">.</span>SphereRadius</span>
+<span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a>                   <span class="op">&lt;=</span> <span class="op">(</span>PendingLightMaps<span class="op">[</span>TargetIndex<span class="op">].</span>Bounds</span>
+<span id="cb9-27"><a href="#cb9-27" aria-hidden="true" tabindex="-1"></a>                       <span class="op">.</span>SphereRadius <span class="op">+</span> SMALL_NUMBER<span class="op">))</span></span>
+<span id="cb9-28"><a href="#cb9-28" aria-hidden="true" tabindex="-1"></a>            <span class="op">{</span></span>
+<span id="cb9-29"><a href="#cb9-29" aria-hidden="true" tabindex="-1"></a>                PendingLightMaps<span class="op">[</span>TargetIndex<span class="op">].</span>Bounds <span class="op">=</span> NewBounds<span class="op">;</span></span>
+<span id="cb9-30"><a href="#cb9-30" aria-hidden="true" tabindex="-1"></a>                PendingLightMaps<span class="op">[</span>TargetIndex<span class="op">].</span>Allocations<span class="op">.</span>Add<span class="op">(</span></span>
+<span id="cb9-31"><a href="#cb9-31" aria-hidden="true" tabindex="-1"></a>                    MoveTemp<span class="op">(</span>PendingLightMaps<span class="op">[</span>CandidateIndex<span class="op">]</span></span>
+<span id="cb9-32"><a href="#cb9-32" aria-hidden="true" tabindex="-1"></a>                             <span class="op">.</span>Allocations<span class="op">[</span><span class="dv">0</span><span class="op">]));</span></span>
+<span id="cb9-33"><a href="#cb9-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-34"><a href="#cb9-34" aria-hidden="true" tabindex="-1"></a>                PendingLightMaps<span class="op">.</span>RemoveAt<span class="op">(</span>CandidateIndex<span class="op">);</span></span>
+<span id="cb9-35"><a href="#cb9-35" aria-hidden="true" tabindex="-1"></a>                CandidateIndex<span class="op">--;</span> <span class="co">// need to re-check at same index</span></span>
+<span id="cb9-36"><a href="#cb9-36" aria-hidden="true" tabindex="-1"></a>                                  <span class="co">// after shrinking</span></span>
+<span id="cb9-37"><a href="#cb9-37" aria-hidden="true" tabindex="-1"></a>            <span class="op">}</span></span>
+<span id="cb9-38"><a href="#cb9-38" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
+<span id="cb9-39"><a href="#cb9-39" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb9-40"><a href="#cb9-40" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p>このコードのロジックを解説する:</p>
+<ol type="1">
+<li><strong>マージ条件</strong>:
+<code>Outer</code>（所属アクター）、<code>InstancingHash</code>（メッシュの形状ハッシュ）、<code>LightmapFlags</code>
+が全て一致し、Allocation が1つだけのライトマップをマージ対象とする</li>
+<li><strong>距離制約の緩和</strong>:
+<code>MaxDistance = MaxLightmapRadius * 2.0f</code> – コメントに「double
+the distance constraint <strong>to encourage
+instancing</strong>（インスタンシングを促進するために距離制約を2倍に緩和）」とある。従来は近接するメッシュだけをまとめていたが、離れたメッシュでも同じメッシュ型なら同じページに入れる</li>
+<li><strong>バウンド統合</strong>: <code>FBoxSphereBounds</code>
+の加算でマージ後のバウンディング球を計算し、距離制約をチェック</li>
+<li><strong>配列の縮小</strong>: <code>RemoveAt</code>
+でマージ済みの候補を除去し、<code>CandidateIndex--</code>
+でインデックスを再調整</li>
+</ol>
+<p>従来は空間的局所性（近いメッシュを同じページに配置）を優先していたため、同じベンチが3脚あっても3枚の別ページに分散していた。改善後はインスタンサビリティ優先で、同じメッシュ型のライトマップを同じページに集約する。</p>
+<hr />
+<h2 id="重複メッシュ検出-見た目は完璧コストは倍">11. 重複メッシュ検出 –
+「見た目は完璧、コストは倍」</h2>
+<h3 id="スライドの詳細-2">スライドの詳細</h3>
+<figure>
+<img src="slides/IMG_1024.jpg" alt="重複メッシュ検出システム" />
+<figcaption aria-hidden="true">重複メッシュ検出システム</figcaption>
+</figure>
+<p>スライドのタイトルは <strong>「DUPLICATED
+MESHES」</strong>。5つのポイントが列挙されている:</p>
+<ol type="1">
+<li><p><strong>「I’m always warning content people that one of my least
+favorite content bugs is duplicated meshes placed directly on top of one
+another」</strong> –
+コンテンツチームに常に警告している。最も厄介なコンテンツバグの一つが、完全に同じ位置に重ねて配置されたメッシュだ</p></li>
+<li><p><strong>「Visually correct results means QA will generally never
+find this type of issue」</strong> – 見た目が正しいため、QA
+は通常この種の問題を発見できない</p></li>
+<li><p><strong>「I’m convinced every engine should have content
+validation that ensures this is not happening」</strong> –
+<strong>あらゆるエンジンにこの問題を防ぐコンテンツバリデーションを実装すべき</strong>だと確信している</p></li>
+<li><p><strong>「Implemented system that identifies and removes
+duplicated placed foliage and static meshes that are fully static during
+save/map check」</strong> –
+保存/マップチェック時に、重複配置されたフォリッジとフルスタティックメッシュを自動検出・除去するシステムを実装</p></li>
+<li><p><strong>「Output warning for meshes that might be duplicated
+intentionally」</strong> –
+意図的に重複配置されている可能性があるメッシュに対しては警告を出力</p></li>
+</ol>
+<p><strong>スライド中央の3つのビジュアル要素</strong>:</p>
+<ul>
+<li><strong>左</strong>: Unreal Engine の InstancedFoliageActor
+設定画面。「World Settings」パネルに「Default Update Overlaps:
+Every/Update/Mismatch?」の設定と、<strong>「Clear Duplicate
+Instances」</strong> ボタン（青枠でハイライト）が表示されている</li>
+<li><strong>中央</strong>:
+フォリッジインスタンスのリスト画面。多数のインスタンスが並び、同一位置のものがハイライトされている</li>
+<li><strong>右上</strong>:
+ゲーム内スクリーンショット。2つの同一メッシュが完全に重なり、<strong>Z-Fighting</strong>（深度値の競合による虹色のちらつき）が発生している。フェンスのレール部分に虹色のフリンジが見える</li>
+</ul>
+<p><strong>スライド下部の検出ログ</strong>（青枠内）:</p>
+<pre><code>⚠ SP_ALK_Chopper_2  Bare overridden materials (2) on static mesh
+  component that are referenced (1) in source mesh
+  &#39;SM_OM_Rotor_Main_Bladeless&#39;
+
+⚠ SM_ALK_UpperCourtyard_0  Bare overridden materials (2) on static
+  mesh component that are referenced (1) in source mesh
+  &#39;SM_ALK_UpperCourtyard_Railings_01&#39;
+
+⚠ SM_ALK_UpperCourtyard_0  SM_ALK_UpperCourtyard_03 (LOD 2) has
+  hand-painted vertex colors that no longer match the original
+  StaticMesh (SM_ALK_UpperCourtyard_10)
+
+⚠ InstancedFoliageActor_0  contains foliage instances with
+  identical transforms. This can be fixed by resaving or
+  🔗 clicking here
+
+⚠ SM_ALK_Restrooms_01_1  SM_ALK_Restrooms_01-2 (LOD 2) has
+  hand-painted vertex colors that no longer match the original
+  StaticMesh (SM_ALK_Restrooms_01)</code></pre>
+<p>各ログが検出した問題の種類:</p>
+<ul>
+<li><strong>「Bare overridden materials」</strong>:
+ソースメッシュで参照されているマテリアル数と、コンポーネント上のオーバーライド数が不一致。不要なマテリアルオーバーライドが残っている</li>
+<li><strong>「hand-painted vertex colors that no longer match the
+original StaticMesh」</strong>:
+アーティストが手動ペイントした頂点カラーがオリジナルメッシュと一致しない。インスタンシングバッチが分断される原因になる</li>
+<li><strong>「contains foliage instances with identical
+transforms」</strong>:
+同一トランスフォーム（位置・回転・スケール）のフォリッジインスタンスを検出。「resaving
+or clicking here」でワンクリック修正可能</li>
+</ul>
+<h3 id="なぜ重要か">なぜ重要か</h3>
+<p>重複メッシュの原因はアーティストの作業フロー（コピー＆ペーストのミス、Undo/Redo
+操作の不整合、フォリッジペイントツールの挙動）にあり、見た目が正しいため発見が困難。GPU
+は2つ描画するので<strong>コストが倍</strong>になる。検出システムの導入により、重複以外にも頂点カラーの不一致やマテリアルオーバーライドの残骸といった隠れた問題が芋づる式に発見された。</p>
+<hr />
+<h2 id="その他の最適化">12. その他の最適化</h2>
+<h3
+id="テクスチャアップロード最適化コンソール-uma">テクスチャアップロード最適化（コンソール
+UMA）</h3>
+<p>コンソール機は CPU と GPU
+が同じメモリを共有する「ユニファイドメモリアーキテクチャ（UMA）」を採用しており、PC
+のように PCI バス越しにデータを転送する必要がない。Unreal Engine
+のデフォルト設定ではこの最適化パスが完全には活用されておらず、正しく設定するだけで
+<strong>Switch 1 で 4ms のフレーム時間を削減</strong> –
+フレームバジェットの約 25% に相当する改善だ。</p>
+<blockquote>
+<p>「仕組みを理解していても、実際にコードが期待通り動いているか検証するまで安心できない。」</p>
+</blockquote>
+<h3 id="depth-bounds-test-の有効化">Depth Bounds Test の有効化</h3>
+<p>Switch 1 で Z-Fighting
+が多発していた原因を調査したところ、<code>Depth Bounds Test</code>（深度範囲外のピクセルを早期に棄却する機能）が有効になっていないことが判明。有効化するだけで問題が解消。設定1つで解決するが、<strong>そもそも問題に気づくには計測が必要</strong>という典型例。</p>
+<hr />
+<h2
+id="on-the-cutting-room-floor-やりたかったが出荷に間に合わなかった">13.
+On the Cutting Room Floor –
+「やりたかったが、出荷に間に合わなかった」</h2>
+<h3 id="スライドの詳細-3">スライドの詳細</h3>
+<figure>
+<img src="slides/IMG_1025.jpg" alt="Cutting Room Floor" />
+<figcaption aria-hidden="true">Cutting Room Floor</figcaption>
+</figure>
+<p>スライドのタイトルは <strong>「ON THE CUTTING ROOM
+FLOOR」</strong>（映画業界の用語で「編集室の床に落ちたフィルム」=
+最終版に入らなかったもの）。3つの技術が箇条書きで列挙されている:</p>
+<ol type="1">
+<li><p><strong>「Raster vs compute tile classification on GCN」</strong>
+– GCN
+上でラスタライズベースとコンピュートベースのタイル分類のトレードオフをさらに追求する余地があった。Switch
+2 で効果があった Rasterized Quads のコンセプトを GCN
+にも適用できれば、旧世代機でも改善が見込めた</p></li>
+<li><p><strong>「Improved static shadow caching – quad tree shadows,
+virtual shadowmaps?」</strong> –
+疑問符付きで記載されているのが印象的。動かないオブジェクトのシャドウを毎フレーム再計算するのは無駄だが、Quad
+Tree シャドウ（四分木構造でシャドウマップを動的管理する手法）や Virtual
+Shadow Maps（Unreal Engine 5
+の仮想シャドウマップ）への移行は、動的オブジェクトとの整合性やメモリコストの観点で検討段階に留まった</p></li>
+<li><p><strong>「Anti-ghosting on Switch」</strong> – TAA（Temporal
+Anti-Aliasing：前フレームの情報を使ってジャギーを滑らかにする手法）が引き起こすゴースティング（高速移動するオブジェクトの残像）。スケートゲームでは高速カメラ移動が多いため特に目立つ。Switch
+1 ではパフォーマンスバジェットが足りず実装できなかった</p></li>
+</ol>
+<p>Moore 氏は最後にこう述べた:</p>
+<blockquote>
+<p>「1つのプラットフォームだけのために、出荷スケジュールに影響を与える判断は難しい。」</p>
+</blockquote>
+<hr />
+<h2 id="まとめ-3年4ヶ月から得られる5つの教訓">まとめ –
+3年4ヶ月から得られる5つの教訓</h2>
+<p>Moore 氏は最後に、プロジェクト全体を通じた教訓を共有した。</p>
+<h3 id="エンジンをゲームに合わせてカスタマイズせよ">1.
+エンジンをゲームに合わせてカスタマイズせよ</h3>
+<blockquote>
+<p>「どんなエンジンも、そのゲームが必要とする形では出荷されない。」</p>
+</blockquote>
+<p>Unreal Engine
+のような成熟したエンジンでも、タイトル固有の最適化は常に必要。最適化エンジニアの工数をプロジェクト開始時から計画に組み込むべきだ。</p>
+<h3 id="仮定を検証せよ">2. 仮定を検証せよ</h3>
+<p>パフォーマンスのベストプラクティスが<strong>実際に</strong>機能しているか、アセンブリ出力やプロファイラで必ず検証する。GCN
+アセンブリの事例のように、「正しいはず」のコードが非効率な機械語に変換されていることがある。</p>
+<h3 id="データ収集と行動のギャップを埋めよ">3.
+データ収集と行動のギャップを埋めよ</h3>
+<p>自動ダッシュボードでデータを集めるだけでは意味がない。ストライクプランを作成し、アーティストと協業して初めて最適化は進む。</p>
+<h3 id="コンテンツバリデーションは全エンジンに必須">4.
+コンテンツバリデーションは全エンジンに必須</h3>
+<p>重複メッシュ、Z-Fighting、不適切なライトマップパッキング – QA
+では絶対に見つけられないコンテンツ問題を自動検出する仕組みがなければ、描画コストの無駄が積み上がっていく。</p>
+<h3 id="最適化はチーム全体の責務">5. 最適化はチーム全体の責務</h3>
+<blockquote>
+<p>「全部門がパフォーマンスのために時間を割く必要があることを理解し、計画に組み込まなければならない。コミュニケーションが最も重要だ。」</p>
+</blockquote>
+<p>パフォーマンス最適化はエンジニアだけの仕事ではない。アーティスト、デザイナー、プロダクション
+– 全員が当事者意識を持つことで初めて、6プラットフォーム ×
+全ステージの「全てが緑」が達成される。</p>
+<p><img src="slides/IMG_1010.jpg" alt="最終ダッシュボード" />
+<em>セッション終盤で再表示された出荷版ダッシュボード。全マップ ×
+全プラットフォームのセルが緑で埋め尽くされている。3年4ヶ月の最適化の集大成</em></p>
+<hr />
+<h2
+id="unity-エンジニアのための対応ガイド-各最適化を-unity-でどう実現するか">Unity
+エンジニアのための対応ガイド – 各最適化を Unity でどう実現するか</h2>
+<p>本セッションの各最適化手法は Unreal Engine
+固有の実装に基づいているが、背景にある問題と解決アプローチは Unity
+でも共通だ。ここでは各セクションの内容を Unity
+のアーキテクチャに翻訳し、具体的にどう取り組むべきかを解説する。</p>
+<h3 id="対応表-unreal-unity">対応表: Unreal → Unity</h3>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th style="text-align: left;">セクション</th>
+<th style="text-align: left;">Unreal での実装</th>
+<th style="text-align: left;">Unity での対応</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">タイルベースシャドウ分類</td>
+<td
+style="text-align: left;">ディファードシェーダー内でシャドウバッファ解析</td>
+<td style="text-align: left;">URP/HDRP の Additional Light / Shadow
+パスをカスタマイズ</td>
+</tr>
+<tr>
+<td style="text-align: left;">Flat Bit Array
+クラスタードライティング</td>
+<td style="text-align: left;">クラスタ構造をリンクリスト →
+ビット配列に変更</td>
+<td style="text-align: left;">HDRP の Light Cluster を拡張、または URP
+の ForwardPlus を改造</td>
+</tr>
+<tr>
+<td style="text-align: left;">コンピュートバリア排除</td>
+<td style="text-align: left;">UAV バリアをリングバッファに置換</td>
+<td style="text-align: left;">CommandBuffer / Compute Shader
+間の同期設計</td>
+</tr>
+<tr>
+<td style="text-align: left;">GCN アセンブリ最適化</td>
+<td style="text-align: left;">HLSL のバッファ型変更でアセンブリ誘導</td>
+<td style="text-align: left;">Shader Variant の管理 +
+プラットフォーム別コンパイル確認</td>
+</tr>
+<tr>
+<td style="text-align: left;">Rasterized Quads</td>
+<td style="text-align: left;">VK_NV_fill_rectangle 拡張</td>
+<td style="text-align: left;">SRP Batcher / GPU Instancing の最適化</td>
+</tr>
+<tr>
+<td style="text-align: left;">シェーダーパーミュテーション削減</td>
+<td style="text-align: left;">Unreal のライトシェーダー統合</td>
+<td style="text-align: left;">Shader Variant 爆発の防止（shader_feature
+/ multi_compile 管理）</td>
+</tr>
+<tr>
+<td style="text-align: left;">パフォーマンスダッシュボード</td>
+<td style="text-align: left;">Python ブラウザベースの自動計測</td>
+<td style="text-align: left;">Unity Performance Testing + CI 連携</td>
+</tr>
+<tr>
+<td style="text-align: left;">ストライクプラン</td>
+<td
+style="text-align: left;">エンジニア-アーティスト協業ドキュメント</td>
+<td style="text-align: left;">Scene 単位のプロファイルレポート運用</td>
+</tr>
+<tr>
+<td style="text-align: left;">ライトマップパッキング</td>
+<td style="text-align: left;">Unreal
+のライトマップビルドパイプライン改造</td>
+<td style="text-align: left;">Enlighten / Progressive GPU Lightmapper
+の設定最適化</td>
+</tr>
+<tr>
+<td style="text-align: left;">重複メッシュ検出</td>
+<td style="text-align: left;">保存時の自動バリデーション</td>
+<td style="text-align: left;">EditorScript / AssetPostprocessor
+でのバリデーション</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="タイルベースシャドウ分類-unity-shadow-のカスケード最適化">1.
+タイルベースシャドウ分類 → Unity: Shadow のカスケード最適化</h3>
+<p><strong>Unreal で発生していた問題</strong>:
+ディレクショナルライトのシャドウ計算を画面上の全ピクセルに対して実行していた。しかし実際のフレームでは、空や屋根の上面のように「確実に日向」のエリアや、建物の影が完全にかかった「確実に日陰」のエリアが大量に存在し、影の境界付近の混在エリアだけが本当にシャドウ計算を必要としていた。タイルごとに分類してスキップする仕組みを導入したが、分類コスト（0.25ms）に対して改善量（0.06ms）が小さく、<strong>投資対効果が薄い</strong>結果になった。原因は
+Unreal
+のライティングシェーダーが多数のパーミュテーションに分かれており、分岐処理が依然として重かったため。</p>
+<p><strong>Unity で同様の問題が起きるケース</strong>:</p>
+<ul>
+<li>URP/HDRP
+で<strong>シャドウカスケードの分割数やシャドウ距離が不適切</strong>なとき。例えば4カスケードを設定しているが、実際にはカスケード3〜4の遠方に影を落とすオブジェクトがほとんどないシーンでは、無駄なシャドウマップ描画とサンプリングが毎フレーム実行される</li>
+<li><strong>Screen Space Shadow</strong> を有効にしていない URP
+プロジェクトでは、全ピクセルでカスケードシャドウマップをサンプリングするため、日向の広い屋外シーンで
+GPU 時間を浪費する</li>
+<li>モバイルプロジェクトで、カスケード分割を PC
+と同じ設定にしているケース。120fps モードでフレームバジェットが 8.3ms
+に半減する状況では、シャドウパスの 1ms が全体の 12% を占める</li>
+</ul>
+<p><strong>Unity でのアプローチ</strong>:</p>
+<ul>
+<li><strong>URP</strong>:
+カスケードシャドウマップの分割数と距離設定で、遠方のシャドウ計算を省略。<code>MainLightShadowCasterPass</code>
+のカスタマイズで、タイルベースの分類に近いことが可能</li>
+<li><strong>HDRP</strong>:
+標準で<strong>コンタクトシャドウ</strong>（スクリーンスペースでの近接シャドウ）と<strong>カスケードシャドウ</strong>の2段階を持ち、<code>ScreenSpaceShadow</code>
+パスでピクセル単位の最適化が組み込まれている</li>
+</ul>
+<p><strong>具体的なアクション</strong>:</p>
+<div class="sourceCode" id="cb11"><pre
+class="sourceCode csharp"><code class="sourceCode cs"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co">// URP の RenderFeature で Screen Space Shadow を追加し、</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="co">// タイル単位でシャドウ計算をスキップする例</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="kw">class</span> TileBasedShadowFeature <span class="op">:</span> ScriptableRendererFeature</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Compute Shader でタイル分類を実行し、</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>    <span class="co">// 分類結果をシャドウパスに渡す</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p>Moore 氏の教訓「期待ほどではなかった」は Unity
+にも当てはまる。カスケード設定の調整だけで大幅な改善が見込めるため、まずは
+<code>QualitySettings</code>
+のシャドウ設定（カスケード数、シャドウ距離、解像度）を見直すことを推奨する。</p>
+<hr />
+<h3 id="クラスタードライティング-unity-forward-hdrp-light-cluster">2.
+クラスタードライティング → Unity: Forward+ / HDRP Light Cluster</h3>
+<p><strong>Unreal で発生していた問題</strong>: 1ビューあたり最大 264
+個のダイナミックライト、1クラスタあたり最大 30
+ライトが存在するステージで、ライトリストを<strong>リンクリスト</strong>で管理していた。リンクリストの各ノードを辿るたびにメモリの異なる位置にジャンプするため、GPU
+のキャッシュが効かず帯域を浪費していた。さらに
+Wave（32〜64スレッドの束）内の各スレッドが異なるノードを参照するため、<strong>スカラー化</strong>（全スレッドで同じデータを共有する最適化）が効かなかった。Gen8/Gen9
+では許容範囲だったが、Switch 1 の 30fps ターゲットや Gen9 の 120fps
+モード（バジェット 8.3ms）では帯域がボトルネックになった。</p>
+<p><strong>Unity で同様の問題が起きるケース</strong>:</p>
+<ul>
+<li><strong>URP Forward+ で大量のライトを使用するシーン</strong>: URP の
+Forward+
+はライトクラスタリングを内蔵しているが、ライト数がデスクトップの上限 256
+に近づくとクラスタ構造の走査コストが増大する。特に狭い室内に多数のポイントライトが密集するシーン（バー、ネオン街、ゲームセンターなど）で顕著</li>
+<li><strong>HDRP のライトクラスタ</strong>:
+クラスタあたりのライト数が増えると、<code>ClusterLighting.compute</code>
+の実行時間が延びる。<code>HDAdditionalLightData</code>
+の影響範囲（Range）が大きすぎるライトが多いと、広範囲のクラスタにライトが登録されてしまう</li>
+<li><strong>カスタム SRP</strong>:
+独自のクラスタードライティングをリンクリストで実装している場合、Moore
+氏と全く同じ帯域問題が発生する</li>
+</ul>
+<p><strong>Unity でのアプローチ</strong>:</p>
+<ul>
+<li><strong>URP 6+ の Forward+</strong>: Unity 2022 以降の URP は
+<strong>Forward+
+レンダリング</strong>をサポートし、ライトクラスタリングが標準搭載されている。<code>AdditionalLightsForwardPlus</code>
+パスで、クラスタごとのライトリストを GPU 上で管理する</li>
+<li><strong>HDRP</strong>: 独自の <strong>Light Cluster</strong>
+システムを持ち、<code>ClusterLighting.compute</code>
+でクラスタ化を実行</li>
+</ul>
+<p><strong>具体的なアクション</strong>:</p>
+<ul>
+<li>URP Forward+ のライト上限はデスクトップ/コンソールで
+<strong>256</strong>、モバイルで <strong>32</strong>。この値は URP Asset
+の Inspector からは変更できず、変更するには <strong>URP Config
+Package</strong>（<code>com.unity.render-pipelines.universal-config</code>）内の
+<code>ShaderConfig.cs</code> を編集する必要がある。なお
+<code>maxAdditionalLightsCount</code> プロパティは Forward+
+モードでは<strong>無視される</strong>（Forward モードのみ有効）</li>
+<li>HDRP では <code>HDAdditionalLightData</code>
+の影響範囲を厳密に設定し、クラスタあたりのライト数を減らす</li>
+<li>カスタム SRP を書く場合、Moore 氏の Flat Bit Array 設計（2 × uint32
+で 64 ライト管理 + <code>WaveAllBitOr</code> でスカラー化）はそのまま
+HLSL で実装可能</li>
+</ul>
+<pre class="hlsl"><code>// Unity の Compute Shader でも WaveAllBitOr は使用可能（SM 6.0+）
+// #pragma require waveops ディレクティブが必要
+#pragma require waveops
+uint mergedMask = WaveActiveBitOr(lightBitMask);</code></pre>
+<blockquote>
+<p><strong>注意</strong>: Unity で Wave Intrinsics を使用するには
+<code>#pragma require waveops</code> の宣言が必須。SM 6.0
+以上が必要で、対応プラットフォームはデスクトップ/コンソールに限定される（モバイルでは使えない）。</p>
+</blockquote>
+<hr />
+<h3 id="コンピュートバリアの排除-unity-asyncgpureadback-とバリア設計">3.
+コンピュートバリアの排除 → Unity: AsyncGPUReadback とバリア設計</h3>
+<p><strong>Unreal で発生していた問題</strong>:
+クラスタードライティングでは、タイル分類 → ライトカリング →
+ライティング計算と複数のコンピュートシェーダーが連鎖実行される。前段の出力を後段が参照するため
+<code>DeviceMemoryBarrier</code>
+による同期が必要だが、このバリアはワークグループ内のメモリ同期しか保証しない。異なるディスパッチグループ間の同期には
+Full GPU Flush が必要で、パイプライン全体がストールした。特に Xbox One /
+PS4 世代ではこのストールがフレームバジェットを 0.5ms
+以上圧迫するケースがあった。Moore 氏は「Rumbleverse
+時代から改善を重ねてきた」とし、リングバッファで書き込みと読み込みのアドレスを分離することでバリア自体を不要にした。</p>
+<p><strong>Unity で同様の問題が起きるケース</strong>:</p>
+<ul>
+<li><strong>カスタム Render Feature で複数の Compute Shader
+を連鎖実行するとき</strong>: 例えばスクリーンスペースのライト分類 →
+ライティング計算 → ポストエフェクトの3段パイプラインを
+<code>CommandBuffer</code>
+で実行すると、各ディスパッチ間に暗黙のバリアが挿入され、GPU
+がアイドル状態になる区間が発生する</li>
+<li><strong>SSAO / SSR / ボリュメトリックフォグなど複数パスの Compute
+処理</strong>: HDRP では標準でこれらが Compute
+化されているが、カスタムポストエフェクトを追加すると意図しないバリアが差し込まれることがある</li>
+<li><strong>GPU Readback を同期的に待つコード</strong>:
+<code>ComputeBuffer.GetData()</code> は CPU-GPU
+間のフルバリアを発生させ、フレーム全体がストールする</li>
+</ul>
+<p><strong>Unity でのアプローチ</strong>:</p>
+<p>Unity の <code>CommandBuffer</code>
+でコンピュートシェーダーを連鎖実行する場合も同様の問題が発生する:</p>
+<div class="sourceCode" id="cb13"><pre
+class="sourceCode csharp"><code class="sourceCode cs"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co">// バリアが暗黙的に挿入される例</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>cmd<span class="op">.</span><span class="fu">DispatchCompute</span><span class="op">(</span>classifyShader<span class="op">,</span> <span class="op">...);</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="co">// ← ここに暗黙のバリア</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>cmd<span class="op">.</span><span class="fu">DispatchCompute</span><span class="op">(</span>lightingShader<span class="op">,</span> <span class="op">...);</span></span></code></pre></div>
+<p><strong>具体的なアクション</strong>:</p>
+<ul>
+<li><code>CommandBuffer</code>
+のディスパッチ順序を意識し、不要なバリアを避ける</li>
+<li>Moore 氏のリングバッファ方式は <code>ComputeBuffer</code> の
+Ping-Pong（ダブルバッファ）で実現可能</li>
+<li><code>AsyncGPUReadback</code> を活用して CPU-GPU
+間の同期を最小化</li>
+<li>Unity 6 の <strong>Render
+Graph</strong>（<code>UnityEngine.Rendering.RenderGraphModule</code>
+名前空間）では依存関係が明示的に記述でき、不要なバリアが自動的に排除される。Unity
+2023 以前の <code>Experimental.Rendering</code>
+名前空間からは移動しているので注意</li>
+</ul>
+<hr />
+<h3
+id="gcn-アセンブリ最適化-unity-shader-variant-とプラットフォーム別プロファイル">4.
+GCN アセンブリ最適化 → Unity: Shader Variant
+とプラットフォーム別プロファイル</h3>
+<p><strong>Unreal で発生していた問題</strong>:
+ディファードライティングシェーダー内でライトインデックスバッファを
+<code>StructuredBuffer&lt;uint&gt;</code> で宣言していたところ、GCN
+コンパイラが <code>buffer_load_format_x</code>（ベクターメモリ命令）+
+<code>v_readfirstlane_b32</code>（ベクター→スカラー変換）の2命令を生成していた。同じデータを
+<code>ByteAddressBuffer</code> で読むと
+<code>s_buffer_load_dword</code>（スカラーメモリ命令）の1命令で済む。たった1命令の差だが、ディファードライティングは画面上の全ピクセル（1080p
+で約200万、4K
+で約800万）で走り、さらにパーミュテーションごとに繰り返されるため、差が累積して無視できないレベルになった。Moore
+氏は「HLSL
+の書き方が『正しい』かどうかと、最適なアセンブリが生成されるかどうかは別問題」と強調した。</p>
+<p><strong>Unity で同様の問題が起きるケース</strong>:</p>
+<ul>
+<li><strong>カスタムシェーダーで <code>StructuredBuffer</code>
+を使っている全てのケース</strong>: Unity も DXC / FXC / Metal Shader
+Compiler
+を経由するため、バッファ型宣言がアセンブリ出力に影響する。特にフルスクリーンパスや
+Compute Shader
+など画面全体を走る処理では1命令の差が数百万回掛け算される</li>
+<li><strong>URP / HDRP の Lit シェーダーをカスタマイズしたとき</strong>:
+Unity
+のビルトインシェーダーは十分に最適化されているが、カスタムキーワードやバッファを追加すると、意図しないベクターロードが生成されることがある</li>
+<li><strong>プラットフォーム間でシェーダーパフォーマンスが大きく異なるとき</strong>:
+PC では問題ないのに PS4 や Switch
+で遅い場合、アセンブリレベルの問題が原因であることが多い。Unity の Frame
+Debugger だけでは検出できない</li>
+</ul>
+<p><strong>Unity でのアプローチ</strong>:</p>
+<p>Unity も同じ HLSL コンパイラチェーン（DXC / FXC / Metal Shader
+Compiler）を使うため、同様の問題が発生する:</p>
+<ul>
+<li><code>StructuredBuffer&lt;uint&gt;</code> vs
+<code>ByteAddressBuffer</code> の選択は Unity でも有効</li>
+<li><strong>RenderDoc</strong> / <strong>PIX</strong> / <strong>Xcode
+GPU Profiler</strong> でシェーダーのアセンブリ出力を確認</li>
+</ul>
+<p><strong>具体的なアクション</strong>:</p>
+<pre class="hlsl"><code>// Unity ShaderLab でも ByteAddressBuffer は使用可能
+ByteAddressBuffer _LightIndexBuffer;
+
+uint lightIndex = _LightIndexBuffer.Load(offset);
+// StructuredBuffer&lt;uint&gt; より効率的なスカラーロードが
+// 生成される可能性がある（プラットフォーム依存）
+// 注: StructuredBuffer のストライドは一部プラットフォームで
+// 16バイトの倍数が推奨される（公式ドキュメント参照）</code></pre>
+<ul>
+<li><strong>Frame Debugger</strong>
+だけでなく、<strong>RenderDoc</strong>
+でシェーダーのディスアセンブリを確認する習慣をつける</li>
+<li>Unity の <strong>Shader Compilation</strong>
+ログで、各プラットフォーム向けのコンパイル結果を比較</li>
+</ul>
+<hr />
+<h3 id="rasterized-quads-unity-srp-batcher-gpu-instancing-の最適化">5.
+Rasterized Quads → Unity: SRP Batcher / GPU Instancing の最適化</h3>
+<p><strong>Unreal で発生していた問題</strong>:
+ディファードライティングのタイルベースパスでは、各8×8タイルをフルスクリーンクワッド（2三角形）で描画していた。GPU
+はピクセルシェーダーを2×2のQuad単位で実行するため、三角形のエッジ（対角線）をまたぐQuadでは、エッジ外のピクセルも「ヘルパーレーン」として実行される。計算結果は破棄されるが
+GPU リソースは消費する。8×8タイルでは <strong>78ピクセル中16がヘルパー =
+25%のオーバーシェーディング</strong>。さらにタイルサイズが小さくなるほどエッジ比率が増えて悪化する。Switch
+2 で SSR
+が最も重いビューで3倍遅くなった問題の直接原因がこれだった。<code>VK_NV_fill_rectangle</code>
+で三角形の代わりに矩形をラスタライズすることで、ヘルパーレーンを完全にゼロにし、タイルサイズを16×16に拡大してクラシファイヤの実行量を1/4に削減した。</p>
+<p><strong>Unity で同様の問題が起きるケース</strong>:</p>
+<ul>
+<li><strong><code>Graphics.Blit</code>
+を使ったポストエフェクト</strong>: Unity の <code>Blit</code>
+はフルスクリーンクワッド（4頂点2三角形）を使うため、全ピクセルの描画において対角線に沿ったヘルパーレーンの無駄が発生する。ポストエフェクトが軽い場合は無視できるが、レイマーチングや複雑なSSAO/SSRなど重いシェーダーでは影響が顕在化する</li>
+<li><strong>URP のカスタム Render Feature
+でタイルベースの描画を行うとき</strong>: Moore
+氏の事例と同様に、DrawIndirect
+で多数のタイルを2三角形で描画すると、タイル数×ヘルパーレーン分の無駄が蓄積する</li>
+<li><strong>モバイルの低解像度タイル処理</strong>:
+タイルサイズが4×4のような小さい値の場合、オーバーシェーディング率がさらに悪化する</li>
+</ul>
+<p><strong>Unity でのアプローチ</strong>:</p>
+<p>Unity
+のフルスクリーンパスも同じ2三角形方式を使っている（<code>Blit</code>
+操作）。<code>VK_NV_fill_rectangle</code> は Unity
+からは直接利用しにくいが、関連する最適化は以下の通り:</p>
+<ul>
+<li><strong>URP の Full Screen Pass Renderer Feature</strong>:
+フルスクリーンエフェクトの公式推奨方法。<code>Blit</code>
+の代わりに最適化された描画パスを使用する</li>
+<li><strong>HDRP</strong>: <code>BlitFullscreenTriangle</code>
+メソッドで<strong>1三角形</strong>によるフルスクリーン描画を行う（2三角形のクワッドではなく、画面全体を覆う1つの大きな三角形を使うことでヘルパーレーンのオーバーヘッドを削減）。<code>Graphics.Blit</code>
+はフルスクリーンクワッド（4頂点2三角形）を使うため、HDRP では非推奨</li>
+<li><strong>コンピュートシェーダーでの代替</strong>:
+フルスクリーンパスをラスタライザ経由ではなくコンピュートシェーダーで実行すれば、ヘルパーレーンの問題自体が存在しない。ただし、Unity
+公式としてはフルスクリーンパスには <strong>Full Screen Pass Renderer
+Feature</strong> の使用が推奨されている</li>
+</ul>
+<p><strong>具体的なアクション</strong>:</p>
+<div class="sourceCode" id="cb15"><pre
+class="sourceCode csharp"><code class="sourceCode cs"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co">// URP でフルスクリーン Compute パスを使う例</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>cmd<span class="op">.</span><span class="fu">DispatchCompute</span><span class="op">(</span>fullScreenCS<span class="op">,</span> kernel<span class="op">,</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">(</span>Screen<span class="op">.</span><span class="fu">width</span> <span class="op">+</span> <span class="dv">7</span><span class="op">)</span> <span class="op">/</span> <span class="dv">8</span><span class="op">,</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>    <span class="op">(</span>Screen<span class="op">.</span><span class="fu">height</span> <span class="op">+</span> <span class="dv">7</span><span class="op">)</span> <span class="op">/</span> <span class="dv">8</span><span class="op">,</span> <span class="dv">1</span><span class="op">);</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="co">// ラスタライザを経由しないので、ヘルパーレーンが発生しない</span></span></code></pre></div>
+<p>Moore 氏の「タイルサイズ 8×8 → 16×16 への拡大」は、Unity
+のコンピュートシェーダーでもスレッドグループサイズの選択として直接応用できる。</p>
+<hr />
+<h3
+id="シェーダーパーミュテーション削減-unity-shader-variant-爆発の防止">6.
+シェーダーパーミュテーション削減 → Unity: Shader Variant 爆発の防止</h3>
+<p><strong>Unreal で発生していた問題</strong>: Unreal Engine
+のディファードライトシェーダーは、ライトの種類（ポイント/スポット/ディレクショナル）×
+<code>USE_LIGHT_FUNCTION</code> の ON/OFF × シャドウの有無 ×
+その他多数の組み合わせごとに<strong>別バージョンのシェーダー（パーミュテーション）</strong>
+を生成していた。パーミュテーション数が多いと、各パーミュテーションを実行する
+GPU スレッド数が少なくなり、<strong>GPU
+の実行ユニットが半分遊んでいる状態</strong>（低オクピュパンシー）になる。さらに、タイル分類の効果も減殺された
+–
+多くのタイルが複数パーミュテーションにまたがるため「未分類」に落ちてしまい、分類によるスキップが効かなくなった。Moore
+氏は「前作 1+2 の時から見つけたかった最適化だが、3+4
+でようやくたどり着いた」と述べ、パーミュテーション統合で
+<strong>0.4ms</strong> を改善した。</p>
+<p><strong>Unity で同様の問題が起きるケース</strong>:</p>
+<ul>
+<li><strong><code>multi_compile</code>
+の乱用によるバリアント爆発</strong>: <code>multi_compile</code>
+を3つ追加するだけで 2×2×2 = 8
+バリアントが生成され、他のキーワードとの掛け算でさらに膨れ上がる。URP/HDRP
+のビルトインキーワードだけでも数百バリアントになるプロジェクトがある</li>
+<li><strong>ビルドサイズの異常な膨張</strong>:
+シェーダーバリアントはビルドサイズに直結する。数万バリアントが存在するプロジェクトでは、シェーダーだけで数百MBに達することがある</li>
+<li><strong>ロード時間の延長</strong>:
+バリアントが多いとシェーダーの初回コンパイル（ウォームアップ）に時間がかかり、ゲームプレイ中にヒッチ（一瞬のフリーズ）が発生する。特にモバイルで深刻</li>
+<li><strong>GPU オクピュパンシーの低下</strong>: Moore
+氏と同じく、バリアントが多いとGPUの実行ユニットが分散し稼働率が下がる</li>
+</ul>
+<p><strong>Unity でのアプローチ</strong>:</p>
+<p>Unity でも <strong>Shader Variant 爆発</strong>
+は深刻な問題だ。<code>multi_compile</code> と
+<code>shader_feature</code>
+の管理が不適切だと、数千〜数万のバリアントが生成される:</p>
+<p><strong>具体的なアクション</strong>:</p>
+<ul>
+<li><strong><code>shader_feature</code></strong>
+を使い、使用していないバリアントをビルドから除外</li>
+<li><strong>Shader Variant Collection</strong> でホワイトリスト管理</li>
+<li><code>#pragma multi_compile_fragment</code>
+で頂点シェーダーのバリアントを減らす</li>
+<li>Unity 6 の <strong>Shader Stripping</strong> API
+で、ビルド時に不要バリアントを自動除去</li>
+</ul>
+<pre><code>// 悪い例: バリアント爆発
+#pragma multi_compile _ _SHADOWS_SOFT
+#pragma multi_compile _ _LIGHT_COOKIES
+#pragma multi_compile _ _ADDITIONAL_LIGHTS
+// → 2 × 2 × 2 = 8 バリアント（さらに他のキーワードと掛け算）
+
+// 良い例: 必要なものだけ
+#pragma shader_feature_fragment _SHADOWS_SOFT
+#pragma shader_feature_fragment _LIGHT_COOKIES
+// → 使用している組み合わせだけがビルドに含まれる</code></pre>
+<p>Moore 氏の「パーミュテーション統合 → 0.4ms 改善」は、Unity でも
+Shader Variant の整理で同等以上の効果が期待できる。</p>
+<hr />
+<h3
+id="パフォーマンスダッシュボード-unity-performance-testing-framework-ci">7.
+パフォーマンスダッシュボード → Unity: Performance Testing Framework +
+CI</h3>
+<p><strong>Unreal で発生していた問題</strong>: 6プラットフォーム ×
+19ステージ × Performance/Quality
+モードの全組み合わせ（100以上のセル）を人力で確認するのは物理的に不可能だった。レベルデザイナーが毎日コンテンツを追加する中で、「昨日のコミットで
+Tokyo の Switch 1 だけ 3ms
+遅くなった」といったリグレッション（性能劣化）が検知されないまま放置されていた。平均フレームタイムだけでは問題の深刻さがわからず、「バジェット内フレーム率
+95% でも、残り5%がDynamic
+Resolutionの下限に張り付いている」状況を見逃していた。Moore 氏は Python
+でブラウザベースのダッシュボードを自作し、95th パーセンタイルの GPU Time
+をセルの色で可視化、セルクリックでタイムライン詳細を展開できる仕組みを構築した。</p>
+<p><strong>Unity で同様の問題が起きるケース</strong>:</p>
+<ul>
+<li><strong>マルチプラットフォーム対応プロジェクト</strong>: iOS /
+Android / PC /
+コンソールの組み合わせで、特定プラットフォームだけのリグレッションを見逃す。「PC
+では問題ないのに、Android
+の低スペック端末でフレームレートが半分になった」がリリース直前に発覚するケース</li>
+<li><strong>大規模シーンの継続的な更新</strong>:
+アーティストが毎日アセットを追加するプロジェクトで、「どのコミットでパフォーマンスが悪化したか」を特定できない。Unity
+Profiler の手動確認では、20シーン ×
+5プラットフォームを毎日チェックすることは現実的でない</li>
+<li><strong>Quality Settings のプリセット間の差異</strong>: Low / Medium
+/ High / Ultra の設定ごとにパフォーマンス特性が異なるが、開発チームが
+High でしかテストしていないケース</li>
+</ul>
+<p><strong>Unity でのアプローチ</strong>:</p>
+<p>Unity には公式の <strong>Performance Testing
+Framework</strong>（<code>com.unity.test-framework.performance</code>）と
+<strong>Unity Build Automation</strong> がある:</p>
+<p><strong>具体的なアクション</strong>:</p>
+<div class="sourceCode" id="cb17"><pre
+class="sourceCode csharp"><code class="sourceCode cs"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co">// Unity Performance Testing Framework の例</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="op">[</span>Test<span class="op">,</span> Performance<span class="op">]</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="dt">void</span> <span class="fu">LightingPerformance_TokyoStage</span><span class="op">()</span></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>    Measure<span class="op">.</span><span class="fu">Method</span><span class="op">(()</span> <span class="op">=&gt;</span></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>    <span class="op">{</span></span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>        <span class="co">// Tokyo シーンの特定カメラパスを1フレーム描画</span></span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>        SceneManager<span class="op">.</span><span class="fu">LoadScene</span><span class="op">(</span><span class="st">&quot;Tokyo&quot;</span><span class="op">);</span></span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>        Camera<span class="op">.</span><span class="fu">main</span><span class="op">.</span><span class="fu">Render</span><span class="op">();</span></span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>    <span class="op">})</span></span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">WarmupCount</span><span class="op">(</span><span class="dv">5</span><span class="op">)</span></span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">MeasurementCount</span><span class="op">(</span><span class="dv">30</span><span class="op">)</span></span>
+<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">Run</span><span class="op">();</span></span>
+<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<ul>
+<li><strong>Unity Cloud Build</strong> / <strong>Jenkins</strong>
+で各プラットフォーム向けビルドを夜間実行</li>
+<li><strong>Grafana + InfluxDB</strong>
+でパフォーマンスデータを可視化（Moore 氏のダッシュボードに相当）</li>
+<li>Unity 6 の <strong>Profiler Counters API</strong>
+でカスタムメトリクス（シャドウパス時間、ライティング時間など）を CI
+に送信</li>
+</ul>
+<hr />
+<h3 id="ストライクプラン-unity-scene-単位のプロファイルレポート">8.
+ストライクプラン → Unity: Scene 単位のプロファイルレポート</h3>
+<p><strong>Unreal で発生していた問題</strong>:
+ダッシュボードでデータを集めても、それだけでは最適化は進まなかった。アーティストにダッシュボードを見せて「全部緑にしろ」と丸投げすると、最も削りやすいがビジュアルインパクトの大きい要素（フォリッジ、ライティング）から削っていくため、<strong>出荷に必要以上にコンテンツが痩せた</strong>。スライドでは「the
+cuts will be more severe than needed to ship the
+stage」が赤太字で強調されており、Moore
+氏がセッション中最も力を込めて語ったポイントだった。エンジニアが「何を削ればどれだけ軽くなるか」の技術的指針をドキュメント化（ストライクプラン）し、判断はアーティストに委ねる協業モデルを確立した。</p>
+<p><strong>Unity で同様の問題が起きるケース</strong>:</p>
+<ul>
+<li><strong>「Profiler
+で赤いからとにかく減らして」というアーティストへの丸投げ</strong>:
+フォリッジ密度を半分にすればパフォーマンスは改善するが、「LOD Group
+を追加すれば密度を維持したまま Draw Call だけ 40%
+減らせる」というエンジニア側の知識が共有されていない</li>
+<li><strong>最適化の責任が不明確なプロジェクト</strong>:
+エンジニアは「アセットが重い」、アーティストは「エンジンが遅い」と言い合い、具体的な改善アクションが決まらない</li>
+<li><strong>シーンごとのパフォーマンス特性の違いが考慮されていない</strong>:
+全シーンに同じ品質設定を適用しているが、実際には開放的な屋外シーンと密閉的な室内シーンでボトルネックが全く異なる</li>
+</ul>
+<p><strong>Unity でのアプローチ</strong>:</p>
+<p>Moore
+氏のストライクプランは技術的なドキュメントではなく、<strong>エンジニアとアーティストのコミュニケーションツール</strong>だ。Unity
+プロジェクトでも以下のように実践できる:</p>
+<ol type="1">
+<li><strong>Scene ごとの Profile Analyzer レポート</strong>: Unity の
+Profile Analyzer で各シーンのフレーム内訳を取得し、問題箇所を特定</li>
+<li><strong>具体的な改善提案</strong>: 「このシーンの Tree Prefab を LOD
+Group 付きに変更すれば Draw Call が 40% 減る」のように定量的に提示</li>
+<li><strong>アーティスト向けダッシュボード</strong>: Frame Debugger
+のスクリーンショットを添え、何が重いのかを視覚的に説明</li>
+</ol>
+<blockquote>
+<p>Moore 氏の核心メッセージ:
+「アーティストに『全部緑にしろ』と丸投げしてはいけない。」 これは Unity
+プロジェクトでも全く同じだ。</p>
+</blockquote>
+<hr />
+<h3 id="ライトマップパッキング-unity-lightmapper-設定の最適化">9.
+ライトマップパッキング → Unity: Lightmapper 設定の最適化</h3>
+<p><strong>Unreal で発生していた問題</strong>: Tokyo
+ステージ（本作で最も困難なレベル）で、CPU
+時間が深刻なボトルネックになっていた。原因を調査すると、ライトマップのアトラスパッキングが<strong>空間的局所性</strong>（近いメッシュを同じページに配置）を優先していたため、同じベンチが3脚あっても3枚の別アトラスページに分散されていた。結果としてインスタンシング（同一メッシュの一括描画）が効かず、Draw
+Call が増加し CPU
+側のレンダリングスレッドが過負荷になった。パッキングロジックを<strong>インスタンサビリティ優先</strong>（同じメッシュ型のライトマップを同じページに集約）に変更し、距離制約を2倍に緩和。さらにアトラスページサイズを拡大（メモリ制約のある
+Switch 1 ではトップ MIP をクランプして緩和）。結果として <strong>Switch
+上で CPU 時間 2ms を削減</strong>した。</p>
+<p><strong>Unity で同様の問題が起きるケース</strong>:</p>
+<ul>
+<li><strong>同一 Prefab
+の複数インスタンスが異なるライトマップアトラスに分散している</strong>:
+Unity の Progressive Lightmapper
+も空間的局所性ベースでパッキングするため、同じベンチ Prefab
+が3つ配置されている場合、それぞれ別のライトマップインデックスに割り当てられることがある。異なるライトマップインデックスのオブジェクトは
+Static Batching でもバッチされない</li>
+<li><strong>Max Lightmap Size が不適切</strong>:
+小さすぎるとアトラスページ数が増え、バッチが分断される。大きすぎるとテクスチャストリーミングが非効率になり、モバイルでメモリ不足を引き起こす</li>
+<li><strong>Lightmap Parameters がオブジェクトごとにバラバラ</strong>:
+同一メッシュでも異なる <code>LightmapParameters</code>
+アセットが割り当てられていると、ライトマップの解像度やバイアス値が異なり、同じアトラスにパックされにくくなる</li>
+<li><strong>Scene View の Lightmap Indices
+表示でアトラスの分散を確認していない</strong>:
+問題が起きていても視覚的に確認しないと気づけない</li>
+</ul>
+<p><strong>Unity でのアプローチ</strong>:</p>
+<p>Unity の Progressive GPU Lightmapper でも同様の問題が発生する:</p>
+<ul>
+<li>Lighting ウィンドウの <strong>Max Lightmap
+Size</strong>（<code>LightingSettings.lightmapMaxSize</code>）を適切に設定（大きすぎるとストリーミング非効率、小さすぎるとバッチ分断）</li>
+<li><strong>同一 Prefab のインスタンス</strong> には同じ Lightmap
+Parameters を使用し、バッチングを促進</li>
+<li><code>StaticBatching</code> と Lightmap の相互作用に注意 – Static
+Batching はライトマップ UV
+を保持するが、異なるライトマップインデックスのオブジェクトはバッチされない</li>
+</ul>
+<p><strong>具体的なアクション</strong>:</p>
+<ul>
+<li>Lighting ウィンドウの <strong>Max Lightmap Size</strong> を Scene
+全体で統一</li>
+<li><code>LightmapParameters</code>
+アセットを共有して、同一メッシュが同じアトラスに配置されやすくする</li>
+<li><strong>Lightmap Overlap</strong> の可視化（Scene View → Lightmap
+Indices）でアトラスの分散状況を確認</li>
+</ul>
+<hr />
+<h3
+id="重複メッシュ検出-unity-editorscript-によるコンテンツバリデーション">10.
+重複メッシュ検出 → Unity: EditorScript
+によるコンテンツバリデーション</h3>
+<p><strong>Unreal で発生していた問題</strong>:
+アーティストの作業フロー（コピー＆ペーストのミス、Undo/Redo
+操作の不整合、フォリッジペイントツールの挙動）により、完全に同じ位置に同じメッシュが重ねて配置されるケースが頻発していた。<strong>見た目は完全に正しい</strong>ため
+QA では絶対に発見できないが、GPU
+は2つ分を描画するので<strong>コストが倍</strong>になる。Moore
+氏は「最も厄介なコンテンツバグの一つ」と述べ、保存/マップチェック時に自動検出・除去するシステムを実装した。さらに検出過程で、頂点カラーの不一致（インスタンシングバッチの分断原因）や不要なマテリアルオーバーライドの残骸といった<strong>隠れた問題も芋づる式に発見</strong>された。Moore
+氏は「あらゆるエンジンにこの問題を防ぐコンテンツバリデーションを実装すべきだと確信している」と強く主張した。</p>
+<p><strong>Unity で同様の問題が起きるケース</strong>:</p>
+<ul>
+<li><strong>Prefab のコピー＆ペーストミス</strong>: Scene 上で Prefab を
+Ctrl+D
+で複製した際、同じ位置に配置されたまま気づかないケース。特に大量のオブジェクトが密集するシーンでは、Hierarchy
+ウィンドウでも見落としやすい</li>
+<li><strong>Terrain のディテールメッシュやツリーの重複</strong>: Terrain
+ペイントツールで同じ位置に複数回ペイントすると重複が発生する。草やツリーの密度が意図せず倍になり、Draw
+Call とポリゴン数が増大する</li>
+<li><strong>アセットインポート時の不整合</strong>: FBX
+の再インポートで既存オブジェクトが残ったまま新しいオブジェクトが追加されるケース</li>
+<li><strong>Z-Fighting</strong>:
+重複メッシュの典型的な症状。2つのメッシュの深度値が完全に一致するため、虹色のちらつきやフリッカーが発生する。プレイ中にカメラ角度によって出たり消えたりするため、再現しにくい</li>
+<li><strong>Unity には Unreal
+のような「保存時自動バリデーション」が標準搭載されていない</strong>:
+そのため問題が蓄積しやすい</li>
+</ul>
+<p><strong>Unity でのアプローチ</strong>:</p>
+<p>Unity には Unreal
+の「保存時自動バリデーション」に相当する仕組みがないため、<strong>自作が必要</strong>:</p>
+<div class="sourceCode" id="cb18"><pre
+class="sourceCode csharp"><code class="sourceCode cs"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co">// EditorScript: シーン内の重複 Transform を検出</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="op">[</span><span class="fu">MenuItem</span><span class="op">(</span><span class="st">&quot;Tools/Check Duplicate Meshes&quot;</span><span class="op">)]</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="kw">static</span> <span class="dt">void</span> <span class="fu">CheckDuplicateMeshes</span><span class="op">()</span></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>    <span class="dt">var</span> renderers <span class="op">=</span> FindObjectsOfType<span class="op">&lt;</span>MeshRenderer<span class="op">&gt;();</span></span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>    <span class="dt">var</span> groups <span class="op">=</span> renderers</span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>        <span class="op">.</span><span class="fu">GroupBy</span><span class="op">(</span>r <span class="op">=&gt;</span> <span class="op">(</span></span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>            r<span class="op">.</span><span class="fu">GetComponent</span><span class="op">&lt;</span>MeshFilter<span class="op">&gt;()?.</span><span class="fu">sharedMesh</span><span class="op">,</span></span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>            r<span class="op">.</span><span class="fu">transform</span><span class="op">.</span><span class="fu">position</span><span class="op">,</span></span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>            r<span class="op">.</span><span class="fu">transform</span><span class="op">.</span><span class="fu">rotation</span><span class="op">,</span></span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a>            r<span class="op">.</span><span class="fu">transform</span><span class="op">.</span><span class="fu">lossyScale</span></span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a>        <span class="op">))</span></span>
+<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a>        <span class="op">.</span><span class="fu">Where</span><span class="op">(</span>g <span class="op">=&gt;</span> g<span class="op">.</span><span class="fu">Count</span><span class="op">()</span> <span class="op">&gt;</span> <span class="dv">1</span><span class="op">);</span></span>
+<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a>    <span class="kw">foreach</span> <span class="op">(</span><span class="dt">var</span> group <span class="kw">in</span> groups<span class="op">)</span></span>
+<span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a>    <span class="op">{</span></span>
+<span id="cb18-17"><a href="#cb18-17" aria-hidden="true" tabindex="-1"></a>        Debug<span class="op">.</span><span class="fu">LogWarning</span><span class="op">(</span></span>
+<span id="cb18-18"><a href="#cb18-18" aria-hidden="true" tabindex="-1"></a>            $<span class="st">&quot;重複メッシュ検出: {group.First().name} &quot;</span> <span class="op">+</span></span>
+<span id="cb18-19"><a href="#cb18-19" aria-hidden="true" tabindex="-1"></a>            $<span class="st">&quot;({group.Count()}個が同一位置)&quot;</span><span class="op">,</span></span>
+<span id="cb18-20"><a href="#cb18-20" aria-hidden="true" tabindex="-1"></a>            group<span class="op">.</span><span class="fu">First</span><span class="op">().</span><span class="fu">gameObject</span><span class="op">);</span></span>
+<span id="cb18-21"><a href="#cb18-21" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb18-22"><a href="#cb18-22" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p><strong>さらに堅牢にするには</strong>:</p>
+<ul>
+<li><strong><code>IProcessSceneWithReport</code></strong>
+を実装し、ビルド時に自動検出</li>
+<li><strong>Prefab の Variant</strong>
+で頂点カラーが異なるインスタンスを検出</li>
+<li><strong><code>AssetPostprocessor.OnPostprocessAllAssets</code></strong>
+でインポート時に警告</li>
+</ul>
+<p>Moore
+氏の「あらゆるエンジンにコンテンツバリデーションを実装すべき」は、Unity
+エンジニアが最も実践すべきアドバイスだ。</p>
+<hr />
+<h3 id="unity-エンジニアへのまとめ">Unity エンジニアへのまとめ</h3>
+<p>本セッションの教訓を Unity プロジェクトに適用する際の優先順位:</p>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th style="text-align: left;">優先度</th>
+<th style="text-align: left;">施策</th>
+<th style="text-align: left;">難易度</th>
+<th style="text-align: left;">期待効果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>1（最優先）</strong></td>
+<td style="text-align: left;">重複メッシュ検出 EditorScript</td>
+<td style="text-align: left;">低</td>
+<td style="text-align: left;">QA で見つからないバグを根絶</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>2</strong></td>
+<td style="text-align: left;">Shader Variant 整理</td>
+<td style="text-align: left;">中</td>
+<td style="text-align: left;">ビルドサイズ縮小 + GPU 稼働率向上</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>3</strong></td>
+<td style="text-align: left;">CI パフォーマンステスト構築</td>
+<td style="text-align: left;">中</td>
+<td style="text-align: left;">リグレッションの早期検知</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>4</strong></td>
+<td style="text-align: left;">Lightmap パラメータ統一</td>
+<td style="text-align: left;">低</td>
+<td style="text-align: left;">バッチング効率 + ストリーミング改善</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>5</strong></td>
+<td style="text-align: left;">ストライクプラン運用</td>
+<td style="text-align: left;">低（技術より運用）</td>
+<td style="text-align: left;">エンジニア-アーティスト協業の質向上</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>6</strong></td>
+<td style="text-align: left;">カスタム SRP パスの最適化</td>
+<td style="text-align: left;">高</td>
+<td style="text-align: left;">フレームバジェットの大幅改善</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>7</strong></td>
+<td style="text-align: left;">Compute Shader でのフルスクリーンパス</td>
+<td style="text-align: left;">高</td>
+<td style="text-align: left;">ヘルパーレーン排除</td>
+</tr>
+</tbody>
+</table>
+<p>難易度の低いものから始め、計測 → 分析 →
+行動のサイクルを回すことが重要だ。Moore
+氏の3年4ヶ月が教えてくれるのは、<strong>銀の弾丸はなく、小さな改善の積み重ねがマルチプラットフォーム対応を可能にする</strong>ということだ。</p>
+<hr />
+<h2 id="参考情報">参考情報</h2>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th style="text-align: left;">項目</th>
+<th style="text-align: left;">内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">セッション</td>
+<td style="text-align: left;">GDC 2026 - 3 Years and 4 Months of
+Graphics Optimization in ‘Tony Hawk’s Pro Skater 3+4’</td>
+</tr>
+<tr>
+<td style="text-align: left;">スピーカー</td>
+<td style="text-align: left;">John Moore, Principal Rendering Engineer,
+Blizzard Albany</td>
+</tr>
+<tr>
+<td style="text-align: left;">前作セッション</td>
+<td style="text-align: left;">GDC 2020 - 3D + GPU Optimization in Tony
+Hawk’s Pro Skater 1+2</td>
+</tr>
+<tr>
+<td style="text-align: left;">エンジン</td>
+<td style="text-align: left;">Unreal Engine（カスタマイズ版）</td>
+</tr>
+<tr>
+<td style="text-align: left;">主要技術</td>
+<td style="text-align: left;">Tile Classification, Clustered Lighting,
+Flat Bit Array, GCN Assembly, Rasterized Quads (VK_NV_fill_rectangle),
+Performance Dashboard, Content Validation</td>
+</tr>
+<tr>
+<td style="text-align: left;">対応プラットフォーム</td>
+<td style="text-align: left;">Xbox One, PS4, Xbox Series S/X, PS5,
+Switch 1, Switch 2, PC</td>
+</tr>
+</tbody>
+</table>
+<h3 id="unity-公式ドキュメント参照先">Unity 公式ドキュメント参照先</h3>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th style="text-align: left;">トピック</th>
+<th style="text-align: left;">ドキュメント</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">URP Forward+ ライティング</td>
+<td style="text-align: left;">Universal Render Pipeline &gt; Lighting
+&gt; Forward+ rendering path</td>
+</tr>
+<tr>
+<td style="text-align: left;">ScriptableRendererFeature</td>
+<td style="text-align: left;">URP API &gt;
+ScriptableRendererFeature</td>
+</tr>
+<tr>
+<td style="text-align: left;">HDRP Light Cluster</td>
+<td style="text-align: left;">HDRP &gt; Rendering &gt; Light
+Cluster</td>
+</tr>
+<tr>
+<td style="text-align: left;">Render Graph（Unity 6）</td>
+<td
+style="text-align: left;"><code>UnityEngine.Rendering.RenderGraphModule</code>
+名前空間</td>
+</tr>
+<tr>
+<td style="text-align: left;">Wave Intrinsics</td>
+<td style="text-align: left;">Shader compilation &gt;
+<code>#pragma require waveops</code></td>
+</tr>
+<tr>
+<td style="text-align: left;">Shader Variant Stripping</td>
+<td style="text-align: left;">Shader compilation &gt; Shader variant
+stripping</td>
+</tr>
+<tr>
+<td style="text-align: left;">Performance Testing Framework</td>
+<td
+style="text-align: left;"><code>com.unity.test-framework.performance</code>
+パッケージ</td>
+</tr>
+<tr>
+<td style="text-align: left;">LightingSettings API</td>
+<td
+style="text-align: left;"><code>UnityEngine.LightingSettings.lightmapMaxSize</code></td>
+</tr>
+<tr>
+<td style="text-align: left;">Profile Analyzer</td>
+<td
+style="text-align: left;"><code>com.unity.performance.profile-analyzer</code>
+パッケージ</td>
+</tr>
+</tbody>
+</table>
+</div>
+</body>
+</html>

@@ -1,0 +1,96 @@
+digraph UnityProjectStructure {
+    graph [
+        rankdir=TB
+        bgcolor="white"
+        fontname="Hiragino Sans"
+        label="Unityプロジェクトの構成"
+        labelloc="t"
+        fontsize=20
+        fontcolor="#333333"
+        pad=0.5
+    ]
+
+    node [
+        fontname="Hiragino Sans"
+        fontsize=12
+        shape=box
+        style="rounded,filled"
+    ]
+
+    edge [
+        fontname="Hiragino Sans"
+        fontsize=10
+    ]
+
+    // Code section
+    subgraph cluster_code {
+        label="コード"
+        style="rounded,filled"
+        fillcolor="#e3f2fd"
+        color="#1976d2"
+        fontsize=14
+
+        code_files [
+            label=".csファイル\n\nPlayerController.cs\nEnemyAI.cs\nGameManager.cs"
+            fillcolor="#bbdefb"
+            color="#1565c0"
+        ]
+
+        code_claude [
+            label="Claude Code で生成可能 ✓"
+            shape=ellipse
+            fillcolor="#c8e6c9"
+            color="#2e7d32"
+            fontsize=11
+        ]
+
+        code_files -> code_claude [style=invis]
+    }
+
+    // Settings section
+    subgraph cluster_settings {
+        label="設定"
+        style="rounded,filled"
+        fillcolor="#fff3e0"
+        color="#f57c00"
+        fontsize=14
+
+        setting_files [
+            label="Scene / Prefab\n\nMain.unity\nPlayer.prefab\nEnemy.prefab"
+            fillcolor="#ffe0b2"
+            color="#ef6c00"
+        ]
+
+        setting_claude [
+            label="Claude Code では設定不可 ✗"
+            shape=ellipse
+            fillcolor="#ffcdd2"
+            color="#c62828"
+            fontsize=11
+        ]
+
+        setting_files -> setting_claude [style=invis]
+    }
+
+    // Game result
+    game [
+        label="動くゲーム"
+        fillcolor="#e1bee7"
+        color="#7b1fa2"
+        fontsize=14
+        width=2.5
+    ]
+
+    note [
+        label="両方が揃って初めて「動く」"
+        shape=note
+        fillcolor="#fff9c4"
+        color="#f9a825"
+        fontsize=11
+    ]
+
+    // Edges
+    code_files -> game [color="#1976d2", penwidth=2]
+    setting_files -> game [color="#f57c00", penwidth=2]
+    game -> note [style=dashed, color="#999999"]
+}

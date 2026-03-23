@@ -1,0 +1,80 @@
+<mxfile host="app.diagrams.net" agent="Claude Code">
+  <diagram name="AdMob メディエーション構成 2026" id="med03">
+    <mxGraphModel dx="1200" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1400" pageHeight="900" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+
+        <!-- AdMob メディエーション -->
+        <mxCell id="AM" value="AdMob メディエーション" style="rounded=1;whiteSpace=wrap;fillColor=#4285F4;fontColor=#FFFFFF;strokeColor=#333333;fontSize=16;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="80" y="380" width="240" height="60" as="geometry"/>
+        </mxCell>
+
+        <!-- ビッディング -->
+        <mxCell id="bLabel" value="ビッディング（リアルタイム入札）" style="text;fontSize=13;fontStyle=5;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="400" y="40" width="250" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="B1" value="Google AdMob&#xa;（必須）" style="rounded=1;whiteSpace=wrap;fillColor=#34A853;fontColor=#FFFFFF;strokeColor=#333333;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="400" y="80" width="150" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="B2" value="Unity Ads&#xa;（ビッディングのみ）" style="rounded=1;whiteSpace=wrap;fillColor=#FBBC04;fontColor=#000000;strokeColor=#333333;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="570" y="80" width="150" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="B3" value="Meta Audience&#xa;Network" style="rounded=1;whiteSpace=wrap;fillColor=#1877F2;fontColor=#FFFFFF;strokeColor=#333333;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="740" y="80" width="150" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="B4" value="AppLovin /&#xa;ironSource" style="rounded=1;whiteSpace=wrap;fillColor=#FF6B6B;fontColor=#FFFFFF;strokeColor=#333333;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="910" y="80" width="150" height="50" as="geometry"/>
+        </mxCell>
+
+        <!-- リージョン別 -->
+        <mxCell id="rLabel" value="リージョン別メディエーショングループ" style="text;fontSize=13;fontStyle=5;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="400" y="220" width="300" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="T1" value="Tier1: US/JP/UK&#xa;高 eCPM Floor" style="rounded=1;whiteSpace=wrap;fillColor=#2ECC71;fontColor=#FFFFFF;strokeColor=#333333;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="400" y="260" width="160" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="T2" value="Tier2: EU/KR/TW&#xa;中 eCPM Floor" style="rounded=1;whiteSpace=wrap;fillColor=#F39C12;fontColor=#FFFFFF;strokeColor=#333333;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="580" y="260" width="160" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="T3" value="Tier3: その他&#xa;低 eCPM Floor" style="rounded=1;whiteSpace=wrap;fillColor=#95A5A6;fontColor=#FFFFFF;strokeColor=#333333;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="760" y="260" width="160" height="50" as="geometry"/>
+        </mxCell>
+
+        <!-- 広告フォーマット -->
+        <mxCell id="fLabel" value="広告フォーマット" style="text;fontSize=13;fontStyle=5;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="400" y="400" width="200" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="F1" value="リワード動画&#xa;eCPM: 最高" style="rounded=1;whiteSpace=wrap;fillColor=#E74C3C;fontColor=#FFFFFF;strokeColor=#333333;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="400" y="440" width="130" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="F2" value="リワード&#xa;インタースティシャル" style="rounded=1;whiteSpace=wrap;fillColor=#E67E22;fontColor=#FFFFFF;strokeColor=#333333;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="545" y="440" width="130" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="F3" value="インタースティシャル&#xa;eCPM: 中-高" style="rounded=1;whiteSpace=wrap;fillColor=#F1C40F;fontColor=#000000;strokeColor=#333333;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="690" y="440" width="130" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="F4" value="アプリオープン広告&#xa;eCPM: 中" style="rounded=1;whiteSpace=wrap;fillColor=#3498DB;fontColor=#FFFFFF;strokeColor=#333333;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="835" y="440" width="130" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="F5" value="バナー&#xa;eCPM: 低" style="rounded=1;whiteSpace=wrap;fillColor=#BDC3C7;fontColor=#000000;strokeColor=#333333;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="980" y="440" width="130" height="50" as="geometry"/>
+        </mxCell>
+
+        <!-- 矢印: AM -> ビッディング -->
+        <mxCell style="edgeStyle=orthogonalEdgeStyle;" edge="1" source="AM" target="B1" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell style="edgeStyle=orthogonalEdgeStyle;" edge="1" source="AM" target="B2" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell style="edgeStyle=orthogonalEdgeStyle;" edge="1" source="AM" target="B3" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell style="edgeStyle=orthogonalEdgeStyle;" edge="1" source="AM" target="B4" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <!-- AM -> リージョン -->
+        <mxCell style="edgeStyle=orthogonalEdgeStyle;" edge="1" source="AM" target="T1" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell style="edgeStyle=orthogonalEdgeStyle;" edge="1" source="AM" target="T2" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell style="edgeStyle=orthogonalEdgeStyle;" edge="1" source="AM" target="T3" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <!-- リージョン -> フォーマット -->
+        <mxCell style="edgeStyle=orthogonalEdgeStyle;" edge="1" source="T1" target="F1" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell style="edgeStyle=orthogonalEdgeStyle;" edge="1" source="T2" target="F3" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell style="edgeStyle=orthogonalEdgeStyle;" edge="1" source="T3" target="F5" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

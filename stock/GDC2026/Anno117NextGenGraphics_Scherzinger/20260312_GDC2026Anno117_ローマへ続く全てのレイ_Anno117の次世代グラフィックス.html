@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>GDC 2026: All Rays Lead to Rome — Anno 117: Pax Romana
+の次世代グラフィックスパイプライン</title>
+    <link rel="stylesheet" href="/Users/daisuketsukada/Documents/dsgarageBlog/TechBlog/style.css">
+</head>
+<body>
+<div class="cover">
+    <h1>GDC 2026: All Rays Lead to Rome — Anno 117: Pax Romana
+の次世代グラフィックスパイプライン</h1>
+    <p class="subtitle">Next-Gen Graphics in ‘Anno 117: Pax Romana’</p>
+    <div class="meta">
+        <p>2026-03-12</p>
+        <p>dsgarage</p>
+    </div>
+</div>
+<div class="toc">
+    <h2>目次</h2>
+<ul>
+<li><a
+href="#gdc-2026-all-rays-lead-to-rome-anno-117-pax-romana-の次世代グラフィックスパイプライン"
+id="toc-gdc-2026-all-rays-lead-to-rome-anno-117-pax-romana-の次世代グラフィックスパイプライン">GDC
+2026: All Rays Lead to Rome — Anno 117: Pax Romana
+の次世代グラフィックスパイプライン</a>
+<ul>
+<li><a href="#セッション概要"
+id="toc-セッション概要">セッション概要</a></li>
+<li><a href="#anno-117-と-empire-engine-の概要"
+id="toc-anno-117-と-empire-engine-の概要">1. Anno 117 と Empire Engine
+の概要</a>
+<ul>
+<li><a href="#anno-シリーズ-20年以上の歴史を持つ都市建設ゲーム"
+id="toc-anno-シリーズ-20年以上の歴史を持つ都市建設ゲーム">Anno シリーズ
+– 20年以上の歴史を持つ都市建設ゲーム</a></li>
+<li><a href="#empire-engine-自社プロプライエタリエンジン"
+id="toc-empire-engine-自社プロプライエタリエンジン">Empire Engine –
+自社プロプライエタリエンジン</a></li>
+</ul></li>
+<li><a href="#コンテンツ最適化パイプライン-140オブジェクトを36に"
+id="toc-コンテンツ最適化パイプライン-140オブジェクトを36に">2.
+コンテンツ最適化パイプライン – 140オブジェクトを36に</a>
+<ul>
+<li><a href="#conflict階層の問題"
+id="toc-conflict階層の問題">「Conflict」階層の問題</a></li>
+<li><a href="#simplygon-による自動メッシュマージ"
+id="toc-simplygon-による自動メッシュマージ">Simplygon
+による自動メッシュマージ</a></li>
+</ul></li>
+<li><a href="#地形適応terrain-adaptation-頂点カラーで解決する"
+id="toc-地形適応terrain-adaptation-頂点カラーで解決する">3.
+地形適応（Terrain Adaptation）– 頂点カラーで解決する</a>
+<ul>
+<li><a href="#建物の大型化がもたらす課題"
+id="toc-建物の大型化がもたらす課題">建物の大型化がもたらす課題</a></li>
+<li><a href="#つの地形適応方式"
+id="toc-つの地形適応方式">3つの地形適応方式</a></li>
+<li><a href="#頂点カラーによるエンコード"
+id="toc-頂点カラーによるエンコード">頂点カラーによるエンコード</a></li>
+<li><a href="#リメッシュ時の頂点カラー保持"
+id="toc-リメッシュ時の頂点カラー保持">リメッシュ時の頂点カラー保持</a></li>
+<li><a href="#頂点シェーダーでの地形適応"
+id="toc-頂点シェーダーでの地形適応">頂点シェーダーでの地形適応</a></li>
+</ul></li>
+<li><a href="#gpu-アニメーション-50000-インスタンスを-0.1ms-で"
+id="toc-gpu-アニメーション-50000-インスタンスを-0.1ms-で">4. GPU
+アニメーション – 50,000 インスタンスを 0.1ms で</a>
+<ul>
+<li><a href="#都市建設ゲーム特有のアニメーション課題"
+id="toc-都市建設ゲーム特有のアニメーション課題">都市建設ゲーム特有のアニメーション課題</a></li>
+<li><a href="#cpu-から-gpu-へのオフロード"
+id="toc-cpu-から-gpu-へのオフロード">CPU から GPU
+へのオフロード</a></li>
+<li><a href="#メモリ最適化" id="toc-メモリ最適化">メモリ最適化</a></li>
+</ul></li>
+<li><a href="#マテリアルシステム-バインドレスへの移行"
+id="toc-マテリアルシステム-バインドレスへの移行">5. マテリアルシステム –
+バインドレスへの移行</a>
+<ul>
+<li><a href="#anno-1800-からの進化" id="toc-anno-1800-からの進化">Anno
+1800 からの進化</a></li>
+<li><a href="#バインドレステクスチャ"
+id="toc-バインドレステクスチャ">バインドレステクスチャ</a></li>
+<li><a href="#ドローコール最適化の成果"
+id="toc-ドローコール最適化の成果">ドローコール最適化の成果</a></li>
+</ul></li>
+<li><a href="#gpu-テクスチャストリーミング"
+id="toc-gpu-テクスチャストリーミング">6. GPU
+テクスチャストリーミング</a>
+<ul>
+<li><a href="#gpuフィードバック方式"
+id="toc-gpuフィードバック方式">GPUフィードバック方式</a></li>
+<li><a href="#cpu側の優先度制御"
+id="toc-cpu側の優先度制御">CPU側の優先度制御</a></li>
+<li><a href="#パフォーマンス最適化"
+id="toc-パフォーマンス最適化">パフォーマンス最適化</a></li>
+</ul></li>
+<li><a href="#テレインシステム-ディスプレイスメントとゲームプレイの融合"
+id="toc-テレインシステム-ディスプレイスメントとゲームプレイの融合">7.
+テレインシステム – ディスプレイスメントとゲームプレイの融合</a>
+<ul>
+<li><a href="#テレイン描画の基本"
+id="toc-テレイン描画の基本">テレイン描画の基本</a></li>
+<li><a href="#ディスプレイスメントマッピング"
+id="toc-ディスプレイスメントマッピング">ディスプレイスメントマッピング</a></li>
+<li><a href="#ゲームプレイとの連動-沼地の開拓"
+id="toc-ゲームプレイとの連動-沼地の開拓">ゲームプレイとの連動 –
+沼地の開拓</a></li>
+</ul></li>
+<li><a href="#プロシージャル草生成-45億頂点を-2ms-で"
+id="toc-プロシージャル草生成-45億頂点を-2ms-で">8. プロシージャル草生成
+– 45億頂点を 2ms で</a>
+<ul>
+<li><a href="#タイルベースの生成パイプライン"
+id="toc-タイルベースの生成パイプライン">タイルベースの生成パイプライン</a></li>
+<li><a href="#草のレンダリング"
+id="toc-草のレンダリング">草のレンダリング</a></li>
+<li><a href="#パフォーマンス"
+id="toc-パフォーマンス">パフォーマンス</a></li>
+</ul></li>
+<li><a href="#レイトレーシング-gi-全てのレイはローマへ通ず"
+id="toc-レイトレーシング-gi-全てのレイはローマへ通ず">9.
+レイトレーシング GI – 全てのレイはローマへ通ず</a>
+<ul>
+<li><a href="#なぜレイトレーシングが必要か"
+id="toc-なぜレイトレーシングが必要か">なぜレイトレーシングが必要か</a></li>
+<li><a href="#段階の品質設定"
+id="toc-段階の品質設定">3段階の品質設定</a></li>
+<li><a href="#light-path-guided-cullinglipac"
+id="toc-light-path-guided-cullinglipac">Light Path Guided
+Culling（LiPaC）</a></li>
+<li><a href="#terrain-adaptation-と-blas共有"
+id="toc-terrain-adaptation-と-blas共有">Terrain Adaptation と
+BLAS共有</a></li>
+<li><a href="#alpha-tested-geometry"
+id="toc-alpha-tested-geometry">Alpha-Tested Geometry</a></li>
+<li><a href="#大幅な簡略化による高速化"
+id="toc-大幅な簡略化による高速化">大幅な簡略化による高速化</a></li>
+<li><a href="#パフォーマンス数値"
+id="toc-パフォーマンス数値">パフォーマンス数値</a></li>
+<li><a href="#コンソール対応"
+id="toc-コンソール対応">コンソール対応</a></li>
+</ul></li>
+<li><a href="#開発プロセスの教訓" id="toc-開発プロセスの教訓">10.
+開発プロセスの教訓</a>
+<ul>
+<li><a href="#デバッグ可視化を早期に実装する"
+id="toc-デバッグ可視化を早期に実装する">デバッグ可視化を早期に実装する</a></li>
+<li><a href="#多様なハードウェアでテストする"
+id="toc-多様なハードウェアでテストする">多様なハードウェアでテストする</a></li>
+<li><a href="#msaa-との同時対応の難しさ"
+id="toc-msaa-との同時対応の難しさ">MSAA との同時対応の難しさ</a></li>
+<li><a href="#努力に見合ったか"
+id="toc-努力に見合ったか">努力に見合ったか？</a></li>
+</ul></li>
+<li><a href="#special-thanks" id="toc-special-thanks">11. Special
+Thanks</a></li>
+<li><a href="#まとめ" id="toc-まとめ">まとめ</a></li>
+</ul></li>
+</ul>
+</div>
+<div class="content" data-date="2026-03-12">
+<h1
+id="gdc-2026-all-rays-lead-to-rome-anno-117-pax-romana-の次世代グラフィックスパイプライン">GDC
+2026: All Rays Lead to Rome — Anno 117: Pax Romana
+の次世代グラフィックスパイプライン</h1>
+<p>都市建設ゲームのグラフィックスエンジニアリングは、一般的なAAAタイトルとは異なる難題を抱えている。プレイヤーが自由に建設した数千の建物、数万のオブジェクト、数十億本の草
+–
+それらすべてに美しいライティングを施し、かつ60fpsを維持しなければならない。Ubisoft
+Mainz の Aaron Scherzinger 氏は GDC 2026 の Advanced Graphics Summit
+で、自社エンジン「Empire
+Engine」に施した大規模な刷新を、コードスニペットと具体的なパフォーマンス数値とともに惜しみなく公開した。</p>
+<p>約1時間のセッションでは、コンテンツ最適化パイプライン、GPUアニメーション、テクスチャストリーミング、テレインシステム、プロシージャル草生成、そしてレイトレーシングGI
+まで、レンダリングパイプラインのほぼ全領域をカバー。129枚のスライドとともに詳細に語られた技術的知見を、トランスクリプトとスライド写真をもとにレポートする。</p>
+<blockquote>
+<p><strong>GDC（Game Developers Conference）について</strong>:
+毎年3月にサンフランシスコで開催される世界最大のゲーム開発者向けカンファレンス。Advanced
+Graphics Summit
+は特にリアルタイムレンダリングの最先端技術が共有されるトラックであり、エンジンプログラマーにとっては必聴のセッションが集まる。</p>
+</blockquote>
+<hr />
+<h2 id="セッション概要">セッション概要</h2>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th style="text-align: left;">項目</th>
+<th style="text-align: left;">内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">タイトル</td>
+<td style="text-align: left;">All Rays Lead to Rome: Next-Gen Graphics
+in ‘Anno 117: Pax Romana’</td>
+</tr>
+<tr>
+<td style="text-align: left;">スピーカー</td>
+<td style="text-align: left;">Aaron Scherzinger</td>
+</tr>
+<tr>
+<td style="text-align: left;">所属</td>
+<td style="text-align: left;">Ubisoft Mainz</td>
+</tr>
+<tr>
+<td style="text-align: left;">トラック</td>
+<td style="text-align: left;">Advanced Graphics Summit / Visual
+Development</td>
+</tr>
+<tr>
+<td style="text-align: left;">形式</td>
+<td style="text-align: left;">Lecture（60分）</td>
+</tr>
+<tr>
+<td style="text-align: left;">日時</td>
+<td style="text-align: left;">2026年3月12日（木）15:10 - 16:10</td>
+</tr>
+<tr>
+<td style="text-align: left;">場所</td>
+<td style="text-align: left;">Room 2006, West Hall</td>
+</tr>
+<tr>
+<td style="text-align: left;">対象レベル</td>
+<td style="text-align: left;">Intermediate</td>
+</tr>
+</tbody>
+</table>
+<p><img src="slides/IMG_0986.jpg" alt="最終スライド - チーム写真" />
+<em>セッション最後のスライド。Ubisoft Mainz
+の開発チーム全員が手を振る「Thank you!」スライド</em></p>
+<hr />
+<h2 id="anno-117-と-empire-engine-の概要">1. Anno 117 と Empire Engine
+の概要</h2>
+<h3 id="anno-シリーズ-20年以上の歴史を持つ都市建設ゲーム">Anno シリーズ
+– 20年以上の歴史を持つ都市建設ゲーム</h3>
+<p>Anno
+シリーズは20年以上の歴史を持つ都市建設・経済シミュレーションゲームだ。Anno
+117: Pax Romana
+では、プレイヤーはローマ帝国の総督として皇帝に送り出され、都市を建設し、生産チェーンを管理し、交易ネットワークを構築する。</p>
+<blockquote>
+<p>“In 2023, we set out to create the most beautiful Anno of all
+time.”</p>
+<p>（2023年、我々は史上最も美しい Anno
+を作ることを目標に掲げました。）</p>
+</blockquote>
+<p>シリーズ初の試みとして、2つの異なるスタート地域を選択できる。ローマ文化圏に影響を受けた「Faiyum」と、ケルト文化圏に基づく「Albion」だ。プレイヤーは現地の伝統を受け入れるか、ローマの影響力を押し付けるかを選択でき、その決断が都市の外観に直接影響する。</p>
+<h3 id="empire-engine-自社プロプライエタリエンジン">Empire Engine –
+自社プロプライエタリエンジン</h3>
+<p>Anno シリーズは Ubisoft Mainz が開発する自社エンジン「Empire
+Engine」で動作している。</p>
+<ul>
+<li><strong>Anno 1800</strong>（2019年）以来 PC
+向けに提供、MSAA（Multi-Sample
+Anti-Aliasing：ジャギーを滑らかにするアンチエイリアス手法）をサポート</li>
+<li><strong>2024年3月</strong>: Anno 1800
+コンソール版リリース（エンジン初のコンソール対応）</li>
+<li><strong>2025年11月</strong>: Anno 117: Pax Romana リリース（PC +
+コンソール同時発売）</li>
+</ul>
+<p>Scherzinger 氏は、Anno 1800 コンソール版から Anno 117
+への移行は「タイトなプロセス」だったと率直に語った。プリプロダクションが十分でなく、コンソール対応からすぐに次世代タイトルの制作に入る厳しいスケジュールだったという。</p>
+<hr />
+<h2 id="コンテンツ最適化パイプライン-140オブジェクトを36に">2.
+コンテンツ最適化パイプライン – 140オブジェクトを36に</h2>
+<h3 id="conflict階層の問題">「Conflict」階層の問題</h3>
+<p>Anno
+における建物は「Conflict（コンフリクト）」と呼ばれるデータ構造で管理される。単一のメッシュではなく、複数のサブメッシュやエフェクトを含む階層構造だ。</p>
+<p>たとえば標準的な居住用建物であっても、メインの建物メッシュに加えて柱、装飾品、植物、照明器具といったサブコンフリクトが参照の連鎖で繋がっている。アーティストにとってはパーツの再利用がしやすいワークフローだが、レンダリング側からは深い階層と大量の細かいオブジェクトが問題になる。</p>
+<h3 id="simplygon-による自動メッシュマージ">Simplygon
+による自動メッシュマージ</h3>
+<p>この問題を解決するため、Simplygon
+を用いたコンテンツ最適化パイプラインを構築した。</p>
+<ol type="1">
+<li><strong>収集</strong>:
+マージ可能なメッシュを特定（アニメーション付きオブジェクトは除外）</li>
+<li><strong>マージ + LOD 生成</strong>:
+複数メッシュを統合し、最適化された LOD（Level of
+Detail：カメラ距離に応じて表示品質を切り替える仕組み）を生成</li>
+<li><strong>出力</strong>: エンジン用の新しい Conflict
+ファイルを生成</li>
+</ol>
+<p>LOD 生成の結果は段階的になる: - <strong>LOD 0</strong>:
+元のマテリアルとテクスチャをすべて保持 - <strong>中間 LOD</strong>:
+段階的にディテールを削減 - <strong>最終 LOD</strong>:
+<strong>単一マテリアル・単一メッシュ</strong>に最適化（遠景描画用）</p>
+<blockquote>
+<p>エンドゲームシーンの実測値: <strong>約140オブジェクト →
+36オブジェクトに削減</strong></p>
+</blockquote>
+<hr />
+<h2 id="地形適応terrain-adaptation-頂点カラーで解決する">3.
+地形適応（Terrain Adaptation）– 頂点カラーで解決する</h2>
+<h3 id="建物の大型化がもたらす課題">建物の大型化がもたらす課題</h3>
+<p>Anno 117 では建物が Anno 1800
+より大幅に大型化し、地面の占有率が12%から<strong>20%</strong>に増加した。従来の単純な地形適応（建物の底面を地面にスナップするだけ）では、階段部分に隙間が生じたり、空間が不自然に見えたりする問題が発生した。</p>
+<h3 id="つの地形適応方式">3つの地形適応方式</h3>
+<p>Scherzinger 氏は3つのアプローチを紹介した:</p>
+<ol type="1">
+<li><strong>全体移動方式</strong>:
+ベース台座を使い、建物全体を地形に合わせて上下させる</li>
+<li><strong>コンバーター方式</strong>: 各頂点の高さを個別に調整する</li>
+<li><strong>ピボットポイント方式</strong>:
+メッシュのピボット位置を地面に配置し、そこを基準に位置を調整</li>
+</ol>
+<h3 id="頂点カラーによるエンコード">頂点カラーによるエンコード</h3>
+<p>最適化パイプラインでメッシュが統合された後も地形適応を機能させるため、<strong>頂点カラーに適応情報をエンコード</strong>する手法を採用した:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">チャンネル</th>
+<th style="text-align: left;">用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Red</strong></td>
+<td style="text-align: left;">適応強度（Adaption Intensity）</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Green</strong></td>
+<td style="text-align: left;">ローカルピボットの XZ テクスチャ座標</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Blue</strong></td>
+<td style="text-align: left;">Z オフセット（0 = 非適応、1 = 適応）</td>
+</tr>
+</tbody>
+</table>
+<h3 id="リメッシュ時の頂点カラー保持">リメッシュ時の頂点カラー保持</h3>
+<p>メッシュ統合時に異なるピボットを持つ頂点が補間されると適応情報が壊れるため、2段階のリメッシュ処理を行う:</p>
+<ol type="1">
+<li><strong>同一ピボットのオブジェクトのみをマージ</strong>してリメッシュ</li>
+<li>リメッシュ済みメッシュを<strong>再パッキング</strong>して最終メッシュに統合</li>
+</ol>
+<h3 id="頂点シェーダーでの地形適応">頂点シェーダーでの地形適応</h3>
+<pre class="hlsl"><code>// 擬似コード: 頂点シェーダーでの地形適応処理
+float intensity = vertexColor.r;  // 適応強度
+float2 pivotXZ = decode(vertexColor.g);  // ピボット座標
+float zOffset = vertexColor.b;  // Z方向オフセット
+
+// ローカルピボットからハイトフィールドを参照
+float terrainHeight = SampleHeightfield(pivotXZ);
+
+// 地形ロックによる全体オフセットを減算（ワールド空間）
+float delta = terrainHeight - terrainLockOffset;
+
+// 元のワールド座標と適応後の座標を補間
+finalPosition = lerp(originalPosition, adaptedPosition, intensity);</code></pre>
+<hr />
+<h2 id="gpu-アニメーション-50000-インスタンスを-0.1ms-で">4. GPU
+アニメーション – 50,000 インスタンスを 0.1ms で</h2>
+<h3
+id="都市建設ゲーム特有のアニメーション課題">都市建設ゲーム特有のアニメーション課題</h3>
+<p>Anno
+のアニメーションは個々には比較的シンプルだが、その数が膨大だ。エンドゲームでは最大<strong>50,000
+のアニメーションインスタンス</strong>が同時に存在する。</p>
+<h3 id="cpu-から-gpu-へのオフロード">CPU から GPU へのオフロード</h3>
+<p>従来はCPU上でスケルトン階層を更新し、ボーン変換マトリクスをGPUにコピーしていた。Anno
+117
+では、スケルトンデータをGPUにコピーし、<strong>コンピュートシェーダーで全マトリクスを並列計算</strong>する方式に移行した。</p>
+<p>ただし、他のエンジンと異なり<strong>スキニングのデカップリングは行わない</strong>。大半のアニメーションは同一クリップの繰り返し（群衆の歓声、暖房器具の揺れなど特殊ケースを除く）なので、全フレームのスキニング結果をキャッシュするとメモリが膨大になるためだ。</p>
+<h3 id="メモリ最適化">メモリ最適化</h3>
+<p>実際にレンダリングされている（カリングされていない）モデルのみにGPUメモリを割り当てる:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">指標</th>
+<th style="text-align: left;">数値</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">総アニメーションインスタンス</td>
+<td style="text-align: left;">~50,000</td>
+</tr>
+<tr>
+<td style="text-align: left;">アクティブ（カリング後）</td>
+<td style="text-align: left;">~4,500</td>
+</tr>
+<tr>
+<td style="text-align: left;">GPU メモリ使用量</td>
+<td style="text-align: left;">~25 MB</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>GPU 計算コスト（RTX
+5070）</strong></td>
+<td style="text-align: left;"><strong>最大 1.0ms、実使用
+~0.1ms</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="マテリアルシステム-バインドレスへの移行">5. マテリアルシステム –
+バインドレスへの移行</h2>
+<h3 id="anno-1800-からの進化">Anno 1800 からの進化</h3>
+<p>Anno 1800
+では各マテリアルごとにランタイムでコンスタントバッファを生成し、レイアウトがマテリアルごとに異なっていた。Anno
+117 では大幅に刷新された。</p>
+<p>各マテリアルは<strong>事前定義されたコンポーネントのセット</strong>で構成され、コンポーネントの記述を1回定義した後、各コンポーネントのオフセットをファクターとして管理する。マテリアルロード時にユニークなハンドルを割り当て、インデックステーブルへのオフセットでアクセスする仕組みだ。</p>
+<h3 id="バインドレステクスチャ">バインドレステクスチャ</h3>
+<p>Anno 1800 のコンソール版からバインドレステクスチャ（Bindless
+Textures：テクスチャバインド操作をなくし、インデックスでアクセスする方式）に移行。テクスチャの切り替えコストが実質ゼロになった。</p>
+<h3 id="ドローコール最適化の成果">ドローコール最適化の成果</h3>
+<p>マテリアル共有とドローコールソートにより:</p>
+<blockquote>
+<p>エンドゲームシーン: <strong>約36,000ドローコール →
+約3,000に削減</strong></p>
+</blockquote>
+<hr />
+<h2 id="gpu-テクスチャストリーミング">6. GPU
+テクスチャストリーミング</h2>
+<p><img src="slides/IMG_0901.jpg" alt="GPU Texture Feedback スライド" />
+<em>GPU Texture Feedback のシェーダーコード。<code>WaveActiveMin</code>
+と <code>WaveActiveCountBits</code>
+でウェーブ単位の効率的なフィードバックを実現</em></p>
+<h3 id="gpuフィードバック方式">GPUフィードバック方式</h3>
+<p>Anno 117
+では完全に新しいテクスチャストリーミングシステムを実装した。従来のCPUベースではなく、<strong>GPUテクスチャフィードバック</strong>方式を採用している。</p>
+<p>シェーダーがテクスチャアクセス時に <code>RWByteAddressBuffer</code>
+にフィードバックを書き込む。エントリーあたり8バイト（最小MIP用 uint +
+アクセスカウンター用
+uint）で、ウェーブ単位（Wave：GPUの並列実行単位）で集約することでアトミック操作のコストを最小化している。</p>
+<pre class="hlsl"><code>void TextureFeedbackUniform(in float requestedMipLevel, in int texIndex)
+{
+    uint flooredMip = (uint)(requestedMipLevel + FEEDBACK_MIP_SHIFT);
+
+    // ウェーブ単位で情報を集約
+    uint minWaveMip = WaveActiveMin(flooredMip);
+    uint accessCount = (uint)WaveActiveCountBits(true);
+
+    if (WaveIsFirstLane())
+    {
+        uint offset = NUM_BYTES_PER_TEX_FEEDBACK_ENTRY * texIndex;
+        cTextureFeedback.InterlockedMin(offset, minWaveMip);
+        cTextureFeedback.InterlockedAdd(offset + 4, accessCount);
+    }
+}</code></pre>
+<p><img src="slides/IMG_0902.jpg" alt="CPU Part スライド" /> <em>CPU側の
+<code>StreamedTextureInfo</code> 構造体。<code>MostRecentFrame</code> と
+<code>MostRecentLODs[4]</code> でテクスチャの使用履歴を追跡する</em></p>
+<h3 id="cpu側の優先度制御">CPU側の優先度制御</h3>
+<p>CPU側では <code>StreamedTextureInfo</code>
+構造体で各テクスチャの使用履歴を追跡し、ロード優先度を決定する:</p>
+<ul>
+<li><strong>使用カウンター</strong>とロード済み/リクエスト済みMIPの<strong>差分</strong>で優先度をスコアリング</li>
+<li>最終リクエスト時刻を記録し、使われなくなったテクスチャは低解像度に降格</li>
+<li><strong>最低MIPレベルは常にメモリに保持</strong>（ポップイン防止）</li>
+</ul>
+<h3 id="パフォーマンス最適化">パフォーマンス最適化</h3>
+<p><img src="slides/IMG_0905.jpg" alt="Optimizations スライド" />
+<em>テクスチャフィードバックの最適化。<code>[earlydepthstencil]</code>
+の強制とZプリパスの活用</em></p>
+<p>テクスチャフィードバックのバリアコストを削減するため:</p>
+<ol type="1">
+<li><strong><code>[earlydepthstencil]</code>を強制</strong>:
+depth/stencil 書き込みやディスカードがないシェーダーに適用</li>
+<li><strong>Zプリパス</strong>: テクスチャフィードバックなしで
+<code>[earlydepthstencil]</code>
+を適用し、その後にフィードバック付きパスを実行</li>
+<li><strong>シャドウパスではフィードバック無効化</strong>:
+パフォーマンス優先のトレードオフ</li>
+</ol>
+<hr />
+<h2 id="テレインシステム-ディスプレイスメントとゲームプレイの融合">7.
+テレインシステム – ディスプレイスメントとゲームプレイの融合</h2>
+<p><img src="slides/IMG_0908.jpg" alt="Terrain and Environment" />
+<em>Anno 117
+の環境描画。山岳から海岸まで、テレインシステムが支える広大な風景</em></p>
+<h3 id="テレイン描画の基本">テレイン描画の基本</h3>
+<p>Anno 117
+のテレインはカスケードシャドウマップとノードベースのシャドウシステムを使用。地面マテリアルは最大<strong>3レイヤー</strong>のブレンドに対応する。</p>
+<p><img src="slides/IMG_0910.jpg" alt="Terrain System スライド" />
+<em>テレインシステムの概要。テクスチャベースのランタイムサブディビジョンで地形ディテールを表現</em></p>
+<h3
+id="ディスプレイスメントマッピング">ディスプレイスメントマッピング</h3>
+<p><img src="slides/IMG_0912.jpg" alt="Displacement Mapping Off" />
+<em>ディスプレイスメントマッピング OFF
+の状態。岩肌のディテールが平坦に見える</em></p>
+<p>テレインには<strong>ディスプレイスメントマッピング</strong>（ハイトマップに基づいてジオメトリを実際に変形させる手法）を適用。テクスチャベースでランタイムにサブディビジョン（ポリゴンの細分割）を行い、カメラに近いほどディテールが増す。</p>
+<h3 id="ゲームプレイとの連動-沼地の開拓">ゲームプレイとの連動 –
+沼地の開拓</h3>
+<p><img src="slides/IMG_0915.jpg" alt="沼地の環境" />
+<em>ゲーム内の沼地エリア。プレイヤーの技術開発によって排水され、肥沃な土地に変わる</em></p>
+<p>特筆すべきは、ディスプレイスメントがゲームプレイと直接連動している点だ。プレイヤーが技術を研究して沼地（Marshes）を排水・開拓すると、ディスプレイスメントで地形が水面下に沈んでいた部分がフェードアウトし、肥沃な土地が現れる。マスク情報を使って草の種類も沼地用から通常の草に変更される。</p>
+<hr />
+<h2 id="プロシージャル草生成-45億頂点を-2ms-で">8. プロシージャル草生成
+– 45億頂点を 2ms で</h2>
+<h3
+id="タイルベースの生成パイプライン">タイルベースの生成パイプライン</h3>
+<p><img src="slides/IMG_0918.jpg" alt="Grass Generation パイプライン" />
+<em>草生成の全体パイプライン。Terrain Node → Tile Map (R16_UINT) →
+Compute Shader → Material ID / Coverage / Flags のビットパッキング →
+建物・沼地マスクによるフィルタリング</em></p>
+<p>草は完全にプロシージャル生成される。テレインをタイル分割し（32x32 or
+16x16）、コンピュートシェーダーで処理する:</p>
+<ol type="1">
+<li><strong>コンピュートシェーダー</strong>（1スレッド =
+1テクセル/タイル）がテレインのブレンドマップをサンプリング</li>
+<li>出力は16ビットに<strong>ビットパッキング</strong>: Material ID
+1（5bit）+ Material ID 2（5bit）+ Coverage（3bit）+ Flags（3bit）</li>
+<li>建物フットプリントと沼地マスクをチェックし、草の生成をフィルタリング</li>
+<li><strong>フラスタムカリング</strong>でスクリーン外のタイルをスキップ</li>
+</ol>
+<p><img src="slides/IMG_0920.jpg"
+alt="Grass Generation フローチャート" /> <em>草生成のフローチャート。LOD
+ごとに1ディスパッチ → Compute Shader（1スレッド/テクセル/タイル）→
+生成判定 → Indirect Draw Buffer</em></p>
+<h3 id="草のレンダリング">草のレンダリング</h3>
+<p><img src="slides/IMG_0925.jpg" alt="Grass Rendering パイプライン" />
+<em>草レンダリングのデータフロー。Data Buffer（Tile ID, Position,
+Material ID, Coverage）→ Vertex Shader → Procedural Mesh + Wind/Clump
+Map → Pixel Shader</em></p>
+<p>レンダリングは<strong>インダイレクトドロー</strong>（GPU駆動の描画コマンド）で実行される:</p>
+<ul>
+<li><strong>Data Buffer</strong>: Tile
+ID、タイル内位置（ワールド座標）、Material ID 1/2、Coverage を格納</li>
+<li><strong>Vertex Shader</strong>: ワールド位置からランダム値を生成 →
+回転・草タイプ・プロパティを決定 → プロシージャルメッシュを生成</li>
+<li><strong>Wind Movement + Clump Map</strong>:
+スクロールテクスチャで風のアニメーション</li>
+<li>全LODレベルで<strong>一貫した配置</strong>を維持（LOD切り替え時のポッピング防止）</li>
+</ul>
+<h3 id="パフォーマンス">パフォーマンス</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">指標</th>
+<th style="text-align: left;">数値</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">頂点数（最高品質）</td>
+<td style="text-align: left;">~45億</td>
+</tr>
+<tr>
+<td style="text-align: left;">ピクセル処理数</td>
+<td style="text-align: left;">~80億</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>草レンダリング合計</strong></td>
+<td style="text-align: left;"><strong>~2ms（RTX系GPU）</strong></td>
+</tr>
+</tbody>
+</table>
+<p>建物が増えるほど草の生成エリアが減るため、草のコストは建物レンダリングと<strong>逆相関</strong>する。シャドウについてはシャドウマップではなくアンビエントオクルージョンで近接する地面との暗さを表現し、スクリーンスペースシャドウを共有する。</p>
+<hr />
+<h2 id="レイトレーシング-gi-全てのレイはローマへ通ず">9.
+レイトレーシング GI – 全てのレイはローマへ通ず</h2>
+<h3 id="なぜレイトレーシングが必要か">なぜレイトレーシングが必要か</h3>
+<p><img src="slides/IMG_0930.jpg" alt="Raytracing High 品質の都市" />
+<em>レイトレーシング High
+設定でのローマの都市。間接光が建物の陰影にリアリティを加える</em></p>
+<p>都市建設ゲームは俯瞰視点のため、建物の入り組んだ路地や軒下にはスカイライトからの青い間接光が届くべきだが、従来のラスタライゼーションベースのGI近似ではこれを正確に再現することが困難だった。レイトレーシングGIにより、直接光だけでなく間接光の反射も物理的に正確にシミュレートできるようになった。</p>
+<h3 id="段階の品質設定">3段階の品質設定</h3>
+<p><img src="slides/IMG_0935.jpg" alt="Raytracing Overview テーブル" />
+<em>レイトレーシング品質設定の一覧表。Low/Medium/High
+の解像度とデノイジング方式を比較</em></p>
+<table>
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+</colgroup>
+<thead>
+<tr>
+<th style="text-align: left;">RT品質</th>
+<th style="text-align: left;">機能</th>
+<th style="text-align: left;">RT解像度</th>
+<th style="text-align: left;">デノイズ解像度</th>
+<th style="text-align: left;">備考</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Low</strong></td>
+<td style="text-align: left;">GI</td>
+<td style="text-align: left;">1/16 (w/4, h/4)</td>
+<td style="text-align: left;">1/4 (w/2, h/2)</td>
+<td style="text-align: left;">Inline RT, opaque only, max LOD 2,
+テクスチャサンプリングなし</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Medium</strong></td>
+<td style="text-align: left;">GI</td>
+<td style="text-align: left;">1/16 (w/4, h/4)</td>
+<td style="text-align: left;">1/4 (w/2, h/2)</td>
+<td style="text-align: left;">Inline RT, opaque only, max LOD 2</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>High</strong></td>
+<td style="text-align: left;">GI + Specular</td>
+<td style="text-align: left;">フル解像度</td>
+<td style="text-align: left;">フル解像度</td>
+<td style="text-align: left;">RT パイプライン使用、全ジオメトリ対応</td>
+</tr>
+</tbody>
+</table>
+<p>デノイズには <strong>NVIDIA Real-Time Denoiser（NRD）</strong>
+を使用し、フル解像度でないパスではバイラテラルアップサンプリングを適用する。</p>
+<h3 id="light-path-guided-cullinglipac">Light Path Guided
+Culling（LiPaC）</h3>
+<p><img src="slides/IMG_0950.jpg" alt="LiPaC スライド" /> <em>LiPaC
+の2レベルアプローチ。非アクティブオブジェクトのバウンディングボックスを
+Region Hitbox に統合</em></p>
+<p>全オブジェクトの BLAS（Bottom-Level Acceleration
+Structure：レイトレーシングの高速化構造体の下位レベル）をメモリに保持すると約<strong>9.5GB</strong>に達する。これは現実的でないため、<strong>動的なBLAS活性化/非活性化システム</strong>を構築した:</p>
+<p><img src="slides/IMG_0945.jpg" alt="Activation State スライド" />
+<em>BLAS活性化ステートマシン。Region hit counter
+が閾値を超えるとBLAS構築をCPUにリクエスト、Instance hit counter
+で個別BLASを活性化</em></p>
+<ol type="1">
+<li>初期状態では非アクティブオブジェクトを<strong>Region
+Hitbox</strong>（バウンディングボックスの統合）で表現</li>
+<li><strong>Region hit counter</strong>
+が活性化閾値を超えると、BLAS構築コマンドをCPUにリードバック</li>
+<li><strong>Instance hit counter</strong>
+が閾値を超えると、詳細BLASをTLAS（Top-Level AS）に追加</li>
+<li>ヒット数が<strong>非活性化閾値</strong>を下回ると、TLASから除外しバウンディングボックスに戻す</li>
+</ol>
+<h3 id="terrain-adaptation-と-blas共有">Terrain Adaptation と
+BLAS共有</h3>
+<p><img src="slides/IMG_0955.jpg" alt="Terrain Adaption スライド" />
+<em>Simplygon
+パイプラインが異なる地形適応のパーツを単一メッシュにマージする問題と、BLAS共有の戦略</em></p>
+<p>コンテンツ最適化パイプラインでメッシュを統合した結果、1つのメッシュ内に地形適応するパーツとしないパーツが混在する。ラスタライゼーションでは頂点カラーで処理できるが、レイトレーシングでは各インスタンスごとに異なるBLASが必要になってしまう。</p>
+<p>解決策として<strong>サブグループ分割</strong>を採用: -
+<strong>非変形パーツ</strong>: 全インスタンスで<strong>BLAS
+を共有</strong>（メモリ効率大幅向上） - <strong>地形適応パーツ</strong>:
+インスタンスごとに個別BLAS構築</p>
+<h3 id="alpha-tested-geometry">Alpha-Tested Geometry</h3>
+<p><img src="slides/IMG_0960.jpg"
+alt="Alpha-Tested Geometry スライド" /> <em>Low/Medium 設定では Inline
+RT で any-hit
+シェーダーなし、アルファテスト済みジオメトリを除外</em></p>
+<p>Low/Medium 設定では<strong>Inline
+RT（ソフトウェアベースのレイトレーシング実行）</strong>を使用し、any-hit
+シェーダーを省略する。アルファテスト付きジオメトリ（植生など）はこれらの設定では除外し、High設定でのみ含める。</p>
+<h3 id="大幅な簡略化による高速化">大幅な簡略化による高速化</h3>
+<p>Low/Medium設定では以下の簡略化を適用: -
+<strong>三角形の交差テストを省略</strong> –
+バウンディングボックスのヒットのみで判定 -
+<strong>シャドウレイ不使用</strong> – オクルージョン近似で代替 -
+これにより GI の約<strong>70%の効果</strong>を維持しつつ大幅に高速化</p>
+<h3 id="パフォーマンス数値">パフォーマンス数値</h3>
+<p>BLAS管理（最高品質設定）:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">指標</th>
+<th style="text-align: left;">数値</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">総 BLAS 数</td>
+<td style="text-align: left;">~2,200</td>
+</tr>
+<tr>
+<td style="text-align: left;">共有 BLAS</td>
+<td style="text-align: left;">~400</td>
+</tr>
+<tr>
+<td style="text-align: left;">ユニーク BLAS</td>
+<td style="text-align: left;">~1,000</td>
+</tr>
+<tr>
+<td style="text-align: left;">TLAS インスタンス数</td>
+<td style="text-align: left;">~30,000</td>
+</tr>
+</tbody>
+</table>
+<p>GI コスト:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">設定</th>
+<th style="text-align: left;">GI 時間</th>
+<th style="text-align: left;">デノイズ時間</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Low</strong></td>
+<td style="text-align: left;">~2ms</td>
+<td style="text-align: left;">—</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Medium</strong></td>
+<td style="text-align: left;">~2ms+</td>
+<td style="text-align: left;">—</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>High</strong></td>
+<td style="text-align: left;">~2ms</td>
+<td style="text-align: left;">~1.6ms</td>
+</tr>
+</tbody>
+</table>
+<h3 id="コンソール対応">コンソール対応</h3>
+<ul>
+<li><strong>PlayStation 5</strong>: Low設定でレイトレーシングGI動作</li>
+<li><strong>PlayStation 5 Pro</strong>: Medium設定で動作</li>
+</ul>
+<hr />
+<h2 id="開発プロセスの教訓">10. 開発プロセスの教訓</h2>
+<p>セッション終盤で Scherzinger 氏は開発から得た教訓を共有した:</p>
+<h3
+id="デバッグ可視化を早期に実装する">デバッグ可視化を早期に実装する</h3>
+<blockquote>
+<p>“Implementing the debug visualization early on in the process. We
+have a lot of good use.”</p>
+<p>（デバッグ可視化をプロセスの早い段階で実装すること。非常に役に立ちました。）</p>
+</blockquote>
+<p>レイトレーシングのBLAS活性化状態やテクスチャストリーミングの優先度など、目に見えないシステムのデバッグに不可欠だったという。</p>
+<h3
+id="多様なハードウェアでテストする">多様なハードウェアでテストする</h3>
+<p>ウェーブフロント（GPUの実行ユニット）の挙動がGPUベンダーや世代によって大きく異なるため、特定のハードウェアでの最適化が他では逆効果になることがある。できるだけ多くの異なるハードウェアで早期にテストすることが重要だと強調した。</p>
+<h3 id="msaa-との同時対応の難しさ">MSAA との同時対応の難しさ</h3>
+<p>Anno 117
+はレイトレーシングに加えてMSAAもサポートして出荷した。MSAAは1ピクセルあたり最大8サンプルを生成するため、レイトレーシング（通常1サンプル/ピクセル）との組み合わせは設定の組み合わせ爆発を引き起こす。テンポラルデータに依存する多くのシステムとの互換性問題もあり、「大きなチャレンジだった」と率直に語った。</p>
+<h3 id="努力に見合ったか">努力に見合ったか？</h3>
+<blockquote>
+<p>プレイヤーの約 <strong>1.1%</strong> がレイトレーシング設定を使用</p>
+</blockquote>
+<p>数字だけ見ると少ないが、Scherzinger
+氏はチームとして取り組む価値があったとの見解を示した。</p>
+<hr />
+<h2 id="special-thanks">11. Special Thanks</h2>
+<p><img src="slides/IMG_0985.jpg" alt="Special Thanks スライド" />
+<em>Special Thanks スライド。Frank Hoffmann, Jan Kelling, Ramin
+Safarpour, Tim Kaiser, Wolfgang Klose, David Shelton, Janrike Berger,
+Haye Anderson, Tommaso Jakob, Lisa-Maria Wittmann, Stefan Böhne, Bastian
+Thun, Andreas Fredriksson の名前が挙げられた</em></p>
+<hr />
+<h2 id="まとめ">まとめ</h2>
+<p>本セッションは、都市建設ゲームという特殊なジャンルにおけるグラフィックスエンジニアリングの全体像を、驚くほどの詳細さで公開したものだった。特に注目すべきポイントを整理する:</p>
+<ol type="1">
+<li><p><strong>コンテンツ最適化パイプライン</strong>: Simplygon
+を活用したメッシュマージと LOD
+生成により、エンドゲームシーンのオブジェクト数を 140 → 36
+に削減。地形適応情報を頂点カラーにエンコードすることで、最適化後もシームレスな地形フィッティングを維持</p></li>
+<li><p><strong>GPU 駆動のアーキテクチャ</strong>:
+アニメーション（コンピュートシェーダー）、テクスチャストリーミング（GPUフィードバック）、草生成（インダイレクトドロー）と、可能な限りGPU側で処理する設計思想が一貫している</p></li>
+<li><p><strong>レイトレーシングの実用的導入</strong>:
+9.5GBに達するBLASを動的に活性化/非活性化するLiPaCシステム、地形適応パーツとの共存のためのBLAS共有戦略など、都市建設ゲーム特有の大量オブジェクト問題に正面から取り組んだ</p></li>
+<li><p><strong>段階的品質設定</strong>: PS5（Low）→ PS5 Pro（Medium）→
+ハイエンドPC（High/Ultra）まで、同一フレームワーク内で品質を段階的にスケールさせる設計</p></li>
+<li><p><strong>開発プロセスの教訓</strong>:
+デバッグ可視化の早期実装、多様なハードウェアでのテスト、MSAAとの組み合わせの複雑さなど、実践的なアドバイスが語られた</p></li>
+</ol>
+<p>セッションタイトル「All Rays Lead to
+Rome」の通り、全てのレイ（光線）がローマの街並みを美しく照らすまでの道のりは、エンジニアリングの地道な積み重ねだった。都市建設ゲームというニッチに見える領域から、リアルタイムレンダリングの最前線が垣間見えるセッションだった。</p>
+</div>
+</body>
+</html>

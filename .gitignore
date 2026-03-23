@@ -1,10 +1,23 @@
 # macOS
 .DS_Store
 ._*
+Thumbs.db
 
 # Temporary files
 *.tmp
 temp.html
+
+# Node.js
+node_modules/
+npm-debug.log*
+
+# Remotion output
+TechBlog/out/
+TechBlog/dist/
+
+# Environment
+.env
+.env.local
 
 # Deploy directories (managed by separate repos)
 TechBlog/zenn_deploy/

@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>GDC 2026:
+ヒット作という金の卵——それを持ったとき何をすべきか</title>
+    <link rel="stylesheet" href="/Users/daisuketsukada/Documents/dsgarageBlog/TechBlog/style.css">
+</head>
+<body>
+<div class="cover">
+    <h1>GDC 2026:
+ヒット作という金の卵——それを持ったとき何をすべきか</h1>
+    <p class="subtitle">The Goose That Laid the Golden Egg: What to Do
+If You Have a Hit Game — Chris Zukowski</p>
+    <div class="meta">
+        <p>2026-03-11</p>
+        <p>dsgarage</p>
+    </div>
+</div>
+<div class="toc">
+    <h2>目次</h2>
+<ul>
+<li><a href="#gdc-2026-ヒット作という金の卵それを持ったとき何をすべきか"
+id="toc-gdc-2026-ヒット作という金の卵それを持ったとき何をすべきか">GDC
+2026: ヒット作という金の卵——それを持ったとき何をすべきか</a>
+<ul>
+<li><a href="#セッション概要"
+id="toc-セッション概要">セッション概要</a></li>
+<li><a href="#ヒット作は極めてレアだ"
+id="toc-ヒット作は極めてレアだ">ヒット作は極めてレアだ</a></li>
+<li><a href="#このトークのゴール"
+id="toc-このトークのゴール">このトークのゴール</a></li>
+<li><a href="#つのフェーズbrief-gooseとlong-goose"
+id="toc-つのフェーズbrief-gooseとlong-goose">2つのフェーズ：Brief
+GooseとLong Goose</a></li>
+<li><a href="#brief-goose戦略" id="toc-brief-goose戦略">Brief
+Goose戦略</a>
+<ul>
+<li><a href="#ローンチ3ヶ月前valveにポップアップを申請する"
+id="toc-ローンチ3ヶ月前valveにポップアップを申請する">ローンチ3ヶ月前：Valveにポップアップを申請する</a></li>
+<li><a href="#ローンチ時3つのバブルを同時に出す"
+id="toc-ローンチ時3つのバブルを同時に出す">ローンチ時：3つの「バブル」を同時に出す</a></li>
+</ul></li>
+<li><a href="#ヒット判定は2週間で分かる"
+id="toc-ヒット判定は2週間で分かる">ヒット判定は2週間で分かる</a></li>
+<li><a
+href="#long-goose戦略ディスカウントでウィッシュリストを金に変える"
+id="toc-long-goose戦略ディスカウントでウィッシュリストを金に変える">Long
+Goose戦略：ディスカウントでウィッシュリストを金に変える</a>
+<ul>
+<li><a href="#なぜセールがウィッシュリストを金に変えるのか"
+id="toc-なぜセールがウィッシュリストを金に変えるのか">なぜセールがウィッシュリストを金に変えるのか</a></li>
+<li><a href="#最適なディスカウント頻度"
+id="toc-最適なディスカウント頻度">最適なディスカウント頻度</a></li>
+<li><a href="#ローンチ時ディスカウントはなしが正解"
+id="toc-ローンチ時ディスカウントはなしが正解">ローンチ時ディスカウントは「なし」が正解</a></li>
+<li><a href="#ディスカウント率の時系列戦略実データ"
+id="toc-ディスカウント率の時系列戦略実データ">ディスカウント率の時系列戦略（実データ）</a></li>
+<li><a href="#セール期間は14日を選べ"
+id="toc-セール期間は14日を選べ">セール期間は14日を選べ</a></li>
+<li><a href="#steam-daily-deals年1回の切り札"
+id="toc-steam-daily-deals年1回の切り札">Steam Daily
+Deals（年1回の切り札）</a></li>
+<li><a href="#dlcの段階的積み上げ"
+id="toc-dlcの段階的積み上げ">DLCの段階的積み上げ</a></li>
+<li><a href="#dlcリリース-セールの組み合わせ"
+id="toc-dlcリリース-セールの組み合わせ">DLCリリース ×
+セールの組み合わせ</a></li>
+<li><a href="#steamフェスティバルを活用する"
+id="toc-steamフェスティバルを活用する">Steamフェスティバルを活用する</a></li>
+</ul></li>
+<li><a href="#まとめ" id="toc-まとめ">まとめ</a>
+<ul>
+<li><a href="#アクションリスト"
+id="toc-アクションリスト">アクションリスト</a></li>
+</ul></li>
+<li><a href="#次のステップ" id="toc-次のステップ">##
+次のステップ</a></li>
+<li><a href="#参考リンク" id="toc-参考リンク">参考リンク</a></li>
+</ul></li>
+</ul>
+</div>
+<div class="content" data-date="2026-03-11">
+<h1 id="gdc-2026-ヒット作という金の卵それを持ったとき何をすべきか">GDC
+2026: ヒット作という金の卵——それを持ったとき何をすべきか</h1>
+<p>「次の作品は絶対に自分の夢のゲームを作る」——インディ開発者なら誰でも持つ目標です。しかし現実には、夢のゲームを作るにはお金が必要です。</p>
+<p><strong>ヒット作はそのお金を生み出す「金のガチョウ」です。</strong>
+これはイソップ寓話「金の卵を産むガチョウ」に由来する表現で、毎日金の卵を産むガチョウを手に入れた農夫が、欲を出して腹を裂いたら卵は二度と手に入らなくなった——という教訓の物語です。つまり「目先の利益に走って、長期的な収益源を潰してはいけない」というメッセージが、この講演の根底にあります。しかし、多くの開発者はそのガチョウを手に入れた瞬間に、育てるのをやめてしまいます。</p>
+<p>GDC 2026のIndependent Development, Discovery &amp;
+Marketingトラック（インディゲームの開発・マーケティングに特化したセッション群）で、HowToMarketAGame.comのChris
+Zukowskiが語ったのは、ヒット作を持ったインディ開発者が<strong>やるべき具体的な行動</strong>です。Steamのデータを自らスクレイピング（Webサイトから自動的にデータを収集する手法）して分析した、数字に裏付けられた講演でした。</p>
+<blockquote>
+<p><strong>Chris Zukowskiについて</strong>:
+インディゲーム開発者向けのマーケティングコンサルタント。自身のブログ「HowToMarketAGame.com」でSteamのデータ分析に基づく販売戦略を発信し、欧米のインディゲームコミュニティで広く知られている人物です。GDCでは常連のスピーカーで、データドリブンなアドバイスに定評があります。</p>
+</blockquote>
+<hr />
+<h2 id="セッション概要">セッション概要</h2>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th style="text-align: left;">項目</th>
+<th style="text-align: left;">内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>タイトル</strong></td>
+<td style="text-align: left;">The Goose That Laid the Golden Egg: What
+to Do If You Have a Hit Game</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>スピーカー</strong></td>
+<td style="text-align: left;">Chris
+Zukowski（HowToMarketAGame.com）</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>トラック</strong></td>
+<td style="text-align: left;">Independent Development, Discovery &amp;
+Marketing</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>形式</strong></td>
+<td
+style="text-align: left;">Lecture（講義形式。スピーカーが一方的にプレゼンし、最後にQ&amp;Aがある形式。GDCにはこの他にパネルディスカッション、ラウンドテーブル（参加者同士の議論）、ワークショップ等がある）</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>日時</strong></td>
+<td style="text-align: left;">2026年3月11日（水）11:50–12:20</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>場所</strong></td>
+<td style="text-align: left;">Room 3005, West Hall</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="ヒット作は極めてレアだ">ヒット作は極めてレアだ</h2>
+<p>Zukowskiはまず、Steamの全ゲームをログスケール（対数目盛り。収益の桁数が大きく異なるデータを見やすくするための表示方法）で可視化したグラフを見せました。</p>
+<blockquote>
+<p>Steamで1年間にリリースされるゲームは約2万本。そのうち、私が「ゴールデンエッグ」と呼ぶ水準に到達するのは、わずか<strong>1,270本</strong>だ。</p>
+</blockquote>
+<p>約6%。しかしその1,270本のオーナーの<strong>約1/3は、ゴールデンエッグを放置している</strong>。</p>
+<blockquote>
+<p>これが本当に悲しい。</p>
+</blockquote>
+<p>さらに2000本に1本だけ、「<strong>Among
+Usクラス</strong>」のメガヒット——つまりジャンル自体を塗り替えるほどの大成功——が生まれます。しかしこのトークの対象は、そこまで到達していなくても「金のガチョウ」を持っているすべての開発者です。</p>
+<h4 id="ゴールデンエッグの定義">ゴールデンエッグの定義</h4>
+<p>Zukowskiが使うデータは2024年のSteamゲームが中心です（Early
+Access（開発途中のゲームを早期に販売し、プレイヤーのフィードバックを得ながら開発を進める方式）から1.0リリース前のタイトルも含む）。「ゴールデンエッグ」と呼ぶ状態の目安：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">指標</th>
+<th style="text-align: left;">水準</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">収益</td>
+<td style="text-align: left;">6ヶ月以内に~$150,000（約2,250万円）</td>
+</tr>
+<tr>
+<td style="text-align: left;">レビュー数</td>
+<td style="text-align: left;">ローンチ6ヶ月以内に約500件以上</td>
+</tr>
+<tr>
+<td style="text-align: left;">ウィッシュリスト</td>
+<td style="text-align: left;">発売前に10万件以上</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>ウィッシュリストとは</strong>:
+Steamの「欲しいものリスト」機能。ユーザーが気になるゲームを登録しておくと、セールや発売時に通知が届く。発売前のウィッシュリスト数は、そのゲームへの期待度を測る最も重要な指標とされています。</p>
+</blockquote>
+<h4 id="ゴールデンなサインを見逃すな">ゴールデンなサインを見逃すな</h4>
+<p>ローンチ前にゲームがヒット候補かどうか分かる兆候があります：</p>
+<ul>
+<li>ウィッシュリストが<strong>10万件</strong>に近づいている</li>
+<li>ウィッシュリストが<strong>1日あたり100〜300件</strong>増えている</li>
+<li><strong>ストリーマーがデモを何度も遊んでいる</strong>（TwitchやYouTubeの配信者が自発的にプレイしている状態）</li>
+<li><strong>デモのプレイ時間の中央値が60分超</strong></li>
+<li>ソーシャルへの投稿がバイラル（口コミで爆発的に拡散）になる</li>
+<li>あらゆるゲームショーに採択される</li>
+</ul>
+<hr />
+<h2 id="このトークのゴール">このトークのゴール</h2>
+<blockquote>
+<p><strong>ヒット作から十分な収益を上げて、次のプロジェクト——あなたの夢のゲーム——に進む許可を自分自身に与えること。</strong>
+このヒット作が、夢のゲームに資金を供給する。</p>
+</blockquote>
+<p>ヒット作は目的ではなく、手段です。Zukowskiはこの前提でアドバイスを構築しています。</p>
+<blockquote>
+<p><strong>日本との文化的な違い</strong>:
+欧米のインディゲーム開発では、ヒット作の収益を「次の作品の開発資金」として自己投資する——いわゆるブートストラッピング（外部資金に頼らず自己資金で事業を立ち上げること）が主流の考え方です。日本のインディ開発者はパブリッシャーとの契約や、自主制作の延長で開発を続けるケースが多いですが、欧米ではKickstarter（クラウドファンディング）、パブリッシャーディール（パブリッシャーが開発資金を提供する代わりに収益の一部を受け取る契約）、VC（ベンチャーキャピタル）からの出資、そしてこの講演のテーマである「前作の収益による自己資金調達」など、資金調達の選択肢が多岐にわたります。Zukowskiのアドバイスは「外部に頼らず自分の力で次作の資金を作れ」という、最も自由度の高い選択肢を勧めるものです。</p>
+</blockquote>
+<hr />
+<h2 id="つのフェーズbrief-gooseとlong-goose">2つのフェーズ：Brief
+GooseとLong Goose</h2>
+<p>ヒット作には2つの稼ぎのフェーズがあります。</p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th style="text-align: left;">フェーズ</th>
+<th style="text-align: left;">時期</th>
+<th style="text-align: left;">内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Brief
+Goose</strong>（短期ガチョウ）</td>
+<td style="text-align: left;">ローンチ〜数週間</td>
+<td
+style="text-align: left;">ローンチウィンドウ（発売直後の注目が集まる期間）の最大化</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Long
+Goose</strong>（長期ガチョウ）</td>
+<td style="text-align: left;">ローンチ後の継続期</td>
+<td style="text-align: left;">長期的な収益の維持</td>
+</tr>
+</tbody>
+</table>
+<p>ほとんどの開発者はBrief Gooseすら活用しきれていません。</p>
+<hr />
+<h2 id="brief-goose戦略">Brief Goose戦略</h2>
+<h3
+id="ローンチ3ヶ月前valveにポップアップを申請する">ローンチ3ヶ月前：Valveにポップアップを申請する</h3>
+<p>ウィッシュリストが10万件に近づいたら、Valve（Steamの運営会社）にサポートチケットを送ります。</p>
+<blockquote>
+<p>「ローンチが近い。10万ウィッシュリストに近づいている。ローンチ時にポップアップ枠（フィーチャー＝Steamストアのトップページに掲載されること）をいただけないか？」</p>
+</blockquote>
+<p>Valveはローンチ<strong>4時間後</strong>に、そのゲームがフィーチャーに値するか判定します。準備が間に合わない前に交渉しておくことが重要です。</p>
+<h3
+id="ローンチ時3つのバブルを同時に出す">ローンチ時：3つの「バブル」を同時に出す</h3>
+<p>ローンチ時に用意しておくべき収益バブル（追加の収益源）が3つあります。<strong>すべてローンチと同時に出すこと</strong>——後からでは遅い。</p>
+<pre><code>ローンチ時に揃えるべきもの
+────────────────────────────────────────────
+① サポーターパック（アートブック・壁紙・OST等のDLC）
+② サントラ（別売り）
+③ コラボバンドル（ジャンルの近い他ゲームとのバンドル）
+────────────────────────────────────────────</code></pre>
+<blockquote>
+<p><strong>DLC・バンドルの補足</strong>:
+DLC（ダウンロードコンテンツ）は本体購入後に追加購入するコンテンツ。OST（Original
+Soundtrack）はゲームのサウンドトラック。バンドルはSteamの機能で、複数のゲームをセットにして割引価格で販売できる仕組みです。</p>
+</blockquote>
+<h4
+id="実データzukowski調査コミュニティ報告">実データ（Zukowski調査・コミュニティ報告）</h4>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">バブル</th>
+<th style="text-align: left;">アタッチレート（中央値）</th>
+<th style="text-align: left;">収益（中央値）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">サポーターパック</td>
+<td style="text-align: left;">2.59%</td>
+<td style="text-align: left;">$11,531（約170万円）</td>
+</tr>
+<tr>
+<td style="text-align: left;">サントラ</td>
+<td style="text-align: left;">2.8%</td>
+<td style="text-align: left;">$60,980（約900万円）</td>
+</tr>
+<tr>
+<td style="text-align: left;">コラボバンドル</td>
+<td style="text-align: left;">—</td>
+<td
+style="text-align: left;">$119,000（約1,800万円、2ゲームのコラボ例）</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>アタッチレートとは</strong>:
+本体の購入者のうち、そのDLCやサントラも一緒に購入した人の割合。2.59%は一見低く見えますが、ヒット作の購入者母数が大きいため、絶対額としては大きな収益になります。</p>
+</blockquote>
+<p>サントラの収益中央値が$60,980という数字は驚異的です。アタッチレートはわずか2.8%でも、ゲーム本体の購入者に対してこれだけの収益を上乗せできます。</p>
+<p>コラボバンドルの$119,000は、どちらのゲームにとってもコストがほぼかからない施策です。バンドルにすることで双方のユーザーが相手のゲームを発見し、販売が伸びます。</p>
+<h4 id="バンドルのルール">バンドルのルール</h4>
+<p>バンドルを組む際のルールも明確に示されました：</p>
+<ul>
+<li><strong>価格</strong>:
+バンドル価格は、収録ゲームの中で最も安い単品価格より低くする</li>
+<li><strong>ジャンル</strong>:
+ジャンルが近いゲームとのみバンドルを組む（関係ない友人のゲームとのバンドルは避ける）</li>
+<li><strong>タイミング</strong>:
+ローンチ時に出す。数週間後に出しても機会を逸している</li>
+</ul>
+<hr />
+<h2 id="ヒット判定は2週間で分かる">ヒット判定は2週間で分かる</h2>
+<blockquote>
+<p>2週間見れば、ゴールデンエッグを持っているかどうか分かる。遅くとも最初の3ヶ月以内には確定する。</p>
+</blockquote>
+<p>もし数週間でその兆候が見えなければ、このトークの戦術の多くは適用できません。Zukowskiは率直に「その場合は申し訳ないが、別のルートを歩む必要がある」と言います。</p>
+<p>2024年の「Golden
+Geese」データによれば、<strong>74.6%がローンチから0〜3ヶ月以内</strong>にゴールデンエッグを産んでいます。6ヶ月以内まで広げると17.3%が加わり、合計約92%がローンチ後半年以内に判明します。</p>
+<hr />
+<h2 id="long-goose戦略ディスカウントでウィッシュリストを金に変える">Long
+Goose戦略：ディスカウントでウィッシュリストを金に変える</h2>
+<p>ローンチ後の継続収益フェーズ（Long
+Goose）の核心は<strong>ディスカウント戦略</strong>です。</p>
+<h3
+id="なぜセールがウィッシュリストを金に変えるのか">なぜセールがウィッシュリストを金に変えるのか</h3>
+<p>Zukowskiはこのメカニズムを「<strong>The breath of
+Steam（Steamの呼吸）</strong>」と呼びます。</p>
+<blockquote>
+<p>ウィッシュリストを吸い込んで、セールで$$$を吐き出す。これがSteamの呼吸だ。</p>
+</blockquote>
+<p>Steamではゲームをセールにすると、<strong>全ウィッシュリスト登録者に通知メールが届きます</strong>。ウィッシュリスト数が多いほど、セールが強力な告知装置になります。ウィッシュリストを積み上げた意味はここにあります。</p>
+<blockquote>
+<p>Gabe
+Newellはウィッシュリストでヨットを買えない。彼もあなたのゴールデンエッグを必要としている。</p>
+</blockquote>
+<p>「Gabe
+Newell（ゲイブ・ニューウェル）」はValve社の共同創業者兼社長で、Steamの生みの親です。Zukowskiはここでユーモアを交えて「Valve側もあなたのゲームが売れてほしいと思っている。ウィッシュリストの数字だけではValveも儲からない。実際の販売に変換する必要がある」と言っています。</p>
+<h3 id="最適なディスカウント頻度">最適なディスカウント頻度</h3>
+<p>Zukowskiが1,270本のヒット作データを分析した結果：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">セール頻度（回/月）</th>
+<th style="text-align: left;">中央値収益</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">0.25回未満</td>
+<td style="text-align: left;">$474,000（約7,100万円）</td>
+</tr>
+<tr>
+<td style="text-align: left;">0.25〜0.5回</td>
+<td style="text-align: left;">$493,000（約7,400万円）</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>0.5〜0.75回</strong></td>
+<td
+style="text-align: left;"><strong>$588,000（約8,800万円）</strong></td>
+</tr>
+<tr>
+<td style="text-align: left;">0.75〜1回</td>
+<td style="text-align: left;">$435,000（約6,500万円）</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>1〜2回</strong></td>
+<td
+style="text-align: left;"><strong>$796,000（約1億2,000万円）</strong></td>
+</tr>
+<tr>
+<td style="text-align: left;">2回超</td>
+<td style="text-align: left;">$304,000（約4,600万円）</td>
+</tr>
+</tbody>
+</table>
+<p><strong>月1〜2回（隔週〜月1回）が中央値収益$796,000で最高</strong>。月に0.5〜0.75回（隔月前後）も$588,000と好成績です。頻度が高すぎると（2回超）希少性が失われて$304,000に落ちます。</p>
+<blockquote>
+<p>セールの頻度は「どのくらい息を止めていられるか」だ。ウィッシュリストを溜め込みすぎず、吐き出し続けること。</p>
+</blockquote>
+<p>年間のセールスケジュールを<strong>事前に組んでしまう</strong>ことを強く推奨しています。</p>
+<h3
+id="ローンチ時ディスカウントはなしが正解">ローンチ時ディスカウントは「なし」が正解</h3>
+<p>データはローンチ時のディスカウントについても明確な答えを示しています（$20M未満の「ゴールデンガチョウ」対象）：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">ローンチ時ディスカウント率</th>
+<th style="text-align: left;">中央値収益</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>0%（定価）</strong></td>
+<td
+style="text-align: left;"><strong>$772,000（約1億1,600万円）</strong></td>
+</tr>
+<tr>
+<td style="text-align: left;">10%</td>
+<td style="text-align: left;">$535,000（約8,000万円）</td>
+</tr>
+<tr>
+<td style="text-align: left;">15%</td>
+<td style="text-align: left;">$400,000（約6,000万円）</td>
+</tr>
+<tr>
+<td style="text-align: left;">20%</td>
+<td style="text-align: left;">$457,000（約6,900万円）</td>
+</tr>
+<tr>
+<td style="text-align: left;">21%以上</td>
+<td style="text-align: left;">$375,000（約5,600万円）</td>
+</tr>
+</tbody>
+</table>
+<p>ローンチ時はディスカウントなし（定価）が最も高い収益$772,000。ローンチ初日から割引すると、エンジン全開の勢いを自ら殺すことになります。</p>
+<h3
+id="ディスカウント率の時系列戦略実データ">ディスカウント率の時系列戦略（実データ）</h3>
+<pre><code>ディスカウント率のロードマップ
+──────────────────────────────────────
+ローンチ        0%（定価）← ここが最も重要
+↓ 約88日後
+最初のセール    30% off
+↓ 約324日後
+次のフェーズ    50% off
+↓ 特別なタイミングまで温存
+大型セール      75% off（焦らない）
+──────────────────────────────────────</code></pre>
+<blockquote>
+<p>75%まで早急に下げると「ガチョウを殺す」——つまり、寓話の農夫のように目先の利益を追いすぎて長期収益源を失うことになる。深いディスカウントは特別なタイミングのために取っておけ。</p>
+</blockquote>
+<h3 id="セール期間は14日を選べ">セール期間は14日を選べ</h3>
+<p>Steamでセールを設定する際、期間の選択肢がいくつかあります。Zukowskiの推奨は明快です：</p>
+<blockquote>
+<p><strong>Pick the 14 day discount（14日セールを選べ）。</strong></p>
+</blockquote>
+<p>14日間のセールは、ウィッシュリスト通知が届いた後でプレイヤーが「買おうかな」と検討する時間を確保できます。短すぎると決断できないままセールが終わります。</p>
+<h3 id="steam-daily-deals年1回の切り札">Steam Daily
+Deals（年1回の切り札）</h3>
+<p>SteamにはDaily
+Deals（注目セール枠。Steamストアのトップページに24時間掲載される特別なプロモーション枠）という特別なフィーチャー枠があります。</p>
+<ul>
+<li>サポートチケットで申請できる</li>
+<li><strong>年1回しか取得できない</strong>貴重な枠</li>
+<li>3段階のティアがあり、上位ティアは10万ウィッシュリストが条件</li>
+<li><strong>最初の大型プロモーションとして温存</strong>することを推奨</li>
+</ul>
+<h3 id="dlcの段階的積み上げ">DLCの段階的積み上げ</h3>
+<p>DLCは一度出して終わりではありません。Zukowskiが示したパターン：</p>
+<pre><code>DLC積み上げパターン
+──────────────────────────────────────
+① コスメ系DLC（壁紙・スキン・エンブレム等）← ローンチ時のサポーターパック
+② キャラクター・役割追加
+③ 大型拡張（環境・ストーリーを丸ごと変える）
+──────────────────────────────────────</code></pre>
+<p>DLCの<strong>アタッチレートは14%超</strong>。本体の購入者の14人に1人以上がDLCも買います。これはサポーターパック（2.59%）やサントラ（2.8%）より大きく、追加開発への投資対効果が非常に高い。</p>
+<h3 id="dlcリリース-セールの組み合わせ">DLCリリース ×
+セールの組み合わせ</h3>
+<p>DLCをリリースするタイミングで本体をセールにする——これが継続収益の黄金パターンです。新コンテンツが話題を呼び、セールで新規ユーザーが入り、DLCでさらに収益が上がる。</p>
+<h3
+id="steamフェスティバルを活用する">Steamフェスティバルを活用する</h3>
+<p>Steamでは定期的にジャンル別フェスティバル（例: Story Club
+Festival）が開催されます。これはSteamが主催する期間限定のオンラインイベントで、特定ジャンルのゲームが一斉にプロモーションされます。</p>
+<ul>
+<li>フェスティバルへの参加申請は<strong>サポートチケット</strong>で行う</li>
+<li>フェスティバルはウィッシュリストを積み上げるチャンス</li>
+<li><strong>フェスティバル参加時のセール</strong>を組み合わせると効果大</li>
+<li>Steamは一定数の「Building
+News」ゲームがいるフェスティバルを承認するため、申請する価値がある</li>
+</ul>
+<blockquote>
+<p>Steamには何が来るか先を見渡せる。カレンダーを見て、自分のゲームに合うフェスティバルがあれば申請しろ。</p>
+</blockquote>
+<h2 id="まとめ">まとめ</h2>
+<p>Zukowskiは最後のスライドで、このトーク全体のゴールをはっきりと言葉にしました。</p>
+<blockquote>
+<p>THAT’S SO CRINGE——</p>
+</blockquote>
+<p>この「CRINGE」は英語のスラングで「恥ずかしい・気恥ずかしい」という意味。Zukowski自身が「こんな青臭いことを言うのは気恥ずかしいけど」と照れながら、それでも本音を語る場面です。</p>
+<blockquote>
+<p><strong>このゴールデンガチョウから十分な金を稼いで、次のゲームに資金を回してほしい。その次のゲームは商業的な失敗をしても構わない。それは新しいジャンルを生み出すカルトヒットになるんだから。</strong></p>
+</blockquote>
+<p>「金のガチョウ」は目的ではなく、手段です。ヒット作で稼いだ資金が、あなたの夢のゲームを守る盾になります。</p>
+<p>Vampire
+Survivorsは2020年にリリースされ、それ自体が「バンパイアサバイバー系」という全く新しいジャンルを生み出しました。もしその開発者が最初のヒット作から十分な収益を引き出してさえいれば、次の「夢のゲーム」に全力を注げたはずです。</p>
+<p>Zukowskiが言いたいのは、結局このことです：<strong>ガチョウを大切に育てれば、やがて夢のゲームを作る自由が手に入る。</strong></p>
+<h3 id="アクションリスト">アクションリスト</h3>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th style="text-align: left;">フェーズ</th>
+<th style="text-align: left;">やること</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>今すぐ</strong></td>
+<td
+style="text-align: left;">ゴールデンなサインを確認する（WL数・1日増加数・ストリーマー反応）</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>ローンチ3ヶ月前</strong></td>
+<td style="text-align: left;">Valveにポップアップ枠を申請する</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>ローンチ当日</strong></td>
+<td
+style="text-align: left;">①サポーターパック②サントラ③コラボバンドルを同時リリース（定価で）</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>ローンチ後88日</strong></td>
+<td style="text-align: left;">最初のセール（30% off、14日間）</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>継続</strong></td>
+<td style="text-align: left;">月1〜2回ペースでセールを回す、Daily
+Deals枠は温存</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>DLCタイミング</strong></td>
+<td style="text-align: left;">本体セール ×
+DLCリリースの黄金パターンを繰り返す</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="次のステップ">## 次のステップ</h2>
+<h2 id="参考リンク">参考リンク</h2>
+<ul>
+<li><a href="https://schedule.gdconf.com/">GDC 2026
+公式スケジュール</a></li>
+<li><a href="https://howtomarketagame.com/">HowToMarketAGame.com — Chris
+Zukowski</a></li>
+<li><a href="https://gdcvault.com/">GDC Vault</a></li>
+</ul>
+</div>
+</body>
+</html>

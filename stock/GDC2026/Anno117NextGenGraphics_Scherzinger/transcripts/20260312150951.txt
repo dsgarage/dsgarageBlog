@@ -1,0 +1,448 @@
+# Talksribe 録音 2026-03-12 15:09:51
+
+[15:10:08] I was the right one to take the idea and no one to sell me to the party. I didn't sell it, and I received it to the people in Japan.
+[15:10:09] I'm giving you an update after I decided to switch gears and I'll be so happy.
+[15:10:23] and 20 are joined in nanology and since then which is a constant relation of N8, 100 and N1, N1, N1, N1, N1.
+[15:10:24] of course I'm just my own work and represent point-eye.
+[15:10:36] In 23, we set out to create the most beautiful energy of all time. And after a brief introduction to the game, we'll be talking about what changed now I entered.
+[15:10:42] some of them, each is the touch. It's look of our game, how we're going to be in the great racing and some of our key brown-nose.
+[15:10:55] The annum series has been wrong for over 20 seconds. I know about 111 team packs for my analysis to 8 install them in the series, and this is by and by the overwhelming.
+[15:11:00] In the game, you place a fresh point in the problem and got sent out by the Emperor to get an improvisation.
+[15:11:13] is about building cities, managing your production chains, to come trade networks for expensive elements such as exploration,
+[15:11:16] essentially and in the birth of a woman.
+[15:11:20] For the first time, as you may see, you can choose between two different starting parts.
+[15:11:23] And the first problem is called FET.
+[15:11:28] It is inspired by Tene, Kloos, Harv, Empire, War, and Welcome.
+[15:11:38] The other province, Alvjorn, is a Celtic inspired. This is a wider number of mysteries, please, we're no simpleised for all months.
+[15:11:47] He can decide whether you want to embrace the local traditions or if you want to remove the Roman bare-flifters on hands.
+[15:11:54] The changes for graphics engine and render and gain such as hours can be somewhat different compared to many different firsts.
+[15:12:01] I know it is about building, so the player controls how the world looks and which it has in some place.
+[15:12:13] a perspective can learn aggressive in, you don't hear what the entire city is.
+[15:12:21] any location and any time. And as you will see, we have a lot of projects and any can be put by diverse, from foliage to different kinds of buildings to love this environment.
+[15:12:34] Let's take quick look at our server. We use our own proprietary engine, which is called the Empire Engine, and has the more or less erroneous instances of the PCs.
+[15:12:38] I know 1800, possibly since 2019, for PC and it provides all our change with MSA.
+[15:12:49] In March 2014, we released the console of the digital battery in April. This was the first time the engine was ever brought to consoles.
+[15:12:55] It's a back-and-end group lens, but I know there's always been traditionally CPU-bound and there's still the case at that.
+[15:13:05] In November 2025 released an award in 17x from other, to maintain the OEC and current
+[15:13:15] This was a tight, painful process, we have not had much of a pre-production based on the inside. Kind of a very quick jump from bottom to console, and not to make it to you day.
+[15:13:29] and the implemented theory production. At the front, my turn on, the CURCHALING, the GHA, one of the C, the auditionary shift, the option of using power shading with MSA.
+[15:13:35] We're going to comment on it. One of our goals was to get rid of our simple body-making friends. I really just throw them off this scenario. So that's the I'm incompetent.
+[15:13:43] Will you talk about an unknown lead to talk about buildings? Is there a kind of a start of it? And when we talk about buildings, we talk about...
+[15:13:54] all 3D objects in the environment are called. The conflict is not just a single mesh, it can contain multiple mesh of steaks and multiple effects,
+[15:14:01] into use of subcontinent that arrestants may have fighting, and we call those fighting. Let's go to the exam.
+[15:14:07] This is a standard reference for President's glory. There is place hundreds of such buildings in the game.
+[15:14:11] Right side can see the structure of the conflict as it shown in our impulse conflict.
+[15:14:24] The content itself, which is what we call the main content only contains the ground. All the main elements are references I call this.
+[15:14:28] And this is a full company itself of using other five hundred such as probes.
+[15:14:34] seeing those for a second and for a third row. And these before main conflict, again with...
+[15:14:37] all 5-point preferences back to each other.
+[15:14:50] Now on the pro side, this way of setting up our country's Great Book Work Prova artist is allows them to leave these elements such as props or the link parts.
+[15:14:52] and that it will be a non-comptive specialties as a type.
+[15:15:00] But the drawbacks that we get very complex heritage of subcompletes, even for small standard buildings, and that we have a lot of longitudinal objects, so we have no idea what we are taking.
+[15:15:02] What is the number of them?
+[15:15:08] this, you can infinite the content optimization of the looping system.
+[15:15:20] This became essential for the analysis pipeline. Not only to reduce your tech count and see the CPU overhead cost-of-a-comment content hierarchies,
+[15:15:24] the optimized platform for artists to get rid of the handmade and the least useful experience.
+[15:15:27] here is a high level of your thoughts.
+[15:15:34] First, collect all measures that are suitable for merging into single single one five.
+[15:15:46] Next, let's simply go merge these objects and generate optimized merge and LODs by retaining the original material itself.
+[15:15:47] you simply gonna be matching and that it genuinely is a protection.
+[15:15:54] And in the end, we can generate a new contract file for our engine from your July state.
+[15:16:04] If you're interested in some more details, what is simple product is pipeline, error element, if you're not on a simple blog, it's a plan and up on a blog post by off from the artist stage.
+[15:16:16] For example, the result of optimization has been looked like this. You can see that the trees have not been merged, and this is because they have
+[15:16:27] and we look proud. But all the many elements, including the hierarchy of subcontinent,
+[15:16:37] Here are the LOD's standard processing of the forest mesh. This is the first LOD. It contains all originality and textures,
+[15:16:46] and further we will need some more details. The last and only this rematch method.
+[15:16:48] optimized for its own runscreen.
+[15:16:54] This is also a significant period, which was the trying account that generated a new vertex data.
+[15:17:04] The Riemann cell or D only contains a single material for each cell, depending on the separate LVD or normative cell. And those are the only two textures being used for material.
+[15:17:16] Now that we have all the space let's look at some numbers. Here we have an end game scene where to play about a lot of stuff.
+[15:17:19] We will learn about 140 out of all.
+[15:17:27] And the optimized quantities reduces down to 36 of the models. So this is a pretty great result. But solve that with left-of-one essentially.
+[15:17:40] ability to adapt to the trade. And make this worse, only are many of our buildings now much bigger than that
+[15:17:43] rain from 12% to now 20%
+[15:17:54] So if we would just use basic error still on an internal links that we used to do in the past, you would get issues like endless error cases to call on a high difference.
+[15:18:01] the others, the artist is in a place, and in between the space for elements like the stairs, and overall the love of empty spaces in our essence.
+[15:18:07] To head in this, we now use three different ways of the links of hearts of the links in the description.
+[15:18:19] Our first option is not to, instead use the base pedestal and building and use the main context
+[15:18:24] but when elements act to those who believe in it, entire main conflict would be moved up to four.
+[15:18:32] and this can be an advantage of the config by setting this words based by volume.
+[15:18:38] A signal is to use a converter exception that performs the mesh by adjusting the height of each word to exist.
+[15:18:42] The heat spread base gets light on and off set.
+[15:18:45] And on third option is to use low throughput for measures.
+[15:18:55] We can use the point in the XE frame where mesh is placed within the main config as pivot for this mesh and we adjust its position so that the pivot is always placed on the ground.
+[15:19:03] We can now come to these three approaches with a one-computer, as you can see in example, of a Roman-litur train in the ground.
+[15:19:16] The bill on the right is not the leftover train. The warning is up at the train, but the necessary.
+[15:19:24] And the towers each have a load of pivot and a place on the floor. Here's all the slots coming in, change the slot.
+[15:19:29] We cut it up.
+[15:19:40] which are configuring individual into depth of the trade. But we just established an account of optimization, the primordial models are configuring one single mesh. And these sub-convicts may be better to the trade.
+[15:19:48] Our solution is to encode the trade adaption information in vertex colors, so that each vertex encodes information of depth.
+[15:20:01] Local pillars are found on our mesh. So we could keep the opposite of the verticals to the local pillar in the main corner of the object place.
+[15:20:06] and it's always placed in the ground. It's up to place by-card and then zero. And we only need to solder X and the other says.
+[15:20:16] to green and the blue color channel of our group's colors. The green channel includes the pivot text for usur and case a look with the used and a specialized set to zero.
+[15:20:26] Blowntender and code is for the Z offset and case load the permit is loose and otherwise it contains a drain attached
+[15:20:32] He said this to zero for plants that do not adapt to the drain, or one for plants, it means for the earth to come in.
+[15:20:36] Let's look into groceries comes for our receipts.
+[15:20:47] We can see that the building in the bag has a zero green hand blue connection. So it does not look like a stone-need upper train blocker.
+[15:20:51] each have a non-zero green and blue color shadow, which means they use the logo.
+[15:20:56] The remaining group parts of the mesh have a zoom green shell and it's about us.
+[15:20:59] And we now have a good escape.
+[15:21:10] below the darkest colors to visualize the XD offset, see that each building is onlookability so that they can end up now.
+[15:21:19] Of course, we want to have the rematch values that we see.
+[15:21:30] for building arts. In the new vertices that simply under its whole mesh can be interpolated between vertices,
+[15:21:36] this would mess up our frame in that. To fix this, we match front things with multiple different pillars into this step.
+[15:21:41] First, we perform multiple remissions, but we only remish object together.
+[15:21:52] share a common broker. In the second set, you simply want to package the functionality by the meshes again and with the text that's the same address to be able to see in the period.
+[15:22:00] Here, it can seem to be solved for the B-Mexor O-D, the unpacked potential for the product artists.
+[15:22:04] Now, you have consistent vertical scholars to be handling the terrain that is in the vertical shape.
+[15:22:15] help with the trade model that seems to move up the entire range of effects already added on the CPU side, directly with placing the conflict by setting the experience based on it.
+[15:22:23] include the spy processing and our model in state of strategic use and provide us in input to the drain intervention and use the spy.
+[15:22:36] First, expect to rate the adaption intensity from the rediscoverance. This returns one of the rediscovered services that have a non-sero-green channel,
+[15:22:41] press, press blue, color channel, which contains the rule for non-adaptive parts or one for products.
+[15:22:54] as we get the position to the dead. A moment perverts get the object in this word, this position, and then we unplayed
+[15:22:58] X and Z offset from the value stop. We added to the object's display to the X and Z chord.
+[15:23:11] Now it stands from the low bit of a different space. Since we only need to print by an X and Z coordinates of the low bit of a bit,
+[15:23:15] to start the world with vertex 5.5. I think we'll see you in the next one.
+[15:23:19] And without a little improvement, we'll send you a turn on the world's best vertex.
+[15:23:24] Now can you teach the new white words about vertex?
+[15:23:36] First, we're similar to a magnet, because in the hex, it's coordinates of the adapt position, which is high-level, open-field, and other vertices, self.
+[15:23:45] to work space by position of the entire link. So if the entire conflict was not up by the train locker, and it takes us to cowardices, it's a ready to do this in words space, and so we need to subtract it.
+[15:23:58] Now at this delta, the word is referred to as like coordinate to get new deductors.
+[15:24:06] So, the train adaption tends to steer this world something between the original world states for a text by coordinate, which is not up by the train.
+[15:24:10] In the end, we're turning the bike on for the red.
+[15:24:21] Now, we'll reduce our object count and the hand is situated in the word, the chief of course, in the match, instead of adapting each and each of the subcontractors.
+[15:24:29] Now, we're done with the configuration in the trade adventure workflow, but you will have to revisit the staging of the top part right.
+[15:24:33] My thing is to find a lot of objects to handle, but since memory.
+[15:24:40] the object size, which is that you can use persistent renderings in the body of these contexts in each way.
+[15:24:51] What exactly are the denominations? Due to the nature of our game, animations are usually relatively simple but we can have many of them. And, to think again, there's a situation
+[15:24:54] and in the form of 50,000 machines, this is what we have presented.
+[15:25:04] I'm looking out an information call from the scene, because you, was big step forward to coming module to the building and producing else. You'll all be there.
+[15:25:11] Instead of updating the skeleton hierarchy on the CPU and then copy into the bone transformation method to the GPU, we can copy the skeleton.
+[15:25:16] this will GPU and run an amazing computer to compute all matrices in each way.
+[15:25:25] This system is quite similar to what we've needed for other way too. Now I really recommend that you adopt an integrated force to receive a mod in case.
+[15:25:29] and a key difference, however, is that we don't perform a day for Christmas.
+[15:25:41] We don't want the skinny from the chay that installed a plant from flashes. We only put the boundaries from machines and still perform the skinny import.
+[15:25:51] you just say memory. We don't know the animation is the same except for various special cases like the cheering clouds and heaters. So we would have to educate a lot of memory
+[15:25:52] But it isn't fake.
+[15:26:03] As an optimization, we track at which the client's models are contacted, meaning rendered and not called on a CTU, and we only can develop the memory in the presentation.
+[15:26:09] the relationships. Though remaining dimensions, we only take that time and see, but don't be bothered to mention.
+[15:26:21] So let's put some numbers for the examinance. Sorry for all. Here we have about 50,000 information resources in individual clips running smoothings.
+[15:26:24] There are only about 4,500 those current actors and the number of models that are not tied on.
+[15:26:31] Don't let it stop for these animations to take up a lot of 25 megabytes of ammo.
+[15:26:37] and that these also contain the last romantic sees who chose the most.
+[15:26:43] Without optimization, only a rocket reactor instance is would be about 300,000.
+[15:26:58] Piling the animation to the future data on RTX 5070s, the iFN is in the machine 6 less than the load of at 1.0 seconds.
+[15:27:03] 20 seconds, and in practice we spawn less enemy units, cities and consuls, we enough at about 0.1 million seconds.
+[15:27:06] another feature we had before, I don't want to miss out on these five.
+[15:27:17] So editing a material looks for artists and our company. As you can see, we don't have a figure for us. Art is like one of the main materials shaders.
+[15:27:20] parameters and features they can adjust in an able-footed.
+[15:27:25] This might be the best thanks to fathers, but it does have a bad feeling.
+[15:27:30] So how do you manage the carnival? Each material consists of a set.
+[15:27:41] of pre-defined components that are referenced by the shader Yardis project. The components, the parameters, and the shaders are defined by the product.
+[15:27:52] and get the available options. As an example, a model to be arched in a reference system, TBR component, and the model cover, for other assumptions.
+[15:28:02] So where does the binders found now coming? N1800 generates a constant buffer for runtime for each individual material, and the layout was different depending on what we did.
+[15:28:09] By 1110, you know, and then make some more to more transition than what kept from been with the resident.
+[15:28:20] The power's component description is once, and then it is correctly out and it is the factor of ff of each component. So there's the factor, and it means all parameters are put here.
+[15:28:30] A loading material gets aside a unique item. The handle frame is components and corresponding structure covers as well as an energy
+[15:28:32] the contest is good for the contest.
+[15:28:38] The material actually downwards offset into the index table to be able to exit.
+[15:28:49] you're ready to switch to bind detections for the console of L8200. So the queue texture is just an index, and the bind is very useful.
+[15:28:56] And setting the two to remember, we simply set the two to three at a time. So we'll come to the middle back and so the shader set it up.
+[15:29:04] Now, if you remember the rules, but you solved earlier, and material like this, it's probably used in most of the...
+[15:29:09] But in the past, it's always neat materials, since our engine does not in a way.
+[15:29:21] to social materials that are possible for the context. This is a potential proof-of-the-school feature, but for now, we have the materials that are written at one time to work
+[15:29:24] So, it's because we don't get used to it, but we use the next system to get it.
+[15:29:35] If we have different materials, these may be so fair to say when I stay in a chair, when I take off these, so they can use the same piece of wood. We have to do this all as well as the chair.
+[15:29:43] You already did that for N-800, but now we also order our draw to our strategies. We use to do stage changes a long time.
+[15:29:56] If we go back to our graph as seen or endgame as our museum, we stand instead to read about 36,000 words in this book.
+[15:30:00] to your past only is for 3,000 wrong girls to introduce this.
+[15:30:03] Peace, everyone. Peace, everyone. Peace, everyone.
+[15:30:07] save a lot of stages in this country, hopefully you're on the drop out of the country, which is...
+[15:30:09] So what we can do?
+[15:30:16] We also implemented a completely new texture services, so now it is written by our custom GPU text feedback.
+[15:30:24] When XC and Tanks should not bind this array of shaders, write it up to normups and use it to count up.
+[15:30:28] We thank the staff of the CPU and processing based on this.
+[15:30:40] machine is taken and the output sort of texture. We don't use any version of it. We always create a new texture of that, you look at the fire path, you change the disk,
+[15:30:42] The power of the global power of the change of the change.
+[15:30:47] I'm a new texture, it's ready. You simply place the descriptor in the binders array and mark your texture.
+[15:31:00] Here is called GpR-log system shader. Instead of setting the text to directly to call a function, get the text to the binary survey,
+[15:31:08] the computer required in the data. This is always relative to the power of the load of load, which appears as 0 on the GPU, so it can get negative numbers.
+[15:31:19] because we can function, we can function, we can perform the actual set. We can function in stackings.
+[15:31:23] is in texture. One for the minimum press the mid level and one for the mid level.
+[15:31:30] First, I'm working in some constant to the grid and get a most important class to do with it.
+[15:31:34] And just about back to the scene, you need to get back to the relevant level section.
+[15:31:43] For the Uniform Access Code part, we're all links, access to same texture. You can assemble the information for the entire way to the grave.
+[15:31:55] And then only the first day, from the time of the operation, so on and off, which is in the public minimum, minimum, pressing minimum, 10 and a two-minute air for the procedure.
+[15:32:08] the CPU, we prioritized the texture loading very easily, which tells us how many methods of pixels requests in a material, so that's the delta which we can't be
+[15:32:10] So, if I were to have sexes higher when the resolution is very low.
+[15:32:24] For each texture, it's over last time it was requested and it is really almost easy to press.
+[15:32:29] when potentially a super-class hard-footed face.
+[15:32:39] When it takes you, or it's iris movement, it's not going to press for while you're low-tem, but we always keep the lowest version of each picture in memory to count of other atoms.
+[15:32:51] Now we were very happy with the quality of the system. But one of the main topics is that we view it in the exchange generally using e-buretor. And that comes to a performance because the carry-on provides.
+[15:33:04] Because it was a false and barrier to the sense of test, but we can't do this in many cases. This also causes an early death of the sense of a riot.
+[15:33:06] operations in the history of this a lot because many of them are introduced out.
+[15:33:11] Do combination of a few things to reduce the update.
+[15:33:21] First, we force all the distance to the post. And we don't have any depth of sense of rights or we don't limit all these other versions.
+[15:33:32] Use a Z key class for all of our models that will save the touch to feedback, and then force our adapter stencil and the error test should be better for all of them.
+[15:33:46] You're actually only used to see P plus for a vegetation which has lots of overclocked, but after all, the message seems like the protocol ordering P is called,
+[15:33:48] And I'm always delighted to have this one.
+[15:33:55] We also disable the texture fee to compile with all shabby classes. Of course, this is the drawback that higher resolution looks might not be steamed in the SSW.
+[15:34:06] On console we have a nice option working for us and on the Z-TIS. This is a couple of things that are already that should be read test in the latency line after.
+[15:34:18] Learn this option a little bit as well. Or in better way to mark you and you like to find the driver's name here. I know they can be proud by the driver's translation itself.
+[15:34:26] There's now actually a problem for the nature of a specific patient called a male or a reflexive colleague, this is exactly what we need. So that's it. You'll be on my way.
+[15:34:32] Now, you can go on for a moment and take it to the program.
+[15:34:43] A lot has changed really fast running on my equipment. With N117 to the impact of radar, the elementary thousand four, and the scheduling in the day nine set.
+[15:34:44] This is very standard, but I want to mention two features.
+[15:34:54] Start with a quick look at our show uses. Slash-tubers is an Android channel, and is a traditional Node-based system.
+[15:35:00] Then notice in the ground which is a proper pitch, but in this style of roadshot layers, we support up to third layers for more.
+[15:35:13] Ground materials are ordered and we call it flinch to be text. The terrain is feeding based by entering text for sub-run time,
+[15:35:14] Thank you.
+[15:35:26] The path is not to be a part of the path, but to be a part of the path. The path is not to be a part of the path, but to be a part of the path. We also add the class in the path.
+[15:35:37] Here, you can see the terrain where this is a load of space. The here, with the display, at the end, at the end. Since there's much more detail, you'll also have more
+[15:35:39] more natural look of problems in other objects. I will answer this.
+[15:35:48] The reason I mentioned this feature in particular is because it's not really fascinating. It's also trying to gameplay. Playing the marches now.
+[15:35:59] In the game, the player decides to roll nicely at your region, discover the technology to train the marshes. They more fertile and deliciously roll-off.
+[15:36:06] The displacement mechanism is actually used to lower the terrain below the water, so we fade out the displacement in a way.
+[15:36:19] The key protection to indicate where mouse is available and we also use this protection to change the type of grass on the green grass area.
+[15:36:20] which is our procedure to us.
+[15:36:29] You can see an example scene when we distill a position for grass and tailing it and only the place for only the crops are present.
+[15:36:32] here it is with the C2 across high school descent.
+[15:36:42] The system is larger than the particular grass in those kitchen rooms, which was prevented in 2031's KVC.
+[15:36:51] down perspective, the camera is further away. So in our case, you need to do the questions using much more. Although, you can always be in free.
+[15:36:57] Obsituent grass is entirely due to equilibrium and is tied to unknown mysteries.
+[15:37:08] When I know the terrain, it comes to this group, allocate the tire in 60 with them. The tires are 30 to 32, or 60 to 60 taxes depending on your product.
+[15:37:20] The patch can do shader with one thread protects the entire. Shader samples that will achieve that, writes the adhes of the two most prominent round
+[15:37:27] to use the first human series would cover up over 50%. It's well, it's the coverage of the first one to use.
+[15:37:39] The author sent us two textures to check if there are building face, since these should block the grass rising or if the text is located in trademark or in a set of flags for these textures.
+[15:37:48] simply run into each other again to update the trial and error building case in strange over maps are trained in the area of color field.
+[15:38:00] To turn, draw holes, each frame will make one come to each layer of the sketch for each tree handle. In the processes, all types of the skill.
+[15:38:01] I'm not teaching it as bad projects so for time.
+[15:38:10] Sometimes all of the same size, the area covered by one takes with its rest of the larger part of the training.
+[15:38:18] Each computer is made checks for the tough-to-cross which is a collection of rasteries covering the area of my computer.
+[15:38:30] The stipents in a two graph of three names as well as the feds. Since, for example, no grass generated, they are built.
+[15:38:32] We are about to switch.
+[15:38:35] and in their travel to one instance.
+[15:38:45] thought about portraying a melody. The number of instances corresponds to the number of crossings. Since the density of the crossings and number of vertices
+[15:38:56] only depending on the trainability each computer prepared is the distance and vertex count to the draw value for the yellow.
+[15:39:01] some of the information on your tire wave because you may have been 26, not only the first day but obviously make that a lot of fun.
+[15:39:13] We also write a data profile in which we just have to pass. Which contains the title ID and the position in the title, basically, is this the best world position?
+[15:39:16] as well as the boundaries and coverage of the industry.
+[15:39:27] Shader checks the brain master in the places you go on with you when the text orders the paper to the brain master
+[15:39:40] and the bottom of the bottom of the screen, and what these things for grass-wane, the data is worth actually for each step of grass, for the things that are with style, such as the limitile,
+[15:39:42] the process is frustrating.
+[15:39:47] But everyone almost always doesn't have any word to do. Terence, mesh to C2, is a triangle split depending on the tree in our hope.
+[15:39:59] access the data above in the field, where the position of the top, and then add the offset for the instance. It's termed by fixed pattern in which you can place the graph.
+[15:40:10] This gives us a critical decision. And this will position its consistent across all of this. We only had more project critical decisions for more of the aspects for higher issues.
+[15:40:20] You use a good position to control some random values. Position check the option, rotation, which of the two ground are showing its attributes and some grass properties.
+[15:40:33] is the integral to the super-continuous grass. It is called the blade, basically, the word is the position to the other number. And if you do spawn a grass blade,
+[15:40:36] speed out of plate depending on the coverage.
+[15:40:39] in the transition method edges.
+[15:40:51] where the Schinger also sends a comment on which face grass things the dust is orientation and it adds the wind movement just for the scrolling texture of the story of the dust in our story.
+[15:40:54] For performance users, we don't touch the grass face, so we can see that there's no new thing.
+[15:41:00] much, but it does add some slime, so I'm gonna not take it to this next corner.
+[15:41:14] Let's look at some numbers for each answer. In the highest college setting, you will run on 1, 4.5 billion last date for the price of 80 billion purchases.
+[15:41:22] And for a combined cross-duration, hash-beduring takes about two milliseconds on a RT state. It's empty.
+[15:41:33] Keep in mind that this kind of reverse case and the time goes down building some clips, since they block the grass generation. So when the time for bottom rendering goes up, time for ending grass at three goes.
+[15:41:46] Don't worry, in the grass and for a shadow man, we only use an ambient room to have darken the grass with close up blue ground and since that, exclusively we will
+[15:41:52] screen is shared. So since we're already talking about channels, let's start our light. And this brings us to the next page.
+[15:42:03] It's general observation, it's quite hard for an order to get a complete approximation of every type.
+[15:42:12] And that's exactly how we can now leverage our breaks of a great facing for this. And even if there's no one for the conversion of the eye, it's just quite fast.
+[15:42:18] Here, the typical bank situation is appropriate. Is this your own?
+[15:42:24] just with all high quality to be released. Yeah. As a comparison, this is all of the quality to be released.
+[15:42:40] And to embed the version of the non-vloggist GIS in your much different states.
+[15:42:47] And the reason is that without the range of the eye-opening, the blue light from the sky, that comes from the light and the very scattering model, can actually reach the surfaces that are being filled with the light.
+[15:42:54] A very surprising condition does not just end up always raised directly from the gene of the pet store.
+[15:43:06] Then a third command line is the green system, which is all the data directly accessible by the interior ID.
+[15:43:09] If you first learn a lot of options, I'm really seeing it.
+[15:43:15] Here's a point of view of our interesting features as a three different way of this quality sets.
+[15:43:29] A low meaning quality, which is the fewest, the IA with one ratio of all F objects. Use the Nvidia Ray-Temminors and Quadros illusion, and then perform a parallel film upstand. It's up.
+[15:43:38] For both, no one in the input, use the 9-rate facing, which was up to the transfer to prison fast using rate facing pipelines for us.
+[15:43:40] your leg geometry is on the other side.
+[15:43:45] And from the long part of the setting we don't in example can include texture so we are going to clear it up.
+[15:43:59] The lowest setting is also used in base classification file, although it loads good and that is for the search x. And meaning for the setting is also used in base classification file.
+[15:44:11] For high settings, we add specular functions and the switch to rate-facing type that can be increased in any other places.
+[15:44:20] the spectral reflections, but also the previous slide. So the previous resolution of the previous slide one may look like two clicks of one,
+[15:44:27] That is number of ways based to roughness type G buff node and with the noise in the folder.
+[15:44:33] The highest thing is really meant for high energy to be only in a new business or alt for high profits.
+[15:44:40] I hope you can understand the reflections for the high set as well. We'll also focus on each other.
+[15:44:48] But in the moment in rank-based, I know one of our first questions was how do we manage the basis purpose?
+[15:44:57] It's not really easy to be lost as far off as humanity, but at the same time using single colleagues that you just have to consider a camera to not be in Christ.
+[15:45:02] We are feeling one, this is a good all objects, continue to get so loud enough.
+[15:45:15] Our course of this is 9.5, which might funny or to be pretty young, or young, or young, or young, or young, or young, or young.
+[15:45:24] Instead, in the term, an activation state would each update, depending on how often to see come up by the way or like. Do those together between the two array facing using the cloud?
+[15:45:31] Initially, instead of the mesh, we use a static oven but we use a kilo of scissor products.
+[15:45:38] The term that's reactivated will be the last of the first time in what's done.
+[15:45:43] Use a tool that will approach to line up on most of the net objects, larger volume notes for a minute.
+[15:45:49] This reduces the T-Li-Size and the number of intersections related.
+[15:45:53] The algorithm is completely legal.
+[15:46:05] Start by adding more instances, be-laces, and pin-potsets to the T-laces instance buffer in the...
+[15:46:10] and check how the process will increase its atomic content. In the account of the essential of the hitbox, you continue to worry.
+[15:46:19] The end of the frame, the random computer, the update, the columns, the interval, objects, and boxes based on everything.
+[15:46:29] This is as feedback loop to the continuous, activate more columns, this is a mid-rop to actually to do that.
+[15:46:31] It can make you think I have a bus problem.
+[15:46:41] When the head counter or even hit thoughts exceeds an activation special gets activated, the instances it focuses at the truth.
+[15:46:58] The opposite direction when the sun, the individual reaction of the sun is the opposite speed of the deactivation threshold, the atmosphere of the moon from the T-Las, the region of the opposite everything.
+[15:47:11] and instance to sound represented by a sit box, a cleaning it, a exceeding a distance to the wretched threshold, hence a demand to buffer, whereas red effect
+[15:47:18] Once the glass is ready, it is added to the T glass, it plays the bounding box and the activated again for the power supply and the command to the surface of the glass.
+[15:47:30] If you look at this example, you can see the current capital. Now, please the sake of the current capital.
+[15:47:36] See that there are more businesses trying to act as I will decide of the customs that we need to write for us.
+[15:47:40] Here's the same thing with other founding boxes which he loves editing.
+[15:47:48] Good bye, Mela, so as I may speak with you, you are now a multi-printed person and you are a class.
+[15:47:59] For the train we need to manually test late at the train and to run a computer shader, since the train rendering is a simulation shader, so it does not stop at test late at the time.
+[15:48:08] Touch the function is a good way in measure system, even to access them in each field. And we've always had been to the key, that's without it, which is the same option.
+[15:48:18] The animated instances make use governments for making more digital animations.
+[15:48:24] the dealership and from each hit. Because of this, we can't animate this. It's pretty aggressive. There are number low.
+[15:48:36] all of this would work pretty well, but I already mentioned that what he has to read is a call conference optimization to read a Dutch and he is one.
+[15:48:47] during paths with different related approaches into a signal mesh. Resurisation paths can happen with these links in which always the forms of energy work.
+[15:48:56] great chasing this means that each mesh can potentially have parts that perform progress in this class each instance would need to us.
+[15:49:10] If you want to keep having a single message, you can put out someone to give you to share the glasses and pass it to non-affirmers.
+[15:49:18] The risk, the added post-processing is the product of the optimizer. In the iterations, overall finds the mesh and petitioner to the sub-process.
+[15:49:27] different subgroups, the non-training adapted parts of the mesh, or each look, it will build and follow the product is part. The subgroup information is starting on the page.
+[15:49:36] Create one dealer's first something. In the dealer's is that I do not inform the world gets huge share for all instances to come.
+[15:49:47] Not propilitsin, the excess of an acidity inside, and the acidation, so the non-sustore, not propilitsin, and the interfaiting.
+[15:49:54] Let's look at the optimising FHOROS. Here we select error in 2 which is maximum lower than you can wait for this set.
+[15:50:07] You can see the P-lasses from the machine that we have three shared P-lasses, three buildings, and one from instance, P-lasses from the parallel distance from the point.
+[15:50:17] This works to save the way you follow the initial order. It is a trade-off instance whose multiple dealers is for one building, but in practice it's not a mission with definitely better than ever before you.
+[15:50:30] For the shared nuances, we skip the step to replace them with the instances that folks need to be lost. And the shared view does it's already available.
+[15:50:33] The ship he does is on the air, we directly head into the key dust.
+[15:50:45] Look at this example, it's here. You can see the country. You ask us to mark the share, you ask us a line. And for instance, you need to ask us a line.
+[15:50:47] To give you some numbers for this.
+[15:51:00] Now, L can, is I'm a see in, on the highest quality setting, late of okay, we have about 2,200 glasses, about 400 of those,
+[15:51:11] I share one of the glasses, about one thousand other. This is the blue glasses. It's a bit complicated. It's a bit complicated. And when there are some special cases, it's a close to Malaysia.
+[15:51:18] And we have about 30,000 instances in which we have a minimum of those items.
+[15:51:30] You know, any selfishness from the lower neuro-intracing second, is in an emergency, and if you don't hand the other to the geometry of your own hand in that age, don't.
+[15:51:40] There are also tons of tons of toxic, unique, and many other buildings between other buildings. Art. Now, artists and markets, this is the only, also, don't use simple materials for them.
+[15:51:45] From this, the external output system will come to optimization.
+[15:51:56] is there a state that you have multiple samples for the mesh and then each sample corresponds to one piece?
+[15:51:58] We have multiple geometry, one for each material. And we don't.
+[15:52:12] just Zacray, Elas, and he's from Tisdain, and he's from Tisdain. We also have created alpha tests on the daily arts.
+[15:52:13] into the encircle of subfruits in the context.
+[15:52:20] So this way we can repeat these clues, the answer to the parts of the lower menu settings since we put some people in the clue that the geometry is at all from us.
+[15:52:30] For each new artist, I hope you also have a pretty average healthy. It is also starting. I'm happy to do it.
+[15:52:45] At one time, when we play the dealers, we upload the information. We do not use the infrastructure buffer, so the shaders can access the information,
+[15:52:52] the ability to develop a specific key editor for a known accuracy, something where our focus was not to have any material which is what we are going to hear of.
+[15:52:54] you don't need this coverage.
+[15:53:05] We don't even touch the triangle to cross the triangle. We only exist, it's fact that we're from the original. And also, we don't use any shadow rays.
+[15:53:16] the rest of the base and the distance from the point. Since we only met an auto-assiness, this works so crazy. We said it did us about 70% of the global impact.
+[15:53:26] Here we have the example scene, we are from the beginning of the right-re� section, with our log for the right-re� scene setting, and here is the log for the gv.
+[15:53:39] It's been like an instrument to greatest the original. Here, as the message is on high-quality, great-trace, giant who is any instrument to stand out for this term.
+[15:53:46] And here are some of the problems some of the variables. All of us, it's like a native vocabulary and a language speech session.
+[15:53:56] In the know setting, pressing the choose GI takes a photo of two in a second, in the know setting, it's about to open.
+[15:54:01] Medium setting increases the time for President Trump to fall down.
+[15:54:14] In the highest setting, the highest high-tech is one of the two milliseconds, and the notion of one-six milliseconds,
+[15:54:17] I'm going to say, I'm going to say, I'm going to say.
+[15:54:24] So, as I said, the price in this week is an ultra high quality mode, in this respect, in any case, it's really, really heavy on it.
+[15:54:34] It's also worth knowing that the place or the history, either from the noisy, or the history, I guess it's a good thing to learn how to share the process so we have to end it.
+[15:54:37] May I support all of you with this message?
+[15:54:41] when we run an important photo key and then upstairs.
+[15:54:57] The best station file is closed setting, but those rules you have to see. The first thing that you choose to use the i unit is the R1906 as the R1906, but you know
+[15:55:03] I'm not saying another PlayStation 5 Pro is medium setting, we are facing the huge high-tech scope of N in the seconds as you are participating.
+[15:55:06] But there's a lot more I would love to talk about
+[15:55:11] So, let's do it.
+[15:55:21] We talked about a conflict in relation to my family, and in particular, which helped us with this object count and the effect extensions for three in the definition in the end. Great, please.
+[15:55:31] So, to the more major changes, to the new animations, I just introduce the text for streaming with the custom text here.
+[15:55:42] So some of our new running features like the train is basically developing and using grass at the shape of the look of our day.
+[15:55:53] with the light path cutting, cutting, and then for E-dust cutting and how we've been in the July approximation and now we're selling it.
+[15:55:56] Now, as you might expect, what everything once moved into the development.
+[15:55:58] and I also want to count what some of others.
+[15:56:12] It's out a lot about our common optimization pipeline in how it's guaranteed to us, but this was actually going to really make it a process.
+[15:56:16] getting reliable performance elements for providing long time, but also source some of these things.
+[15:56:19] So, inside.
+[15:56:29] additional post-processing serves for ray tracing and reading and even asking. I think we should build concepts for the self-information that we pay for the nature.
+[15:56:42] That's what's partially viewed, but I think it's quite a completely different place, but I think it's quite a bit of a bit of a bit of a bit of a bit of a bit of a bit of a bit of a feeling.
+[15:56:49] and the pre-level of the world, we have to start that run in which it has an ability to get a proper balanced, balanced, balanced situation, which is already on.
+[15:57:04] We are now in the middle of our GFU text. And someone who is in the same state, who is in the middle of the missing organization.
+[15:57:07] we can accept on the sum of our pair, then unfortunately of course we tested on this hardware peri-laying process.
+[15:57:12] And I'm only whether you are new rights, when it is low, but also the way it is.
+[15:57:21] the smaller, the optimization, the only one you guys want to relate, the blood of the sea, and if you have another half.
+[15:57:34] In here, it are models of features basically saved us, but we're also implemented in the
+[15:57:37] and multiple backwits to its integral in the same way, between the chair and class.
+[15:57:49] So I guess the language is full of one hand, don't rely on waves, so I have a little bit of authorization. And the other learning is of course,
+[15:57:52] on as much different hardware as possible, is a very much faster.
+[15:58:04] The third one I want to talk about is implementing the debug visualization, it's early on in process. We have a lot of good use.
+[15:58:15] And some of them work in the event that's pretty late and it's a friend that was early on.
+[15:58:18] because it will save you time out of your government.
+[15:58:29] Now all of this mind is simply obvious to you and it is also us as well in my inside but I think it's still a good thing to remind us of this thing is from time to time.
+[15:58:39] I think they can get it thus pretty good production and time is limited.
+[15:58:48] And as you can addition to audio, third-failing, ETA, we also ship the rubbish into this college area in MSA.
+[15:58:59] Is this interesting what's taking with some point with the product that the T8 is not because it's the same sharp and
+[15:59:04] But it forces us to make both it, for it and the full of power for engineering just for the time.
+[15:59:15] and also we have a lot of issues with noise not MSA because many systems now rely on the
+[15:59:26] And ray tracing with NSAA is really a big, because it is a marginal sandwich for pixel but also really negative at MPSB.
+[15:59:28] in higher positions by up to eight, which is correct.
+[15:59:36] And also just testing all of the settings and omitations with the additional updates.
+[15:59:47] So the question is, was it worth the effort? Well, we know that about 1.1% of the space
+[15:59:57] and people can say, a good way to play. It's all the answers, no, and we can't go down. No, no, no. I'm sorry.
+[16:00:07] All right, I want to thank a few people who used to see people that have put the invitation, the entire, and a weathering team, whose product identity of course
+[16:00:19] stated in the MVQ to provide the material for the public optimization to read the detection on our brand team.
+[16:00:28] and the organized basic T everything around this cliff class. And I'm jazz-picked, you can send in this order so I'll advise everything that you can see some of you can put this as a problem.
+[16:00:38] And now I don't think you can really touch me and I'm happy to ask you what she's so so far.
+[16:00:47] Thank you. Thank you. Thank you. Thank you.
+[16:00:51] and will fight in understood, okay, asking questions. Thank you.
+[16:01:03] I would like to know a community deeper into the finance material, how you do the blending and
+[16:01:13] the blending and you mentioned that you can have several material layers. But you seem like you think that this is your most unique and fun.
+[16:01:25] I am a human. I have been Jewish and I don't. I am Jewish and I am a Christian. I have been trying to learn and to practice, but I am not a Christian.
+[16:01:32] and it's fully used in best places.
+[16:01:43] And then we have a special chair and a presentation for that. So you can come and pass and sort of a full room over the unit number.
+[16:01:46] Thank you.
+[16:01:58] So, for notting your system of having the burning blast on text.
+[16:02:12] I'm an addict, I'm just, I'm just, I'm just, I'm just, I'm just a loser.
+[16:02:48] Thank you.
+[16:03:42] Thank you.
+[16:04:24] I'm going to put the water in the water.
+[16:04:29] That could have happened. Oh yeah. That's just insane. No no. Put 40, 40, 30.
+[16:04:38] So now, I don't think, she's creeping this next.
+[16:04:42] Yeah, yeah, yeah, okay
+[16:04:55] Let's see.
+[16:05:00] Thank you.
+[16:05:11] No, I can't.
+[16:05:43] Well, what do you think? Oh yeah, it's good.
+[16:05:51] I think when you go down you will.
+[16:05:58] I'm going to try and open. I'm going to try and open. I'm going to try and open.
+[16:06:14] I think it's a big deal.
+[16:06:22] I'm going to go to the hospital. I'm going to go to the hospital. I'm going to go to the hospital. The consultation will be delivered. I'm going to go to the hospital.
+[16:06:28] You're at it, you're at it, you're at it.
+[16:06:36] more and more just work for you.
+[16:06:41] and then we can stream the game.
+[16:06:50] Where are you?
+[16:06:52] Thank you.
+[16:07:05] Yeah, yeah, it's super fun, yeah, it's super fun, yeah, it's super fun.
+[16:07:07] You'd be very well? Yeah, I was like a couple of hours before.
+[16:07:15] Actually, Armin, well, pretty much had to say this was a failure.
+[16:07:22] They had them had them, but they had times. They always felt like they were getting in the presentation. Well, they are the seven times.
+[16:07:26] That way, all the training today will come off.
+[16:07:30] Now we're going to the end of the video.
+[16:07:37] It was impressive to see the works of the brothers.
+[16:07:52] That's at least what we do. That's what I saw online.
+[16:08:00] The VR is no, they get better.
+[16:08:08] I'm going to take you to the hospital.
+[16:08:10] Watch now.
+[16:08:18] I'm going to tell you what I'm talking about. I'm going to tell you what I'm talking about.
+[16:08:22] I'll fall asleep in the morning.
+[16:08:48] We can't even imagine what's going on here.
+[16:08:59] I don't know what.
+[16:09:08] I'm not going to talk about you. I'm not going to talk about you.
+[16:09:27] So, you're probably wondering if you could do this.
+[16:09:33] I'm always thinking you are good.
+[16:09:44] Stop. Yes, go. So I have what's on. I'll go out a little bit. And then, I'll just go this way.
+[16:10:04] Yes, what? This is something that we're going to answer in person. May the glory of the United States. Unfortunately, it's quite difficult.
+[16:10:13] You have to know her. You have to know her. That's the- That's the- That's the- That's the- You're right. That's the-
+[16:10:19] I'm not going to do that. I'm not going to do that.
+[16:10:24] I'm sorry. I'm sorry. I'm sorry.
+[16:10:42] Sorry. Sorry. Oh, I think we can't. Come on.
+[16:10:54] and maybe they're a person you take. Back to health care. You're a serious life isn't fair. I'm gonna prove it to you. I'm gonna prove it to you. I'm gonna prove it to you. How you can.
+[16:11:00] Good job, good job, good job, good job.
+[16:11:21] I think so.
+[16:11:23] I'm going to talk to you.
+[16:18:36] Thank you.
+[16:18:51] I'm a little bit tired. I'm tired. I'm a little tired. I'm a little tired.
+[16:18:56] Thank you.
+[16:19:08] I don't know what you're up to.
+[16:19:10] Thank you.
+[16:19:30] Thank you.
+[16:20:25] Okay.
+[16:20:32] Thank you.
+[16:20:34] You're right.
+[16:20:55] That's not what you're talking about, do you?
+[16:20:57] Thank you.
+[16:21:31] Thank you.

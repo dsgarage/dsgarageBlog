@@ -1,0 +1,124 @@
+digraph batch {
+    rankdir=TB
+    bgcolor="transparent"
+    fontname="Helvetica Neue"
+    fontsize=11
+    pad=0.3
+    nodesep=0.4
+    ranksep=0.4
+
+    node [
+        fontname="Helvetica Neue"
+        fontsize=10
+        style="filled,rounded"
+        shape=box
+        penwidth=0
+        margin="0.12,0.06"
+        height=0.35
+    ]
+
+    edge [
+        fontname="Helvetica Neue"
+        fontsize=9
+        penwidth=1.2
+        arrowsize=0.6
+        color="#94a3b8"
+    ]
+
+    // 入力
+    input [label="Figma URL + /batch 指示" fillcolor="#dbeafe" fontcolor="#1e40af"]
+
+    // 調査・計画フェーズ（横並び）
+    subgraph cluster_plan {
+        label="  Phase 1-2: Figma MCP で調査・計画  "
+        labelloc=t
+        labeljust=c
+        style="rounded,filled"
+        color="#e5e7eb"
+        fillcolor="#f8fafc"
+        fontcolor="#1e40af"
+        fontsize=10
+        penwidth=1
+
+        metadata [label="get_metadata\n全画面取得" fillcolor="#dbeafe" fontcolor="#1e40af"]
+        tokens [label="get_variable_defs\nトークン取得" fillcolor="#dbeafe" fontcolor="#1e40af"]
+        decompose [label="ユニット分解" fillcolor="#dbeafe" fontcolor="#1e40af"]
+        approve [label="ユーザー承認" fillcolor="#fef3c7" fontcolor="#92400e"]
+
+        { rank=same; metadata; tokens; decompose; approve }
+        metadata -> tokens -> decompose -> approve
+    }
+
+    // 並列実行フェーズ
+    subgraph cluster_workers {
+        label="  Phase 3: 並列実行（各 git worktree で隔離）  "
+        labelloc=t
+        labeljust=c
+        style="rounded,filled"
+        color="#e5e7eb"
+        fillcolor="#f0fdf4"
+        fontcolor="#166534"
+        fontsize=10
+        penwidth=1
+
+        subgraph cluster_w1 {
+            label="Worker 1: Home"
+            labelloc=t
+            style="rounded,filled"
+            color="#bbf7d0"
+            fillcolor="#ffffff"
+            fontcolor="#166534"
+            fontsize=9
+            penwidth=1
+
+            w1_impl [label="UXML/USS生成" fillcolor="#dbeafe" fontcolor="#1e40af"]
+            w1_simp [label="/simplify" fillcolor="#fef3c7" fontcolor="#92400e"]
+            w1_pr [label="PR #1" fillcolor="#bbf7d0" fontcolor="#166534"]
+            w1_impl -> w1_simp -> w1_pr
+        }
+
+        subgraph cluster_w2 {
+            label="Worker 2: Battle"
+            labelloc=t
+            style="rounded,filled"
+            color="#bbf7d0"
+            fillcolor="#ffffff"
+            fontcolor="#166534"
+            fontsize=9
+            penwidth=1
+
+            w2_impl [label="UXML/USS生成" fillcolor="#dbeafe" fontcolor="#1e40af"]
+            w2_simp [label="/simplify" fillcolor="#fef3c7" fontcolor="#92400e"]
+            w2_pr [label="PR #2" fillcolor="#bbf7d0" fontcolor="#166534"]
+            w2_impl -> w2_simp -> w2_pr
+        }
+
+        subgraph cluster_w3 {
+            label="Worker N: Shop"
+            labelloc=t
+            style="rounded,filled"
+            color="#bbf7d0"
+            fillcolor="#ffffff"
+            fontcolor="#166534"
+            fontsize=9
+            penwidth=1
+
+            w3_impl [label="UXML/USS生成" fillcolor="#dbeafe" fontcolor="#1e40af"]
+            w3_simp [label="/simplify" fillcolor="#fef3c7" fontcolor="#92400e"]
+            w3_pr [label="PR #N" fillcolor="#bbf7d0" fontcolor="#166534"]
+            w3_impl -> w3_simp -> w3_pr
+        }
+    }
+
+    // 集約
+    result [label="結果: N個のPR URL一覧" fillcolor="#bbf7d0" fontcolor="#166534"]
+
+    // エッジ
+    input -> metadata
+    approve -> w1_impl
+    approve -> w2_impl
+    approve -> w3_impl
+    w1_pr -> result
+    w2_pr -> result
+    w3_pr -> result
+}

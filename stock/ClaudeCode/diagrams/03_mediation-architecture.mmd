@@ -1,0 +1,43 @@
+graph TB
+    subgraph "AdMob メディエーション構成 2026"
+        AM["AdMob メディエーション"]
+
+        subgraph "ビッディング"
+            B1["Google AdMob"]
+            B2["Unity Ads"]
+            B3["Meta Audience Network"]
+            B4["AppLovin / ironSource"]
+        end
+
+        subgraph "リージョン別グループ"
+            T1["Tier1: US/JP/UK\n高 eCPM Floor"]
+            T2["Tier2: EU/KR/TW\n中 eCPM Floor"]
+            T3["Tier3: その他\n低 eCPM Floor"]
+        end
+
+        subgraph "広告フォーマット"
+            F1["リワード動画\neCPM: 最高"]
+            F2["リワード\nインタースティシャル\neCPM: 高"]
+            F3["インタースティシャル\neCPM: 中-高"]
+            F4["アプリオープン広告\neCPM: 中"]
+            F5["バナー\neCPM: 低"]
+        end
+    end
+
+    AM --> B1 & B2 & B3 & B4
+    AM --> T1 & T2 & T3
+    T1 & T2 & T3 --> F1 & F2 & F3 & F4 & F5
+
+    style AM fill:#4285F4,stroke:#333,color:#fff
+    style B1 fill:#34A853,stroke:#333,color:#fff
+    style B2 fill:#FBBC04,stroke:#333,color:#000
+    style B3 fill:#1877F2,stroke:#333,color:#fff
+    style B4 fill:#FF6B6B,stroke:#333,color:#fff
+    style T1 fill:#2ECC71,stroke:#333,color:#fff
+    style T2 fill:#F39C12,stroke:#333,color:#fff
+    style T3 fill:#95A5A6,stroke:#333,color:#fff
+    style F1 fill:#E74C3C,stroke:#333,color:#fff
+    style F2 fill:#E67E22,stroke:#333,color:#fff
+    style F3 fill:#F1C40F,stroke:#333,color:#000
+    style F4 fill:#3498DB,stroke:#333,color:#fff
+    style F5 fill:#BDC3C7,stroke:#333,color:#000

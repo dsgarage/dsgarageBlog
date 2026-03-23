@@ -1,0 +1,1574 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>GDC 2026: Silent Hill f —
+銃を捨てたホラーゲームが辿り着いた「緊張感」の設計哲学</title>
+    <link rel="stylesheet" href="/Users/daisuketsukada/Documents/dsgarageBlog/TechBlog/style.css">
+</head>
+<body>
+<div class="cover">
+    <h1>GDC 2026: Silent Hill f —
+銃を捨てたホラーゲームが辿り着いた「緊張感」の設計哲学</h1>
+    <p class="subtitle">The Challenges of Creating a Melee-Only Horror
+Game</p>
+    <div class="meta">
+        <p>2026-03-11</p>
+        <p>dsgarage</p>
+    </div>
+</div>
+<div class="toc">
+    <h2>目次</h2>
+<ul>
+<li><a
+href="#gdc-2026-silent-hill-f-銃を捨てたホラーゲームが辿り着いた緊張感の設計哲学"
+id="toc-gdc-2026-silent-hill-f-銃を捨てたホラーゲームが辿り着いた緊張感の設計哲学">GDC
+2026: Silent Hill f —
+銃を捨てたホラーゲームが辿り着いた「緊張感」の設計哲学</a>
+<ul>
+<li><a href="#セッション概要"
+id="toc-セッション概要">セッション概要</a></li>
+<li><a href="#スピーカーの経歴と-neobards-entertainment"
+id="toc-スピーカーの経歴と-neobards-entertainment">1. スピーカーの経歴と
+NeoBards Entertainment</a>
+<ul>
+<li><a href="#al-yang-氏-サウンドエンジニアからゲームディレクターへ"
+id="toc-al-yang-氏-サウンドエンジニアからゲームディレクターへ">Al Yang
+氏 – サウンドエンジニアからゲームディレクターへ</a></li>
+<li><a href="#neobards-entertainment-台湾から世界へ"
+id="toc-neobards-entertainment-台湾から世界へ">NeoBards Entertainment –
+台湾から世界へ</a></li>
+</ul></li>
+<li><a href="#セッションの全体像-3つの柱"
+id="toc-セッションの全体像-3つの柱">2. セッションの全体像 –
+3つの柱</a></li>
+<li><a href="#ピラー設計-マクドナルドで寿司を出すな"
+id="toc-ピラー設計-マクドナルドで寿司を出すな">3. ピラー設計 –
+「マクドナルドで寿司を出すな」</a>
+<ul>
+<li><a href="#開発初期の状態-コンセプトアート5枚からのスタート"
+id="toc-開発初期の状態-コンセプトアート5枚からのスタート">開発初期の状態
+– コンセプトアート5枚からのスタート</a></li>
+<li><a href="#silent-hill-フランチャイズの3つの時代"
+id="toc-silent-hill-フランチャイズの3つの時代">Silent Hill
+フランチャイズの3つの時代</a></li>
+<li><a href="#差別化の課題-カルトステータスのジレンマ"
+id="toc-差別化の課題-カルトステータスのジレンマ">差別化の課題 –
+カルトステータスのジレンマ</a></li>
+<li><a href="#アトモスフィアとインダイレクトホマージュ"
+id="toc-アトモスフィアとインダイレクトホマージュ">アトモスフィアとインダイレクト・ホマージュ</a></li>
+</ul></li>
+<li><a href="#ジャンルサイクル論-なぜ今メレーなのか"
+id="toc-ジャンルサイクル論-なぜ今メレーなのか">4. ジャンルサイクル論 –
+「なぜ今メレーなのか」</a></li>
+<li><a href="#第2ピラー-脚本と世界観の整合性"
+id="toc-第2ピラー-脚本と世界観の整合性">5. 第2ピラー –
+脚本と世界観の整合性</a>
+<ul>
+<li><a href="#竜騎士07と物語の構造"
+id="toc-竜騎士07と物語の構造">竜騎士07と物語の構造</a></li>
+<li><a href="#人の主人公-ダブル構造の設計課題"
+id="toc-人の主人公-ダブル構造の設計課題">2人の主人公 –
+ダブル構造の設計課題</a></li>
+<li><a href="#年代日本の再現-世界観の整合性"
+id="toc-年代日本の再現-世界観の整合性">1960年代日本の再現 –
+世界観の整合性</a></li>
+</ul></li>
+<li><a href="#外部開発の鉄則-出荷しないゲームより出荷するゲーム"
+id="toc-外部開発の鉄則-出荷しないゲームより出荷するゲーム">6.
+外部開発の鉄則 – 「出荷しないゲームより出荷するゲーム」</a>
+<ul>
+<li><a href="#スケジュールは変更不可"
+id="toc-スケジュールは変更不可">スケジュールは変更不可</a></li>
+<li><a href="#デンジャーポイントの計画"
+id="toc-デンジャーポイントの計画">「デンジャーポイント」の計画</a></li>
+</ul></li>
+<li><a href="#銃を捨てた本当の理由-スコープ管理の連鎖反応"
+id="toc-銃を捨てた本当の理由-スコープ管理の連鎖反応">7.
+銃を捨てた本当の理由 – スコープ管理の連鎖反応</a>
+<ul>
+<li><a href="#コスト効率の分析フレームワーク"
+id="toc-コスト効率の分析フレームワーク">コスト効率の分析フレームワーク</a></li>
+</ul></li>
+<li><a href="#テンションマップ-紙の上でホラーを設計する"
+id="toc-テンションマップ-紙の上でホラーを設計する">8. テンションマップ –
+紙の上でホラーを設計する</a>
+<ul>
+<li><a href="#ゲーム全体の緊張感を事前に計画する"
+id="toc-ゲーム全体の緊張感を事前に計画する">ゲーム全体の緊張感を事前に計画する</a></li>
+<li><a href="#デザイナーのフレーバーをペーシングに活かす"
+id="toc-デザイナーのフレーバーをペーシングに活かす">デザイナーの「フレーバー」をペーシングに活かす</a></li>
+<li><a href="#アイスクリームのタイブレーカー"
+id="toc-アイスクリームのタイブレーカー">アイスクリームのタイブレーカー</a></li>
+</ul></li>
+<li><a href="#テンション設計-ホラーの核心は怖さではなく緊張感"
+id="toc-テンション設計-ホラーの核心は怖さではなく緊張感">9.
+テンション設計 – ホラーの核心は「怖さ」ではなく「緊張感」</a>
+<ul>
+<li><a href="#scary-vs-tense" id="toc-scary-vs-tense">Scary vs
+Tense</a></li>
+<li><a href="#現代ホラー戦闘の構造的困難"
+id="toc-現代ホラー戦闘の構造的困難">現代ホラー戦闘の構造的困難</a></li>
+</ul></li>
+<li><a href="#テンションの反転-flip-the-script"
+id="toc-テンションの反転-flip-the-script">10. テンションの反転 – 「Flip
+the Script」</a>
+<ul>
+<li><a href="#距離の意味を逆転させる"
+id="toc-距離の意味を逆転させる">距離の意味を逆転させる</a></li>
+<li><a href="#敵のアニメーションとaiクロスドロー"
+id="toc-敵のアニメーションとaiクロスドロー">敵のアニメーションとAIクロスドロー</a></li>
+<li><a href="#ボスデザインの文化的リサーチ"
+id="toc-ボスデザインの文化的リサーチ">ボスデザインの文化的リサーチ</a></li>
+<li><a href="#ボスステージでの環境テンション"
+id="toc-ボスステージでの環境テンション">ボスステージでの環境テンション</a></li>
+</ul></li>
+<li><a href="#テンションとフラストレーションの境界線"
+id="toc-テンションとフラストレーションの境界線">11.
+テンションとフラストレーションの境界線</a>
+<ul>
+<li><a href="#区別できない問題"
+id="toc-区別できない問題">区別できない問題</a></li>
+<li><a href="#キャラクターの恐怖とプレイヤーの恐怖のギャップ"
+id="toc-キャラクターの恐怖とプレイヤーの恐怖のギャップ">キャラクターの恐怖とプレイヤーの恐怖のギャップ</a></li>
+<li><a href="#初回-vs-2回目以降のプレイ体験"
+id="toc-初回-vs-2回目以降のプレイ体験">初回 vs
+2回目以降のプレイ体験</a></li>
+</ul></li>
+<li><a href="#ラーニングカーブの定量化問題-rpg-vs-メレー"
+id="toc-ラーニングカーブの定量化問題-rpg-vs-メレー">12.
+ラーニングカーブの定量化問題 – RPG vs メレー</a></li>
+<li><a href="#情報の隠蔽-テンション生成の核心"
+id="toc-情報の隠蔽-テンション生成の核心">13. 情報の隠蔽 –
+テンション生成の核心</a>
+<ul>
+<li><a href="#silent-hill-1-の教訓" id="toc-silent-hill-1-の教訓">Silent
+Hill 1 の教訓</a></li>
+<li><a href="#d空間の曖昧さを活用する"
+id="toc-d空間の曖昧さを活用する">3D空間の曖昧さを活用する</a></li>
+</ul></li>
+<li><a href="#弱さの感覚feeling-of-weaknessとリアクション設計"
+id="toc-弱さの感覚feeling-of-weaknessとリアクション設計">14.
+弱さの感覚（Feeling of Weakness）とリアクション設計</a>
+<ul>
+<li><a href="#リアクションは攻撃より重要"
+id="toc-リアクションは攻撃より重要">リアクションは攻撃より重要</a></li>
+<li><a href="#見ることと感じることのギャップ"
+id="toc-見ることと感じることのギャップ">「見ること」と「感じること」のギャップ</a></li>
+</ul></li>
+<li><a href="#リソース設計-full-と-empty-の関係"
+id="toc-リソース設計-full-と-empty-の関係">15. リソース設計 – 「FULL と
+EMPTY の関係」</a>
+<ul>
+<li><a href="#リソーススカーシティの基本"
+id="toc-リソーススカーシティの基本">リソーススカーシティの基本</a></li>
+<li><a href="#敵を倒してもリソースは増えない"
+id="toc-敵を倒してもリソースは増えない">敵を倒してもリソースは増えない</a></li>
+<li><a href="#意図的な薬の過剰配置-ゲームプレイとナラティブの融合"
+id="toc-意図的な薬の過剰配置-ゲームプレイとナラティブの融合">意図的な薬の過剰配置
+– ゲームプレイとナラティブの融合</a></li>
+<li><a
+href="#ライトアタック-vs-ヘビーアタック-リソース交換レートの可視化"
+id="toc-ライトアタック-vs-ヘビーアタック-リソース交換レートの可視化">ライトアタック
+vs ヘビーアタック – リソース交換レートの可視化</a></li>
+</ul></li>
+<li><a href="#アクティブ-vs-パッシブリソース管理"
+id="toc-アクティブ-vs-パッシブリソース管理">16. アクティブ vs
+パッシブ・リソース管理</a></li>
+<li><a href="#テンポ設計-武器のリズムレベルのリズム"
+id="toc-テンポ設計-武器のリズムレベルのリズム">17. テンポ設計 –
+武器のリズム、レベルのリズム</a>
+<ul>
+<li><a href="#武器ごとの異なるリズム"
+id="toc-武器ごとの異なるリズム">武器ごとの異なるリズム</a></li>
+<li><a href="#レベルデザインへのテンポ適用-ダークシュラインの例"
+id="toc-レベルデザインへのテンポ適用-ダークシュラインの例">レベルデザインへのテンポ適用
+– ダークシュラインの例</a></li>
+</ul></li>
+<li><a href="#スタミナ-テンポ制御の核心"
+id="toc-スタミナ-テンポ制御の核心">18. スタミナ – テンポ制御の核心</a>
+<ul>
+<li><a href="#攻防共有リソースとしてのスタミナ"
+id="toc-攻防共有リソースとしてのスタミナ">攻防共有リソースとしてのスタミナ</a></li>
+<li><a href="#フォーカス-メレー版のクロスヘア"
+id="toc-フォーカス-メレー版のクロスヘア">フォーカス –
+メレー版のクロスヘア</a></li>
+</ul></li>
+<li><a href="#テンションの解放-待つこと-瞬間"
+id="toc-テンションの解放-待つこと-瞬間">19. テンションの解放 –
+「待つこと &gt; 瞬間」</a>
+<ul>
+<li><a href="#テンションの本質"
+id="toc-テンションの本質">テンションの本質</a></li>
+<li><a href="#マスターキー-システムブレーカー"
+id="toc-マスターキー-システムブレーカー">マスターキー –
+システムブレーカー</a></li>
+<li><a href="#戦闘はダンスである"
+id="toc-戦闘はダンスである">戦闘はダンスである</a></li>
+<li><a href="#ビーストアーム-物語と一体化したシステムブレーカー"
+id="toc-ビーストアーム-物語と一体化したシステムブレーカー">ビーストアーム
+– 物語と一体化したシステムブレーカー</a></li>
+</ul></li>
+<li><a href="#まとめ-テンションの5つのドライバー"
+id="toc-まとめ-テンションの5つのドライバー">20. まとめ –
+テンションの5つのドライバー</a>
+<ul>
+<li><a href="#ピラー設計-フランチャイズdnaの継承と差別化"
+id="toc-ピラー設計-フランチャイズdnaの継承と差別化">1. ピラー設計 –
+フランチャイズDNAの継承と差別化</a></li>
+<li><a href="#テンション設計-恐怖の核心は緊張感のビルドアップと解放"
+id="toc-テンション設計-恐怖の核心は緊張感のビルドアップと解放">2.
+テンション設計 – 恐怖の核心は「緊張感のビルドアップと解放」</a></li>
+<li><a href="#フラストレーション管理-テンションとの境界線を見守る"
+id="toc-フラストレーション管理-テンションとの境界線を見守る">3.
+フラストレーション管理 – テンションとの境界線を見守る</a></li>
+<li><a href="#リソース設計-full-と-empty-の関係性"
+id="toc-リソース設計-full-と-empty-の関係性">4. リソース設計 – FULL と
+EMPTY の関係性</a></li>
+<li><a href="#テンポ設計-リズムでペーシングを制御する"
+id="toc-テンポ設計-リズムでペーシングを制御する">5. テンポ設計 –
+リズムでペーシングを制御する</a></li>
+</ul></li>
+<li><a href="#silent-hill-フランチャイズと日本ipの海外開発"
+id="toc-silent-hill-フランチャイズと日本ipの海外開発">Silent Hill
+フランチャイズと日本IPの海外開発</a></li>
+<li><a href="#筆者の所感" id="toc-筆者の所感">筆者の所感</a></li>
+<li><a href="#参考リンク" id="toc-参考リンク">参考リンク</a></li>
+</ul></li>
+</ul>
+</div>
+<div class="content" data-date="2026-03-11">
+<h1
+id="gdc-2026-silent-hill-f-銃を捨てたホラーゲームが辿り着いた緊張感の設計哲学">GDC
+2026: Silent Hill f —
+銃を捨てたホラーゲームが辿り着いた「緊張感」の設計哲学</h1>
+<p>ホラーゲームから銃を取り上げたら、何が残るのか。Silent Hill
+シリーズ10年以上ぶりのメインライン新作「Silent Hill
+f」は、シリーズの伝統だった射撃武器を完全に排除し、メレー（Melee：近接戦闘）のみで恐怖体験を構築するという大胆な決断を下した。GDC
+2026 で登壇したゲームディレクター Al Yang 氏（NeoBards
+Entertainment）は、その決断がクリエイティブな野心だけでなく、スコープ管理（Scope
+Management：開発する機能の範囲を現実的なリソースに収める管理手法）というプロダクションの現実から生まれたことを率直に語った。</p>
+<p>約1時間のセッションで明かされたのは、「テンション（緊張感）」を軸にゲーム全体を設計するフレームワークだった。ピラー設計、フランチャイズDNAの継承、テンションの反転、リソース設計、テンポ設計
+–
+ホラーゲームに限らず、あらゆるジャンルのゲームデザイナーにとって示唆に富む内容を、47枚のスライドとトランスクリプトをもとに詳細にレポートする。</p>
+<blockquote>
+<p><strong>GDC（Game Developers Conference）について</strong>:
+毎年3月にサンフランシスコで開催される世界最大のゲーム開発者向けカンファレンス。技術・デザイン・ビジネスなど複数のトラック（分野別セッション群）に分かれ、現役の開発者が自身のプロジェクトの知見を共有する。講演者は自社タイトルの開発プロセスを「ポストモーテム（開発の振り返り）」として率直に語る文化があり、失敗談も含めた実践的な知見が得られる点が特徴だ。</p>
+</blockquote>
+<hr />
+<h2 id="セッション概要">セッション概要</h2>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th style="text-align: left;">項目</th>
+<th style="text-align: left;">内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">タイトル</td>
+<td style="text-align: left;">‘Silent Hill f’: The Challenges of
+Creating a Melee-Only Horror Game</td>
+</tr>
+<tr>
+<td style="text-align: left;">スピーカー</td>
+<td style="text-align: left;">Al Yang（Game Director / Studio Creative
+Director）</td>
+</tr>
+<tr>
+<td style="text-align: left;">所属</td>
+<td style="text-align: left;">NeoBards Entertainment（台湾・台北）</td>
+</tr>
+<tr>
+<td style="text-align: left;">トラック</td>
+<td style="text-align: left;">Design</td>
+</tr>
+<tr>
+<td style="text-align: left;">形式</td>
+<td style="text-align: left;">Lecture（60分）</td>
+</tr>
+<tr>
+<td style="text-align: left;">日時</td>
+<td style="text-align: left;">2026年3月11日（水）15:10 - 16:10</td>
+</tr>
+<tr>
+<td style="text-align: left;">場所</td>
+<td style="text-align: left;">Room 2005, West Hall</td>
+</tr>
+</tbody>
+</table>
+<p><img src="slides/gdc2026_silenthill_f_01.jpg"
+alt="タイトルスライド" /> <em>セッションのタイトルスライド。主人公
+Hinako のコンセプトアートが印象的だ</em></p>
+<hr />
+<h2 id="スピーカーの経歴と-neobards-entertainment">1. スピーカーの経歴と
+NeoBards Entertainment</h2>
+<h3 id="al-yang-氏-サウンドエンジニアからゲームディレクターへ">Al Yang
+氏 – サウンドエンジニアからゲームディレクターへ</h3>
+<p>Al Yang 氏は自己紹介を軽いユーモアで始めた。</p>
+<blockquote>
+<p>“My name’s Al. I am the game director for Silent Hill f, and the
+studio creative director at Neobards. A little bit about myself. I start
+off in audio, actually, as a sound engineer, and then decided that I
+wasn’t really for it, so I started over in QA, back in the States.”</p>
+<p>“Went to China with THQ for a few years, working on online properties
+over there. Then came back to the US…”</p>
+<p>（私の名前は Al。Silent Hill f のゲームディレクターであり、Neobards
+のスタジオ・クリエイティブディレクターです。もともとサウンドエンジニアとしてキャリアを始めたのですが、向いていないと気づいてアメリカで
+QA からやり直しました。中国で THQ
+のオンラインタイトルを数年担当した後、アメリカに戻り…）</p>
+</blockquote>
+<p>その後のキャリアは多岐にわたる。中国で THQ
+のオンラインタイトルを数年開発、アメリカに戻って PlayStation All-Stars
+Battle Royale に参加（本人は “probably the most famous, iconic arena
+brawler game of all time”
+と冗談めかして紹介し、会場から拍手と笑いが起きた。“It’s definitely the
+top one out there, for sure” と畳みかけている）、ドイツでの
+F2P（Free-to-Play：基本無料）PvP 開発を経て、台湾で Final Fantasy XV
+Pocket Edition のデザインディレクター、続いて Resident Evil Resistance
+のゲームディレクター、そして Silent Hill f
+のゲームディレクターに就任した。</p>
+<p><img src="slides/gdc2026_silenthill_f_02.jpg" alt="スピーカー紹介" />
+<em>Al Yang 氏の経歴スライド</em></p>
+<h3 id="neobards-entertainment-台湾から世界へ">NeoBards Entertainment –
+台湾から世界へ</h3>
+<blockquote>
+<p>“We are a codev and external developer based out in Taipei, Taiwan,
+one of the other branch studio in Suzhou.”</p>
+<p>（我々は台北に拠点を置くコデベロッパー（共同開発スタジオ）で、蘇州にもブランチスタジオがあります。）</p>
+</blockquote>
+<p>NeoBards Entertainment
+は台湾・台北に本拠を置くコデベロッパー（Co-developer：外部の開発パートナースタジオ）だ。Dead
+Rising Deluxe Remaster などの実績があり、KONAMI
+をはじめとする多数のパートナーと協業している。日本の大手パブリッシャーが持つIPの開発を台湾や韓国のスタジオが担うケースは近年増加しており、NeoBards
+はその中でも CAPCOM・KONAMI
+といった大手との協業実績を持つ有力スタジオである。</p>
+<p>Yang 氏は個人の功績ではなくチームへの敬意を繰り返し強調した。</p>
+<blockquote>
+<p>“I think I’ll be remiss to say that I’m very honored to be here today
+to talk to all of you guys, but it takes a team to build a game.”</p>
+<p>（ここで言わなければ失礼になりますが、今日皆さんにお話しできることを大変光栄に思います。でもゲームを作るにはチームが必要です。）</p>
+</blockquote>
+<p>NeoBards
+では全タイトルについてチームメンバーがメッセージを残せるウェブサイトを用意しているという。“For
+every game that we build, we actually put up a website so everybody can
+kind of leave a little bit of a message from the team to
+everybody”（全てのゲームについてウェブサイトを立ち上げ、チームから皆さんへのメッセージを残せるようにしている）。また、KONAMI
+やモーションキャプチャ、サウンドデザイン、ローカライズなど多数の外部パートナーとの協業体制も紹介され、外部開発スタジオとしてのプロフェッショナリズムが窺えた。</p>
+<p><img src="slides/gdc2026_silenthill_f_03.jpg"
+alt="NeoBards チーム" /> <em>NeoBards
+のチームメンバー紹介スライド</em></p>
+<hr />
+<h2 id="セッションの全体像-3つの柱">2. セッションの全体像 – 3つの柱</h2>
+<p>Yang 氏はセッションの全体構成を冒頭で提示した。</p>
+<blockquote>
+<p>“Quick overview of what we’re gonna talk about today is kind of how
+we decide on the key vision for Silent Hill f, kind of from zero. And
+then for us, kind of what the core essence of horror games is, tension,
+and then how we can use melee combat to kind of bring that out.”</p>
+<p>（今日お話しする内容の概要です。まず Silent Hill f
+のキービジョンをゼロからどう決めたか。次にホラーゲームの核心 –
+テンション（緊張感）。そしてメレー戦闘でそれをどう引き出すか。）</p>
+</blockquote>
+<p>続けてゲームの特徴を簡潔に紹介した。</p>
+<blockquote>
+<p>“We are the first kind of mainline entry for over a decade in the
+Silent Hill franchise. And what makes us very different is that we are
+not based in kind of the town of Silent Hill or kind of its
+surroundings, but we’re based in completely different areas. So 1960s,
+Showa era, Japan, the countryside. And the other big difference is we
+are a purely melee focused game, no guns at all.”</p>
+<p>（我々は Silent Hill
+フランチャイズにおいて10年以上ぶりのメインラインタイトルです。大きな違いは、舞台がサイレントヒルの町やその周辺ではなく、全く別の場所
+–
+1960年代、昭和時代の日本の田舎であること。もうひとつの大きな違いは、完全にメレー特化のゲームで、銃が一切ないことです。）</p>
+</blockquote>
+<p>「なぜ銃をなくしたのか？」という最大の疑問に対して、Yang
+氏はまず冗談で返した。</p>
+<blockquote>
+<p>“So I think a lot of you will be wondering what the key point of this
+talk is, is why we went towards melee combat. And the answer is, it was
+awesome. That’s what we did. That’s my talk. Thank you very much.”</p>
+<p>（この講演のキーポイントが何か、なぜメレーにしたのかと皆さん気になっていると思います。答えは、最高だったから。以上、ありがとうございました。）</p>
+</blockquote>
+<p>会場が笑いに包まれた後、「Q&amp;A
+はありますか？」と畳みかけてから、本題に入っていった。</p>
+<hr />
+<h2 id="ピラー設計-マクドナルドで寿司を出すな">3. ピラー設計 –
+「マクドナルドで寿司を出すな」</h2>
+<h3 id="開発初期の状態-コンセプトアート5枚からのスタート">開発初期の状態
+– コンセプトアート5枚からのスタート</h3>
+<blockquote>
+<p>“In the very, very beginning, when Okamoto-san, our producer from the
+Konami side, came to us, we basically just had a very rough script and a
+few pieces of concept art. I mean like five pieces of concept art.”</p>
+<p>（開発の本当に最初、KONAMI
+側のプロデューサーである岡本さんが我々のところに来たとき、持っていたのはラフなスクリプトとコンセプトアート数枚
+– 5枚くらいのコンセプトアートだけでした。）</p>
+</blockquote>
+<p>Yang
+氏はメレー戦闘の話をする前に、まず意思決定プロセスを遡ることの重要性を述べた。“I
+know even though the talk today is about melee combat, I think it’s
+important to kind of go backwards and see how we even got to this
+decision in the first
+place.”（今日の講演はメレー戦闘がテーマですが、まず遡ってこの決断に至った経緯を見ることが重要だと思います。）</p>
+<p>ここからゲームの方向性を「ピラー」（Pillar：設計の柱。開発チーム全員が判断基準にする、プロジェクトの根幹となる方針）として定める必要があった。Yang
+氏は早い段階で、ホラーゲーム全般が遠距離戦闘でテンションを生み出している伝統に注目していたことにも触れた。“Not
+just us, but a lot of other franchises out
+there”（我々だけでなく、他の多くのフランチャイズもそうだ）と指摘し、そこに差別化の余地を見出していた。</p>
+<h3 id="silent-hill-フランチャイズの3つの時代">Silent Hill
+フランチャイズの3つの時代</h3>
+<blockquote>
+<p>“The Silent Hill franchise has kind of been loosely defined with kind
+of three eras for me. Team Silent Hill was kind of the OG team working
+on these titles. Then after post-Team Silent Hill, we’re kind of went
+out to the West, and then kind of where we are now, where Silent Hill is
+trying to make a resurgence.”</p>
+<p>（Silent Hill
+フランチャイズは私にとって大きく3つの時代に分けられます。Team Silent
+がオリジナルチームとして制作していた時代。Team Silent
+以降、開発が西洋に移った時代。そして今、Silent Hill
+が復活しようとしている現在。）</p>
+</blockquote>
+<ol type="1">
+<li><strong>クラシック期</strong> – KONAMI 社内の Team
+Silent（初代〜4作目を手がけた伝説的開発チーム。山岡晃氏の音楽、伊藤暢達氏のクリーチャーデザインなど、日本人クリエイターが生んだ独自の恐怖表現で世界的評価を得た）による初期作品群</li>
+<li><strong>西洋開発期</strong> – Team Silent 解散後、Climax Studios や
+Vatra Games など西洋スタジオへの委託時代</li>
+<li><strong>復活期</strong> – 2022年の KONAMI Transmission
+で一挙発表された、複数タイトルが同時進行する現在</li>
+</ol>
+<p>Silent Hill f が開発を開始した時点で、Silent Hill: The Short
+Message、Ascension、2 Remake、Townfall
+など複数のタイトルが進行中だった。</p>
+<h3 id="差別化の課題-カルトステータスのジレンマ">差別化の課題 –
+カルトステータスのジレンマ</h3>
+<blockquote>
+<p>“We had to feel like Silent Hill, but how do we stand out from the
+rest of these games? … Something very dangerous for us here is that
+Silent Hill is to the point where it’s kind of a cult status game, where
+there’s a lot of things that people are like, okay, this feels like
+Silent Hill, this doesn’t feel like Silent Hill.”</p>
+<p>（Silent Hill
+らしさは守らなければならない。でも他のタイトルとどう差別化するか？…
+危険なのは、Silent Hill
+が一種のカルト的地位にあるゲームだということです。「これは Silent Hill
+っぽい」「これは Silent Hill
+っぽくない」という期待がすでに固まっている。）</p>
+</blockquote>
+<p>ここで Yang 氏は、記憶に残るアナロジーを持ち出した。</p>
+<blockquote>
+<p>“Let’s say you go to McDonald’s and you order something, you get
+this, give you sushi. Now, it’s not worse, it’s not the worst food. I
+think some people might say it might be a higher quality food, but if
+you go to McDonald’s, you’re there for a particular reason, you’re there
+because you want a greasy burger. That’s what you expect. Even if I give
+you something better, it’s too different from what you’re coming to
+expect, you’re not gonna have a good time.”</p>
+<p>（マクドナルドに行って注文したら寿司が出てきた。寿司は悪い食べ物じゃない、むしろ上質かもしれない。でもマクドナルドに来た理由は脂っこいハンバーガーが食べたいからだ。たとえより良いものでも、期待からかけ離れていたら楽しめない。）</p>
+</blockquote>
+<blockquote>
+<p>“So maybe sushi wouldn’t work, but maybe something like a fish
+burger, chicken burger, something that would be creative, but still fit
+within kind of the confines of what players would be expecting. Again,
+you can’t be creative if it’s so different that it’s completely
+unrecognizable to the franchise.”</p>
+<p>（寿司は無理でも、フィッシュバーガーやチキンバーガーなら。プレイヤーの期待の枠組みの中で創造的なもの。フランチャイズとして認識できないほど違うものでは、創造的とは言えません。）</p>
+</blockquote>
+<p><strong>ポイント</strong>:
+プレイヤーのフランチャイズへの期待（DNA）を守りながら、その中で創造的に差別化する。「全く別物」にならないこと。Yang
+氏はこれを “maybe we have to be brave, but very practical in how we
+apply our creativity
+here”（創造性の適用において、大胆でありつつも非常に実践的でなければならない）と表現した。</p>
+<p><img src="slides/gdc2026_silenthill_f_10.jpg"
+alt="Vision Driver 1" /> <em>Vision Driver 1: “Unique but SILENT HILL” –
+共通の軸はアトモスフィア（雰囲気・空気感）</em></p>
+<h3
+id="アトモスフィアとインダイレクトホマージュ">アトモスフィアとインダイレクト・ホマージュ</h3>
+<blockquote>
+<p>“The common link in all of these titles is atmosphere. So for Silent
+Hill, doesn’t matter what title you’re looking at, it’s kept as really
+unique, you really dream like atmosphere. Things aren’t always what they
+seem, but it’s kind of a little bit obfuscated information side.”</p>
+<p>（全タイトルに共通するのはアトモスフィア（雰囲気）です。どのタイトルを見ても、夢のような独特の雰囲気がある。物事は見かけ通りではない。情報が少し曖昧にされている面がある。）</p>
+</blockquote>
+<p>長期間の休眠から復活するにあたり、チームはファン向けの「インダイレクト・ホマージュ（間接的なオマージュ）」を随所に仕込んだ。</p>
+<blockquote>
+<p>“We have a level in Silent Hill f where 90% of the doors are locked.
+People would be like, that is terrible game design. Why would you make a
+level where every single door you interact with, it’s locked, it’s
+locked. But we did that to kind of replicate that old feel, but we
+didn’t do it everywhere.”</p>
+<p>（Silent Hill f
+にはドアの90%が施錠されたレベルがあります。「ひどいゲームデザインだ。なぜ全部のドアが鍵がかかってるんだ」と言われるかもしれない。でもこれは旧作の感覚を再現するためにやったことで、全レベルでやっているわけではありません。）</p>
+</blockquote>
+<blockquote>
+<p>“In the very beginning of the game, we have this long lonely walk
+down a hill into town, very reminiscent of Silent Hill 2.”</p>
+<p>（ゲームの冒頭には、丘を下って町に向かう長い孤独な道のりがあります。Silent
+Hill 2 を彷彿とさせるものです。）</p>
+</blockquote>
+<p>Yang
+氏のお気に入りのオマージュは、ピアノの家にあるこけし人形だという。“My
+personal favorite is this kokeshi doll from our piano’s house. Again,
+like a direct homage to previous
+games.”（個人的なお気に入りはピアノの家のこけし人形。旧作への直接的なオマージュです。）</p>
+<p>ファンには「ああ、これだ！」と分かる仕掛け。新規プレイヤーには普通に楽しめるが気づかない。“Nothing
+like right in your
+face”（顔面に押しつけるようなものではない）というオマージュの哲学が、フランチャイズDNAの継承と差別化を両立させている。</p>
+<hr />
+<h2 id="ジャンルサイクル論-なぜ今メレーなのか">4. ジャンルサイクル論 –
+「なぜ今メレーなのか」</h2>
+<p>Yang
+氏はメレー採用の背景として、ゲームジャンルの周期的なブームについて興味深い持論を展開した。</p>
+<blockquote>
+<p>“Things that are popular usually loop around every few generations or
+so, or like every 10 years, 15 years or so. So an example here is just
+the beat-em-up… we’re kind of at, I would say, in the middle of the
+beat-em-up kind of renaissance at the moment. However, there was like a
+big drought for like 10 years or so.”</p>
+<p>（人気のあるものは数世代ごと、10年から15年くらいの周期でループします。例えばベルトスクロールアクション。今まさにルネサンスの真っ只中ですが、その前に10年くらいの枯渇期がありました。）</p>
+</blockquote>
+<blockquote>
+<p>“It’s not that these kind of mechanics or this kind of gameplay or
+these type of things aren’t bad. It’s just that they get popular.
+They’re really popular after a while, then you see like a rapid amount
+of them in a short amount of time. Maybe people get kind of tired of
+them because there’s too many and it kind of dies down and comes
+back.”</p>
+<p>（メカニクスやゲームプレイ自体が悪いわけではない。ただ人気が出て、短期間に大量に出て、多すぎて疲れて、落ち着いて、また戻ってくる。）</p>
+</blockquote>
+<p>スーパーヒーロー映画のブームと衰退を引き合いに出し（“I think we are
+at the tail end of kind of superhero movie boom at the
+moment”（スーパーヒーロー映画ブームの末端にいると思う））、<strong>「過去が未来を形成する（the
+past forms the future）」</strong>
+という原則を示した。リサーチの重要性を強調した上で、歴史の教訓として冗談を添えた。</p>
+<blockquote>
+<p>“That’s why you don’t attack Russia in winter.”</p>
+<p>（だから冬にロシアを攻めてはいけないのです。）</p>
+</blockquote>
+<p>会場はこのジョークにも反応し、Yang
+氏は笑いを確認してから次のセクションへ進んだ。メレー戦闘は「過去の遺物」ではなく、まさにサイクルの中で復活するタイミングにあるという確信が、チームの方向性を後押しした。</p>
+<hr />
+<h2 id="第2ピラー-脚本と世界観の整合性">5. 第2ピラー –
+脚本と世界観の整合性</h2>
+<h3 id="竜騎士07と物語の構造">竜騎士07と物語の構造</h3>
+<blockquote>
+<p>“How many people know about Ryukishi07, like the author? … He’s a
+very prolific author, very kind of strong body of work. I really
+recommend you check it out. You’ll find that his work is very Silent
+Hill-like, or as this word actually, Silent Hill f is very
+Ryukishi07-like, because the thing is, because we had a known author, we
+really had to imitate his style, but it still had to feel like Silent
+Hill.”</p>
+<p>（竜騎士07という作家を知っている人はどのくらいいますか？…
+非常に多作で強力な作品群を持つ作家です。ぜひチェックしてみてください。彼の作品は非常に
+Silent Hill 的、というか正確には Silent Hill f
+が非常に竜騎士07的なのです。著名な作家がいる以上、彼のスタイルを再現しなければならない。でも同時に
+Silent Hill らしさも保たなければならない。）</p>
+</blockquote>
+<p>脚本をゲームに落とし込む際の課題にも言及した。</p>
+<blockquote>
+<p>“You can’t just write a script and make it a game. Even for a movie,
+you have to have a brighter screenplay from the original story. Usually
+stories are kind of like one major beat to another major beat,
+especially since this stuff is kind of visual novel structured, and with
+games, again, it’s interactive. The pacing is dictated by a large part
+by the player.”</p>
+<p>（脚本を書いてそのままゲームにはできない。映画でさえ原作から脚色が必要です。物語は通常、主要なビートからビートへの線形構造で、特にビジュアルノベル的な構造の場合はそうです。でもゲームはインタラクティブで、ペーシングの大部分はプレイヤーが決める。）</p>
+</blockquote>
+<h3 id="人の主人公-ダブル構造の設計課題">2人の主人公 –
+ダブル構造の設計課題</h3>
+<blockquote>
+<p>“Our main character Hinako was essentially two characters for those
+of you guys who don’t know. So just all of these things you see over
+here, is basically you’re doubling the work on everything.”</p>
+<p>（主人公のヒナコは実質2人のキャラクターです。ここに見えているもの全てが、作業量として倍になるということです。）</p>
+</blockquote>
+<p>この2人構造は銃の排除にも直結した。</p>
+<blockquote>
+<p>“And ranged combat, one of the things that came up, because if you
+put it through for one character, do you have to do for the other
+character? And because the worlds, spoiler alert, kind of meld together
+at the end, you have to have maybe characters that use range that don’t
+interact with range. So this is something we thought about really,
+really early on.”</p>
+<p>（遠距離戦闘の問題も早い段階で浮上しました。片方のキャラクターに実装したら、もう片方にも必要になるのか？ネタバレですが、2つの世界は最終的に融合するので、遠距離武器を使うキャラクターと使わないキャラクターが交差する問題が出てくる。これは本当に早い段階で考えたことです。）</p>
+</blockquote>
+<h3 id="年代日本の再現-世界観の整合性">1960年代日本の再現 –
+世界観の整合性</h3>
+<blockquote>
+<p>“It has to feel believable to people of the culture. So people that
+lived through 1960s, kind of Showa era Japan, but it also has to feel
+interesting to people who haven’t been there, kind of a bit of tourism,
+if you will.”</p>
+<p>（その文化の人々にとって信じられるものでなければなりません。1960年代の昭和の日本を経験した人にとって正しく感じられ、同時にそこに行ったことのない人にとっても興味深いものでなければならない。一種のツーリズムのようなものです。）</p>
+</blockquote>
+<p>台湾のスタジオが1960年代の日本の田舎を舞台にしたゲームを作る。この文化的な挑戦に対して、チームは時代考証に多くの時間を投入した。ローカルに深く根ざしつつ、グローバルにアクセスしやすい世界を構築するというバランスは、日本IPの海外開発において常に課題となるテーマだ。</p>
+<hr />
+<h2 id="外部開発の鉄則-出荷しないゲームより出荷するゲーム">6.
+外部開発の鉄則 – 「出荷しないゲームより出荷するゲーム」</h2>
+<h3 id="スケジュールは変更不可">スケジュールは変更不可</h3>
+<blockquote>
+<p>“As external or co-developers, we have a very strong rule, which is
+you do as much as you can with what you have, because at the very
+beginning, we already have a schedule, we already have a budget, and
+these are usually hard set.”</p>
+<p>（外部開発者・コデベロッパーとして、我々には強い原則があります。持っているもので最大限のことをする。最初からスケジュールと予算があり、これらは通常ハードセット（変更不可）です。）</p>
+</blockquote>
+<blockquote>
+<p>“It’s about not doing the coolest stuff possible, it’s about doing
+the coolest stuff in the time and resources you have possible.”</p>
+<p>（最もクールなものを作ることではなく、与えられた時間とリソースで最もクールなものを作ることが目標です。）</p>
+</blockquote>
+<p>Yang 氏は宮本茂の名言を引き合いに出しつつ、現実的な反論を加えた。</p>
+<blockquote>
+<p>“For me, a shipping game is infinitely better than never shipping.
+Miyamoto says like, you know, delayed game is delayed, but a good game
+is always good, but you delay a game enough, your studio’s gonna go out
+of business, and now you have nothing, and you’re out on the
+streets.”</p>
+<p>（私にとって、出荷するゲームは出荷しないゲームより無限に良い。宮本さんは「遅れたゲームはいずれ良くなるが、悪いゲームはずっと悪い」と言いましたが、延期しすぎたらスタジオが潰れて何もなくなり、路頭に迷います。）</p>
+</blockquote>
+<h3 id="デンジャーポイントの計画">「デンジャーポイント」の計画</h3>
+<p>Silent Hill f は NeoBards
+にとって初めてのストーリー重視リニアホラーゲームだった。Yang
+氏自身にとってもこのジャンルは初めての経験だった。しかし全てがゼロからではないことも強調した。</p>
+<blockquote>
+<p>“This is the first time Neobards has built a story heavy linear
+horror game. First time we’ve ever done this before. It’s the first time
+I’ve ever worked on this type of game. That’s a danger point right
+there, that’s probably the biggest danger point.”</p>
+<p>（NeoBards
+がストーリー重視のリニアホラーゲームを作るのは初めてです。こんなタイプのゲームに取り組むのは私自身も初めて。これはデンジャーポイントです。おそらく最大のデンジャーポイントです。）</p>
+</blockquote>
+<p>“But we built characters before, we built AI before, so it’s like,
+okay, we’re not too concerned about this, but getting the pacing right,
+getting the story beats, doing all these cutscenes, these are danger
+points.”（でもキャラクター構築やAI開発の経験はある。そこは心配していない。でもペーシングの調整、ストーリービートの構築、カットシーン制作
+– これらがデンジャーポイントです。）</p>
+<p>デンジャーポイント（危険ポイント）に対する対策は明快だった。</p>
+<blockquote>
+<p>“When we plan for these things, we always budget like two, three
+times a month of time to get this stuff done. And if we go faster than
+we expect, that’s great, we’ve earned that time back, but we’ll never go
+over schedule because we plan for these danger points.”</p>
+<p>（こうしたリスクに対して、常に2〜3倍の時間を見積もります。予想より早く終わればラッキーで、時間を取り戻せる。でもスケジュールを超過することは絶対にない。デンジャーポイントを計画に織り込んでいるからです。）</p>
+</blockquote>
+<hr />
+<h2 id="銃を捨てた本当の理由-スコープ管理の連鎖反応">7.
+銃を捨てた本当の理由 – スコープ管理の連鎖反応</h2>
+<p>ピラー設計と外部開発の制約を踏まえた上で、Yang
+氏はいよいよメレーオンリーの決断に至った核心的な理由を語った。それは「かっこいいから」でも「差別化のため」でもなく、スコープ管理の現実だった。ヒナコ（Hinako）に遠距離武器を持たせるかどうかの検討が、まさにそのデンジャーポイントだった。</p>
+<blockquote>
+<p>“When we look at ranged, a lot of things kind of spiral out of
+control very fast. So it’s just a simple phrase like, okay, hey, let’s
+have her use ranged weapons, you’re like, okay, now we have to build an
+aiming system, now we have targeting, does that mean she can aim at
+specific body parts? So we have to do animations… So there’s weak points
+now, so now we need bullets, so there’s extra resources in there. It’s
+just one type of gun, is that kind of boring? Do we have extra type of
+range? Well, let’s do a bow instead, that works. Oh, hey, but bow, you
+have to draw bows for this extra animation there… we don’t even have
+physics on the arrow.”</p>
+<p>（遠距離武器を検討すると、あっという間にスコープが制御不能になるんです。「彼女に遠距離武器を持たせよう」と言うだけで、エイムシステムが必要になり、ターゲティングが必要になり、特定の身体部位を狙えるのかとなり、専用アニメーションが必要になり、弱点があるなら弾も必要で、銃1種類だとつまらないから弓にするかとなり、弓なら引くアニメーションが必要で、矢の物理演算もないし…）</p>
+</blockquote>
+<blockquote>
+<p>“Just that one word, it’s like, should we have range? It spirals out
+of control really, really fast.”</p>
+<p>（「遠距離武器を入れるべきか？」というたった一言が、本当にあっという間にスコープを爆発させます。）</p>
+</blockquote>
+<p>さらにテーマとの整合性の問題もあった。</p>
+<blockquote>
+<p>“Also thematically, we had some clashes with her whether with using
+like guns, and it just didn’t fit with the story we’re trying to tell
+here.”</p>
+<p>（テーマの面でも、彼女に銃を持たせることにはストーリーとの齟齬がありました。我々が語ろうとしている物語に単純に合わなかった。）</p>
+</blockquote>
+<p><strong>メレーオンリーはクリエイティブな判断と同時に、スコープ管理の現実的な判断でもあった。</strong></p>
+<h3
+id="コスト効率の分析フレームワーク">コスト効率の分析フレームワーク</h3>
+<blockquote>
+<p>“If I’m gonna spend 100 man hours building this thing, and it’s gonna
+add like five points to the game in terms of fun, or I’m gonna spend 100
+hours on this thing, it’s gonna add like two points, for the most part,
+or whatever, give us more cost efficiency here.”</p>
+<p>（100人時を投じて楽しさを5ポイント上げる機能と、同じ100人時で2ポイントしか上がらない機能があるなら、コスト効率の良い方を選ぶ。）</p>
+</blockquote>
+<p>この原則を Resident Evil Resistance の事例で補足した。Resistance
+は4対1の非対称 PvP
+ゲームで、1人がマスターマインドとしてカードデッキを使い、4人のプレイヤーはホーンテッドハウスからの脱出を目指す構造だった。</p>
+<blockquote>
+<p>“The turnaround for that project in terms of the pitch was a week for
+the pitch and a month for the prototype. So it was super fast. And one
+of the reasons we decided to go this direction is actually, we had a lot
+of people in the company that were really big Magic the Gathering,
+Pokemon fans. So of course, we’re like, okay, you are doing the strategy
+for this stuff, you have a lot of building knowledge, so going in this
+direction, we could go much, much faster and kind of build to their
+strengths, because we didn’t have to start over and kind of research how
+these things had to work.”</p>
+<p>（Resistance
+はピッチ1週間、プロトタイプ1ヶ月でした。非常に速かった。この方向に進んだ理由のひとつは、社内に
+Magic the Gathering や Pokemon
+のファンが多くいたからです。彼らは戦略系の知識が豊富で、この方向なら遥かに速く進められる。チームの強みに沿って進められるので、ゼロからリサーチする必要がなかった。）</p>
+</blockquote>
+<p>チームの既存スキルセットを活かせる方向を選ぶことで、リサーチから始める必要がなくなり、開発速度が格段に上がる。<strong>「チームの強みに沿ってデザインの方向性を決める」</strong>
+– これは NeoBards の外部開発哲学の核心だ。“You should try to build the
+strengths of your
+team”（チームの強みを活かすべき）と繰り返し強調した。</p>
+<hr />
+<h2 id="テンションマップ-紙の上でホラーを設計する">8. テンションマップ –
+紙の上でホラーを設計する</h2>
+<h3
+id="ゲーム全体の緊張感を事前に計画する">ゲーム全体の緊張感を事前に計画する</h3>
+<blockquote>
+<p>“We spend a lot of time on this, this is actually the first, I want
+to say, three hours of Silent Hill f, everything’s planned out from
+here. We do this on paper… when you plan for these things in advance,
+you can catch things, we know where we’re supposed to have players build
+tension, we know roughly how long we want players to spend in each
+area.”</p>
+<p>（これには多くの時間を費やしました。Silent Hill f
+の最初の3時間分は全てここから計画されています。紙の上でやる。事前に計画しておけば問題を早期に発見できる。プレイヤーにテンションを感じてほしい場所、各エリアでの滞在時間を事前に把握しています。）</p>
+</blockquote>
+<p>テンションマップは、ゲーム全体の緊張感の波を可視化する設計ドキュメントだ。テンションが高まる区間と、プレイヤーが息をつける区間を明示的にスケジュール化し、開発チーム全員で共有する。</p>
+<h3
+id="デザイナーのフレーバーをペーシングに活かす">デザイナーの「フレーバー」をペーシングに活かす</h3>
+<p>テンションマップの運用に関連して、Yang
+氏は独自のチーム管理手法を紹介した。</p>
+<blockquote>
+<p>“I never put the same level designer on more than about hour and a
+half, two hours of the game in a row, because everyone has their own
+unique flavor, own kind of taste, way to think about things. If you have
+a section that’s like five hours of the same person designing, it’s
+gonna feel like that for five hours, but you have different people going
+there on basically different, on the same goal, but different people
+approaching it, you’re gonna have it feel very, very different.”</p>
+<p>（1人のレベルデザイナーにゲームの1時間半〜2時間以上を連続して担当させません。全員に固有のフレーバー、味、思考のスタイルがある。5時間を同じ人がデザインしたら、5時間ずっとその人の味になる。同じゴールに向かって異なる人がアプローチすれば、全く違う感触になります。）</p>
+</blockquote>
+<h3
+id="アイスクリームのタイブレーカー">アイスクリームのタイブレーカー</h3>
+<p>チーム内の意見対立を解決する方法についても語った。</p>
+<blockquote>
+<p>“Let’s say the goal is give me the most classic ice cream flavor, and
+in my mind, I’m thinking chocolate, but then our team member comes up
+and it’s like, okay, I propose vanilla. Well at this point, am I wrong?
+Are they wrong? No, not all of us are wrong, but it’s down to a matter
+of personal preference.”</p>
+<p>（ゴールが「最もクラシックなアイスクリームの味」だとして、私はチョコレートだと思っているが、チームメンバーがバニラを提案する。この時点で、私が間違っている？彼らが間違っている？いいえ、誰も間違っていない。個人の好みの問題です。）</p>
+</blockquote>
+<blockquote>
+<p>“We always let a team member propose as they kind of use their idea.
+Again, because it’s always your idea is gonna feel just like one
+person’s game. You have a lot of ideas in there as long as they fit the
+goal, you’re gonna get that kind of much more varied, more layered
+experience.”</p>
+<p>（常にチームメンバーに自分のアイデアを提案させます。なぜなら自分のアイデアだけを通すと1人のゲームになってしまう。ゴールに合致する限り、多くのアイデアを盛り込むことで、より多様で重層的な体験が生まれます。）</p>
+</blockquote>
+<hr />
+<h2 id="テンション設計-ホラーの核心は怖さではなく緊張感">9.
+テンション設計 – ホラーの核心は「怖さ」ではなく「緊張感」</h2>
+<h3 id="scary-vs-tense">Scary vs Tense</h3>
+<p>セッションの中核であるテンション設計は、Yang
+氏の明快な定義から始まった。</p>
+<blockquote>
+<p>“When a lot of people play horror games, they’re like, I want to feel
+scared. Now I’m playing a horror game, pretty scared, but for us when we
+see this, what we really think they’re saying is you want to feel tense.
+There’s a very big difference between feeling scary and feeling
+tense.”</p>
+<p>（ホラーゲームをプレイする人は「怖くなりたい」と言います。でも我々がそう聞いたとき、本当に言いたいのは「緊張感を感じたい」だと思っています。怖いと感じることと緊張を感じることは全く違います。）</p>
+</blockquote>
+<blockquote>
+<p>“For us, horror games are about the buildup and the release of
+tension. That buildup is just as important as the release. For a lot of
+you guys who are kind of like horror buffs, you know that before the
+killer actually does the deed, that is the most tense part. Once you get
+stabbed, you’re like, okay, then the gore kind of happens, but the
+tension is gone.”</p>
+<p>（我々にとってホラーゲームとは、テンションのビルドアップ（蓄積）とリリース（解放）です。ビルドアップはリリースと同じくらい重要。ホラー好きの方なら分かると思いますが、キラーが実際に手を下す直前が最もテンションが高い。刺された瞬間にテンションは消えるんです。）</p>
+</blockquote>
+<h3 id="現代ホラー戦闘の構造的困難">現代ホラー戦闘の構造的困難</h3>
+<blockquote>
+<p>“Modern horror game combat is actually really hard to do because you
+have the awkward kind of unwieldiness in key areas. Older kind of games,
+you had like fixed camera angles, you had like tank controls, the
+unwieldiness was there already kind of, but now with kind of modern
+games, people are expecting kind of more smooth gameplay controls. There
+is quality of life that has become kind of standard. So you have to be
+very careful about how you make janky and how you make it janky.”</p>
+<p>（現代のホラーゲーム戦闘は本当に難しい。旧作には固定カメラ、タンクコントロールという不便さがあり、それ自体がテンションを生んでいました。でも現代のゲームではスムーズな操作性が当然として期待される。QOL（クオリティ・オブ・ライフ）が標準になった。だから「どう不便にするか」「どこを不便にするか」に非常に注意を払わなければならない。）</p>
+</blockquote>
+<p>旧来のホラーゲームでは操作の不便さがテンションを生む装置として機能していた。しかし現代のプレイヤーは操作の快適さを当然のものとして期待する。“Janky”
+をどこに、どう配置するか –
+この「快適さとホラーの緊張感の両立」が、現代ホラー戦闘の本質的課題だとYang氏は指摘した。</p>
+<p>さらに従来のホラーゲームは遠距離が主、メレーが副だったのに対し、Silent
+Hill f はそれを完全に逆転させたことの困難さにも触れた。“Traditional kind
+of horror games focused on ranged or melee as secondary. And for us, we
+split it around, which is melee as primary and actually no
+secondary.”（伝統的なホラーゲームは遠距離が主でメレーが副。我々はそれをひっくり返し、メレーが主で、副は存在しない。）</p>
+<hr />
+<h2 id="テンションの反転-flip-the-script">10. テンションの反転 – 「Flip
+the Script」</h2>
+<h3 id="距離の意味を逆転させる">距離の意味を逆転させる</h3>
+<p>従来のホラーゲームでは、敵との距離が近いほど危険で、離れるほど安全だった（銃で撃てるから）。Silent
+Hill f はこれを完全に逆転させた。</p>
+<blockquote>
+<p>“With a ranged horror game, the closer the enemy is to you, the more
+tense it’s gonna be because you’re safer when they’re further away, they
+can’t hit you, but you can hit them. So we had to flip that.”</p>
+<p>（遠距離武器のあるホラーでは、敵が近いほど緊張する。遠ければ安全で、自分は当てられるが敵は当てられない。これを反転させなければなりませんでした。）</p>
+</blockquote>
+<blockquote>
+<p>“What if the enemy had more range advantage on you? So it’s more
+tense when you’re further away from them, it’s kind of flipping that
+thing.”</p>
+<p>（もし敵の方がレンジアドバンテージを持っていたら？敵から離れているほど緊張する。それが反転です。）</p>
+</blockquote>
+<p>この「フリップ・ザ・スクリプト（台本をひっくり返す）」を理解しやすくするため、FPS
+の比喩が使われた。</p>
+<blockquote>
+<p>“You can kind of think about this is if you’re playing an FPS and you
+just have a shotgun and there’s snipers in the map, that’s a bad time.
+If you have to go and find them and you have to get close to them, it’s
+very tense. If you have a sniper rifle, then it’s mostly just like kind
+of a whack-a-mole kind of thing.”</p>
+<p>（FPS
+でショットガンしか持っていないのに、マップにスナイパーがいる状況を想像してください。最悪です。見つけて近づかなければならない。それは非常に緊張する。スナイパーライフルを持っていれば、もぐらたたきのようなものですが。）</p>
+</blockquote>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th style="text-align: left;">距離</th>
+<th style="text-align: left;">従来の遠距離ホラー</th>
+<th style="text-align: left;">Silent Hill f のメレー設計</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">敵が遠い</td>
+<td style="text-align: left;">安全（射撃で倒せる）</td>
+<td
+style="text-align: left;"><strong>テンション高</strong>（敵が突進してくる、対処困難）</td>
+</tr>
+<tr>
+<td style="text-align: left;">敵が近い</td>
+<td style="text-align: left;">危険（テンション高）</td>
+<td
+style="text-align: left;"><strong>安全</strong>（自分の攻撃が届く）</td>
+</tr>
+</tbody>
+</table>
+<h3
+id="敵のアニメーションとaiクロスドロー">敵のアニメーションとAIクロスドロー</h3>
+<p>この反転を成立させるために、敵の動きに多大な投資が行われた。</p>
+<blockquote>
+<p>“We spent a lot of time with our animations and the type of attacks
+for our monsters where they’re much more agile than the player and also
+we’re able to kind of cross much larger spaces much quicker. A lot of
+time on animations, wind-ups, tells, fake-outs, to really add tension to
+the player in these situations.”</p>
+<p>（モンスターのアニメーションと攻撃パターンに多くの時間を費やしました。モンスターはプレイヤーよりはるかに俊敏で、広い空間をずっと速く横切れる。ワインドアップ（攻撃の予備動作）、テル（攻撃の予兆）、フェイクアウト（フェイント）にも時間を費やし、これらの状況でプレイヤーにテンションを加えています。）</p>
+</blockquote>
+<p>特に印象的だったのが「AIクロスドロー」の設計だ。</p>
+<blockquote>
+<p>“When you’re raising that pipe, when the opponent’s raising his
+brother’s head, it’s really tough to tell if you’re actually gonna
+connect or not, distance-wise… The AI is like, oh, I’m gonna get hit.
+It’s kind of an attack pose at that point in time. And the whole purpose
+of that is like, am I gonna hit, or am I going to get hit? There’s that
+tension in that moment.”</p>
+<p>（パイプを振り上げているとき、敵も攻撃モーションに入る。距離的に当たるかどうか本当に分からない。AIが「やられる！」と反応して攻撃姿勢を取る。その瞬間の「当たるのか、当たられるのか？」というテンション、そこが全てです。）</p>
+</blockquote>
+<p>プレイヤーが攻撃モーションに入ると、AIが同時に攻撃モーションに移行する。「自分の攻撃が先に当たるか、それとも敵に先を取られるか」
+–
+このどちらになるか分からない一瞬が、メレー戦闘のテンションの核心だ。</p>
+<h3 id="ボスデザインの文化的リサーチ">ボスデザインの文化的リサーチ</h3>
+<p>第1ボスの「フルッゴ（Furggo）」については、巫女の所作を忠実に再現するための文化的リサーチに言及した。“This
+is the reference for Furggo, who’s our first boss. She’s a shrine
+maiden, kind of very elegant motions
+here.”（フルッゴは最初のボスで、巫女です。非常に優雅な動き。）
+実際の祭祀の動きを参考にし、優雅な動きから突然攻撃に転じる緩急が、一種のジャンプスケアとして機能するよう設計した。</p>
+<h3
+id="ボスステージでの環境テンション">ボスステージでの環境テンション</h3>
+<p>敵個体だけでなく、ステージ自体でもテンションを生み出す設計が紹介された。</p>
+<blockquote>
+<p>“This is Rinko, this is our second boss in the game… as she gets
+angrier and angrier, we purposely kind of like have the stage kind of
+transform. Like there’s lava going everywhere and it’s really hard to
+see what’s going on. Actually, she’s throwing lava too… There’s enemies
+everywhere. And again, our purpose of that is to add and create more
+tension because we knew that it’s hard to focus on more than really one
+thing in this type of kind of game. So for every extra thing you add on
+there, it kind of adds up.”</p>
+<p>（リンコはゲームの第2ボスです。彼女が怒りを増すにつれて、意図的にステージを変容させます。溶岩が至るところに広がり、何が起きているか把握しにくくなる。実際に溶岩を投げてきます。敵も至るところにいる。こうしたすべてがテンションを追加する。このタイプのゲームでは1つ以上のことに集中するのは難しい。追加される全ての要素がテンションを積み上げます。）</p>
+</blockquote>
+<p><img src="slides/gdc2026_silenthill_f_30.jpg" alt="ボス戦" />
+<em>ボス戦のスライド。ステージの変容がテンションを増幅する</em></p>
+<hr />
+<h2 id="テンションとフラストレーションの境界線">11.
+テンションとフラストレーションの境界線</h2>
+<h3 id="区別できない問題">区別できない問題</h3>
+<p>テンションを追求すれば必然的にフラストレーション（苛立ち）との境界線の問題にぶつかる。Yang
+氏はこの問題に正面から向き合った。</p>
+<blockquote>
+<p>“Frustration is really hard to quantify in terms of when it’s
+something that’s tense and when it’s something that’s frustrating. And
+it’s different for everybody, actually. What’s challenging for someone
+might be really easy for someone else.”</p>
+<p>（いつテンションでいつフラストレーションなのか、定量化するのは本当に難しい。実際、人によって違います。誰かにとっての挑戦は、別の人には簡単すぎるかもしれない。）</p>
+</blockquote>
+<blockquote>
+<p>“You cannot remove tension completely because again, that’s not just
+a horror game, but you need tension for accomplishment. You have to feel
+accomplished when you get past this challenge.”</p>
+<p>（テンションを完全に排除することはできません。これはホラーゲームに限らず、達成感にはテンションが必要です。この挑戦を乗り越えたときに達成感を感じなければならない。）</p>
+</blockquote>
+<h3
+id="キャラクターの恐怖とプレイヤーの恐怖のギャップ">キャラクターの恐怖とプレイヤーの恐怖のギャップ</h3>
+<blockquote>
+<p>“There’s a difference between what the character on the screen is
+feeling and what you guys, the player, is feeling. The character may be
+scared, but you’re like, it’s not scary at all.”</p>
+<p>（画面上のキャラクターが感じていることと、プレイヤーが感じていることには違いがあります。キャラクターは怖がっているかもしれないけど、あなたは「全然怖くない」と思っているかもしれない。）</p>
+</blockquote>
+<p>Yang 氏は甥の体験を例に挙げた。</p>
+<blockquote>
+<p>“I was watching my nephew play this game. He’s like, oh my God, a
+boss was here. I’m like, uh-huh, yeah, there was a boss there. Oh my
+goodness, weren’t you surprised? Yeah, I didn’t expect him to be there.
+I’m like, mm-hmm. But you know what, after like three or four more times
+of that, or even the next time, he’s gonna see that and be like, uh-huh,
+oh, I know what’s coming.”</p>
+<p>（甥がゲームをプレイしているのを見ていました。「うわ、ボスだ！」と驚いている。私は「うん、そうだね、ボスだね」と。でも3〜4回もやれば、次は「ああ、来るの分かってた」になる。）</p>
+</blockquote>
+<p><strong>「慣れはテンションを減らす」（“Familiarity reduces tension.
+The more you’re familiar with something, the less tense it
+becomes.”）</strong> – これはホラーゲームの根本的なジレンマだ。Yang
+氏はその解決策について “I don’t have an easy answer for you on that,
+besides a lot of
+testing”（たくさんテストする以外に簡単な答えはない）と率直に認めた。</p>
+<h3 id="初回-vs-2回目以降のプレイ体験">初回 vs
+2回目以降のプレイ体験</h3>
+<blockquote>
+<p>“For horror games, it’s very interesting because the first time you
+play a horror game, it’s like this very thematic kind of tense
+experience. And then the second time you play it, you’re like, oh, look
+at mine. Like, zero death, don’t get hit, speed run. And then a lot of
+games even have specific trophies for that, which is like, beat the
+entire game without healing, beat the entire game under two hours.”</p>
+<p>（ホラーゲームは面白いことに、初回はテーマ性のある緊張体験。2回目は「ノーデス、ノーダメ、スピードラン」になる。多くのゲームにはそのための専用トロフィーまである。「回復なしでクリア」「2時間以内にクリア」とか。）</p>
+</blockquote>
+<blockquote>
+<p>“First time, a horror game is very interesting. The first time it’s a
+thematic experience and everything else becomes more of an action game
+where you are trying to master these vulnerability controls. That’s
+where the accomplishment comes in on the subsequent runs.”</p>
+<p>（初回はテーマ体験。それ以降はアクションゲームになり、操作の習熟を目指す。達成感は2周目以降から生まれるんです。）</p>
+</blockquote>
+<hr />
+<h2 id="ラーニングカーブの定量化問題-rpg-vs-メレー">12.
+ラーニングカーブの定量化問題 – RPG vs メレー</h2>
+<p>メレー戦闘における成長の可視化は、RPGとは根本的に異なる課題を抱えている。</p>
+<blockquote>
+<p>“Let’s say I play an RPG for 10 hours. You’re like, how much better
+are you? You’re like, well, that’s easy. I’m 20 levels stronger and I
+have fire magic so I can deal with these water bastards.”</p>
+<p>（RPG
+を10時間プレイしたら、どれだけ上手くなった？簡単に答えられる。20レベル上がって炎の魔法を覚えたから水の敵に対処できる。）</p>
+</blockquote>
+<blockquote>
+<p>“How do you play a fighting game for 10 hours? Like, how much better
+are you? I don’t know if you play ranked, even if you come to like, how
+much stronger am I? How is my neutral better? My anti-air is better?
+That’s my zoning, but I don’t know. It’s very tough to quantify that
+unless you’re very, very introspective.”</p>
+<p>（格闘ゲームを10時間プレイしたら？どれだけ上手くなった？ランクマッチをやっても、自分のニュートラル（中間距離の立ち回り）はどう良くなった？対空は？ゾーニングは？分からない。非常に内省的でない限り定量化は難しい。）</p>
+</blockquote>
+<p>そしてこの定量化の困難さは、テンションの感じ方が常に変化することに直結する。“The
+first run is like this and the second run is like, well, now it’s just
+an action game. It’s not even a horror game
+anymore.”（初回はこうだが2回目は「もうアクションゲームだ。ホラーゲームですらない」になる。）</p>
+<p>この問題への対策として、チームは<strong>RPG
+ライクなサポートシステム</strong>を導入した。プレイヤーの機械的なスキル上達は数値化しにくいが、キャラクターの成長をシステムとして可視化することで「自分は強くなっている」という感覚を提供する。Yang
+氏はスポーツゲームのキャリアモードが今やほぼ RPG
+になっていることを例に挙げ、サポートシステムの有効性を補強した。</p>
+<blockquote>
+<p>“We have a lot of support systems that say easy to understand
+progression at this point to kind of soften the blow.”</p>
+<p>（分かりやすい成長のサポートシステムを用意して、衝撃を和らげています。）</p>
+</blockquote>
+<blockquote>
+<p>“It’s about the player getting better versus the character getting
+better. I think you need both of these for games like this.”</p>
+<p>（プレイヤー自身の上達と、キャラクターの成長。このタイプのゲームには両方が必要だと思います。）</p>
+</blockquote>
+<p>段階的解放の仕組みも導入された。</p>
+<blockquote>
+<p>“You can’t get everything at once. You kind of get some stuff and we
+kind of slowly open it up.”</p>
+<p>（全てを一度には手に入らない。少しずつ開放していきます。）</p>
+</blockquote>
+<p>竜騎士07のファン層への配慮も語られた。</p>
+<blockquote>
+<p>“When the game first came out, we found it was a lot harder for a lot
+of our audience, especially the ones that have been from the kind of the
+visual novel section.”</p>
+<p>（ゲームが発売されたとき、特にビジュアルノベル方面から来たオーディエンスにとっては、かなり難しいことが分かりました。）</p>
+</blockquote>
+<hr />
+<h2 id="情報の隠蔽-テンション生成の核心">13. 情報の隠蔽 –
+テンション生成の核心</h2>
+<h3 id="silent-hill-1-の教訓">Silent Hill 1 の教訓</h3>
+<blockquote>
+<p>“Lack of information or drawn attention to specific information. I
+think that is very key for horror games.”</p>
+<p>（情報の欠如、あるいは特定の情報への注意の誘導。これがホラーゲームにとって非常に重要だと思います。）</p>
+</blockquote>
+<blockquote>
+<p>“I’m a big fan of Silent Hill 1. And something I won’t ever forget is
+that when you’re playing this game and you’re aiming at an enemy, you
+don’t know if you’re gonna hit them or not. There’s no crosshair, you’re
+just kind of aiming generally in the direction of the monster… You don’t
+know how many bullets you have. You have to open the menu to see how
+many bullets you have left.”</p>
+<p>（私は Silent Hill 1
+の大ファンです。忘れられないのは、敵に照準を合わせているのに当たるかどうか分からないこと。クロスヘアがなくて、モンスターの方向にだいたい向けているだけ。弾が何発残っているかも分からない。メニューを開かないと確認できない。）</p>
+</blockquote>
+<p>この「不確実性」が生む緊張感を、メレー戦闘でどう再現するか。</p>
+<h3 id="d空間の曖昧さを活用する">3D空間の曖昧さを活用する</h3>
+<blockquote>
+<p>“The thing with 3D is that attack distance is actually much harder to
+grasp. When you have a crosshair, you put it on the enemy, you pull the
+trigger, you’re like, okay, I’m gonna hit whatever’s in the crosshair.
+But if you’re swinging like a melee weapon in a horror game, we’re just,
+I think humans in general, a lot of people have, we’re just worse at
+dealing with kind of 3D space, kind of gauging distance and it makes it
+much, much harder to kind of tell if things are gonna hit or not.”</p>
+<p>（3D空間では攻撃距離を把握するのが本当に難しい。クロスヘアがあれば敵に合わせてトリガーを引くだけ。でもメレー武器を振るとなると、人間は一般的に3D空間での距離感が得意ではない。当たるかどうか判断するのがずっと難しくなります。）</p>
+</blockquote>
+<blockquote>
+<p>“From the screenshot, it’s kind of hard to tell if you’re gonna hit
+or not. That’s the point, and that’s what we want.”</p>
+<p>（スクリーンショットを見ても当たるかどうか分かりにくい。それが狙いで、それが我々の望んでいることです。）</p>
+</blockquote>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th style="text-align: left;">項目</th>
+<th style="text-align: left;">遠距離（銃）</th>
+<th style="text-align: left;">メレー</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">命中確認</td>
+<td style="text-align: left;">クロスヘアで明確</td>
+<td
+style="text-align: left;"><strong>当たるか分からない</strong>（3D空間での判断困難）</td>
+</tr>
+<tr>
+<td style="text-align: left;">テンション</td>
+<td style="text-align: left;">クロスヘアが答えを出してしまう</td>
+<td style="text-align: left;">当たるか分からない不安が持続</td>
+</tr>
+</tbody>
+</table>
+<p><strong>メレー戦闘が本質的に持つ3D空間の曖昧さを、バグではなくテンション生成の資産として活用する</strong>
+– これが Silent Hill f のメレー設計における最も重要なインサイトだ。</p>
+<hr />
+<h2 id="弱さの感覚feeling-of-weaknessとリアクション設計">14.
+弱さの感覚（Feeling of Weakness）とリアクション設計</h2>
+<h3 id="リアクションは攻撃より重要">リアクションは攻撃より重要</h3>
+<p>メレーゲームの古典的な問題として、「壁を殴っている感覚」がある。</p>
+<blockquote>
+<p>“In those types of games, when you’re shooting like a zombie, you’ll
+notice that when you hit the zombies, it’s kind of like it just kind of
+flinches. It keeps walking towards you. It’s kind of like a wall. You
+feel very weak, even though you’re supposed to be using a very strong
+weapon. So it’s about the reaction. The reaction is telling you that
+you’re attacking weak.”</p>
+<p>（ゾンビシューターで敵を撃つと、ちょっとひるむだけでまた歩いてくる。壁みたいだ。強力な武器を使っているはずなのに弱く感じる。リアクション次第なんです。リアクションが「あなたの攻撃は弱い」と伝えている。）</p>
+</blockquote>
+<blockquote>
+<p>“For us, the reaction is more important than the actual attack.”</p>
+<p>（我々にとって、リアクションは実際の攻撃そのものより重要です。）</p>
+</blockquote>
+<p>ワンインチパンチのアナロジーが引用された。モーションは小さくても、受け手のリアクションが大きければ、見る者は「強力な攻撃だ」と感じる。</p>
+<h3
+id="見ることと感じることのギャップ">「見ること」と「感じること」のギャップ</h3>
+<p>Silent Hill f
+では意図的にヒットリアクションを抑制する設計を採用したが、予想外の問題が発生した。</p>
+<blockquote>
+<p>“Even though we’ve really dumbed down the reactions when we’re
+hitting them, because you’re swinging around this kind of heavy metal
+pipe, it didn’t feel as good as a lot of players in video. When you’re
+playing the game, it’s not too bad, but when you’re watching video, like
+there’s no strength in there. It doesn’t feel good. It didn’t feel like
+an impact.”</p>
+<p>（ヒットリアクションを意図的に抑えたのですが、重い金属パイプを振っているにも関わらず、動画で見ると迫力がない。プレイ中はまだいいのですが、動画で見ると打撃感がない。インパクトを感じない。）</p>
+</blockquote>
+<blockquote>
+<p>“They’re like, well, there’s just no power behind these attacks. But
+we’re like, well, isn’t that the point? … But again, what you’re seeing
+and what you’re feeling are two different things. So it’s a big lesson
+we learned there.”</p>
+<p>（「攻撃にパワーがない」と言われた。「でもそれが意図では？」と思ったけど…見ていることと感じていることは別物だ。これは大きな教訓でした。）</p>
+</blockquote>
+<p>ヘビーアタックについてはヒットストップ（攻撃がヒットした瞬間にフレームを一時停止する演出）を大幅に強化して、この問題に対処した。</p>
+<p>アニメーションの計画的な妥協についても率直に語った。</p>
+<blockquote>
+<p>“Early on we wanted to kind of have the weapon kind of bounce off the
+character. So we’d have more realistic attack animations. That probably
+would have made things feel a bit better. But again, based on time, we
+knew exactly how much time we had.”</p>
+<p>（当初は武器がキャラクターに当たって跳ね返るような、よりリアルな攻撃アニメーションを作りたかった。それならもう少し手応えが良くなったかもしれない。でも時間の制約があり、持ち時間は分かっていました。）</p>
+</blockquote>
+<p><strong>「見て良いもの」ではなく「遊んで良いもの」を優先する。ただしその判断が視聴者体験とプレイヤー体験のギャップを生むことがある</strong>
+– 正直な振り返りだった。</p>
+<hr />
+<h2 id="リソース設計-full-と-empty-の関係">15. リソース設計 – 「FULL と
+EMPTY の関係」</h2>
+<h3 id="リソーススカーシティの基本">リソーススカーシティの基本</h3>
+<blockquote>
+<p>“Resource scarcity in horror games. You need to know what kind of
+relationship between full and empty. You don’t know how much you have,
+you don’t know how scary things are, you don’t know when it’s gone.”</p>
+<p>（ホラーゲームにおけるリソーススカーシティ（資源の希少性）。FULL と
+EMPTY
+の関係性を理解させることが必要です。自分が何をどれだけ持っているか分からない、どれだけ怖いことが起きるか分からない、いつなくなるか分からない。）</p>
+</blockquote>
+<blockquote>
+<p>“I have a hundred bullets in my backpack, and I have one bullet, and
+I see an enemy. Am I gonna attack this enemy? Well, it depends on how
+much stuff I have in there.”</p>
+<p>（バックパックに100発あるのか1発しかないのか。敵を見たとき攻撃するか？それは持っているリソース次第です。）</p>
+</blockquote>
+<h3
+id="敵を倒してもリソースは増えない">敵を倒してもリソースは増えない</h3>
+<p>Silent Hill f
+の大胆な設計として、<strong>敵のリソースドロップを完全に排除した</strong>ことが紹介された。</p>
+<blockquote>
+<p>“The big thing we did also was no resource drops, and you’ll find
+that every enemy you kill, that’s it. It’s only a negative gain on your
+resource, it’s not positive. So we’re not encouraging people to hit
+enemies.”</p>
+<p>（大きな決断として、リソースドロップをなくしました。敵を倒しても得られるものは何もない。リソースはマイナスにしかならない。つまり敵を攻撃することを推奨していないんです。）</p>
+</blockquote>
+<blockquote>
+<p>“However, give someone a weapon, and they’re gonna attack every
+single thing in front of them. That’s just the way it is.”</p>
+<p>（ただし、武器を持たせれば目の前にあるもの全てを攻撃する。それが人間の性です。）</p>
+</blockquote>
+<p>Resident Evil Resistance での経験がここでも引用された。</p>
+<blockquote>
+<p>“When we started that game early on, it was meant to be very kind of
+less combat-driven, kind of escape room type of game. However, as soon
+as you give someone a gun, they will shoot every single thing that
+moves, every single test. And it’s just human nature, at this
+point.”</p>
+<p>（Resident Evil Resistance
+を開発し始めたとき、戦闘は控えめで脱出ゲームのようなものを意図していました。でも銃を持たせた瞬間、動くもの全てを撃ちました。全テストで。もうこれは人間の本性です。）</p>
+</blockquote>
+<h3
+id="意図的な薬の過剰配置-ゲームプレイとナラティブの融合">意図的な薬の過剰配置
+– ゲームプレイとナラティブの融合</h3>
+<p>最も巧みな設計のひとつが、回復アイテム（Red
+Capsules）の配置だった。</p>
+<blockquote>
+<p>“The first ending is kind of this overdose moment where she just
+pills everywhere, you just kind of overdose on these red pills in the
+story. But in the game, we have these things everywhere. They’re
+everywhere in the game, there’s so many of them.”</p>
+<p>（最初のエンディングは一種のオーバードース（過剰摂取）の瞬間で、ストーリー上で赤い薬を大量に摂取する。ゲーム内にもこれらは至るところにあります。本当にたくさんある。）</p>
+</blockquote>
+<blockquote>
+<p>“Because we knew the first time you go through the game that you’re
+gonna be less familiar with what’s going on, you wanna give players kind
+of that crutch, that kind of extra resources. So you’re like, okay, just
+keep popping pills.”</p>
+<p>（初回プレイでは何が起きるか分からないので、プレイヤーに松葉杖（クラッチ）、余分なリソースを与えたかった。「とにかく薬を飲み続けろ」という感覚です。）</p>
+</blockquote>
+<p>そしてエンディングに到達したとき、プレイヤーは初めて気づく。ゲーム中ずっと薬を飲み続けていたこと自体が、ストーリー上のオーバードースと呼応していたことに。さらに
+Yang 氏は、この設計がゲームプレイ上の実益もあったと補足した。“It also
+made sense for the first playthrough because it helped you go through,
+it reduced a lot of the frustration for kind of first-time
+players.”（初回プレイにおいてもフラストレーションを減らす実用的な効果があった。）2周目以降、プレイヤーがメカニクスに習熟すると、回復アイテムへの依存度は自然に下がっていく。</p>
+<blockquote>
+<p>“We didn’t want players to get to the ending and be like, that’s not
+what I did, that’s not what happened. But that’s the game we did by kind
+of forcing that narratively into the gameplay.”</p>
+<p>（エンディングで「自分はそんなことしてない」とは思ってほしくなかった。ゲームプレイにナラティブを強制的に織り込むことで、物語とプレイ体験を一致させたんです。）</p>
+</blockquote>
+<p>フォーラムでの反応を見たときの喜びも語られた。</p>
+<blockquote>
+<p>“I remember reading a lot of forums in the beginning, first came out,
+people were like, these guys suck. I can’t believe they did that. I was
+like, yes, yes, yes.”</p>
+<p>（発売直後のフォーラムを読んでいたら「こいつらは最悪だ、信じられない」と書かれていた。私は「よしよしよし」と思いました。）</p>
+</blockquote>
+<p><img src="slides/gdc2026_silenthill_f_38.jpg" alt="リソース設計" />
+<em>Active vs Passive Resource Management のスライド。Red
+Capsules、Bandage、Ramen などのアイテムが表示されている</em></p>
+<h3
+id="ライトアタック-vs-ヘビーアタック-リソース交換レートの可視化">ライトアタック
+vs ヘビーアタック – リソース交換レートの可視化</h3>
+<p>銃のないゲームで「弱点を狙う」概念をどう実装するか。Silent Hill f
+は2種類の攻撃で解決した。</p>
+<blockquote>
+<p>“We have two types of attacks, light attack and heavy attacks.”</p>
+<p>（2種類の攻撃があります。ライトアタックとヘビーアタック。）</p>
+</blockquote>
+<p>ライトアタックで同じ敵を倒す場合、スタッガー（怯み）させにくいため反撃を食らいながら戦うことになり、多くのリソースを消費する。ヘビーアタックは高リスクだが、少ないリソースで同じ敵を倒せる。</p>
+<blockquote>
+<p>“The equivalent here is like taking down the zombie with only body
+shots, versus really lining it up, taking your time, and hitting them
+with headshots.”</p>
+<p>（ゾンビをボディショットだけで仕留めるか、時間をかけてヘッドショットを狙うか。それと同じです。）</p>
+</blockquote>
+<p>画面左下の月型ゲージが武器の耐久値を示しており、ライトアタックの消費とヘビーアタックの消費の差が視覚的に示された。</p>
+<hr />
+<h2 id="アクティブ-vs-パッシブリソース管理">16. アクティブ vs
+パッシブ・リソース管理</h2>
+<p>Yang
+氏はリソース管理を2つのカテゴリに分類する独自のフレームワークを紹介した。</p>
+<blockquote>
+<p>“This is what we call active versus passive resource management.”</p>
+<p>（これは我々がアクティブ vs
+パッシブ・リソース管理と呼んでいるものです。）</p>
+</blockquote>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th style="text-align: left;">区分</th>
+<th style="text-align: left;">パッシブ・リソース管理</th>
+<th style="text-align: left;">アクティブ・リソース管理</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">タイミング</td>
+<td style="text-align: left;">戦闘前・戦闘外</td>
+<td style="text-align: left;">戦闘中のリアルタイム</td>
+</tr>
+<tr>
+<td style="text-align: left;">内容</td>
+<td style="text-align: left;">バックパックの中身、アイテム構成</td>
+<td style="text-align: left;">今この瞬間の体力、スタミナ残量</td>
+</tr>
+<tr>
+<td style="text-align: left;">思考レベル</td>
+<td style="text-align: left;">事前計画、合理的判断</td>
+<td style="text-align: left;">瞬間的判断</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>“Passive resource management for us is kind of like what’s in my
+backpack, how many items do I have, what’s my total health, just kind of
+progression level stuff… Active resource management is like how much
+health do I have in the moment. More importantly for us, how much
+stamina you have, how much sanity you have.”</p>
+<p>（パッシブ・リソース管理はバックパックの中身、アイテム数、総体力、進行レベルなど。アクティブ・リソース管理は今この瞬間の体力、特にスタミナとサニティ（正気度）。）</p>
+</blockquote>
+<p>銃を使うホラーゲームでは「弾薬残量とポジション」を管理すればよいが、Silent
+Hill f のメレー設計ではスタミナ、サニティ、武器耐久値が加わる。</p>
+<blockquote>
+<p>“It was very tough for a lot of people to process. So that’s
+something we definitely underestimated. For a lot of game players,
+managing so many different types of resources simultaneously is
+hard.”</p>
+<p>（多くのプレイヤーにとって処理が難しかった。これは確実に過小評価していた点です。多くのゲームプレイヤーにとって、同時にこれだけ多くの種類のリソースを管理するのは大変なことです。）</p>
+</blockquote>
+<hr />
+<h2 id="テンポ設計-武器のリズムレベルのリズム">17. テンポ設計 –
+武器のリズム、レベルのリズム</h2>
+<h3 id="武器ごとの異なるリズム">武器ごとの異なるリズム</h3>
+<blockquote>
+<p>“Everybody kind of gravitates towards a different type of rhythm,
+different type of music. If you play a fighting game, some people just
+start to gravitate towards the fastest characters… So for weapons it’s
+not that you have a correct weapon. Different people like different
+rhythms, you have to give them that choice.”</p>
+<p>（人はそれぞれ異なるリズム、異なる音楽に惹かれる。格闘ゲームでもスピードキャラが好きな人もいれば…武器に正解はありません。異なるリズムを好む人がいて、その選択肢を与えなければならない。）</p>
+</blockquote>
+<blockquote>
+<p>“It also has to feel different because if every weapon kind of has
+the same rhythm, you don’t get that pacing difference and variety.”</p>
+<p>（全ての武器が同じリズムだと、ペーシングの違いとバリエーションが生まれない。それでは駄目です。）</p>
+</blockquote>
+<h3
+id="レベルデザインへのテンポ適用-ダークシュラインの例">レベルデザインへのテンポ適用
+– ダークシュラインの例</h3>
+<p>テンポの切り替えはレベルデザインにも適用された。</p>
+<blockquote>
+<p>“The Dark Shrine, it’s much more combat heavy. All the weapons there
+have no durability, a resource that you have to worry about at that
+point in time so that we can focus on something else. And that’s kind of
+like switching up the rhythm and switching up the tempo.”</p>
+<p>（ダークシュラインは戦闘が多いエリアです。そこでは全ての武器に耐久値がない。それまで心配しなければならなかったリソースをひとつ取り除くことで、別のことに集中できる。リズムとテンポを切り替えるということです。）</p>
+</blockquote>
+<p>ある心配事を意図的に取り除くことで、プレイヤーは別の種類の緊張感に集中できる。これがエリア単位でのテンポ切り替えの具体的な手法だ。</p>
+<p><img src="slides/gdc2026_silenthill_f_39.jpg" alt="テンポ設計" />
+<em>Tension | Time – Key Components: Tempo (Pacing) と Rhythm</em></p>
+<hr />
+<h2 id="スタミナ-テンポ制御の核心">18. スタミナ – テンポ制御の核心</h2>
+<h3
+id="攻防共有リソースとしてのスタミナ">攻防共有リソースとしてのスタミナ</h3>
+<blockquote>
+<p>“Stamina. What stamina is, this little bar down here, it basically
+regulates all actions for the player. The difference between action
+games and horror games for us is the amount of actions you can do, the
+rate at which you can do things. This is what we use to control the
+game.”</p>
+<p>（スタミナ。画面下部のこのバーで全プレイヤーアクションを制御します。アクションゲームとホラーゲームの違いは、実行できるアクションの量と速度。これがゲームを制御する手段です。）</p>
+</blockquote>
+<blockquote>
+<p>“Both offensive and defensive actions use this resource that kind of
+regenerates over time. And it’s gated by how much you have, what you can
+increase throughout the game, and then the time it takes to
+regenerate.”</p>
+<p>（攻撃行動と防御行動がこの時間経過で再生するリソースを共有します。保有量、ゲーム内での増加量、再生にかかる時間でゲートされています。）</p>
+</blockquote>
+<p>スタミナ切れの実演映像が流れた。</p>
+<blockquote>
+<p>“She’s being over aggressive, so when this monster attacks, she
+cannot dodge. It’s hit quite a lot of damage at this point.”</p>
+<p>（攻撃的すぎたため、モンスターが攻撃してきたとき回避できない。この時点でかなりのダメージを受けています。）</p>
+</blockquote>
+<blockquote>
+<p>“You can think about using bullets to attack and defend in that case,
+kind of like an analogy.”</p>
+<p>（弾薬を攻撃にも防御にも使うアナロジーを想像してください。）</p>
+</blockquote>
+<p>Yang 氏はこのメカニクスの反省点にも触れた。“Even though it seems like
+a very clean mechanic, just because it’s clean, just because it feels
+like it works, does it work for your particular
+audience?”（クリーンなメカニクスに見えても、実際にあなたのオーディエンスにとって機能するか？それは別問題だ。）</p>
+<h3 id="フォーカス-メレー版のクロスヘア">フォーカス –
+メレー版のクロスヘア</h3>
+<p>スタミナ回復の仕組みとして「フォーカス」が紹介された。</p>
+<blockquote>
+<p>“Focus. This is basically our analogy to aiming in horror shooters.
+The point of this is to slow down pacing in the game. So you’re not just
+hitting the button, you’re gonna attack nonstop, but you can break out
+of it at any point in time.”</p>
+<p>（フォーカス。ホラーシューターにおけるエイム（照準）に相当する仕組みです。目的はゲームのペーシングを落とすこと。ただボタンを連打して攻撃し続けるのではなく、いつでも中断できる。）</p>
+</blockquote>
+<p>武器を構える動作によってスタミナが回復し、次のアクションに備える時間が生まれる。銃のホラーゲームで「照準を合わせる時間」がペースを落としていたのと同じ機能を、メレー戦闘で再現している。</p>
+<p>フォーカスから派生する2つの主要機能として、<strong>カウンター攻撃</strong>と<strong>フォーカスアタック</strong>が紹介された。カウンターは、フォーカス中に敵の特定の攻撃タイミングでヘビーアタックボタンを押すことで発動する。成功すると耐久値を消費せず、サニティ回復も得られる「フリーヒット」となる。ただし全ての攻撃がカウンター可能ではないため、「回避すべきか、カウンターすべきか」の判断にテンションが生まれる。Yang
+氏はこれを “a combat jump scare”（戦闘版ジャンプスケア）と形容した。</p>
+<p><img src="slides/gdc2026_silenthill_f_42.jpg" alt="スタミナ設計" />
+<em>Stamina: Regulates pacing through action rate / Drives all combat
+actions / Gated by time and amount</em></p>
+<hr />
+<h2 id="テンションの解放-待つこと-瞬間">19. テンションの解放 –
+「待つこと &gt; 瞬間」</h2>
+<h3 id="テンションの本質">テンションの本質</h3>
+<p>セッション全体を通底する最も重要なテーゼが、終盤で提示された。</p>
+<blockquote>
+<p>“We talk about tension all this time. But releasing tension is just a
+support. The wait is greater than the moment, especially for horror
+games, or just horror in general. Once the moment happens, the tension’s
+not there anymore.”</p>
+<p>（テンションについてずっと話してきましたが、テンションの解放はあくまでサポートです。<strong>待つこと（wait）は瞬間（moment）より大きい</strong>
+–
+特にホラーゲーム、あるいはホラー全般において。瞬間が訪れた途端、テンションはもうそこにはない。）</p>
+</blockquote>
+<blockquote>
+<p>“It’s tense when you’re kind of waiting, but as soon as you attack or
+the monster attacks, it’s like, oh shit, the tension’s gone and replaced
+by something else, be it good or bad.”</p>
+<p>（待っているときは緊張する。でも攻撃するか、モンスターが攻撃してきた瞬間に、テンションは消えて何か別のものに置き換わる
+– 良いものであれ悪いものであれ。）</p>
+</blockquote>
+<p><strong>テンションとは「これから何かが起きる」という予期の感覚である。出来事そのものではない。</strong></p>
+<p><img src="slides/gdc2026_silenthill_f_44.jpg"
+alt="Wait &gt; Moment" /> <em>“Wait &gt; Moment” –
+セッション全体のテーゼを要約するスライド</em></p>
+<h3 id="マスターキー-システムブレーカー">マスターキー –
+システムブレーカー</h3>
+<p>テンションの蓄積がフラストレーションに転化する直前に使える「逃げ道」として、「マスターキー（Master
+Key）」というシステムブレーカーが設計された。</p>
+<blockquote>
+<p>“We have something called a Master Key, which is kind of a system
+breaker for us. In like ranged kind of games, this could be like a
+grenade or a rocket launcher. It’s basically something where you’re
+like, I don’t want to think anymore. I’m just going to use this and
+bypass whatever challenge is in front of me.”</p>
+<p>（マスターキーと呼んでいるものがあります。システムブレーカーです。遠距離戦闘のゲームではグレネードやロケットランチャーに相当するもの。「もう考えたくない。これを使って目の前の課題を突破する」というときの手段です。）</p>
+</blockquote>
+<h3 id="戦闘はダンスである">戦闘はダンスである</h3>
+<blockquote>
+<p>“For us, combat is like a type of puzzle. It’s the same energy. Every
+encounter is a puzzle that the player has to kind of get past. It’s
+just, instead of kind of trying to figure out obtuse clues, it’s more of
+a dance with the controls.”</p>
+<p>（我々にとって戦闘はパズルの一種です。同じエネルギー。全てのエンカウンターはプレイヤーが乗り越えるべきパズルです。難解な手がかりを探すのではなく、コントローラーとのダンスに近い。）</p>
+</blockquote>
+<p>Yang 氏は戦闘の本質を「じゃんけん」に例えた。“Combat, in all its
+forms, is basically just rock, paper, scissors. You’re going to have
+better outcome or worse outcome or kind of equal
+outcome.”（戦闘はどんな形式でも基本的にじゃんけんだ。結果は良いか悪いか引き分けかだ。）マスターキーは、そのじゃんけんに「銃」を持ち込むような存在だとも表現した。</p>
+<p>マスターキーの使い道はプレイヤー自身が決める。</p>
+<blockquote>
+<p>“It’s a master key to let them decide when I want to start using it.
+So in the other games, you have grenades, you have a rocket launcher.
+You won’t want to save these because you know it’s a limited resource.
+You have that tension there, but you get to the point where the tension
+starts turning to frustration. You’re like, screw it, I don’t want to
+deal with this, I don’t think about it. I’m just going to use this, I’m
+going to get past there.”</p>
+<p>（マスターキーは、プレイヤーにいつ使うか決めさせるものです。他のゲームではグレネードやロケランがある。限られたリソースだから温存したい。そこにテンションがある。でもテンションがフラストレーションに変わり始めたら「もう嫌だ、考えたくない、使って突破する」となる。）</p>
+</blockquote>
+<h3
+id="ビーストアーム-物語と一体化したシステムブレーカー">ビーストアーム –
+物語と一体化したシステムブレーカー</h3>
+<p>Dark Shrine のシステムブレーカーとして「ビーストアーム（Beast
+Arm）」が紹介された。見た目のインパクトに会場から反応が出たが、Yang
+氏は笑いながら釈明した。</p>
+<blockquote>
+<p>“If you haven’t played the game, you’re going to be going like, what
+the hell am I looking at? Isn’t this a horror game? But it makes sense.
+It makes sense when you play the game. Trust me. There’s a lot of layers
+of symbology and reasons.”</p>
+<p>（ゲームをプレイしていない人は「何を見ているんだ？ホラーゲームじゃないのか？」と思うでしょう。でも意味があるんです。プレイすれば分かる。信じてください。象徴と理由の層がたくさんある。）</p>
+</blockquote>
+<p>Dark Shrine
+のもう1人の主人公「ヴァルキリー（Valkyrie）」は、ヒナコよりも攻撃的でないプレイスタイルが想定されている。そのため、フォーカスアタックがマスターキーの軽量版として機能する。</p>
+<blockquote>
+<p>“It’s a much weaker version of this kind of Master Key. It still does
+the job.”</p>
+<p>（マスターキーのずっと弱いバージョンですが、役目は果たします。）</p>
+</blockquote>
+<p>ただし、これらのシステムブレーカーを安易に配置しすぎないことも強調された。</p>
+<blockquote>
+<p>“It’s not like every single thing I pick up is a grenade or a rocket
+launcher. You can use these things sparingly.”</p>
+<p>（拾うもの全てがグレネードやロケランではない。節約して使うものです。）</p>
+</blockquote>
+<p><img src="slides/gdc2026_silenthill_f_45.jpg"
+alt="Releasing Tension" /> <em>Wait &gt; Moment / Pacing / Resource
+Amount / Master Key (System Breaker)</em></p>
+<hr />
+<h2 id="まとめ-テンションの5つのドライバー">20. まとめ –
+テンションの5つのドライバー</h2>
+<p>Yang 氏は最後に、セッション全体を簡潔にまとめた。</p>
+<blockquote>
+<p>“Key drivers of tension in horror games, especially in combat. You
+have to watch for frustration. Resource scarcity. Timing, how you
+regulate the pacing of the combat and your game itself.”</p>
+<p>（ホラーゲーム、特に戦闘におけるテンションのキードライバー。フラストレーションに注意すること。リソースの希少性。タイミング、戦闘とゲーム全体のペーシングをどう制御するか。）</p>
+</blockquote>
+<p><img src="slides/gdc2026_silenthill_f_46.jpg" alt="Wrap Up" />
+<em>Key Drivers of Tension: Frustration / Information &amp; Resources /
+Time &amp; Rhythm</em></p>
+<p>Silent Hill f
+のメレーオンリーホラーの設計哲学を、5つの柱で整理する。</p>
+<h3 id="ピラー設計-フランチャイズdnaの継承と差別化">1. ピラー設計 –
+フランチャイズDNAの継承と差別化</h3>
+<ul>
+<li>「マクドナルドで寿司を出すな」 –
+プレイヤーの期待の枠内で創造的であること</li>
+<li>アトモスフィア（雰囲気）が全タイトルの共通DNA</li>
+<li>インダイレクト・ホマージュで旧作ファンにも新規プレイヤーにも対応</li>
+</ul>
+<h3 id="テンション設計-恐怖の核心は緊張感のビルドアップと解放">2.
+テンション設計 – 恐怖の核心は「緊張感のビルドアップと解放」</h3>
+<ul>
+<li>“Wait &gt; Moment” – テンションは出来事の前の待機状態に存在する</li>
+<li>距離の反転（Flip the Script）– 遠いほど危険、近いほど安全</li>
+<li>情報の隠蔽 – 3D空間の曖昧さをテンション生成の資産として活用</li>
+<li>AIクロスドロー – 「当たるか、当たられるか」の同時性</li>
+</ul>
+<h3 id="フラストレーション管理-テンションとの境界線を見守る">3.
+フラストレーション管理 – テンションとの境界線を見守る</h3>
+<ul>
+<li>キャラクターの恐怖とプレイヤーの恐怖は別物</li>
+<li>慣れがテンションを殺す – 初回と2回目以降で異なる体験設計</li>
+<li>RPG ライクなサポートシステムで成長を可視化</li>
+<li>プレイヤー選択（難易度・アシスト）でフラストレーションを軽減</li>
+</ul>
+<h3 id="リソース設計-full-と-empty-の関係性">4. リソース設計 – FULL と
+EMPTY の関係性</h3>
+<ul>
+<li>敵を倒してもリソースは増えない（ネガティブゲイン設計）</li>
+<li>アクティブ vs パッシブ・リソース管理の2層構造</li>
+<li>回復アイテムの過剰配置 =
+ナラティブとゲームプレイの融合（オーバードース演出）</li>
+<li>ライトアタック vs ヘビーアタック = リソース交換レートの戦略性</li>
+</ul>
+<h3 id="テンポ設計-リズムでペーシングを制御する">5. テンポ設計 –
+リズムでペーシングを制御する</h3>
+<ul>
+<li>武器ごとに異なるリズム（正解はない、プレイヤーの好みに委ねる）</li>
+<li>エリアごとのテンポ切り替え（ダークシュラインの耐久値なし設計）</li>
+<li>スタミナが攻防共有リソースとしてテンポを制御</li>
+<li>マスターキー（システムブレーカー）でテンション →
+フラストレーション転化を防止</li>
+</ul>
+<hr />
+<h2 id="silent-hill-フランチャイズと日本ipの海外開発">Silent Hill
+フランチャイズと日本IPの海外開発</h2>
+<p>本セッションは、ゲームデザインの知見にとどまらず、日本のIP
+を海外スタジオが開発するトレンドの一断面でもある。</p>
+<p>Silent Hill は1999年に KONAMI の社内チーム Team Silent
+が生み出した、日本発のサバイバルホラーIPだ。Team Silent
+解散後、開発は海外スタジオに移り、評価は不安定な時期が続いた。2022年の
+KONAMI Transmission
+で複数タイトルの同時進行が発表され、復活期に入った。</p>
+<p>その中で Silent Hill f は、台湾・台北の NeoBards Entertainment
+が開発を担当する。シリーズ初の「日本を舞台にした作品」を台湾スタジオが手がけるという、文化的に興味深い座組だ。Yang
+氏が繰り返し強調した「世界観の整合性（World Integrity）」–
+1960年代の昭和の日本を、その文化を経験した人にも、そうでない人にも説得力のある形で描くという課題は、まさにこの文化的な座組から生まれている。</p>
+<p>NeoBards
+はコデベロッパーとして「スケジュールと予算はハードセット」「リリース日から逆算して設計する」「チームの強みに沿って方向性を決める」という徹底したプロダクション規律を持っている。これは外部開発スタジオの制約であると同時に、明確な強みでもある。銃を捨てる決断も、この規律の中から生まれた。</p>
+<hr />
+<h2 id="筆者の所感">筆者の所感</h2>
+<p>セッション終了時、Yang
+氏はスピーカー評価フォームの記入を促しつつ、最後まで笑いを忘れなかった。“Please
+fill out your speaker evaluation form… it determines if I have to work
+in the office or in the mines next
+week.”（スピーカー評価フォームに記入してください。それで来週オフィスで働くか鉱山で働くかが決まります。）</p>
+<p>60分のセッションの中で Yang
+氏が一貫して伝えていたのは、「完璧な理想を追うな、手持ちのカードで最善のハンドを作れ」という実践的な哲学だった。</p>
+<p>「メレーオンリーにした理由」の答えが、「かっこいいから」でも「差別化のため」でもなく、<strong>「銃を1丁追加するだけでスコープが制御不能になるから」</strong>
+という生々しい開発現場の判断だったことが印象的だ。クリエイティブな判断とプロダクションの現実は対立するものではなく、制約が創造性を生むのだという好例を見せてもらった。</p>
+<p>また、「テンションはサポートに過ぎない。待つことが瞬間より大きい」
+という定義は、ホラーゲームに限らずあらゆるインタラクティブ体験に適用できる原則だ。映画、音楽、料理
+–
+期待感（アンティシペーション）は体験そのものより大きな感情を生むことがある。</p>
+<p>台湾のスタジオが日本を舞台にしたホラーゲームを開発し、GDC
+で英語で語る。そのセッションを日本人の筆者がサンフランシスコで聴いている。ゲーム産業のグローバルな循環を実感する1時間だった。</p>
+<hr />
+<h2 id="参考リンク">参考リンク</h2>
+<ul>
+<li><a href="https://schedule.gdconf.com/">GDC 2026 Session: ‘Silent
+Hill f’: The Challenges of Creating a Melee-Only Horror Game</a></li>
+<li><a href="https://www.neobards.com/">NeoBards Entertainment</a></li>
+<li><a href="https://www.konami.com/games/silenthill/">Silent Hill f
+公式サイト</a></li>
+</ul>
+</div>
+</body>
+</html>

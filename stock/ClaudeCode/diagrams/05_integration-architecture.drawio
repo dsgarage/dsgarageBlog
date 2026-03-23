@@ -1,0 +1,92 @@
+<mxfile host="app.diagrams.net" agent="Claude Code">
+  <diagram name="Claude Code 連携アーキテクチャ" id="integ05">
+    <mxGraphModel dx="1400" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="900" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+
+        <!-- Claude Code 中央 -->
+        <mxCell id="CC" value="Claude Code" style="rounded=1;whiteSpace=wrap;fillColor=#6C5CE7;fontColor=#FFFFFF;strokeColor=#333333;fontSize=16;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="60" y="370" width="200" height="70" as="geometry"/>
+        </mxCell>
+
+        <!-- Layer 1: Google Ads MCP -->
+        <mxCell id="g_label" value="Layer 1: Google Ads MCP" style="text;fontSize=14;fontStyle=5;fillColor=none;fontColor=#4285F4;" vertex="1" parent="1">
+          <mxGeometry x="380" y="40" width="250" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="GMCP" value="Google Ads&#xa;MCP Server" style="rounded=1;whiteSpace=wrap;fillColor=#4285F4;fontColor=#FFFFFF;strokeColor=#333333;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="380" y="80" width="160" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="GAPI" value="Google Ads API&#xa;キャンペーン分析&#xa;GAQL クエリ" style="rounded=1;whiteSpace=wrap;fillColor=#5C9CE6;fontColor=#FFFFFF;strokeColor=#333333;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="600" y="70" width="160" height="80" as="geometry"/>
+        </mxCell>
+
+        <!-- Layer 2: Firebase MCP -->
+        <mxCell id="f_label" value="Layer 2: Firebase MCP" style="text;fontSize=14;fontStyle=5;fillColor=none;fontColor=#F39C12;" vertex="1" parent="1">
+          <mxGeometry x="380" y="220" width="250" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="FMCP" value="Firebase&#xa;MCP Server" style="rounded=1;whiteSpace=wrap;fillColor=#FFCA28;fontColor=#000000;strokeColor=#333333;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="380" y="260" width="160" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="RC" value="Remote Config&#xa;広告フラグ管理" style="rounded=1;whiteSpace=wrap;fillColor=#FFE082;fontColor=#000000;strokeColor=#333333;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="600" y="230" width="130" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="CR" value="Crashlytics&#xa;クラッシュ調査" style="rounded=1;whiteSpace=wrap;fillColor=#FFE082;fontColor=#000000;strokeColor=#333333;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="750" y="230" width="130" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="FS" value="Firestore&#xa;データ読み書き" style="rounded=1;whiteSpace=wrap;fillColor=#FFE082;fontColor=#000000;strokeColor=#333333;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="600" y="290" width="130" height="50" as="geometry"/>
+        </mxCell>
+
+        <!-- Layer 3: claude-ads -->
+        <mxCell id="a_label" value="Layer 3: claude-ads スキル" style="text;fontSize=14;fontStyle=5;fillColor=none;fontColor=#00B894;" vertex="1" parent="1">
+          <mxGeometry x="380" y="420" width="250" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="ADS" value="/ads audit&#xa;186項目チェック" style="rounded=1;whiteSpace=wrap;fillColor=#00B894;fontColor=#FFFFFF;strokeColor=#333333;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="380" y="460" width="160" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="AG1" value="Agent 1&#xa;Google" style="rounded=1;whiteSpace=wrap;fillColor=#55EFC4;fontColor=#000000;strokeColor=#333333;fontSize=9;" vertex="1" parent="1">
+          <mxGeometry x="600" y="430" width="80" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="AG2" value="Agent 2&#xa;Meta" style="rounded=1;whiteSpace=wrap;fillColor=#55EFC4;fontColor=#000000;strokeColor=#333333;fontSize=9;" vertex="1" parent="1">
+          <mxGeometry x="690" y="430" width="80" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="AG3" value="Agent 3&#xa;YouTube" style="rounded=1;whiteSpace=wrap;fillColor=#55EFC4;fontColor=#000000;strokeColor=#333333;fontSize=9;" vertex="1" parent="1">
+          <mxGeometry x="780" y="430" width="80" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="AG4" value="Agent 4&#xa;予算" style="rounded=1;whiteSpace=wrap;fillColor=#55EFC4;fontColor=#000000;strokeColor=#333333;fontSize=9;" vertex="1" parent="1">
+          <mxGeometry x="600" y="480" width="80" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="AG5" value="Agent 5&#xa;Creative" style="rounded=1;whiteSpace=wrap;fillColor=#55EFC4;fontColor=#000000;strokeColor=#333333;fontSize=9;" vertex="1" parent="1">
+          <mxGeometry x="690" y="480" width="80" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="AG6" value="Agent 6&#xa;CV分析" style="rounded=1;whiteSpace=wrap;fillColor=#55EFC4;fontColor=#000000;strokeColor=#333333;fontSize=9;" vertex="1" parent="1">
+          <mxGeometry x="780" y="480" width="80" height="40" as="geometry"/>
+        </mxCell>
+
+        <!-- 統合レポート -->
+        <mxCell id="OUT" value="統合レポート&#xa;Health Score + アクションプラン" style="rounded=1;whiteSpace=wrap;fillColor=#E17055;fontColor=#FFFFFF;strokeColor=#333333;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="600" y="560" width="260" height="60" as="geometry"/>
+        </mxCell>
+
+        <!-- 矢印 -->
+        <mxCell style="edgeStyle=orthogonalEdgeStyle;strokeWidth=2;" edge="1" source="CC" target="GMCP" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell style="edgeStyle=orthogonalEdgeStyle;strokeWidth=2;" edge="1" source="CC" target="FMCP" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell style="edgeStyle=orthogonalEdgeStyle;strokeWidth=2;" edge="1" source="CC" target="ADS" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell style="edgeStyle=orthogonalEdgeStyle;" edge="1" source="GMCP" target="GAPI" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell style="edgeStyle=orthogonalEdgeStyle;" edge="1" source="FMCP" target="RC" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell style="edgeStyle=orthogonalEdgeStyle;" edge="1" source="FMCP" target="CR" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell style="edgeStyle=orthogonalEdgeStyle;" edge="1" source="FMCP" target="FS" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell style="edgeStyle=orthogonalEdgeStyle;" edge="1" source="ADS" target="AG1" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell style="edgeStyle=orthogonalEdgeStyle;" edge="1" source="ADS" target="AG2" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell style="edgeStyle=orthogonalEdgeStyle;" edge="1" source="ADS" target="AG3" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell style="edgeStyle=orthogonalEdgeStyle;" edge="1" source="ADS" target="AG4" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell style="edgeStyle=orthogonalEdgeStyle;" edge="1" source="ADS" target="AG5" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell style="edgeStyle=orthogonalEdgeStyle;" edge="1" source="ADS" target="AG6" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell style="edgeStyle=orthogonalEdgeStyle;strokeWidth=2;" edge="1" source="AG4" target="OUT" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell style="edgeStyle=orthogonalEdgeStyle;strokeWidth=2;" edge="1" source="AG5" target="OUT" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell style="edgeStyle=orthogonalEdgeStyle;strokeWidth=2;" edge="1" source="AG6" target="OUT" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

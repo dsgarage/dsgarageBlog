@@ -1,0 +1,79 @@
+<mxfile host="app.diagrams.net" agent="Claude Code">
+  <diagram name="フルファネル統合フロー" id="funnel06">
+    <mxGraphModel dx="1400" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="900" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+
+        <!-- UA広告出稿 -->
+        <mxCell id="ADS" value="UA Ad Spend&#xa;Google Ads / Meta" style="rounded=1;whiteSpace=wrap;fillColor=#E17055;fontColor=#FFFFFF;strokeColor=#333333;fontSize=13;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="80" y="360" width="200" height="70" as="geometry"/>
+        </mxCell>
+
+        <!-- Firebase Analytics -->
+        <mxCell id="FA" value="Firebase Analytics&#xa;User Behavior" style="rounded=1;whiteSpace=wrap;fillColor=#FDCB6E;fontColor=#000000;strokeColor=#333333;fontSize=13;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="400" y="360" width="200" height="70" as="geometry"/>
+        </mxCell>
+
+        <!-- AdMob Revenue -->
+        <mxCell id="ADMOB" value="AdMob Revenue&#xa;In-Game Ads" style="rounded=1;whiteSpace=wrap;fillColor=#00B894;fontColor=#FFFFFF;strokeColor=#333333;fontSize=13;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="720" y="280" width="200" height="70" as="geometry"/>
+        </mxCell>
+
+        <!-- IAP Revenue -->
+        <mxCell id="IAP" value="IAP Revenue&#xa;In-App Purchase" style="rounded=1;whiteSpace=wrap;fillColor=#0984E3;fontColor=#FFFFFF;strokeColor=#333333;fontSize=13;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="720" y="440" width="200" height="70" as="geometry"/>
+        </mxCell>
+
+        <!-- LTV -->
+        <mxCell id="LTV" value="LTV Calculation&#xa;Ad Rev + IAP Rev" style="rounded=1;whiteSpace=wrap;fillColor=#6C5CE7;fontColor=#FFFFFF;strokeColor=#333333;fontSize=14;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1040" y="360" width="200" height="70" as="geometry"/>
+        </mxCell>
+
+        <!-- Firebase A/B Test -->
+        <mxCell id="AB" value="Firebase A/B Test&#xa;Ad Placement" style="rounded=1;whiteSpace=wrap;fillColor=#A29BFE;fontColor=#FFFFFF;strokeColor=#333333;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="400" y="140" width="200" height="60" as="geometry"/>
+        </mxCell>
+
+        <!-- Claude Code -->
+        <mxCell id="CLAUDE" value="Claude Code&#xa;/ads audit" style="rounded=1;whiteSpace=wrap;fillColor=#2D3436;fontColor=#FFFFFF;strokeColor=#333333;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="400" y="580" width="200" height="60" as="geometry"/>
+        </mxCell>
+
+        <!-- 矢印 -->
+        <mxCell value="Install" style="edgeStyle=orthogonalEdgeStyle;strokeWidth=2;fontSize=11;fontStyle=1;" edge="1" source="ADS" target="FA" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+
+        <mxCell value="Session / Retention" style="edgeStyle=orthogonalEdgeStyle;strokeWidth=2;fontSize=10;" edge="1" source="FA" target="ADMOB" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+
+        <mxCell value="Purchase" style="edgeStyle=orthogonalEdgeStyle;strokeWidth=2;fontSize=10;" edge="1" source="FA" target="IAP" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+
+        <mxCell style="edgeStyle=orthogonalEdgeStyle;strokeWidth=2;" edge="1" source="ADMOB" target="LTV" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+
+        <mxCell style="edgeStyle=orthogonalEdgeStyle;strokeWidth=2;" edge="1" source="IAP" target="LTV" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+
+        <mxCell value="Optimize Bids" style="edgeStyle=orthogonalEdgeStyle;strokeWidth=2;fontSize=10;fontStyle=1;dashed=1;strokeColor=#E17055;" edge="1" source="LTV" target="ADS" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1140" y="200"/>
+              <mxPoint x="180" y="200"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell value="Validate" style="edgeStyle=orthogonalEdgeStyle;strokeWidth=2;fontSize=10;" edge="1" source="AB" target="ADMOB" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+
+        <mxCell style="edgeStyle=orthogonalEdgeStyle;strokeWidth=1;dashed=1;" edge="1" source="FA" target="AB" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+
+        <mxCell style="edgeStyle=orthogonalEdgeStyle;strokeWidth=1;dashed=1;" edge="1" source="ADS" target="CLAUDE" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+
+        <mxCell value="Reduce Waste" style="edgeStyle=orthogonalEdgeStyle;strokeWidth=2;fontSize=10;fontStyle=1;dashed=1;strokeColor=#2D3436;" edge="1" source="CLAUDE" target="ADS" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="180" y="610"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

@@ -1,0 +1,228 @@
+# Talksribe 録音 2026-03-12 16:30:10
+
+[16:30:27] people with outgoing unfriendly preference opposition to 20 months first data three months more. I'm John Mar, Principal Remington here at
+[16:30:29] Network does the BGF program are on the split as soon as possible.
+[16:30:37] I've been asked for my YouTube silence for both my peers and these beloved session evaluations, yeah, for the works.
+[16:30:39] in here, there's only to the slide.
+[16:30:52] So this talk is probably survived all about optimization, but the core games are going to be detailed so let's go over some bigger picture.
+[16:31:02] and we should kind of widen into platforms. So why that I really had trouble getting open with this? This slide didn't include PC or local player.
+[16:31:11] high hardware constraints on the older hardware with the original switch. We also support the A120-perds mode on the Gen9 console with put-out-in-the-sation pressure even on this faster hardware.
+[16:31:21] to review and select a Microsoft framework and do its best pace, come learning to do. But which is pretty simple in the lot of games that I got to work on.
+[16:31:32] So, early on, I'm a project when I was deployed to a few people for me. I'm on Xbox One, I'm going to show you some clear scientific struggle.
+[16:31:42] a separate place. But before meeting Mr. content, I spent a good time working on operations issues. I'm excited. And most interesting that Linda Share is
+[16:31:44] I have used before to listen to it.
+[16:31:56] So I had a presentation at GDC 2020, 3DHB optimization in our park in front of the first, which is also an unreal for-today.
+[16:32:02] system or optimizing student-based reflections, environmentally and environment environments, such as this gathering.
+[16:32:05] and a class of efficiency that are bringing in AC from ACQ and analyzing.
+[16:32:17] shaving model and purpose buffer, which you can see below the left of the slide, for applying different after my shaving presentation to date by date tiles.
+[16:32:23] and you can see the visualization right inside of the slide showing a different optimized shape of permutations for the reflection of the slide step.
+[16:32:27] This will also look familiar and do something to your consciousness today.
+[16:32:36] However, this was an indirect order of the normal versus system to the singing as every game has its own features, as I said, sadly, to create our feelings.
+[16:32:47] So here's a full frame GQ capture in fixed from our boundary state, which was the first level of both the game and in the picture of the top right.
+[16:32:58] for a conversation with primary and interested in these sections of the training after the Jeep Upper and its finalized, which for us is right after the free details are applied and opens the little one transparency source.
+[16:33:11] So there's a number of differences here with the first data in the record we had on the first.
+[16:33:14] which is taking an advantage of the fact that the camera generally doesn't get back close to the standard.
+[16:33:29] The reflection of myself is still a one-use load draw call at Brock and see you in different ways for a minute. No second, but it is doing slightly different work here that it was doing from the first.
+[16:33:38] And so, upon your main answer, I'll leave a distance-kill-the-in conclusion. This one is a blending local reflection for a separate big draw-fine and a black-and-fine. The answer is a horizontal.
+[16:33:41] and assign way to be directly into our set XVB plate transfer.
+[16:33:47] Additionally, we don't have any good spots to do a tile-possify. I think we're going to sleep so we'll run it. I think we'll sleep.
+[16:34:01] So when using a computer based approach to the process, we can describe it, we're basically a bit of a balance. There's any overhead that needs to be overcome
+[16:34:08] running the up to my sheet of communications or idealistic communication of the entire child's possible. And what's a great governance process.
+[16:34:20] We have a new cluster for your classifier shader itself, which can just measure direct on the GPU timeline. But we've also changed our proficient shaders
+[16:34:30] We have to research a position in the beach file, which is simply just a scale of a significant form of the entire away from.
+[16:34:37] one name you need to change that. Tested mainly with the target color as part of the shift. Just that, it costs upwards to even bugging the hardware.
+[16:34:49] And finally, there are concerns to remember access patterns where the rest position might
+[16:35:00] in a very expensive way. This can be mitigated, this was linked to rights and tie-offs and computers, but I saw the women in the near future in his auntie's and from the ceremony with an auntie's.
+[16:35:06] There's obviously that we see an easy computer and subsequent scattering as benefits of the system, and that we should take a second look for new opposition up.
+[16:35:12] The next should be changing into situations where top-offs of our lives people are worse than me.
+[16:35:26] So since we're not running in topless fighting, significantly, it's a simple thing to give new opportunity to apply housing issues to our direct lighting.
+[16:35:36] is for the projection of directional light questions. And you can analyze that buffer as part of our class issue.
+[16:35:46] and we're determined to control what's fully wet, which means that there's no need to see full the shadow buffer in that case,
+[16:35:56] In my visualization on the right here, you can see that the tiny tiles are fully lit. The other tiles seem to push that up a further, but it's having a huge from changing
+[16:35:57] and the red tiles are full of that thing right.
+[16:35:59] in the unfold house.
+[16:36:12] So, here's the capture with this running as I've described. The classified stuff takes a quarter of a no-second, and we get a quick, or a six-minute no-second from the directional lighting as I saw.
+[16:36:22] not bad to get the contents for most seconds by 19, but it's ultimately disappointing
+[16:36:24] Some reason all these data permutations are still just quite convincing.
+[16:36:36] and this is not an action to be able to resolve the private level. And this is what you said in the different segment you mentioned in that shader, where we have the dynamic loop on the collection program, and that's a drag.
+[16:36:48] So this is the need of the time to research something that's right in the morning and I'm really quite a long time ago, but never should be in, which is what the array of being a people,
+[16:36:51] and plays as presented in the mental health of the world at SIGRAPH 27th.
+[16:36:55] help us ended in context of waiting, but it totally applies for a function probably
+[16:37:08] And my invitation doesn't divert too much from the chaos. I limit lights and throws 264 per view with 30 to the next.
+[16:37:19] for each way of running, so it will become scalarised, which is going to improve our consistency and move loads into your usual vector in the scalar.
+[16:37:28] a little bit of time from setting up the list in the cluster calling shader, the stock army of four has a linked list of search to cluster plating.
+[16:37:38] numbers of lights were just great for gender, but it was way overkill for kids. I would have been able to stop position disabled on Gen 9 and PC to avoid
+[16:37:47] highest quality. These yellow ones were for reference and manic or something. But in hindsight, we could have revisited that decision and I was the final level of this college because I don't think we ever had more than 64-lice in a few weeks.
+[16:37:59] And finally, in a quick place, a single prep best have, as it was pretty common for us to get away with producing a few down to a single prep on Jenny's scale building conditions.
+[16:38:03] And that's the need to load the cluster data in the area.
+[16:38:15] So here you can see the occupancy timing improvements with the flat that are right about this is much more in line with the type of result
+[16:38:25] about a quarter of a second on the reflection of the client. Additionally, the scapures shows that the heat taking into account the top of each other. The most optimal time, during the day, it
+[16:38:32] entire art can see the meper mutations on the left side of the platform which I'm ready to close to the full shading path but still ready to flat the right coat and did it.
+[16:38:46] And here you can see these single-purpose pads, which included the found review that I've been using. I don't even better have proven to be seen across all the
+[16:38:56] also could save. These two modes are worshiped in the final name, and what we did not use the platform to rate that them Gen9, we did still enable the top class of the five path which saved
+[16:38:58] 5, 14, 14, 15, which is great for our engine.
+[16:39:08] The only concept we did not ship about was the fish non-wistage one, which likes cross-line wave operations and is inefficient with which we can clean grass fair.
+[16:39:22] Now I have some small units from my implementation that I've improved the funds in my time on Rumbleverse. The first is a pretty clear impression to like that it's not obvious to me for years ago,
+[16:39:24] such counts with the first wave-frame and the inside of the computer barrier in our class.
+[16:39:35] This was just an attempt to avoid it kind of in my office and some human beings where it's in the way of trying to dispatch, just being too clear, very small amount of power and immediately also prepare your work to be seen.
+[16:39:47] However, twice the memory barrier is here like this only synchronizes access to the RAM within the record from the cross-play group so this is a great solution.
+[16:39:57] especially in order on Xbox and Xbox One or in the first group. Basically, we got to wait with this on our most professional areas, but still not.
+[16:40:08] to this without resorting up to Island GPU, very innocent, and it's quite simple. You just handle the counts of the ring buffer so the next dispatch arts are what it means
+[16:40:11] the front ones and no barriers. It can shape your belly and uh...
+[16:40:22] utilization can say high up after a small amount of additional improvement. You can also do this in any separate dispatch or some sort of appropriate clear which might be optimal if you're one to different
+[16:40:29] trying to go on and you want to hear all those arcs of ones. But they have that being definitely still a point of your fighting with the used one.
+[16:40:41] There's not a position I want to mention. My rumour first period is type 2 if you would just ingence, but those are actually sub-occurring.
+[16:40:51] to do using the white address cover, as shown on the lower half of this line. But it doesn't generate the same assembly code in the compiler. And since this is going to affect our pipelines,
+[16:40:53] more pieces where this could affect our pitch.
+[16:41:05] So here's the GCN assembly, what happens to one of our deferred light shading permutations? The light interest buffer, that avoid it's calling a buffer,
+[16:41:16] spectrum, memory instruction, and also voids placing an instruction following me personally, the two turn the vector resulting to scalar right away.
+[16:41:17] and we shift to instructions of
+[16:41:20] My graph position, but totally free of you very much.
+[16:41:33] So all these efforts were well and good on GCN but we had one more problem with the Ministry of Health. Probably not on the other story of some of you but we slid on the Institute to
+[16:41:43] to relate to our development cycle, hopefully we can win the platform as publicly announced. But even with the late star, I'm on to ship it on lunchday and have a high quality.
+[16:41:47] if you have a position on this platform. And I thought it was a great time to install a cloud-class.
+[16:41:57] This went into a different run, the Xbox and Sony consoles with its Nvidia GPU and the fixed wave size of 32. But it also brings some more mining, the ice interest, like car stuff.
+[16:42:00] and we have operations that affect us for one.
+[16:42:08] and it did a trace here from our corner state park stage where you can download. And that's one of the levels we found start one to maintain our target resolution.
+[16:42:22] However, a many-quarter top-ups fight that handle just a different wave size with shacking discipline unions which do.
+[16:42:25] one, the third lady was basically even on time and reflection of photos for some reason.
+[16:42:34] The only breaks problem was that SSR still got three times in the most aggressive growth, getting some of the results from these questions in the future in the soil I don't have one.
+[16:42:38] So we're called the drawback segmention previously with our conversion of draw pulse.
+[16:42:54] the need for manual blending and potential issues with red or ring. To feel it, it's possible to implement a top hospital system that avoids all those issues
+[16:42:56] to our indirect using the protection to what the blood patient and transforming it into the recordation of the screen.
+[16:43:07] The main reason to not do this is to pick up by overshading waste and help them fix those for an edge of the triangle, making up for the two triangles making up each triangle.
+[16:43:15] is bound to get sources of blood size to pieces. When in the eight titles, an agent trying to apply is when you have 16 companies.
+[16:43:24] The luckily immediate sense of work or data block from the Internet for some time. This is even exploratory to see the people who can extension the data in the field
+[16:43:34] We film them where, instead of the H&T climate, we use a single trial of trying to correct and be submitted in the founding right for that triangle,
+[16:43:36] with no need for a public assistance.
+[16:43:47] It seems like platforms with this available in brand new surroundings. Peter, something is going to be a swing.
+[16:44:00] So here you can see a video trace which was shooting for it to run fast by the slide. And it yields a substantial improvement to performance.
+[16:44:10] and it will certainly be better than this. Unfortunately, the classified class is still much more inefficient, which too, than the GCN Councils.
+[16:44:20] this, but ultimately the best strategy which is which the 16-bit 16 tiles, so that in quarter of the tiles need to be run up by the class of five-pass. And this was also
+[16:44:22] support for places in shape and especially to be greater than 90s.
+[16:44:30] in class like under three times the most likely by doing that. And there's been more left for performance in class studies.
+[16:44:40] This is a 20-7-0 circuit equivalent over baseline which is more minus than our views on GCN but still totally worth it.
+[16:44:51] So, optimization efforts like classifier works went a lot of my early efforts on the project. We only had a few improvements, go down.
+[16:44:56] by flying and ensuring that all platforms can be situated straight on all stages was a daunting time.
+[16:45:07] A really critical part of this effort was not a needed data before this question. From one's data collection.
+[16:45:10] the lighters being set up as seen in this levels for blocked out by designers.
+[16:45:12] newslighters are just run nightly.
+[16:45:17] And that can be the only stable team in the market.
+[16:45:23] to be triggered for specific changes, we're trying to narrow down any performance regression, or a lot of the impact of the new up.
+[16:45:36] Make effort to our rendered people director at our Galaxy. Build the state of browser on screen here in Python for doing the results of our complemented.
+[16:45:37] time from a gentle standpoint of others.
+[16:45:49] What you think that made the LLT-24, this part of the LLT-25 in the 99% pile of waste frames,
+[16:45:59] for you to do something like a college stage at this view, show that the most challenging shots are on average 3-0 seconds over budget for that level. We also had a review for attracting
+[16:46:05] of frames within budget, which is great for catching you with Russians, but it doesn't tell you how bad the hotspots are the way something would be.
+[16:46:17] And in this browser, you can just double click on any of those cells. It's going to pull up this preview. It's going to pull up this detail. It's time to view a pretty flexible.
+[16:46:29] This gives break down to the whole of our parameters at once, and the timeline can be charged with the flight of back to the Olympic specific problem patterns to constate.
+[16:46:36] Another great feature is that we could run these smokes locally on a duck fence with local changes and then load them up into the browser for a detailed comparisons at the timeline.
+[16:46:40] What was second from part of the day?
+[16:46:52] of course, having much data doesn't do any good, and analyze it and act upon it as it's new. Looking at our timeline, we're closely here, and see it's got two to the most common problems in our first.
+[16:47:02] with the dotted line in the areas where your team performance is bad enough that oscillations can't count to the minimum. And even if it does the process of drug frames, this is to avoid quality concern that we work with.
+[16:47:10] on the left, you can see areas where performance is so poor at the dynamic resolution you can't save us and the redgp time line is pushed over.
+[16:47:13] and then the fluid on the right side, to find these years for me.
+[16:47:25] total friend time. We want this. What's the new perspective right now? This warranted a closer investigation.
+[16:47:29] caused by rendering CPUs students with the RTI thread, and I'll be home, which is setting up that.
+[16:47:35] actually if the IC remains parallel to me. Remember it's right, and it's 20 for two long into the number of the IC calls to me.
+[16:47:38] which still holds the number of results in draft frames.
+[16:47:41] Now, we'll do the most effective things we did.
+[16:47:53] as it was the analyzed performance with the engineers having walked up straight plans with the artists, but still let up that to them to decide where to make actual cuts.
+[16:48:05] The artist monitor, the government dashboard, like we did, really wanted to get everything in the green. What simple talks like this really helps improve focus on optimization efforts
+[16:48:15] Next, I see a correct on their stages. And in short details, didn't get lost and tried to somewhere. If you easily be a question to your task or a sort of a part of something, why did not we be meeting?
+[16:48:24] some pages, so I'll be up to a few of them, so I'm here. But the main thing is just to organize the ideas, let's see which will aid, so we can spend a little impact. But again, what do we make them see?
+[16:48:35] There's also a curve that engineers spend time. You stage as you kind of have a name to do. Look for your technical oppositions we could think that might not have been apparent about it.
+[16:48:48] So our talk to you at stage stands out in line on where it is the first really challenging level that we work to give perform. It's a very critical key view and key view when we perform in 12 months.
+[16:48:58] The idea of the organization of Earth was largely our instrument, but I gave initial guidance what simply some reasonable things to start to say.
+[16:49:02] The platforms that the players have never entered to get back close to in a simple way, great-grandfather's program.
+[16:49:20] We have three D
+[16:49:24] learning, Newport Islands, and this just means that we have a dynamic local low decision where depending on the duration you're running, a different light
+[16:49:26] more lights to be fully baked on our low-end platforms.
+[16:49:38] You will need to detail them, I would like to make this work as a play-in-vade. And the waiting data is for all of the disconnecting time for platforms and jump-edits,
+[16:49:40] So, in the same time, we'll do the same thing.
+[16:49:50] I'm a CPU front, there's something that an argument to do, some more sleak thing, because the situation is still challenging with obvious reductions in success.
+[16:50:02] on real forward for a safe dynamic distancing system or emerging kind of ultra-fals together.
+[16:50:12] And those ones really probably never had a couple of firsts. When looking in the past, I could see that seeing the identical sets of measures were not working together.
+[16:50:22] This should not be multifaceted in practice. Some causes of very pretty quickly will be in the content. Middle of this slide, there's custom community for tens of colors, and there's
+[16:50:32] in some things. And then on the right there's really identical with the measures, but is there all actually separately input measures with different UV sets to interact with that window material?
+[16:50:34] Something to take our disc is fixed.
+[16:50:46] But there was also a very visible capability that I'm not showing here, which is a split and I like that that was textures. During light night, they put in a space of school, and you wouldn't get started, and
+[16:50:47] just keep you merged together and then see you.
+[16:50:56] This is something that binded through sources we put with that was an endure available to us on the project. But the time we had this problem was too late.
+[16:51:09] So resolving the archer communities used with relatively straightforward varieties as a new unique point.
+[16:51:19] and inputs from the community to a color. And it was this information that I'm actually going to do. You can see, for example, if this name name you would play for and pass it to objects like it would. Probably on our, she got it.
+[16:51:29] There's some reason, there's a special piece of the little. And sometimes artists need that at some variation that they want, but often times they learn artists
+[16:51:30] And the one who loves her is fine.
+[16:51:36] Now, what about that issue required in January and eventually in my part?
+[16:51:48] Most straightforward thing I think you can do was just increase the resolution to JavaScript. But that has an inverse relationship with how well the light now Alice pages in interact with a new force texture streaming system.
+[16:52:03] community perspective this. Thank the light and that pages to for the more memory to say in front of me. So pages are perfectly with work in July but to me by two years before I want to give it one.
+[16:52:17] a couple of this change within more and both exchange zones. Here we go. Where I've changed to the second one to part of our ties back into our,
+[16:52:24] the machine together with a relaxed distance frame. This could also result in less upon all three of the structures, but in practice it's great when for us,
+[16:52:25] two more seconds to see if you can use time on switch.
+[16:52:39] Now for the file sessions start, much more so than other providers have worked on first-year talking to people and so have never seen that how these applications will be
+[16:52:41] on all-engine configuration.
+[16:52:47] I thought I could do something to station sharing, or I could find a bunch of changes that were hard to find about third or third.
+[16:52:57] So the main difference like the shader and I'm real is something that honestly which dozens of times can be test-faced working on burgers.
+[16:53:08] But it took until first theatre for me to find the use of three of his constant fluidity
+[16:53:18] is a big milestone. The writing price is to shape different nations for light text and at real for the different lighting classes. So it's really my best interest to make sure
+[16:53:31] So just moving these classes out of time for virtual, like, say point one's over. No, so I can just up the light and shader on at one point. One and at one.
+[16:53:34] or it can be straight. And it seems that the higher percentage of untied pixels is actually going to have higher impact sometimes.
+[16:53:49] So in this time of your shot that I'm using, actually it's still good. Almost as long as we can be classified as concentrating that from higher side, quite like 4-0 seconds.
+[16:53:58] I'm going to introduce the right playtiles in that view, our view is called entire. I believe this is because the ball is going to be ground, and allows for shaded predictions to be even more effective,
+[16:54:01] for example, not being able to use them, but less than you can picture simply with a bit higher.
+[16:54:04] Now, now, to all the time, it's the first section of this talk.
+[16:54:11] called type classification, or with this optimization, you know, you know, like found this optimization, much later, or call one second.
+[16:54:21] Moving on, I've done some testing, the great API I think, that let's see the updates for pixels that are outside of the specified.
+[16:54:33] This can be a smooth transition for things like how far they prefer to try to investigate the formulation. And you'll get on the current on the real and you can see that this is a moment for each platform. And you will see that the high weapons are both parts of the country.
+[16:54:42] a really simple thing was happening on switch one very most far-browl, which is the little level of depth found to be there, did not actually high level assumption in time for it all the other parts.
+[16:54:54] that's calling the RETriceptor bounce function will automatically need the bounce testing if it's not already turned out. Simple to unchanged your count for this,
+[16:54:57] I think it's a good time.
+[16:55:03] Now, on a similar vein, you've ever dealt with texturizing. Council hardware, it can be familiar with that council's community piece.
+[16:55:15] The year of my memory architecture typically lets you write texturated directly to a GPU accessible memory from the CPU, which lets you simply need to look at the data
+[16:55:21] and property to find a factory. On PC, this is where the property dedicated theorem will be happening over the PCI.
+[16:55:33] to this GPU significantly, the protection data to be laid out in a social format, to next question at start shading. And this stuff can also be done offline, which actually would take a council's reading that part of us.
+[16:55:45] Gadget here, deliver making the marriage, for making use of the inner piece of the marriage on switch for most of our college. There's some third 49 and I'm real to do all this work for you,
+[16:55:51] use the P-vertural detection at the P-vertural detection and the P-vertural detection system. And that is to say we're going to fold as it has voice.
+[16:56:00] The class of the use of knowing how things should work to operate efficiently and seeing over the current engine to do so, but still need to verify at one time that that code is actually.
+[16:56:11] reference to get all this configured correctly and function over the regular file, you see four milliseconds to see for your time off of frames with higher about to see utilization of this with one.
+[16:56:24] Alright, so one of my full theme that I want to mention is to always be vigilant about ashes that are placed directly in top of each other. At this point, I'm convinced every game should be dual with some third one.
+[16:56:33] It's a type of like that. It's part of time finding, because the resulting frame for our recognition is still visually correct. Is there really only obvious things we can cover to our visualism?
+[16:56:43] the dollars about them, though maybe a verse is in a bread way. But in sharing, you just keep happening, whatever happens in the first place is the best energy. I'm Kelly for more.
+[16:56:50] the world out of the system that identifying you would be a stupid good place, matches that we're always started and had no additional logic.
+[16:57:01] We just line my ability to express. Additionally, at MAMTRAC we are recording for any objects that might be duplicates, but we can't be sure so that way design is in hardest condition.
+[16:57:13] Remember, it's been done or deleted by my analysis, but two cases on our alpha-trace stage can be done with it with ACE measures. And this system is still not more than a dozen since it's after all.
+[16:57:17] Alright, so a few final thoughts for our bubble bun.
+[16:57:29] Without merging, to wishing you four major engine revisions, there are a couple of positions in testing and protection to seek further.
+[16:57:36] the size is maybe much like fully supported, it works for fact on Xbox. Just so that like an experiment with time and trade off, so the Raster versus Computing the Piles sizes.
+[16:57:43] The quite overdone hormone does decrease the spread of his health-sizing pieces so make their own.
+[16:57:54] On voter scale, or in the entire month in this project, trying to get quite a bit of a shadow and that's where the need to be in this extra way to accelerate or address your own light shadows.
+[16:58:04] like direction. I can never get the right balance of quality. This game ultimately uses the texture shut-up map for other strategies that turn your first data when most do
+[16:58:14] But I think there's like the in a perch that is very sweet content of the skin that I think is really hot. And some sort of perch I don't actually have to swim with on real fight,
+[16:58:15] to be able to skip updates to set a cloud for us.
+[16:58:25] Another thing I never got to do was to push a efficiently appropriate dynamic anti-goisting to the A-ansist.
+[16:58:36] This feature was cost prohibited to our performance budget at the box, but I had some ideas that allow us to speak in a more performing way and a more lasting buffer for processes to have
+[16:58:41] or to unfortunately hard to find a time just flying the situation for just that one platform when you're getting it.
+[16:58:56] And finally, some reflections about the project overall and I take away from it. First off, make sure your game exchange would be clear. Instead of this before I'll say it again, no engine for the industry, exactly in its own game.
+[16:59:07] The reason the license engines are shared with this is across our teams, but studios is because we do a mess to get up to our efforts. But I find that so there is a daily benefit from training the engine,
+[16:59:12] for the institution. You have the required additional local exchanges to be.
+[16:59:20] Some complicatedness, performance across one whole platform is going to trigger us. Ever seen the same for a guy?
+[16:59:25] are being followed or executed, they should be an oldest used, particularly can verify it with analysis.
+[16:59:37] Thank you for your information, generally, it almost invades forms to you, teachers, providing data and in-engine diagnostics. But the most important thing is to have a vision of what you expect to gain in the
+[16:59:47] in an effort frame and make sure they're actually doing it. And lastly, every department needs to understand and plan for the need to spend time
+[16:59:57] that's how communication is critical to ensure that quality and judgment is to our work of regard to that.
+[16:59:58] by hoping that we'll break.
+[17:00:02] detector networks to say performance is a challenge of possible.
+[17:00:14] We'll let you stay up. We've got there at the end. Here's our smoke dashboard showing transit target across everything and ship.
+[17:00:17] and friends at Target in all of the specifics.
+[17:00:29] to roll in competitions and find us some great things. Huge safety to your activation in Tony Hawk for the amazing partners.
+[17:00:35] to everyone on the talented team in our galaxy, who is especially making a further framework. Matt Thompson, Perrius, and I hope we should comment on it.
+[17:00:46] from the great collaborators. CDC for having me in the third person to be amazing advisors for this talk. I family, Kelsey, you know what's based in the research for always being
+[17:00:56] and of course, then you say border, no greater feeling than you'd be living on your tip. We have time, and support their view, but I'm hoping to facilitate questions on the microphone.
+[17:01:02] Thank you.
+[17:01:16] Hi, first wonderful presentation.
+[17:01:23] Yeah, so I guess my question for you
+[17:01:35] Actually, I think it's kind of already answered this. I was gonna ask one other features when you wanted to implement it.
+[17:01:45] you already mentioned that you can do time-rushing towards shipping. So yeah, I guess a question for you is,
+[17:01:55] and what did you learn from him? Yeah, it's a touch on that I certainly,
+[17:02:05] I think that if I could go back to time to do anything, I've been doing five or two little senior.
+[17:02:07] by command to keep on once in my life.

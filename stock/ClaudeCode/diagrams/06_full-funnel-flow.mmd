@@ -1,0 +1,21 @@
+flowchart LR
+    ADS["UA Ad Spend\nGoogle Ads / Meta"] -->|"Install"| FA["Firebase Analytics\nUser Behavior"]
+    FA -->|"Session / Retention"| ADMOB["AdMob Revenue\nIn-Game Ads"]
+    FA -->|"Purchase"| IAP["IAP Revenue\nIn-App Purchase"]
+    ADMOB --> LTV["LTV Calculation\nAd Rev + IAP Rev"]
+    IAP --> LTV
+    LTV -->|"Optimize Bids"| ADS
+
+    FA --> AB["Firebase A/B Test\nAd Placement"]
+    AB -->|"Validate"| ADMOB
+
+    ADS --> CLAUDE["Claude Code\n/ads audit"]
+    CLAUDE -->|"Reduce Waste"| ADS
+
+    style ADS fill:#E17055,color:#fff
+    style FA fill:#FDCB6E,color:#000
+    style ADMOB fill:#00B894,color:#fff
+    style IAP fill:#0984E3,color:#fff
+    style LTV fill:#6C5CE7,color:#fff
+    style AB fill:#A29BFE,color:#fff
+    style CLAUDE fill:#2D3436,color:#fff

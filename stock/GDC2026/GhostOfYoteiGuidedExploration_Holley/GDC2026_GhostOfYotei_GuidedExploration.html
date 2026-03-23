@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>Ghost of Yōtei: Guided Exploration</title>
+    <link rel="stylesheet" href="/Users/daisuketsukada/Documents/dsgarageBlog/TechBlog/style.css">
+</head>
+<body>
+<div class="cover">
+    <h1>Ghost of Yōtei: Guided Exploration</h1>
+    <p class="subtitle">Clues and Camping in ‘Ghost of Yōtei’: Curating
+Guided Exploration Through a Non-Linear Open World</p>
+    <div class="meta">
+        <p>2026-03-12</p>
+        <p>GDC 2026 セッションノート — Samuel Holley (Sucker Punch
+Productions)</p>
+    </div>
+</div>
+<div class="toc">
+    <h2>目次</h2>
+<ul>
+<li><a href="#セッション情報"
+id="toc-セッション情報">セッション情報</a></li>
+<li><a href="#part-1-イベントデッキの仕組み"
+id="toc-part-1-イベントデッキの仕組み">Part 1:
+イベントデッキの仕組み</a>
+<ul>
+<li><a href="#イベントデッキシステムの概要"
+id="toc-イベントデッキシステムの概要">イベントデッキシステムの概要</a></li>
+<li><a href="#ディーラー-あらゆるインタラクションポイント"
+id="toc-ディーラー-あらゆるインタラクションポイント">ディーラー =
+あらゆるインタラクションポイント</a></li>
+<li><a href="#黄金の秘訣-その1-多様なプレイスタイルへの対応"
+id="toc-黄金の秘訣-その1-多様なプレイスタイルへの対応">黄金の秘訣 その1:
+多様なプレイスタイルへの対応</a></li>
+<li><a href="#デッキの仕組み-4枚カードの例"
+id="toc-デッキの仕組み-4枚カードの例">デッキの仕組み:
+4枚カードの例</a></li>
+<li><a href="#黄金の秘訣-その2-何もしない余白をデッキに入れる"
+id="toc-黄金の秘訣-その2-何もしない余白をデッキに入れる">黄金の秘訣
+その2: 「何もしない」余白をデッキに入れる</a></li>
+<li><a href="#緊急カードの仕組み"
+id="toc-緊急カードの仕組み">緊急カードの仕組み</a></li>
+<li><a href="#黄金の秘訣-その3-伝えることのコストを意識する"
+id="toc-黄金の秘訣-その3-伝えることのコストを意識する">黄金の秘訣 その3:
+伝えることのコストを意識する</a></li>
+<li><a href="#システミックエンカウンター"
+id="toc-システミックエンカウンター">システミック・エンカウンター</a></li>
+</ul></li>
+<li><a href="#part-2-dealer-deep-dives"
+id="toc-part-2-dealer-deep-dives">Part 2: Dealer Deep Dives</a>
+<ul>
+<li><a href="#取り調べinterrogation"
+id="toc-取り調べinterrogation">取り調べ（Interrogation）</a></li>
+<li><a href="#キャンプサイト訪問者campsite-visitor"
+id="toc-キャンプサイト訪問者campsite-visitor">キャンプサイト訪問者（Campsite
+Visitor）</a></li>
+<li><a href="#黄金の秘訣-その4-場所に紐づかないディーラー"
+id="toc-黄金の秘訣-その4-場所に紐づかないディーラー">黄金の秘訣 その4:
+場所に紐づかないディーラー</a></li>
+<li><a href="#non-linear-linearity非線形な線形性"
+id="toc-non-linear-linearity非線形な線形性">Non-Linear
+Linearity（非線形な線形性）</a></li>
+<li><a href="#黄金の秘訣-その5-ナラティブの一貫性"
+id="toc-黄金の秘訣-その5-ナラティブの一貫性">黄金の秘訣 その5:
+ナラティブの一貫性</a></li>
+<li><a href="#v.o.-recording-レシピのスペクトラム"
+id="toc-v.o.-recording-レシピのスペクトラム">V.O. Recording:
+レシピのスペクトラム</a></li>
+</ul></li>
+<li><a href="#part-3-benefits-shortcomings"
+id="toc-part-3-benefits-shortcomings">Part 3: Benefits &amp;
+Shortcomings</a>
+<ul>
+<li><a href="#メリット" id="toc-メリット">メリット</a></li>
+<li><a href="#欠点" id="toc-欠点">欠点</a></li>
+<li><a href="#結論" id="toc-結論">結論</a></li>
+</ul></li>
+<li><a href="#golden-secrets-まとめ" id="toc-golden-secrets-まとめ">5
+Golden Secrets まとめ</a></li>
+<li><a href="#全トランスクリプト要約46項目"
+id="toc-全トランスクリプト要約46項目">全トランスクリプト要約（46項目）</a>
+<ul>
+<li><a href="#part-1-イベントデッキの仕組み-1"
+id="toc-part-1-イベントデッキの仕組み-1">Part 1:
+イベントデッキの仕組み</a></li>
+<li><a href="#part-2-dealer-deep-dives-1"
+id="toc-part-2-dealer-deep-dives-1">Part 2: Dealer Deep Dives</a></li>
+<li><a href="#part-3-benefits-shortcomings-1"
+id="toc-part-3-benefits-shortcomings-1">Part 3: Benefits &amp;
+Shortcomings</a></li>
+</ul></li>
+</ul>
+</div>
+<div class="content" data-date="2026-03-12">
+<h2 id="セッション情報">セッション情報</h2>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th style="text-align: left;">項目</th>
+<th style="text-align: left;">内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">タイトル</td>
+<td style="text-align: left;">Clues and Camping in ‘Ghost of Yōtei’:
+Curating Guided Exploration Through a Non-Linear Open World</td>
+</tr>
+<tr>
+<td style="text-align: left;">スピーカー</td>
+<td style="text-align: left;">Samuel Holley (Sucker Punch
+Productions)</td>
+</tr>
+<tr>
+<td style="text-align: left;">トラック</td>
+<td style="text-align: left;">Design, Narrative &amp; Performance</td>
+</tr>
+<tr>
+<td style="text-align: left;">形式</td>
+<td style="text-align: left;">Lecture</td>
+</tr>
+<tr>
+<td style="text-align: left;">日時</td>
+<td style="text-align: left;">2026年3月12日（木）10:30–11:30</td>
+</tr>
+<tr>
+<td style="text-align: left;">場所</td>
+<td style="text-align: left;">Room 2005, West Hall</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="part-1-イベントデッキの仕組み">Part 1:
+イベントデッキの仕組み</h2>
+<h3 id="イベントデッキシステムの概要">イベントデッキシステムの概要</h3>
+<p><img src="images/gdc2026_yotei_exploration_09.jpg" /></p>
+<p>世界はディーラーで溢れている。ディーラーはイベントデッキからカードを引き、その情報を使って現在の状況に最も適切なものを選んで提供する。</p>
+<p>イベントデッキとは、カードデッキ方式で非線形オープンワールドのガイド付き探索を実現するシステムだ。デッキは理想的なフローを線形に定義し、シャッフルせずリセットする。</p>
+<h3 id="ディーラー-あらゆるインタラクションポイント">ディーラー =
+あらゆるインタラクションポイント</h3>
+<p><img src="images/gdc2026_yotei_exploration_12.jpg" /></p>
+<p>ディーラーとは、ワールド内のインタラクション可能な存在（NPC、掲示板、キャンプ、敵など）のこと。プレイヤーが接触するとイベントデッキからカードを引いて適切なイベントを提供する。</p>
+<h3 id="黄金の秘訣-その1-多様なプレイスタイルへの対応">黄金の秘訣 その1:
+多様なプレイスタイルへの対応</h3>
+<p><img src="images/gdc2026_yotei_exploration_14.jpg" /></p>
+<p>特にオープンワールドゲームでは、プレイヤーはそれぞれ異なるプレイスタイルを持っている。NPCと話すのが好きな人ばかりではない。キャンプをたくさんするのが好きな人ばかりでもないが、誰もがこれらのうちいくつかはやる。</p>
+<p>すべてをディーラーに変えることができれば、イベントデッキがプレイスタイルに関係なくすべてのプレイヤーに届くようにできる。</p>
+<h3 id="デッキの仕組み-4枚カードの例">デッキの仕組み: 4枚カードの例</h3>
+<p><img src="images/gdc2026_yotei_exploration_15.jpg" /></p>
+<ol type="1">
+<li>プレイヤーが集落の賞金首掲示板に近づく →
+<strong>武器アンロック</strong> カードが引かれる</li>
+<li>酒場の浪人に話しかける → <strong>体力増加</strong>
+カードが引かれ、温泉への地図をもらう</li>
+<li>戦闘後、敵を取り調べる → <strong>メインストーリー</strong>
+カードが引かれ、OTA6の居場所を聞き出す</li>
+<li>十分な時間が経過 → <strong>孤独</strong>
+カードが発動し、デッキがリセットされる</li>
+</ol>
+<h3 id="黄金の秘訣-その2-何もしない余白をデッキに入れる">黄金の秘訣
+その2: 「何もしない」余白をデッキに入れる</h3>
+<p><img src="images/gdc2026_yotei_exploration_19.jpg" /></p>
+<blockquote>
+<p>“Downtime is an experience too, and you must plan for it
+explicitly.”</p>
+</blockquote>
+<p>「孤独」カードは特別なカードで、デッキの中に「何もしない」ための明確なスペースを確保する。『対馬（Tsushima）』のときのようにプレイヤーにやることを山積みにしない。日本の辺境をさまよい、自分の馬だけが唯一の相棒——それはエモーショナルターゲットだ。</p>
+<h3 id="緊急カードの仕組み">緊急カードの仕組み</h3>
+<p>デッキは常に変化し続ける。特定の条件が満たされると、カードがデッキの先頭にジャンプする。例えば「体力増加」カードはデッキの真ん中にあるが、最大体力が他の進行度に対して遅れていると判断されたら、緊急カードとしてデッキの先頭にジャンプする。</p>
+<h3 id="黄金の秘訣-その3-伝えることのコストを意識する">黄金の秘訣 その3:
+伝えることのコストを意識する</h3>
+<p><img src="images/gdc2026_yotei_exploration_21.jpg" /></p>
+<blockquote>
+<p>“Telling the player about something has a cost.”</p>
+</blockquote>
+<p>プレイヤーに何かを伝えることにはコストがある:</p>
+<ul>
+<li>自分で発見する喜びを奪う</li>
+<li>やることリストにもう1つ項目が追加される</li>
+<li>伝えることすべてが、次に伝えることとの競争になる</li>
+</ul>
+<p>コストが高い場合は計画に固執せず、プレイヤーが未完了のものを終えるか新しいリージョンに入るまでカードをスキップする。</p>
+<h3 id="システミックエンカウンター">システミック・エンカウンター</h3>
+<p><img src="images/gdc2026_yotei_exploration_24.jpg" /></p>
+<p>作り込みコンテンツの間の空白を埋めるシステム。イベントデッキを参照してスポーン内容を決定する。「孤独」カード時は動物のみスポーンし、意図的な空虚感を演出する。</p>
+<hr />
+<h2 id="part-2-dealer-deep-dives">Part 2: Dealer Deep Dives</h2>
+<h3 id="取り調べinterrogation">取り調べ（Interrogation）</h3>
+<p><img src="images/gdc2026_yotei_exploration_27.jpg" /></p>
+<p>イベントマスターリストは全イベントを定義した巨大テキストファイル。カードから具体的イベント（オーディオ、アニメ、テキスト）への変換テーブルとして機能する。</p>
+<p><img src="images/gdc2026_yotei_exploration_29.jpg" /></p>
+<p>デリバリーシステムにより、同じイベントを複数の配信方法（talk /
+interrogation
+等）で届けられる。ディーラーごとに対応するデリバリーが異なる。</p>
+<h3
+id="キャンプサイト訪問者campsite-visitor">キャンプサイト訪問者（Campsite
+Visitor）</h3>
+<p><img src="images/gdc2026_yotei_exploration_35.jpg" /></p>
+<p>リージョンルール（allowed_regions）により、デリバリーに地域制約がある。プレイヤーの現在地域に合う情報のみ提供し、遠い地域の情報はフィルタされる。</p>
+<h3 id="黄金の秘訣-その4-場所に紐づかないディーラー">黄金の秘訣 その4:
+場所に紐づかないディーラー</h3>
+<p><img src="images/gdc2026_yotei_exploration_37.jpg" /></p>
+<blockquote>
+<p>“You need reliable, repeatable, non-location-based Dealers to keep
+the Event Deck moving.”</p>
+</blockquote>
+<p>キャンプサイトのような場所に紐づかないディーラーは極めて価値が高い。プレイヤーが自発的にエンゲージし、どこでも発動し、デッキの枯渇を防ぐ。</p>
+<h3 id="non-linear-linearity非線形な線形性">Non-Linear
+Linearity（非線形な線形性）</h3>
+<p><img src="images/gdc2026_yotei_exploration_40.jpg" /></p>
+<p>非線形なプレイヤー行動 ×
+線形なデッキ計画の融合。どの順序で何をしても、デッキは同じシーケンスのカードを異なるディーラー＋デリバリーで自然に届ける。</p>
+<h3 id="黄金の秘訣-その5-ナラティブの一貫性">黄金の秘訣 その5:
+ナラティブの一貫性</h3>
+<p><img src="images/gdc2026_yotei_exploration_43.jpg" /></p>
+<blockquote>
+<p>“Narrative context and consistent voice performance are essential for
+making systemic dialog tolerable.”</p>
+</blockquote>
+<p>allowed_tagsでキャラクターごとにセリフを差別化しイマージョン維持。開拓者は「精霊」、松前藩侍は「ロシア人」と同じ情報でも語り方が異なる。</p>
+<h3 id="v.o.-recording-レシピのスペクトラム">V.O. Recording:
+レシピのスペクトラム</h3>
+<p><img src="images/gdc2026_yotei_exploration_50.jpg" /></p>
+<p>計算式: <strong>E × C × L × V = T</strong>（イベント数 × 会話数 ×
+行数/会話 × ボイス数 = 総行数）</p>
+<p><img src="images/gdc2026_yotei_exploration_54.jpg" /></p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">レシピ</th>
+<th style="text-align: left;">用途</th>
+<th style="text-align: left;">コスト</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">2×5×6</td>
+<td style="text-align: left;">OTA6メインストーリー</td>
+<td style="text-align: left;">高（全体の10%以下）</td>
+</tr>
+<tr>
+<td style="text-align: left;">1×4×2</td>
+<td style="text-align: left;">取り調べ</td>
+<td style="text-align: left;">中</td>
+</tr>
+<tr>
+<td style="text-align: left;">1×4×1</td>
+<td style="text-align: left;">キャンプ訪問者・環境NPC</td>
+<td style="text-align: left;">低（全体の90%以上）</td>
+</tr>
+</tbody>
+</table>
+<p>VA×16キャラ戦略:
+1人のボイスアクターが16マイナーキャラを演じ、スケーラブルな配信を実現。</p>
+<hr />
+<h2 id="part-3-benefits-shortcomings">Part 3: Benefits &amp;
+Shortcomings</h2>
+<h3 id="メリット">メリット</h3>
+<p><img src="images/gdc2026_yotei_exploration_66.jpg" /></p>
+<ol type="1">
+<li><strong>非線形設計の自由度</strong> —
+開発者が安全な線形パターンから脱却できる</li>
+<li><strong>出力ベースの設計</strong> —
+デザイナーは入力ではなく出力を記述する。カード並び替えでペース制御</li>
+<li><strong>好奇心の醸成</strong> —
+ゲームがプレイヤーのところに来るので、自由に行きたい場所に行ける</li>
+<li><strong>プレイヤー選択の強化</strong> —
+カードスキップにより常に意味のある選択肢を保証</li>
+<li><strong>オープンワールド疲労の対策</strong> —
+理想的なリズムを奨励し、同じ体験の連続を防ぐ</li>
+<li><strong>ナラティブとサイドコンテンツの統合</strong> —
+ストーリーとメカニクスの境界をぼかし、より一貫した物語を作る</li>
+</ol>
+<h3 id="欠点">欠点</h3>
+<p><img src="images/gdc2026_yotei_exploration_67.jpg" /></p>
+<ol type="1">
+<li><strong>システミック・ダイアログの品質限界</strong> —
+ナラティブのナッジは得意だが、大きな感情的イベントには不向き</li>
+<li><strong>大規模な投資</strong> —
+多数のディーラーと多部門連携が必要</li>
+<li><strong>伝えることは得意だが、実行させることは苦手</strong> —
+リード→行動の相関は約75%</li>
+<li><strong>ダイアログへの過度な依存</strong> —
+イベント配信が会話に偏りがち。次回はオブジェクト・デリバリーにもっと投資したい</li>
+</ol>
+<h3 id="結論">結論</h3>
+<p>メリットは欠点を上回る。イベントデッキは全員を同じ道に強制するのではなく、プレイヤーが気に入りそうな方向にそっと押す（ナッジ）。多くの欠点は次回のイベントデッキで改善可能。</p>
+<hr />
+<h2 id="golden-secrets-まとめ">5 Golden Secrets まとめ</h2>
+<p><img src="images/gdc2026_yotei_exploration_72.jpg" /></p>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th style="text-align: left;">#</th>
+<th style="text-align: left;">Golden Secret</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">★1</td>
+<td
+style="text-align: left;">質的に多様なディーラーでカバレッジを確保し、異なるプレイスタイルに訴求する</td>
+</tr>
+<tr>
+<td style="text-align: left;">★2</td>
+<td
+style="text-align: left;">孤独カードを忘れるな。ダウンタイムも体験であり、明示的に計画すべき</td>
+</tr>
+<tr>
+<td style="text-align: left;">★3</td>
+<td
+style="text-align: left;">プレイヤーに何かを伝えることにはコストがある。最大の効果が得られるときだけ払え</td>
+</tr>
+<tr>
+<td style="text-align: left;">★4</td>
+<td
+style="text-align: left;">場所に紐づかない信頼性の高いディーラーで、プレイヤーがコンテンツハブから離れてもデッキを回し続ける</td>
+</tr>
+<tr>
+<td style="text-align: left;">★5</td>
+<td
+style="text-align: left;">ナラティブの文脈と一貫したボイスパフォーマンスが、システミック・ダイアログを許容可能にする鍵</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2
+id="全トランスクリプト要約46項目">全トランスクリプト要約（46項目）</h2>
+<h3 id="part-1-イベントデッキの仕組み-1">Part 1:
+イベントデッキの仕組み</h3>
+<ol type="1">
+<li><strong>ディーラー</strong>:
+ワールド内のインタラクション可能な存在。プレイヤーが接触するとイベントデッキからカードを引いて適切なイベントを提供</li>
+<li><strong>イベントデッキ</strong>:
+カードデッキ方式で理想的なフローを線形に定義。シャッフルせずリセットする</li>
+<li><strong>黄金の秘訣 その1</strong>:
+あらゆるインタラクションポイントをディーラー化し、どのプレイスタイルでもイベントが届くようにする</li>
+<li><strong>黄金の秘訣 その2</strong>:
+「孤独」カードで「何もしない」余白をデッキに確保する</li>
+<li><strong>緊急カード</strong>:
+進行バランスが崩れた場合、該当カードがデッキ先頭にジャンプして自動補正する</li>
+<li><strong>黄金の秘訣 その3（最重要）</strong>:
+伝えることにはコストがある。すでに類似情報を知っている場合はカードをスキップする</li>
+<li><strong>ダンジョンマスターとしてのデッキ</strong>:
+計画を持ちつつプレイヤーの変化に適応</li>
+<li><strong>システミック・エンカウンター</strong>:
+イベントデッキを参照してスポーン内容を決定。「孤独」カード時は動物のみスポーン</li>
+</ol>
+<h3 id="part-2-dealer-deep-dives-1">Part 2: Dealer Deep Dives</h3>
+<ol start="9" type="1">
+<li><strong>イベントマスターリスト</strong>:
+全イベントを定義した巨大テキストファイル</li>
+<li><strong>取り調べの条件分岐</strong>:
+デッキにカードがあれば取り調べ発生、「孤独」カードのみなら敵はただ死ぬだけ</li>
+<li><strong>デリバリーシステム</strong>:
+同じイベントを複数の配信方法で届けられる</li>
+<li><strong>イベント選択</strong>:
+複数の有効イベントがある場合は最初に見つかったものを採用</li>
+<li><strong>キャンプサイト = ディーラー</strong>:
+フェードイン/アウト時にデッキからカードを引く</li>
+<li><strong>Object Delivery</strong>:
+会話ではなくオブジェクトをスポーンするデリバリータイプ</li>
+<li><strong>リージョンルール</strong>:
+デリバリーに地域制約があり、プレイヤーの現在地域に合う情報のみ提供</li>
+<li><strong>キャンプサイト訪問者フロー</strong>: カード → マスターリスト
+→ リージョンフィルタ → NPC選択 → 会話再生</li>
+<li><strong>黄金の秘訣 その4</strong>:
+場所に紐づかないディーラーがデッキの枯渇を防ぐ</li>
+<li><strong>反省点</strong>:
+キャンプの価値に気づくのが遅く、キャンプに過度依存</li>
+<li><strong>核心メッセージ</strong>: 非線形なプレイヤー行動 ×
+線形なデッキ計画の融合</li>
+<li><strong>黄金の秘訣 その5</strong>:
+allowed_tagsでキャラクターごとにセリフを差別化</li>
+<li><strong>コストの現実</strong>:
+高コストだがイマージョン維持に不可欠</li>
+<li><strong>VA×16キャラ戦略</strong>:
+1人のVAが16マイナーキャラを演じる</li>
+<li><strong>レシピのスペクトラム</strong>: E×C×L×V=T</li>
+<li><strong>90/10の法則</strong>:
+安いレシピが90%以上、高いレシピは最重要イベントのみ</li>
+</ol>
+<h3 id="part-3-benefits-shortcomings-1">Part 3: Benefits &amp;
+Shortcomings</h3>
+<ol start="25" type="1">
+<li><strong>メリット1</strong>: 非線形オープンワールド設計の自由度</li>
+<li><strong>メリット2</strong>: 出力ベースの設計</li>
+<li><strong>メリット3</strong>: プレイヤーの選択を強化</li>
+<li><strong>メリット4</strong>: 活動の多様性リズム</li>
+<li><strong>メリット5</strong>: 世界の繋がりとリアリティ</li>
+<li><strong>メリット6</strong>:
+ストーリー/メカニカル両プレイヤーへの訴求</li>
+<li><strong>欠点1</strong>: 大きな感情的イベントには不向き</li>
+<li><strong>欠点2</strong>: 大きな投資が必要</li>
+<li><strong>欠点3</strong>:
+伝えることは得意だが行動は保証できない（相関約75%）</li>
+<li><strong>欠点4</strong>: ダイアログへの過度な依存</li>
+<li><strong>結論</strong>: メリットは欠点を上回る。次回で改善可能</li>
+</ol>
+</div>
+</body>
+</html>
