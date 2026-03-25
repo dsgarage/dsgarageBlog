@@ -1,0 +1,135 @@
+digraph pcg_taxonomy {
+    rankdir=TB
+    bgcolor="transparent"
+    fontname="Helvetica Neue"
+    fontsize=11
+    pad=0.8
+    nodesep=0.6
+    ranksep=0.8
+
+    node [
+        fontname="Helvetica Neue"
+        fontsize=10
+        style="filled,rounded"
+        shape=box
+        penwidth=0
+        margin="0.15,0.08"
+    ]
+
+    edge [
+        fontname="Helvetica Neue"
+        fontsize=9
+        penwidth=1.2
+        arrowsize=0.6
+        color="#94a3b8"
+    ]
+
+    // 中心ノード
+    pcg [label="PCG\n分類体系" fillcolor="#dbeafe" fontcolor="#1e40af" fontsize=12]
+
+    // 分類軸
+    subgraph cluster_timing {
+        label="タイミング"
+        labelloc=t
+        labeljust=c
+        style="rounded,filled"
+        color="#e5e7eb"
+        fillcolor="#f8fafc"
+        fontcolor="#1e40af"
+        fontsize=11
+        penwidth=1
+
+        online [label="オンライン\n(プレイ中生成)" fillcolor="#dbeafe" fontcolor="#1e40af"]
+        offline [label="オフライン\n(開発中生成)" fillcolor="#f3f4f6" fontcolor="#4b5563"]
+    }
+
+    subgraph cluster_necessity {
+        label="必要性"
+        labelloc=t
+        labeljust=c
+        style="rounded,filled"
+        color="#e5e7eb"
+        fillcolor="#f8fafc"
+        fontcolor="#1e40af"
+        fontsize=11
+        penwidth=1
+
+        necessary [label="必須コンテンツ\n(レベル構造)" fillcolor="#fef3c7" fontcolor="#92400e"]
+        optional [label="任意コンテンツ\n(装飾・報酬)" fillcolor="#f3f4f6" fontcolor="#4b5563"]
+    }
+
+    subgraph cluster_adaptive {
+        label="適応性"
+        labelloc=t
+        labeljust=c
+        style="rounded,filled"
+        color="#e5e7eb"
+        fillcolor="#f8fafc"
+        fontcolor="#1e40af"
+        fontsize=11
+        penwidth=1
+
+        generic [label="汎用的\n(全プレイヤー共通)" fillcolor="#f3f4f6" fontcolor="#4b5563"]
+        adaptive [label="プレイヤー適応型\n(個別最適化)" fillcolor="#dbeafe" fontcolor="#1e40af"]
+    }
+
+    subgraph cluster_method {
+        label="生成方式"
+        labelloc=t
+        labeljust=c
+        style="rounded,filled"
+        color="#e5e7eb"
+        fillcolor="#f8fafc"
+        fontcolor="#1e40af"
+        fontsize=11
+        penwidth=1
+
+        constructive [label="構築的\n(1パス生成)" fillcolor="#f3f4f6" fontcolor="#4b5563"]
+        generatetest [label="生成テスト型\n(反復改善)" fillcolor="#dbeafe" fontcolor="#1e40af"]
+    }
+
+    subgraph cluster_authorship {
+        label="制作主体"
+        labelloc=t
+        labeljust=c
+        style="rounded,filled"
+        color="#e5e7eb"
+        fillcolor="#f8fafc"
+        fontcolor="#1e40af"
+        fontsize=11
+        penwidth=1
+
+        automatic [label="完全自動" fillcolor="#fef3c7" fontcolor="#92400e"]
+        mixed [label="混合オーサリング\n(人間+AI協働)" fillcolor="#dbeafe" fontcolor="#1e40af"]
+    }
+
+    subgraph cluster_determinism {
+        label="再現性"
+        labelloc=t
+        labeljust=c
+        style="rounded,filled"
+        color="#e5e7eb"
+        fillcolor="#f8fafc"
+        fontcolor="#1e40af"
+        fontsize=11
+        penwidth=1
+
+        deterministic [label="決定的\n(シード再現)" fillcolor="#f3f4f6" fontcolor="#4b5563"]
+        stochastic [label="確率的\n(毎回異なる)" fillcolor="#f3f4f6" fontcolor="#4b5563"]
+    }
+
+    // 接続
+    pcg -> online [color="#94a3b8"]
+    pcg -> necessary [color="#94a3b8"]
+    pcg -> generic [color="#94a3b8"]
+    pcg -> constructive [color="#94a3b8"]
+    pcg -> automatic [color="#94a3b8"]
+    pcg -> deterministic [color="#94a3b8"]
+
+    online -> offline [style=dashed color="#cbd5e1" arrowhead=none label="←→"]
+    necessary -> optional [style=dashed color="#cbd5e1" arrowhead=none label="←→"]
+    generic -> adaptive [style=dashed color="#cbd5e1" arrowhead=none label="←→"]
+    constructive -> generatetest [style=dashed color="#cbd5e1" arrowhead=none label="←→"]
+    automatic -> mixed [style=dashed color="#cbd5e1" arrowhead=none label="←→"]
+    deterministic -> stochastic [style=dashed color="#cbd5e1" arrowhead=none label="←→"]
+}

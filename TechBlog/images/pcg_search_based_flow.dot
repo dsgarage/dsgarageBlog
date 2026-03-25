@@ -1,0 +1,61 @@
+digraph pcg_search_flow {
+    rankdir=LR
+    bgcolor="transparent"
+    fontname="Helvetica Neue"
+    fontsize=11
+    pad=0.8
+    nodesep=0.5
+    ranksep=1.0
+
+    node [
+        fontname="Helvetica Neue"
+        fontsize=10
+        style="filled,rounded"
+        shape=box
+        penwidth=0
+        margin="0.15,0.08"
+    ]
+
+    edge [
+        fontname="Helvetica Neue"
+        fontsize=9
+        penwidth=1.2
+        arrowsize=0.6
+        color="#94a3b8"
+    ]
+
+    // 初期化
+    init [label="初期集団を\nランダム生成" fillcolor="#f3f4f6" fontcolor="#4b5563"]
+
+    // コンテンツ表現
+    represent [label="コンテンツ表現\n(遺伝子型)" fillcolor="#dbeafe" fontcolor="#1e40af"]
+
+    // 評価
+    evaluate [label="評価関数で\nスコア算出" fillcolor="#fef3c7" fontcolor="#92400e"]
+
+    // 選択
+    select [label="適応度に基づく\n選択" fillcolor="#dbeafe" fontcolor="#1e40af"]
+
+    // 繁殖
+    breed [label="交叉・突然変異\n(次世代生成)" fillcolor="#dbeafe" fontcolor="#1e40af"]
+
+    // 判定
+    check [label="品質基準を\n満たす？" fillcolor="#fef3c7" fontcolor="#92400e" shape=diamond]
+
+    // 出力
+    output [label="最良コンテンツ\nを出力" fillcolor="#dbeafe" fontcolor="#1e40af" penwidth=2 color="#1e40af"]
+
+    // フロー
+    init -> represent [label="エンコード"]
+    represent -> evaluate [label="表現型に変換"]
+    evaluate -> select [label="スコア順"]
+    select -> breed [label="上位個体"]
+    breed -> check
+    check -> represent [label="No" color="#cbd5e1" style=dashed]
+    check -> output [label="Yes" color="#1e40af" penwidth=2]
+
+    // ループ注釈
+    loop_label [label="世代ループ\n(数十〜数千回)" shape=plaintext fillcolor="transparent" fontcolor="#6b7280" fontsize=9]
+
+    {rank=same; check; loop_label}
+}

@@ -1,0 +1,106 @@
+digraph pcg_application_map {
+    rankdir=TB
+    bgcolor="transparent"
+    fontname="Helvetica Neue"
+    fontsize=11
+    pad=0.8
+    nodesep=0.5
+    ranksep=0.8
+
+    node [
+        fontname="Helvetica Neue"
+        fontsize=10
+        style="filled,rounded"
+        shape=box
+        penwidth=0
+        margin="0.15,0.08"
+    ]
+
+    edge [
+        fontname="Helvetica Neue"
+        fontsize=8
+        penwidth=1.2
+        arrowsize=0.5
+        color="#94a3b8"
+    ]
+
+    // 軸ラベル
+    axis_y [label="品質保証の難易度 →" shape=plaintext fillcolor="transparent" fontcolor="#6b7280" fontsize=10]
+    axis_x [label="生成量のスケール →" shape=plaintext fillcolor="transparent" fontcolor="#6b7280" fontsize=10]
+
+    // 低リスク・小スケール
+    subgraph cluster_low_risk {
+        label="低リスク × 小スケール\n(まずここから始める)"
+        labelloc=t
+        labeljust=c
+        style="rounded,filled"
+        color="#e5e7eb"
+        fillcolor="#f8fafc"
+        fontcolor="#1e40af"
+        fontsize=10
+        penwidth=1
+
+        texture [label="テクスチャ生成\nパーリンノイズ" fillcolor="#dbeafe" fontcolor="#1e40af"]
+        vegetation [label="植生配置\nL-system" fillcolor="#dbeafe" fontcolor="#1e40af"]
+        decor [label="装飾アイテム\nパラメトリック生成" fillcolor="#dbeafe" fontcolor="#1e40af"]
+    }
+
+    // 低リスク・大スケール
+    subgraph cluster_low_risk_large {
+        label="低リスク × 大スケール"
+        labelloc=t
+        labeljust=c
+        style="rounded,filled"
+        color="#e5e7eb"
+        fillcolor="#f8fafc"
+        fontcolor="#1e40af"
+        fontsize=10
+        penwidth=1
+
+        terrain [label="地形生成\nフラクタル/ノイズ\n(Minecraft)" fillcolor="#dbeafe" fontcolor="#1e40af"]
+        loot [label="ランダムドロップ\n武器・アイテム\n(Diablo)" fillcolor="#dbeafe" fontcolor="#1e40af"]
+    }
+
+    // 高リスク・小スケール
+    subgraph cluster_high_risk {
+        label="高リスク × 小スケール"
+        labelloc=t
+        labeljust=c
+        style="rounded,filled"
+        color="#e5e7eb"
+        fillcolor="#fafafa"
+        fontcolor="#6b7280"
+        fontsize=10
+        penwidth=1
+
+        dungeon [label="ダンジョン生成\nBSP/セルオートマタ\n(Spelunky)" fillcolor="#fef3c7" fontcolor="#92400e"]
+        quest [label="クエスト生成\n文法ベース" fillcolor="#fef3c7" fontcolor="#92400e"]
+    }
+
+    // 高リスク・大スケール
+    subgraph cluster_frontier {
+        label="高リスク × 大スケール\n(フロンティア/研究領域)"
+        labelloc=t
+        labeljust=c
+        style="rounded,dashed"
+        color="#92400e"
+        fillcolor="#fafafa"
+        fontcolor="#92400e"
+        fontsize=10
+        penwidth=1.5
+
+        world [label="完全ワールド生成\n(No Man's Sky)" fillcolor="#fef3c7" fontcolor="#92400e"]
+        story [label="ストーリー生成\nプランニング" fillcolor="#fef3c7" fontcolor="#92400e"]
+        rules [label="ゲームルール生成\n(Yavalath)" fillcolor="#fef3c7" fontcolor="#92400e"]
+    }
+
+    // フロー（推奨導入順序）
+    texture -> terrain [label="段階的に\nスケールアップ" color="#1e40af"]
+    vegetation -> terrain [color="#94a3b8"]
+    decor -> loot [color="#94a3b8"]
+    terrain -> dungeon [label="品質保証を\n追加" color="#1e40af"]
+    loot -> quest [color="#94a3b8"]
+    dungeon -> world [style=dashed color="#cbd5e1" label="研究段階"]
+    quest -> story [style=dashed color="#cbd5e1"]
+    story -> rules [style=dashed color="#cbd5e1"]
+}
