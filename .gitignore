@@ -25,3 +25,9 @@ TechBlog/qiita_deploy/
 
 # PDF output
 TechBlog/PDF/*.pdf
+
+# GDC slides (large JPG/PNG, local only — article-used images are in */images/)
+stock/GDC2026/*/slides/
+
+# ebook build environment (LaTeX, .ai, generated PDFs)
+stock/GDC2026/ebook/
