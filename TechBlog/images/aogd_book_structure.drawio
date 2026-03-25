@@ -1,0 +1,135 @@
+<mxfile host="app.diagrams.net" modified="2026-03-25" type="device">
+  <diagram id="book-structure" name="本書の全体構造">
+    <mxGraphModel dx="1100" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- Part 1: 哲学（必読）-->
+        <mxCell id="p1" value="Part 1: 哲学（Ch1-8）" style="swimlane;startSize=30;html=1;fillColor=#dbeafe;strokeColor=#3b82f6;fontColor=#1e40af;fontSize=13;fontFamily=Helvetica Neue;rounded=1;arcSize=6;swimlaneLine=0;shadow=1;strokeWidth=2;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="20" y="20" width="760" height="100" as="geometry" />
+        </mxCell>
+        <!-- 必読バッジ -->
+        <mxCell id="badge" value="★ 必読" style="text;html=1;align=right;verticalAlign=top;resizable=0;points=[];fontFamily=Helvetica Neue;fontSize=11;fontColor=#1e40af;fontStyle=1;" vertex="1" parent="p1">
+          <mxGeometry x="680" y="2" width="60" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="ch1" value="Ch1&lt;br&gt;デザイナー" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#bfdbfe;strokeColor=#93c5fd;fontColor=#1e40af;fontSize=10;fontFamily=Helvetica Neue;arcSize=14;" vertex="1" parent="p1">
+          <mxGeometry x="10" y="40" width="80" height="48" as="geometry" />
+        </mxCell>
+        <mxCell id="ch2" value="Ch2&lt;br&gt;体験" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#bfdbfe;strokeColor=#93c5fd;fontColor=#1e40af;fontSize=10;fontFamily=Helvetica Neue;arcSize=14;" vertex="1" parent="p1">
+          <mxGeometry x="100" y="40" width="80" height="48" as="geometry" />
+        </mxCell>
+        <mxCell id="ch3" value="Ch3&lt;br&gt;場(ヴェニュー)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#bfdbfe;strokeColor=#93c5fd;fontColor=#1e40af;fontSize=10;fontFamily=Helvetica Neue;arcSize=14;" vertex="1" parent="p1">
+          <mxGeometry x="190" y="40" width="80" height="48" as="geometry" />
+        </mxCell>
+        <mxCell id="ch4" value="Ch4&lt;br&gt;ゲームとは" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#bfdbfe;strokeColor=#93c5fd;fontColor=#1e40af;fontSize=10;fontFamily=Helvetica Neue;arcSize=14;" vertex="1" parent="p1">
+          <mxGeometry x="280" y="40" width="80" height="48" as="geometry" />
+        </mxCell>
+        <mxCell id="ch5" value="Ch5&lt;br&gt;要素" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#bfdbfe;strokeColor=#93c5fd;fontColor=#1e40af;fontSize=10;fontFamily=Helvetica Neue;arcSize=14;" vertex="1" parent="p1">
+          <mxGeometry x="370" y="40" width="80" height="48" as="geometry" />
+        </mxCell>
+        <mxCell id="ch6" value="Ch6&lt;br&gt;テーマ" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#bfdbfe;strokeColor=#93c5fd;fontColor=#1e40af;fontSize=10;fontFamily=Helvetica Neue;arcSize=14;" vertex="1" parent="p1">
+          <mxGeometry x="460" y="40" width="80" height="48" as="geometry" />
+        </mxCell>
+        <mxCell id="ch7" value="Ch7&lt;br&gt;アイデア" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#bfdbfe;strokeColor=#93c5fd;fontColor=#1e40af;fontSize=10;fontFamily=Helvetica Neue;arcSize=14;" vertex="1" parent="p1">
+          <mxGeometry x="550" y="40" width="80" height="48" as="geometry" />
+        </mxCell>
+        <mxCell id="ch8" value="Ch8&lt;br&gt;イテレーション" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#bfdbfe;strokeColor=#93c5fd;fontColor=#1e40af;fontSize=10;fontFamily=Helvetica Neue;arcSize=14;" vertex="1" parent="p1">
+          <mxGeometry x="640" y="40" width="105" height="48" as="geometry" />
+        </mxCell>
+
+        <!-- 矢印: Part1 → Part2 -->
+        <mxCell id="a12" style="rounded=1;html=1;strokeColor=#60a5fa;strokeWidth=2;endArrow=classic;endSize=6;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="400" y="125" as="sourcePoint" />
+            <mxPoint x="400" y="155" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="a12l" value="基礎 → 応用" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontFamily=Helvetica Neue;fontSize=10;fontColor=#1e40af;fontStyle=1;" vertex="1" connectable="0" parent="a12">
+          <mxGeometry relative="1" as="geometry"><mxPoint x="50" as="offset" /></mxGeometry>
+        </mxCell>
+
+        <!-- Part 2: プレイヤー -->
+        <mxCell id="p2" value="Part 2: プレイヤー（Ch9-11）" style="swimlane;startSize=30;html=1;fillColor=#f8fafc;strokeColor=#e5e7eb;fontColor=#6b7280;fontSize=12;fontFamily=Helvetica Neue;rounded=1;arcSize=6;swimlaneLine=0;shadow=1;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="20" y="160" width="340" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="ch9" value="Ch9&lt;br&gt;プレイヤーのために" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f3f4f6;strokeColor=#d1d5db;fontColor=#4b5563;fontSize=10;fontFamily=Helvetica Neue;arcSize=14;" vertex="1" parent="p2">
+          <mxGeometry x="10" y="38" width="100" height="42" as="geometry" />
+        </mxCell>
+        <mxCell id="ch10" value="Ch10&lt;br&gt;心の中の体験" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f3f4f6;strokeColor=#d1d5db;fontColor=#4b5563;fontSize=10;fontFamily=Helvetica Neue;arcSize=14;" vertex="1" parent="p2">
+          <mxGeometry x="120" y="38" width="100" height="42" as="geometry" />
+        </mxCell>
+        <mxCell id="ch11" value="Ch11&lt;br&gt;モチベーション" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f3f4f6;strokeColor=#d1d5db;fontColor=#4b5563;fontSize=10;fontFamily=Helvetica Neue;arcSize=14;" vertex="1" parent="p2">
+          <mxGeometry x="230" y="38" width="100" height="42" as="geometry" />
+        </mxCell>
+
+        <!-- Part 3: メカニクス -->
+        <mxCell id="p3" value="Part 3: メカニクス（Ch12-14）" style="swimlane;startSize=30;html=1;fillColor=#f8fafc;strokeColor=#e5e7eb;fontColor=#6b7280;fontSize=12;fontFamily=Helvetica Neue;rounded=1;arcSize=6;swimlaneLine=0;shadow=1;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="380" y="160" width="340" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="ch12" value="Ch12&lt;br&gt;ゲームメカニクス" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fef3c7;strokeColor=#fcd34d;fontColor=#92400e;fontSize=10;fontFamily=Helvetica Neue;arcSize=14;" vertex="1" parent="p3">
+          <mxGeometry x="10" y="38" width="100" height="42" as="geometry" />
+        </mxCell>
+        <mxCell id="ch13" value="Ch13&lt;br&gt;バランス" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fef3c7;strokeColor=#fcd34d;fontColor=#92400e;fontSize=10;fontFamily=Helvetica Neue;arcSize=14;" vertex="1" parent="p3">
+          <mxGeometry x="120" y="38" width="100" height="42" as="geometry" />
+        </mxCell>
+        <mxCell id="ch14" value="Ch14&lt;br&gt;パズル" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fef3c7;strokeColor=#fcd34d;fontColor=#92400e;fontSize=10;fontFamily=Helvetica Neue;arcSize=14;" vertex="1" parent="p3">
+          <mxGeometry x="230" y="38" width="100" height="42" as="geometry" />
+        </mxCell>
+
+        <!-- 破線接続 Part2-Part3 -->
+        <mxCell id="a23" style="rounded=1;html=1;strokeColor=#cbd5e1;strokeWidth=1.5;dashed=1;dashPattern=6 3;endArrow=classic;endSize=4;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="360" y="210" as="sourcePoint" />
+            <mxPoint x="380" y="210" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Part 4: 世界の構築 -->
+        <mxCell id="p4" value="Part 4: 世界の構築（Ch15-22）" style="swimlane;startSize=30;html=1;fillColor=#fafafa;strokeColor=#e5e7eb;fontColor=#6b7280;fontSize=12;fontFamily=Helvetica Neue;rounded=1;arcSize=6;swimlaneLine=0;shadow=1;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="20" y="280" width="400" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="ch15" value="Ch15&lt;br&gt;インターフェース" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f3f4f6;strokeColor=#d1d5db;fontColor=#4b5563;fontSize=10;fontFamily=Helvetica Neue;arcSize=14;" vertex="1" parent="p4">
+          <mxGeometry x="10" y="38" width="110" height="42" as="geometry" />
+        </mxCell>
+        <mxCell id="ch1622" value="Ch16-22 ストーリー・世界観・美学・テクノロジー" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f3f4f6;strokeColor=#d1d5db;fontColor=#4b5563;fontSize=10;fontFamily=Helvetica Neue;arcSize=14;" vertex="1" parent="p4">
+          <mxGeometry x="130" y="38" width="260" height="42" as="geometry" />
+        </mxCell>
+
+        <!-- Part 5: プロとしての実践 -->
+        <mxCell id="p5" value="Part 5: プロとしての実践（Ch23-34）" style="swimlane;startSize=30;html=1;fillColor=#fafafa;strokeColor=#e5e7eb;fontColor=#6b7280;fontSize=12;fontFamily=Helvetica Neue;rounded=1;arcSize=6;swimlaneLine=0;shadow=1;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="440" y="280" width="380" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="ch2328" value="Ch23-28&lt;br&gt;コミュニティ・チーム&lt;br&gt;ドキュメント・ビジネス" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f3f4f6;strokeColor=#d1d5db;fontColor=#4b5563;fontSize=10;fontFamily=Helvetica Neue;arcSize=14;" vertex="1" parent="p5">
+          <mxGeometry x="10" y="35" width="170" height="48" as="geometry" />
+        </mxCell>
+        <mxCell id="ch2934" value="Ch29-34&lt;br&gt;クライアント・ピッチ&lt;br&gt;倫理・責任" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f3f4f6;strokeColor=#d1d5db;fontColor=#4b5563;fontSize=10;fontFamily=Helvetica Neue;arcSize=14;" vertex="1" parent="p5">
+          <mxGeometry x="190" y="35" width="170" height="48" as="geometry" />
+        </mxCell>
+
+        <!-- 破線接続 Part3→Part4, Part4→Part5 -->
+        <mxCell id="a34" style="rounded=1;html=1;strokeColor=#cbd5e1;strokeWidth=1.5;dashed=1;dashPattern=6 3;endArrow=classic;endSize=4;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="220" y="255" as="sourcePoint" />
+            <mxPoint x="220" y="280" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="a45" style="rounded=1;html=1;strokeColor=#cbd5e1;strokeWidth=1.5;dashed=1;dashPattern=6 3;endArrow=classic;endSize=4;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="420" y="325" as="sourcePoint" />
+            <mxPoint x="440" y="325" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- 読み方の注釈 -->
+        <mxCell id="note1" value="&lt;font color=&quot;#1e40af&quot;&gt;まず最初の8章を通して読む&lt;/font&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];fontFamily=Helvetica Neue;fontSize=10;fontStyle=2;" vertex="1" parent="1">
+          <mxGeometry x="20" y="395" width="200" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="note2" value="&lt;font color=&quot;#6b7280&quot;&gt;残りは必要な章をリファレンスとして使う&lt;/font&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];fontFamily=Helvetica Neue;fontSize=10;fontStyle=2;" vertex="1" parent="1">
+          <mxGeometry x="240" y="395" width="280" height="20" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

@@ -1,0 +1,110 @@
+<mxfile host="app.diagrams.net" modified="2026-03-25" type="device">
+  <diagram id="iteration-cycle" name="イテレーションサイクル">
+    <mxGraphModel dx="1200" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- サイクル背景（薄い円形ガイド） -->
+        <mxCell id="bg_circle" value="" style="ellipse;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#e2e8f0;strokeWidth=1;dashed=1;dashPattern=4 4;opacity=60;" vertex="1" parent="1">
+          <mxGeometry x="130" y="30" width="380" height="380" as="geometry" />
+        </mxCell>
+
+        <!-- 1. アイデア (上) -->
+        <mxCell id="idea" value="&lt;b&gt;1. アイデア&lt;/b&gt;&lt;br&gt;思いつく" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dbeafe;strokeColor=#60a5fa;fontColor=#1e40af;fontSize=12;fontFamily=Helvetica Neue;arcSize=20;shadow=1;strokeWidth=1.5;" vertex="1" parent="1">
+          <mxGeometry x="250" y="40" width="130" height="55" as="geometry" />
+        </mxCell>
+
+        <!-- 2. プロトタイプ (右上) -->
+        <mxCell id="proto" value="&lt;b&gt;2. プロトタイプ&lt;/b&gt;&lt;br&gt;紙でもいい" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fef3c7;strokeColor=#f59e0b;fontColor=#92400e;fontSize=12;fontFamily=Helvetica Neue;arcSize=20;shadow=1;strokeWidth=1.5;" vertex="1" parent="1">
+          <mxGeometry x="430" y="150" width="130" height="55" as="geometry" />
+        </mxCell>
+
+        <!-- 3. プレイテスト (右下) -->
+        <mxCell id="play" value="&lt;b&gt;3. プレイテスト&lt;/b&gt;&lt;br&gt;実際に遊ぶ" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dcfce7;strokeColor=#4ade80;fontColor=#166534;fontSize=12;fontFamily=Helvetica Neue;arcSize=20;shadow=1;strokeWidth=1.5;" vertex="1" parent="1">
+          <mxGeometry x="380" y="320" width="130" height="55" as="geometry" />
+        </mxCell>
+
+        <!-- 4. 評価 (左下) -->
+        <mxCell id="eval" value="&lt;b&gt;4. 評価&lt;/b&gt;&lt;br&gt;レンズで検証" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dbeafe;strokeColor=#60a5fa;fontColor=#1e40af;fontSize=12;fontFamily=Helvetica Neue;arcSize=20;shadow=1;strokeWidth=1.5;" vertex="1" parent="1">
+          <mxGeometry x="130" y="320" width="130" height="55" as="geometry" />
+        </mxCell>
+
+        <!-- 5. 変更 (左上) -->
+        <mxCell id="change" value="&lt;b&gt;5. 変更&lt;/b&gt;&lt;br&gt;壊して直す" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fef3c7;strokeColor=#f59e0b;fontColor=#92400e;fontSize=12;fontFamily=Helvetica Neue;arcSize=20;shadow=1;strokeWidth=1.5;" vertex="1" parent="1">
+          <mxGeometry x="80" y="150" width="130" height="55" as="geometry" />
+        </mxCell>
+
+        <!-- 矢印: アイデア → プロトタイプ -->
+        <mxCell id="e1" style="rounded=1;html=1;strokeColor=#94a3b8;strokeWidth=2;endArrow=classic;endSize=6;curved=1;" edge="1" source="idea" target="proto" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e1l" value="素早く" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontFamily=Helvetica Neue;fontSize=10;fontColor=#64748b;" vertex="1" connectable="0" parent="e1">
+          <mxGeometry x="0.1" relative="1" as="geometry"><mxPoint x="5" y="-10" as="offset" /></mxGeometry>
+        </mxCell>
+
+        <!-- 矢印: プロトタイプ → プレイテスト -->
+        <mxCell id="e2" style="rounded=1;html=1;strokeColor=#94a3b8;strokeWidth=2;endArrow=classic;endSize=6;curved=1;" edge="1" source="proto" target="play" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2l" value="誰かに&lt;br&gt;遊ばせる" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontFamily=Helvetica Neue;fontSize=10;fontColor=#64748b;" vertex="1" connectable="0" parent="e2">
+          <mxGeometry x="0.1" relative="1" as="geometry"><mxPoint x="10" as="offset" /></mxGeometry>
+        </mxCell>
+
+        <!-- 矢印: プレイテスト → 評価 -->
+        <mxCell id="e3" style="rounded=1;html=1;strokeColor=#94a3b8;strokeWidth=2;endArrow=classic;endSize=6;curved=1;" edge="1" source="play" target="eval" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3l" value="観察する" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontFamily=Helvetica Neue;fontSize=10;fontColor=#64748b;" vertex="1" connectable="0" parent="e3">
+          <mxGeometry relative="1" as="geometry"><mxPoint y="15" as="offset" /></mxGeometry>
+        </mxCell>
+
+        <!-- 矢印: 評価 → 変更 -->
+        <mxCell id="e4" style="rounded=1;html=1;strokeColor=#94a3b8;strokeWidth=2;endArrow=classic;endSize=6;curved=1;" edge="1" source="eval" target="change" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e4l" value="問題を特定" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontFamily=Helvetica Neue;fontSize=10;fontColor=#64748b;" vertex="1" connectable="0" parent="e4">
+          <mxGeometry x="-0.1" relative="1" as="geometry"><mxPoint x="-10" as="offset" /></mxGeometry>
+        </mxCell>
+
+        <!-- 矢印: 変更 → プロトタイプ（ループバック、太め） -->
+        <mxCell id="e5" style="rounded=1;html=1;strokeColor=#60a5fa;strokeWidth=2.5;endArrow=classic;endSize=7;curved=1;" edge="1" source="change" target="proto" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="270" y="110" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e5l" value="&lt;b&gt;ループを短くせよ&lt;/b&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontFamily=Helvetica Neue;fontSize=11;fontColor=#1e40af;" vertex="1" connectable="0" parent="e5">
+          <mxGeometry relative="1" as="geometry"><mxPoint y="-12" as="offset" /></mxGeometry>
+        </mxCell>
+
+        <!-- 情熱（右外側） -->
+        <mxCell id="passion" value="&lt;b style=&quot;font-size:13px&quot;&gt;情熱&lt;/b&gt;&lt;br&gt;(Passion)" style="ellipse;whiteSpace=wrap;html=1;fillColor=#fee2e2;strokeColor=#fca5a5;fontColor=#991b1b;fontSize=11;fontFamily=Helvetica Neue;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="590" y="40" width="110" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="ep1" style="rounded=1;html=1;strokeColor=#fca5a5;strokeWidth=1.5;dashed=1;dashPattern=6 3;endArrow=classic;endSize=5;curved=1;" edge="1" source="passion" target="idea" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ep1l" value="原動力" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontFamily=Helvetica Neue;fontSize=10;fontColor=#991b1b;" vertex="1" connectable="0" parent="ep1">
+          <mxGeometry relative="1" as="geometry"><mxPoint y="-10" as="offset" /></mxGeometry>
+        </mxCell>
+        <mxCell id="ep2" style="rounded=1;html=1;strokeColor=#fca5a5;strokeWidth=1.5;dashed=1;dashPattern=6 3;endArrow=classic;endSize=5;curved=1;" edge="1" source="passion" target="eval" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ep2l" value="消えたら&lt;br&gt;立ち止まれ" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontFamily=Helvetica Neue;fontSize=10;fontColor=#991b1b;" vertex="1" connectable="0" parent="ep2">
+          <mxGeometry relative="1" as="geometry"><mxPoint x="15" as="offset" /></mxGeometry>
+        </mxCell>
+
+        <!-- Fail Faster（左外側） -->
+        <mxCell id="fail" value="&lt;i&gt;Fail Faster,&lt;br&gt;Follow the Fun&lt;/i&gt;" style="shape=note;whiteSpace=wrap;html=1;fillColor=#f3f4f6;strokeColor=#d1d5db;fontColor=#4b5563;fontSize=11;fontFamily=Helvetica Neue;size=14;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="590" y="300" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="ef1" style="rounded=1;html=1;strokeColor=#cbd5e1;strokeWidth=1.5;dashed=1;dashPattern=6 3;endArrow=none;curved=1;" edge="1" source="fail" target="change" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
