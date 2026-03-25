@@ -1,0 +1,86 @@
+digraph three_schemas {
+    rankdir=TB
+    bgcolor="transparent"
+    fontname="Helvetica Neue"
+    fontsize=11
+    pad=0.8
+    nodesep=0.6
+    ranksep=0.8
+
+    node [
+        fontname="Helvetica Neue"
+        fontsize=10
+        style="filled,rounded"
+        shape=box
+        penwidth=0
+        margin="0.15,0.10"
+    ]
+
+    edge [
+        fontname="Helvetica Neue"
+        fontsize=9
+        penwidth=1.2
+        arrowsize=0.6
+        color="#94a3b8"
+    ]
+
+    // 中心
+    game [label="ゲーム" fillcolor="#dbeafe" fontcolor="#1e40af" fontsize=12]
+
+    // 3スキーマ
+    subgraph cluster_rules {
+        label="RULES\nルール・スキーマ"
+        labelloc=t
+        labeljust=c
+        style="rounded,filled"
+        color="#93c5fd"
+        fillcolor="#f8fafc"
+        fontcolor="#1e40af"
+        fontsize=11
+        penwidth=1
+
+        r1 [label="形式的システム\n数学的構造" fillcolor="#dbeafe" fontcolor="#1e40af"]
+        r2 [label="確率・情報理論\nゲーム木・戦略" fillcolor="#dbeafe" fontcolor="#1e40af"]
+        r3 [label="サイバネティクス\nフィードバック" fillcolor="#dbeafe" fontcolor="#1e40af"]
+    }
+
+    subgraph cluster_play {
+        label="PLAY\nプレイ・スキーマ"
+        labelloc=t
+        labeljust=c
+        style="rounded,filled"
+        color="#fcd34d"
+        fillcolor="#fffbeb"
+        fontcolor="#92400e"
+        fontsize=11
+        penwidth=1
+
+        p1 [label="意味のあるプレイ\nDiscernable + Integrated" fillcolor="#fef3c7" fontcolor="#92400e"]
+        p2 [label="インタラクション\n選択と結果" fillcolor="#fef3c7" fontcolor="#92400e"]
+        p3 [label="物語・シミュレーション\n体験の設計" fillcolor="#fef3c7" fontcolor="#92400e"]
+    }
+
+    subgraph cluster_culture {
+        label="CULTURE\nカルチャー・スキーマ"
+        labelloc=t
+        labeljust=c
+        style="rounded,filled"
+        color="#86efac"
+        fillcolor="#f0fdf4"
+        fontcolor="#166534"
+        fontsize=11
+        penwidth=1
+
+        c1 [label="レトリック\n文化的メッセージ" fillcolor="#dcfce7" fontcolor="#166534"]
+        c2 [label="オープンカルチャー\nMod・二次創作" fillcolor="#dcfce7" fontcolor="#166534"]
+        c3 [label="社会的プレイ\nコミュニティ" fillcolor="#dcfce7" fontcolor="#166534"]
+    }
+
+    game -> r1 [color="#3b82f6"]
+    game -> p1 [color="#d97706"]
+    game -> c1 [color="#16a34a"]
+
+    r1 -> r2 -> r3 [color="#93c5fd"]
+    p1 -> p2 -> p3 [color="#fcd34d"]
+    c1 -> c2 -> c3 [color="#86efac"]
+}

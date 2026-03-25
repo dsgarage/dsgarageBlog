@@ -1,0 +1,98 @@
+digraph book_structure {
+    rankdir=LR
+    bgcolor="transparent"
+    fontname="Helvetica Neue"
+    fontsize=11
+    pad=0.8
+    nodesep=0.4
+    ranksep=1.0
+
+    node [
+        fontname="Helvetica Neue"
+        fontsize=10
+        style="filled,rounded"
+        shape=box
+        penwidth=0
+        margin="0.15,0.08"
+    ]
+
+    edge [
+        fontname="Helvetica Neue"
+        fontsize=9
+        penwidth=1.2
+        arrowsize=0.6
+        color="#94a3b8"
+    ]
+
+    // 導入
+    subgraph cluster_intro {
+        label="導入\nUnit 1"
+        labelloc=t
+        labeljust=c
+        style="rounded,filled"
+        color="#e5e7eb"
+        fillcolor="#f8fafc"
+        fontcolor="#1e40af"
+        fontsize=10
+        penwidth=1
+
+        intro [label="コアコンセプト\nゲームの定義\nデザインとは" fillcolor="#dbeafe" fontcolor="#1e40af"]
+    }
+
+    // ルール
+    subgraph cluster_rules {
+        label="RULES\nUnit 2 (Ch.7-15)"
+        labelloc=t
+        labeljust=c
+        style="rounded,filled"
+        color="#93c5fd"
+        fillcolor="#f8fafc"
+        fontcolor="#1e40af"
+        fontsize=10
+        penwidth=1
+
+        rules1 [label="形式的システム\n構成要素・境界" fillcolor="#dbeafe" fontcolor="#1e40af"]
+        rules2 [label="数学的構造\n確率・ゲーム木" fillcolor="#dbeafe" fontcolor="#1e40af"]
+        rules3 [label="デジタルゲーム\nシステム動態" fillcolor="#dbeafe" fontcolor="#1e40af"]
+    }
+
+    // プレイ
+    subgraph cluster_play {
+        label="PLAY\nUnit 3 (Ch.16-24)"
+        labelloc=t
+        labeljust=c
+        style="rounded,filled"
+        color="#fcd34d"
+        fillcolor="#fffbeb"
+        fontcolor="#92400e"
+        fontsize=10
+        penwidth=1
+
+        play1 [label="意味のあるプレイ\nインタラクション" fillcolor="#fef3c7" fontcolor="#92400e"]
+        play2 [label="プレイの形態\n遊び・ゲーム" fillcolor="#fef3c7" fontcolor="#92400e"]
+        play3 [label="物語・シミュレーション\n体験のデザイン" fillcolor="#fef3c7" fontcolor="#92400e"]
+    }
+
+    // カルチャー
+    subgraph cluster_culture {
+        label="CULTURE\nUnit 4 (Ch.25-33)"
+        labelloc=t
+        labeljust=c
+        style="rounded,filled"
+        color="#86efac"
+        fillcolor="#f0fdf4"
+        fontcolor="#166534"
+        fontsize=10
+        penwidth=1
+
+        culture1 [label="文化的レトリック\n社会的プレイ" fillcolor="#dcfce7" fontcolor="#166534"]
+        culture2 [label="オープンカルチャー\nMod・UGC" fillcolor="#dcfce7" fontcolor="#166534"]
+    }
+
+    intro -> rules1 [color="#94a3b8"]
+    rules1 -> rules2 -> rules3 [color="#93c5fd"]
+    rules3 -> play1 [color="#94a3b8"]
+    play1 -> play2 -> play3 [color="#fcd34d"]
+    play3 -> culture1 [color="#94a3b8"]
+    culture1 -> culture2 [color="#86efac"]
+}
