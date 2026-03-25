@@ -1,0 +1,122 @@
+<mxfile host="draw.io">
+  <diagram name="Page-1" id="rtg_denoising_flow">
+    <mxGraphModel dx="1100" dy="1200" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1200" pageHeight="1400" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+
+        <mxCell id="gbuffer" value="G-Buffer&#xa;(法線, 深度, アルベド,&#xa;ラフネス, モーション)" style="rounded=1;whiteSpace=wrap;fillColor=#f3f4f6;fontColor=#4b5563;strokeColor=none;shadow=1;fontFamily=Helvetica Neue;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="440" y="30" width="180" height="60" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="cluster_sampling" value="サンプリング (1 ray/pixel)" style="rounded=1;whiteSpace=wrap;fillColor=#f8fafc;strokeColor=#e5e7eb;fontColor=#1e40af;fontFamily=Helvetica Neue;fontSize=11;fontStyle=1;verticalAlign=top;spacingTop=5;container=1;collapsible=0;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="130" y="140" width="800" height="110" as="geometry"/>
+        </mxCell>
+        <mxCell id="shadow_ray" value="シャドウレイ&#xa;エリアライト上の&#xa;ランダム点に向けて1本" style="rounded=1;whiteSpace=wrap;fillColor=#dbeafe;fontColor=#1e40af;strokeColor=none;shadow=1;fontFamily=Helvetica Neue;fontSize=10;" vertex="1" parent="cluster_sampling">
+          <mxGeometry x="30" y="35" width="200" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="reflect_ray" value="反射レイ&#xa;BRDF重要度&#xa;サンプリング" style="rounded=1;whiteSpace=wrap;fillColor=#dbeafe;fontColor=#1e40af;strokeColor=none;shadow=1;fontFamily=Helvetica Neue;fontSize=10;" vertex="1" parent="cluster_sampling">
+          <mxGeometry x="290" y="35" width="200" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="ao_ray" value="AO/GIレイ&#xa;半球上の&#xa;ランダム方向" style="rounded=1;whiteSpace=wrap;fillColor=#dbeafe;fontColor=#1e40af;strokeColor=none;shadow=1;fontFamily=Helvetica Neue;fontSize=10;" vertex="1" parent="cluster_sampling">
+          <mxGeometry x="550" y="35" width="200" height="60" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="noisy_shadow" value="ノイジーな&#xa;可視性マスク" style="rounded=1;whiteSpace=wrap;fillColor=#fef3c7;fontColor=#92400e;strokeColor=none;shadow=1;fontFamily=Helvetica Neue;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="190" y="300" width="140" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="noisy_reflect" value="ノイジーな&#xa;反射色" style="rounded=1;whiteSpace=wrap;fillColor=#fef3c7;fontColor=#92400e;strokeColor=none;shadow=1;fontFamily=Helvetica Neue;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="460" y="300" width="140" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="noisy_ao" value="ノイジーな&#xa;AO/GI値" style="rounded=1;whiteSpace=wrap;fillColor=#fef3c7;fontColor=#92400e;strokeColor=none;shadow=1;fontFamily=Helvetica Neue;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="720" y="300" width="140" height="50" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="cluster_denoise" value="効果別デノイジング" style="rounded=1;whiteSpace=wrap;fillColor=#fafafa;strokeColor=#e5e7eb;fontColor=#6b7280;fontFamily=Helvetica Neue;fontSize=11;fontStyle=1;verticalAlign=top;spacingTop=5;container=1;collapsible=0;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="130" y="400" width="800" height="120" as="geometry"/>
+        </mxCell>
+        <mxCell id="denoise_shadow" value="シャドウ&#xa;デノイザー&#xa;(時空間フィルタ)" style="rounded=1;whiteSpace=wrap;fillColor=#dbeafe;fontColor=#1e40af;strokeColor=none;shadow=1;fontFamily=Helvetica Neue;fontSize=10;" vertex="1" parent="cluster_denoise">
+          <mxGeometry x="30" y="40" width="200" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="denoise_reflect" value="反射&#xa;デノイザー&#xa;(ラフネス適応)" style="rounded=1;whiteSpace=wrap;fillColor=#dbeafe;fontColor=#1e40af;strokeColor=none;shadow=1;fontFamily=Helvetica Neue;fontSize=10;" vertex="1" parent="cluster_denoise">
+          <mxGeometry x="290" y="40" width="200" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="denoise_ao" value="AO/GI&#xa;デノイザー&#xa;(ヒット距離適応&#xa;ワールドスペース)" style="rounded=1;whiteSpace=wrap;fillColor=#dbeafe;fontColor=#1e40af;strokeColor=none;shadow=1;fontFamily=Helvetica Neue;fontSize=10;" vertex="1" parent="cluster_denoise">
+          <mxGeometry x="550" y="35" width="200" height="70" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="temporal" value="テンポラル蓄積&#xa;(前フレーム再投影)" style="rounded=1;whiteSpace=wrap;fillColor=#dbeafe;fontColor=#1e40af;strokeColor=none;shadow=1;fontFamily=Helvetica Neue;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="430" y="580" width="200" height="50" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="composite" value="最終画像合成&#xa;(クリーンな出力)" style="rounded=1;whiteSpace=wrap;fillColor=#dbeafe;fontColor=#1e40af;strokeColor=#1e40af;strokeWidth=2;shadow=1;fontFamily=Helvetica Neue;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="430" y="690" width="200" height="50" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="e1" value="" style="rounded=1;strokeColor=#94a3b8;strokeWidth=1.2;" edge="1" source="gbuffer" target="shadow_ray" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e2" value="" style="rounded=1;strokeColor=#94a3b8;strokeWidth=1.2;" edge="1" source="gbuffer" target="reflect_ray" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e3" value="" style="rounded=1;strokeColor=#94a3b8;strokeWidth=1.2;" edge="1" source="gbuffer" target="ao_ray" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="e4" value="" style="rounded=1;strokeColor=#94a3b8;strokeWidth=1.2;" edge="1" source="shadow_ray" target="noisy_shadow" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e5" value="" style="rounded=1;strokeColor=#94a3b8;strokeWidth=1.2;" edge="1" source="reflect_ray" target="noisy_reflect" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e6" value="" style="rounded=1;strokeColor=#94a3b8;strokeWidth=1.2;" edge="1" source="ao_ray" target="noisy_ao" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="e7" value="" style="rounded=1;strokeColor=#94a3b8;strokeWidth=1.2;" edge="1" source="noisy_shadow" target="denoise_shadow" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e8" value="" style="rounded=1;strokeColor=#94a3b8;strokeWidth=1.2;" edge="1" source="noisy_reflect" target="denoise_reflect" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e9" value="" style="rounded=1;strokeColor=#94a3b8;strokeWidth=1.2;" edge="1" source="noisy_ao" target="denoise_ao" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="e10" value="法線/深度ガイド" style="rounded=1;dashed=1;strokeColor=#cbd5e1;strokeWidth=1.2;fontSize=9;fontFamily=Helvetica Neue;fontColor=#4b5563;exitX=0;exitY=0.5;entryX=0;entryY=0.5;" edge="1" source="gbuffer" target="denoise_shadow" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="60" y="60"/>
+              <mxPoint x="60" y="470"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e11" value="法線/深度ガイド" style="rounded=1;dashed=1;strokeColor=#cbd5e1;strokeWidth=1.2;fontSize=9;fontFamily=Helvetica Neue;fontColor=#4b5563;" edge="1" source="gbuffer" target="denoise_reflect" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e12" value="法線/深度ガイド" style="rounded=1;dashed=1;strokeColor=#cbd5e1;strokeWidth=1.2;fontSize=9;fontFamily=Helvetica Neue;fontColor=#4b5563;exitX=1;exitY=0.5;entryX=1;entryY=0.5;" edge="1" source="gbuffer" target="denoise_ao" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1000" y="60"/>
+              <mxPoint x="1000" y="470"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="e13" value="" style="rounded=1;strokeColor=#94a3b8;strokeWidth=1.2;" edge="1" source="denoise_shadow" target="temporal" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e14" value="" style="rounded=1;strokeColor=#94a3b8;strokeWidth=1.2;" edge="1" source="denoise_reflect" target="temporal" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e15" value="" style="rounded=1;strokeColor=#94a3b8;strokeWidth=1.2;" edge="1" source="denoise_ao" target="temporal" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="e16" value="" style="rounded=1;strokeColor=#94a3b8;strokeWidth=1.2;" edge="1" source="temporal" target="composite" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

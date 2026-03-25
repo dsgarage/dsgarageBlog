@@ -1,0 +1,56 @@
+<mxGraphModel dx="1200" dy="520" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1200" pageHeight="480" math="0" shadow="0">
+  <root>
+    <mxCell id="0"/>
+    <mxCell id="1" parent="0"/>
+
+    <!-- Cluster: 従来: .env 平文 -->
+    <mxCell id="c_old_bg" value="" style="rounded=1;fillColor=#fafafa;strokeColor=#e5e7eb;strokeWidth=1;" vertex="1" parent="1">
+      <mxGeometry x="20" y="20" width="560" height="200" as="geometry"/>
+    </mxCell>
+    <mxCell id="c_old_label" value="従来: .env 平文" style="text;fontSize=10;fontColor=#6b7280;align=center;fontFamily=Helvetica Neue;fontStyle=1;" vertex="1" parent="1">
+      <mxGeometry x="20" y="25" width="560" height="20" as="geometry"/>
+    </mxCell>
+
+    <mxCell id="o1" value=".env ファイル&#xa;（平文）" style="rounded=1;whiteSpace=wrap;fillColor=#f3f4f6;fontColor=#4b5563;strokeColor=none;fontSize=10;fontFamily=Helvetica Neue;shadow=1;" vertex="1" parent="1">
+      <mxGeometry x="40" y="70" width="120" height="50" as="geometry"/>
+    </mxCell>
+    <mxCell id="o2" value="source .env&#xa;export" style="rounded=1;whiteSpace=wrap;fillColor=#f3f4f6;fontColor=#4b5563;strokeColor=none;fontSize=10;fontFamily=Helvetica Neue;shadow=1;" vertex="1" parent="1">
+      <mxGeometry x="210" y="70" width="120" height="50" as="geometry"/>
+    </mxCell>
+    <mxCell id="o3" value="アプリ実行" style="rounded=1;whiteSpace=wrap;fillColor=#f3f4f6;fontColor=#4b5563;strokeColor=none;fontSize=10;fontFamily=Helvetica Neue;shadow=1;" vertex="1" parent="1">
+      <mxGeometry x="380" y="70" width="120" height="50" as="geometry"/>
+    </mxCell>
+    <mxCell id="o4" value="平文がディスク&#xa;に常駐" style="rounded=1;whiteSpace=wrap;fillColor=#fef3c7;fontColor=#92400e;strokeColor=none;fontSize=10;fontFamily=Helvetica Neue;shadow=1;" vertex="1" parent="1">
+      <mxGeometry x="160" y="160" width="150" height="40" as="geometry"/>
+    </mxCell>
+
+    <mxCell id="eo1" value="読み込み" style="rounded=1;strokeColor=#94a3b8;fontSize=9;fontFamily=Helvetica Neue;fontColor=#4b5563;" edge="1" parent="1" source="o1" target="o2"><mxGeometry relative="1" as="geometry"/></mxCell>
+    <mxCell id="eo2" value="環境変数" style="rounded=1;strokeColor=#94a3b8;fontSize=9;fontFamily=Helvetica Neue;fontColor=#4b5563;" edge="1" parent="1" source="o2" target="o3"><mxGeometry relative="1" as="geometry"/></mxCell>
+    <mxCell id="eo3" value="リスク" style="rounded=1;strokeColor=#cbd5e1;fontSize=9;fontFamily=Helvetica Neue;fontColor=#4b5563;dashed=1;" edge="1" parent="1" source="o1" target="o4"><mxGeometry relative="1" as="geometry"/></mxCell>
+
+    <!-- Cluster: lkr exec: Keychain 経由 -->
+    <mxCell id="c_new_bg" value="" style="rounded=1;fillColor=#f8fafc;strokeColor=#e5e7eb;strokeWidth=1;" vertex="1" parent="1">
+      <mxGeometry x="20" y="260" width="560" height="200" as="geometry"/>
+    </mxCell>
+    <mxCell id="c_new_label" value="lkr exec: Keychain 経由" style="text;fontSize=10;fontColor=#1e40af;align=center;fontFamily=Helvetica Neue;fontStyle=1;" vertex="1" parent="1">
+      <mxGeometry x="20" y="265" width="560" height="20" as="geometry"/>
+    </mxCell>
+
+    <mxCell id="n1" value="macOS&#xa;Keychain" style="rounded=1;whiteSpace=wrap;fillColor=#dbeafe;fontColor=#1e40af;strokeColor=none;fontSize=10;fontFamily=Helvetica Neue;shadow=1;" vertex="1" parent="1">
+      <mxGeometry x="40" y="310" width="120" height="50" as="geometry"/>
+    </mxCell>
+    <mxCell id="n2" value="lkr exec&#xa;TTYガード" style="rounded=1;whiteSpace=wrap;fillColor=#dbeafe;fontColor=#1e40af;strokeColor=none;fontSize=10;fontFamily=Helvetica Neue;shadow=1;" vertex="1" parent="1">
+      <mxGeometry x="210" y="310" width="120" height="50" as="geometry"/>
+    </mxCell>
+    <mxCell id="n3" value="子プロセス&#xa;環境変数のみ" style="rounded=1;whiteSpace=wrap;fillColor=#dbeafe;fontColor=#1e40af;strokeColor=none;fontSize=10;fontFamily=Helvetica Neue;shadow=1;" vertex="1" parent="1">
+      <mxGeometry x="380" y="310" width="130" height="50" as="geometry"/>
+    </mxCell>
+    <mxCell id="n4" value="ディスクに&#xa;平文なし" style="rounded=1;whiteSpace=wrap;fillColor=#bbf7d0;fontColor=#166534;strokeColor=none;fontSize=10;fontFamily=Helvetica Neue;shadow=1;" vertex="1" parent="1">
+      <mxGeometry x="160" y="400" width="150" height="40" as="geometry"/>
+    </mxCell>
+
+    <mxCell id="en1" value="復号" style="rounded=1;strokeColor=#94a3b8;fontSize=9;fontFamily=Helvetica Neue;fontColor=#4b5563;" edge="1" parent="1" source="n1" target="n2"><mxGeometry relative="1" as="geometry"/></mxCell>
+    <mxCell id="en2" value="env注入" style="rounded=1;strokeColor=#94a3b8;fontSize=9;fontFamily=Helvetica Neue;fontColor=#4b5563;" edge="1" parent="1" source="n2" target="n3"><mxGeometry relative="1" as="geometry"/></mxCell>
+    <mxCell id="en3" value="安全" style="rounded=1;strokeColor=#cbd5e1;fontSize=9;fontFamily=Helvetica Neue;fontColor=#4b5563;dashed=1;" edge="1" parent="1" source="n2" target="n4"><mxGeometry relative="1" as="geometry"/></mxCell>
+  </root>
+</mxGraphModel>

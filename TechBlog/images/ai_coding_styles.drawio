@@ -1,0 +1,66 @@
+<mxGraphModel>
+  <root>
+    <mxCell id="0"/>
+    <mxCell id="1" parent="0"/>
+    <mxCell id="title" value="AIを使った開発スタイルのスペクトラム" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontFamily=Helvetica Neue;fontSize=14;fontColor=#1e40af;fontStyle=1;" vertex="1" parent="1">
+      <mxGeometry x="270" y="10" width="310" height="30" as="geometry"/>
+    </mxCell>
+    <mxCell id="human" value="人間主導" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontFamily=Helvetica Neue;fontSize=10;fontColor=#6b7280;" vertex="1" parent="1">
+      <mxGeometry x="20" y="90" width="70" height="30" as="geometry"/>
+    </mxCell>
+    <mxCell id="ai_assist" value="AI補助&#10;コーディング&#10;─────&#10;コードは&#10;人間が書く" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dbeafe;fontColor=#1e40af;strokeColor=none;fontFamily=Helvetica Neue;fontSize=10;shadow=1;align=center;" vertex="1" parent="1">
+      <mxGeometry x="120" y="55" width="120" height="100" as="geometry"/>
+    </mxCell>
+    <mxCell id="ai_collab" value="AI協働&#10;コーディング&#10;─────&#10;コードを&#10;一緒に作る" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#bfdbfe;fontColor=#1e40af;strokeColor=none;fontFamily=Helvetica Neue;fontSize=10;shadow=1;align=center;" vertex="1" parent="1">
+      <mxGeometry x="280" y="55" width="120" height="100" as="geometry"/>
+    </mxCell>
+    <mxCell id="ai_driven" value="AIドリブン&#10;コーディング&#10;─────&#10;コードを&#10;レビューする" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#93c5fd;fontColor=#1e3a8a;strokeColor=none;fontFamily=Helvetica Neue;fontSize=10;shadow=1;align=center;" vertex="1" parent="1">
+      <mxGeometry x="440" y="55" width="120" height="100" as="geometry"/>
+    </mxCell>
+    <mxCell id="vibe" value="バイブ&#10;コーディング&#10;─────&#10;コードを&#10;見ない" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#60a5fa;fontColor=#ffffff;strokeColor=none;fontFamily=Helvetica Neue;fontSize=10;shadow=1;align=center;" vertex="1" parent="1">
+      <mxGeometry x="600" y="55" width="120" height="100" as="geometry"/>
+    </mxCell>
+    <mxCell id="ai_label" value="AI主導" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontFamily=Helvetica Neue;fontSize=10;fontColor=#6b7280;" vertex="1" parent="1">
+      <mxGeometry x="750" y="90" width="60" height="30" as="geometry"/>
+    </mxCell>
+    <mxCell id="e1" style="endArrow=none;strokeColor=#94a3b8;strokeWidth=1.5;" edge="1" source="human" target="ai_assist" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="e2" style="endArrow=classic;endSize=5;strokeColor=#94a3b8;strokeWidth=1.5;" edge="1" source="ai_assist" target="ai_collab" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="e3" style="endArrow=classic;endSize=5;strokeColor=#94a3b8;strokeWidth=1.5;" edge="1" source="ai_collab" target="ai_driven" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="e4" style="endArrow=classic;endSize=5;strokeColor=#94a3b8;strokeWidth=1.5;" edge="1" source="ai_driven" target="vibe" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="e5" style="endArrow=none;strokeColor=#94a3b8;strokeWidth=1.5;" edge="1" source="vibe" target="ai_label" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="ex1" value="例: Copilot補完" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f3f4f6;fontColor=#4b5563;strokeColor=none;fontFamily=Helvetica Neue;fontSize=8;shadow=1;" vertex="1" parent="1">
+      <mxGeometry x="130" y="200" width="100" height="30" as="geometry"/>
+    </mxCell>
+    <mxCell id="ex2" value="例: Claude Code&#10;（レビューあり）" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f3f4f6;fontColor=#4b5563;strokeColor=none;fontFamily=Helvetica Neue;fontSize=8;shadow=1;" vertex="1" parent="1">
+      <mxGeometry x="290" y="195" width="100" height="40" as="geometry"/>
+    </mxCell>
+    <mxCell id="ex3" value="例: エージェント&#10;型開発" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f3f4f6;fontColor=#4b5563;strokeColor=none;fontFamily=Helvetica Neue;fontSize=8;shadow=1;" vertex="1" parent="1">
+      <mxGeometry x="450" y="195" width="100" height="40" as="geometry"/>
+    </mxCell>
+    <mxCell id="ex4" value="例: Karpathy氏&#10;提唱スタイル" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f3f4f6;fontColor=#4b5563;strokeColor=none;fontFamily=Helvetica Neue;fontSize=8;shadow=1;" vertex="1" parent="1">
+      <mxGeometry x="610" y="195" width="100" height="40" as="geometry"/>
+    </mxCell>
+    <mxCell id="d1" style="endArrow=none;dashed=1;strokeColor=#cbd5e1;strokeWidth=1;" edge="1" source="ai_assist" target="ex1" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="d2" style="endArrow=none;dashed=1;strokeColor=#cbd5e1;strokeWidth=1;" edge="1" source="ai_collab" target="ex2" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="d3" style="endArrow=none;dashed=1;strokeColor=#cbd5e1;strokeWidth=1;" edge="1" source="ai_driven" target="ex3" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="d4" style="endArrow=none;dashed=1;strokeColor=#cbd5e1;strokeWidth=1;" edge="1" source="vibe" target="ex4" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+  </root>
+</mxGraphModel>

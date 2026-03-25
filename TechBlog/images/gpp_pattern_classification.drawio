@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="draw.io">
+  <diagram name="Page-1" id="pattern_classification">
+    <mxGraphModel dx="1300" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1400" pageHeight="560" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+
+        <!-- タイトル -->
+        <mxCell id="title" value="Game Programming Patterns パターン分類マップ" style="text;align=center;verticalAlign=middle;whiteSpace=wrap;fontSize=14;fontStyle=1;fontColor=#1e40af;fontFamily=Helvetica Neue;" vertex="1" parent="1">
+          <mxGeometry x="400" y="10" width="400" height="30" as="geometry"/>
+        </mxCell>
+
+        <!-- GoF由来（再解釈） -->
+        <mxCell id="cluster_gof" value="GoF由来（再解釈）" style="swimlane;startSize=28;fillColor=#f8fafc;strokeColor=#e5e7eb;fontColor=#1e40af;fontSize=11;fontFamily=Helvetica Neue;rounded=1;shadow=1;fontStyle=1;swimlaneLine=0;" vertex="1" parent="1">
+          <mxGeometry x="30" y="50" width="540" height="190" as="geometry"/>
+        </mxCell>
+        <mxCell id="command" value="Command&#xa;入力の抽象化" style="rounded=1;whiteSpace=wrap;fillColor=#dbeafe;fontColor=#1e40af;strokeColor=none;fontSize=10;fontFamily=Helvetica Neue;shadow=1;" vertex="1" parent="cluster_gof">
+          <mxGeometry x="10" y="35" width="120" height="55" as="geometry"/>
+        </mxCell>
+        <mxCell id="observer" value="Observer&#xa;イベント通知" style="rounded=1;whiteSpace=wrap;fillColor=#dbeafe;fontColor=#1e40af;strokeColor=none;fontSize=10;fontFamily=Helvetica Neue;shadow=1;" vertex="1" parent="cluster_gof">
+          <mxGeometry x="140" y="35" width="120" height="55" as="geometry"/>
+        </mxCell>
+        <mxCell id="state" value="State&#xa;状態遷移" style="rounded=1;whiteSpace=wrap;fillColor=#dbeafe;fontColor=#1e40af;strokeColor=none;fontSize=10;fontFamily=Helvetica Neue;shadow=1;" vertex="1" parent="cluster_gof">
+          <mxGeometry x="270" y="35" width="120" height="55" as="geometry"/>
+        </mxCell>
+        <mxCell id="flyweight" value="Flyweight&#xa;メモリ共有" style="rounded=1;whiteSpace=wrap;fillColor=#dbeafe;fontColor=#1e40af;strokeColor=none;fontSize=10;fontFamily=Helvetica Neue;shadow=1;" vertex="1" parent="cluster_gof">
+          <mxGeometry x="400" y="35" width="120" height="55" as="geometry"/>
+        </mxCell>
+        <mxCell id="singleton" value="Singleton&#xa;グローバルアクセス" style="rounded=1;whiteSpace=wrap;fillColor=#dbeafe;fontColor=#1e40af;strokeColor=none;fontSize=10;fontFamily=Helvetica Neue;shadow=1;" vertex="1" parent="cluster_gof">
+          <mxGeometry x="10" y="120" width="120" height="55" as="geometry"/>
+        </mxCell>
+        <mxCell id="prototype" value="Prototype&#xa;オブジェクト複製" style="rounded=1;whiteSpace=wrap;fillColor=#dbeafe;fontColor=#1e40af;strokeColor=none;fontSize=10;fontFamily=Helvetica Neue;shadow=1;" vertex="1" parent="cluster_gof">
+          <mxGeometry x="140" y="120" width="120" height="55" as="geometry"/>
+        </mxCell>
+
+        <!-- シーケンシング -->
+        <mxCell id="cluster_seq" value="シーケンシング" style="swimlane;startSize=28;fillColor=#fafafa;strokeColor=#e5e7eb;fontColor=#6b7280;fontSize=11;fontFamily=Helvetica Neue;rounded=1;shadow=1;fontStyle=1;swimlaneLine=0;" vertex="1" parent="1">
+          <mxGeometry x="600" y="50" width="420" height="100" as="geometry"/>
+        </mxCell>
+        <mxCell id="gameloop" value="Game Loop&#xa;時間制御" style="rounded=1;whiteSpace=wrap;fillColor=#fef3c7;fontColor=#92400e;strokeColor=none;fontSize=10;fontFamily=Helvetica Neue;shadow=1;" vertex="1" parent="cluster_seq">
+          <mxGeometry x="10" y="35" width="120" height="55" as="geometry"/>
+        </mxCell>
+        <mxCell id="update" value="Update Method&#xa;フレーム更新" style="rounded=1;whiteSpace=wrap;fillColor=#fef3c7;fontColor=#92400e;strokeColor=none;fontSize=10;fontFamily=Helvetica Neue;shadow=1;" vertex="1" parent="cluster_seq">
+          <mxGeometry x="150" y="35" width="120" height="55" as="geometry"/>
+        </mxCell>
+        <mxCell id="doublebuf" value="Double Buffer&#xa;描画安定化" style="rounded=1;whiteSpace=wrap;fillColor=#fef3c7;fontColor=#92400e;strokeColor=none;fontSize=10;fontFamily=Helvetica Neue;shadow=1;" vertex="1" parent="cluster_seq">
+          <mxGeometry x="290" y="35" width="120" height="55" as="geometry"/>
+        </mxCell>
+
+        <!-- ビヘイビア -->
+        <mxCell id="cluster_beh" value="ビヘイビア" style="swimlane;startSize=28;fillColor=#fafafa;strokeColor=#e5e7eb;fontColor=#6b7280;fontSize=11;fontFamily=Helvetica Neue;rounded=1;shadow=1;fontStyle=1;swimlaneLine=0;" vertex="1" parent="1">
+          <mxGeometry x="30" y="270" width="420" height="100" as="geometry"/>
+        </mxCell>
+        <mxCell id="bytecode" value="Bytecode&#xa;データ駆動" style="rounded=1;whiteSpace=wrap;fillColor=#fef3c7;fontColor=#92400e;strokeColor=none;fontSize=10;fontFamily=Helvetica Neue;shadow=1;" vertex="1" parent="cluster_beh">
+          <mxGeometry x="10" y="35" width="120" height="55" as="geometry"/>
+        </mxCell>
+        <mxCell id="sandbox" value="Subclass Sandbox&#xa;安全な拡張" style="rounded=1;whiteSpace=wrap;fillColor=#fef3c7;fontColor=#92400e;strokeColor=none;fontSize=10;fontFamily=Helvetica Neue;shadow=1;" vertex="1" parent="cluster_beh">
+          <mxGeometry x="150" y="35" width="120" height="55" as="geometry"/>
+        </mxCell>
+        <mxCell id="typeobj" value="Type Object&#xa;型のデータ化" style="rounded=1;whiteSpace=wrap;fillColor=#fef3c7;fontColor=#92400e;strokeColor=none;fontSize=10;fontFamily=Helvetica Neue;shadow=1;" vertex="1" parent="cluster_beh">
+          <mxGeometry x="290" y="35" width="120" height="55" as="geometry"/>
+        </mxCell>
+
+        <!-- デカップリング -->
+        <mxCell id="cluster_dec" value="デカップリング" style="swimlane;startSize=28;fillColor=#fafafa;strokeColor=#e5e7eb;fontColor=#6b7280;fontSize=11;fontFamily=Helvetica Neue;rounded=1;shadow=1;fontStyle=1;swimlaneLine=0;" vertex="1" parent="1">
+          <mxGeometry x="480" y="270" width="420" height="100" as="geometry"/>
+        </mxCell>
+        <mxCell id="component" value="Component&#xa;エンティティ分割" style="rounded=1;whiteSpace=wrap;fillColor=#fef3c7;fontColor=#92400e;strokeColor=none;fontSize=10;fontFamily=Helvetica Neue;shadow=1;" vertex="1" parent="cluster_dec">
+          <mxGeometry x="10" y="35" width="120" height="55" as="geometry"/>
+        </mxCell>
+        <mxCell id="eventqueue" value="Event Queue&#xa;非同期通信" style="rounded=1;whiteSpace=wrap;fillColor=#fef3c7;fontColor=#92400e;strokeColor=none;fontSize=10;fontFamily=Helvetica Neue;shadow=1;" vertex="1" parent="cluster_dec">
+          <mxGeometry x="150" y="35" width="120" height="55" as="geometry"/>
+        </mxCell>
+        <mxCell id="servicelocator" value="Service Locator&#xa;サービス解決" style="rounded=1;whiteSpace=wrap;fillColor=#fef3c7;fontColor=#92400e;strokeColor=none;fontSize=10;fontFamily=Helvetica Neue;shadow=1;" vertex="1" parent="cluster_dec">
+          <mxGeometry x="290" y="35" width="120" height="55" as="geometry"/>
+        </mxCell>
+
+        <!-- 最適化 -->
+        <mxCell id="cluster_opt" value="最適化" style="swimlane;startSize=28;fillColor=#fafafa;strokeColor=#e5e7eb;fontColor=#6b7280;fontSize=11;fontFamily=Helvetica Neue;rounded=1;shadow=1;fontStyle=1;swimlaneLine=0;" vertex="1" parent="1">
+          <mxGeometry x="930" y="270" width="280" height="190" as="geometry"/>
+        </mxCell>
+        <mxCell id="datalocality" value="Data Locality&#xa;キャッシュ効率" style="rounded=1;whiteSpace=wrap;fillColor=#f3f4f6;fontColor=#4b5563;strokeColor=none;fontSize=10;fontFamily=Helvetica Neue;shadow=1;" vertex="1" parent="cluster_opt">
+          <mxGeometry x="10" y="35" width="120" height="55" as="geometry"/>
+        </mxCell>
+        <mxCell id="dirtyflag" value="Dirty Flag&#xa;再計算回避" style="rounded=1;whiteSpace=wrap;fillColor=#f3f4f6;fontColor=#4b5563;strokeColor=none;fontSize=10;fontFamily=Helvetica Neue;shadow=1;" vertex="1" parent="cluster_opt">
+          <mxGeometry x="150" y="35" width="120" height="55" as="geometry"/>
+        </mxCell>
+        <mxCell id="objectpool" value="Object Pool&#xa;メモリ再利用" style="rounded=1;whiteSpace=wrap;fillColor=#f3f4f6;fontColor=#4b5563;strokeColor=none;fontSize=10;fontFamily=Helvetica Neue;shadow=1;" vertex="1" parent="cluster_opt">
+          <mxGeometry x="10" y="120" width="120" height="55" as="geometry"/>
+        </mxCell>
+        <mxCell id="spatial" value="Spatial Partition&#xa;空間分割" style="rounded=1;whiteSpace=wrap;fillColor=#f3f4f6;fontColor=#4b5563;strokeColor=none;fontSize=10;fontFamily=Helvetica Neue;shadow=1;" vertex="1" parent="cluster_opt">
+          <mxGeometry x="150" y="120" width="120" height="55" as="geometry"/>
+        </mxCell>
+
+        <!-- エッジ -->
+        <mxCell id="e1" value="毎フレーム呼出" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#94a3b8;strokeWidth=1.2;fontSize=9;fontFamily=Helvetica Neue;fontColor=#4b5563;endArrow=classic;endSize=5;" edge="1" source="gameloop" target="update" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e2" value="キャッシュ改善" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#94a3b8;strokeWidth=1.2;fontSize=9;fontFamily=Helvetica Neue;fontColor=#4b5563;endArrow=classic;endSize=5;" edge="1" source="component" target="datalocality" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e3" value="非同期化" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#94a3b8;strokeWidth=1.2;fontSize=9;fontFamily=Helvetica Neue;fontColor=#4b5563;endArrow=classic;endSize=5;" edge="1" source="observer" target="eventqueue" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

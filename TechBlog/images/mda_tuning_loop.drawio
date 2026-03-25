@@ -1,0 +1,61 @@
+<mxfile host="app.diagrams.net" modified="2026-03-25" type="device">
+  <diagram id="mda_tuning_loop" name="MDA Tuning Loop">
+    <mxGraphModel dx="1200" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="1100" pageHeight="850" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="goal" value="1. &#x76ee;&#x6a19;&#x3092;&#x5b9a;&#x3081;&#x308b;&#xa;&#x3069;&#x306e;Aesthetics&#x3092;&#xa;&#x5b9f;&#x73fe;&#x3057;&#x305f;&#x3044;&#x304b;?" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dcfce7;fontColor=#166534;strokeColor=none;fontSize=11;fontFamily=Helvetica Neue;shadow=1;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="40" y="100" width="180" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="design" value="2. Mechanics&#x3092;&#xa;&#x8a2d;&#x8a08;&#x3059;&#x308b;&#xa;&#x30eb;&#x30fc;&#x30eb;&#x30fb;&#x30b7;&#x30b9;&#x30c6;&#x30e0;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dbeafe;fontColor=#1e40af;strokeColor=none;fontSize=11;fontFamily=Helvetica Neue;shadow=1;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="310" y="100" width="180" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="playtest" value="3. &#x30d7;&#x30ec;&#x30a4;&#x30c6;&#x30b9;&#x30c8;&#xa;Dynamics&#x3092;&#x89b3;&#x5bdf;&#xa;&#x5b9f;&#x969b;&#x306e;&#x632f;&#x308b;&#x821e;&#x3044;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fef3c7;fontColor=#92400e;strokeColor=none;fontSize=11;fontFamily=Helvetica Neue;shadow=1;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="580" y="100" width="180" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="evaluate" value="4. &#x8a55;&#x4fa1;&#x3059;&#x308b;&#xa;&#x76ee;&#x6a19;&#x306e;Aesthetics&#x306f;&#xa;&#x9054;&#x6210;&#x3055;&#x308c;&#x305f;&#x304b;?" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dcfce7;fontColor=#166534;strokeColor=none;fontSize=11;fontFamily=Helvetica Neue;shadow=1;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="580" y="260" width="180" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="e_gd" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#94a3b8;strokeWidth=1.2;fontSize=9;fontFamily=Helvetica Neue;fontColor=#4b5563;endArrow=classic;endSize=5;" edge="1" source="goal" target="design" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_gd_label" value="&#x8a2d;&#x8a08;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontFamily=Helvetica Neue;fontSize=9;fontColor=#4b5563;" vertex="1" connectable="0" parent="e_gd">
+          <mxGeometry x="-0.1" relative="1" as="geometry">
+            <mxPoint y="-15" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_dp" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#94a3b8;strokeWidth=1.2;fontSize=9;fontFamily=Helvetica Neue;fontColor=#4b5563;endArrow=classic;endSize=5;" edge="1" source="design" target="playtest" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_dp_label" value="&#x5b9f;&#x88c5;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontFamily=Helvetica Neue;fontSize=9;fontColor=#4b5563;" vertex="1" connectable="0" parent="e_dp">
+          <mxGeometry x="-0.1" relative="1" as="geometry">
+            <mxPoint y="-15" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_pe" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#94a3b8;strokeWidth=1.2;fontSize=9;fontFamily=Helvetica Neue;fontColor=#4b5563;endArrow=classic;endSize=5;" edge="1" source="playtest" target="evaluate" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_pe_label" value="&#x89b3;&#x5bdf;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontFamily=Helvetica Neue;fontSize=9;fontColor=#4b5563;" vertex="1" connectable="0" parent="e_pe">
+          <mxGeometry x="-0.1" relative="1" as="geometry">
+            <mxPoint x="15" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_ed" value="Mechanics&#x3092;&#x8abf;&#x6574;" style="rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#3b82f6;strokeWidth=2;fontSize=9;fontFamily=Helvetica Neue;fontColor=#1e40af;endArrow=classic;endSize=5;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" source="evaluate" target="design" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="400" y="300" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_eg" value="&#x76ee;&#x6a19;&#x3092;&#x518d;&#x5b9a;&#x7fa9;&#xa;(&#x5fc5;&#x8981;&#x306b;&#x5fdc;&#x3058;&#x3066;)" style="rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#cbd5e1;strokeWidth=1.2;dashed=1;fontSize=9;fontFamily=Helvetica Neue;fontColor=#6b7280;endArrow=classic;endSize=5;exitX=0;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" source="evaluate" target="goal" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="540" y="380" />
+              <mxPoint x="130" y="380" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

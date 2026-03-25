@@ -1,0 +1,61 @@
+<mxfile host="app.diagrams.net" modified="2026-03-25" type="device">
+  <diagram id="mda_aesthetics_types" name="MDA Aesthetics Types">
+    <mxGraphModel dx="1200" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="1100" pageHeight="850" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="center" value="8&#x3064;&#x306e;&#xa;Aesthetics" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dbeafe;fontColor=#1e40af;strokeColor=none;fontSize=13;fontFamily=Helvetica Neue;shadow=1;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="340" y="40" width="140" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="sensation" value="1. Sensation&#xa;&#x611f;&#x899a;&#x7684;&#x5feb;&#x697d;&#xa;&#x7f8e;&#x3057;&#x3055;&#x30fb;&#x97f3;&#x30fb;&#x89e6;&#x611f;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fef3c7;fontColor=#92400e;strokeColor=none;fontSize=10;fontFamily=Helvetica Neue;shadow=1;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="20" y="160" width="180" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="fantasy" value="2. Fantasy&#xa;&#x7a7a;&#x60f3;&#xa;&#x5225;&#x4e16;&#x754c;&#x306e;&#x81ea;&#x5206;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fef3c7;fontColor=#92400e;strokeColor=none;fontSize=10;fontFamily=Helvetica Neue;shadow=1;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="220" y="160" width="180" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="narrative" value="3. Narrative&#xa;&#x7269;&#x8a9e;&#xa;&#x30c9;&#x30e9;&#x30de;&#x306e;&#x5c55;&#x958b;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fef3c7;fontColor=#92400e;strokeColor=none;fontSize=10;fontFamily=Helvetica Neue;shadow=1;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="420" y="160" width="180" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="challenge" value="4. Challenge&#xa;&#x6311;&#x6226;&#xa;&#x969c;&#x5bb3;&#x3092;&#x514b;&#x670d;&#x3059;&#x308b;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fef3c7;fontColor=#92400e;strokeColor=none;fontSize=10;fontFamily=Helvetica Neue;shadow=1;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="620" y="160" width="180" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="fellowship" value="5. Fellowship&#xa;&#x4ef2;&#x9593;&#xa;&#x793e;&#x4f1a;&#x7684;&#x3064;&#x306a;&#x304c;&#x308a;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dcfce7;fontColor=#166534;strokeColor=none;fontSize=10;fontFamily=Helvetica Neue;shadow=1;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="20" y="280" width="180" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="discovery" value="6. Discovery&#xa;&#x767a;&#x898b;&#xa;&#x672a;&#x77e5;&#x306e;&#x63a2;&#x7d22;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dcfce7;fontColor=#166534;strokeColor=none;fontSize=10;fontFamily=Helvetica Neue;shadow=1;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="220" y="280" width="180" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="expression" value="7. Expression&#xa;&#x8868;&#x73fe;&#xa;&#x81ea;&#x5df1;&#x306e;&#x6295;&#x5f71;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dcfce7;fontColor=#166534;strokeColor=none;fontSize=10;fontFamily=Helvetica Neue;shadow=1;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="420" y="280" width="180" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="submission" value="8. Submission&#xa;&#x6ca1;&#x5165;&#xa;&#x65e5;&#x5e38;&#x304b;&#x3089;&#x306e;&#x96e2;&#x8131;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dcfce7;fontColor=#166534;strokeColor=none;fontSize=10;fontFamily=Helvetica Neue;shadow=1;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="620" y="280" width="180" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="ec1" style="rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#94a3b8;strokeWidth=1.2;endArrow=classic;endSize=4;" edge="1" source="center" target="sensation" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ec2" style="rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#94a3b8;strokeWidth=1.2;endArrow=classic;endSize=4;" edge="1" source="center" target="fantasy" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ec3" style="rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#94a3b8;strokeWidth=1.2;endArrow=classic;endSize=4;" edge="1" source="center" target="narrative" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ec4" style="rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#94a3b8;strokeWidth=1.2;endArrow=classic;endSize=4;" edge="1" source="center" target="challenge" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ec5" style="rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#94a3b8;strokeWidth=1.2;endArrow=classic;endSize=4;" edge="1" source="center" target="fellowship" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ec6" style="rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#94a3b8;strokeWidth=1.2;endArrow=classic;endSize=4;" edge="1" source="center" target="discovery" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ec7" style="rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#94a3b8;strokeWidth=1.2;endArrow=classic;endSize=4;" edge="1" source="center" target="expression" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ec8" style="rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#94a3b8;strokeWidth=1.2;endArrow=classic;endSize=4;" edge="1" source="center" target="submission" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

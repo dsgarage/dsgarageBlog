@@ -1,0 +1,92 @@
+<mxfile host="draw.io">
+  <diagram name="three_schemas" id="three_schemas">
+    <mxGraphModel dx="1200" dy="900">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+
+        <!-- 中心ノード: ゲーム -->
+        <mxCell id="game" value="ゲーム" style="rounded=1;whiteSpace=wrap;fillColor=#dbeafe;fontColor=#1e40af;strokeColor=none;fontSize=14;fontStyle=1;fontFamily=Helvetica Neue;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="440" y="20" width="120" height="40" as="geometry"/>
+        </mxCell>
+
+        <!-- RULES クラスタ -->
+        <mxCell id="cluster_rules" value="RULES&#xa;ルール・スキーマ" style="rounded=1;whiteSpace=wrap;fillColor=#f8fafc;strokeColor=#93c5fd;fontColor=#1e40af;fontSize=11;fontStyle=1;fontFamily=Helvetica Neue;verticalAlign=top;spacingTop=5;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="50" y="110" width="220" height="280" as="geometry"/>
+        </mxCell>
+        <mxCell id="r1" value="形式的システム&#xa;数学的構造" style="rounded=1;whiteSpace=wrap;fillColor=#dbeafe;fontColor=#1e40af;strokeColor=none;fontSize=10;fontFamily=Helvetica Neue;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="80" y="160" width="160" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="r2" value="確率・情報理論&#xa;ゲーム木・戦略" style="rounded=1;whiteSpace=wrap;fillColor=#dbeafe;fontColor=#1e40af;strokeColor=none;fontSize=10;fontFamily=Helvetica Neue;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="80" y="230" width="160" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="r3" value="サイバネティクス&#xa;フィードバック" style="rounded=1;whiteSpace=wrap;fillColor=#dbeafe;fontColor=#1e40af;strokeColor=none;fontSize=10;fontFamily=Helvetica Neue;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="80" y="300" width="160" height="50" as="geometry"/>
+        </mxCell>
+
+        <!-- PLAY クラスタ -->
+        <mxCell id="cluster_play" value="PLAY&#xa;プレイ・スキーマ" style="rounded=1;whiteSpace=wrap;fillColor=#fffbeb;strokeColor=#fcd34d;fontColor=#92400e;fontSize=11;fontStyle=1;fontFamily=Helvetica Neue;verticalAlign=top;spacingTop=5;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="390" y="110" width="220" height="280" as="geometry"/>
+        </mxCell>
+        <mxCell id="p1" value="意味のあるプレイ&#xa;Discernable + Integrated" style="rounded=1;whiteSpace=wrap;fillColor=#fef3c7;fontColor=#92400e;strokeColor=none;fontSize=10;fontFamily=Helvetica Neue;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="410" y="160" width="180" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="p2" value="インタラクション&#xa;選択と結果" style="rounded=1;whiteSpace=wrap;fillColor=#fef3c7;fontColor=#92400e;strokeColor=none;fontSize=10;fontFamily=Helvetica Neue;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="410" y="230" width="180" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="p3" value="物語・シミュレーション&#xa;体験の設計" style="rounded=1;whiteSpace=wrap;fillColor=#fef3c7;fontColor=#92400e;strokeColor=none;fontSize=10;fontFamily=Helvetica Neue;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="410" y="300" width="180" height="50" as="geometry"/>
+        </mxCell>
+
+        <!-- CULTURE クラスタ -->
+        <mxCell id="cluster_culture" value="CULTURE&#xa;カルチャー・スキーマ" style="rounded=1;whiteSpace=wrap;fillColor=#f0fdf4;strokeColor=#86efac;fontColor=#166534;fontSize=11;fontStyle=1;fontFamily=Helvetica Neue;verticalAlign=top;spacingTop=5;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="730" y="110" width="220" height="280" as="geometry"/>
+        </mxCell>
+        <mxCell id="c1" value="レトリック&#xa;文化的メッセージ" style="rounded=1;whiteSpace=wrap;fillColor=#dcfce7;fontColor=#166534;strokeColor=none;fontSize=10;fontFamily=Helvetica Neue;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="760" y="160" width="160" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="c2" value="オープンカルチャー&#xa;Mod・二次創作" style="rounded=1;whiteSpace=wrap;fillColor=#dcfce7;fontColor=#166534;strokeColor=none;fontSize=10;fontFamily=Helvetica Neue;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="760" y="230" width="160" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="c3" value="社会的プレイ&#xa;コミュニティ" style="rounded=1;whiteSpace=wrap;fillColor=#dcfce7;fontColor=#166534;strokeColor=none;fontSize=10;fontFamily=Helvetica Neue;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="760" y="300" width="160" height="50" as="geometry"/>
+        </mxCell>
+
+        <!-- エッジ: game -> 各クラスタの最初のノード -->
+        <mxCell id="e1" style="rounded=1;strokeColor=#3b82f6;strokeWidth=1.5;endSize=6;" edge="1" source="game" target="r1" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e2" style="rounded=1;strokeColor=#d97706;strokeWidth=1.5;endSize=6;" edge="1" source="game" target="p1" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e3" style="rounded=1;strokeColor=#16a34a;strokeWidth=1.5;endSize=6;" edge="1" source="game" target="c1" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- エッジ: RULES 内部 -->
+        <mxCell id="e4" style="rounded=1;strokeColor=#93c5fd;strokeWidth=1.2;endSize=6;" edge="1" source="r1" target="r2" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e5" style="rounded=1;strokeColor=#93c5fd;strokeWidth=1.2;endSize=6;" edge="1" source="r2" target="r3" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- エッジ: PLAY 内部 -->
+        <mxCell id="e6" style="rounded=1;strokeColor=#fcd34d;strokeWidth=1.2;endSize=6;" edge="1" source="p1" target="p2" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e7" style="rounded=1;strokeColor=#fcd34d;strokeWidth=1.2;endSize=6;" edge="1" source="p2" target="p3" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- エッジ: CULTURE 内部 -->
+        <mxCell id="e8" style="rounded=1;strokeColor=#86efac;strokeWidth=1.2;endSize=6;" edge="1" source="c1" target="c2" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e9" style="rounded=1;strokeColor=#86efac;strokeWidth=1.2;endSize=6;" edge="1" source="c2" target="c3" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

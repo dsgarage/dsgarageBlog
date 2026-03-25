@@ -1,0 +1,60 @@
+<mxfile host="draw.io">
+  <diagram name="meaningful_play" id="meaningful_play">
+    <mxGraphModel dx="1200" dy="800">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+
+        <!-- プレイヤーのアクション -->
+        <mxCell id="action" value="プレイヤーの&#xa;アクション" style="rounded=1;whiteSpace=wrap;fillColor=#dbeafe;fontColor=#1e40af;strokeColor=none;fontSize=12;fontStyle=1;fontFamily=Helvetica Neue;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="30" y="140" width="140" height="60" as="geometry"/>
+        </mxCell>
+
+        <!-- 2条件クラスタ（背景のみ） -->
+        <mxCell id="cluster_cond" value="「意味のあるプレイ」の2条件" style="rounded=1;whiteSpace=wrap;fillColor=#f8fafc;strokeColor=#e5e7eb;fontColor=#1e40af;fontSize=11;fontStyle=1;fontFamily=Helvetica Neue;verticalAlign=top;spacingTop=5;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="250" y="60" width="260" height="220" as="geometry"/>
+        </mxCell>
+
+        <!-- 条件ノード -->
+        <mxCell id="discernable" value="Discernable&#xa;識別可能&#xa;結果がすぐ分かる" style="rounded=1;whiteSpace=wrap;fillColor=#fef3c7;fontColor=#92400e;strokeColor=none;fontSize=10;fontFamily=Helvetica Neue;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="290" y="100" width="180" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="integrated" value="Integrated&#xa;統合的&#xa;ゲーム全体に影響する" style="rounded=1;whiteSpace=wrap;fillColor=#fef3c7;fontColor=#92400e;strokeColor=none;fontSize=10;fontFamily=Helvetica Neue;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="290" y="180" width="180" height="60" as="geometry"/>
+        </mxCell>
+
+        <!-- 結果ノード -->
+        <mxCell id="meaningful" value="意味のあるプレイ&#xa;(Meaningful Play)" style="rounded=1;whiteSpace=wrap;fillColor=#dcfce7;fontColor=#166534;strokeColor=none;fontSize=12;fontStyle=1;fontFamily=Helvetica Neue;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="600" y="80" width="190" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="not_meaningful" value="無意味なプレイ&#xa;(退屈 or 混乱)" style="rounded=1;whiteSpace=wrap;fillColor=#fee2e2;fontColor=#991b1b;strokeColor=none;fontSize=10;fontFamily=Helvetica Neue;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="600" y="200" width="190" height="50" as="geometry"/>
+        </mxCell>
+
+        <!-- エッジ: action -> conditions -->
+        <mxCell id="e1" value="結果が見える?" style="rounded=1;strokeColor=#94a3b8;strokeWidth=1.2;endSize=6;fontSize=9;fontFamily=Helvetica Neue;fontColor=#4b5563;" edge="1" source="action" target="discernable" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e2" value="全体に影響する?" style="rounded=1;strokeColor=#94a3b8;strokeWidth=1.2;endSize=6;fontSize=9;fontFamily=Helvetica Neue;fontColor=#4b5563;" edge="1" source="action" target="integrated" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- エッジ: conditions -> meaningful (Yes) -->
+        <mxCell id="e3" value="Yes" style="rounded=1;strokeColor=#16a34a;strokeWidth=1.2;endSize=6;fontSize=9;fontFamily=Helvetica Neue;fontColor=#166534;" edge="1" source="discernable" target="meaningful" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e4" value="Yes" style="rounded=1;strokeColor=#16a34a;strokeWidth=1.2;endSize=6;fontSize=9;fontFamily=Helvetica Neue;fontColor=#166534;" edge="1" source="integrated" target="meaningful" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- エッジ: conditions -> not_meaningful (No, dashed) -->
+        <mxCell id="e5" value="No" style="rounded=1;dashed=1;strokeColor=#cbd5e1;strokeWidth=1.2;endSize=6;fontSize=9;fontFamily=Helvetica Neue;fontColor=#94a3b8;" edge="1" source="discernable" target="not_meaningful" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e6" value="No" style="rounded=1;dashed=1;strokeColor=#cbd5e1;strokeWidth=1.2;endSize=6;fontSize=9;fontFamily=Helvetica Neue;fontColor=#94a3b8;" edge="1" source="integrated" target="not_meaningful" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

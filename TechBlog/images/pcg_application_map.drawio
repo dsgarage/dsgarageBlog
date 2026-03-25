@@ -1,0 +1,95 @@
+<mxfile host="draw.io">
+  <diagram name="PCG応用マップ" id="pcg_application_map">
+    <mxGraphModel dx="1300" dy="1000" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="1400" pageHeight="1100" math="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+
+        <!-- 軸ラベル -->
+        <mxCell id="axis_y" value="品質保証の難易度 &#x2192;" style="text;html=0;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontColor=#6b7280;fontSize=10;fontFamily=Helvetica Neue;rotation=-90;" vertex="1" parent="1">
+          <mxGeometry x="-30" y="250" width="130" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="axis_x" value="生成量のスケール &#x2192;" style="text;html=0;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontColor=#6b7280;fontSize=10;fontFamily=Helvetica Neue;" vertex="1" parent="1">
+          <mxGeometry x="450" y="520" width="130" height="30" as="geometry"/>
+        </mxCell>
+
+        <!-- グループ背景: 低リスク x 小スケール -->
+        <mxCell id="bg_low_risk" value="低リスク x 小スケール&#xa;(まずここから始める)" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#f8fafc;strokeColor=#e5e7eb;fontColor=#1e40af;fontSize=10;fontStyle=1;fontFamily=Helvetica Neue;shadow=1;verticalAlign=top;align=center;" vertex="1" parent="1">
+          <mxGeometry x="60" y="30" width="440" height="120" as="geometry"/>
+        </mxCell>
+        <mxCell id="texture" value="テクスチャ生成&#xa;パーリンノイズ" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#dbeafe;fontColor=#1e40af;strokeColor=none;fontSize=10;fontFamily=Helvetica Neue;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="75" y="70" width="120" height="55" as="geometry"/>
+        </mxCell>
+        <mxCell id="vegetation" value="植生配置&#xa;L-system" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#dbeafe;fontColor=#1e40af;strokeColor=none;fontSize=10;fontFamily=Helvetica Neue;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="215" y="70" width="120" height="55" as="geometry"/>
+        </mxCell>
+        <mxCell id="decor" value="装飾アイテム&#xa;パラメトリック生成" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#dbeafe;fontColor=#1e40af;strokeColor=none;fontSize=10;fontFamily=Helvetica Neue;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="355" y="70" width="130" height="55" as="geometry"/>
+        </mxCell>
+
+        <!-- グループ背景: 低リスク x 大スケール -->
+        <mxCell id="bg_low_risk_large" value="低リスク x 大スケール" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#f8fafc;strokeColor=#e5e7eb;fontColor=#1e40af;fontSize=10;fontStyle=1;fontFamily=Helvetica Neue;shadow=1;verticalAlign=top;align=center;" vertex="1" parent="1">
+          <mxGeometry x="560" y="30" width="360" height="120" as="geometry"/>
+        </mxCell>
+        <mxCell id="terrain" value="地形生成&#xa;フラクタル/ノイズ&#xa;(Minecraft)" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#dbeafe;fontColor=#1e40af;strokeColor=none;fontSize=10;fontFamily=Helvetica Neue;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="580" y="65" width="140" height="65" as="geometry"/>
+        </mxCell>
+        <mxCell id="loot" value="ランダムドロップ&#xa;武器・アイテム&#xa;(Diablo)" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#dbeafe;fontColor=#1e40af;strokeColor=none;fontSize=10;fontFamily=Helvetica Neue;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="755" y="65" width="140" height="65" as="geometry"/>
+        </mxCell>
+
+        <!-- グループ背景: 高リスク x 小スケール -->
+        <mxCell id="bg_high_risk" value="高リスク x 小スケール" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#fafafa;strokeColor=#e5e7eb;fontColor=#6b7280;fontSize=10;fontStyle=1;fontFamily=Helvetica Neue;shadow=1;verticalAlign=top;align=center;" vertex="1" parent="1">
+          <mxGeometry x="60" y="220" width="360" height="120" as="geometry"/>
+        </mxCell>
+        <mxCell id="dungeon" value="ダンジョン生成&#xa;BSP/セルオートマタ&#xa;(Spelunky)" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#fef3c7;fontColor=#92400e;strokeColor=none;fontSize=10;fontFamily=Helvetica Neue;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="80" y="255" width="150" height="65" as="geometry"/>
+        </mxCell>
+        <mxCell id="quest" value="クエスト生成&#xa;文法ベース" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#fef3c7;fontColor=#92400e;strokeColor=none;fontSize=10;fontFamily=Helvetica Neue;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="255" y="255" width="140" height="65" as="geometry"/>
+        </mxCell>
+
+        <!-- グループ背景: 高リスク x 大スケール (フロンティア) -->
+        <mxCell id="bg_frontier" value="高リスク x 大スケール&#xa;(フロンティア/研究領域)" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#fafafa;strokeColor=#92400e;fontColor=#92400e;fontSize=10;fontStyle=1;fontFamily=Helvetica Neue;shadow=1;verticalAlign=top;align=center;dashed=1;dashPattern=8 4;strokeWidth=1.5;" vertex="1" parent="1">
+          <mxGeometry x="490" y="220" width="480" height="120" as="geometry"/>
+        </mxCell>
+        <mxCell id="world" value="完全ワールド生成&#xa;(No Man's Sky)" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#fef3c7;fontColor=#92400e;strokeColor=none;fontSize=10;fontFamily=Helvetica Neue;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="505" y="260" width="140" height="55" as="geometry"/>
+        </mxCell>
+        <mxCell id="story" value="ストーリー生成&#xa;プランニング" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#fef3c7;fontColor=#92400e;strokeColor=none;fontSize=10;fontFamily=Helvetica Neue;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="665" y="260" width="130" height="55" as="geometry"/>
+        </mxCell>
+        <mxCell id="rules_node" value="ゲームルール生成&#xa;(Yavalath)" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#fef3c7;fontColor=#92400e;strokeColor=none;fontSize=10;fontFamily=Helvetica Neue;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="815" y="260" width="140" height="55" as="geometry"/>
+        </mxCell>
+
+        <!-- フロー -->
+        <mxCell id="e1" value="段階的に&#xa;スケールアップ" style="rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1e40af;strokeWidth=1.2;endSize=5;fontSize=8;fontColor=#1e40af;fontFamily=Helvetica Neue;" edge="1" source="texture" target="terrain" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e2" style="rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#94a3b8;strokeWidth=1.2;endSize=5;" edge="1" source="vegetation" target="terrain" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e3" style="rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#94a3b8;strokeWidth=1.2;endSize=5;" edge="1" source="decor" target="loot" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e4" value="品質保証を&#xa;追加" style="rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1e40af;strokeWidth=1.2;endSize=5;fontSize=8;fontColor=#1e40af;fontFamily=Helvetica Neue;" edge="1" source="terrain" target="dungeon" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e5" style="rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#94a3b8;strokeWidth=1.2;endSize=5;" edge="1" source="loot" target="quest" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e6" value="研究段階" style="rounded=1;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;strokeColor=#cbd5e1;strokeWidth=1.2;endSize=5;fontSize=8;fontColor=#6b7280;fontFamily=Helvetica Neue;" edge="1" source="dungeon" target="world" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e7" style="rounded=1;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;strokeColor=#cbd5e1;strokeWidth=1.2;endSize=5;" edge="1" source="quest" target="story" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e8" style="rounded=1;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;strokeColor=#cbd5e1;strokeWidth=1.2;endSize=5;" edge="1" source="story" target="rules_node" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

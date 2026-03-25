@@ -1,0 +1,73 @@
+<mxfile host="draw.io">
+  <diagram name="magic_circle" id="magic_circle">
+    <mxGraphModel dx="1100" dy="800">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+
+        <!-- 日常世界クラスタ（背景） -->
+        <mxCell id="cluster_outside" value="日常世界" style="rounded=1;whiteSpace=wrap;fillColor=#fafafa;strokeColor=#e5e7eb;fontColor=#6b7280;fontSize=11;fontStyle=1;fontFamily=Helvetica Neue;verticalAlign=top;spacingTop=5;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="30" y="30" width="260" height="300" as="geometry"/>
+        </mxCell>
+
+        <!-- 日常ノード -->
+        <mxCell id="real_object" value="紙とプラスチック&#xa;(物質としてのカード)" style="rounded=1;whiteSpace=wrap;fillColor=#f3f4f6;fontColor=#4b5563;strokeColor=none;fontSize=10;fontFamily=Helvetica Neue;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="60" y="80" width="200" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="real_action" value="カードを出す&#xa;(物理的動作)" style="rounded=1;whiteSpace=wrap;fillColor=#f3f4f6;fontColor=#4b5563;strokeColor=none;fontSize=10;fontFamily=Helvetica Neue;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="60" y="150" width="200" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="real_meaning" value="日常的な意味&#xa;なし" style="rounded=1;whiteSpace=wrap;fillColor=#f3f4f6;fontColor=#4b5563;strokeColor=none;fontSize=10;fontFamily=Helvetica Neue;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="60" y="220" width="200" height="50" as="geometry"/>
+        </mxCell>
+
+        <!-- 境界ノード（楕円） -->
+        <mxCell id="boundary" value="マジックサークル&#xa;(境界)" style="ellipse;whiteSpace=wrap;fillColor=#dbeafe;fontColor=#1e40af;strokeColor=none;fontSize=11;fontStyle=1;fontFamily=Helvetica Neue;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="380" y="120" width="160" height="80" as="geometry"/>
+        </mxCell>
+
+        <!-- ゲーム世界クラスタ（背景） -->
+        <mxCell id="cluster_inside" value="ゲーム世界" style="rounded=1;whiteSpace=wrap;fillColor=#f8fafc;strokeColor=#93c5fd;fontColor=#1e40af;fontSize=11;fontStyle=1;fontFamily=Helvetica Neue;verticalAlign=top;spacingTop=5;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="630" y="30" width="260" height="300" as="geometry"/>
+        </mxCell>
+
+        <!-- ゲーム世界ノード -->
+        <mxCell id="game_object" value="魔法のカード&#xa;攻撃力7・コスト3" style="rounded=1;whiteSpace=wrap;fillColor=#dbeafe;fontColor=#1e40af;strokeColor=none;fontSize=10;fontFamily=Helvetica Neue;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="660" y="80" width="200" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="game_action" value="攻撃を宣言&#xa;戦略的選択" style="rounded=1;whiteSpace=wrap;fillColor=#fef3c7;fontColor=#92400e;strokeColor=none;fontSize=10;fontFamily=Helvetica Neue;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="660" y="150" width="200" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="game_meaning" value="勝敗に直結する&#xa;意味のある行為" style="rounded=1;whiteSpace=wrap;fillColor=#dcfce7;fontColor=#166534;strokeColor=none;fontSize=10;fontFamily=Helvetica Neue;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="660" y="220" width="200" height="50" as="geometry"/>
+        </mxCell>
+
+        <!-- エッジ: real_object -> boundary -->
+        <mxCell id="e1" value="入る" style="rounded=1;strokeColor=#94a3b8;strokeWidth=1.2;endSize=6;fontSize=9;fontFamily=Helvetica Neue;fontColor=#4b5563;" edge="1" source="real_object" target="boundary" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <!-- エッジ: boundary -> game_object -->
+        <mxCell id="e2" value="変容する" style="rounded=1;strokeColor=#3b82f6;strokeWidth=1.2;endSize=6;fontSize=9;fontFamily=Helvetica Neue;fontColor=#1e40af;" edge="1" source="boundary" target="game_object" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- エッジ: real_action -> boundary (dashed) -->
+        <mxCell id="e3" style="rounded=1;dashed=1;strokeColor=#cbd5e1;strokeWidth=1.2;endSize=6;" edge="1" source="real_action" target="boundary" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <!-- エッジ: boundary -> game_action (dashed) -->
+        <mxCell id="e4" style="rounded=1;dashed=1;strokeColor=#cbd5e1;strokeWidth=1.2;endSize=6;" edge="1" source="boundary" target="game_action" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- エッジ: ゲーム世界内部 -->
+        <mxCell id="e5" style="rounded=1;strokeColor=#94a3b8;strokeWidth=1.2;endSize=6;" edge="1" source="game_object" target="game_action" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e6" style="rounded=1;strokeColor=#94a3b8;strokeWidth=1.2;endSize=6;" edge="1" source="game_action" target="game_meaning" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

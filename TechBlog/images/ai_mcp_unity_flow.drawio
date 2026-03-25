@@ -1,0 +1,35 @@
+<mxGraphModel>
+  <root>
+    <mxCell id="0"/>
+    <mxCell id="1" parent="0"/>
+    <mxCell id="claude" value="Claude Code&#10;（AI）" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dbeafe;fontColor=#1e40af;strokeColor=#3b82f6;strokeWidth=1.5;fontFamily=Helvetica Neue;fontSize=11;shadow=1;align=center;" vertex="1" parent="1">
+      <mxGeometry x="200" y="40" width="160" height="50" as="geometry"/>
+    </mxCell>
+    <mxCell id="mcp" value="MCP Bridge&#10;（Node.js）" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fef3c7;fontColor=#92400e;strokeColor=#f59e0b;strokeWidth=1.5;fontFamily=Helvetica Neue;fontSize=11;shadow=1;align=center;" vertex="1" parent="1">
+      <mxGeometry x="200" y="170" width="160" height="50" as="geometry"/>
+    </mxCell>
+    <mxCell id="server" value="Unity MCP Server&#10;（Editor内）" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#bbf7d0;fontColor=#166534;strokeColor=#22c55e;strokeWidth=1.5;fontFamily=Helvetica Neue;fontSize=11;shadow=1;align=center;" vertex="1" parent="1">
+      <mxGeometry x="200" y="300" width="160" height="50" as="geometry"/>
+    </mxCell>
+    <mxCell id="unity" value="Unity Editor&#10;（実行）" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d1fae5;fontColor=#065f46;strokeColor=#10b981;strokeWidth=1.5;fontFamily=Helvetica Neue;fontSize=11;shadow=1;align=center;" vertex="1" parent="1">
+      <mxGeometry x="200" y="430" width="160" height="50" as="geometry"/>
+    </mxCell>
+    <mxCell id="e1" value="stdio&#10;JSON-RPC" style="endArrow=classic;endSize=5;strokeColor=#6b7280;strokeWidth=1.5;fontFamily=Helvetica Neue;fontSize=10;fontColor=#374151;align=left;" edge="1" source="claude" target="mcp" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="e2" value="HTTP/WebSocket&#10;JSON-RPC 2.0" style="endArrow=classic;endSize=5;strokeColor=#6b7280;strokeWidth=1.5;fontFamily=Helvetica Neue;fontSize=10;fontColor=#374151;align=left;" edge="1" source="mcp" target="server" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="e3" value="Editor API" style="endArrow=classic;endSize=5;strokeColor=#6b7280;strokeWidth=1.5;fontFamily=Helvetica Neue;fontSize=10;fontColor=#374151;align=left;" edge="1" source="server" target="unity" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="e4" value="結果を返す" style="endArrow=classic;endSize=5;dashed=1;strokeColor=#9ca3af;strokeWidth=1.5;fontFamily=Helvetica Neue;fontSize=10;fontColor=#6b7280;curved=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" source="unity" target="claude" parent="1">
+      <mxGeometry relative="1" as="geometry">
+        <Array as="points">
+          <mxPoint x="430" y="455"/>
+          <mxPoint x="430" y="65"/>
+        </Array>
+      </mxGeometry>
+    </mxCell>
+  </root>
+</mxGraphModel>

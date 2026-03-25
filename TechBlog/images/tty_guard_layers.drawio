@@ -1,0 +1,48 @@
+<mxGraphModel dx="900" dy="650" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="860" pageHeight="600" math="0" shadow="0">
+  <root>
+    <mxCell id="0"/>
+    <mxCell id="1" parent="0"/>
+
+    <!-- Attacker -->
+    <mxCell id="attacker" value="AIエージェント&#xa;（非対話環境）" style="rounded=1;whiteSpace=wrap;fillColor=#fef3c7;fontColor=#92400e;strokeColor=none;fontSize=10;fontFamily=Helvetica Neue;shadow=1;" vertex="1" parent="1">
+      <mxGeometry x="320" y="20" width="160" height="50" as="geometry"/>
+    </mxCell>
+
+    <!-- Cluster: TTYガード（3層防御） -->
+    <mxCell id="c_guards_bg" value="" style="rounded=1;fillColor=#f8fafc;strokeColor=#e5e7eb;strokeWidth=1;" vertex="1" parent="1">
+      <mxGeometry x="60" y="120" width="680" height="200" as="geometry"/>
+    </mxCell>
+    <mxCell id="c_guards_label" value="TTYガード（3層防御）" style="text;fontSize=10;fontColor=#1e40af;align=center;fontFamily=Helvetica Neue;fontStyle=1;" vertex="1" parent="1">
+      <mxGeometry x="60" y="125" width="680" height="20" as="geometry"/>
+    </mxCell>
+
+    <mxCell id="g1" value="Layer 1: stdout ブロック&#xa;--plain/--show を非TTYで拒否" style="rounded=1;whiteSpace=wrap;fillColor=#dbeafe;fontColor=#1e40af;strokeColor=none;fontSize=10;fontFamily=Helvetica Neue;shadow=1;" vertex="1" parent="1">
+      <mxGeometry x="80" y="170" width="210" height="55" as="geometry"/>
+    </mxCell>
+    <mxCell id="g2" value="Layer 2: clipboard ブロック&#xa;非TTYでコピーをスキップ" style="rounded=1;whiteSpace=wrap;fillColor=#dbeafe;fontColor=#1e40af;strokeColor=none;fontSize=10;fontFamily=Helvetica Neue;shadow=1;" vertex="1" parent="1">
+      <mxGeometry x="80" y="250" width="210" height="55" as="geometry"/>
+    </mxCell>
+    <mxCell id="g3" value="Layer 3: exec ルート&#xa;そもそも出力しない" style="rounded=1;whiteSpace=wrap;fillColor=#dbeafe;fontColor=#1e40af;strokeColor=none;fontSize=10;fontFamily=Helvetica Neue;shadow=1;" vertex="1" parent="1">
+      <mxGeometry x="510" y="210" width="210" height="55" as="geometry"/>
+    </mxCell>
+
+    <!-- Results -->
+    <mxCell id="blocked" value="アクセス拒否&#xa;exit code 2" style="rounded=1;whiteSpace=wrap;fillColor=#bbf7d0;fontColor=#166534;strokeColor=none;fontSize=10;fontFamily=Helvetica Neue;shadow=1;" vertex="1" parent="1">
+      <mxGeometry x="100" y="390" width="160" height="50" as="geometry"/>
+    </mxCell>
+    <mxCell id="secret" value="APIキー&#xa;（Keychain内）" style="rounded=1;whiteSpace=wrap;fillColor=#bbf7d0;fontColor=#166534;strokeColor=none;fontSize=10;fontFamily=Helvetica Neue;shadow=1;" vertex="1" parent="1">
+      <mxGeometry x="530" y="390" width="160" height="50" as="geometry"/>
+    </mxCell>
+
+    <!-- Edges -->
+    <mxCell id="ea1" value="lkr get --plain" style="rounded=1;strokeColor=#cbd5e1;fontSize=9;fontFamily=Helvetica Neue;fontColor=#4b5563;dashed=1;" edge="1" parent="1" source="attacker" target="g1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="ea2" value="pbpaste" style="rounded=1;strokeColor=#cbd5e1;fontSize=9;fontFamily=Helvetica Neue;fontColor=#4b5563;dashed=1;" edge="1" parent="1" source="attacker" target="g2">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="eg1" style="rounded=1;strokeColor=#94a3b8;" edge="1" parent="1" source="g1" target="blocked"><mxGeometry relative="1" as="geometry"/></mxCell>
+    <mxCell id="eg2" style="rounded=1;strokeColor=#94a3b8;" edge="1" parent="1" source="g2" target="blocked"><mxGeometry relative="1" as="geometry"/></mxCell>
+    <mxCell id="eg3" value="exec経由のみ" style="rounded=1;strokeColor=#94a3b8;fontSize=9;fontFamily=Helvetica Neue;fontColor=#4b5563;" edge="1" parent="1" source="g3" target="secret"><mxGeometry relative="1" as="geometry"/></mxCell>
+  </root>
+</mxGraphModel>

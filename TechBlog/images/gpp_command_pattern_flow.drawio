@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="draw.io">
+  <diagram name="Page-1" id="command_pattern_flow">
+    <mxGraphModel dx="1100" dy="700" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="500" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+
+        <!-- 入力層 -->
+        <mxCell id="cluster_input" value="入力層" style="swimlane;startSize=28;fillColor=#f8fafc;strokeColor=#e5e7eb;fontColor=#1e40af;fontSize=11;fontFamily=Helvetica Neue;rounded=1;shadow=1;fontStyle=1;swimlaneLine=0;" vertex="1" parent="1">
+          <mxGeometry x="20" y="60" width="140" height="260" as="geometry"/>
+        </mxCell>
+        <mxCell id="btn_a" value="ボタンA" style="rounded=1;whiteSpace=wrap;fillColor=#f3f4f6;fontColor=#4b5563;strokeColor=none;fontSize=10;fontFamily=Helvetica Neue;shadow=1;" vertex="1" parent="cluster_input">
+          <mxGeometry x="10" y="40" width="120" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="btn_b" value="ボタンB" style="rounded=1;whiteSpace=wrap;fillColor=#f3f4f6;fontColor=#4b5563;strokeColor=none;fontSize=10;fontFamily=Helvetica Neue;shadow=1;" vertex="1" parent="cluster_input">
+          <mxGeometry x="10" y="105" width="120" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="btn_x" value="ボタンX" style="rounded=1;whiteSpace=wrap;fillColor=#f3f4f6;fontColor=#4b5563;strokeColor=none;fontSize=10;fontFamily=Helvetica Neue;shadow=1;" vertex="1" parent="cluster_input">
+          <mxGeometry x="10" y="170" width="120" height="50" as="geometry"/>
+        </mxCell>
+
+        <!-- InputHandler -->
+        <mxCell id="cluster_handler" value="InputHandler" style="swimlane;startSize=28;fillColor=#f8fafc;strokeColor=#e5e7eb;fontColor=#1e40af;fontSize=11;fontFamily=Helvetica Neue;rounded=1;shadow=1;fontStyle=1;swimlaneLine=0;" vertex="1" parent="1">
+          <mxGeometry x="210" y="130" width="190" height="100" as="geometry"/>
+        </mxCell>
+        <mxCell id="handler" value="handleInput()&#xa;ボタン→Command変換" style="rounded=1;whiteSpace=wrap;fillColor=#dbeafe;fontColor=#1e40af;strokeColor=none;fontSize=10;fontFamily=Helvetica Neue;shadow=1;" vertex="1" parent="cluster_handler">
+          <mxGeometry x="10" y="35" width="170" height="55" as="geometry"/>
+        </mxCell>
+
+        <!-- Commandオブジェクト -->
+        <mxCell id="cluster_commands" value="Commandオブジェクト" style="swimlane;startSize=28;fillColor=#fafafa;strokeColor=#e5e7eb;fontColor=#6b7280;fontSize=11;fontFamily=Helvetica Neue;rounded=1;shadow=1;fontStyle=1;swimlaneLine=0;" vertex="1" parent="1">
+          <mxGeometry x="450" y="40" width="180" height="290" as="geometry"/>
+        </mxCell>
+        <mxCell id="cmd_jump" value="JumpCommand&#xa;execute(actor)" style="rounded=1;whiteSpace=wrap;fillColor=#fef3c7;fontColor=#92400e;strokeColor=none;fontSize=10;fontFamily=Helvetica Neue;shadow=1;" vertex="1" parent="cluster_commands">
+          <mxGeometry x="15" y="40" width="150" height="55" as="geometry"/>
+        </mxCell>
+        <mxCell id="cmd_fire" value="FireCommand&#xa;execute(actor)" style="rounded=1;whiteSpace=wrap;fillColor=#fef3c7;fontColor=#92400e;strokeColor=none;fontSize=10;fontFamily=Helvetica Neue;shadow=1;" vertex="1" parent="cluster_commands">
+          <mxGeometry x="15" y="115" width="150" height="55" as="geometry"/>
+        </mxCell>
+        <mxCell id="cmd_duck" value="DuckCommand&#xa;execute(actor)" style="rounded=1;whiteSpace=wrap;fillColor=#fef3c7;fontColor=#92400e;strokeColor=none;fontSize=10;fontFamily=Helvetica Neue;shadow=1;" vertex="1" parent="cluster_commands">
+          <mxGeometry x="15" y="195" width="150" height="55" as="geometry"/>
+        </mxCell>
+
+        <!-- ゲームアクター -->
+        <mxCell id="cluster_actors" value="ゲームアクター" style="swimlane;startSize=28;fillColor=#f8fafc;strokeColor=#e5e7eb;fontColor=#1e40af;fontSize=11;fontFamily=Helvetica Neue;rounded=1;shadow=1;fontStyle=1;swimlaneLine=0;" vertex="1" parent="1">
+          <mxGeometry x="690" y="60" width="150" height="180" as="geometry"/>
+        </mxCell>
+        <mxCell id="player" value="プレイヤー" style="rounded=1;whiteSpace=wrap;fillColor=#dbeafe;fontColor=#1e40af;strokeColor=none;fontSize=10;fontFamily=Helvetica Neue;shadow=1;" vertex="1" parent="cluster_actors">
+          <mxGeometry x="15" y="40" width="120" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="ai" value="AIキャラ" style="rounded=1;whiteSpace=wrap;fillColor=#dbeafe;fontColor=#1e40af;strokeColor=none;fontSize=10;fontFamily=Helvetica Neue;shadow=1;" vertex="1" parent="cluster_actors">
+          <mxGeometry x="15" y="110" width="120" height="50" as="geometry"/>
+        </mxCell>
+
+        <!-- 履歴スタック -->
+        <mxCell id="cluster_history" value="履歴スタック（Undo/Redo）" style="swimlane;startSize=28;fillColor=#fafafa;strokeColor=#e5e7eb;fontColor=#6b7280;fontSize=11;fontFamily=Helvetica Neue;rounded=1;shadow=1;fontStyle=1;swimlaneLine=0;" vertex="1" parent="1">
+          <mxGeometry x="690" y="280" width="250" height="85" as="geometry"/>
+        </mxCell>
+        <mxCell id="stack" value="[Cmd1, Cmd2, Cmd3...]&#xa;execute() / undo()" style="rounded=1;whiteSpace=wrap;fillColor=#f3f4f6;fontColor=#4b5563;strokeColor=none;fontSize=10;fontFamily=Helvetica Neue;shadow=1;" vertex="1" parent="cluster_history">
+          <mxGeometry x="15" y="35" width="220" height="40" as="geometry"/>
+        </mxCell>
+
+        <!-- エッジ: ボタン → handler -->
+        <mxCell id="e_a" style="rounded=1;strokeColor=#94a3b8;strokeWidth=1.2;endArrow=classic;endSize=5;" edge="1" source="btn_a" target="handler" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_b" style="rounded=1;strokeColor=#94a3b8;strokeWidth=1.2;endArrow=classic;endSize=5;" edge="1" source="btn_b" target="handler" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_x" style="rounded=1;strokeColor=#94a3b8;strokeWidth=1.2;endArrow=classic;endSize=5;" edge="1" source="btn_x" target="handler" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- エッジ: handler → commands -->
+        <mxCell id="e_h_jump" value="生成" style="rounded=1;strokeColor=#94a3b8;strokeWidth=1.2;endArrow=classic;endSize=5;fontSize=9;fontFamily=Helvetica Neue;fontColor=#4b5563;" edge="1" source="handler" target="cmd_jump" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_h_fire" value="生成" style="rounded=1;strokeColor=#94a3b8;strokeWidth=1.2;endArrow=classic;endSize=5;fontSize=9;fontFamily=Helvetica Neue;fontColor=#4b5563;" edge="1" source="handler" target="cmd_fire" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_h_duck" value="生成" style="rounded=1;strokeColor=#94a3b8;strokeWidth=1.2;endArrow=classic;endSize=5;fontSize=9;fontFamily=Helvetica Neue;fontColor=#4b5563;" edge="1" source="handler" target="cmd_duck" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- エッジ: commands → player -->
+        <mxCell id="e_jump_player" value="execute()" style="rounded=1;strokeColor=#94a3b8;strokeWidth=1.2;endArrow=classic;endSize=5;fontSize=9;fontFamily=Helvetica Neue;fontColor=#4b5563;" edge="1" source="cmd_jump" target="player" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_fire_player" value="execute()" style="rounded=1;strokeColor=#94a3b8;strokeWidth=1.2;endArrow=classic;endSize=5;fontSize=9;fontFamily=Helvetica Neue;fontColor=#4b5563;" edge="1" source="cmd_fire" target="player" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- エッジ: cmd_jump → ai (破線) -->
+        <mxCell id="e_jump_ai" value="再利用可能" style="rounded=1;strokeColor=#cbd5e1;strokeWidth=1.2;dashed=1;endArrow=classic;endSize=5;fontSize=9;fontFamily=Helvetica Neue;fontColor=#4b5563;" edge="1" source="cmd_jump" target="ai" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- エッジ: commands → stack -->
+        <mxCell id="e_jump_stack" value="記録" style="rounded=1;strokeColor=#94a3b8;strokeWidth=1.2;endArrow=classic;endSize=5;fontSize=9;fontFamily=Helvetica Neue;fontColor=#4b5563;" edge="1" source="cmd_jump" target="stack" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_fire_stack" value="記録" style="rounded=1;strokeColor=#94a3b8;strokeWidth=1.2;endArrow=classic;endSize=5;fontSize=9;fontFamily=Helvetica Neue;fontColor=#4b5563;" edge="1" source="cmd_fire" target="stack" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_duck_stack" value="記録" style="rounded=1;strokeColor=#94a3b8;strokeWidth=1.2;endArrow=classic;endSize=5;fontSize=9;fontFamily=Helvetica Neue;fontColor=#4b5563;" edge="1" source="cmd_duck" target="stack" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

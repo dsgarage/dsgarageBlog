@@ -1,0 +1,61 @@
+<mxGraphModel dx="1200" dy="400" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1200" pageHeight="360" math="0" shadow="0">
+  <root>
+    <mxCell id="0"/>
+    <mxCell id="1" parent="0"/>
+
+    <!-- S1: Figma URLを貼る (Neutral) -->
+    <mxCell id="S1" value="Figma URL&#xa;を貼る" style="rounded=1;whiteSpace=wrap;fillColor=#f3f4f6;fontColor=#4b5563;strokeColor=none;fontSize=10;fontFamily=Helvetica Neue;shadow=1;fontStyle=0;" vertex="1" parent="1">
+      <mxGeometry x="30" y="130" width="130" height="50" as="geometry"/>
+    </mxCell>
+
+    <!-- S2: get_design_context デザイン取得 (Primary) -->
+    <mxCell id="S2" value="get_design_context&#xa;デザイン取得" style="rounded=1;whiteSpace=wrap;fillColor=#dbeafe;fontColor=#1e40af;strokeColor=none;fontSize=10;fontFamily=Helvetica Neue;shadow=1;fontStyle=0;" vertex="1" parent="1">
+      <mxGeometry x="220" y="130" width="140" height="50" as="geometry"/>
+    </mxCell>
+
+    <!-- S3: Claude Code UXML/USS生成 (Primary) -->
+    <mxCell id="S3" value="Claude Code&#xa;UXML/USS生成" style="rounded=1;whiteSpace=wrap;fillColor=#dbeafe;fontColor=#1e40af;strokeColor=none;fontSize=10;fontFamily=Helvetica Neue;shadow=1;fontStyle=0;" vertex="1" parent="1">
+      <mxGeometry x="420" y="130" width="140" height="50" as="geometry"/>
+    </mxCell>
+
+    <!-- S4: /simplify 品質チェック (Accent) -->
+    <mxCell id="S4" value="/simplify&#xa;品質チェック" style="rounded=1;whiteSpace=wrap;fillColor=#fef3c7;fontColor=#92400e;strokeColor=none;fontSize=10;fontFamily=Helvetica Neue;shadow=1;fontStyle=0;" vertex="1" parent="1">
+      <mxGeometry x="620" y="130" width="130" height="50" as="geometry"/>
+    </mxCell>
+
+    <!-- S5: Unity Editor 配置・確認 (Green) -->
+    <mxCell id="S5" value="Unity Editor&#xa;配置・確認" style="rounded=1;whiteSpace=wrap;fillColor=#bbf7d0;fontColor=#166534;strokeColor=none;fontSize=10;fontFamily=Helvetica Neue;shadow=1;fontStyle=0;" vertex="1" parent="1">
+      <mxGeometry x="810" y="130" width="130" height="50" as="geometry"/>
+    </mxCell>
+
+    <!-- Edge S1 -> S2 -->
+    <mxCell id="e1" value="MCP呼出" style="rounded=1;strokeColor=#94a3b8;fontSize=9;fontFamily=Helvetica Neue;fontColor=#4b5563;" edge="1" parent="1" source="S1" target="S2">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+
+    <!-- Edge S2 -> S3 -->
+    <mxCell id="e2" value="React→UXML" style="rounded=1;strokeColor=#94a3b8;fontSize=9;fontFamily=Helvetica Neue;fontColor=#4b5563;" edge="1" parent="1" source="S2" target="S3">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+
+    <!-- Edge S3 -> S4 -->
+    <mxCell id="e3" value="自動レビュー" style="rounded=1;strokeColor=#94a3b8;fontSize=9;fontFamily=Helvetica Neue;fontColor=#4b5563;" edge="1" parent="1" source="S3" target="S4">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+
+    <!-- Edge S4 -> S5 -->
+    <mxCell id="e4" value="コミット" style="rounded=1;strokeColor=#94a3b8;fontSize=9;fontFamily=Helvetica Neue;fontColor=#4b5563;" edge="1" parent="1" source="S4" target="S5">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+
+    <!-- Feedback loop S5 -> S2 (dashed) -->
+    <mxCell id="e5" value="ズレ発見時&#xa;get_screenshotで再比較" style="rounded=1;strokeColor=#cbd5e1;fontSize=9;fontFamily=Helvetica Neue;fontColor=#4b5563;dashed=1;" edge="1" parent="1" source="S5" target="S2">
+      <mxGeometry relative="1" as="geometry">
+        <Array as="points">
+          <mxPoint x="875" y="250"/>
+          <mxPoint x="290" y="250"/>
+        </Array>
+      </mxGeometry>
+    </mxCell>
+  </root>
+</mxGraphModel>

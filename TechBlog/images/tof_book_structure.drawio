@@ -1,0 +1,67 @@
+<mxfile host="app.diagrams.net" modified="2026-03-25" type="device">
+  <diagram id="book-structure" name="書籍の構成">
+    <mxGraphModel dx="1400" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="1400" pageHeight="827" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- Part 1: 理論 (Ch.1-6) -->
+        <mxCell id="part1" value="Part 1: 理論&#xa;(Ch.1-6)" style="swimlane;startSize=40;rounded=1;fillColor=#f8fafc;strokeColor=#e5e7eb;fontColor=#1e40af;fontSize=11;fontFamily=Helvetica Neue;fontStyle=1;shadow=1;swimlaneLine=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="20" y="30" width="360" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="ch1" value="楽しさとは何か&#xa;= パターン認識" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dbeafe;strokeColor=#93c5fd;fontColor=#1e40af;fontSize=10;fontFamily=Helvetica Neue;arcSize=20;shadow=1;" vertex="1" parent="part1">
+          <mxGeometry x="10" y="50" width="100" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="ch2" value="脳の仕組み&#xa;チャンキング・ゲシュタルト" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dbeafe;strokeColor=#93c5fd;fontColor=#1e40af;fontSize=10;fontFamily=Helvetica Neue;arcSize=20;shadow=1;" vertex="1" parent="part1">
+          <mxGeometry x="125" y="50" width="110" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="ch3" value="ゲームが教えるもの&#xa;生存スキルの練習" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dbeafe;strokeColor=#93c5fd;fontColor=#1e40af;fontSize=10;fontFamily=Helvetica Neue;arcSize=20;shadow=1;" vertex="1" parent="part1">
+          <mxGeometry x="250" y="50" width="100" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- Part 2: 問題提起 (Ch.7-10) -->
+        <mxCell id="part2" value="Part 2: 問題提起&#xa;(Ch.7-10)" style="swimlane;startSize=40;rounded=1;fillColor=#f8fafc;strokeColor=#e5e7eb;fontColor=#1e40af;fontSize=11;fontFamily=Helvetica Neue;fontStyle=1;shadow=1;swimlaneLine=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="420" y="30" width="260" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="ch4" value="ゲームの限界&#xa;飽きる理由" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fef3c7;strokeColor=#fcd34d;fontColor=#92400e;fontSize=10;fontFamily=Helvetica Neue;arcSize=20;shadow=1;" vertex="1" parent="part2">
+          <mxGeometry x="10" y="50" width="110" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="ch5" value="倫理と暴力&#xa;ゲームの社会的責任" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fef3c7;strokeColor=#fcd34d;fontColor=#92400e;fontSize=10;fontFamily=Helvetica Neue;arcSize=20;shadow=1;" vertex="1" parent="part2">
+          <mxGeometry x="135" y="50" width="110" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- Part 3: 実践 (Ch.11-14) -->
+        <mxCell id="part3" value="Part 3: 実践&#xa;(Ch.11-14)" style="swimlane;startSize=40;rounded=1;fillColor=#f8fafc;strokeColor=#e5e7eb;fontColor=#1e40af;fontSize=11;fontFamily=Helvetica Neue;fontStyle=1;shadow=1;swimlaneLine=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="720" y="30" width="260" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="ch6" value="良いゲームとは&#xa;多層的パターン" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dcfce7;strokeColor=#86efac;fontColor=#166534;fontSize=10;fontFamily=Helvetica Neue;arcSize=20;shadow=1;" vertex="1" parent="part3">
+          <mxGeometry x="10" y="50" width="110" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="ch7" value="ゲームの未来&#xa;アートとしての可能性" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dcfce7;strokeColor=#86efac;fontColor=#166534;fontSize=10;fontFamily=Helvetica Neue;arcSize=20;shadow=1;" vertex="1" parent="part3">
+          <mxGeometry x="135" y="50" width="110" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- Edges: ch1 -> ch2 -> ch3 -> ch4 -> ch5 -> ch6 -> ch7 -->
+        <mxCell id="e1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#94a3b8;strokeWidth=1.2;fontFamily=Helvetica Neue;fontSize=9;endArrow=classic;endSize=5;" edge="1" source="ch1" target="ch2" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#94a3b8;strokeWidth=1.2;fontFamily=Helvetica Neue;fontSize=9;endArrow=classic;endSize=5;" edge="1" source="ch2" target="ch3" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#94a3b8;strokeWidth=1.2;fontFamily=Helvetica Neue;fontSize=9;endArrow=classic;endSize=5;" edge="1" source="ch3" target="ch4" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e4" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#94a3b8;strokeWidth=1.2;fontFamily=Helvetica Neue;fontSize=9;endArrow=classic;endSize=5;" edge="1" source="ch4" target="ch5" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e5" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#94a3b8;strokeWidth=1.2;fontFamily=Helvetica Neue;fontSize=9;endArrow=classic;endSize=5;" edge="1" source="ch5" target="ch6" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e6" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#94a3b8;strokeWidth=1.2;fontFamily=Helvetica Neue;fontSize=9;endArrow=classic;endSize=5;" edge="1" source="ch6" target="ch7" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

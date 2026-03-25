@@ -1,0 +1,60 @@
+<mxGraphModel>
+  <root>
+    <mxCell id="0"/>
+    <mxCell id="1" parent="0"/>
+    <mxCell id="impl" value="機能を実装" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dbeafe;fontColor=#1e40af;strokeColor=none;shadow=1;fontFamily=Helvetica Neue;fontSize=10;" vertex="1" parent="1">
+      <mxGeometry x="40" y="160" width="100" height="40" as="geometry"/>
+    </mxCell>
+    <mxCell id="commit1" value="git commit&#xa;(実装)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dbeafe;fontColor=#1e40af;strokeColor=none;shadow=1;fontFamily=Helvetica Neue;fontSize=10;" vertex="1" parent="1">
+      <mxGeometry x="190" y="160" width="100" height="40" as="geometry"/>
+    </mxCell>
+    <mxCell id="simplify" value="/simplify&#xa;実行" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fef3c7;fontColor=#92400e;strokeColor=none;shadow=1;fontFamily=Helvetica Neue;fontSize=10;" vertex="1" parent="1">
+      <mxGeometry x="340" y="160" width="100" height="40" as="geometry"/>
+    </mxCell>
+    <mxCell id="cluster_simplify" value="/simplify が自動実行する3つのチェック" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fefce8;strokeColor=#e5e7eb;strokeWidth=1;dashed=1;dashPattern=8 4;fontColor=#92400e;fontFamily=Helvetica Neue;fontSize=9;verticalAlign=bottom;fontStyle=1;spacingBottom=8;shadow=1;" vertex="1" parent="1">
+      <mxGeometry x="480" y="60" width="340" height="130" as="geometry"/>
+    </mxCell>
+    <mxCell id="reuse" value="再利用性&#xa;チェック" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fef3c7;fontColor=#92400e;strokeColor=none;shadow=1;fontFamily=Helvetica Neue;fontSize=10;" vertex="1" parent="1">
+      <mxGeometry x="500" y="80" width="90" height="40" as="geometry"/>
+    </mxCell>
+    <mxCell id="quality" value="品質&#xa;チェック" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fef3c7;fontColor=#92400e;strokeColor=none;shadow=1;fontFamily=Helvetica Neue;fontSize=10;" vertex="1" parent="1">
+      <mxGeometry x="610" y="80" width="90" height="40" as="geometry"/>
+    </mxCell>
+    <mxCell id="efficiency" value="効率性&#xa;チェック" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fef3c7;fontColor=#92400e;strokeColor=none;shadow=1;fontFamily=Helvetica Neue;fontSize=10;" vertex="1" parent="1">
+      <mxGeometry x="720" y="80" width="90" height="40" as="geometry"/>
+    </mxCell>
+    <mxCell id="review" value="git diff&#xa;で確認" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f3f4f6;fontColor=#4b5563;strokeColor=none;shadow=1;fontFamily=Helvetica Neue;fontSize=10;" vertex="1" parent="1">
+      <mxGeometry x="600" y="230" width="100" height="40" as="geometry"/>
+    </mxCell>
+    <mxCell id="commit2" value="git commit&#xa;(改善)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dbeafe;fontColor=#1e40af;strokeColor=none;shadow=1;fontFamily=Helvetica Neue;fontSize=10;" vertex="1" parent="1">
+      <mxGeometry x="760" y="230" width="100" height="40" as="geometry"/>
+    </mxCell>
+    <mxCell id="pr" value="PR作成" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#bbf7d0;fontColor=#166534;strokeColor=none;shadow=1;fontFamily=Helvetica Neue;fontSize=10;" vertex="1" parent="1">
+      <mxGeometry x="910" y="230" width="100" height="40" as="geometry"/>
+    </mxCell>
+    <mxCell id="e1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#94a3b8;strokeWidth=1.2;endArrow=block;endFill=1;endSize=5;" edge="1" source="impl" target="commit1" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="e2" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#94a3b8;strokeWidth=1.2;endArrow=block;endFill=1;endSize=5;" edge="1" source="commit1" target="simplify" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="e3" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#d97706;strokeWidth=1.2;dashed=1;dashPattern=4 4;endArrow=block;endFill=1;endSize=5;" edge="1" source="simplify" target="reuse" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="e4" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#d97706;strokeWidth=1.2;dashed=1;dashPattern=4 4;endArrow=block;endFill=1;endSize=5;" edge="1" source="simplify" target="quality" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="e5" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#d97706;strokeWidth=1.2;dashed=1;dashPattern=4 4;endArrow=block;endFill=1;endSize=5;" edge="1" source="simplify" target="efficiency" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="e6" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#94a3b8;strokeWidth=1.2;endArrow=block;endFill=1;endSize=5;" edge="1" source="simplify" target="review" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="e7" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#94a3b8;strokeWidth=1.2;endArrow=block;endFill=1;endSize=5;" edge="1" source="review" target="commit2" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="e8" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#94a3b8;strokeWidth=1.2;endArrow=block;endFill=1;endSize=5;" edge="1" source="commit2" target="pr" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+  </root>
+</mxGraphModel>

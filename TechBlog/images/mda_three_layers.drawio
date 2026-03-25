@@ -1,0 +1,53 @@
+<mxfile host="app.diagrams.net" modified="2026-03-25" type="device">
+  <diagram id="mda_three_layers" name="MDA Three Layers">
+    <mxGraphModel dx="1200" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="1100" pageHeight="850" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="mechanics" value="Mechanics&#xa;&#x30e1;&#x30ab;&#x30cb;&#x30af;&#x30b9;&#xa;(&#x30eb;&#x30fc;&#x30eb;&#x30fb;&#x30b7;&#x30b9;&#x30c6;&#x30e0;)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dbeafe;fontColor=#1e40af;strokeColor=none;fontSize=12;fontFamily=Helvetica Neue;shadow=1;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="40" y="60" width="180" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="dynamics" value="Dynamics&#xa;&#x30c0;&#x30a4;&#x30ca;&#x30df;&#x30af;&#x30b9;&#xa;(&#x5b9f;&#x884c;&#x6642;&#x306e;&#x632f;&#x308b;&#x821e;&#x3044;)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fef3c7;fontColor=#92400e;strokeColor=none;fontSize=12;fontFamily=Helvetica Neue;shadow=1;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="340" y="60" width="180" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="aesthetics" value="Aesthetics&#xa;&#x30a8;&#x30b9;&#x30c6;&#x30c6;&#x30a3;&#x30af;&#x30b9;&#xa;(&#x611f;&#x60c5;&#x7684;&#x53cd;&#x5fdc;)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dcfce7;fontColor=#166534;strokeColor=none;fontSize=12;fontFamily=Helvetica Neue;shadow=1;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="640" y="60" width="180" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="e1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#94a3b8;strokeWidth=1.2;fontSize=9;fontFamily=Helvetica Neue;fontColor=#4b5563;endArrow=classic;endSize=5;" edge="1" source="mechanics" target="dynamics" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e1_label" value="&#x30eb;&#x30fc;&#x30eb;&#x304c;&#xa;&#x632f;&#x308b;&#x821e;&#x3044;&#x3092;&#x751f;&#x3080;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontFamily=Helvetica Neue;fontSize=9;fontColor=#4b5563;" vertex="1" connectable="0" parent="e1">
+          <mxGeometry x="-0.1" relative="1" as="geometry">
+            <mxPoint y="-15" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e2" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#94a3b8;strokeWidth=1.2;fontSize=9;fontFamily=Helvetica Neue;fontColor=#4b5563;endArrow=classic;endSize=5;" edge="1" source="dynamics" target="aesthetics" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2_label" value="&#x632f;&#x308b;&#x821e;&#x3044;&#x304c;&#xa;&#x611f;&#x60c5;&#x3092;&#x751f;&#x3080;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontFamily=Helvetica Neue;fontSize=9;fontColor=#4b5563;" vertex="1" connectable="0" parent="e2">
+          <mxGeometry x="-0.1" relative="1" as="geometry">
+            <mxPoint y="-15" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="cluster_example" value="&#x4f8b;: &#x30c1;&#x30a7;&#x30b9;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fafafa;strokeColor=#e5e7eb;strokeWidth=1;fontSize=9;fontFamily=Helvetica Neue;fontColor=#6b7280;verticalAlign=bottom;spacingBottom=8;shadow=0;container=1;collapsible=0;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="40" y="200" width="780" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="ex_m" value="&#x99d2;&#x306e;&#x79fb;&#x52d5;&#x30eb;&#x30fc;&#x30eb;&#xa;&#x53d6;&#x308b;/&#x53d6;&#x3089;&#x308c;&#x308b;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f3f4f6;fontColor=#4b5563;strokeColor=none;fontSize=9;fontFamily=Helvetica Neue;shadow=1;fontStyle=0;" vertex="1" parent="cluster_example">
+          <mxGeometry x="30" y="15" width="160" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="ex_d" value="&#x30d5;&#x30a9;&#x30fc;&#x30af;&#x30fb;&#x30d4;&#x30f3;&#xa;&#x30dd;&#x30b8;&#x30b7;&#x30e7;&#x30f3;&#x4e89;&#x3044;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f3f4f6;fontColor=#4b5563;strokeColor=none;fontSize=9;fontFamily=Helvetica Neue;shadow=1;fontStyle=0;" vertex="1" parent="cluster_example">
+          <mxGeometry x="310" y="15" width="160" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="ex_a" value="&#x7dca;&#x5f35;&#x611f;&#xa;&#x9054;&#x6210;&#x611f;&#x30fb;&#x6094;&#x3057;&#x3055;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f3f4f6;fontColor=#4b5563;strokeColor=none;fontSize=9;fontFamily=Helvetica Neue;shadow=1;fontStyle=0;" vertex="1" parent="cluster_example">
+          <mxGeometry x="590" y="15" width="160" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="ex_e1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#cbd5e1;strokeWidth=1.2;dashed=1;endArrow=classic;endSize=4;" edge="1" source="ex_m" target="ex_d" parent="cluster_example">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ex_e2" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#cbd5e1;strokeWidth=1.2;dashed=1;endArrow=classic;endSize=4;" edge="1" source="ex_d" target="ex_a" parent="cluster_example">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

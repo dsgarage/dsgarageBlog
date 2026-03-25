@@ -1,0 +1,78 @@
+<mxGraphModel>
+  <root>
+    <mxCell id="0"/>
+    <mxCell id="1" parent="0"/>
+    <mxCell id="cluster_before" value="従来のワークフロー" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fef2f2;strokeColor=#fca5a5;strokeWidth=1.5;fontColor=#991b1b;fontFamily=Helvetica Neue;fontSize=11;verticalAlign=top;fontStyle=1;spacingTop=8;shadow=1;" vertex="1" parent="1">
+      <mxGeometry x="40" y="30" width="440" height="120" as="geometry"/>
+    </mxCell>
+    <mxCell id="b_impl" value="実装&#xa;60分" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f3f4f6;fontColor=#4b5563;strokeColor=none;shadow=1;fontFamily=Helvetica Neue;fontSize=10;" vertex="1" parent="1">
+      <mxGeometry x="55" y="75" width="70" height="45" as="geometry"/>
+    </mxCell>
+    <mxCell id="b_review" value="手動レビュー&#xa;30分" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fecaca;fontColor=#991b1b;strokeColor=none;shadow=1;fontFamily=Helvetica Neue;fontSize=10;" vertex="1" parent="1">
+      <mxGeometry x="145" y="75" width="80" height="45" as="geometry"/>
+    </mxCell>
+    <mxCell id="b_fix" value="手動修正&#xa;20分" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fecaca;fontColor=#991b1b;strokeColor=none;shadow=1;fontFamily=Helvetica Neue;fontSize=10;" vertex="1" parent="1">
+      <mxGeometry x="245" y="75" width="70" height="45" as="geometry"/>
+    </mxCell>
+    <mxCell id="b_commit" value="コミット" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f3f4f6;fontColor=#4b5563;strokeColor=none;shadow=1;fontFamily=Helvetica Neue;fontSize=10;" vertex="1" parent="1">
+      <mxGeometry x="335" y="75" width="60" height="45" as="geometry"/>
+    </mxCell>
+    <mxCell id="b_pr" value="PR作成" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f3f4f6;fontColor=#4b5563;strokeColor=none;shadow=1;fontFamily=Helvetica Neue;fontSize=10;" vertex="1" parent="1">
+      <mxGeometry x="415" y="75" width="55" height="45" as="geometry"/>
+    </mxCell>
+    <mxCell id="eb1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#94a3b8;strokeWidth=1.2;endArrow=block;endFill=1;endSize=5;" edge="1" source="b_impl" target="b_review" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="eb2" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#94a3b8;strokeWidth=1.2;endArrow=block;endFill=1;endSize=5;" edge="1" source="b_review" target="b_fix" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="eb3" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#94a3b8;strokeWidth=1.2;endArrow=block;endFill=1;endSize=5;" edge="1" source="b_fix" target="b_commit" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="eb4" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#94a3b8;strokeWidth=1.2;endArrow=block;endFill=1;endSize=5;" edge="1" source="b_commit" target="b_pr" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="cluster_after" value="/simplify + /batch 導入後" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f0fdf4;strokeColor=#86efac;strokeWidth=1.5;fontColor=#166534;fontFamily=Helvetica Neue;fontSize=11;verticalAlign=top;fontStyle=1;spacingTop=8;shadow=1;" vertex="1" parent="1">
+      <mxGeometry x="40" y="200" width="440" height="120" as="geometry"/>
+    </mxCell>
+    <mxCell id="a_impl" value="実装&#xa;60分" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dbeafe;fontColor=#1e40af;strokeColor=none;shadow=1;fontFamily=Helvetica Neue;fontSize=10;" vertex="1" parent="1">
+      <mxGeometry x="55" y="245" width="70" height="45" as="geometry"/>
+    </mxCell>
+    <mxCell id="a_commit1" value="コミット" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dbeafe;fontColor=#1e40af;strokeColor=none;shadow=1;fontFamily=Helvetica Neue;fontSize=10;" vertex="1" parent="1">
+      <mxGeometry x="150" y="245" width="65" height="45" as="geometry"/>
+    </mxCell>
+    <mxCell id="a_simplify" value="/simplify&#xa;2〜3分" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fef3c7;fontColor=#92400e;strokeColor=none;shadow=1;fontFamily=Helvetica Neue;fontSize=10;" vertex="1" parent="1">
+      <mxGeometry x="240" y="245" width="70" height="45" as="geometry"/>
+    </mxCell>
+    <mxCell id="a_confirm" value="差分確認&#xa;5分" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dbeafe;fontColor=#1e40af;strokeColor=none;shadow=1;fontFamily=Helvetica Neue;fontSize=10;" vertex="1" parent="1">
+      <mxGeometry x="335" y="245" width="65" height="45" as="geometry"/>
+    </mxCell>
+    <mxCell id="a_pr" value="PR作成" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#bbf7d0;fontColor=#166534;strokeColor=none;shadow=1;fontFamily=Helvetica Neue;fontSize=10;" vertex="1" parent="1">
+      <mxGeometry x="420" y="245" width="55" height="45" as="geometry"/>
+    </mxCell>
+    <mxCell id="ea1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#94a3b8;strokeWidth=1.2;endArrow=block;endFill=1;endSize=5;" edge="1" source="a_impl" target="a_commit1" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="ea2" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#94a3b8;strokeWidth=1.2;endArrow=block;endFill=1;endSize=5;" edge="1" source="a_commit1" target="a_simplify" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="ea3" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#94a3b8;strokeWidth=1.2;endArrow=block;endFill=1;endSize=5;" edge="1" source="a_simplify" target="a_confirm" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="ea4" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#94a3b8;strokeWidth=1.2;endArrow=block;endFill=1;endSize=5;" edge="1" source="a_confirm" target="a_pr" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="time_before" value="合計: 約110分" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fecaca;fontColor=#991b1b;strokeColor=none;shadow=1;fontFamily=Helvetica Neue;fontSize=10;shape=ellipse;" vertex="1" parent="1">
+      <mxGeometry x="530" y="75" width="120" height="45" as="geometry"/>
+    </mxCell>
+    <mxCell id="time_after" value="合計: 約68分&#xa;(38%短縮)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#bbf7d0;fontColor=#166534;strokeColor=none;shadow=1;fontFamily=Helvetica Neue;fontSize=10;shape=ellipse;" vertex="1" parent="1">
+      <mxGeometry x="530" y="245" width="120" height="45" as="geometry"/>
+    </mxCell>
+    <mxCell id="et1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#fca5a5;strokeWidth=1.2;dashed=1;dashPattern=4 4;endArrow=block;endFill=1;endSize=5;" edge="1" source="b_pr" target="time_before" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="et2" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#86efac;strokeWidth=1.2;dashed=1;dashPattern=4 4;endArrow=block;endFill=1;endSize=5;" edge="1" source="a_pr" target="time_after" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+  </root>
+</mxGraphModel>

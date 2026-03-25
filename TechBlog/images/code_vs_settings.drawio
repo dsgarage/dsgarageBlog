@@ -1,0 +1,53 @@
+<mxGraphModel>
+  <root>
+    <mxCell id="0"/>
+    <mxCell id="1" parent="0"/>
+    <!-- Cluster: AI が書ける -->
+    <mxCell id="cluster_ai" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#e5e7eb;strokeWidth=1;shadow=1;" vertex="1" parent="1">
+      <mxGeometry x="40" y="40" width="250" height="200" as="geometry"/>
+    </mxCell>
+    <mxCell id="cluster_ai_label" value="AI が書ける" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontFamily=Helvetica Neue;fontSize=11;fontColor=#1e40af;fontStyle=1;" vertex="1" parent="1">
+      <mxGeometry x="115" y="45" width="90" height="25" as="geometry"/>
+    </mxCell>
+    <mxCell id="script" value="C# Script" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dbeafe;fontColor=#1e40af;strokeColor=none;fontFamily=Helvetica Neue;fontSize=10;shadow=1;" vertex="1" parent="1">
+      <mxGeometry x="60" y="85" width="90" height="35" as="geometry"/>
+    </mxCell>
+    <mxCell id="shader" value="Shader" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dbeafe;fontColor=#1e40af;strokeColor=none;fontFamily=Helvetica Neue;fontSize=10;shadow=1;" vertex="1" parent="1">
+      <mxGeometry x="170" y="85" width="90" height="35" as="geometry"/>
+    </mxCell>
+    <mxCell id="config" value="Config" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dbeafe;fontColor=#1e40af;strokeColor=none;fontFamily=Helvetica Neue;fontSize=10;shadow=1;" vertex="1" parent="1">
+      <mxGeometry x="115" y="145" width="90" height="35" as="geometry"/>
+    </mxCell>
+    <!-- Wall -->
+    <mxCell id="wall" value="壁" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fef3c7;fontColor=#92400e;strokeColor=none;fontFamily=Helvetica Neue;fontSize=14;shadow=1;" vertex="1" parent="1">
+      <mxGeometry x="340" y="70" width="60" height="140" as="geometry"/>
+    </mxCell>
+    <!-- Cluster: Unity Editor -->
+    <mxCell id="cluster_unity" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fafafa;strokeColor=#e5e7eb;strokeWidth=1;shadow=1;" vertex="1" parent="1">
+      <mxGeometry x="450" y="40" width="250" height="200" as="geometry"/>
+    </mxCell>
+    <mxCell id="cluster_unity_label" value="Unity Editor" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontFamily=Helvetica Neue;fontSize=11;fontColor=#6b7280;fontStyle=1;" vertex="1" parent="1">
+      <mxGeometry x="525" y="45" width="90" height="25" as="geometry"/>
+    </mxCell>
+    <mxCell id="scene" value="Scene" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f3f4f6;fontColor=#4b5563;strokeColor=none;fontFamily=Helvetica Neue;fontSize=10;shadow=1;" vertex="1" parent="1">
+      <mxGeometry x="470" y="85" width="90" height="35" as="geometry"/>
+    </mxCell>
+    <mxCell id="gameobject" value="GameObject" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f3f4f6;fontColor=#4b5563;strokeColor=none;fontFamily=Helvetica Neue;fontSize=10;shadow=1;" vertex="1" parent="1">
+      <mxGeometry x="580" y="85" width="90" height="35" as="geometry"/>
+    </mxCell>
+    <mxCell id="component" value="Component" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f3f4f6;fontColor=#4b5563;strokeColor=none;fontFamily=Helvetica Neue;fontSize=10;shadow=1;" vertex="1" parent="1">
+      <mxGeometry x="470" y="145" width="90" height="35" as="geometry"/>
+    </mxCell>
+    <mxCell id="inspector" value="Inspector" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f3f4f6;fontColor=#4b5563;strokeColor=none;fontFamily=Helvetica Neue;fontSize=10;shadow=1;" vertex="1" parent="1">
+      <mxGeometry x="580" y="145" width="90" height="35" as="geometry"/>
+    </mxCell>
+    <!-- Edge: cluster_ai -> wall (bold blue) -->
+    <mxCell id="e1" style="endArrow=classic;endSize=5;strokeColor=#1e40af;strokeWidth=2.5;" edge="1" source="cluster_ai" target="wall" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <!-- Edge: wall -> cluster_unity (dashed red with X) -->
+    <mxCell id="e2" value=" ✗ " style="endArrow=classic;endSize=5;dashed=1;strokeColor=#dc2626;strokeWidth=2;fontFamily=Helvetica Neue;fontSize=16;fontColor=#dc2626;" edge="1" source="wall" target="cluster_unity" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+  </root>
+</mxGraphModel>

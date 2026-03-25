@@ -1,0 +1,71 @@
+<mxGraphModel dx="900" dy="700" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="860" pageHeight="660" math="0" shadow="0">
+  <root>
+    <mxCell id="0"/>
+    <mxCell id="1" parent="0"/>
+
+    <!-- Center: .env -->
+    <mxCell id="dotenv" value=".env&#xa;（平文APIキー）" style="rounded=1;whiteSpace=wrap;fillColor=#fef3c7;fontColor=#92400e;strokeColor=none;fontSize=11;fontFamily=Helvetica Neue;shadow=1;fontStyle=1;" vertex="1" parent="1">
+      <mxGeometry x="340" y="20" width="160" height="50" as="geometry"/>
+    </mxCell>
+
+    <!-- Cluster: 脅威ベクトル -->
+    <mxCell id="c_threats_bg" value="" style="rounded=1;fillColor=#fafafa;strokeColor=#e5e7eb;strokeWidth=1;" vertex="1" parent="1">
+      <mxGeometry x="20" y="120" width="800" height="130" as="geometry"/>
+    </mxCell>
+    <mxCell id="c_threats_label" value="脅威ベクトル" style="text;fontSize=10;fontColor=#6b7280;align=center;fontFamily=Helvetica Neue;fontStyle=1;" vertex="1" parent="1">
+      <mxGeometry x="20" y="125" width="800" height="20" as="geometry"/>
+    </mxCell>
+
+    <mxCell id="t1" value="うっかり&#xa;git commit" style="rounded=1;whiteSpace=wrap;fillColor=#f3f4f6;fontColor=#4b5563;strokeColor=none;fontSize=10;fontFamily=Helvetica Neue;shadow=1;" vertex="1" parent="1">
+      <mxGeometry x="40" y="160" width="150" height="50" as="geometry"/>
+    </mxCell>
+    <mxCell id="t2" value="シェル履歴&#xa;への混入" style="rounded=1;whiteSpace=wrap;fillColor=#f3f4f6;fontColor=#4b5563;strokeColor=none;fontSize=10;fontFamily=Helvetica Neue;shadow=1;" vertex="1" parent="1">
+      <mxGeometry x="230" y="160" width="150" height="50" as="geometry"/>
+    </mxCell>
+    <mxCell id="t3" value="AIエージェント&#xa;による抽出" style="rounded=1;whiteSpace=wrap;fillColor=#f3f4f6;fontColor=#4b5563;strokeColor=none;fontSize=10;fontFamily=Helvetica Neue;shadow=1;" vertex="1" parent="1">
+      <mxGeometry x="420" y="160" width="150" height="50" as="geometry"/>
+    </mxCell>
+    <mxCell id="t4" value="CI/CD&#xa;トークン窃取" style="rounded=1;whiteSpace=wrap;fillColor=#f3f4f6;fontColor=#4b5563;strokeColor=none;fontSize=10;fontFamily=Helvetica Neue;shadow=1;" vertex="1" parent="1">
+      <mxGeometry x="610" y="160" width="150" height="50" as="geometry"/>
+    </mxCell>
+
+    <!-- Cluster: 被害 -->
+    <mxCell id="c_impact_bg" value="" style="rounded=1;fillColor=#fafafa;strokeColor=#e5e7eb;strokeWidth=1;" vertex="1" parent="1">
+      <mxGeometry x="100" y="310" width="640" height="120" as="geometry"/>
+    </mxCell>
+    <mxCell id="c_impact_label" value="被害" style="text;fontSize=10;fontColor=#6b7280;align=center;fontFamily=Helvetica Neue;fontStyle=1;" vertex="1" parent="1">
+      <mxGeometry x="100" y="315" width="640" height="20" as="geometry"/>
+    </mxCell>
+
+    <mxCell id="i1" value="APIキー漏洩&#xa;課金被害" style="rounded=1;whiteSpace=wrap;fillColor=#fef3c7;fontColor=#92400e;strokeColor=none;fontSize=10;fontFamily=Helvetica Neue;shadow=1;" vertex="1" parent="1">
+      <mxGeometry x="130" y="350" width="150" height="50" as="geometry"/>
+    </mxCell>
+    <mxCell id="i2" value="リポジトリ&#xa;乗っ取り" style="rounded=1;whiteSpace=wrap;fillColor=#fef3c7;fontColor=#92400e;strokeColor=none;fontSize=10;fontFamily=Helvetica Neue;shadow=1;" vertex="1" parent="1">
+      <mxGeometry x="340" y="350" width="150" height="50" as="geometry"/>
+    </mxCell>
+    <mxCell id="i3" value="サプライチェーン&#xa;攻撃" style="rounded=1;whiteSpace=wrap;fillColor=#fef3c7;fontColor=#92400e;strokeColor=none;fontSize=10;fontFamily=Helvetica Neue;shadow=1;" vertex="1" parent="1">
+      <mxGeometry x="550" y="350" width="150" height="50" as="geometry"/>
+    </mxCell>
+
+    <!-- Edges: dotenv -> threats -->
+    <mxCell id="ed1" value=".gitignore漏れ" style="rounded=1;strokeColor=#94a3b8;fontSize=9;fontFamily=Helvetica Neue;fontColor=#4b5563;" edge="1" parent="1" source="dotenv" target="t1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="ed2" value="export/echo" style="rounded=1;strokeColor=#94a3b8;fontSize=9;fontFamily=Helvetica Neue;fontColor=#4b5563;" edge="1" parent="1" source="dotenv" target="t2">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="ed3" value="cat .env" style="rounded=1;strokeColor=#94a3b8;fontSize=9;fontFamily=Helvetica Neue;fontColor=#4b5563;" edge="1" parent="1" source="dotenv" target="t3">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="ed4" value="Actions内で参照" style="rounded=1;strokeColor=#94a3b8;fontSize=9;fontFamily=Helvetica Neue;fontColor=#4b5563;" edge="1" parent="1" source="dotenv" target="t4">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+
+    <!-- Edges: threats -> impacts -->
+    <mxCell id="ei1" style="rounded=1;strokeColor=#94a3b8;" edge="1" parent="1" source="t1" target="i1"><mxGeometry relative="1" as="geometry"/></mxCell>
+    <mxCell id="ei2" style="rounded=1;strokeColor=#94a3b8;" edge="1" parent="1" source="t2" target="i1"><mxGeometry relative="1" as="geometry"/></mxCell>
+    <mxCell id="ei3" style="rounded=1;strokeColor=#94a3b8;" edge="1" parent="1" source="t3" target="i1"><mxGeometry relative="1" as="geometry"/></mxCell>
+    <mxCell id="ei4" style="rounded=1;strokeColor=#94a3b8;" edge="1" parent="1" source="t4" target="i2"><mxGeometry relative="1" as="geometry"/></mxCell>
+    <mxCell id="ei5" style="rounded=1;strokeColor=#94a3b8;" edge="1" parent="1" source="t4" target="i3"><mxGeometry relative="1" as="geometry"/></mxCell>
+  </root>
+</mxGraphModel>

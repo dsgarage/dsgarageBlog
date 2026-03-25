@@ -1,0 +1,65 @@
+<mxGraphModel>
+  <root>
+    <mxCell id="0"/>
+    <mxCell id="1" parent="0"/>
+    <!-- AI node -->
+    <mxCell id="ai" value="AI" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dbeafe;fontColor=#1e40af;strokeColor=none;fontFamily=Helvetica Neue;fontSize=10;shadow=1;" vertex="1" parent="1">
+      <mxGeometry x="280" y="30" width="120" height="40" as="geometry"/>
+    </mxCell>
+    <!-- Cluster: tools/list -->
+    <mxCell id="cluster_tl_bg" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#e5e7eb;strokeWidth=1;shadow=1;" vertex="1" parent="1">
+      <mxGeometry x="60" y="130" width="200" height="170" as="geometry"/>
+    </mxCell>
+    <mxCell id="cluster_tl_label" value="tools/list" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontFamily=Helvetica Neue;fontSize=11;fontColor=#1e40af;fontStyle=1;" vertex="1" parent="1">
+      <mxGeometry x="70" y="133" width="80" height="25" as="geometry"/>
+    </mxCell>
+    <mxCell id="tl_know" value="APIを知る" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dbeafe;fontColor=#1e40af;strokeColor=none;fontFamily=Helvetica Neue;fontSize=10;shadow=1;" vertex="1" parent="1">
+      <mxGeometry x="100" y="170" width="120" height="40" as="geometry"/>
+    </mxCell>
+    <mxCell id="tl_result" value="使うかは&#10;AI次第" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fef3c7;fontColor=#92400e;strokeColor=none;fontFamily=Helvetica Neue;fontSize=10;shadow=1;" vertex="1" parent="1">
+      <mxGeometry x="100" y="235" width="120" height="45" as="geometry"/>
+    </mxCell>
+    <!-- Cluster: Skills -->
+    <mxCell id="cluster_sk_bg" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f0fdf4;strokeColor=#e5e7eb;strokeWidth=1;shadow=1;" vertex="1" parent="1">
+      <mxGeometry x="400" y="130" width="200" height="170" as="geometry"/>
+    </mxCell>
+    <mxCell id="cluster_sk_label" value="Skills" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontFamily=Helvetica Neue;fontSize=11;fontColor=#166534;fontStyle=1;" vertex="1" parent="1">
+      <mxGeometry x="410" y="133" width="50" height="25" as="geometry"/>
+    </mxCell>
+    <mxCell id="sk_rule" value="ルールを&#10;強制" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#bbf7d0;fontColor=#166534;strokeColor=none;fontFamily=Helvetica Neue;fontSize=10;shadow=1;" vertex="1" parent="1">
+      <mxGeometry x="440" y="170" width="120" height="40" as="geometry"/>
+    </mxCell>
+    <mxCell id="sk_result" value="必ずMCPを&#10;使用" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#bbf7d0;fontColor=#166534;strokeColor=none;fontFamily=Helvetica Neue;fontSize=10;shadow=1;" vertex="1" parent="1">
+      <mxGeometry x="440" y="235" width="120" height="45" as="geometry"/>
+    </mxCell>
+    <!-- Results -->
+    <mxCell id="mcp_api" value="MCP API" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dbeafe;fontColor=#1e40af;strokeColor=none;fontFamily=Helvetica Neue;fontSize=10;shadow=1;" vertex="1" parent="1">
+      <mxGeometry x="270" y="390" width="120" height="40" as="geometry"/>
+    </mxCell>
+    <mxCell id="script_node" value="エディタ&#10;スクリプト" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fee2e2;fontColor=#991b1b;strokeColor=none;fontFamily=Helvetica Neue;fontSize=10;shadow=1;" vertex="1" parent="1">
+      <mxGeometry x="60" y="390" width="100" height="45" as="geometry"/>
+    </mxCell>
+    <!-- Edges -->
+    <mxCell id="e1" style="endArrow=classic;endSize=5;strokeColor=#94a3b8;strokeWidth=1.5;" edge="1" source="ai" target="cluster_tl_bg" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="e2" style="endArrow=classic;endSize=5;strokeColor=#94a3b8;strokeWidth=1.5;" edge="1" source="ai" target="cluster_sk_bg" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="e3" style="endArrow=classic;endSize=5;strokeColor=#94a3b8;strokeWidth=1.5;" edge="1" source="tl_know" target="tl_result" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="e4" style="endArrow=classic;endSize=5;strokeColor=#94a3b8;strokeWidth=1.5;" edge="1" source="sk_rule" target="sk_result" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="e5" value="選択" style="endArrow=classic;endSize=5;dashed=1;strokeColor=#6b7280;strokeWidth=1.5;fontFamily=Helvetica Neue;fontSize=9;fontColor=#6b7280;" edge="1" source="tl_result" target="mcp_api" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="e6" value="選択" style="endArrow=classic;endSize=5;dashed=1;strokeColor=#6b7280;strokeWidth=1.5;fontFamily=Helvetica Neue;fontSize=9;fontColor=#6b7280;" edge="1" source="tl_result" target="script_node" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="e7" style="endArrow=classic;endSize=5;strokeColor=#166534;strokeWidth=2.5;" edge="1" source="sk_result" target="mcp_api" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+  </root>
+</mxGraphModel>

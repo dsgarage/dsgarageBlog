@@ -1,0 +1,56 @@
+<mxGraphModel>
+  <root>
+    <mxCell id="0"/>
+    <mxCell id="1" parent="0"/>
+    <!-- Title -->
+    <mxCell id="title" value="Unityプロジェクトの構成" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontFamily=Helvetica Neue;fontSize=20;fontColor=#333333;fontStyle=1;" vertex="1" parent="1">
+      <mxGeometry x="190" y="10" width="260" height="40" as="geometry"/>
+    </mxCell>
+    <!-- Cluster: コード -->
+    <mxCell id="cluster_code_bg" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dbeafe;strokeColor=#1e40af;strokeWidth=1;shadow=1;" vertex="1" parent="1">
+      <mxGeometry x="40" y="70" width="250" height="230" as="geometry"/>
+    </mxCell>
+    <mxCell id="cluster_code_label" value="コード" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontFamily=Helvetica Neue;fontSize=14;fontColor=#1e40af;fontStyle=1;" vertex="1" parent="1">
+      <mxGeometry x="50" y="73" width="60" height="25" as="geometry"/>
+    </mxCell>
+    <mxCell id="code_files" value=".csファイル&#10;&#10;PlayerController.cs&#10;EnemyAI.cs&#10;GameManager.cs" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#bfdbfe;fontColor=#1e40af;strokeColor=#1565c0;fontFamily=Helvetica Neue;fontSize=12;shadow=1;align=left;spacingLeft=10;" vertex="1" parent="1">
+      <mxGeometry x="65" y="110" width="200" height="110" as="geometry"/>
+    </mxCell>
+    <mxCell id="code_claude" value="Claude Code で生成可能 ✓" style="ellipse;whiteSpace=wrap;html=1;fillColor=#dcfce7;fontColor=#166534;strokeColor=#166534;fontFamily=Helvetica Neue;fontSize=11;shadow=1;" vertex="1" parent="1">
+      <mxGeometry x="55" y="240" width="220" height="40" as="geometry"/>
+    </mxCell>
+    <!-- Cluster: 設定 -->
+    <mxCell id="cluster_settings_bg" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fef3c7;strokeColor=#92400e;strokeWidth=1;shadow=1;" vertex="1" parent="1">
+      <mxGeometry x="350" y="70" width="250" height="230" as="geometry"/>
+    </mxCell>
+    <mxCell id="cluster_settings_label" value="設定" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontFamily=Helvetica Neue;fontSize=14;fontColor=#92400e;fontStyle=1;" vertex="1" parent="1">
+      <mxGeometry x="360" y="73" width="50" height="25" as="geometry"/>
+    </mxCell>
+    <mxCell id="setting_files" value="Scene / Prefab&#10;&#10;Main.unity&#10;Player.prefab&#10;Enemy.prefab" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fed7aa;fontColor=#92400e;strokeColor=#ef6c00;fontFamily=Helvetica Neue;fontSize=12;shadow=1;align=left;spacingLeft=10;" vertex="1" parent="1">
+      <mxGeometry x="375" y="110" width="200" height="110" as="geometry"/>
+    </mxCell>
+    <mxCell id="setting_claude" value="Claude Code では設定不可 ✗" style="ellipse;whiteSpace=wrap;html=1;fillColor=#fee2e2;fontColor=#991b1b;strokeColor=#991b1b;fontFamily=Helvetica Neue;fontSize=11;shadow=1;" vertex="1" parent="1">
+      <mxGeometry x="365" y="240" width="220" height="40" as="geometry"/>
+    </mxCell>
+    <!-- 動くゲーム -->
+    <mxCell id="game" value="動くゲーム" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1bee7;fontColor=#7b1fa2;strokeColor=#7b1fa2;fontFamily=Helvetica Neue;fontSize=14;shadow=1;strokeWidth=1.5;" vertex="1" parent="1">
+      <mxGeometry x="190" y="370" width="250" height="50" as="geometry"/>
+    </mxCell>
+    <!-- Note -->
+    <mxCell id="note" value="両方が揃って初めて「動く」" style="shape=note;whiteSpace=wrap;html=1;fillColor=#fef3c7;fontColor=#92400e;strokeColor=#f59e0b;fontFamily=Helvetica Neue;fontSize=11;shadow=1;size=14;" vertex="1" parent="1">
+      <mxGeometry x="210" y="480" width="210" height="45" as="geometry"/>
+    </mxCell>
+    <!-- Edge: code -> game -->
+    <mxCell id="e1" style="endArrow=classic;endSize=5;strokeColor=#1e40af;strokeWidth=2;" edge="1" source="cluster_code_bg" target="game" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <!-- Edge: settings -> game -->
+    <mxCell id="e2" style="endArrow=classic;endSize=5;strokeColor=#92400e;strokeWidth=2;" edge="1" source="cluster_settings_bg" target="game" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <!-- Edge: game -> note (dashed) -->
+    <mxCell id="e3" style="endArrow=classic;endSize=5;dashed=1;strokeColor=#999999;strokeWidth=1;" edge="1" source="game" target="note" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+  </root>
+</mxGraphModel>

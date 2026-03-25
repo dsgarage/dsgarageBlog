@@ -1,0 +1,71 @@
+<mxfile host="draw.io">
+  <diagram name="Page-1" id="rtg_dxr_shader_stages">
+    <mxGraphModel dx="900" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1000" pageHeight="1000" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+
+        <mxCell id="raygen" value="Ray Generation Shader&#xa;パイプラインの起点&#xa;どのレイを飛ばすかを決定" style="rounded=1;whiteSpace=wrap;fillColor=#dbeafe;fontColor=#1e40af;strokeColor=none;shadow=1;fontFamily=Helvetica Neue;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="340" y="40" width="220" height="60" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="cluster_bvh" value="BVHトラバーサル" style="rounded=1;whiteSpace=wrap;fillColor=#fafafa;strokeColor=#e5e7eb;fontColor=#6b7280;fontFamily=Helvetica Neue;fontSize=11;fontStyle=1;verticalAlign=top;spacingTop=5;container=1;collapsible=0;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="270" y="150" width="360" height="200" as="geometry"/>
+        </mxCell>
+        <mxCell id="intersect" value="Intersection Shader&#xa;レイ/プリミティブ交差判定&#xa;(三角形のデフォルト実装あり)" style="rounded=1;whiteSpace=wrap;fillColor=#fef3c7;fontColor=#92400e;strokeColor=none;shadow=1;fontFamily=Helvetica Neue;fontSize=10;" vertex="1" parent="cluster_bvh">
+          <mxGeometry x="20" y="45" width="210" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="anyhit" value="Any-Hit Shader&#xa;アルファテスト等で&#xa;交差を棄却可能" style="rounded=1;whiteSpace=wrap;fillColor=#fef3c7;fontColor=#92400e;strokeColor=none;shadow=1;fontFamily=Helvetica Neue;fontSize=10;" vertex="1" parent="cluster_bvh">
+          <mxGeometry x="20" y="125" width="210" height="60" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="closest" value="Closest-Hit Shader&#xa;最近接ヒット点でシェーディング&#xa;(ピクセルシェーダに相当)" style="rounded=1;whiteSpace=wrap;fillColor=#dbeafe;fontColor=#1e40af;strokeColor=none;shadow=1;fontFamily=Helvetica Neue;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="200" y="410" width="230" height="60" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="miss" value="Miss Shader&#xa;全ジオメトリを外した場合&#xa;(環境マップ参照など)" style="rounded=1;whiteSpace=wrap;fillColor=#f3f4f6;fontColor=#4b5563;strokeColor=none;shadow=1;fontFamily=Helvetica Neue;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="480" y="410" width="230" height="60" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="result" value="レイ結果&#xa;(ペイロード)" style="rounded=1;whiteSpace=wrap;fillColor=#dbeafe;fontColor=#1e40af;strokeColor=none;shadow=1;fontFamily=Helvetica Neue;fontSize=10;shape=ellipse;" vertex="1" parent="1">
+          <mxGeometry x="370" y="530" width="160" height="60" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="e1" value="TraceRay()" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#94a3b8;strokeWidth=1.2;fontSize=9;fontFamily=Helvetica Neue;fontColor=#4b5563;" edge="1" source="raygen" target="intersect" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e2" value="ヒット検出" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#94a3b8;strokeWidth=1.2;fontSize=9;fontFamily=Helvetica Neue;fontColor=#4b5563;" edge="1" source="intersect" target="anyhit" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e3" value="IgnoreHit()&#xa;(次の交差を探索)" style="rounded=1;dashed=1;strokeColor=#cbd5e1;strokeWidth=1.2;fontSize=9;fontFamily=Helvetica Neue;fontColor=#4b5563;exitX=1;exitY=0.5;entryX=1;entryY=0.5;" edge="1" source="anyhit" target="intersect" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="580" y="430"/>
+              <mxPoint x="580" y="225"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e4" value="AcceptHitAndEndSearch()&#xa;またはトラバーサル完了" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#94a3b8;strokeWidth=1.2;fontSize=9;fontFamily=Helvetica Neue;fontColor=#4b5563;" edge="1" source="anyhit" target="closest" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e5" value="交差なし&#xa;(トラバーサル完了)" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#94a3b8;strokeWidth=1.2;fontSize=9;fontFamily=Helvetica Neue;fontColor=#4b5563;" edge="1" source="intersect" target="miss" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e6" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#94a3b8;strokeWidth=1.2;" edge="1" source="closest" target="result" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e7" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#94a3b8;strokeWidth=1.2;" edge="1" source="miss" target="result" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e8" value="再帰的TraceRay()&#xa;(反射・屈折など)" style="rounded=1;dashed=1;strokeColor=#cbd5e1;strokeWidth=1.2;fontSize=9;fontFamily=Helvetica Neue;fontColor=#4b5563;exitX=0;exitY=0.5;entryX=0;entryY=0.5;" edge="1" source="result" target="raygen" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="130" y="560"/>
+              <mxPoint x="130" y="70"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

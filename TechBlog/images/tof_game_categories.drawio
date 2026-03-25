@@ -1,0 +1,73 @@
+<mxfile host="app.diagrams.net" modified="2026-03-25" type="device">
+  <diagram id="game-categories" name="ゲームが提示するパターンの種類">
+    <mxGraphModel dx="1200" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- Central node: patterns - Primary -->
+        <mxCell id="patterns" value="ゲームが提示する&#xa;パターンの種類" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dbeafe;strokeColor=#93c5fd;fontColor=#1e40af;fontSize=11;fontFamily=Helvetica Neue;arcSize=20;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="310" y="30" width="160" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- cluster_spatial -->
+        <mxCell id="cluster_spatial" value="空間パターン" style="swimlane;startSize=28;rounded=1;fillColor=#f8fafc;strokeColor=#e5e7eb;fontColor=#1e40af;fontSize=10;fontFamily=Helvetica Neue;fontStyle=1;shadow=1;swimlaneLine=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="30" y="150" width="190" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="spatial" value="地形・配置・経路&#xa;テトリス、チェス" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f3f4f6;strokeColor=#d1d5db;fontColor=#4b5563;fontSize=10;fontFamily=Helvetica Neue;arcSize=20;shadow=1;" vertex="1" parent="cluster_spatial">
+          <mxGeometry x="10" y="35" width="170" height="38" as="geometry" />
+        </mxCell>
+
+        <!-- cluster_social -->
+        <mxCell id="cluster_social" value="社会パターン" style="swimlane;startSize=28;rounded=1;fillColor=#f8fafc;strokeColor=#e5e7eb;fontColor=#1e40af;fontSize=10;fontFamily=Helvetica Neue;fontStyle=1;shadow=1;swimlaneLine=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="240" y="150" width="190" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="social" value="交渉・裏切り・協力&#xa;マフィア、外交ゲーム" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f3f4f6;strokeColor=#d1d5db;fontColor=#4b5563;fontSize=10;fontFamily=Helvetica Neue;arcSize=20;shadow=1;" vertex="1" parent="cluster_social">
+          <mxGeometry x="10" y="35" width="170" height="38" as="geometry" />
+        </mxCell>
+
+        <!-- cluster_temporal -->
+        <mxCell id="cluster_temporal" value="時間パターン" style="swimlane;startSize=28;rounded=1;fillColor=#f8fafc;strokeColor=#e5e7eb;fontColor=#1e40af;fontSize=10;fontFamily=Helvetica Neue;fontStyle=1;shadow=1;swimlaneLine=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="450" y="150" width="190" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="temporal" value="タイミング・リズム&#xa;音ゲー、格闘ゲーム" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f3f4f6;strokeColor=#d1d5db;fontColor=#4b5563;fontSize=10;fontFamily=Helvetica Neue;arcSize=20;shadow=1;" vertex="1" parent="cluster_temporal">
+          <mxGeometry x="10" y="35" width="170" height="38" as="geometry" />
+        </mxCell>
+
+        <!-- cluster_hierarchical -->
+        <mxCell id="cluster_hierarchical" value="階層パターン" style="swimlane;startSize=28;rounded=1;fillColor=#f8fafc;strokeColor=#e5e7eb;fontColor=#1e40af;fontSize=10;fontFamily=Helvetica Neue;fontStyle=1;shadow=1;swimlaneLine=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="140" y="280" width="190" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="hierarchical" value="戦略→戦術→操作&#xa;RTS、4Xストラテジー" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f3f4f6;strokeColor=#d1d5db;fontColor=#4b5563;fontSize=10;fontFamily=Helvetica Neue;arcSize=20;shadow=1;" vertex="1" parent="cluster_hierarchical">
+          <mxGeometry x="10" y="35" width="170" height="38" as="geometry" />
+        </mxCell>
+
+        <!-- cluster_classification -->
+        <mxCell id="cluster_classification" value="分類パターン" style="swimlane;startSize=28;rounded=1;fillColor=#f8fafc;strokeColor=#e5e7eb;fontColor=#1e40af;fontSize=10;fontFamily=Helvetica Neue;fontStyle=1;shadow=1;swimlaneLine=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="370" y="280" width="190" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="classification" value="カテゴリ分け・属性&#xa;ポケモン、カードゲーム" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f3f4f6;strokeColor=#d1d5db;fontColor=#4b5563;fontSize=10;fontFamily=Helvetica Neue;arcSize=20;shadow=1;" vertex="1" parent="cluster_classification">
+          <mxGeometry x="10" y="35" width="170" height="38" as="geometry" />
+        </mxCell>
+
+        <!-- Edges -->
+        <mxCell id="e1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#94a3b8;strokeWidth=1.2;fontFamily=Helvetica Neue;fontSize=9;endArrow=classic;endSize=5;" edge="1" source="patterns" target="spatial" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#94a3b8;strokeWidth=1.2;fontFamily=Helvetica Neue;fontSize=9;endArrow=classic;endSize=5;" edge="1" source="patterns" target="social" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#94a3b8;strokeWidth=1.2;fontFamily=Helvetica Neue;fontSize=9;endArrow=classic;endSize=5;" edge="1" source="patterns" target="temporal" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e4" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#94a3b8;strokeWidth=1.2;fontFamily=Helvetica Neue;fontSize=9;endArrow=classic;endSize=5;" edge="1" source="patterns" target="hierarchical" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e5" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#94a3b8;strokeWidth=1.2;fontFamily=Helvetica Neue;fontSize=9;endArrow=classic;endSize=5;" edge="1" source="patterns" target="classification" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

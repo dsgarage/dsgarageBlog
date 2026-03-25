@@ -1,0 +1,122 @@
+<mxfile host="draw.io">
+  <diagram name="PCG分類体系" id="pcg_taxonomy">
+    <mxGraphModel dx="1200" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="1600" pageHeight="1200" math="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+
+        <!-- 中心ノード -->
+        <mxCell id="pcg" value="PCG&#xa;分類体系" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#dbeafe;fontColor=#1e40af;strokeColor=none;fontSize=14;fontStyle=1;fontFamily=Helvetica Neue;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="700" y="20" width="120" height="50" as="geometry"/>
+        </mxCell>
+
+        <!-- グループ背景: タイミング -->
+        <mxCell id="bg_timing" value="タイミング" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#f8fafc;strokeColor=#e5e7eb;fontColor=#1e40af;fontSize=11;fontStyle=1;fontFamily=Helvetica Neue;shadow=1;verticalAlign=top;align=center;" vertex="1" parent="1">
+          <mxGeometry x="120" y="140" width="300" height="100" as="geometry"/>
+        </mxCell>
+        <mxCell id="online" value="オンライン&#xa;(プレイ中生成)" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#dbeafe;fontColor=#1e40af;strokeColor=none;fontSize=10;fontFamily=Helvetica Neue;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="140" y="175" width="120" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="offline" value="オフライン&#xa;(開発中生成)" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#f3f4f6;fontColor=#4b5563;strokeColor=none;fontSize=10;fontFamily=Helvetica Neue;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="280" y="175" width="120" height="50" as="geometry"/>
+        </mxCell>
+
+        <!-- グループ背景: 必要性 -->
+        <mxCell id="bg_necessity" value="必要性" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#f8fafc;strokeColor=#e5e7eb;fontColor=#1e40af;fontSize=11;fontStyle=1;fontFamily=Helvetica Neue;shadow=1;verticalAlign=top;align=center;" vertex="1" parent="1">
+          <mxGeometry x="500" y="140" width="300" height="100" as="geometry"/>
+        </mxCell>
+        <mxCell id="necessary" value="必須コンテンツ&#xa;(レベル構造)" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#fef3c7;fontColor=#92400e;strokeColor=none;fontSize=10;fontFamily=Helvetica Neue;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="520" y="175" width="120" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="optional" value="任意コンテンツ&#xa;(装飾・報酬)" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#f3f4f6;fontColor=#4b5563;strokeColor=none;fontSize=10;fontFamily=Helvetica Neue;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="660" y="175" width="120" height="50" as="geometry"/>
+        </mxCell>
+
+        <!-- グループ背景: 適応性 -->
+        <mxCell id="bg_adaptive" value="適応性" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#f8fafc;strokeColor=#e5e7eb;fontColor=#1e40af;fontSize=11;fontStyle=1;fontFamily=Helvetica Neue;shadow=1;verticalAlign=top;align=center;" vertex="1" parent="1">
+          <mxGeometry x="880" y="140" width="320" height="100" as="geometry"/>
+        </mxCell>
+        <mxCell id="generic" value="汎用的&#xa;(全プレイヤー共通)" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#f3f4f6;fontColor=#4b5563;strokeColor=none;fontSize=10;fontFamily=Helvetica Neue;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="900" y="175" width="130" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="adaptive" value="プレイヤー適応型&#xa;(個別最適化)" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#dbeafe;fontColor=#1e40af;strokeColor=none;fontSize=10;fontFamily=Helvetica Neue;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="1050" y="175" width="130" height="50" as="geometry"/>
+        </mxCell>
+
+        <!-- グループ背景: 生成方式 -->
+        <mxCell id="bg_method" value="生成方式" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#f8fafc;strokeColor=#e5e7eb;fontColor=#1e40af;fontSize=11;fontStyle=1;fontFamily=Helvetica Neue;shadow=1;verticalAlign=top;align=center;" vertex="1" parent="1">
+          <mxGeometry x="120" y="300" width="300" height="100" as="geometry"/>
+        </mxCell>
+        <mxCell id="constructive" value="構築的&#xa;(1パス生成)" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#f3f4f6;fontColor=#4b5563;strokeColor=none;fontSize=10;fontFamily=Helvetica Neue;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="140" y="335" width="120" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="generatetest" value="生成テスト型&#xa;(反復改善)" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#dbeafe;fontColor=#1e40af;strokeColor=none;fontSize=10;fontFamily=Helvetica Neue;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="280" y="335" width="120" height="50" as="geometry"/>
+        </mxCell>
+
+        <!-- グループ背景: 制作主体 -->
+        <mxCell id="bg_authorship" value="制作主体" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#f8fafc;strokeColor=#e5e7eb;fontColor=#1e40af;fontSize=11;fontStyle=1;fontFamily=Helvetica Neue;shadow=1;verticalAlign=top;align=center;" vertex="1" parent="1">
+          <mxGeometry x="500" y="300" width="300" height="100" as="geometry"/>
+        </mxCell>
+        <mxCell id="automatic_node" value="完全自動" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#fef3c7;fontColor=#92400e;strokeColor=none;fontSize=10;fontFamily=Helvetica Neue;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="520" y="335" width="120" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="mixed" value="混合オーサリング&#xa;(人間+AI協働)" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#dbeafe;fontColor=#1e40af;strokeColor=none;fontSize=10;fontFamily=Helvetica Neue;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="660" y="335" width="120" height="50" as="geometry"/>
+        </mxCell>
+
+        <!-- グループ背景: 再現性 -->
+        <mxCell id="bg_determinism" value="再現性" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#f8fafc;strokeColor=#e5e7eb;fontColor=#1e40af;fontSize=11;fontStyle=1;fontFamily=Helvetica Neue;shadow=1;verticalAlign=top;align=center;" vertex="1" parent="1">
+          <mxGeometry x="880" y="300" width="300" height="100" as="geometry"/>
+        </mxCell>
+        <mxCell id="deterministic" value="決定的&#xa;(シード再現)" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#f3f4f6;fontColor=#4b5563;strokeColor=none;fontSize=10;fontFamily=Helvetica Neue;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="900" y="335" width="120" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="stochastic" value="確率的&#xa;(毎回異なる)" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#f3f4f6;fontColor=#4b5563;strokeColor=none;fontSize=10;fontFamily=Helvetica Neue;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="1040" y="335" width="120" height="50" as="geometry"/>
+        </mxCell>
+
+        <!-- エッジ: PCG → 各左ノード -->
+        <mxCell id="e1" style="rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#94a3b8;strokeWidth=1.2;endSize=5;" edge="1" source="pcg" target="online" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e2" style="rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#94a3b8;strokeWidth=1.2;endSize=5;" edge="1" source="pcg" target="necessary" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e3" style="rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#94a3b8;strokeWidth=1.2;endSize=5;" edge="1" source="pcg" target="generic" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e4" style="rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#94a3b8;strokeWidth=1.2;endSize=5;" edge="1" source="pcg" target="constructive" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e5" style="rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#94a3b8;strokeWidth=1.2;endSize=5;" edge="1" source="pcg" target="automatic_node" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e6" style="rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#94a3b8;strokeWidth=1.2;endSize=5;" edge="1" source="pcg" target="deterministic" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- 双方向の破線 -->
+        <mxCell id="d1" value="&#x2194;" style="rounded=1;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;strokeColor=#cbd5e1;strokeWidth=1.2;endArrow=none;fontSize=9;fontColor=#6b7280;" edge="1" source="online" target="offline" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="d2" value="&#x2194;" style="rounded=1;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;strokeColor=#cbd5e1;strokeWidth=1.2;endArrow=none;fontSize=9;fontColor=#6b7280;" edge="1" source="necessary" target="optional" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="d3" value="&#x2194;" style="rounded=1;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;strokeColor=#cbd5e1;strokeWidth=1.2;endArrow=none;fontSize=9;fontColor=#6b7280;" edge="1" source="generic" target="adaptive" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="d4" value="&#x2194;" style="rounded=1;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;strokeColor=#cbd5e1;strokeWidth=1.2;endArrow=none;fontSize=9;fontColor=#6b7280;" edge="1" source="constructive" target="generatetest" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="d5" value="&#x2194;" style="rounded=1;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;strokeColor=#cbd5e1;strokeWidth=1.2;endArrow=none;fontSize=9;fontColor=#6b7280;" edge="1" source="automatic_node" target="mixed" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="d6" value="&#x2194;" style="rounded=1;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;strokeColor=#cbd5e1;strokeWidth=1.2;endArrow=none;fontSize=9;fontColor=#6b7280;" edge="1" source="deterministic" target="stochastic" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

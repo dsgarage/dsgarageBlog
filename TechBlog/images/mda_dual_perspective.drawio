@@ -1,0 +1,56 @@
+<mxfile host="app.diagrams.net" modified="2026-03-25" type="device">
+  <diagram id="mda_dual_perspective" name="MDA Dual Perspective">
+    <mxGraphModel dx="1200" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="1100" pageHeight="850" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="cluster_designer" value="&#x30c7;&#x30b6;&#x30a4;&#x30ca;&#x30fc;&#x306e;&#x8996;&#x70b9;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#93c5fd;strokeWidth=1;fontSize=12;fontFamily=Helvetica Neue;fontColor=#1e40af;verticalAlign=top;spacingTop=5;shadow=0;container=1;collapsible=0;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="40" width="620" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="d_m" value="Mechanics&#xa;&#x30eb;&#x30fc;&#x30eb;&#x3092;&#x8a2d;&#x8a08;&#x3059;&#x308b;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dbeafe;fontColor=#1e40af;strokeColor=none;fontSize=10;fontFamily=Helvetica Neue;shadow=1;fontStyle=0;" vertex="1" parent="cluster_designer">
+          <mxGeometry x="20" y="40" width="160" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="d_d" value="Dynamics&#xa;&#x632f;&#x308b;&#x821e;&#x3044;&#x3092;&#x4e88;&#x6e2c;&#x3059;&#x308b;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dbeafe;fontColor=#1e40af;strokeColor=none;fontSize=10;fontFamily=Helvetica Neue;shadow=1;fontStyle=0;" vertex="1" parent="cluster_designer">
+          <mxGeometry x="230" y="40" width="160" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="d_a" value="Aesthetics&#xa;&#x611f;&#x60c5;&#x3092;&#x610f;&#x56f3;&#x3059;&#x308b;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dbeafe;fontColor=#1e40af;strokeColor=none;fontSize=10;fontFamily=Helvetica Neue;shadow=1;fontStyle=0;" vertex="1" parent="cluster_designer">
+          <mxGeometry x="440" y="40" width="160" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="de1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#3b82f6;strokeWidth=1.2;endArrow=classic;endSize=5;" edge="1" source="d_m" target="d_d" parent="cluster_designer">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="de2" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#3b82f6;strokeWidth=1.2;endArrow=classic;endSize=5;" edge="1" source="d_d" target="d_a" parent="cluster_designer">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="cluster_player" value="&#x30d7;&#x30ec;&#x30a4;&#x30e4;&#x30fc;&#x306e;&#x8996;&#x70b9;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fffbeb;strokeColor=#fcd34d;strokeWidth=1;fontSize=12;fontFamily=Helvetica Neue;fontColor=#92400e;verticalAlign=top;spacingTop=5;shadow=0;container=1;collapsible=0;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="240" width="620" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="p_a" value="Aesthetics&#xa;&#x611f;&#x60c5;&#x3092;&#x4f53;&#x9a13;&#x3059;&#x308b;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fef3c7;fontColor=#92400e;strokeColor=none;fontSize=10;fontFamily=Helvetica Neue;shadow=1;fontStyle=0;" vertex="1" parent="cluster_player">
+          <mxGeometry x="20" y="40" width="160" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="p_d" value="Dynamics&#xa;&#x632f;&#x308b;&#x821e;&#x3044;&#x3092;&#x89b3;&#x5bdf;&#x3059;&#x308b;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fef3c7;fontColor=#92400e;strokeColor=none;fontSize=10;fontFamily=Helvetica Neue;shadow=1;fontStyle=0;" vertex="1" parent="cluster_player">
+          <mxGeometry x="230" y="40" width="160" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="p_m" value="Mechanics&#xa;&#x30eb;&#x30fc;&#x30eb;&#x3092;&#x767a;&#x898b;&#x3059;&#x308b;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fef3c7;fontColor=#92400e;strokeColor=none;fontSize=10;fontFamily=Helvetica Neue;shadow=1;fontStyle=0;" vertex="1" parent="cluster_player">
+          <mxGeometry x="440" y="40" width="160" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="pe1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#d97706;strokeWidth=1.2;endArrow=classic;endSize=5;" edge="1" source="p_a" target="p_d" parent="cluster_player">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="pe2" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#d97706;strokeWidth=1.2;endArrow=classic;endSize=5;" edge="1" source="p_d" target="p_m" parent="cluster_player">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="cross" value="&#x540c;&#x3058;&#x5c64;&#x3001;&#x9006;&#x306e;&#x65b9;&#x5411;" style="rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#cbd5e1;strokeWidth=1.2;dashed=1;endArrow=none;fontSize=8;fontFamily=Helvetica Neue;fontColor=#6b7280;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="560" y="160" as="sourcePoint" />
+            <mxPoint x="120" y="240" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="560" y="200" />
+              <mxPoint x="120" y="200" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

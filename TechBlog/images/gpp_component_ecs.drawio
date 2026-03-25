@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="draw.io">
+  <diagram name="Page-1" id="component_ecs">
+    <mxGraphModel dx="1100" dy="1000" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="800" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+
+        <!-- Before: モノリシッククラス -->
+        <mxCell id="cluster_before" value="Before: モノリシッククラス" style="swimlane;startSize=28;fillColor=#fafafa;strokeColor=#e5e7eb;fontColor=#6b7280;fontSize=11;fontFamily=Helvetica Neue;rounded=1;shadow=1;fontStyle=1;swimlaneLine=0;" vertex="1" parent="1">
+          <mxGeometry x="20" y="20" width="220" height="280" as="geometry"/>
+        </mxCell>
+        <mxCell id="mono" value="PlayerCharacter&#xa;━━━━━━━━━━━━━━&#xa;入力処理&#xa;物理演算&#xa;描画&#xa;サウンド&#xa;AI&#xa;━━━━━━━━━━━━━━&#xa;5000行の巨大クラス" style="rounded=1;whiteSpace=wrap;fillColor=#fef3c7;fontColor=#92400e;strokeColor=none;fontSize=10;fontFamily=Helvetica Neue;shadow=1;align=center;" vertex="1" parent="cluster_before">
+          <mxGeometry x="15" y="35" width="190" height="230" as="geometry"/>
+        </mxCell>
+
+        <!-- After: Componentパターン -->
+        <mxCell id="cluster_after" value="After: Componentパターン" style="swimlane;startSize=28;fillColor=#f8fafc;strokeColor=#e5e7eb;fontColor=#1e40af;fontSize=11;fontFamily=Helvetica Neue;rounded=1;shadow=1;fontStyle=1;swimlaneLine=0;" vertex="1" parent="1">
+          <mxGeometry x="300" y="20" width="280" height="280" as="geometry"/>
+        </mxCell>
+        <mxCell id="entity" value="GameObject&#xa;(薄いコンテナ)" style="rounded=1;whiteSpace=wrap;fillColor=#dbeafe;fontColor=#1e40af;strokeColor=none;fontSize=10;fontFamily=Helvetica Neue;shadow=1;" vertex="1" parent="cluster_after">
+          <mxGeometry x="65" y="35" width="150" height="45" as="geometry"/>
+        </mxCell>
+        <mxCell id="input_c" value="InputComponent&#xa;入力処理" style="rounded=1;whiteSpace=wrap;fillColor=#f3f4f6;fontColor=#4b5563;strokeColor=none;fontSize=10;fontFamily=Helvetica Neue;shadow=1;" vertex="1" parent="cluster_after">
+          <mxGeometry x="10" y="110" width="120" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="physics_c" value="PhysicsComponent&#xa;物理演算" style="rounded=1;whiteSpace=wrap;fillColor=#f3f4f6;fontColor=#4b5563;strokeColor=none;fontSize=10;fontFamily=Helvetica Neue;shadow=1;" vertex="1" parent="cluster_after">
+          <mxGeometry x="150" y="110" width="120" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="graphics_c" value="GraphicsComponent&#xa;描画" style="rounded=1;whiteSpace=wrap;fillColor=#f3f4f6;fontColor=#4b5563;strokeColor=none;fontSize=10;fontFamily=Helvetica Neue;shadow=1;" vertex="1" parent="cluster_after">
+          <mxGeometry x="10" y="195" width="120" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="audio_c" value="AudioComponent&#xa;サウンド" style="rounded=1;whiteSpace=wrap;fillColor=#f3f4f6;fontColor=#4b5563;strokeColor=none;fontSize=10;fontFamily=Helvetica Neue;shadow=1;" vertex="1" parent="cluster_after">
+          <mxGeometry x="150" y="195" width="120" height="50" as="geometry"/>
+        </mxCell>
+
+        <!-- entity → components -->
+        <mxCell id="e_ent_inp" value="has" style="rounded=1;strokeColor=#94a3b8;strokeWidth=1.2;endArrow=classic;endSize=5;fontSize=9;fontFamily=Helvetica Neue;fontColor=#4b5563;" edge="1" source="entity" target="input_c" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_ent_phy" value="has" style="rounded=1;strokeColor=#94a3b8;strokeWidth=1.2;endArrow=classic;endSize=5;fontSize=9;fontFamily=Helvetica Neue;fontColor=#4b5563;" edge="1" source="entity" target="physics_c" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_ent_gfx" value="has" style="rounded=1;strokeColor=#94a3b8;strokeWidth=1.2;endArrow=classic;endSize=5;fontSize=9;fontFamily=Helvetica Neue;fontColor=#4b5563;" edge="1" source="entity" target="graphics_c" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_ent_aud" value="has" style="rounded=1;strokeColor=#94a3b8;strokeWidth=1.2;endArrow=classic;endSize=5;fontSize=9;fontFamily=Helvetica Neue;fontColor=#4b5563;" edge="1" source="entity" target="audio_c" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- 発展形: ECS -->
+        <mxCell id="cluster_ecs" value="発展形: Entity-Component-System (ECS)" style="swimlane;startSize=28;fillColor=#f8fafc;strokeColor=#e5e7eb;fontColor=#1e40af;fontSize=11;fontFamily=Helvetica Neue;rounded=1;shadow=1;fontStyle=1;swimlaneLine=0;" vertex="1" parent="1">
+          <mxGeometry x="20" y="350" width="780" height="300" as="geometry"/>
+        </mxCell>
+
+        <!-- Entity（IDのみ） -->
+        <mxCell id="cluster_entities" value="Entity（IDのみ）" style="swimlane;startSize=24;fillColor=#fafafa;strokeColor=#e5e7eb;fontColor=#6b7280;fontSize=10;fontFamily=Helvetica Neue;rounded=1;shadow=1;fontStyle=1;swimlaneLine=0;" vertex="1" parent="cluster_ecs">
+          <mxGeometry x="15" y="40" width="220" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="e1_node" value="Entity 0" style="rounded=1;whiteSpace=wrap;fillColor=#dbeafe;fontColor=#1e40af;strokeColor=none;fontSize=10;fontFamily=Helvetica Neue;shadow=1;" vertex="1" parent="cluster_entities">
+          <mxGeometry x="10" y="32" width="60" height="35" as="geometry"/>
+        </mxCell>
+        <mxCell id="e2_node" value="Entity 1" style="rounded=1;whiteSpace=wrap;fillColor=#dbeafe;fontColor=#1e40af;strokeColor=none;fontSize=10;fontFamily=Helvetica Neue;shadow=1;" vertex="1" parent="cluster_entities">
+          <mxGeometry x="80" y="32" width="60" height="35" as="geometry"/>
+        </mxCell>
+        <mxCell id="e3_node" value="Entity 2" style="rounded=1;whiteSpace=wrap;fillColor=#dbeafe;fontColor=#1e40af;strokeColor=none;fontSize=10;fontFamily=Helvetica Neue;shadow=1;" vertex="1" parent="cluster_entities">
+          <mxGeometry x="150" y="32" width="60" height="35" as="geometry"/>
+        </mxCell>
+
+        <!-- Component（データのみ） -->
+        <mxCell id="cluster_comp_data" value="Component（データのみ）" style="swimlane;startSize=24;fillColor=#fafafa;strokeColor=#e5e7eb;fontColor=#6b7280;fontSize=10;fontFamily=Helvetica Neue;rounded=1;shadow=1;fontStyle=1;swimlaneLine=0;" vertex="1" parent="cluster_ecs">
+          <mxGeometry x="270" y="40" width="220" height="170" as="geometry"/>
+        </mxCell>
+        <mxCell id="pos" value="Position[]&#xa;連続メモリ配置" style="rounded=1;whiteSpace=wrap;fillColor=#fef3c7;fontColor=#92400e;strokeColor=none;fontSize=10;fontFamily=Helvetica Neue;shadow=1;" vertex="1" parent="cluster_comp_data">
+          <mxGeometry x="25" y="30" width="170" height="38" as="geometry"/>
+        </mxCell>
+        <mxCell id="vel" value="Velocity[]&#xa;連続メモリ配置" style="rounded=1;whiteSpace=wrap;fillColor=#fef3c7;fontColor=#92400e;strokeColor=none;fontSize=10;fontFamily=Helvetica Neue;shadow=1;" vertex="1" parent="cluster_comp_data">
+          <mxGeometry x="25" y="78" width="170" height="38" as="geometry"/>
+        </mxCell>
+        <mxCell id="hp" value="Health[]&#xa;連続メモリ配置" style="rounded=1;whiteSpace=wrap;fillColor=#fef3c7;fontColor=#92400e;strokeColor=none;fontSize=10;fontFamily=Helvetica Neue;shadow=1;" vertex="1" parent="cluster_comp_data">
+          <mxGeometry x="25" y="126" width="170" height="38" as="geometry"/>
+        </mxCell>
+
+        <!-- System（ロジックのみ） -->
+        <mxCell id="cluster_systems" value="System（ロジックのみ）" style="swimlane;startSize=24;fillColor=#fafafa;strokeColor=#e5e7eb;fontColor=#6b7280;fontSize=10;fontFamily=Helvetica Neue;rounded=1;shadow=1;fontStyle=1;swimlaneLine=0;" vertex="1" parent="cluster_ecs">
+          <mxGeometry x="530" y="40" width="220" height="120" as="geometry"/>
+        </mxCell>
+        <mxCell id="move_sys" value="MovementSystem&#xa;Position + Velocity" style="rounded=1;whiteSpace=wrap;fillColor=#dbeafe;fontColor=#1e40af;strokeColor=none;fontSize=10;fontFamily=Helvetica Neue;shadow=1;" vertex="1" parent="cluster_systems">
+          <mxGeometry x="15" y="30" width="190" height="35" as="geometry"/>
+        </mxCell>
+        <mxCell id="dmg_sys" value="DamageSystem&#xa;Health + Collision" style="rounded=1;whiteSpace=wrap;fillColor=#dbeafe;fontColor=#1e40af;strokeColor=none;fontSize=10;fontFamily=Helvetica Neue;shadow=1;" vertex="1" parent="cluster_systems">
+          <mxGeometry x="15" y="75" width="190" height="35" as="geometry"/>
+        </mxCell>
+
+        <!-- ECS内エッジ -->
+        <mxCell id="e_e1_pos" style="rounded=1;strokeColor=#cbd5e1;strokeWidth=1.2;dashed=1;endArrow=classic;endSize=5;" edge="1" source="e1_node" target="pos" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_e2_pos" style="rounded=1;strokeColor=#cbd5e1;strokeWidth=1.2;dashed=1;endArrow=classic;endSize=5;" edge="1" source="e2_node" target="pos" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_pos_move" style="rounded=1;strokeColor=#94a3b8;strokeWidth=1.2;endArrow=classic;endSize=5;" edge="1" source="pos" target="move_sys" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_vel_move" style="rounded=1;strokeColor=#94a3b8;strokeWidth=1.2;endArrow=classic;endSize=5;" edge="1" source="vel" target="move_sys" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_hp_dmg" style="rounded=1;strokeColor=#94a3b8;strokeWidth=1.2;endArrow=classic;endSize=5;" edge="1" source="hp" target="dmg_sys" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- 変遷の矢印 -->
+        <mxCell id="e_mono_entity" value="分割" style="rounded=1;strokeColor=#1e40af;strokeWidth=2;endArrow=classic;endSize=6;fontSize=10;fontFamily=Helvetica Neue;fontColor=#1e40af;fontStyle=1;" edge="1" source="mono" target="entity" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_entity_e1" value="さらに分離" style="rounded=1;strokeColor=#1e40af;strokeWidth=2;endArrow=classic;endSize=6;fontSize=10;fontFamily=Helvetica Neue;fontColor=#1e40af;fontStyle=1;" edge="1" source="entity" target="e1_node" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

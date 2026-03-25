@@ -1,0 +1,106 @@
+<mxfile host="app.diagrams.net" modified="2026-03-25" type="device">
+  <diagram id="pattern-fun-model" name="パターン楽しさモデル">
+    <mxGraphModel dx="1200" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- stimulus: 刺激 (新しいパターン) - Neutral -->
+        <mxCell id="stimulus" value="刺激&#xa;(新しいパターン)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f3f4f6;strokeColor=#d1d5db;fontColor=#4b5563;fontSize=10;fontFamily=Helvetica Neue;arcSize=20;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="150" width="140" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- recognition: パターン認識 (脳がチャンク化) - Primary -->
+        <mxCell id="recognition" value="パターン認識&#xa;(脳がチャンク化)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dbeafe;strokeColor=#93c5fd;fontColor=#1e40af;fontSize=10;fontFamily=Helvetica Neue;arcSize=20;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="240" y="150" width="140" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- fun: 楽しさ! (学習の快感) - Green -->
+        <mxCell id="fun" value="楽しさ!&#xa;(学習の快感)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dcfce7;strokeColor=#86efac;fontColor=#166534;fontSize=12;fontFamily=Helvetica Neue;arcSize=20;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="440" y="150" width="140" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- mastery: パターン習得 (完全に理解した) - Accent -->
+        <mxCell id="mastery" value="パターン習得&#xa;(完全に理解した)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fef3c7;strokeColor=#fcd34d;fontColor=#92400e;fontSize=10;fontFamily=Helvetica Neue;arcSize=20;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="640" y="150" width="140" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- boredom: 退屈 (新しさがない) - Red -->
+        <mxCell id="boredom" value="退屈&#xa;(新しさがない)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fee2e2;strokeColor=#fca5a5;fontColor=#991b1b;fontSize=10;fontFamily=Helvetica Neue;arcSize=20;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="840" y="150" width="140" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- Edge: stimulus -> recognition -->
+        <mxCell id="e1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#94a3b8;strokeWidth=1.2;fontFamily=Helvetica Neue;fontSize=9;fontColor=#64748b;endArrow=classic;endSize=5;" edge="1" source="stimulus" target="recognition" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e1_label" value="脳が処理" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontFamily=Helvetica Neue;fontSize=9;fontColor=#64748b;" vertex="1" connectable="0" parent="e1">
+          <mxGeometry x="-0.1" relative="1" as="geometry">
+            <mxPoint y="-15" as="offset" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Edge: recognition -> fun -->
+        <mxCell id="e2" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#94a3b8;strokeWidth=1.2;fontFamily=Helvetica Neue;fontSize=9;fontColor=#64748b;endArrow=classic;endSize=5;" edge="1" source="recognition" target="fun" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2_label" value="新しい発見" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontFamily=Helvetica Neue;fontSize=9;fontColor=#64748b;" vertex="1" connectable="0" parent="e2">
+          <mxGeometry x="-0.1" relative="1" as="geometry">
+            <mxPoint y="-15" as="offset" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Edge: fun -> mastery -->
+        <mxCell id="e3" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#94a3b8;strokeWidth=1.2;fontFamily=Helvetica Neue;fontSize=9;fontColor=#64748b;endArrow=classic;endSize=5;" edge="1" source="fun" target="mastery" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3_label" value="繰り返し学習" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontFamily=Helvetica Neue;fontSize=9;fontColor=#64748b;" vertex="1" connectable="0" parent="e3">
+          <mxGeometry x="-0.1" relative="1" as="geometry">
+            <mxPoint y="-15" as="offset" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Edge: mastery -> boredom -->
+        <mxCell id="e4" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#94a3b8;strokeWidth=1.2;fontFamily=Helvetica Neue;fontSize=9;fontColor=#64748b;endArrow=classic;endSize=5;" edge="1" source="mastery" target="boredom" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e4_label" value="パターン枯渇" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontFamily=Helvetica Neue;fontSize=9;fontColor=#64748b;" vertex="1" connectable="0" parent="e4">
+          <mxGeometry x="-0.1" relative="1" as="geometry">
+            <mxPoint y="-15" as="offset" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Edge: boredom -> stimulus (dashed loop bottom) -->
+        <mxCell id="e5" style="rounded=1;html=1;strokeColor=#cbd5e1;strokeWidth=1.2;dashed=1;dashPattern=8 4;endArrow=classic;endSize=5;fontFamily=Helvetica Neue;fontSize=9;fontColor=#94a3b8;curved=1;" edge="1" source="boredom" target="stimulus" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="910" y="260" />
+              <mxPoint x="110" y="260" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e5_label" value="新しいゲームへ" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontFamily=Helvetica Neue;fontSize=9;fontColor=#94a3b8;" vertex="1" connectable="0" parent="e5">
+          <mxGeometry x="0" y="0" relative="1" as="geometry">
+            <mxPoint y="10" as="offset" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Edge: fun -> recognition (dashed loop top) -->
+        <mxCell id="e6" style="rounded=1;html=1;strokeColor=#cbd5e1;strokeWidth=1.2;dashed=1;dashPattern=8 4;endArrow=classic;endSize=5;fontFamily=Helvetica Neue;fontSize=9;fontColor=#94a3b8;curved=1;" edge="1" source="fun" target="recognition" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="510" y="100" />
+              <mxPoint x="310" y="100" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e6_label" value="もっと探索" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontFamily=Helvetica Neue;fontSize=9;fontColor=#94a3b8;" vertex="1" connectable="0" parent="e6">
+          <mxGeometry x="0" y="0" relative="1" as="geometry">
+            <mxPoint y="-10" as="offset" />
+          </mxGeometry>
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

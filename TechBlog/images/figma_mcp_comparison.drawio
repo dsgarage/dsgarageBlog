@@ -1,0 +1,76 @@
+<mxGraphModel dx="1200" dy="520" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1200" pageHeight="480" math="0" shadow="0">
+  <root>
+    <mxCell id="0"/>
+    <mxCell id="1" parent="0"/>
+
+    <!-- Cluster: 従来のワークフロー（手動） -->
+    <mxCell id="c_trad_bg" value="" style="rounded=1;fillColor=#fafafa;strokeColor=#e5e7eb;dashed=0;strokeWidth=1;" vertex="1" parent="1">
+      <mxGeometry x="20" y="20" width="560" height="190" as="geometry"/>
+    </mxCell>
+    <mxCell id="c_trad_label" value="従来のワークフロー（手動）" style="text;fontSize=10;fontColor=#6b7280;align=center;fontFamily=Helvetica Neue;fontStyle=1;" vertex="1" parent="1">
+      <mxGeometry x="20" y="25" width="560" height="20" as="geometry"/>
+    </mxCell>
+
+    <!-- T1 -->
+    <mxCell id="T1" value="Figma&#xa;デザイン" style="rounded=1;whiteSpace=wrap;fillColor=#f3f4f6;fontColor=#4b5563;strokeColor=none;fontSize=10;fontFamily=Helvetica Neue;shadow=1;" vertex="1" parent="1">
+      <mxGeometry x="40" y="70" width="110" height="50" as="geometry"/>
+    </mxCell>
+    <!-- T2 -->
+    <mxCell id="T2" value="人間の目で&#xa;値を読み取り" style="rounded=1;whiteSpace=wrap;fillColor=#f3f4f6;fontColor=#4b5563;strokeColor=none;fontSize=10;fontFamily=Helvetica Neue;shadow=1;" vertex="1" parent="1">
+      <mxGeometry x="190" y="70" width="110" height="50" as="geometry"/>
+    </mxCell>
+    <!-- T3 -->
+    <mxCell id="T3" value="Unity Editor&#xa;手入力" style="rounded=1;whiteSpace=wrap;fillColor=#f3f4f6;fontColor=#4b5563;strokeColor=none;fontSize=10;fontFamily=Helvetica Neue;shadow=1;" vertex="1" parent="1">
+      <mxGeometry x="340" y="70" width="110" height="50" as="geometry"/>
+    </mxCell>
+    <!-- T4 -->
+    <mxCell id="T4" value="UI 完成&#xa;30〜60分/画面" style="rounded=1;whiteSpace=wrap;fillColor=#fef3c7;fontColor=#92400e;strokeColor=none;fontSize=10;fontFamily=Helvetica Neue;shadow=1;" vertex="1" parent="1">
+      <mxGeometry x="40" y="150" width="410" height="40" as="geometry"/>
+    </mxCell>
+
+    <mxCell id="et1" value="目視" style="rounded=1;strokeColor=#94a3b8;fontSize=9;fontFamily=Helvetica Neue;fontColor=#4b5563;" edge="1" parent="1" source="T1" target="T2">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="et2" value="手動転写" style="rounded=1;strokeColor=#94a3b8;fontSize=9;fontFamily=Helvetica Neue;fontColor=#4b5563;" edge="1" parent="1" source="T2" target="T3">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="et3" value="微調整" style="rounded=1;strokeColor=#94a3b8;fontSize=9;fontFamily=Helvetica Neue;fontColor=#4b5563;" edge="1" parent="1" source="T3" target="T4">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+
+    <!-- Cluster: Figma MCP 導入後（自動） -->
+    <mxCell id="c_mcp_bg" value="" style="rounded=1;fillColor=#f8fafc;strokeColor=#e5e7eb;dashed=0;strokeWidth=1;" vertex="1" parent="1">
+      <mxGeometry x="20" y="240" width="560" height="190" as="geometry"/>
+    </mxCell>
+    <mxCell id="c_mcp_label" value="Figma MCP 導入後（自動）" style="text;fontSize=10;fontColor=#1e40af;align=center;fontFamily=Helvetica Neue;fontStyle=1;" vertex="1" parent="1">
+      <mxGeometry x="20" y="245" width="560" height="20" as="geometry"/>
+    </mxCell>
+
+    <!-- M1 -->
+    <mxCell id="M1" value="Figma&#xa;デザイン" style="rounded=1;whiteSpace=wrap;fillColor=#dbeafe;fontColor=#1e40af;strokeColor=none;fontSize=10;fontFamily=Helvetica Neue;shadow=1;" vertex="1" parent="1">
+      <mxGeometry x="40" y="290" width="110" height="50" as="geometry"/>
+    </mxCell>
+    <!-- M2 -->
+    <mxCell id="M2" value="Figma MCP&#xa;get_design_context" style="rounded=1;whiteSpace=wrap;fillColor=#dbeafe;fontColor=#1e40af;strokeColor=none;fontSize=10;fontFamily=Helvetica Neue;shadow=1;" vertex="1" parent="1">
+      <mxGeometry x="190" y="290" width="130" height="50" as="geometry"/>
+    </mxCell>
+    <!-- M3 -->
+    <mxCell id="M3" value="Claude Code&#xa;UXML/USS生成" style="rounded=1;whiteSpace=wrap;fillColor=#dbeafe;fontColor=#1e40af;strokeColor=none;fontSize=10;fontFamily=Helvetica Neue;shadow=1;" vertex="1" parent="1">
+      <mxGeometry x="360" y="290" width="130" height="50" as="geometry"/>
+    </mxCell>
+    <!-- M4 -->
+    <mxCell id="M4" value="UI 完成&#xa;2〜3分/画面" style="rounded=1;whiteSpace=wrap;fillColor=#bbf7d0;fontColor=#166534;strokeColor=none;fontSize=10;fontFamily=Helvetica Neue;shadow=1;" vertex="1" parent="1">
+      <mxGeometry x="40" y="370" width="450" height="40" as="geometry"/>
+    </mxCell>
+
+    <mxCell id="em1" value="自動取得" style="rounded=1;strokeColor=#94a3b8;fontSize=9;fontFamily=Helvetica Neue;fontColor=#4b5563;" edge="1" parent="1" source="M1" target="M2">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="em2" value="AI変換" style="rounded=1;strokeColor=#94a3b8;fontSize=9;fontFamily=Helvetica Neue;fontColor=#4b5563;" edge="1" parent="1" source="M2" target="M3">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="em3" value="配置確認" style="rounded=1;strokeColor=#94a3b8;fontSize=9;fontFamily=Helvetica Neue;fontColor=#4b5563;" edge="1" parent="1" source="M3" target="M4">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+  </root>
+</mxGraphModel>
