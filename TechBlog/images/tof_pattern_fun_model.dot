@@ -1,0 +1,43 @@
+digraph pattern_fun_model {
+    rankdir=LR
+    bgcolor="transparent"
+    fontname="Helvetica Neue"
+    fontsize=11
+    pad=0.8
+    nodesep=0.6
+    ranksep=1.0
+
+    node [
+        fontname="Helvetica Neue"
+        fontsize=10
+        style="filled,rounded"
+        shape=box
+        penwidth=0
+        margin="0.15,0.10"
+    ]
+
+    edge [
+        fontname="Helvetica Neue"
+        fontsize=9
+        penwidth=1.2
+        arrowsize=0.6
+        color="#94a3b8"
+    ]
+
+    // ノード
+    stimulus [label="刺激\n(新しいパターン)" fillcolor="#f3f4f6" fontcolor="#4b5563"]
+    recognition [label="パターン認識\n(脳がチャンク化)" fillcolor="#dbeafe" fontcolor="#1e40af"]
+    fun [label="楽しさ!\n(学習の快感)" fillcolor="#dcfce7" fontcolor="#166534" fontsize=12]
+    mastery [label="パターン習得\n(完全に理解した)" fillcolor="#fef3c7" fontcolor="#92400e"]
+    boredom [label="退屈\n(新しさがない)" fillcolor="#fee2e2" fontcolor="#991b1b"]
+
+    // フロー
+    stimulus -> recognition [label="脳が処理"]
+    recognition -> fun [label="新しい発見"]
+    fun -> mastery [label="繰り返し学習"]
+    mastery -> boredom [label="パターン枯渇"]
+
+    // ループ
+    boredom -> stimulus [label="新しいゲームへ" style=dashed color="#cbd5e1"]
+    fun -> recognition [label="もっと探索" style=dashed color="#cbd5e1"]
+}

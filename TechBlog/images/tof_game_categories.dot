@@ -1,0 +1,101 @@
+digraph game_categories {
+    rankdir=TB
+    bgcolor="transparent"
+    fontname="Helvetica Neue"
+    fontsize=11
+    pad=0.8
+    nodesep=0.5
+    ranksep=0.8
+
+    node [
+        fontname="Helvetica Neue"
+        fontsize=10
+        style="filled,rounded"
+        shape=box
+        penwidth=0
+        margin="0.15,0.08"
+    ]
+
+    edge [
+        fontname="Helvetica Neue"
+        fontsize=9
+        penwidth=1.2
+        arrowsize=0.6
+        color="#94a3b8"
+    ]
+
+    // 中心
+    patterns [label="ゲームが提示する\nパターンの種類" fillcolor="#dbeafe" fontcolor="#1e40af" fontsize=11]
+
+    // カテゴリ
+    subgraph cluster_spatial {
+        label="空間パターン"
+        labelloc=t
+        style="rounded,filled"
+        color="#e5e7eb"
+        fillcolor="#f8fafc"
+        fontcolor="#1e40af"
+        fontsize=10
+        penwidth=1
+
+        spatial [label="地形・配置・経路\nテトリス、チェス" fillcolor="#f3f4f6" fontcolor="#4b5563"]
+    }
+
+    subgraph cluster_social {
+        label="社会パターン"
+        labelloc=t
+        style="rounded,filled"
+        color="#e5e7eb"
+        fillcolor="#f8fafc"
+        fontcolor="#1e40af"
+        fontsize=10
+        penwidth=1
+
+        social [label="交渉・裏切り・協力\nマフィア、外交ゲーム" fillcolor="#f3f4f6" fontcolor="#4b5563"]
+    }
+
+    subgraph cluster_temporal {
+        label="時間パターン"
+        labelloc=t
+        style="rounded,filled"
+        color="#e5e7eb"
+        fillcolor="#f8fafc"
+        fontcolor="#1e40af"
+        fontsize=10
+        penwidth=1
+
+        temporal [label="タイミング・リズム\n音ゲー、格闘ゲーム" fillcolor="#f3f4f6" fontcolor="#4b5563"]
+    }
+
+    subgraph cluster_hierarchical {
+        label="階層パターン"
+        labelloc=t
+        style="rounded,filled"
+        color="#e5e7eb"
+        fillcolor="#f8fafc"
+        fontcolor="#1e40af"
+        fontsize=10
+        penwidth=1
+
+        hierarchical [label="戦略→戦術→操作\nRTS、4Xストラテジー" fillcolor="#f3f4f6" fontcolor="#4b5563"]
+    }
+
+    subgraph cluster_classification {
+        label="分類パターン"
+        labelloc=t
+        style="rounded,filled"
+        color="#e5e7eb"
+        fillcolor="#f8fafc"
+        fontcolor="#1e40af"
+        fontsize=10
+        penwidth=1
+
+        classification [label="カテゴリ分け・属性\nポケモン、カードゲーム" fillcolor="#f3f4f6" fontcolor="#4b5563"]
+    }
+
+    patterns -> spatial
+    patterns -> social
+    patterns -> temporal
+    patterns -> hierarchical
+    patterns -> classification
+}

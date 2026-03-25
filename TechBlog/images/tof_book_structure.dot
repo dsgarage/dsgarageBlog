@@ -1,0 +1,78 @@
+digraph book_structure {
+    rankdir=LR
+    bgcolor="transparent"
+    fontname="Helvetica Neue"
+    fontsize=11
+    pad=0.8
+    nodesep=0.4
+    ranksep=1.0
+
+    node [
+        fontname="Helvetica Neue"
+        fontsize=10
+        style="filled,rounded"
+        shape=box
+        penwidth=0
+        margin="0.15,0.08"
+    ]
+
+    edge [
+        fontname="Helvetica Neue"
+        fontsize=9
+        penwidth=1.2
+        arrowsize=0.6
+        color="#94a3b8"
+    ]
+
+    subgraph cluster_part1 {
+        label="Part 1: 理論\n(Ch.1-6)"
+        labelloc=t
+        labeljust=c
+        style="rounded,filled"
+        color="#e5e7eb"
+        fillcolor="#f8fafc"
+        fontcolor="#1e40af"
+        fontsize=11
+        penwidth=1
+
+        ch1 [label="楽しさとは何か\n= パターン認識" fillcolor="#dbeafe" fontcolor="#1e40af"]
+        ch2 [label="脳の仕組み\nチャンキング・ゲシュタルト" fillcolor="#dbeafe" fontcolor="#1e40af"]
+        ch3 [label="ゲームが教えるもの\n生存スキルの練習" fillcolor="#dbeafe" fontcolor="#1e40af"]
+    }
+
+    subgraph cluster_part2 {
+        label="Part 2: 問題提起\n(Ch.7-10)"
+        labelloc=t
+        labeljust=c
+        style="rounded,filled"
+        color="#e5e7eb"
+        fillcolor="#f8fafc"
+        fontcolor="#1e40af"
+        fontsize=11
+        penwidth=1
+
+        ch4 [label="ゲームの限界\n飽きる理由" fillcolor="#fef3c7" fontcolor="#92400e"]
+        ch5 [label="倫理と暴力\nゲームの社会的責任" fillcolor="#fef3c7" fontcolor="#92400e"]
+    }
+
+    subgraph cluster_part3 {
+        label="Part 3: 実践\n(Ch.11-14)"
+        labelloc=t
+        labeljust=c
+        style="rounded,filled"
+        color="#e5e7eb"
+        fillcolor="#f8fafc"
+        fontcolor="#1e40af"
+        fontsize=11
+        penwidth=1
+
+        ch6 [label="良いゲームとは\n多層的パターン" fillcolor="#dcfce7" fontcolor="#166534"]
+        ch7 [label="ゲームの未来\nアートとしての可能性" fillcolor="#dcfce7" fontcolor="#166534"]
+    }
+
+    ch1 -> ch2 -> ch3 [color="#94a3b8"]
+    ch3 -> ch4 [color="#94a3b8"]
+    ch4 -> ch5 [color="#94a3b8"]
+    ch5 -> ch6 [color="#94a3b8"]
+    ch6 -> ch7 [color="#94a3b8"]
+}
