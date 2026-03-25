@@ -1,0 +1,48 @@
+digraph iteration_cycle {
+    rankdir=LR
+    bgcolor="transparent"
+    fontname="Helvetica Neue"
+    fontsize=11
+    pad=0.8
+    nodesep=0.6
+    ranksep=0.9
+
+    node [
+        fontname="Helvetica Neue"
+        fontsize=10
+        style="filled,rounded"
+        shape=box
+        penwidth=0
+        margin="0.15,0.10"
+    ]
+
+    edge [
+        fontname="Helvetica Neue"
+        fontsize=9
+        penwidth=1.5
+        arrowsize=0.7
+        color="#94a3b8"
+    ]
+
+    // イテレーションサイクル
+    idea [label="1. アイデア\n思いつく" fillcolor="#dbeafe" fontcolor="#1e40af"]
+    proto [label="2. プロトタイプ\n紙でもいい" fillcolor="#fef3c7" fontcolor="#92400e"]
+    play [label="3. プレイテスト\n実際に遊ぶ" fillcolor="#dcfce7" fontcolor="#166534"]
+    eval [label="4. 評価\nレンズで検証" fillcolor="#dbeafe" fontcolor="#1e40af"]
+    change [label="5. 変更\n壊して直す" fillcolor="#fef3c7" fontcolor="#92400e"]
+
+    idea -> proto [label="素早く"]
+    proto -> play [label="誰かに遊ばせる"]
+    play -> eval [label="観察する"]
+    eval -> change [label="問題を特定"]
+    change -> proto [label="ループを\n短くせよ"]
+
+    // 情熱の矢印
+    passion [label="情熱\n(Passion)" fillcolor="#fee2e2" fontcolor="#991b1b" shape=ellipse]
+    passion -> idea [label="原動力" style=dashed color="#cbd5e1"]
+    passion -> eval [label="消えたら\n立ち止まれ" style=dashed color="#cbd5e1"]
+
+    // Fail Faster
+    fail [label="Fail Faster\nFollow the Fun" fillcolor="#f3f4f6" fontcolor="#4b5563" shape=note]
+    fail -> change [style=dashed color="#cbd5e1" arrowhead=none]
+}

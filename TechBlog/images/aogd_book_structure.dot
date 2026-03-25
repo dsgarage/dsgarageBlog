@@ -1,0 +1,123 @@
+digraph book_structure {
+    rankdir=TB
+    bgcolor="transparent"
+    fontname="Helvetica Neue"
+    fontsize=11
+    pad=0.8
+    nodesep=0.4
+    ranksep=0.7
+
+    node [
+        fontname="Helvetica Neue"
+        fontsize=9
+        style="filled,rounded"
+        shape=box
+        penwidth=0
+        margin="0.12,0.08"
+    ]
+
+    edge [
+        fontname="Helvetica Neue"
+        fontsize=8
+        penwidth=1.2
+        arrowsize=0.5
+        color="#94a3b8"
+    ]
+
+    // Part 1: 哲学（必読）
+    subgraph cluster_part1 {
+        label="Part 1: 哲学（Ch1-8）★必読"
+        labelloc=t
+        labeljust=l
+        style="rounded,filled"
+        color="#1e40af"
+        fillcolor="#dbeafe"
+        fontcolor="#1e40af"
+        fontsize=11
+        penwidth=2
+
+        ch1 [label="Ch1 デザイナー" fillcolor="#bfdbfe" fontcolor="#1e40af"]
+        ch2 [label="Ch2 体験" fillcolor="#bfdbfe" fontcolor="#1e40af"]
+        ch3 [label="Ch3 場(ヴェニュー)" fillcolor="#bfdbfe" fontcolor="#1e40af"]
+        ch4 [label="Ch4 ゲームとは" fillcolor="#bfdbfe" fontcolor="#1e40af"]
+        ch5 [label="Ch5 要素" fillcolor="#bfdbfe" fontcolor="#1e40af"]
+        ch6 [label="Ch6 テーマ" fillcolor="#bfdbfe" fontcolor="#1e40af"]
+        ch7 [label="Ch7 アイデア" fillcolor="#bfdbfe" fontcolor="#1e40af"]
+        ch8 [label="Ch8 イテレーション" fillcolor="#bfdbfe" fontcolor="#1e40af"]
+    }
+
+    // Part 2: プレイヤー
+    subgraph cluster_part2 {
+        label="Part 2: プレイヤー（Ch9-11）"
+        labelloc=t
+        labeljust=l
+        style="rounded,filled"
+        color="#e5e7eb"
+        fillcolor="#f8fafc"
+        fontcolor="#6b7280"
+        fontsize=11
+        penwidth=1
+
+        ch9 [label="Ch9 プレイヤー\nのために" fillcolor="#f3f4f6" fontcolor="#4b5563"]
+        ch10 [label="Ch10 心の中の\n体験" fillcolor="#f3f4f6" fontcolor="#4b5563"]
+        ch11 [label="Ch11 モチベーション" fillcolor="#f3f4f6" fontcolor="#4b5563"]
+    }
+
+    // Part 3: メカニクス
+    subgraph cluster_part3 {
+        label="Part 3: メカニクス（Ch12-14）"
+        labelloc=t
+        labeljust=l
+        style="rounded,filled"
+        color="#e5e7eb"
+        fillcolor="#f8fafc"
+        fontcolor="#6b7280"
+        fontsize=11
+        penwidth=1
+
+        ch12 [label="Ch12 ゲーム\nメカニクス" fillcolor="#fef3c7" fontcolor="#92400e"]
+        ch13 [label="Ch13 バランス" fillcolor="#fef3c7" fontcolor="#92400e"]
+        ch14 [label="Ch14 パズル" fillcolor="#fef3c7" fontcolor="#92400e"]
+    }
+
+    // Part 4: インターフェース〜世界観
+    subgraph cluster_part4 {
+        label="Part 4: 世界の構築（Ch15-22）"
+        labelloc=t
+        labeljust=l
+        style="rounded,filled"
+        color="#e5e7eb"
+        fillcolor="#fafafa"
+        fontcolor="#6b7280"
+        fontsize=11
+        penwidth=1
+
+        ch15 [label="Ch15 インター\nフェース" fillcolor="#f3f4f6" fontcolor="#4b5563"]
+        ch1622 [label="Ch16-22\nストーリー・世界観\n美学・テクノロジー" fillcolor="#f3f4f6" fontcolor="#4b5563"]
+    }
+
+    // Part 5: チーム〜責任
+    subgraph cluster_part5 {
+        label="Part 5: プロとしての実践（Ch23-34）"
+        labelloc=t
+        labeljust=l
+        style="rounded,filled"
+        color="#e5e7eb"
+        fillcolor="#fafafa"
+        fontcolor="#6b7280"
+        fontsize=11
+        penwidth=1
+
+        ch2328 [label="Ch23-28\nコミュニティ・チーム\nドキュメント・ビジネス" fillcolor="#f3f4f6" fontcolor="#4b5563"]
+        ch2934 [label="Ch29-34\nクライアント・ピッチ\n倫理・責任" fillcolor="#f3f4f6" fontcolor="#4b5563"]
+    }
+
+    // フロー
+    ch1 -> ch2 -> ch3 -> ch4 [style=invis]
+    ch5 -> ch6 -> ch7 -> ch8 [style=invis]
+
+    ch8 -> ch9 [label="基礎→応用"]
+    ch11 -> ch12 [label="" style=dashed color="#cbd5e1"]
+    ch14 -> ch15 [label="" style=dashed color="#cbd5e1"]
+    ch1622 -> ch2328 [label="" style=dashed color="#cbd5e1"]
+}
