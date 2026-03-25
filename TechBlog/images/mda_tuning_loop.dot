@@ -1,0 +1,39 @@
+digraph mda_tuning_loop {
+    rankdir=LR
+    bgcolor="transparent"
+    fontname="Helvetica Neue"
+    fontsize=11
+    pad=0.8
+    nodesep=0.6
+    ranksep=1.0
+
+    node [
+        fontname="Helvetica Neue"
+        fontsize=10
+        style="filled,rounded"
+        shape=box
+        penwidth=0
+        margin="0.15,0.10"
+    ]
+
+    edge [
+        fontname="Helvetica Neue"
+        fontsize=9
+        penwidth=1.2
+        arrowsize=0.6
+    ]
+
+    // ステップ
+    goal [label="1. 目標を定める\nどのAestheticsを\n実現したいか?" fillcolor="#dcfce7" fontcolor="#166534"]
+    design [label="2. Mechanicsを\n設計する\nルール・システム" fillcolor="#dbeafe" fontcolor="#1e40af"]
+    playtest [label="3. プレイテスト\nDynamicsを観察\n実際の振る舞い" fillcolor="#fef3c7" fontcolor="#92400e"]
+    evaluate [label="4. 評価する\n目標のAestheticsは\n達成されたか?" fillcolor="#dcfce7" fontcolor="#166534"]
+
+    goal -> design [color="#94a3b8" label="設計"]
+    design -> playtest [color="#94a3b8" label="実装"]
+    playtest -> evaluate [color="#94a3b8" label="観察"]
+
+    // フィードバックループ
+    evaluate -> design [color="#3b82f6" style=bold label="Mechanicsを調整" fontcolor="#1e40af"]
+    evaluate -> goal [color="#cbd5e1" style=dashed label="目標を再定義\n(必要に応じて)"]
+}

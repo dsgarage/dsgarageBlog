@@ -1,0 +1,48 @@
+digraph mda_aesthetics {
+    rankdir=TB
+    bgcolor="transparent"
+    fontname="Helvetica Neue"
+    fontsize=11
+    pad=0.8
+    nodesep=0.5
+    ranksep=0.7
+
+    node [
+        fontname="Helvetica Neue"
+        fontsize=10
+        style="filled,rounded"
+        shape=box
+        penwidth=0
+        margin="0.15,0.08"
+    ]
+
+    edge [
+        fontname="Helvetica Neue"
+        fontsize=9
+        penwidth=1.2
+        arrowsize=0.6
+        color="#94a3b8"
+    ]
+
+    // 中心
+    aesthetics [label="8つの\nAesthetics" fillcolor="#dbeafe" fontcolor="#1e40af" fontsize=12]
+
+    // 8種類
+    sensation [label="1. Sensation\n感覚的快楽\n美しさ・音・触感" fillcolor="#fef3c7" fontcolor="#92400e"]
+    fantasy [label="2. Fantasy\n空想\n別世界の自分" fillcolor="#fef3c7" fontcolor="#92400e"]
+    narrative [label="3. Narrative\n物語\nドラマの展開" fillcolor="#fef3c7" fontcolor="#92400e"]
+    challenge [label="4. Challenge\n挑戦\n障害を克服する" fillcolor="#fef3c7" fontcolor="#92400e"]
+    fellowship [label="5. Fellowship\n仲間\n社会的つながり" fillcolor="#dcfce7" fontcolor="#166534"]
+    discovery [label="6. Discovery\n発見\n未知の探索" fillcolor="#dcfce7" fontcolor="#166534"]
+    expression [label="7. Expression\n表現\n自己の投影" fillcolor="#dcfce7" fontcolor="#166534"]
+    submission [label="8. Submission\n没入\n日常からの離脱" fillcolor="#dcfce7" fontcolor="#166534"]
+
+    aesthetics -> sensation
+    aesthetics -> fantasy
+    aesthetics -> narrative
+    aesthetics -> challenge
+    aesthetics -> fellowship
+    aesthetics -> discovery
+    aesthetics -> expression
+    aesthetics -> submission
+}

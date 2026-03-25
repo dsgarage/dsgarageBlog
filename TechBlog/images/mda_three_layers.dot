@@ -1,0 +1,54 @@
+digraph mda_three_layers {
+    rankdir=LR
+    bgcolor="transparent"
+    fontname="Helvetica Neue"
+    fontsize=11
+    pad=0.8
+    nodesep=0.6
+    ranksep=1.2
+
+    node [
+        fontname="Helvetica Neue"
+        fontsize=10
+        style="filled,rounded"
+        shape=box
+        penwidth=0
+        margin="0.15,0.10"
+    ]
+
+    edge [
+        fontname="Helvetica Neue"
+        fontsize=9
+        penwidth=1.2
+        arrowsize=0.6
+        color="#94a3b8"
+    ]
+
+    // 三層
+    mechanics [label="Mechanics\nメカニクス\n(ルール・システム)" fillcolor="#dbeafe" fontcolor="#1e40af" fontsize=11]
+    dynamics [label="Dynamics\nダイナミクス\n(実行時の振る舞い)" fillcolor="#fef3c7" fontcolor="#92400e" fontsize=11]
+    aesthetics [label="Aesthetics\nエステティクス\n(感情的反応)" fillcolor="#dcfce7" fontcolor="#166534" fontsize=11]
+
+    // 関係
+    mechanics -> dynamics [label="ルールが\n振る舞いを生む"]
+    dynamics -> aesthetics [label="振る舞いが\n感情を生む"]
+
+    // 例
+    subgraph cluster_example {
+        label="例: チェス"
+        labelloc=b
+        labeljust=c
+        style="rounded,filled"
+        color="#e5e7eb"
+        fillcolor="#fafafa"
+        fontcolor="#6b7280"
+        fontsize=9
+        penwidth=1
+
+        ex_m [label="駒の移動ルール\n取る/取られる" fillcolor="#f3f4f6" fontcolor="#4b5563" fontsize=9]
+        ex_d [label="フォーク・ピン\nポジション争い" fillcolor="#f3f4f6" fontcolor="#4b5563" fontsize=9]
+        ex_a [label="緊張感\n達成感・悔しさ" fillcolor="#f3f4f6" fontcolor="#4b5563" fontsize=9]
+    }
+
+    ex_m -> ex_d -> ex_a [color="#cbd5e1" style=dashed]
+}
