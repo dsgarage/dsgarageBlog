@@ -1,0 +1,106 @@
+// ゲームループ + Update Methodの関係図
+digraph gameloop_update {
+    rankdir=TB
+    bgcolor="transparent"
+    fontname="Helvetica Neue"
+    fontsize=11
+    pad=0.8
+    nodesep=0.4
+    ranksep=0.7
+
+    node [
+        fontname="Helvetica Neue"
+        fontsize=10
+        style="filled,rounded"
+        shape=box
+        penwidth=0
+        margin="0.12,0.08"
+    ]
+
+    edge [
+        fontname="Helvetica Neue"
+        fontsize=9
+        penwidth=1.2
+        arrowsize=0.6
+        color="#94a3b8"
+    ]
+
+    // ゲームループ
+    subgraph cluster_loop {
+        label="Game Loop（毎フレーム実行）"
+        labelloc=t
+        labeljust=c
+        style="rounded,filled"
+        color="#e5e7eb"
+        fillcolor="#f8fafc"
+        fontcolor="#1e40af"
+        fontsize=11
+        penwidth=1
+
+        input [label="processInput()\nユーザー入力処理" fillcolor="#dbeafe" fontcolor="#1e40af"]
+        update_main [label="update(deltaTime)\nゲーム状態更新" fillcolor="#fef3c7" fontcolor="#92400e"]
+        render [label="render()\n描画" fillcolor="#dbeafe" fontcolor="#1e40af"]
+
+        input -> update_main [label="1"]
+        update_main -> render [label="2"]
+        render -> input [label="3 次フレームへ" style=dashed color="#cbd5e1"]
+    }
+
+    // Update Method パターン
+    subgraph cluster_update {
+        label="Update Method パターン"
+        labelloc=t
+        labeljust=c
+        style="rounded,filled"
+        color="#e5e7eb"
+        fillcolor="#fafafa"
+        fontcolor="#6b7280"
+        fontsize=11
+        penwidth=1
+
+        collection [label="entities[] コレクション\nfor (entity : entities)\n    entity.update(dt)" fillcolor="#f3f4f6" fontcolor="#4b5563"]
+
+        subgraph cluster_objects {
+            label="各オブジェクトのupdate()"
+            labelloc=t
+            style="rounded,filled"
+            color="#e5e7eb"
+            fillcolor="#fafafa"
+            fontcolor="#6b7280"
+            penwidth=1
+
+            skeleton [label="Skeleton\nパトロール移動" fillcolor="#fef3c7" fontcolor="#92400e"]
+            statue [label="Statue\n雷を発射" fillcolor="#fef3c7" fontcolor="#92400e"]
+            hero [label="Hero\n入力に反応" fillcolor="#fef3c7" fontcolor="#92400e"]
+            particle [label="Particle\nアニメーション" fillcolor="#fef3c7" fontcolor="#92400e"]
+        }
+
+        collection -> skeleton
+        collection -> statue
+        collection -> hero
+        collection -> particle
+    }
+
+    // ゲームエンジン対応
+    subgraph cluster_engines {
+        label="ゲームエンジンでの実装"
+        labelloc=t
+        labeljust=c
+        style="rounded,filled"
+        color="#e5e7eb"
+        fillcolor="#f8fafc"
+        fontcolor="#1e40af"
+        fontsize=11
+        penwidth=1
+
+        unity [label="Unity\nMonoBehaviour.Update()\nFixedUpdate() / LateUpdate()" fillcolor="#dbeafe" fontcolor="#1e40af"]
+        unreal [label="Unreal Engine\nAActor::Tick()\nTickComponent()" fillcolor="#dbeafe" fontcolor="#1e40af"]
+        godot [label="Godot\nNode._process()\n_physics_process()" fillcolor="#dbeafe" fontcolor="#1e40af"]
+    }
+
+    // 関係
+    update_main -> collection [label="全オブジェクトを更新" style=bold color="#1e40af"]
+    collection -> unity [label="具体的な実装" style=dashed color="#cbd5e1"]
+    collection -> unreal [style=dashed color="#cbd5e1"]
+    collection -> godot [style=dashed color="#cbd5e1"]
+}

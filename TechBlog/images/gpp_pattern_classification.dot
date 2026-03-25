@@ -1,0 +1,120 @@
+// GoFパターン vs ゲーム特有パターンの分類図
+digraph pattern_classification {
+    rankdir=TB
+    bgcolor="transparent"
+    fontname="Helvetica Neue"
+    fontsize=11
+    pad=0.8
+    nodesep=0.4
+    ranksep=0.8
+
+    node [
+        fontname="Helvetica Neue"
+        fontsize=10
+        style="filled,rounded"
+        shape=box
+        penwidth=0
+        margin="0.12,0.08"
+    ]
+
+    edge [
+        fontname="Helvetica Neue"
+        fontsize=9
+        penwidth=1.2
+        arrowsize=0.6
+        color="#94a3b8"
+    ]
+
+    // タイトル
+    title [label="Game Programming Patterns\nパターン分類マップ" shape=plaintext fontsize=13 fontcolor="#1e40af"]
+
+    subgraph cluster_gof {
+        label="GoF由来（再解釈）"
+        labelloc=t
+        labeljust=c
+        style="rounded,filled"
+        color="#e5e7eb"
+        fillcolor="#f8fafc"
+        fontcolor="#1e40af"
+        fontsize=11
+        penwidth=1
+
+        command [label="Command\n入力の抽象化" fillcolor="#dbeafe" fontcolor="#1e40af"]
+        observer [label="Observer\nイベント通知" fillcolor="#dbeafe" fontcolor="#1e40af"]
+        state [label="State\n状態遷移" fillcolor="#dbeafe" fontcolor="#1e40af"]
+        flyweight [label="Flyweight\nメモリ共有" fillcolor="#dbeafe" fontcolor="#1e40af"]
+        singleton [label="Singleton\nグローバルアクセス" fillcolor="#dbeafe" fontcolor="#1e40af"]
+        prototype [label="Prototype\nオブジェクト複製" fillcolor="#dbeafe" fontcolor="#1e40af"]
+    }
+
+    subgraph cluster_sequencing {
+        label="シーケンシング"
+        labelloc=t
+        labeljust=c
+        style="rounded,filled"
+        color="#e5e7eb"
+        fillcolor="#fafafa"
+        fontcolor="#6b7280"
+        fontsize=11
+        penwidth=1
+
+        gameloop [label="Game Loop\n時間制御" fillcolor="#fef3c7" fontcolor="#92400e"]
+        update [label="Update Method\nフレーム更新" fillcolor="#fef3c7" fontcolor="#92400e"]
+        doublebuf [label="Double Buffer\n描画安定化" fillcolor="#fef3c7" fontcolor="#92400e"]
+    }
+
+    subgraph cluster_behavioral {
+        label="ビヘイビア"
+        labelloc=t
+        labeljust=c
+        style="rounded,filled"
+        color="#e5e7eb"
+        fillcolor="#fafafa"
+        fontcolor="#6b7280"
+        fontsize=11
+        penwidth=1
+
+        bytecode [label="Bytecode\nデータ駆動" fillcolor="#fef3c7" fontcolor="#92400e"]
+        sandbox [label="Subclass Sandbox\n安全な拡張" fillcolor="#fef3c7" fontcolor="#92400e"]
+        typeobj [label="Type Object\n型のデータ化" fillcolor="#fef3c7" fontcolor="#92400e"]
+    }
+
+    subgraph cluster_decoupling {
+        label="デカップリング"
+        labelloc=t
+        labeljust=c
+        style="rounded,filled"
+        color="#e5e7eb"
+        fillcolor="#fafafa"
+        fontcolor="#6b7280"
+        fontsize=11
+        penwidth=1
+
+        component [label="Component\nエンティティ分割" fillcolor="#fef3c7" fontcolor="#92400e"]
+        eventqueue [label="Event Queue\n非同期通信" fillcolor="#fef3c7" fontcolor="#92400e"]
+        servicelocator [label="Service Locator\nサービス解決" fillcolor="#fef3c7" fontcolor="#92400e"]
+    }
+
+    subgraph cluster_optimization {
+        label="最適化"
+        labelloc=t
+        labeljust=c
+        style="rounded,filled"
+        color="#e5e7eb"
+        fillcolor="#fafafa"
+        fontcolor="#6b7280"
+        fontsize=11
+        penwidth=1
+
+        datalocality [label="Data Locality\nキャッシュ効率" fillcolor="#f3f4f6" fontcolor="#4b5563"]
+        dirtyflag [label="Dirty Flag\n再計算回避" fillcolor="#f3f4f6" fontcolor="#4b5563"]
+        objectpool [label="Object Pool\nメモリ再利用" fillcolor="#f3f4f6" fontcolor="#4b5563"]
+        spatial [label="Spatial Partition\n空間分割" fillcolor="#f3f4f6" fontcolor="#4b5563"]
+    }
+
+    // 関係線
+    title -> command [style=invis]
+    gameloop -> update [label="毎フレーム呼出"]
+    component -> datalocality [label="キャッシュ改善"]
+    observer -> eventqueue [label="非同期化"]
+}

@@ -1,0 +1,130 @@
+// Component / Entity-Component-System の構造図
+digraph component_ecs {
+    rankdir=TB
+    bgcolor="transparent"
+    fontname="Helvetica Neue"
+    fontsize=11
+    pad=0.8
+    nodesep=0.5
+    ranksep=0.8
+
+    node [
+        fontname="Helvetica Neue"
+        fontsize=10
+        style="filled,rounded"
+        shape=box
+        penwidth=0
+        margin="0.12,0.08"
+    ]
+
+    edge [
+        fontname="Helvetica Neue"
+        fontsize=9
+        penwidth=1.2
+        arrowsize=0.6
+        color="#94a3b8"
+    ]
+
+    // モノリシック（Before）
+    subgraph cluster_before {
+        label="Before: モノリシッククラス"
+        labelloc=t
+        labeljust=c
+        style="rounded,filled"
+        color="#e5e7eb"
+        fillcolor="#fafafa"
+        fontcolor="#6b7280"
+        fontsize=11
+        penwidth=1
+
+        mono [label="PlayerCharacter\n━━━━━━━━━━━━━━\n入力処理\n物理演算\n描画\nサウンド\nAI\n━━━━━━━━━━━━━━\n5000行の巨大クラス" fillcolor="#fef3c7" fontcolor="#92400e" shape=record]
+    }
+
+    // Component パターン（After）
+    subgraph cluster_after {
+        label="After: Componentパターン"
+        labelloc=t
+        labeljust=c
+        style="rounded,filled"
+        color="#e5e7eb"
+        fillcolor="#f8fafc"
+        fontcolor="#1e40af"
+        fontsize=11
+        penwidth=1
+
+        entity [label="GameObject\n(薄いコンテナ)" fillcolor="#dbeafe" fontcolor="#1e40af"]
+        input_c [label="InputComponent\n入力処理" fillcolor="#f3f4f6" fontcolor="#4b5563"]
+        physics_c [label="PhysicsComponent\n物理演算" fillcolor="#f3f4f6" fontcolor="#4b5563"]
+        graphics_c [label="GraphicsComponent\n描画" fillcolor="#f3f4f6" fontcolor="#4b5563"]
+        audio_c [label="AudioComponent\nサウンド" fillcolor="#f3f4f6" fontcolor="#4b5563"]
+
+        entity -> input_c [label="has"]
+        entity -> physics_c [label="has"]
+        entity -> graphics_c [label="has"]
+        entity -> audio_c [label="has"]
+    }
+
+    // ECS（発展形）
+    subgraph cluster_ecs {
+        label="発展形: Entity-Component-System (ECS)"
+        labelloc=t
+        labeljust=c
+        style="rounded,filled"
+        color="#e5e7eb"
+        fillcolor="#f8fafc"
+        fontcolor="#1e40af"
+        fontsize=11
+        penwidth=1
+
+        subgraph cluster_entities {
+            label="Entity（IDのみ）"
+            labelloc=t
+            style="rounded,filled"
+            color="#e5e7eb"
+            fillcolor="#fafafa"
+            fontcolor="#6b7280"
+            penwidth=1
+
+            e1 [label="Entity 0" fillcolor="#dbeafe" fontcolor="#1e40af"]
+            e2 [label="Entity 1" fillcolor="#dbeafe" fontcolor="#1e40af"]
+            e3 [label="Entity 2" fillcolor="#dbeafe" fontcolor="#1e40af"]
+        }
+
+        subgraph cluster_components {
+            label="Component（データのみ）"
+            labelloc=t
+            style="rounded,filled"
+            color="#e5e7eb"
+            fillcolor="#fafafa"
+            fontcolor="#6b7280"
+            penwidth=1
+
+            pos [label="Position[]\n連続メモリ配置" fillcolor="#fef3c7" fontcolor="#92400e"]
+            vel [label="Velocity[]\n連続メモリ配置" fillcolor="#fef3c7" fontcolor="#92400e"]
+            hp [label="Health[]\n連続メモリ配置" fillcolor="#fef3c7" fontcolor="#92400e"]
+        }
+
+        subgraph cluster_systems {
+            label="System（ロジックのみ）"
+            labelloc=t
+            style="rounded,filled"
+            color="#e5e7eb"
+            fillcolor="#fafafa"
+            fontcolor="#6b7280"
+            penwidth=1
+
+            move_sys [label="MovementSystem\nPosition + Velocity" fillcolor="#dbeafe" fontcolor="#1e40af"]
+            dmg_sys [label="DamageSystem\nHealth + Collision" fillcolor="#dbeafe" fontcolor="#1e40af"]
+        }
+
+        e1 -> pos [style=dashed color="#cbd5e1"]
+        e2 -> pos [style=dashed color="#cbd5e1"]
+        pos -> move_sys [color="#94a3b8"]
+        vel -> move_sys [color="#94a3b8"]
+        hp -> dmg_sys [color="#94a3b8"]
+    }
+
+    // 変遷の矢印
+    mono -> entity [label="分割" style=bold color="#1e40af"]
+    entity -> e1 [label="さらに分離" style=bold color="#1e40af"]
+}

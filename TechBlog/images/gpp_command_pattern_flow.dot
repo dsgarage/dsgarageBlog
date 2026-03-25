@@ -1,0 +1,114 @@
+// Commandパターンのフロー図
+digraph command_pattern {
+    rankdir=LR
+    bgcolor="transparent"
+    fontname="Helvetica Neue"
+    fontsize=11
+    pad=0.8
+    nodesep=0.5
+    ranksep=1.0
+
+    node [
+        fontname="Helvetica Neue"
+        fontsize=10
+        style="filled,rounded"
+        shape=box
+        penwidth=0
+        margin="0.12,0.08"
+    ]
+
+    edge [
+        fontname="Helvetica Neue"
+        fontsize=9
+        penwidth=1.2
+        arrowsize=0.6
+        color="#94a3b8"
+    ]
+
+    subgraph cluster_input {
+        label="入力層"
+        labelloc=t
+        style="rounded,filled"
+        color="#e5e7eb"
+        fillcolor="#f8fafc"
+        fontcolor="#1e40af"
+        fontsize=11
+        penwidth=1
+
+        btn_a [label="ボタンA" fillcolor="#f3f4f6" fontcolor="#4b5563"]
+        btn_b [label="ボタンB" fillcolor="#f3f4f6" fontcolor="#4b5563"]
+        btn_x [label="ボタンX" fillcolor="#f3f4f6" fontcolor="#4b5563"]
+    }
+
+    subgraph cluster_handler {
+        label="InputHandler"
+        labelloc=t
+        style="rounded,filled"
+        color="#e5e7eb"
+        fillcolor="#f8fafc"
+        fontcolor="#1e40af"
+        fontsize=11
+        penwidth=1
+
+        handler [label="handleInput()\nボタン→Command変換" fillcolor="#dbeafe" fontcolor="#1e40af"]
+    }
+
+    subgraph cluster_commands {
+        label="Commandオブジェクト"
+        labelloc=t
+        style="rounded,filled"
+        color="#e5e7eb"
+        fillcolor="#fafafa"
+        fontcolor="#6b7280"
+        fontsize=11
+        penwidth=1
+
+        cmd_jump [label="JumpCommand\nexecute(actor)" fillcolor="#fef3c7" fontcolor="#92400e"]
+        cmd_fire [label="FireCommand\nexecute(actor)" fillcolor="#fef3c7" fontcolor="#92400e"]
+        cmd_duck [label="DuckCommand\nexecute(actor)" fillcolor="#fef3c7" fontcolor="#92400e"]
+    }
+
+    subgraph cluster_actors {
+        label="ゲームアクター"
+        labelloc=t
+        style="rounded,filled"
+        color="#e5e7eb"
+        fillcolor="#f8fafc"
+        fontcolor="#1e40af"
+        fontsize=11
+        penwidth=1
+
+        player [label="プレイヤー" fillcolor="#dbeafe" fontcolor="#1e40af"]
+        ai [label="AIキャラ" fillcolor="#dbeafe" fontcolor="#1e40af"]
+    }
+
+    subgraph cluster_history {
+        label="履歴スタック（Undo/Redo）"
+        labelloc=t
+        style="rounded,filled"
+        color="#e5e7eb"
+        fillcolor="#fafafa"
+        fontcolor="#6b7280"
+        fontsize=11
+        penwidth=1
+
+        stack [label="[Cmd1, Cmd2, Cmd3...]\nexecute() / undo()" fillcolor="#f3f4f6" fontcolor="#4b5563"]
+    }
+
+    // フロー
+    btn_a -> handler
+    btn_b -> handler
+    btn_x -> handler
+
+    handler -> cmd_jump [label="生成"]
+    handler -> cmd_fire [label="生成"]
+    handler -> cmd_duck [label="生成"]
+
+    cmd_jump -> player [label="execute()"]
+    cmd_fire -> player [label="execute()"]
+    cmd_jump -> ai [label="再利用可能" style=dashed color="#cbd5e1"]
+
+    cmd_jump -> stack [label="記録"]
+    cmd_fire -> stack [label="記録"]
+    cmd_duck -> stack [label="記録"]
+}
