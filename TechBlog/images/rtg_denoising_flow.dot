@@ -1,0 +1,95 @@
+digraph denoising_flow {
+    rankdir=TB
+    bgcolor="transparent"
+    fontname="Helvetica Neue"
+    fontsize=11
+    pad=0.8
+    nodesep=0.5
+    ranksep=0.7
+
+    node [
+        fontname="Helvetica Neue"
+        fontsize=10
+        style="filled,rounded"
+        shape=box
+        penwidth=0
+        margin="0.15,0.08"
+    ]
+
+    edge [
+        fontname="Helvetica Neue"
+        fontsize=9
+        penwidth=1.2
+        arrowsize=0.6
+        color="#94a3b8"
+    ]
+
+    // 入力
+    gbuffer [label="G-Buffer\n(法線, 深度, アルベド,\nラフネス, モーション)" fillcolor="#f3f4f6" fontcolor="#4b5563"]
+
+    // サンプリング段階
+    subgraph cluster_sampling {
+        label="サンプリング (1 ray/pixel)"
+        labelloc=t
+        style="rounded,filled"
+        color="#e5e7eb"
+        fillcolor="#f8fafc"
+        fontcolor="#1e40af"
+        fontsize=11
+        penwidth=1
+
+        shadow_ray [label="シャドウレイ\nエリアライト上の\nランダム点に向けて1本" fillcolor="#dbeafe" fontcolor="#1e40af"]
+        reflect_ray [label="反射レイ\nBRDF重要度\nサンプリング" fillcolor="#dbeafe" fontcolor="#1e40af"]
+        ao_ray [label="AO/GIレイ\n半球上の\nランダム方向" fillcolor="#dbeafe" fontcolor="#1e40af"]
+    }
+
+    // ノイジー出力
+    noisy_shadow [label="ノイジーな\n可視性マスク" fillcolor="#fef3c7" fontcolor="#92400e"]
+    noisy_reflect [label="ノイジーな\n反射色" fillcolor="#fef3c7" fontcolor="#92400e"]
+    noisy_ao [label="ノイジーな\nAO/GI値" fillcolor="#fef3c7" fontcolor="#92400e"]
+
+    // デノイジング
+    subgraph cluster_denoise {
+        label="効果別デノイジング"
+        labelloc=t
+        style="rounded,filled"
+        color="#e5e7eb"
+        fillcolor="#fafafa"
+        fontcolor="#6b7280"
+        fontsize=11
+        penwidth=1
+
+        denoise_shadow [label="シャドウ\nデノイザー\n(時空間フィルタ)" fillcolor="#dbeafe" fontcolor="#1e40af"]
+        denoise_reflect [label="反射\nデノイザー\n(ラフネス適応)" fillcolor="#dbeafe" fontcolor="#1e40af"]
+        denoise_ao [label="AO/GI\nデノイザー\n(ヒット距離適応\nワールドスペース)" fillcolor="#dbeafe" fontcolor="#1e40af"]
+    }
+
+    // テンポラル蓄積
+    temporal [label="テンポラル蓄積\n(前フレーム再投影)" fillcolor="#dbeafe" fontcolor="#1e40af"]
+
+    // 最終合成
+    composite [label="最終画像合成\n(クリーンな出力)" fillcolor="#dbeafe" fontcolor="#1e40af" shape=doubleoctagon]
+
+    // フロー
+    gbuffer -> shadow_ray
+    gbuffer -> reflect_ray
+    gbuffer -> ao_ray
+
+    shadow_ray -> noisy_shadow
+    reflect_ray -> noisy_reflect
+    ao_ray -> noisy_ao
+
+    noisy_shadow -> denoise_shadow
+    noisy_reflect -> denoise_reflect
+    noisy_ao -> denoise_ao
+
+    gbuffer -> denoise_shadow [label="法線/深度ガイド" style=dashed color="#cbd5e1"]
+    gbuffer -> denoise_reflect [label="法線/深度ガイド" style=dashed color="#cbd5e1"]
+    gbuffer -> denoise_ao [label="法線/深度ガイド" style=dashed color="#cbd5e1"]
+
+    denoise_shadow -> temporal
+    denoise_reflect -> temporal
+    denoise_ao -> temporal
+
+    temporal -> composite
+}

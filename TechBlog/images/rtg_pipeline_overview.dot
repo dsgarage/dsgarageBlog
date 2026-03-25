@@ -1,0 +1,82 @@
+digraph rtg_pipeline {
+    rankdir=LR
+    bgcolor="transparent"
+    fontname="Helvetica Neue"
+    fontsize=11
+    pad=0.8
+    nodesep=0.5
+    ranksep=0.9
+
+    node [
+        fontname="Helvetica Neue"
+        fontsize=10
+        style="filled,rounded"
+        shape=box
+        penwidth=0
+        margin="0.15,0.08"
+    ]
+
+    edge [
+        fontname="Helvetica Neue"
+        fontsize=9
+        penwidth=1.2
+        arrowsize=0.6
+        color="#94a3b8"
+    ]
+
+    // アプリケーション側
+    app [label="アプリケーション\n(CPU)" fillcolor="#f3f4f6" fontcolor="#4b5563"]
+
+    // Acceleration Structure
+    subgraph cluster_accel {
+        label="アクセラレーション構造"
+        labelloc=t
+        labeljust=c
+        style="rounded,filled"
+        color="#e5e7eb"
+        fillcolor="#f8fafc"
+        fontcolor="#1e40af"
+        fontsize=11
+        penwidth=1
+
+        tlas [label="TLAS\n(Top-Level AS)" fillcolor="#dbeafe" fontcolor="#1e40af"]
+        blas [label="BLAS\n(Bottom-Level AS)" fillcolor="#dbeafe" fontcolor="#1e40af"]
+    }
+
+    // シェーダパイプライン
+    subgraph cluster_shader {
+        label="DXRシェーダパイプライン"
+        labelloc=t
+        labeljust=c
+        style="rounded,filled"
+        color="#e5e7eb"
+        fillcolor="#f8fafc"
+        fontcolor="#1e40af"
+        fontsize=11
+        penwidth=1
+
+        raygen [label="Ray Generation\nShader" fillcolor="#dbeafe" fontcolor="#1e40af"]
+        traverse [label="BVH\nトラバーサル" fillcolor="#fef3c7" fontcolor="#92400e"]
+        intersect [label="Intersection\nShader" fillcolor="#dbeafe" fontcolor="#1e40af"]
+        anyhit [label="Any-Hit\nShader" fillcolor="#dbeafe" fontcolor="#1e40af"]
+        closest [label="Closest-Hit\nShader" fillcolor="#dbeafe" fontcolor="#1e40af"]
+        miss [label="Miss\nShader" fillcolor="#dbeafe" fontcolor="#1e40af"]
+    }
+
+    // 出力
+    output [label="レンダリング結果\n(UAV)" fillcolor="#f3f4f6" fontcolor="#4b5563"]
+
+    // フロー
+    app -> tlas [label="DispatchRays()"]
+    tlas -> blas [label="インスタンス参照"]
+    app -> raygen [label=""]
+    raygen -> traverse [label="TraceRay()"]
+    traverse -> intersect [label="リーフノード"]
+    intersect -> anyhit [label="ヒット報告"]
+    anyhit -> traverse [label="IgnoreHit()\n(続行)" style=dashed color="#cbd5e1"]
+    traverse -> closest [label="最近接ヒット確定"]
+    traverse -> miss [label="ヒットなし"]
+    closest -> output
+    miss -> output
+    closest -> raygen [label="再帰TraceRay()" style=dashed color="#cbd5e1"]
+}

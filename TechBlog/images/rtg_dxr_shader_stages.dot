@@ -1,0 +1,59 @@
+digraph dxr_shader_stages {
+    rankdir=TB
+    bgcolor="transparent"
+    fontname="Helvetica Neue"
+    fontsize=11
+    pad=0.8
+    nodesep=0.6
+    ranksep=0.7
+
+    node [
+        fontname="Helvetica Neue"
+        fontsize=10
+        style="filled,rounded"
+        shape=box
+        penwidth=0
+        margin="0.15,0.10"
+    ]
+
+    edge [
+        fontname="Helvetica Neue"
+        fontsize=9
+        penwidth=1.2
+        arrowsize=0.6
+        color="#94a3b8"
+    ]
+
+    // シェーダステージ
+    raygen [label="Ray Generation Shader\nパイプラインの起点\nどのレイを飛ばすかを決定" fillcolor="#dbeafe" fontcolor="#1e40af" shape=box]
+
+    subgraph cluster_bvh {
+        label="BVHトラバーサル"
+        labelloc=t
+        style="rounded,filled"
+        color="#e5e7eb"
+        fillcolor="#fafafa"
+        fontcolor="#6b7280"
+        fontsize=11
+        penwidth=1
+
+        intersect [label="Intersection Shader\nレイ/プリミティブ交差判定\n(三角形のデフォルト実装あり)" fillcolor="#fef3c7" fontcolor="#92400e"]
+        anyhit [label="Any-Hit Shader\nアルファテスト等で\n交差を棄却可能" fillcolor="#fef3c7" fontcolor="#92400e"]
+    }
+
+    closest [label="Closest-Hit Shader\n最近接ヒット点でシェーディング\n(ピクセルシェーダに相当)" fillcolor="#dbeafe" fontcolor="#1e40af"]
+    miss [label="Miss Shader\n全ジオメトリを外した場合\n(環境マップ参照など)" fillcolor="#f3f4f6" fontcolor="#4b5563"]
+
+    // 結果
+    result [label="レイ結果\n(ペイロード)" fillcolor="#dbeafe" fontcolor="#1e40af" shape=ellipse]
+
+    // フロー
+    raygen -> intersect [label="TraceRay()"]
+    intersect -> anyhit [label="ヒット検出"]
+    anyhit -> intersect [label="IgnoreHit()\n(次の交差を探索)" style=dashed color="#cbd5e1"]
+    anyhit -> closest [label="AcceptHitAndEndSearch()\nまたはトラバーサル完了"]
+    intersect -> miss [label="交差なし\n(トラバーサル完了)"]
+    closest -> result
+    miss -> result
+    result -> raygen [label="再帰的TraceRay()\n(反射・屈折など)" style=dashed color="#cbd5e1"]
+}

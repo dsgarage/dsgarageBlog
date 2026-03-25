@@ -1,0 +1,101 @@
+digraph book_structure {
+    rankdir=TB
+    bgcolor="transparent"
+    fontname="Helvetica Neue"
+    fontsize=11
+    pad=0.8
+    nodesep=0.4
+    ranksep=0.6
+
+    node [
+        fontname="Helvetica Neue"
+        fontsize=10
+        style="filled,rounded"
+        shape=box
+        penwidth=0
+        margin="0.15,0.10"
+    ]
+
+    edge [
+        fontname="Helvetica Neue"
+        fontsize=9
+        penwidth=1.2
+        arrowsize=0.6
+        color="#94a3b8"
+    ]
+
+    // 7パート
+    title [label="Ray Tracing Gems\n全32章・622ページ" fillcolor="#dbeafe" fontcolor="#1e40af" shape=ellipse fontsize=12]
+
+    // 基礎レイヤー
+    subgraph cluster_foundation {
+        label="基礎 (Part I-II)"
+        labelloc=t
+        style="rounded,filled"
+        color="#e5e7eb"
+        fillcolor="#f8fafc"
+        fontcolor="#1e40af"
+        fontsize=11
+        penwidth=1
+
+        p1 [label="Part I: 基礎\n第1-5章\nレイの定義\nDXR概要\n用語整理" fillcolor="#dbeafe" fontcolor="#1e40af"]
+        p2 [label="Part II: 交差判定\n第6-10章\n自己交差回避\n浮動小数点精度\n負荷分散" fillcolor="#dbeafe" fontcolor="#1e40af"]
+    }
+
+    // ライティング計算レイヤー
+    subgraph cluster_lighting {
+        label="ライティング計算 (Part III-IV)"
+        labelloc=t
+        style="rounded,filled"
+        color="#e5e7eb"
+        fillcolor="#f8fafc"
+        fontcolor="#1e40af"
+        fontsize=11
+        penwidth=1
+
+        p3 [label="Part III: 反射・屈折・影\n第11-14章\nネストボリューム\nバンプマップ\nソフトシャドウ" fillcolor="#fef3c7" fontcolor="#92400e"]
+        p4 [label="Part IV: サンプリング\n第15-18章\nモンテカルロ法\n重要度サンプリング\n多数光源" fillcolor="#fef3c7" fontcolor="#92400e"]
+    }
+
+    // 品質・統合レイヤー
+    subgraph cluster_quality {
+        label="品質向上 (Part V)"
+        labelloc=t
+        style="rounded,filled"
+        color="#e5e7eb"
+        fillcolor="#fafafa"
+        fontcolor="#6b7280"
+        fontsize=11
+        penwidth=1
+
+        p5 [label="Part V: デノイジング\n第19-22章\nUE4統合\nテクスチャLOD\n適応的レイトレース" fillcolor="#dbeafe" fontcolor="#1e40af"]
+    }
+
+    // システム統合レイヤー
+    subgraph cluster_system {
+        label="システム統合 (Part VI-VII)"
+        labelloc=t
+        style="rounded,filled"
+        color="#e5e7eb"
+        fillcolor="#f8fafc"
+        fontcolor="#1e40af"
+        fontsize=11
+        penwidth=1
+
+        p6 [label="Part VI: ハイブリッド\n第23-27章\nFrostbite GI\nPICA PICA\n科学可視化" fillcolor="#fef3c7" fontcolor="#92400e"]
+        p7 [label="Part VII: GI\n第28-32章\nボリューム\nフォトンマッピング\nコースティクス" fillcolor="#fef3c7" fontcolor="#92400e"]
+    }
+
+    // 関係
+    title -> p1
+    title -> p2
+    p1 -> p3 [label="基礎知識"]
+    p2 -> p3 [label="交差判定"]
+    p1 -> p4 [label="レイの定義"]
+    p3 -> p5 [label="ノイジーな\nライティング結果"]
+    p4 -> p5 [label="サンプリング\n戦略"]
+    p5 -> p6 [label="品質確保"]
+    p3 -> p6 [label="ライティング\n効果"]
+    p6 -> p7 [label="システム設計"]
+    p4 -> p7 [label="積分手法"]
+}
