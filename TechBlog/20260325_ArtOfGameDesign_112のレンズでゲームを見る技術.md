@@ -131,6 +131,11 @@ Schellが提示するイテレーションの8つのルールは次の通りだ:
 
 ---
 
+## 書籍情報
+
+- [『ゲームデザインバイブル 第2版 ―おもしろさを飛躍的に向上させる113の「レンズ」』（日本語版）](https://www.amazon.co.jp/dp/4873118018?tag=tsukasansan-22) — Jesse Schell 著、佐藤理絵子 訳（オライリー・ジャパン）
+- [『The Art of Game Design: A Book of Lenses, Third Edition』（原著）](https://www.amazon.co.jp/dp/1138632058?tag=tsukasansan-22) — Jesse Schell（CRC Press）
+
 ## 合わせて読みたい
 
 - 『A Theory of Fun for Game Design』（Raph Koster） — 「楽しさとは何か」をパターン認識の観点から解き明かす。Schellの「体験」論を「学習」の観点から補完する
