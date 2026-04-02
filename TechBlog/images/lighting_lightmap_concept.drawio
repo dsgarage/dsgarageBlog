@@ -1,0 +1,79 @@
+<mxfile>
+  <diagram name="ライトマップの基本概念" id="lightmap_concept">
+    <mxGraphModel dx="1200" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="500" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <!-- Title -->
+        <mxCell id="title" value="ライトマップ ― オフライン計算で光をテクスチャに焼き込む" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=16;fontStyle=1;fontColor=#1e40af;fontFamily=Helvetica Neue;" vertex="1" parent="1">
+          <mxGeometry x="200" y="10" width="600" height="30" as="geometry"/>
+        </mxCell>
+        <!-- Phase Label: Offline -->
+        <mxCell id="phase_offline" value="オフライン（ベイク時）" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=12;fontStyle=1;fontColor=#92400e;fontFamily=Helvetica Neue;" vertex="1" parent="1">
+          <mxGeometry x="200" y="50" width="400" height="25" as="geometry"/>
+        </mxCell>
+        <!-- Phase Label: Runtime -->
+        <mxCell id="phase_runtime" value="ランタイム（実行時）" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=12;fontStyle=1;fontColor=#166534;fontFamily=Helvetica Neue;" vertex="1" parent="1">
+          <mxGeometry x="780" y="50" width="200" height="25" as="geometry"/>
+        </mxCell>
+        <!-- Step 1: 3D Scene -->
+        <mxCell id="scene" value="3Dシーン&#xa;(メッシュ + ライト)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f3f4f6;strokeColor=#94a3b8;fontColor=#4b5563;fontSize=11;fontFamily=Helvetica Neue;fontStyle=1;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="20" y="110" width="140" height="70" as="geometry"/>
+        </mxCell>
+        <!-- Step 2: UV Unwrap -->
+        <mxCell id="uv" value="① UV展開&#xa;メッシュ表面を&#xa;2D平面に展開" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dbeafe;strokeColor=#93c5fd;fontColor=#1e40af;fontSize=11;fontFamily=Helvetica Neue;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="210" y="95" width="150" height="70" as="geometry"/>
+        </mxCell>
+        <!-- Step 3: Offline Compute -->
+        <mxCell id="compute" value="② オフライン計算&#xa;レイトレーシング/&#xa;ラジオシティで&#xa;各テクセルの照度を計算" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fef3c7;strokeColor=#fcd34d;fontColor=#92400e;fontSize=11;fontFamily=Helvetica Neue;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="410" y="85" width="160" height="90" as="geometry"/>
+        </mxCell>
+        <!-- Step 4: Lightmap Texture -->
+        <mxCell id="lightmap_tex" value="③ ライトマップ&#xa;テクスチャ&#xa;照明結果を&#xa;2Dテクスチャに格納" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fef3c7;strokeColor=#fcd34d;fontColor=#92400e;fontSize=11;fontFamily=Helvetica Neue;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="620" y="85" width="160" height="90" as="geometry"/>
+        </mxCell>
+        <!-- Step 5: Runtime Sampling -->
+        <mxCell id="sampling" value="④ ランタイム参照&#xa;シェーダーが&#xa;テクスチャを&#xa;サンプリング" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dcfce7;strokeColor=#86efac;fontColor=#166534;fontSize=11;fontFamily=Helvetica Neue;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="830" y="85" width="150" height="90" as="geometry"/>
+        </mxCell>
+        <!-- Final Output -->
+        <mxCell id="output" value="最終画面&#xa;GI付きの&#xa;高品質描画" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dcfce7;strokeColor=#86efac;fontColor=#166534;fontSize=11;fontFamily=Helvetica Neue;fontStyle=1;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="830" y="220" width="150" height="60" as="geometry"/>
+        </mxCell>
+        <!-- Arrows -->
+        <mxCell id="e1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=#94a3b8;strokeWidth=2;" edge="1" source="scene" target="uv" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e2" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=#94a3b8;strokeWidth=2;" edge="1" source="uv" target="compute" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e3" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=#94a3b8;strokeWidth=2;" edge="1" source="compute" target="lightmap_tex" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e4" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=#94a3b8;strokeWidth=2;" edge="1" source="lightmap_tex" target="sampling" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e5" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeColor=#94a3b8;strokeWidth=2;" edge="1" source="sampling" target="output" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <!-- Cost comparison -->
+        <mxCell id="cost_label" value="コスト比較" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=12;fontStyle=1;fontColor=#4b5563;fontFamily=Helvetica Neue;" vertex="1" parent="1">
+          <mxGeometry x="30" y="250" width="100" height="25" as="geometry"/>
+        </mxCell>
+        <mxCell id="cost_realtime" value="リアルタイムGI: O(ピクセル数 × ライト数 × バウンス回数)  → 毎フレーム計算" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fee2e2;strokeColor=#fca5a5;fontColor=#991b1b;fontSize=10;fontFamily=Helvetica Neue;fontStyle=0;align=left;spacingLeft=10;" vertex="1" parent="1">
+          <mxGeometry x="30" y="280" width="450" height="35" as="geometry"/>
+        </mxCell>
+        <mxCell id="cost_lightmap" value="ライトマップ: O(1) テクスチャサンプリング1回  → ランタイムコスト一定" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dcfce7;strokeColor=#86efac;fontColor=#166534;fontSize=10;fontFamily=Helvetica Neue;fontStyle=0;align=left;spacingLeft=10;" vertex="1" parent="1">
+          <mxGeometry x="30" y="325" width="450" height="35" as="geometry"/>
+        </mxCell>
+        <!-- Divider line -->
+        <mxCell id="divider" value="" style="endArrow=none;dashed=1;html=1;strokeColor=#94a3b8;strokeWidth=1;dashPattern=8 4;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="800" y="50" as="sourcePoint"/>
+            <mxPoint x="800" y="380" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

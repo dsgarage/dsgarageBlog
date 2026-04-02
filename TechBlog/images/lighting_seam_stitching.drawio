@@ -1,0 +1,117 @@
+<mxfile>
+  <diagram name="ライトマップシーム問題と修正" id="seam_stitching">
+    <mxGraphModel dx="1200" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="580" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <!-- Title -->
+        <mxCell id="title" value="ライトマップのシーム（継ぎ目）問題と最小二乗法による修正" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=16;fontStyle=1;fontColor=#1e40af;fontFamily=Helvetica Neue;" vertex="1" parent="1">
+          <mxGeometry x="180" y="10" width="650" height="30" as="geometry"/>
+        </mxCell>
+        <!-- Phase 1: Problem -->
+        <mxCell id="phase1_label" value="問題: UV展開でシームが発生" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=13;fontStyle=1;fontColor=#991b1b;fontFamily=Helvetica Neue;" vertex="1" parent="1">
+          <mxGeometry x="30" y="50" width="280" height="25" as="geometry"/>
+        </mxCell>
+        <!-- 3D Mesh -->
+        <mxCell id="mesh3d" value="3Dメッシュ&#xa;(連続した表面)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f3f4f6;strokeColor=#94a3b8;fontColor=#4b5563;fontSize=11;fontFamily=Helvetica Neue;fontStyle=1;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="30" y="85" width="130" height="55" as="geometry"/>
+        </mxCell>
+        <!-- Arrow: UV unwrap -->
+        <mxCell id="e_unwrap" value="UV展開" style="edgeStyle=orthogonalEdgeStyle;rounded=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=#94a3b8;strokeWidth=2;fontSize=10;fontColor=#4b5563;fontFamily=Helvetica Neue;" edge="1" source="mesh3d" target="uv_islands" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <!-- UV Islands -->
+        <mxCell id="uv_islands" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fee2e2;strokeColor=#fca5a5;fontColor=#991b1b;fontSize=11;fontFamily=Helvetica Neue;" vertex="1" parent="1">
+          <mxGeometry x="220" y="75" width="280" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="island_a" value="UV島 A&#xa;テクセル値: 0.8" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fef3c7;strokeColor=#fcd34d;fontColor=#92400e;fontSize=10;fontFamily=Helvetica Neue;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="230" y="82" width="120" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="island_b" value="UV島 B&#xa;テクセル値: 0.5" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dbeafe;strokeColor=#93c5fd;fontColor=#1e40af;fontSize=10;fontFamily=Helvetica Neue;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="370" y="82" width="120" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="seam_gap" value="隙間!" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=10;fontStyle=1;fontColor=#991b1b;fontFamily=Helvetica Neue;" vertex="1" parent="1">
+          <mxGeometry x="348" y="135" width="50" height="18" as="geometry"/>
+        </mxCell>
+        <!-- Seam line indicator -->
+        <mxCell id="seam_line" value="" style="endArrow=none;html=1;strokeColor=#991b1b;strokeWidth=3;dashed=1;dashPattern=4 4;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="355" y="82" as="sourcePoint"/>
+            <mxPoint x="355" y="132" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <!-- Problem result -->
+        <mxCell id="problem_result" value="バイリニア補間が&#xa;シームを越えられない&#xa;→ 明るさの段差が見える" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fee2e2;strokeColor=#fca5a5;fontColor=#991b1b;fontSize=10;fontFamily=Helvetica Neue;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="530" y="80" width="180" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_problem" style="edgeStyle=orthogonalEdgeStyle;rounded=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=#991b1b;strokeWidth=2;" edge="1" source="uv_islands" target="problem_result" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <!-- Phase 2: Solution -->
+        <mxCell id="phase2_label" value="解決: 最小二乗法によるシーム修正（Seam Stitching）" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=13;fontStyle=1;fontColor=#166534;fontFamily=Helvetica Neue;" vertex="1" parent="1">
+          <mxGeometry x="30" y="185" width="450" height="25" as="geometry"/>
+        </mxCell>
+        <!-- Step 1: Stitching points -->
+        <mxCell id="step1" value="① ステッチングポイント配置&#xa;シームのエッジに沿って&#xa;等間隔にサンプル点を配置" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dbeafe;strokeColor=#93c5fd;fontColor=#1e40af;fontSize=10;fontFamily=Helvetica Neue;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="30" y="220" width="200" height="65" as="geometry"/>
+        </mxCell>
+        <!-- Step 2: Error function -->
+        <mxCell id="step2" value="② 誤差関数の定式化&#xa;誤差 = |左の補間値 - 右の補間値|²&#xa;     + λ × |修正値 - 元の値|²" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fef3c7;strokeColor=#fcd34d;fontColor=#92400e;fontSize=10;fontFamily=Helvetica Neue;fontStyle=1;align=left;spacingLeft=8;" vertex="1" parent="1">
+          <mxGeometry x="270" y="220" width="240" height="65" as="geometry"/>
+        </mxCell>
+        <!-- Step 3: Solve -->
+        <mxCell id="step3" value="③ 最小二乗法で解く&#xa;連立一次方程式を解いて&#xa;テクセル値を最適化" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dcfce7;strokeColor=#86efac;fontColor=#166534;fontSize=10;fontFamily=Helvetica Neue;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="550" y="220" width="200" height="65" as="geometry"/>
+        </mxCell>
+        <!-- Arrows between steps -->
+        <mxCell id="es1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=#94a3b8;strokeWidth=2;" edge="1" source="step1" target="step2" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="es2" style="edgeStyle=orthogonalEdgeStyle;rounded=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=#94a3b8;strokeWidth=2;" edge="1" source="step2" target="step3" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <!-- Result: Fixed -->
+        <mxCell id="fixed_result" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dcfce7;strokeColor=#86efac;fontColor=#166534;fontSize=11;fontFamily=Helvetica Neue;" vertex="1" parent="1">
+          <mxGeometry x="220" y="320" width="280" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="fixed_a" value="UV島 A&#xa;テクセル値: 0.65" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fef3c7;strokeColor=#fcd34d;fontColor=#92400e;fontSize=10;fontFamily=Helvetica Neue;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="230" y="327" width="120" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="fixed_b" value="UV島 B&#xa;テクセル値: 0.65" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dbeafe;strokeColor=#93c5fd;fontColor=#1e40af;fontSize=10;fontFamily=Helvetica Neue;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="370" y="327" width="120" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="fixed_label" value="一致!" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=10;fontStyle=1;fontColor=#166534;fontFamily=Helvetica Neue;" vertex="1" parent="1">
+          <mxGeometry x="348" y="380" width="45" height="18" as="geometry"/>
+        </mxCell>
+        <mxCell id="es3" style="edgeStyle=orthogonalEdgeStyle;rounded=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeColor=#166534;strokeWidth=2;" edge="1" source="step3" target="fixed_result" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="650" y="300"/>
+              <mxPoint x="360" y="300"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <!-- DXT re-stitch note -->
+        <mxCell id="dxt_note" value="DXT圧縮後にも再ステッチが可能&#xa;→ 圧縮で再発するシームも修正" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f3f4f6;strokeColor=#94a3b8;fontColor=#4b5563;fontSize=10;fontFamily=Helvetica Neue;fontStyle=0;align=left;spacingLeft=8;" vertex="1" parent="1">
+          <mxGeometry x="550" y="340" width="230" height="40" as="geometry"/>
+        </mxCell>
+        <!-- Advantages -->
+        <mxCell id="adv_title" value="この手法の利点" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=12;fontStyle=1;fontColor=#4b5563;fontFamily=Helvetica Neue;" vertex="1" parent="1">
+          <mxGeometry x="30" y="420" width="120" height="20" as="geometry"/>
+        </mxCell>
+        <mxCell id="adv1" value="UV変更なし" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dcfce7;strokeColor=#86efac;fontColor=#166534;fontSize=10;fontFamily=Helvetica Neue;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="30" y="450" width="130" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="adv2" value="ランタイムコストなし" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dcfce7;strokeColor=#86efac;fontColor=#166534;fontSize=10;fontFamily=Helvetica Neue;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="175" y="450" width="145" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="adv3" value="自動処理（ベイクに組込み）" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dcfce7;strokeColor=#86efac;fontColor=#166534;fontSize=10;fontFamily=Helvetica Neue;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="335" y="450" width="175" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="adv4" value="DXT圧縮対応" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dcfce7;strokeColor=#86efac;fontColor=#166534;fontSize=10;fontFamily=Helvetica Neue;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="525" y="450" width="130" height="30" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

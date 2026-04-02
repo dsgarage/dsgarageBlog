@@ -1,0 +1,93 @@
+<mxfile>
+  <diagram name="従来 vs 方向性ライトマップ" id="directional_lightmap">
+    <mxGraphModel dx="1200" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="620" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <!-- Title -->
+        <mxCell id="title" value="従来のライトマップ vs 方向性ライトマップ" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=16;fontStyle=1;fontColor=#1e40af;fontFamily=Helvetica Neue;" vertex="1" parent="1">
+          <mxGeometry x="250" y="10" width="500" height="30" as="geometry"/>
+        </mxCell>
+        <!-- LEFT SIDE: Conventional -->
+        <mxCell id="conv_header" value="従来のライトマップ" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=14;fontStyle=1;fontColor=#991b1b;fontFamily=Helvetica Neue;" vertex="1" parent="1">
+          <mxGeometry x="100" y="50" width="200" height="25" as="geometry"/>
+        </mxCell>
+        <!-- Conventional texel -->
+        <mxCell id="conv_texel" value="各テクセルに格納:&#xa;照度 = 0.7 (スカラー値1つ)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fee2e2;strokeColor=#fca5a5;fontColor=#991b1b;fontSize=11;fontFamily=Helvetica Neue;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="90" width="220" height="55" as="geometry"/>
+        </mxCell>
+        <!-- Conventional shading -->
+        <mxCell id="conv_formula" value="シェーディング式:&#xa;I = 照度値 (固定)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f3f4f6;strokeColor=#94a3b8;fontColor=#4b5563;fontSize=11;fontFamily=Helvetica Neue;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="40" y="165" width="220" height="50" as="geometry"/>
+        </mxCell>
+        <!-- Conventional result -->
+        <mxCell id="conv_result" value="結果: ノーマルマップが&#xa;反応しない&#xa;→ のっぺりした見た目" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fee2e2;strokeColor=#fca5a5;fontColor=#991b1b;fontSize=11;fontFamily=Helvetica Neue;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="235" width="220" height="60" as="geometry"/>
+        </mxCell>
+        <!-- VS divider -->
+        <mxCell id="vs_label" value="VS" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=24;fontStyle=1;fontColor=#94a3b8;fontFamily=Helvetica Neue;" vertex="1" parent="1">
+          <mxGeometry x="330" y="150" width="50" height="40" as="geometry"/>
+        </mxCell>
+        <!-- RIGHT SIDE: Directional -->
+        <mxCell id="dir_header" value="方向性ライトマップ (Last of Us)" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=14;fontStyle=1;fontColor=#166534;fontFamily=Helvetica Neue;" vertex="1" parent="1">
+          <mxGeometry x="430" y="50" width="320" height="25" as="geometry"/>
+        </mxCell>
+        <!-- Directional texel - Ambient -->
+        <mxCell id="dir_amb" value="C_amb (環境光)&#xa;RGB = (0.3, 0.3, 0.35)&#xa;全方向から均等な光" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dcfce7;strokeColor=#86efac;fontColor=#166534;fontSize=10;fontFamily=Helvetica Neue;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="410" y="85" width="160" height="60" as="geometry"/>
+        </mxCell>
+        <!-- Directional texel - Dir -->
+        <mxCell id="dir_cdir" value="C_dir (方向光)&#xa;RGB = (0.8, 0.7, 0.5)&#xa;支配的方向からの光" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dcfce7;strokeColor=#86efac;fontColor=#166534;fontSize=10;fontFamily=Helvetica Neue;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="590" y="85" width="160" height="60" as="geometry"/>
+        </mxCell>
+        <!-- Directional texel - L vector -->
+        <mxCell id="dir_lvec" value="L (方向ベクトル)&#xa;XYZ = (0.5, 0.8, 0.3)&#xa;光が来る主要な方向" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dbeafe;strokeColor=#93c5fd;fontColor=#1e40af;fontSize=10;fontFamily=Helvetica Neue;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="770" y="85" width="160" height="60" as="geometry"/>
+        </mxCell>
+        <!-- Formula box -->
+        <mxCell id="dir_formula_bg" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fef3c7;strokeColor=#fcd34d;fontColor=#92400e;fontSize=11;fontFamily=Helvetica Neue;" vertex="1" parent="1">
+          <mxGeometry x="410" y="170" width="520" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="dir_formula_title" value="シェーディング式" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=12;fontStyle=1;fontColor=#92400e;fontFamily=Helvetica Neue;" vertex="1" parent="1">
+          <mxGeometry x="420" y="175" width="120" height="20" as="geometry"/>
+        </mxCell>
+        <mxCell id="dir_formula" value="I = C_amb + C_dir × max(N・L, 0)" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=18;fontStyle=1;fontColor=#92400e;fontFamily=Helvetica Neue;" vertex="1" parent="1">
+          <mxGeometry x="470" y="195" width="400" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="dir_formula_note" value="N = ノーマルマップの法線  |  N・L = 法線と光方向の内積（凹凸を拾う）" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=10;fontStyle=0;fontColor=#92400e;fontFamily=Helvetica Neue;" vertex="1" parent="1">
+          <mxGeometry x="440" y="225" width="470" height="20" as="geometry"/>
+        </mxCell>
+        <!-- Directional result -->
+        <mxCell id="dir_result" value="結果: ノーマルマップの凹凸が&#xa;間接光でも見える&#xa;→ リッチな質感表現" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dcfce7;strokeColor=#86efac;fontColor=#166534;fontSize=11;fontFamily=Helvetica Neue;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="530" y="275" width="250" height="60" as="geometry"/>
+        </mxCell>
+        <!-- Arrows from texels to formula -->
+        <mxCell id="ea1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.3;entryY=0;entryDx=0;entryDy=0;strokeColor=#94a3b8;strokeWidth=1;dashed=1;" edge="1" source="dir_amb" target="dir_formula_bg" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="ea2" style="edgeStyle=orthogonalEdgeStyle;rounded=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeColor=#94a3b8;strokeWidth=1;dashed=1;" edge="1" source="dir_cdir" target="dir_formula_bg" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="ea3" style="edgeStyle=orthogonalEdgeStyle;rounded=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.8;entryY=0;entryDx=0;entryDy=0;strokeColor=#94a3b8;strokeWidth=1;dashed=1;" edge="1" source="dir_lvec" target="dir_formula_bg" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="ea4" style="edgeStyle=orthogonalEdgeStyle;rounded=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeColor=#94a3b8;strokeWidth=2;" edge="1" source="dir_formula_bg" target="dir_result" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <!-- Comparison table at bottom -->
+        <mxCell id="comp_title" value="データ量の比較" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=12;fontStyle=1;fontColor=#4b5563;fontFamily=Helvetica Neue;" vertex="1" parent="1">
+          <mxGeometry x="30" y="370" width="120" height="20" as="geometry"/>
+        </mxCell>
+        <mxCell id="comp_conv" value="従来: 1値/テクセル → ノーマルマップ無効" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fee2e2;strokeColor=#fca5a5;fontColor=#991b1b;fontSize=10;fontFamily=Helvetica Neue;align=left;spacingLeft=10;" vertex="1" parent="1">
+          <mxGeometry x="30" y="395" width="400" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="comp_sh" value="SH (2次): 12値/テクセル → 高精度だが直感的でない" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f3f4f6;strokeColor=#94a3b8;fontColor=#4b5563;fontSize=10;fontFamily=Helvetica Neue;align=left;spacingLeft=10;" vertex="1" parent="1">
+          <mxGeometry x="30" y="430" width="400" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="comp_dir" value="Ambient+Directional: 9値/テクセル → バランスが良い (Last of Us採用)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dcfce7;strokeColor=#86efac;fontColor=#166534;fontSize=10;fontFamily=Helvetica Neue;align=left;spacingLeft=10;" vertex="1" parent="1">
+          <mxGeometry x="30" y="465" width="400" height="30" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
