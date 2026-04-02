@@ -1,0 +1,138 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="Page-1" id="aliasing-cause">
+    <mxGraphModel dx="1200" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1400" pageHeight="600" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <!-- Title -->
+        <mxCell id="title" value="&lt;b&gt;エイリアシングの発生原因&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=middle;fontSize=18;fontFamily=Helvetica Neue;fontColor=#1e40af;" vertex="1" parent="1">
+          <mxGeometry x="400" y="20" width="600" height="40" as="geometry" />
+        </mxCell>
+        <!-- Step 1: Continuous signal -->
+        <mxCell id="box1" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dbeafe;strokeColor=#1e40af;arcSize=10;" vertex="1" parent="1">
+          <mxGeometry x="40" y="80" width="380" height="280" as="geometry" />
+        </mxCell>
+        <mxCell id="label1" value="&lt;b&gt;連続的な斜め線&lt;/b&gt;&lt;br&gt;（理想の映像）" style="text;html=1;align=center;verticalAlign=top;fontSize=14;fontFamily=Helvetica Neue;fontColor=#1e40af;" vertex="1" parent="1">
+          <mxGeometry x="100" y="90" width="260" height="40" as="geometry" />
+        </mxCell>
+        <!-- Diagonal line representation -->
+        <mxCell id="line1" value="" style="endArrow=none;html=1;strokeWidth=4;strokeColor=#1e40af;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="80" y="340" as="sourcePoint" />
+            <mxPoint x="380" y="140" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="smooth_label" value="滑らかな線" style="text;html=1;align=center;fontSize=12;fontFamily=Helvetica Neue;fontColor=#1e40af;" vertex="1" parent="1">
+          <mxGeometry x="260" y="310" width="120" height="30" as="geometry" />
+        </mxCell>
+        <!-- Arrow 1 -->
+        <mxCell id="arrow1" value="ピクセルグリッドで&lt;br&gt;サンプリング" style="shape=flexArrow;endArrow=classic;html=1;fillColor=#fef3c7;strokeColor=#92400e;fontFamily=Helvetica Neue;fontSize=12;fontColor=#92400e;width=20;endSize=8;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="440" y="220" as="sourcePoint" />
+            <mxPoint x="540" y="220" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <!-- Step 2: Pixel grid sampling -->
+        <mxCell id="box2" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f3f4f6;strokeColor=#4b5563;arcSize=10;" vertex="1" parent="1">
+          <mxGeometry x="560" y="80" width="380" height="280" as="geometry" />
+        </mxCell>
+        <mxCell id="label2" value="&lt;b&gt;離散的なピクセルグリッド&lt;/b&gt;&lt;br&gt;（実際の画面）" style="text;html=1;align=center;verticalAlign=top;fontSize=14;fontFamily=Helvetica Neue;fontColor=#4b5563;" vertex="1" parent="1">
+          <mxGeometry x="620" y="90" width="260" height="40" as="geometry" />
+        </mxCell>
+        <!-- Grid lines -->
+        <mxCell id="g1" value="" style="endArrow=none;html=1;strokeColor=#d1d5db;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry"><mxPoint x="600" y="140" as="sourcePoint" /><mxPoint x="600" y="340" as="targetPoint" /></mxGeometry>
+        </mxCell>
+        <mxCell id="g2" value="" style="endArrow=none;html=1;strokeColor=#d1d5db;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry"><mxPoint x="640" y="140" as="sourcePoint" /><mxPoint x="640" y="340" as="targetPoint" /></mxGeometry>
+        </mxCell>
+        <mxCell id="g3" value="" style="endArrow=none;html=1;strokeColor=#d1d5db;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry"><mxPoint x="680" y="140" as="sourcePoint" /><mxPoint x="680" y="340" as="targetPoint" /></mxGeometry>
+        </mxCell>
+        <mxCell id="g4" value="" style="endArrow=none;html=1;strokeColor=#d1d5db;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry"><mxPoint x="720" y="140" as="sourcePoint" /><mxPoint x="720" y="340" as="targetPoint" /></mxGeometry>
+        </mxCell>
+        <mxCell id="g5" value="" style="endArrow=none;html=1;strokeColor=#d1d5db;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry"><mxPoint x="760" y="140" as="sourcePoint" /><mxPoint x="760" y="340" as="targetPoint" /></mxGeometry>
+        </mxCell>
+        <mxCell id="g6" value="" style="endArrow=none;html=1;strokeColor=#d1d5db;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry"><mxPoint x="800" y="140" as="sourcePoint" /><mxPoint x="800" y="340" as="targetPoint" /></mxGeometry>
+        </mxCell>
+        <mxCell id="g7" value="" style="endArrow=none;html=1;strokeColor=#d1d5db;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry"><mxPoint x="840" y="140" as="sourcePoint" /><mxPoint x="840" y="340" as="targetPoint" /></mxGeometry>
+        </mxCell>
+        <mxCell id="g8" value="" style="endArrow=none;html=1;strokeColor=#d1d5db;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry"><mxPoint x="880" y="140" as="sourcePoint" /><mxPoint x="880" y="340" as="targetPoint" /></mxGeometry>
+        </mxCell>
+        <mxCell id="g9" value="" style="endArrow=none;html=1;strokeColor=#d1d5db;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry"><mxPoint x="920" y="140" as="sourcePoint" /><mxPoint x="920" y="340" as="targetPoint" /></mxGeometry>
+        </mxCell>
+        <!-- Horizontal grid -->
+        <mxCell id="h1" value="" style="endArrow=none;html=1;strokeColor=#d1d5db;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry"><mxPoint x="600" y="140" as="sourcePoint" /><mxPoint x="920" y="140" as="targetPoint" /></mxGeometry>
+        </mxCell>
+        <mxCell id="h2" value="" style="endArrow=none;html=1;strokeColor=#d1d5db;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry"><mxPoint x="600" y="180" as="sourcePoint" /><mxPoint x="920" y="180" as="targetPoint" /></mxGeometry>
+        </mxCell>
+        <mxCell id="h3" value="" style="endArrow=none;html=1;strokeColor=#d1d5db;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry"><mxPoint x="600" y="220" as="sourcePoint" /><mxPoint x="920" y="220" as="targetPoint" /></mxGeometry>
+        </mxCell>
+        <mxCell id="h4" value="" style="endArrow=none;html=1;strokeColor=#d1d5db;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry"><mxPoint x="600" y="260" as="sourcePoint" /><mxPoint x="920" y="260" as="targetPoint" /></mxGeometry>
+        </mxCell>
+        <mxCell id="h5" value="" style="endArrow=none;html=1;strokeColor=#d1d5db;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry"><mxPoint x="600" y="300" as="sourcePoint" /><mxPoint x="920" y="300" as="targetPoint" /></mxGeometry>
+        </mxCell>
+        <mxCell id="h6" value="" style="endArrow=none;html=1;strokeColor=#d1d5db;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry"><mxPoint x="600" y="340" as="sourcePoint" /><mxPoint x="920" y="340" as="targetPoint" /></mxGeometry>
+        </mxCell>
+        <!-- Staircase pixels (jaggy) -->
+        <mxCell id="p1" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#991b1b;strokeColor=none;opacity=80;" vertex="1" parent="1">
+          <mxGeometry x="600" y="300" width="40" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="p2" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#991b1b;strokeColor=none;opacity=80;" vertex="1" parent="1">
+          <mxGeometry x="640" y="260" width="40" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="p3" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#991b1b;strokeColor=none;opacity=80;" vertex="1" parent="1">
+          <mxGeometry x="680" y="260" width="40" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="p4" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#991b1b;strokeColor=none;opacity=80;" vertex="1" parent="1">
+          <mxGeometry x="720" y="220" width="40" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="p5" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#991b1b;strokeColor=none;opacity=80;" vertex="1" parent="1">
+          <mxGeometry x="760" y="220" width="40" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="p6" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#991b1b;strokeColor=none;opacity=80;" vertex="1" parent="1">
+          <mxGeometry x="800" y="180" width="40" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="p7" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#991b1b;strokeColor=none;opacity=80;" vertex="1" parent="1">
+          <mxGeometry x="840" y="140" width="40" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="p8" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#991b1b;strokeColor=none;opacity=80;" vertex="1" parent="1">
+          <mxGeometry x="880" y="140" width="40" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="jaggy_label" value="ジャギー（階段状のギザギザ）" style="text;html=1;align=center;fontSize=12;fontFamily=Helvetica Neue;fontColor=#991b1b;" vertex="1" parent="1">
+          <mxGeometry x="660" y="345" width="220" height="25" as="geometry" />
+        </mxCell>
+        <!-- Bottom explanation -->
+        <mxCell id="nyquist_box" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fef3c7;strokeColor=#92400e;arcSize=10;" vertex="1" parent="1">
+          <mxGeometry x="960" y="80" width="400" height="280" as="geometry" />
+        </mxCell>
+        <mxCell id="nyquist_title" value="&lt;b&gt;ナイキスト=シャノンの標本化定理&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=top;fontSize=14;fontFamily=Helvetica Neue;fontColor=#92400e;" vertex="1" parent="1">
+          <mxGeometry x="980" y="90" width="360" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="nyquist_text" value="信号を正しく再現するには&lt;br&gt;&lt;b&gt;信号の最高周波数の 2倍以上&lt;/b&gt;&lt;br&gt;のサンプリング周波数が必要&lt;br&gt;&lt;br&gt;ゲーム画面では:&lt;br&gt;• 1ピクセルより細かいディテール&lt;br&gt;  = 高周波成分&lt;br&gt;• ピクセルグリッド&lt;br&gt;  = サンプリング周波数&lt;br&gt;&lt;br&gt;→ 高周波成分が存在する限り&lt;br&gt;  エイリアシングは原理的に不可避" style="text;html=1;align=left;verticalAlign=top;fontSize=12;fontFamily=Helvetica Neue;fontColor=#92400e;spacingLeft=10;" vertex="1" parent="1">
+          <mxGeometry x="980" y="120" width="360" height="230" as="geometry" />
+        </mxCell>
+        <!-- Arrow 2 -->
+        <mxCell id="arrow_cause" value="情報の喪失" style="text;html=1;align=center;fontSize=11;fontFamily=Helvetica Neue;fontColor=#991b1b;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="450" y="380" width="100" height="20" as="geometry" />
+        </mxCell>
+        <!-- Bottom banner -->
+        <mxCell id="bottom" value="&lt;b&gt;アンチエイリアシング = 失われた情報を推定・補間して、エッジを滑らかに見せる技術&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dcfce7;strokeColor=#166534;fontSize=14;fontFamily=Helvetica Neue;fontColor=#166534;arcSize=10;" vertex="1" parent="1">
+          <mxGeometry x="200" y="410" width="1000" height="50" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

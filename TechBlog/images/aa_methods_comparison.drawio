@@ -1,0 +1,197 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="Page-1" id="aa-methods">
+    <mxGraphModel dx="1400" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="800" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <!-- Title -->
+        <mxCell id="title" value="&lt;b&gt;4つのAA手法の処理方法の比較&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=middle;fontSize=20;fontFamily=Helvetica Neue;fontColor=#1e40af;" vertex="1" parent="1">
+          <mxGeometry x="400" y="10" width="800" height="40" as="geometry" />
+        </mxCell>
+        <!-- SSAA Column -->
+        <mxCell id="ssaa_box" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fee2e2;strokeColor=#991b1b;arcSize=8;" vertex="1" parent="1">
+          <mxGeometry x="40" y="70" width="360" height="700" as="geometry" />
+        </mxCell>
+        <mxCell id="ssaa_title" value="&lt;b&gt;SSAA&lt;/b&gt;&lt;br&gt;Super-Sample AA" style="text;html=1;align=center;fontSize=16;fontFamily=Helvetica Neue;fontColor=#991b1b;" vertex="1" parent="1">
+          <mxGeometry x="80" y="80" width="280" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="ssaa_step1" value="&lt;b&gt;1. 4倍解像度でレンダリング&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#991b1b;fontSize=12;fontFamily=Helvetica Neue;fontColor=#991b1b;" vertex="1" parent="1">
+          <mxGeometry x="60" y="140" width="320" height="35" as="geometry" />
+        </mxCell>
+        <!-- SSAA 4x grid -->
+        <mxCell id="ssaa_g1" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ef4444;strokeColor=#991b1b;opacity=90;" vertex="1" parent="1">
+          <mxGeometry x="120" y="190" width="50" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="ssaa_g2" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ef4444;strokeColor=#991b1b;opacity=70;" vertex="1" parent="1">
+          <mxGeometry x="170" y="190" width="50" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="ssaa_g3" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ef4444;strokeColor=#991b1b;opacity=50;" vertex="1" parent="1">
+          <mxGeometry x="120" y="240" width="50" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="ssaa_g4" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ef4444;strokeColor=#991b1b;opacity=30;" vertex="1" parent="1">
+          <mxGeometry x="170" y="240" width="50" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="ssaa_shade" value="4回シェーディング" style="text;html=1;align=center;fontSize=11;fontFamily=Helvetica Neue;fontColor=#991b1b;" vertex="1" parent="1">
+          <mxGeometry x="240" y="220" width="120" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="ssaa_step2" value="&lt;b&gt;2. 4ピクセルの平均で縮小&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#991b1b;fontSize=12;fontFamily=Helvetica Neue;fontColor=#991b1b;" vertex="1" parent="1">
+          <mxGeometry x="60" y="310" width="320" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="ssaa_result" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ef4444;strokeColor=#991b1b;opacity=60;" vertex="1" parent="1">
+          <mxGeometry x="155" y="360" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="ssaa_result_label" value="平均色" style="text;html=1;align=center;fontSize=11;fontFamily=Helvetica Neue;fontColor=#991b1b;" vertex="1" parent="1">
+          <mxGeometry x="260" y="385" width="80" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="ssaa_cost" value="&lt;b&gt;コスト: 4x 全リソース&lt;/b&gt;&lt;br&gt;Z-Buffer: 4x&lt;br&gt;フレームバッファ: 4x&lt;br&gt;シェーディング: &lt;font color=&quot;#dc2626&quot;&gt;&lt;b&gt;4x&lt;/b&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#991b1b;fontSize=12;fontFamily=Helvetica Neue;fontColor=#991b1b;align=left;spacingLeft=15;" vertex="1" parent="1">
+          <mxGeometry x="60" y="460" width="320" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="ssaa_verdict" value="品質: ★★★★★&lt;br&gt;速度: ★☆☆☆☆&lt;br&gt;&lt;b&gt;理想的だが非現実的&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#991b1b;strokeColor=#991b1b;fontSize=13;fontFamily=Helvetica Neue;fontColor=#ffffff;" vertex="1" parent="1">
+          <mxGeometry x="60" y="560" width="320" height="70" as="geometry" />
+        </mxCell>
+        <!-- MSAA Column -->
+        <mxCell id="msaa_box" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dbeafe;strokeColor=#1e40af;arcSize=8;" vertex="1" parent="1">
+          <mxGeometry x="420" y="70" width="360" height="700" as="geometry" />
+        </mxCell>
+        <mxCell id="msaa_title" value="&lt;b&gt;MSAA&lt;/b&gt;&lt;br&gt;Multi-Sample AA" style="text;html=1;align=center;fontSize=16;fontFamily=Helvetica Neue;fontColor=#1e40af;" vertex="1" parent="1">
+          <mxGeometry x="460" y="80" width="280" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="msaa_step1" value="&lt;b&gt;1. 4サンプルで深度テスト&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#1e40af;fontSize=12;fontFamily=Helvetica Neue;fontColor=#1e40af;" vertex="1" parent="1">
+          <mxGeometry x="440" y="140" width="320" height="35" as="geometry" />
+        </mxCell>
+        <!-- MSAA pixel with sample points -->
+        <mxCell id="msaa_pixel" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#eff6ff;strokeColor=#1e40af;" vertex="1" parent="1">
+          <mxGeometry x="510" y="190" width="100" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="msaa_s1" value="&#10004;" style="text;html=1;align=center;fontSize=14;fontColor=#166534;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="515" y="195" width="30" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="msaa_s2" value="&#10004;" style="text;html=1;align=center;fontSize=14;fontColor=#166534;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="565" y="195" width="30" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="msaa_s3" value="&#10008;" style="text;html=1;align=center;fontSize=14;fontColor=#991b1b;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="515" y="250" width="30" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="msaa_s4" value="&#10008;" style="text;html=1;align=center;fontSize=14;fontColor=#991b1b;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="565" y="250" width="30" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="msaa_edge_label" value="エッジ" style="text;html=1;align=center;fontSize=11;fontFamily=Helvetica Neue;fontColor=#1e40af;" vertex="1" parent="1">
+          <mxGeometry x="630" y="220" width="60" height="20" as="geometry" />
+        </mxCell>
+        <!-- Edge line through pixel -->
+        <mxCell id="msaa_edge" value="" style="endArrow=none;html=1;strokeWidth=2;strokeColor=#1e40af;dashed=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="510" y="230" as="sourcePoint" />
+            <mxPoint x="610" y="230" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msaa_step2" value="&lt;b&gt;2. シェーディングは1回だけ&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#1e40af;fontSize=12;fontFamily=Helvetica Neue;fontColor=#1e40af;" vertex="1" parent="1">
+          <mxGeometry x="440" y="310" width="320" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="msaa_result" value="色 × 2/4 + 背景 × 2/4" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#93c5fd;strokeColor=#1e40af;fontSize=12;fontFamily=Helvetica Neue;fontColor=#1e40af;" vertex="1" parent="1">
+          <mxGeometry x="520" y="360" width="160" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="msaa_cost" value="&lt;b&gt;コスト: エッジのみ追加&lt;/b&gt;&lt;br&gt;Z-Buffer: 4x&lt;br&gt;フレームバッファ: 4x&lt;br&gt;シェーディング: &lt;font color=&quot;#166534&quot;&gt;&lt;b&gt;1x&lt;/b&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#1e40af;fontSize=12;fontFamily=Helvetica Neue;fontColor=#1e40af;align=left;spacingLeft=15;" vertex="1" parent="1">
+          <mxGeometry x="440" y="460" width="320" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="msaa_verdict" value="品質: ★★★★☆&lt;br&gt;速度: ★★★☆☆&lt;br&gt;&lt;b&gt;Forward + VR の定番&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1e40af;strokeColor=#1e40af;fontSize=13;fontFamily=Helvetica Neue;fontColor=#ffffff;" vertex="1" parent="1">
+          <mxGeometry x="440" y="560" width="320" height="70" as="geometry" />
+        </mxCell>
+        <!-- FXAA Column -->
+        <mxCell id="fxaa_box" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fef3c7;strokeColor=#92400e;arcSize=8;" vertex="1" parent="1">
+          <mxGeometry x="800" y="70" width="360" height="700" as="geometry" />
+        </mxCell>
+        <mxCell id="fxaa_title" value="&lt;b&gt;FXAA&lt;/b&gt;&lt;br&gt;Fast Approximate AA" style="text;html=1;align=center;fontSize=16;fontFamily=Helvetica Neue;fontColor=#92400e;" vertex="1" parent="1">
+          <mxGeometry x="840" y="80" width="280" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="fxaa_step1" value="&lt;b&gt;1. 輝度でエッジ検出&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#92400e;fontSize=12;fontFamily=Helvetica Neue;fontColor=#92400e;" vertex="1" parent="1">
+          <mxGeometry x="820" y="140" width="320" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="fxaa_luma" value="Y = 0.299R + 0.587G + 0.114B&lt;br&gt;MaxL - MinL &amp;ge; 閾値 → エッジ" style="text;html=1;align=center;fontSize=12;fontFamily=Helvetica Neue;fontColor=#92400e;" vertex="1" parent="1">
+          <mxGeometry x="840" y="190" width="300" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="fxaa_step2" value="&lt;b&gt;2. エッジ方向に沿ってブレンド&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#92400e;fontSize=12;fontFamily=Helvetica Neue;fontColor=#92400e;" vertex="1" parent="1">
+          <mxGeometry x="820" y="260" width="320" height="35" as="geometry" />
+        </mxCell>
+        <!-- FXAA blur illustration -->
+        <mxCell id="fxaa_before" value="Before" style="text;html=1;align=center;fontSize=10;fontFamily=Helvetica Neue;fontColor=#92400e;" vertex="1" parent="1">
+          <mxGeometry x="860" y="305" width="60" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="fxaa_b1" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fbbf24;strokeColor=#92400e;" vertex="1" parent="1">
+          <mxGeometry x="860" y="325" width="30" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="fxaa_b2" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#92400e;" vertex="1" parent="1">
+          <mxGeometry x="890" y="325" width="30" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="fxaa_arrow" value="→" style="text;html=1;align=center;fontSize=20;fontColor=#92400e;" vertex="1" parent="1">
+          <mxGeometry x="935" y="325" width="30" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="fxaa_after" value="After" style="text;html=1;align=center;fontSize=10;fontFamily=Helvetica Neue;fontColor=#92400e;" vertex="1" parent="1">
+          <mxGeometry x="980" y="305" width="60" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="fxaa_a1" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fcd34d;strokeColor=#92400e;" vertex="1" parent="1">
+          <mxGeometry x="980" y="325" width="30" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="fxaa_a2" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fef9c3;strokeColor=#92400e;" vertex="1" parent="1">
+          <mxGeometry x="1010" y="325" width="30" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="fxaa_blend_label" value="隣接ピクセルと加重平均" style="text;html=1;align=center;fontSize=11;fontFamily=Helvetica Neue;fontColor=#92400e;" vertex="1" parent="1">
+          <mxGeometry x="870" y="365" width="200" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="fxaa_cost" value="&lt;b&gt;コスト: ポストプロセス1パス&lt;/b&gt;&lt;br&gt;Z-Buffer: 1x&lt;br&gt;フレームバッファ: 1x&lt;br&gt;シェーディング: &lt;font color=&quot;#166534&quot;&gt;&lt;b&gt;1x&lt;/b&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#92400e;fontSize=12;fontFamily=Helvetica Neue;fontColor=#92400e;align=left;spacingLeft=15;" vertex="1" parent="1">
+          <mxGeometry x="820" y="460" width="320" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="fxaa_verdict" value="品質: ★★★☆☆&lt;br&gt;速度: ★★★★★&lt;br&gt;&lt;b&gt;最軽量、やや甘い&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#92400e;strokeColor=#92400e;fontSize=13;fontFamily=Helvetica Neue;fontColor=#ffffff;" vertex="1" parent="1">
+          <mxGeometry x="820" y="560" width="320" height="70" as="geometry" />
+        </mxCell>
+        <!-- TAA Column -->
+        <mxCell id="taa_box" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dcfce7;strokeColor=#166534;arcSize=8;" vertex="1" parent="1">
+          <mxGeometry x="1180" y="70" width="360" height="700" as="geometry" />
+        </mxCell>
+        <mxCell id="taa_title" value="&lt;b&gt;TAA&lt;/b&gt;&lt;br&gt;Temporal AA" style="text;html=1;align=center;fontSize=16;fontFamily=Helvetica Neue;fontColor=#166534;" vertex="1" parent="1">
+          <mxGeometry x="1220" y="80" width="280" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="taa_step1" value="&lt;b&gt;1. 毎フレーム微小ジッター&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#166534;fontSize=12;fontFamily=Helvetica Neue;fontColor=#166534;" vertex="1" parent="1">
+          <mxGeometry x="1200" y="140" width="320" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="taa_frames" value="Frame N-1: (0.25, 0.25)&lt;br&gt;Frame N:   (0.75, 0.75)&lt;br&gt;Frame N+1: (0.25, 0.75)" style="text;html=1;align=left;fontSize=12;fontFamily=Helvetica Neue;fontColor=#166534;spacingLeft=10;" vertex="1" parent="1">
+          <mxGeometry x="1220" y="190" width="300" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="taa_step2" value="&lt;b&gt;2. モーションベクトルで合成&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#166534;fontSize=12;fontFamily=Helvetica Neue;fontColor=#166534;" vertex="1" parent="1">
+          <mxGeometry x="1200" y="260" width="320" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="taa_blend" value="最終色 = &lt;b&gt;0.9&lt;/b&gt; × 前フレーム&lt;br&gt;       + &lt;b&gt;0.1&lt;/b&gt; × 現フレーム&lt;br&gt;&lt;br&gt;カラークリッピングで&lt;br&gt;ゴースティング防止" style="text;html=1;align=left;fontSize=12;fontFamily=Helvetica Neue;fontColor=#166534;spacingLeft=10;" vertex="1" parent="1">
+          <mxGeometry x="1220" y="310" width="280" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="taa_cost" value="&lt;b&gt;コスト: ヒストリーバッファ&lt;/b&gt;&lt;br&gt;Z-Buffer: 1x&lt;br&gt;フレームバッファ: 1x + History&lt;br&gt;シェーディング: &lt;font color=&quot;#166534&quot;&gt;&lt;b&gt;1x&lt;/b&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#166534;fontSize=12;fontFamily=Helvetica Neue;fontColor=#166534;align=left;spacingLeft=15;" vertex="1" parent="1">
+          <mxGeometry x="1200" y="460" width="320" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="taa_verdict" value="品質: ★★★★☆&lt;br&gt;速度: ★★★★☆&lt;br&gt;&lt;b&gt;現代AAゲームの主流&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#166534;strokeColor=#166534;fontSize=13;fontFamily=Helvetica Neue;fontColor=#ffffff;" vertex="1" parent="1">
+          <mxGeometry x="1200" y="560" width="320" height="70" as="geometry" />
+        </mxCell>
+        <!-- Evolution arrows -->
+        <mxCell id="evo1" value="エッジだけ&lt;br&gt;サンプル" style="shape=flexArrow;endArrow=classic;html=1;fillColor=#f3f4f6;strokeColor=#4b5563;fontFamily=Helvetica Neue;fontSize=10;fontColor=#4b5563;width=12;endSize=5;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="220" y="660" as="sourcePoint" />
+            <mxPoint x="600" y="660" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="evo2" value="ポスト&lt;br&gt;プロセス化" style="shape=flexArrow;endArrow=classic;html=1;fillColor=#f3f4f6;strokeColor=#4b5563;fontFamily=Helvetica Neue;fontSize=10;fontColor=#4b5563;width=12;endSize=5;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="600" y="660" as="sourcePoint" />
+            <mxPoint x="980" y="660" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="evo3" value="時間方向&lt;br&gt;の活用" style="shape=flexArrow;endArrow=classic;html=1;fillColor=#f3f4f6;strokeColor=#4b5563;fontFamily=Helvetica Neue;fontSize=10;fontColor=#4b5563;width=12;endSize=5;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="980" y="660" as="sourcePoint" />
+            <mxPoint x="1360" y="660" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="evo_label" value="&lt;b&gt;進化の方向: 力業 → 効率化 → 発想転換 → 時間活用&lt;/b&gt;" style="text;html=1;align=center;fontSize=14;fontFamily=Helvetica Neue;fontColor=#4b5563;" vertex="1" parent="1">
+          <mxGeometry x="400" y="690" width="800" height="30" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

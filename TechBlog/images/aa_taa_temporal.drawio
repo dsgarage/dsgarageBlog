@@ -1,0 +1,166 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="Page-1" id="taa-temporal">
+    <mxGraphModel dx="1400" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1500" pageHeight="700" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <!-- Title -->
+        <mxCell id="title" value="&lt;b&gt;TAA の時間方向フィルタリング&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=middle;fontSize=20;fontFamily=Helvetica Neue;fontColor=#1e40af;" vertex="1" parent="1">
+          <mxGeometry x="400" y="10" width="700" height="40" as="geometry" />
+        </mxCell>
+        <!-- Frame N-1 -->
+        <mxCell id="frame_prev_box" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f3f4f6;strokeColor=#4b5563;arcSize=8;" vertex="1" parent="1">
+          <mxGeometry x="40" y="70" width="300" height="350" as="geometry" />
+        </mxCell>
+        <mxCell id="frame_prev_title" value="&lt;b&gt;フレーム N-1&lt;/b&gt;&lt;br&gt;（ヒストリーバッファ）" style="text;html=1;align=center;fontSize=14;fontFamily=Helvetica Neue;fontColor=#4b5563;" vertex="1" parent="1">
+          <mxGeometry x="60" y="80" width="260" height="40" as="geometry" />
+        </mxCell>
+        <!-- Previous frame grid -->
+        <mxCell id="prev_pixel_bg" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e5e7eb;strokeColor=#9ca3af;" vertex="1" parent="1">
+          <mxGeometry x="90" y="140" width="200" height="200" as="geometry" />
+        </mxCell>
+        <!-- Sample point in prev frame -->
+        <mxCell id="prev_sample" value="&#9679;" style="text;html=1;align=center;fontSize=16;fontColor=#1e40af;" vertex="1" parent="1">
+          <mxGeometry x="135" y="200" width="20" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="prev_jitter_label" value="ジッター位置&lt;br&gt;(0.25, 0.25)" style="text;html=1;align=center;fontSize=11;fontFamily=Helvetica Neue;fontColor=#4b5563;" vertex="1" parent="1">
+          <mxGeometry x="90" y="350" width="200" height="30" as="geometry" />
+        </mxCell>
+        <!-- Object in prev frame -->
+        <mxCell id="prev_obj" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#93c5fd;strokeColor=#1e40af;opacity=60;" vertex="1" parent="1">
+          <mxGeometry x="110" y="160" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="prev_obj_label" value="オブジェクト" style="text;html=1;align=center;fontSize=10;fontFamily=Helvetica Neue;fontColor=#1e40af;" vertex="1" parent="1">
+          <mxGeometry x="115" y="245" width="70" height="15" as="geometry" />
+        </mxCell>
+        <!-- Arrow: prev to current -->
+        <mxCell id="arrow_motion" value="" style="shape=flexArrow;endArrow=classic;html=1;fillColor=#dbeafe;strokeColor=#1e40af;width=16;endSize=6;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="360" y="240" as="sourcePoint" />
+            <mxPoint x="430" y="240" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="motion_label" value="&lt;b&gt;モーション&lt;br&gt;ベクトル&lt;/b&gt;&lt;br&gt;(dx, dy)" style="text;html=1;align=center;fontSize=11;fontFamily=Helvetica Neue;fontColor=#1e40af;" vertex="1" parent="1">
+          <mxGeometry x="350" y="260" width="90" height="50" as="geometry" />
+        </mxCell>
+        <!-- Frame N -->
+        <mxCell id="frame_curr_box" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dbeafe;strokeColor=#1e40af;arcSize=8;" vertex="1" parent="1">
+          <mxGeometry x="450" y="70" width="300" height="350" as="geometry" />
+        </mxCell>
+        <mxCell id="frame_curr_title" value="&lt;b&gt;フレーム N&lt;/b&gt;&lt;br&gt;（現在フレーム + ジッター）" style="text;html=1;align=center;fontSize=14;fontFamily=Helvetica Neue;fontColor=#1e40af;" vertex="1" parent="1">
+          <mxGeometry x="470" y="80" width="260" height="40" as="geometry" />
+        </mxCell>
+        <!-- Current frame grid -->
+        <mxCell id="curr_pixel_bg" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#eff6ff;strokeColor=#93c5fd;" vertex="1" parent="1">
+          <mxGeometry x="500" y="140" width="200" height="200" as="geometry" />
+        </mxCell>
+        <!-- Sample point shifted -->
+        <mxCell id="curr_sample" value="&#9679;" style="text;html=1;align=center;fontSize=16;fontColor=#dc2626;" vertex="1" parent="1">
+          <mxGeometry x="595" y="255" width="20" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="curr_jitter_label" value="ジッター位置&lt;br&gt;(0.75, 0.75)" style="text;html=1;align=center;fontSize=11;fontFamily=Helvetica Neue;fontColor=#1e40af;" vertex="1" parent="1">
+          <mxGeometry x="500" y="350" width="200" height="30" as="geometry" />
+        </mxCell>
+        <!-- Object moved in current frame -->
+        <mxCell id="curr_obj" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#3b82f6;strokeColor=#1e40af;opacity=70;" vertex="1" parent="1">
+          <mxGeometry x="540" y="180" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="curr_obj_label" value="移動後" style="text;html=1;align=center;fontSize=10;fontFamily=Helvetica Neue;fontColor=#1e40af;" vertex="1" parent="1">
+          <mxGeometry x="550" y="265" width="60" height="15" as="geometry" />
+        </mxCell>
+        <!-- Arrow to blending -->
+        <mxCell id="arrow_blend" value="" style="shape=flexArrow;endArrow=classic;html=1;fillColor=#dcfce7;strokeColor=#166534;width=16;endSize=6;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="770" y="240" as="sourcePoint" />
+            <mxPoint x="840" y="240" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <!-- Color Clipping + Blend box -->
+        <mxCell id="clip_box" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fef3c7;strokeColor=#92400e;arcSize=8;" vertex="1" parent="1">
+          <mxGeometry x="860" y="70" width="280" height="350" as="geometry" />
+        </mxCell>
+        <mxCell id="clip_title" value="&lt;b&gt;カラークリッピング&lt;br&gt;+ ブレンド&lt;/b&gt;" style="text;html=1;align=center;fontSize=14;fontFamily=Helvetica Neue;fontColor=#92400e;" vertex="1" parent="1">
+          <mxGeometry x="880" y="80" width="240" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="clip_desc1" value="&lt;b&gt;検証:&lt;/b&gt;&lt;br&gt;現在ピクセル周囲の色から&lt;br&gt;「ありえる色の範囲」を計算" style="text;html=1;align=left;fontSize=12;fontFamily=Helvetica Neue;fontColor=#92400e;spacingLeft=10;" vertex="1" parent="1">
+          <mxGeometry x="880" y="130" width="240" height="55" as="geometry" />
+        </mxCell>
+        <!-- Bounding box illustration -->
+        <mxCell id="bbox" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#92400e;strokeWidth=2;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="920" y="195" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="bbox_label" value="色の許容範囲&lt;br&gt;[MinRGB, MaxRGB]" style="text;html=1;align=center;fontSize=10;fontFamily=Helvetica Neue;fontColor=#92400e;" vertex="1" parent="1">
+          <mxGeometry x="925" y="210" width="110" height="30" as="geometry" />
+        </mxCell>
+        <!-- Point inside bbox -->
+        <mxCell id="pt_in" value="&#9679;" style="text;html=1;align=center;fontSize=14;fontColor=#166534;" vertex="1" parent="1">
+          <mxGeometry x="960" y="245" width="20" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="pt_in_label" value="OK" style="text;html=1;align=center;fontSize=10;fontColor=#166534;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="975" y="248" width="25" height="15" as="geometry" />
+        </mxCell>
+        <!-- Point outside bbox clamped -->
+        <mxCell id="pt_out" value="&#9679;" style="text;html=1;align=center;fontSize=14;fontColor=#991b1b;" vertex="1" parent="1">
+          <mxGeometry x="1050" y="210" width="20" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="pt_clamp_arrow" value="" style="endArrow=classic;html=1;strokeColor=#991b1b;strokeWidth=2;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1055" y="220" as="sourcePoint" />
+            <mxPoint x="1040" y="225" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="pt_out_label" value="クランプ" style="text;html=1;align=center;fontSize=10;fontColor=#991b1b;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1050" y="195" width="50" height="15" as="geometry" />
+        </mxCell>
+        <mxCell id="blend_formula" value="&lt;b&gt;ブレンド:&lt;/b&gt;&lt;br&gt;出力 = &lt;font color=&quot;#4b5563&quot;&gt;0.9&lt;/font&gt; × 前フレーム&lt;br&gt;     + &lt;font color=&quot;#1e40af&quot;&gt;0.1&lt;/font&gt; × 現フレーム" style="text;html=1;align=left;fontSize=12;fontFamily=Helvetica Neue;fontColor=#92400e;spacingLeft=10;" vertex="1" parent="1">
+          <mxGeometry x="880" y="290" width="240" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="ghosting_note" value="範囲外 → クランプ&lt;br&gt;= ゴースティング防止" style="text;html=1;align=center;fontSize=11;fontFamily=Helvetica Neue;fontColor=#991b1b;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="880" y="350" width="240" height="30" as="geometry" />
+        </mxCell>
+        <!-- Final result arrow -->
+        <mxCell id="arrow_final" value="" style="shape=flexArrow;endArrow=classic;html=1;fillColor=#dcfce7;strokeColor=#166534;width=16;endSize=6;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1160" y="240" as="sourcePoint" />
+            <mxPoint x="1230" y="240" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <!-- Final output -->
+        <mxCell id="final_box" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dcfce7;strokeColor=#166534;arcSize=8;" vertex="1" parent="1">
+          <mxGeometry x="1250" y="70" width="200" height="350" as="geometry" />
+        </mxCell>
+        <mxCell id="final_title" value="&lt;b&gt;最終出力&lt;/b&gt;" style="text;html=1;align=center;fontSize=16;fontFamily=Helvetica Neue;fontColor=#166534;" vertex="1" parent="1">
+          <mxGeometry x="1270" y="80" width="160" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="final_pixel" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#4ade80;strokeColor=#166534;" vertex="1" parent="1">
+          <mxGeometry x="1300" y="140" width="100" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="final_desc" value="複数フレームの&lt;br&gt;情報が蓄積された&lt;br&gt;滑らかなピクセル&lt;br&gt;&lt;br&gt;実質的に&lt;br&gt;&lt;b&gt;マルチサンプル&lt;/b&gt;&lt;br&gt;と同等の効果" style="text;html=1;align=center;fontSize=12;fontFamily=Helvetica Neue;fontColor=#166534;" vertex="1" parent="1">
+          <mxGeometry x="1270" y="260" width="160" height="120" as="geometry" />
+        </mxCell>
+        <!-- Bottom: advantages and disadvantages -->
+        <mxCell id="adv_box" value="&lt;b&gt;メリット&lt;/b&gt;&lt;br&gt;&#8226; 1x解像度で動作（追加バッファはHistory 1枚のみ）&lt;br&gt;&#8226; スペキュラエイリアシングにも効果的&lt;br&gt;&#8226; Deferred Rendering と好相性" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dcfce7;strokeColor=#166534;fontSize=12;fontFamily=Helvetica Neue;fontColor=#166534;align=left;spacingLeft=15;" vertex="1" parent="1">
+          <mxGeometry x="40" y="450" width="680" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="dis_box" value="&lt;b&gt;デメリット&lt;/b&gt;&lt;br&gt;&#8226; ゴースティング（残像）: 高速移動オブジェクトの背後に発生&lt;br&gt;&#8226; 動きの速いシーンで品質低下&lt;br&gt;&#8226; VR のようなレイテンシ最小環境には不向き" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fee2e2;strokeColor=#991b1b;fontSize=12;fontFamily=Helvetica Neue;fontColor=#991b1b;align=left;spacingLeft=15;" vertex="1" parent="1">
+          <mxGeometry x="740" y="450" width="710" height="80" as="geometry" />
+        </mxCell>
+        <!-- Feedback loop arrow -->
+        <mxCell id="feedback" value="" style="endArrow=classic;html=1;strokeColor=#4b5563;strokeWidth=2;curved=1;dashed=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1350" y="420" as="sourcePoint" />
+            <mxPoint x="190" y="420" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="1350" y="545" />
+              <mxPoint x="770" y="570" />
+              <mxPoint x="190" y="545" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="feedback_label" value="出力がヒストリーバッファとなり、次のフレームで再利用される" style="text;html=1;align=center;fontSize=11;fontFamily=Helvetica Neue;fontColor=#4b5563;fontStyle=2;" vertex="1" parent="1">
+          <mxGeometry x="450" y="555" width="400" height="20" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
