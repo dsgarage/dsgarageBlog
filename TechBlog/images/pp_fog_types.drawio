@@ -1,0 +1,140 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="Fog Types Comparison" id="fog-types">
+    <mxGraphModel dx="1400" dy="700" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1400" pageHeight="600" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+
+        <!-- Title -->
+        <mxCell id="title" value="&lt;b&gt;Fog の種類と特徴&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Helvetica Neue;fontSize=16;fontColor=#1e40af;" vertex="1" parent="1">
+          <mxGeometry x="450" y="10" width="300" height="30" as="geometry"/>
+        </mxCell>
+
+        <!-- ========== Depth Fog Section ========== -->
+        <mxCell id="depth_header" value="&lt;b&gt;Depth Fog（距離ベース）&lt;/b&gt;" style="text;html=1;align=left;verticalAlign=middle;fontFamily=Helvetica Neue;fontSize=13;fontColor=#1e40af;" vertex="1" parent="1">
+          <mxGeometry x="30" y="50" width="250" height="25" as="geometry"/>
+        </mxCell>
+
+        <!-- Linear -->
+        <mxCell id="linear_box" value="&lt;b&gt;Linear Fog&lt;/b&gt;&lt;br&gt;&lt;br&gt;f = (end - d) / (end - start)&lt;br&gt;&lt;br&gt;直線的に霧が濃くなる&lt;br&gt;startとendを手動設定" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dbeafe;strokeColor=#1e40af;fontColor=#1e40af;fontFamily=Helvetica Neue;fontSize=10;align=left;spacingLeft=8;" vertex="1" parent="1">
+          <mxGeometry x="30" y="85" width="180" height="110" as="geometry"/>
+        </mxCell>
+
+        <!-- Exponential -->
+        <mxCell id="exp_box" value="&lt;b&gt;Exponential Fog&lt;/b&gt;&lt;br&gt;&lt;br&gt;f = e^(-density * d)&lt;br&gt;&lt;br&gt;指数関数的に減衰&lt;br&gt;自然な霧の近似" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dbeafe;strokeColor=#1e40af;fontColor=#1e40af;fontFamily=Helvetica Neue;fontSize=10;align=left;spacingLeft=8;" vertex="1" parent="1">
+          <mxGeometry x="230" y="85" width="180" height="110" as="geometry"/>
+        </mxCell>
+
+        <!-- Exponential Squared -->
+        <mxCell id="exp2_box" value="&lt;b&gt;Exponential Squared&lt;/b&gt;&lt;br&gt;&lt;br&gt;f = e^(-(density * d)^2)&lt;br&gt;&lt;br&gt;近距離はクリア&lt;br&gt;遠方で急激に濃くなる" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dbeafe;strokeColor=#1e40af;fontColor=#1e40af;fontFamily=Helvetica Neue;fontSize=10;align=left;spacingLeft=8;" vertex="1" parent="1">
+          <mxGeometry x="430" y="85" width="180" height="110" as="geometry"/>
+        </mxCell>
+
+        <!-- Comparison arrows -->
+        <mxCell id="arr_le" value="より自然" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Helvetica Neue;fontSize=9;fontColor=#4b5563;" vertex="1" parent="1">
+          <mxGeometry x="210" y="205" width="50" height="20" as="geometry"/>
+        </mxCell>
+        <mxCell id="comp_arrow" value="" style="endArrow=classic;html=1;strokeColor=#4b5563;fontSize=10;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="60" y="215" as="sourcePoint"/>
+            <mxPoint x="590" y="215" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="cost_label" value="&lt;i&gt;コスト: 低 → 高 / リアリティ: 低 → 高&lt;/i&gt;" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Helvetica Neue;fontSize=9;fontColor=#4b5563;" vertex="1" parent="1">
+          <mxGeometry x="200" y="220" width="250" height="20" as="geometry"/>
+        </mxCell>
+
+        <!-- ========== Height Fog Section ========== -->
+        <mxCell id="height_header" value="&lt;b&gt;Height Fog（高さベース）&lt;/b&gt;" style="text;html=1;align=left;verticalAlign=middle;fontFamily=Helvetica Neue;fontSize=13;fontColor=#92400e;" vertex="1" parent="1">
+          <mxGeometry x="30" y="260" width="250" height="25" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="height_box" value="&lt;b&gt;Height Fog&lt;/b&gt;&lt;br&gt;&lt;br&gt;密度が高さに応じて指数的に変化&lt;br&gt;density(h) = density_0 * e^(-falloff * h)&lt;br&gt;&lt;br&gt;視線経路に沿って密度を積分&lt;br&gt;→ 谷間に霧が溜まる表現が可能" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fef3c7;strokeColor=#92400e;fontColor=#92400e;fontFamily=Helvetica Neue;fontSize=11;align=left;spacingLeft=10;" vertex="1" parent="1">
+          <mxGeometry x="30" y="295" width="350" height="120" as="geometry"/>
+        </mxCell>
+
+        <!-- Height fog diagram -->
+        <mxCell id="hf_sky" value="&lt;i&gt;空（霧なし）&lt;/i&gt;" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Helvetica Neue;fontSize=9;fontColor=#1e40af;" vertex="1" parent="1">
+          <mxGeometry x="440" y="280" width="80" height="20" as="geometry"/>
+        </mxCell>
+        <mxCell id="hf_gradient" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fef3c7;strokeColor=none;opacity=30;" vertex="1" parent="1">
+          <mxGeometry x="420" y="340" width="180" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="hf_gradient2" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fef3c7;strokeColor=none;opacity=60;" vertex="1" parent="1">
+          <mxGeometry x="420" y="370" width="180" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="hf_gradient3" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fef3c7;strokeColor=none;opacity=90;" vertex="1" parent="1">
+          <mxGeometry x="420" y="400" width="180" height="20" as="geometry"/>
+        </mxCell>
+        <mxCell id="hf_ground" value="&lt;i&gt;地面（霧が濃い）&lt;/i&gt;" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Helvetica Neue;fontSize=9;fontColor=#92400e;" vertex="1" parent="1">
+          <mxGeometry x="440" y="420" width="100" height="20" as="geometry"/>
+        </mxCell>
+        <mxCell id="hf_arrow" value="" style="endArrow=classic;html=1;strokeColor=#92400e;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="415" y="300" as="sourcePoint"/>
+            <mxPoint x="415" y="420" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="hf_density_label" value="&lt;i&gt;密度&lt;br&gt;増加&lt;/i&gt;" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Helvetica Neue;fontSize=9;fontColor=#92400e;" vertex="1" parent="1">
+          <mxGeometry x="390" y="350" width="30" height="40" as="geometry"/>
+        </mxCell>
+
+        <!-- ========== Volumetric Fog Section ========== -->
+        <mxCell id="vol_header" value="&lt;b&gt;Volumetric Fog（ボクセルベース）&lt;/b&gt;" style="text;html=1;align=left;verticalAlign=middle;fontFamily=Helvetica Neue;fontSize=13;fontColor=#166534;" vertex="1" parent="1">
+          <mxGeometry x="660" y="50" width="300" height="25" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="vol_box" value="&lt;b&gt;Volumetric Fog&lt;/b&gt;&lt;br&gt;&lt;br&gt;視錐台をボクセルグリッドに分割&lt;br&gt;各ボクセルの散乱・吸収を計算&lt;br&gt;&lt;br&gt;レイマーチングで光の減衰を積分&lt;br&gt;ライトとの相互作用（God Rays）&lt;br&gt;&lt;br&gt;&lt;font color=&quot;#991b1b&quot;&gt;最も高品質だが計算コストも高い&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dcfce7;strokeColor=#166534;fontColor=#166534;fontFamily=Helvetica Neue;fontSize=11;align=left;spacingLeft=10;" vertex="1" parent="1">
+          <mxGeometry x="660" y="85" width="300" height="160" as="geometry"/>
+        </mxCell>
+
+        <!-- Voxel grid illustration -->
+        <mxCell id="vox_grid" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#166534;strokeWidth=1;opacity=40;" vertex="1" parent="1">
+          <mxGeometry x="700" y="270" width="40" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="vox_grid2" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dcfce7;strokeColor=#166534;strokeWidth=1;opacity=60;" vertex="1" parent="1">
+          <mxGeometry x="740" y="270" width="40" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="vox_grid3" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dcfce7;strokeColor=#166534;strokeWidth=1;opacity=80;" vertex="1" parent="1">
+          <mxGeometry x="780" y="270" width="40" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="vox_grid4" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dcfce7;strokeColor=#166534;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="820" y="270" width="40" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="vox_grid5" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#166534;strokeWidth=1;opacity=40;" vertex="1" parent="1">
+          <mxGeometry x="700" y="310" width="40" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="vox_grid6" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dcfce7;strokeColor=#166534;strokeWidth=1;opacity=50;" vertex="1" parent="1">
+          <mxGeometry x="740" y="310" width="40" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="vox_grid7" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dcfce7;strokeColor=#166534;strokeWidth=1;opacity=70;" vertex="1" parent="1">
+          <mxGeometry x="780" y="310" width="40" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="vox_grid8" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dcfce7;strokeColor=#166534;strokeWidth=1;opacity=90;" vertex="1" parent="1">
+          <mxGeometry x="820" y="310" width="40" height="40" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="vox_label" value="&lt;i&gt;ボクセルグリッド: カメラからの距離で密度変化&lt;/i&gt;" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Helvetica Neue;fontSize=9;fontColor=#166534;" vertex="1" parent="1">
+          <mxGeometry x="680" y="355" width="220" height="20" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="camera_icon" value="&lt;b&gt;Camera&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Helvetica Neue;fontSize=9;fontColor=#4b5563;" vertex="1" parent="1">
+          <mxGeometry x="650" y="285" width="50" height="20" as="geometry"/>
+        </mxCell>
+        <mxCell id="far_label" value="&lt;b&gt;Far&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Helvetica Neue;fontSize=9;fontColor=#4b5563;" vertex="1" parent="1">
+          <mxGeometry x="860" y="285" width="30" height="20" as="geometry"/>
+        </mxCell>
+
+        <!-- Summary comparison table -->
+        <mxCell id="summary_header" value="&lt;b&gt;比較まとめ&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Helvetica Neue;fontSize=12;fontColor=#1e40af;" vertex="1" parent="1">
+          <mxGeometry x="660" y="390" width="300" height="25" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="table" value="&lt;table style='font-size:10px;font-family:Helvetica Neue;border-collapse:collapse;'&gt;&lt;tr style='background:#dbeafe;color:#1e40af;'&gt;&lt;th style='padding:4px 8px;border:1px solid #93c5fd;'&gt;種類&lt;/th&gt;&lt;th style='padding:4px 8px;border:1px solid #93c5fd;'&gt;コスト&lt;/th&gt;&lt;th style='padding:4px 8px;border:1px solid #93c5fd;'&gt;品質&lt;/th&gt;&lt;th style='padding:4px 8px;border:1px solid #93c5fd;'&gt;用途&lt;/th&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style='padding:4px 8px;border:1px solid #e5e7eb;'&gt;Linear&lt;/td&gt;&lt;td style='padding:4px 8px;border:1px solid #e5e7eb;'&gt;極低&lt;/td&gt;&lt;td style='padding:4px 8px;border:1px solid #e5e7eb;'&gt;低&lt;/td&gt;&lt;td style='padding:4px 8px;border:1px solid #e5e7eb;'&gt;モバイル&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style='padding:4px 8px;border:1px solid #e5e7eb;'&gt;Exp/Exp2&lt;/td&gt;&lt;td style='padding:4px 8px;border:1px solid #e5e7eb;'&gt;低&lt;/td&gt;&lt;td style='padding:4px 8px;border:1px solid #e5e7eb;'&gt;中&lt;/td&gt;&lt;td style='padding:4px 8px;border:1px solid #e5e7eb;'&gt;一般的なゲーム&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style='padding:4px 8px;border:1px solid #e5e7eb;'&gt;Height&lt;/td&gt;&lt;td style='padding:4px 8px;border:1px solid #e5e7eb;'&gt;中&lt;/td&gt;&lt;td style='padding:4px 8px;border:1px solid #e5e7eb;'&gt;中〜高&lt;/td&gt;&lt;td style='padding:4px 8px;border:1px solid #e5e7eb;'&gt;オープンワールド&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style='padding:4px 8px;border:1px solid #e5e7eb;'&gt;Volumetric&lt;/td&gt;&lt;td style='padding:4px 8px;border:1px solid #e5e7eb;'&gt;高&lt;/td&gt;&lt;td style='padding:4px 8px;border:1px solid #e5e7eb;'&gt;最高&lt;/td&gt;&lt;td style='padding:4px 8px;border:1px solid #e5e7eb;'&gt;AAA / HDRP&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;" style="text;html=1;align=center;verticalAlign=top;fontFamily=Helvetica Neue;overflow=fill;" vertex="1" parent="1">
+          <mxGeometry x="650" y="420" width="320" height="140" as="geometry"/>
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

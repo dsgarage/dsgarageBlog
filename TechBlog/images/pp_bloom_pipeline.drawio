@@ -1,0 +1,170 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="Bloom Pipeline" id="bloom-pipeline">
+    <mxGraphModel dx="1200" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1400" pageHeight="500" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+
+        <!-- Title -->
+        <mxCell id="title" value="&lt;b&gt;Bloom Pipeline ― Pyramid Gaussian Blur&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Helvetica Neue;fontSize=16;fontColor=#1e40af;" vertex="1" parent="1">
+          <mxGeometry x="350" y="10" width="500" height="30" as="geometry"/>
+        </mxCell>
+
+        <!-- Input Image -->
+        <mxCell id="input" value="&lt;b&gt;入力画像&lt;/b&gt;&lt;br&gt;(HDR)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dbeafe;strokeColor=#1e40af;fontColor=#1e40af;fontFamily=Helvetica Neue;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="20" y="70" width="120" height="60" as="geometry"/>
+        </mxCell>
+
+        <!-- Brightness Threshold -->
+        <mxCell id="threshold" value="&lt;b&gt;輝度閾値&lt;/b&gt;&lt;br&gt;Y &gt; threshold" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fef3c7;strokeColor=#92400e;fontColor=#92400e;fontFamily=Helvetica Neue;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="180" y="70" width="120" height="60" as="geometry"/>
+        </mxCell>
+
+        <!-- Arrow -->
+        <mxCell id="a1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#4b5563;" edge="1" source="input" target="threshold" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- Downsample 1/2 -->
+        <mxCell id="down1" value="&lt;b&gt;1/2&lt;/b&gt;&lt;br&gt;Downsample" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dbeafe;strokeColor=#1e40af;fontColor=#1e40af;fontFamily=Helvetica Neue;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="340" y="60" width="90" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="a2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#4b5563;" edge="1" source="threshold" target="down1" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- Downsample 1/4 -->
+        <mxCell id="down2" value="&lt;b&gt;1/4&lt;/b&gt;&lt;br&gt;Downsample" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dbeafe;strokeColor=#1e40af;fontColor=#1e40af;fontFamily=Helvetica Neue;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="340" y="130" width="90" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="a3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#4b5563;" edge="1" source="down1" target="down2" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- Downsample 1/8 -->
+        <mxCell id="down3" value="&lt;b&gt;1/8&lt;/b&gt;&lt;br&gt;Downsample" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dbeafe;strokeColor=#1e40af;fontColor=#1e40af;fontFamily=Helvetica Neue;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="340" y="200" width="90" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="a4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#4b5563;" edge="1" source="down2" target="down3" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- Downsample 1/16 -->
+        <mxCell id="down4" value="&lt;b&gt;1/16&lt;/b&gt;&lt;br&gt;Downsample" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dbeafe;strokeColor=#1e40af;fontColor=#1e40af;fontFamily=Helvetica Neue;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="340" y="270" width="90" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="a5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#4b5563;" edge="1" source="down3" target="down4" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- Gaussian Blur labels -->
+        <mxCell id="blur_label" value="&lt;i&gt;各レベルで&lt;br&gt;Gaussian Blur&lt;/i&gt;" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Helvetica Neue;fontSize=10;fontColor=#92400e;" vertex="1" parent="1">
+          <mxGeometry x="440" y="155" width="90" height="40" as="geometry"/>
+        </mxCell>
+
+        <!-- Blur arrows -->
+        <mxCell id="blur1" value="Blur" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fef3c7;strokeColor=#92400e;fontColor=#92400e;fontFamily=Helvetica Neue;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="460" y="65" width="60" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="ba1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#92400e;dashed=1;" edge="1" source="down1" target="blur1" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="blur2" value="Blur" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fef3c7;strokeColor=#92400e;fontColor=#92400e;fontFamily=Helvetica Neue;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="460" y="135" width="60" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="ba2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#92400e;dashed=1;" edge="1" source="down2" target="blur2" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="blur3" value="Blur" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fef3c7;strokeColor=#92400e;fontColor=#92400e;fontFamily=Helvetica Neue;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="460" y="205" width="60" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="ba3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#92400e;dashed=1;" edge="1" source="down3" target="blur3" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="blur4" value="Blur" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fef3c7;strokeColor=#92400e;fontColor=#92400e;fontFamily=Helvetica Neue;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="460" y="275" width="60" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="ba4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#92400e;dashed=1;" edge="1" source="down4" target="blur4" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- Upsample & Combine -->
+        <mxCell id="up_label" value="&lt;b&gt;Upsample&lt;br&gt;+ 合成&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Helvetica Neue;fontSize=11;fontColor=#166534;" vertex="1" parent="1">
+          <mxGeometry x="560" y="155" width="80" height="40" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="up1" value="&lt;b&gt;Up&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dcfce7;strokeColor=#166534;fontColor=#166534;fontFamily=Helvetica Neue;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="560" y="275" width="50" height="35" as="geometry"/>
+        </mxCell>
+        <mxCell id="ua4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#166534;" edge="1" source="blur4" target="up1" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="up2" value="&lt;b&gt;Up&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dcfce7;strokeColor=#166534;fontColor=#166534;fontFamily=Helvetica Neue;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="560" y="205" width="50" height="35" as="geometry"/>
+        </mxCell>
+        <mxCell id="ua3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#166534;" edge="1" source="up1" target="up2" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="up3" value="&lt;b&gt;Up&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dcfce7;strokeColor=#166534;fontColor=#166534;fontFamily=Helvetica Neue;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="560" y="135" width="50" height="35" as="geometry"/>
+        </mxCell>
+        <mxCell id="ua2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#166534;" edge="1" source="up2" target="up3" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="up4" value="&lt;b&gt;Up&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dcfce7;strokeColor=#166534;fontColor=#166534;fontFamily=Helvetica Neue;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="560" y="65" width="50" height="35" as="geometry"/>
+        </mxCell>
+        <mxCell id="ua1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#166534;" edge="1" source="up3" target="up4" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- Combine arrows from blur to up -->
+        <mxCell id="cb3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#166534;dashed=1;" edge="1" source="blur3" target="up2" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="cb2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#166534;dashed=1;" edge="1" source="blur2" target="up3" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="cb1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#166534;dashed=1;" edge="1" source="blur1" target="up4" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- Final Composite -->
+        <mxCell id="composite" value="&lt;b&gt;最終合成&lt;/b&gt;&lt;br&gt;元画像 + Bloom" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dcfce7;strokeColor=#166534;fontColor=#166534;fontFamily=Helvetica Neue;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="650" y="70" width="120" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="a_final1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#166534;" edge="1" source="up4" target="composite" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- Original image bypass -->
+        <mxCell id="bypass" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#4b5563;dashed=1;dashPattern=8 4;" edge="1" source="input" target="composite" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="80" y="45"/>
+              <mxPoint x="710" y="45"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="bypass_label" value="&lt;i&gt;元画像バイパス&lt;/i&gt;" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Helvetica Neue;fontSize=9;fontColor=#4b5563;" vertex="1" parent="1">
+          <mxGeometry x="350" y="25" width="100" height="20" as="geometry"/>
+        </mxCell>
+
+        <!-- Output -->
+        <mxCell id="output" value="&lt;b&gt;出力画像&lt;/b&gt;&lt;br&gt;Bloom適用済" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dbeafe;strokeColor=#1e40af;fontColor=#1e40af;fontFamily=Helvetica Neue;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="810" y="70" width="120" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="a_out" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#4b5563;" edge="1" source="composite" target="output" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

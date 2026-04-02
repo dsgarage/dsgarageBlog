@@ -1,0 +1,106 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="HDR to SDR Tone Mapping" id="tonemapping">
+    <mxGraphModel dx="1200" dy="700" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1200" pageHeight="500" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+
+        <!-- Title -->
+        <mxCell id="title" value="&lt;b&gt;Tone Mapping ― HDR to SDR 変換&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Helvetica Neue;fontSize=16;fontColor=#1e40af;" vertex="1" parent="1">
+          <mxGeometry x="300" y="10" width="400" height="30" as="geometry"/>
+        </mxCell>
+
+        <!-- HDR Input -->
+        <mxCell id="hdr_box" value="&lt;b&gt;HDR 値&lt;/b&gt;&lt;br&gt;範囲: 0 ~ 無限大&lt;br&gt;&lt;br&gt;太陽光: 100,000+&lt;br&gt;蛍光灯: 500&lt;br&gt;月明かり: 0.3" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fef3c7;strokeColor=#92400e;fontColor=#92400e;fontFamily=Helvetica Neue;fontSize=11;align=left;spacingLeft=10;" vertex="1" parent="1">
+          <mxGeometry x="30" y="60" width="160" height="130" as="geometry"/>
+        </mxCell>
+
+        <!-- Clamp approach (problem) -->
+        <mxCell id="clamp_label" value="&lt;b&gt;方法1: 単純クランプ&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Helvetica Neue;fontSize=12;fontColor=#991b1b;" vertex="1" parent="1">
+          <mxGeometry x="250" y="55" width="200" height="25" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="clamp_box" value="if (value &gt; 1.0)&lt;br&gt;  value = 1.0;&lt;br&gt;&lt;br&gt;&lt;font color=&quot;#991b1b&quot;&gt;1.0以上が全て白に潰れる&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fee2e2;strokeColor=#991b1b;fontColor=#4b5563;fontFamily=Helvetica Neue;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="250" y="85" width="200" height="90" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="a_clamp" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#991b1b;" edge="1" source="hdr_box" target="clamp_box" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- Clamp result -->
+        <mxCell id="clamp_result" value="&lt;b&gt;SDR (クランプ)&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#991b1b&quot;&gt;明部ディテール消失&lt;br&gt;暗部も潰れやすい&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fee2e2;strokeColor=#991b1b;fontColor=#991b1b;fontFamily=Helvetica Neue;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="510" y="80" width="160" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="a_cr" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#991b1b;" edge="1" source="clamp_box" target="clamp_result" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- ACES approach (solution) -->
+        <mxCell id="aces_label" value="&lt;b&gt;方法2: ACES Tone Mapping&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Helvetica Neue;fontSize=12;fontColor=#166534;" vertex="1" parent="1">
+          <mxGeometry x="250" y="200" width="200" height="25" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="aces_box" value="&lt;b&gt;S字カーブ&lt;/b&gt;&lt;br&gt;暗部: コントラスト維持&lt;br&gt;中間: 線形マッピング&lt;br&gt;明部: なめらかに圧縮" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dcfce7;strokeColor=#166534;fontColor=#166534;fontFamily=Helvetica Neue;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="250" y="230" width="200" height="90" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="a_aces" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#166534;" edge="1" source="hdr_box" target="aces_box" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- ACES result -->
+        <mxCell id="aces_result" value="&lt;b&gt;SDR (ACES)&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#166534&quot;&gt;全輝度域のディテール保持&lt;br&gt;映画品質の色再現&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dcfce7;strokeColor=#166534;fontColor=#166534;fontFamily=Helvetica Neue;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="510" y="235" width="160" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="a_ar" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#166534;" edge="1" source="aces_box" target="aces_result" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- ACES Pipeline -->
+        <mxCell id="pipe_label" value="&lt;b&gt;ACES パイプライン&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Helvetica Neue;fontSize=13;fontColor=#1e40af;" vertex="1" parent="1">
+          <mxGeometry x="300" y="360" width="200" height="25" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="idt" value="&lt;b&gt;Input&lt;br&gt;Transform&lt;/b&gt;&lt;br&gt;(IDT)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dbeafe;strokeColor=#1e40af;fontColor=#1e40af;fontFamily=Helvetica Neue;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="130" y="395" width="120" height="60" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="lmt" value="&lt;b&gt;Look&lt;br&gt;Transform&lt;/b&gt;&lt;br&gt;(LMT)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fef3c7;strokeColor=#92400e;fontColor=#92400e;fontFamily=Helvetica Neue;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="310" y="395" width="120" height="60" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="odt" value="&lt;b&gt;Output&lt;br&gt;Transform&lt;/b&gt;&lt;br&gt;(ODT)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dcfce7;strokeColor=#166534;fontColor=#166534;fontFamily=Helvetica Neue;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="490" y="395" width="120" height="60" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="ap1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#4b5563;" edge="1" source="idt" target="lmt" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="ap2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#4b5563;" edge="1" source="lmt" target="odt" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- Pipeline descriptions -->
+        <mxCell id="idt_desc" value="カメラ固有の色空間&lt;br&gt;→ ACES色空間" style="text;html=1;align=center;verticalAlign=top;fontFamily=Helvetica Neue;fontSize=9;fontColor=#4b5563;" vertex="1" parent="1">
+          <mxGeometry x="120" y="460" width="140" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="lmt_desc" value="クリエイティブな&lt;br&gt;色調整" style="text;html=1;align=center;verticalAlign=top;fontFamily=Helvetica Neue;fontSize=9;fontColor=#4b5563;" vertex="1" parent="1">
+          <mxGeometry x="305" y="460" width="130" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="odt_desc" value="ディスプレイ固有の&lt;br&gt;色空間に変換" style="text;html=1;align=center;verticalAlign=top;fontFamily=Helvetica Neue;fontSize=9;fontColor=#4b5563;" vertex="1" parent="1">
+          <mxGeometry x="485" y="460" width="130" height="30" as="geometry"/>
+        </mxCell>
+
+        <!-- Monitor -->
+        <mxCell id="monitor" value="&lt;b&gt;モニター&lt;/b&gt;&lt;br&gt;0 ~ 1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f3f4f6;strokeColor=#4b5563;fontColor=#4b5563;fontFamily=Helvetica Neue;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="670" y="395" width="100" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="ap3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#4b5563;" edge="1" source="odt" target="monitor" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
