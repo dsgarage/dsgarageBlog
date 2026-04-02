@@ -1,0 +1,114 @@
+<mxfile>
+  <diagram name="Deferred Rendering" id="deferred_flow">
+    <mxGraphModel dx="1200" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1200" pageHeight="550" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <!-- Title -->
+        <mxCell id="title" value="Deferred Rendering ― 見えるピクセルだけ計算する" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=14;fontStyle=1;fontColor=#1e40af;fontFamily=Helvetica Neue;" vertex="1" parent="1">
+          <mxGeometry x="300" y="10" width="450" height="30" as="geometry"/>
+        </mxCell>
+        <!-- Pass 1 cluster -->
+        <mxCell id="pass1_bg" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#93c5fd;strokeWidth=2;strokeDashPattern=0;" vertex="1" parent="1">
+          <mxGeometry x="20" y="60" width="480" height="230" as="geometry"/>
+        </mxCell>
+        <mxCell id="pass1_label" value="パス1: ジオメトリパス（ライティング計算なし）" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=12;fontStyle=1;fontColor=#1e40af;fontFamily=Helvetica Neue;" vertex="1" parent="1">
+          <mxGeometry x="30" y="65" width="350" height="25" as="geometry"/>
+        </mxCell>
+        <!-- Objects -->
+        <mxCell id="obj1" value="オブジェクトA" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dbeafe;strokeColor=#93c5fd;fontColor=#1e40af;fontSize=10;fontFamily=Helvetica Neue;" vertex="1" parent="1">
+          <mxGeometry x="40" y="110" width="100" height="35" as="geometry"/>
+        </mxCell>
+        <mxCell id="obj2" value="オブジェクトB" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dbeafe;strokeColor=#93c5fd;fontColor=#1e40af;fontSize=10;fontFamily=Helvetica Neue;" vertex="1" parent="1">
+          <mxGeometry x="40" y="155" width="100" height="35" as="geometry"/>
+        </mxCell>
+        <mxCell id="obj3" value="オブジェクトC" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dbeafe;strokeColor=#93c5fd;fontColor=#1e40af;fontSize=10;fontFamily=Helvetica Neue;" vertex="1" parent="1">
+          <mxGeometry x="40" y="200" width="100" height="35" as="geometry"/>
+        </mxCell>
+        <!-- G-Buffer -->
+        <mxCell id="gbuf_box" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fefce8;strokeColor=#fcd34d;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="200" y="95" width="280" height="180" as="geometry"/>
+        </mxCell>
+        <mxCell id="gbuf_title" value="G-Buffer（中間バッファ）" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=11;fontStyle=1;fontColor=#92400e;fontFamily=Helvetica Neue;" vertex="1" parent="1">
+          <mxGeometry x="260" y="100" width="170" height="20" as="geometry"/>
+        </mxCell>
+        <mxCell id="rt0" value="RT0: アルベド + メタリック" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fef3c7;strokeColor=#fcd34d;fontColor=#92400e;fontSize=9;fontFamily=Helvetica Neue;" vertex="1" parent="1">
+          <mxGeometry x="215" y="128" width="250" height="28" as="geometry"/>
+        </mxCell>
+        <mxCell id="rt1" value="RT1: ワールド法線" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fef3c7;strokeColor=#fcd34d;fontColor=#92400e;fontSize=9;fontFamily=Helvetica Neue;" vertex="1" parent="1">
+          <mxGeometry x="215" y="163" width="250" height="28" as="geometry"/>
+        </mxCell>
+        <mxCell id="rt2" value="RT2: ラフネス + AO" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fef3c7;strokeColor=#fcd34d;fontColor=#92400e;fontSize=9;fontFamily=Helvetica Neue;" vertex="1" parent="1">
+          <mxGeometry x="215" y="198" width="250" height="28" as="geometry"/>
+        </mxCell>
+        <mxCell id="depth" value="Depth: 深度値" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fef3c7;strokeColor=#fcd34d;fontColor=#92400e;fontSize=9;fontFamily=Helvetica Neue;" vertex="1" parent="1">
+          <mxGeometry x="215" y="233" width="250" height="28" as="geometry"/>
+        </mxCell>
+        <!-- Arrows to G-Buffer -->
+        <mxCell id="e_obj1" style="rounded=1;exitX=1;exitY=0.5;entryX=0;entryY=0.2;strokeColor=#94a3b8;strokeWidth=1.2;" edge="1" source="obj1" target="gbuf_box" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_obj2" style="rounded=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;strokeColor=#94a3b8;strokeWidth=1.2;" edge="1" source="obj2" target="gbuf_box" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_obj3" style="rounded=1;exitX=1;exitY=0.5;entryX=0;entryY=0.8;strokeColor=#94a3b8;strokeWidth=1.2;" edge="1" source="obj3" target="gbuf_box" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <!-- No lighting label -->
+        <mxCell id="no_light" value="ライティング計算なし ✓" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=10;fontStyle=1;fontColor=#166534;fontFamily=Helvetica Neue;" vertex="1" parent="1">
+          <mxGeometry x="140" y="250" width="160" height="20" as="geometry"/>
+        </mxCell>
+        <!-- Pass 2 cluster -->
+        <mxCell id="pass2_bg" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#86efac;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="530" y="60" width="440" height="230" as="geometry"/>
+        </mxCell>
+        <mxCell id="pass2_label" value="パス2: ライティングパス（可視ピクセルのみ）" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=12;fontStyle=1;fontColor=#166534;fontFamily=Helvetica Neue;" vertex="1" parent="1">
+          <mxGeometry x="540" y="65" width="350" height="25" as="geometry"/>
+        </mxCell>
+        <!-- G-Buffer read -->
+        <mxCell id="gbuf_read" value="G-Buffer&#xa;読み取り" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fef3c7;strokeColor=#fcd34d;fontColor=#92400e;fontSize=10;fontFamily=Helvetica Neue;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="550" y="110" width="90" height="50" as="geometry"/>
+        </mxCell>
+        <!-- Lighting calc -->
+        <mxCell id="light_calc" value="ライティング計算&#xa;(可視ピクセルのみ)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dcfce7;strokeColor=#86efac;fontColor=#166534;fontSize=10;fontFamily=Helvetica Neue;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="680" y="110" width="130" height="50" as="geometry"/>
+        </mxCell>
+        <!-- Final output -->
+        <mxCell id="final" value="最終画像" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dcfce7;strokeColor=#16a34a;fontColor=#166534;fontSize=11;fontFamily=Helvetica Neue;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="850" y="110" width="100" height="50" as="geometry"/>
+        </mxCell>
+        <!-- Pass 2 arrows -->
+        <mxCell id="e_read" style="rounded=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;strokeColor=#94a3b8;strokeWidth=1.5;" edge="1" source="gbuf_read" target="light_calc" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_final" style="rounded=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;strokeColor=#94a3b8;strokeWidth=1.5;" edge="1" source="light_calc" target="final" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <!-- G-Buffer to Pass2 arrow -->
+        <mxCell id="e_gbuf_pass2" style="rounded=1;exitX=1;exitY=0.3;entryX=0;entryY=0.5;strokeColor=#92400e;strokeWidth=2;dashed=0;" edge="1" source="gbuf_box" target="gbuf_read" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <!-- Key insight -->
+        <mxCell id="insight_box" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dcfce7;strokeColor=#86efac;" vertex="1" parent="1">
+          <mxGeometry x="550" y="185" width="400" height="90" as="geometry"/>
+        </mxCell>
+        <mxCell id="insight_title" value="核心のアイデア" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=10;fontStyle=1;fontColor=#166534;fontFamily=Helvetica Neue;" vertex="1" parent="1">
+          <mxGeometry x="560" y="190" width="100" height="20" as="geometry"/>
+        </mxCell>
+        <mxCell id="insight1" value="• 10層重なった建物でも、見える1ピクセル分だけ計算" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=10;fontColor=#166534;fontFamily=Helvetica Neue;" vertex="1" parent="1">
+          <mxGeometry x="560" y="210" width="370" height="20" as="geometry"/>
+        </mxCell>
+        <mxCell id="insight2" value="• 計算量: O(画面ピクセル数 × ライト数)" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=10;fontColor=#166534;fontFamily=Helvetica Neue;" vertex="1" parent="1">
+          <mxGeometry x="560" y="230" width="280" height="20" as="geometry"/>
+        </mxCell>
+        <mxCell id="insight3" value="• オブジェクト数に依存しない → 複雑なシーンに強い" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=10;fontColor=#166534;fontFamily=Helvetica Neue;" vertex="1" parent="1">
+          <mxGeometry x="560" y="250" width="370" height="20" as="geometry"/>
+        </mxCell>
+        <!-- Memory warning -->
+        <mxCell id="mem_warn" value="⚠ G-Buffer: 1920×1080で約63MB消費" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=10;fontStyle=2;fontColor=#92400e;fontFamily=Helvetica Neue;" vertex="1" parent="1">
+          <mxGeometry x="240" y="300" width="260" height="20" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

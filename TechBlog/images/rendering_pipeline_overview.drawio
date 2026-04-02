@@ -1,0 +1,70 @@
+<mxfile>
+  <diagram name="レンダリングパイプラインの基本構造" id="pipeline_overview">
+    <mxGraphModel dx="1200" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="400" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <!-- Title -->
+        <mxCell id="title" value="レンダリングパイプライン ― 3Dシーンから2D画面へ" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=16;fontStyle=1;fontColor=#1e40af;fontFamily=Helvetica Neue;" vertex="1" parent="1">
+          <mxGeometry x="250" y="10" width="500" height="30" as="geometry"/>
+        </mxCell>
+        <!-- 3D Scene -->
+        <mxCell id="scene" value="3Dシーン&#xa;(オブジェクト・ライト・カメラ)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f3f4f6;strokeColor=#94a3b8;fontColor=#4b5563;fontSize=11;fontFamily=Helvetica Neue;fontStyle=1;verticalAlign=middle;spacingTop=2;spacingBottom=2;" vertex="1" parent="1">
+          <mxGeometry x="20" y="100" width="140" height="70" as="geometry"/>
+        </mxCell>
+        <!-- Stage 1: Application -->
+        <mxCell id="app" value="① アプリケーション&#xa;ステージ&#xa;(CPU)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dbeafe;strokeColor=#93c5fd;fontColor=#1e40af;fontSize=11;fontFamily=Helvetica Neue;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="220" y="70" width="150" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="app_detail" value="• シーン管理&#xa;• カリング（不可視除外）&#xa;• ドローコール発行" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eff6ff;strokeColor=#bfdbfe;fontColor=#1e40af;fontSize=9;fontFamily=Helvetica Neue;align=left;spacingLeft=8;" vertex="1" parent="1">
+          <mxGeometry x="220" y="140" width="150" height="55" as="geometry"/>
+        </mxCell>
+        <!-- Stage 2: Geometry -->
+        <mxCell id="geom" value="② ジオメトリ&#xa;ステージ&#xa;(GPU)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dbeafe;strokeColor=#93c5fd;fontColor=#1e40af;fontSize=11;fontFamily=Helvetica Neue;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="430" y="70" width="150" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="geom_detail" value="• 頂点シェーダー&#xa;• 座標変換&#xa;  (ワールド→ビュー→クリップ)&#xa;• クリッピング" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eff6ff;strokeColor=#bfdbfe;fontColor=#1e40af;fontSize=9;fontFamily=Helvetica Neue;align=left;spacingLeft=8;" vertex="1" parent="1">
+          <mxGeometry x="430" y="140" width="150" height="65" as="geometry"/>
+        </mxCell>
+        <!-- Stage 3: Rasterize -->
+        <mxCell id="raster" value="③ ラスタライズ&#xa;ステージ&#xa;(GPU)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fef3c7;strokeColor=#fcd34d;fontColor=#92400e;fontSize=11;fontFamily=Helvetica Neue;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="640" y="70" width="150" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="raster_detail" value="• 三角形→ピクセル分解&#xa;• フラグメントシェーダー&#xa;• ライティング計算 ⚡&#xa;• 深度テスト" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fefce8;strokeColor=#fcd34d;fontColor=#92400e;fontSize=9;fontFamily=Helvetica Neue;align=left;spacingLeft=8;" vertex="1" parent="1">
+          <mxGeometry x="640" y="140" width="150" height="65" as="geometry"/>
+        </mxCell>
+        <!-- Output -->
+        <mxCell id="output" value="2D画面&#xa;(フレームバッファ)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dcfce7;strokeColor=#86efac;fontColor=#166534;fontSize=11;fontFamily=Helvetica Neue;fontStyle=1;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="850" y="100" width="140" height="70" as="geometry"/>
+        </mxCell>
+        <!-- Arrows -->
+        <mxCell id="e1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=#94a3b8;strokeWidth=2;fontSize=9;fontColor=#6b7280;" edge="1" source="scene" target="app" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e2" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=#94a3b8;strokeWidth=2;fontSize=9;fontColor=#6b7280;" edge="1" source="app" target="geom" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e3" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=#94a3b8;strokeWidth=2;fontSize=9;fontColor=#6b7280;" edge="1" source="geom" target="raster" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e4" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=#94a3b8;strokeWidth=2;fontSize=9;fontColor=#6b7280;" edge="1" source="raster" target="output" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <!-- Bottleneck annotation -->
+        <mxCell id="bottleneck" value="⚡ ボトルネック: ピクセル数 × ライト数" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=11;fontStyle=1;fontColor=#92400e;fontFamily=Helvetica Neue;" vertex="1" parent="1">
+          <mxGeometry x="560" y="220" width="300" height="30" as="geometry"/>
+        </mxCell>
+        <!-- CPU/GPU boundary -->
+        <mxCell id="boundary" value="" style="shape=line;strokeColor=#cbd5e1;strokeWidth=1;dashed=1;dashPattern=5 5;" vertex="1" parent="1">
+          <mxGeometry x="390" y="55" width="1" height="220" as="geometry"/>
+        </mxCell>
+        <mxCell id="cpu_label" value="CPU" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=10;fontColor=#6b7280;fontFamily=Helvetica Neue;" vertex="1" parent="1">
+          <mxGeometry x="290" y="55" width="40" height="20" as="geometry"/>
+        </mxCell>
+        <mxCell id="gpu_label" value="GPU" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=10;fontColor=#6b7280;fontFamily=Helvetica Neue;" vertex="1" parent="1">
+          <mxGeometry x="540" y="55" width="40" height="20" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

@@ -1,0 +1,113 @@
+<mxfile>
+  <diagram name="レンダリング手法の進化マップ" id="evolution_map">
+    <mxGraphModel dx="1200" dy="700" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1200" pageHeight="500" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <!-- Title -->
+        <mxCell id="title" value="レンダリング手法の進化 ― どの手法を選ぶべきか" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=14;fontStyle=1;fontColor=#1e40af;fontFamily=Helvetica Neue;" vertex="1" parent="1">
+          <mxGeometry x="300" y="10" width="450" height="30" as="geometry"/>
+        </mxCell>
+        <!-- Timeline arrow -->
+        <mxCell id="timeline" value="" style="shape=flexArrow;endArrow=classic;startArrow=none;html=1;fillColor=#f3f4f6;strokeColor=#94a3b8;endWidth=12;endSize=4;width=6;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="50" y="400" as="sourcePoint"/>
+            <mxPoint x="1100" y="400" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="time_label" value="パフォーマンス最適化の進化 →" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=10;fontColor=#6b7280;fontFamily=Helvetica Neue;fontStyle=2;" vertex="1" parent="1">
+          <mxGeometry x="450" y="410" width="210" height="20" as="geometry"/>
+        </mxCell>
+        <!-- Forward -->
+        <mxCell id="forward" value="Forward&#xa;Rendering" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dbeafe;strokeColor=#93c5fd;fontColor=#1e40af;fontSize=12;fontFamily=Helvetica Neue;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="60" y="100" width="140" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="fw_desc" value="シンプル・透明対応&#xa;ライト数に弱い" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=9;fontColor=#4b5563;fontFamily=Helvetica Neue;" vertex="1" parent="1">
+          <mxGeometry x="70" y="165" width="120" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="fw_games" value="Heavy Rain ('10)&#xa;Just Cause ('06)" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=8;fontColor=#6b7280;fontFamily=Helvetica Neue;fontStyle=2;" vertex="1" parent="1">
+          <mxGeometry x="75" y="195" width="110" height="30" as="geometry"/>
+        </mxCell>
+        <!-- Deferred -->
+        <mxCell id="deferred" value="Deferred&#xa;Rendering" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fef3c7;strokeColor=#fcd34d;fontColor=#92400e;fontSize=12;fontFamily=Helvetica Neue;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="290" y="100" width="140" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="df_desc" value="可視ピクセルのみ計算&#xa;G-Buffer消費大" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=9;fontColor=#4b5563;fontFamily=Helvetica Neue;" vertex="1" parent="1">
+          <mxGeometry x="295" y="165" width="130" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="df_games" value="GTA V ('13)&#xa;BF4 ('13)" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=8;fontColor=#6b7280;fontFamily=Helvetica Neue;fontStyle=2;" vertex="1" parent="1">
+          <mxGeometry x="320" y="195" width="80" height="30" as="geometry"/>
+        </mxCell>
+        <!-- Tile-based -->
+        <mxCell id="tiled" value="Tile-based&#xa;Deferred" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dcfce7;strokeColor=#86efac;fontColor=#166534;fontSize=12;fontFamily=Helvetica Neue;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="520" y="60" width="140" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="tl_desc" value="タイル単位カリング&#xa;ライト効率化" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=9;fontColor=#4b5563;fontFamily=Helvetica Neue;" vertex="1" parent="1">
+          <mxGeometry x="530" y="125" width="120" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="tl_games" value="BF4 ('13), Ryse ('13)" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=8;fontColor=#6b7280;fontFamily=Helvetica Neue;fontStyle=2;" vertex="1" parent="1">
+          <mxGeometry x="535" y="155" width="120" height="20" as="geometry"/>
+        </mxCell>
+        <!-- Forward+ -->
+        <mxCell id="fplus" value="Forward+" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ede9fe;strokeColor=#c4b5fd;fontColor=#6b21a8;fontSize=12;fontFamily=Helvetica Neue;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="520" y="200" width="140" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="fp_desc" value="Forward + タイルカリング&#xa;透明・MSAA対応" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=9;fontColor=#4b5563;fontFamily=Helvetica Neue;" vertex="1" parent="1">
+          <mxGeometry x="520" y="255" width="140" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="fp_games" value="DIRT, GRID" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=8;fontColor=#6b7280;fontFamily=Helvetica Neue;fontStyle=2;" vertex="1" parent="1">
+          <mxGeometry x="555" y="285" width="70" height="20" as="geometry"/>
+        </mxCell>
+        <!-- Cluster-based -->
+        <mxCell id="cluster" value="Cluster-based" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dcfce7;strokeColor=#16a34a;fontColor=#166534;fontSize=12;fontFamily=Helvetica Neue;fontStyle=1;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="760" y="60" width="160" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="cl_desc" value="3Dボリューム分割&#xa;最高のカリング精度" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=9;fontColor=#4b5563;fontFamily=Helvetica Neue;" vertex="1" parent="1">
+          <mxGeometry x="770" y="125" width="140" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="cl_games" value="DOOM 2016" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=8;fontColor=#6b7280;fontFamily=Helvetica Neue;fontStyle=2;" vertex="1" parent="1">
+          <mxGeometry x="800" y="155" width="80" height="20" as="geometry"/>
+        </mxCell>
+        <!-- Visibility Buffer -->
+        <mxCell id="visbuf" value="Visibility&#xa;Buffer" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dcfce7;strokeColor=#16a34a;fontColor=#166534;fontSize=12;fontFamily=Helvetica Neue;fontStyle=1;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="760" y="200" width="160" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="vb_desc" value="G-Buffer代替&#xa;メモリ効率化" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=9;fontColor=#4b5563;fontFamily=Helvetica Neue;" vertex="1" parent="1">
+          <mxGeometry x="785" y="255" width="110" height="30" as="geometry"/>
+        </mxCell>
+        <!-- Arrows: evolution -->
+        <mxCell id="e_fw_df" value="オーバードロー解決" style="edgeStyle=orthogonalEdgeStyle;rounded=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;strokeColor=#94a3b8;strokeWidth=1.5;fontSize=8;fontColor=#6b7280;fontFamily=Helvetica Neue;" edge="1" source="forward" target="deferred" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_df_tl" value="ライトカリング追加" style="edgeStyle=orthogonalEdgeStyle;rounded=1;exitX=1;exitY=0.3;entryX=0;entryY=0.5;strokeColor=#94a3b8;strokeWidth=1.5;fontSize=8;fontColor=#6b7280;fontFamily=Helvetica Neue;" edge="1" source="deferred" target="tiled" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_fw_fp" value="Forward復権" style="edgeStyle=orthogonalEdgeStyle;rounded=1;exitX=1;exitY=0.8;entryX=0;entryY=0.5;strokeColor=#c4b5fd;strokeWidth=1.5;fontSize=8;fontColor=#6b21a8;fontFamily=Helvetica Neue;dashed=1;" edge="1" source="deferred" target="fplus" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_tl_cl" value="2D→3D" style="edgeStyle=orthogonalEdgeStyle;rounded=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;strokeColor=#94a3b8;strokeWidth=1.5;fontSize=8;fontColor=#6b7280;fontFamily=Helvetica Neue;" edge="1" source="tiled" target="cluster" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_df_vb" style="edgeStyle=orthogonalEdgeStyle;rounded=1;exitX=1;exitY=0.7;entryX=0;entryY=0.5;strokeColor=#94a3b8;strokeWidth=1.2;dashed=1;" edge="1" source="fplus" target="visbuf" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <!-- Unity annotation -->
+        <mxCell id="unity_box" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#e5e7eb;" vertex="1" parent="1">
+          <mxGeometry x="60" y="300" width="380" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="unity_title" value="Unity 6 での対応" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=11;fontStyle=1;fontColor=#1e40af;fontFamily=Helvetica Neue;" vertex="1" parent="1">
+          <mxGeometry x="70" y="305" width="130" height="20" as="geometry"/>
+        </mxCell>
+        <mxCell id="unity1" value="URP Forward / Forward+  → モバイル・VR" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=9;fontColor=#4b5563;fontFamily=Helvetica Neue;" vertex="1" parent="1">
+          <mxGeometry x="80" y="330" width="260" height="16" as="geometry"/>
+        </mxCell>
+        <mxCell id="unity2" value="URP Deferred            → 中規模プロジェクト" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=9;fontColor=#4b5563;fontFamily=Helvetica Neue;" vertex="1" parent="1">
+          <mxGeometry x="80" y="348" width="290" height="16" as="geometry"/>
+        </mxCell>
+        <mxCell id="unity3" value="HDRP Deferred           → AAA品質" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=9;fontColor=#4b5563;fontFamily=Helvetica Neue;" vertex="1" parent="1">
+          <mxGeometry x="80" y="366" width="230" height="16" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

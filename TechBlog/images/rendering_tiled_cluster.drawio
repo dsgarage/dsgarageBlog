@@ -1,0 +1,178 @@
+<mxfile>
+  <diagram name="Tile-based &amp; Cluster-based" id="tiled_cluster">
+    <mxGraphModel dx="1200" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1200" pageHeight="500" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <!-- Title -->
+        <mxCell id="title" value="ライトの局所性を活用する ― タイルベース &amp; クラスタベース" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=14;fontStyle=1;fontColor=#1e40af;fontFamily=Helvetica Neue;" vertex="1" parent="1">
+          <mxGeometry x="250" y="10" width="500" height="30" as="geometry"/>
+        </mxCell>
+        <!-- Left: Naive approach -->
+        <mxCell id="naive_bg" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fee2e2;strokeColor=#fca5a5;" vertex="1" parent="1">
+          <mxGeometry x="20" y="60" width="250" height="200" as="geometry"/>
+        </mxCell>
+        <mxCell id="naive_title" value="全ピクセル × 全ライト（非効率）" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=11;fontStyle=1;fontColor=#991b1b;fontFamily=Helvetica Neue;" vertex="1" parent="1">
+          <mxGeometry x="40" y="68" width="220" height="20" as="geometry"/>
+        </mxCell>
+        <!-- Screen grid naive -->
+        <mxCell id="n_grid" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fecaca;strokeColor=#f87171;" vertex="1" parent="1">
+          <mxGeometry x="50" y="100" width="120" height="90" as="geometry"/>
+        </mxCell>
+        <mxCell id="n_screen" value="画面全体" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=9;fontColor=#991b1b;fontFamily=Helvetica Neue;" vertex="1" parent="1">
+          <mxGeometry x="75" y="135" width="70" height="20" as="geometry"/>
+        </mxCell>
+        <!-- Lights naive -->
+        <mxCell id="n_l1" value="💡" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=16;" vertex="1" parent="1">
+          <mxGeometry x="190" y="100" width="30" height="25" as="geometry"/>
+        </mxCell>
+        <mxCell id="n_l2" value="💡" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=16;" vertex="1" parent="1">
+          <mxGeometry x="220" y="120" width="30" height="25" as="geometry"/>
+        </mxCell>
+        <mxCell id="n_l3" value="💡" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=16;" vertex="1" parent="1">
+          <mxGeometry x="190" y="145" width="30" height="25" as="geometry"/>
+        </mxCell>
+        <mxCell id="n_l4" value="💡" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=16;" vertex="1" parent="1">
+          <mxGeometry x="220" y="165" width="30" height="25" as="geometry"/>
+        </mxCell>
+        <mxCell id="naive_cost" value="全ピクセルが全ライトを計算 ❌" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=10;fontStyle=1;fontColor=#991b1b;fontFamily=Helvetica Neue;" vertex="1" parent="1">
+          <mxGeometry x="40" y="210" width="220" height="20" as="geometry"/>
+        </mxCell>
+        <!-- Arrow -->
+        <mxCell id="arrow_main" value="最適化" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=11;fontStyle=1;fontColor=#1e40af;fontFamily=Helvetica Neue;" vertex="1" parent="1">
+          <mxGeometry x="285" y="140" width="60" height="20" as="geometry"/>
+        </mxCell>
+        <mxCell id="arrow_shape" value="→" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=24;fontColor=#94a3b8;" vertex="1" parent="1">
+          <mxGeometry x="290" y="155" width="50" height="30" as="geometry"/>
+        </mxCell>
+        <!-- Middle: Tile-based -->
+        <mxCell id="tile_bg" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eff6ff;strokeColor=#93c5fd;" vertex="1" parent="1">
+          <mxGeometry x="360" y="60" width="250" height="200" as="geometry"/>
+        </mxCell>
+        <mxCell id="tile_title" value="タイルベース（2D分割）" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=11;fontStyle=1;fontColor=#1e40af;fontFamily=Helvetica Neue;" vertex="1" parent="1">
+          <mxGeometry x="400" y="68" width="170" height="20" as="geometry"/>
+        </mxCell>
+        <!-- Tile grid -->
+        <mxCell id="t1" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dbeafe;strokeColor=#93c5fd;" vertex="1" parent="1">
+          <mxGeometry x="390" y="100" width="40" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="t2" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dbeafe;strokeColor=#93c5fd;" vertex="1" parent="1">
+          <mxGeometry x="430" y="100" width="40" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="t3" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fef3c7;strokeColor=#fcd34d;" vertex="1" parent="1">
+          <mxGeometry x="470" y="100" width="40" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="t4" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dbeafe;strokeColor=#93c5fd;" vertex="1" parent="1">
+          <mxGeometry x="390" y="130" width="40" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="t5" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fef3c7;strokeColor=#fcd34d;" vertex="1" parent="1">
+          <mxGeometry x="430" y="130" width="40" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="t6" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dbeafe;strokeColor=#93c5fd;" vertex="1" parent="1">
+          <mxGeometry x="470" y="130" width="40" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="t7" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dbeafe;strokeColor=#93c5fd;" vertex="1" parent="1">
+          <mxGeometry x="390" y="160" width="40" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="t8" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dbeafe;strokeColor=#93c5fd;" vertex="1" parent="1">
+          <mxGeometry x="430" y="160" width="40" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="t9" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fef3c7;strokeColor=#fcd34d;" vertex="1" parent="1">
+          <mxGeometry x="470" y="160" width="40" height="30" as="geometry"/>
+        </mxCell>
+        <!-- Tile lights -->
+        <mxCell id="tl1" value="💡" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="530" y="105" width="25" height="20" as="geometry"/>
+        </mxCell>
+        <mxCell id="tl2" value="💡" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="530" y="135" width="25" height="20" as="geometry"/>
+        </mxCell>
+        <mxCell id="tile_desc1" value="黄タイルのみライト計算 ✓" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=10;fontStyle=1;fontColor=#1e40af;fontFamily=Helvetica Neue;" vertex="1" parent="1">
+          <mxGeometry x="380" y="210" width="180" height="20" as="geometry"/>
+        </mxCell>
+        <mxCell id="tile_games" value="BF4, Ryse" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=9;fontStyle=2;fontColor=#6b7280;fontFamily=Helvetica Neue;" vertex="1" parent="1">
+          <mxGeometry x="420" y="230" width="70" height="20" as="geometry"/>
+        </mxCell>
+        <!-- Right: Cluster-based -->
+        <mxCell id="cluster_bg" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f0fdf4;strokeColor=#86efac;" vertex="1" parent="1">
+          <mxGeometry x="630" y="60" width="280" height="200" as="geometry"/>
+        </mxCell>
+        <mxCell id="cluster_title" value="クラスタベース（3D分割）" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=11;fontStyle=1;fontColor=#166534;fontFamily=Helvetica Neue;" vertex="1" parent="1">
+          <mxGeometry x="690" y="68" width="180" height="20" as="geometry"/>
+        </mxCell>
+        <!-- 3D clusters (isometric-ish) -->
+        <mxCell id="c_front1" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dcfce7;strokeColor=#86efac;" vertex="1" parent="1">
+          <mxGeometry x="660" y="130" width="35" height="25" as="geometry"/>
+        </mxCell>
+        <mxCell id="c_front2" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dcfce7;strokeColor=#86efac;" vertex="1" parent="1">
+          <mxGeometry x="695" y="130" width="35" height="25" as="geometry"/>
+        </mxCell>
+        <mxCell id="c_front3" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fef3c7;strokeColor=#fcd34d;" vertex="1" parent="1">
+          <mxGeometry x="730" y="130" width="35" height="25" as="geometry"/>
+        </mxCell>
+        <mxCell id="c_front4" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dcfce7;strokeColor=#86efac;" vertex="1" parent="1">
+          <mxGeometry x="660" y="155" width="35" height="25" as="geometry"/>
+        </mxCell>
+        <mxCell id="c_front5" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dcfce7;strokeColor=#86efac;" vertex="1" parent="1">
+          <mxGeometry x="695" y="155" width="35" height="25" as="geometry"/>
+        </mxCell>
+        <mxCell id="c_front6" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dcfce7;strokeColor=#86efac;" vertex="1" parent="1">
+          <mxGeometry x="730" y="155" width="35" height="25" as="geometry"/>
+        </mxCell>
+        <!-- Back layer (offset) -->
+        <mxCell id="c_back1" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#bbf7d0;strokeColor=#86efac;opacity=60;" vertex="1" parent="1">
+          <mxGeometry x="675" y="115" width="35" height="25" as="geometry"/>
+        </mxCell>
+        <mxCell id="c_back2" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#bbf7d0;strokeColor=#86efac;opacity=60;" vertex="1" parent="1">
+          <mxGeometry x="710" y="115" width="35" height="25" as="geometry"/>
+        </mxCell>
+        <mxCell id="c_back3" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#bbf7d0;strokeColor=#86efac;opacity=60;" vertex="1" parent="1">
+          <mxGeometry x="745" y="115" width="35" height="25" as="geometry"/>
+        </mxCell>
+        <!-- Depth label -->
+        <mxCell id="depth_arrow" value="奥行き(Z)" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=9;fontColor=#166534;fontFamily=Helvetica Neue;fontStyle=2;" vertex="1" parent="1">
+          <mxGeometry x="790" y="115" width="70" height="20" as="geometry"/>
+        </mxCell>
+        <mxCell id="xy_label" value="X × Y" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=9;fontColor=#166534;fontFamily=Helvetica Neue;fontStyle=2;" vertex="1" parent="1">
+          <mxGeometry x="690" y="185" width="50" height="20" as="geometry"/>
+        </mxCell>
+        <mxCell id="cluster_desc" value="深度方向も分割 → カリング精度↑" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=10;fontStyle=1;fontColor=#166534;fontFamily=Helvetica Neue;" vertex="1" parent="1">
+          <mxGeometry x="650" y="210" width="240" height="20" as="geometry"/>
+        </mxCell>
+        <mxCell id="cluster_games" value="DOOM 2016" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=9;fontStyle=2;fontColor=#6b7280;fontFamily=Helvetica Neue;" vertex="1" parent="1">
+          <mxGeometry x="730" y="230" width="80" height="20" as="geometry"/>
+        </mxCell>
+        <!-- Bottom: Forward+ -->
+        <mxCell id="fplus_bg" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#faf5ff;strokeColor=#c4b5fd;" vertex="1" parent="1">
+          <mxGeometry x="360" y="290" width="550" height="100" as="geometry"/>
+        </mxCell>
+        <mxCell id="fplus_title" value="Forward+ ― タイルベースの効率化 + Forwardの柔軟性" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=11;fontStyle=1;fontColor=#6b21a8;fontFamily=Helvetica Neue;" vertex="1" parent="1">
+          <mxGeometry x="370" y="295" width="370" height="20" as="geometry"/>
+        </mxCell>
+        <!-- Forward+ steps -->
+        <mxCell id="fp1" value="① Depth&#xa;Prepass" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ede9fe;strokeColor=#c4b5fd;fontColor=#6b21a8;fontSize=10;fontFamily=Helvetica Neue;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="380" y="325" width="90" height="45" as="geometry"/>
+        </mxCell>
+        <mxCell id="fp2" value="② タイル別&#xa;ライトカリング" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ede9fe;strokeColor=#c4b5fd;fontColor=#6b21a8;fontSize=10;fontFamily=Helvetica Neue;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="500" y="325" width="110" height="45" as="geometry"/>
+        </mxCell>
+        <mxCell id="fp3" value="③ Forward&#xa;Shading" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ede9fe;strokeColor=#c4b5fd;fontColor=#6b21a8;fontSize=10;fontFamily=Helvetica Neue;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="640" y="325" width="90" height="45" as="geometry"/>
+        </mxCell>
+        <mxCell id="fp_result" value="✅ 透明対応&#xa;✅ MSAA対応&#xa;✅ 多ライト対応" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=9;fontColor=#166534;fontFamily=Helvetica Neue;" vertex="1" parent="1">
+          <mxGeometry x="770" y="320" width="110" height="55" as="geometry"/>
+        </mxCell>
+        <!-- Forward+ arrows -->
+        <mxCell id="efp1" style="rounded=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;strokeColor=#94a3b8;strokeWidth=1.5;" edge="1" source="fp1" target="fp2" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="efp2" style="rounded=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;strokeColor=#94a3b8;strokeWidth=1.5;" edge="1" source="fp2" target="fp3" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="efp3" style="rounded=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;strokeColor=#94a3b8;strokeWidth=1.5;" edge="1" source="fp3" target="fp_result" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
