@@ -1,0 +1,127 @@
+<mxfile>
+  <diagram name="AOの進化タイムライン" id="ao_evolution">
+    <mxGraphModel dx="1400" dy="600" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1400" pageHeight="550" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <!-- Title -->
+        <mxCell id="title" value="Ambient Occlusion の進化" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=16;fontStyle=1;fontColor=#1e40af;fontFamily=Helvetica Neue;" vertex="1" parent="1">
+          <mxGeometry x="470" y="15" width="260" height="30" as="geometry"/>
+        </mxCell>
+        <!-- Timeline arrow -->
+        <mxCell id="timeline" value="" style="shape=flexArrow;endArrow=classic;startArrow=none;html=1;fillColor=#f3f4f6;strokeColor=#94a3b8;endWidth=14;endSize=5;width=8;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="40" y="470" as="sourcePoint"/>
+            <mxPoint x="1350" y="470" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="time_label" value="精度・リアリティの向上 →" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=10;fontColor=#6b7280;fontFamily=Helvetica Neue;fontStyle=2;" vertex="1" parent="1">
+          <mxGeometry x="550" y="480" width="180" height="20" as="geometry"/>
+        </mxCell>
+
+        <!-- Precomputed AO -->
+        <mxCell id="precomp" value="Precomputed&#xa;AO" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f3f4f6;strokeColor=#d1d5db;fontColor=#4b5563;fontSize=12;fontFamily=Helvetica Neue;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="50" y="120" width="140" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="precomp_desc" value="オフライン計算&#xa;静的オブジェクトのみ" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=9;fontColor=#4b5563;fontFamily=Helvetica Neue;" vertex="1" parent="1">
+          <mxGeometry x="55" y="185" width="130" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="precomp_year" value="〜2006" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=9;fontColor=#6b7280;fontFamily=Helvetica Neue;fontStyle=2;" vertex="1" parent="1">
+          <mxGeometry x="90" y="215" width="50" height="20" as="geometry"/>
+        </mxCell>
+        <mxCell id="precomp_limit" value="❌ 動的不可" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=9;fontColor=#991b1b;fontFamily=Helvetica Neue;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="80" y="235" width="80" height="20" as="geometry"/>
+        </mxCell>
+
+        <!-- SSAO -->
+        <mxCell id="ssao" value="SSAO" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dbeafe;strokeColor=#93c5fd;fontColor=#1e40af;fontSize=13;fontFamily=Helvetica Neue;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="280" y="120" width="140" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="ssao_desc" value="球体サンプリング&#xa;デプスバッファ比較" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=9;fontColor=#4b5563;fontFamily=Helvetica Neue;" vertex="1" parent="1">
+          <mxGeometry x="285" y="185" width="130" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="ssao_year" value="Crytek, 2007" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=9;fontColor=#6b7280;fontFamily=Helvetica Neue;fontStyle=2;" vertex="1" parent="1">
+          <mxGeometry x="305" y="215" width="90" height="20" as="geometry"/>
+        </mxCell>
+        <mxCell id="ssao_limit" value="⚠ 自己遮蔽あり" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=9;fontColor=#92400e;fontFamily=Helvetica Neue;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="295" y="235" width="110" height="20" as="geometry"/>
+        </mxCell>
+
+        <!-- SSAO+ (small node) -->
+        <mxCell id="ssao_plus" value="SSAO+" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dbeafe;strokeColor=#93c5fd;fontColor=#1e40af;fontSize=11;fontFamily=Helvetica Neue;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="460" y="300" width="100" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="ssao_plus_desc" value="半球サンプリング" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=8;fontColor=#4b5563;fontFamily=Helvetica Neue;" vertex="1" parent="1">
+          <mxGeometry x="460" y="345" width="100" height="16" as="geometry"/>
+        </mxCell>
+
+        <!-- HBAO -->
+        <mxCell id="hbao" value="HBAO" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fef3c7;strokeColor=#fcd34d;fontColor=#92400e;fontSize=13;fontFamily=Helvetica Neue;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="610" y="120" width="140" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="hbao_desc" value="高さ場 + ホライズン角度&#xa;2Dレイマーチ" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=9;fontColor=#4b5563;fontFamily=Helvetica Neue;" vertex="1" parent="1">
+          <mxGeometry x="615" y="185" width="140" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="hbao_year" value="NVIDIA, 2008" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=9;fontColor=#6b7280;fontFamily=Helvetica Neue;fontStyle=2;" vertex="1" parent="1">
+          <mxGeometry x="635" y="215" width="100" height="20" as="geometry"/>
+        </mxCell>
+
+        <!-- GTAO -->
+        <mxCell id="gtao" value="GTAO" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dcfce7;strokeColor=#86efac;fontColor=#166534;fontSize=13;fontFamily=Helvetica Neue;fontStyle=1;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="850" y="120" width="150" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="gtao_desc" value="コサイン重み付き積分&#xa;マルチバウンス近似" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=9;fontColor=#4b5563;fontFamily=Helvetica Neue;" vertex="1" parent="1">
+          <mxGeometry x="855" y="185" width="140" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="gtao_year" value="2016" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=9;fontColor=#6b7280;fontFamily=Helvetica Neue;fontStyle=2;" vertex="1" parent="1">
+          <mxGeometry x="900" y="215" width="40" height="20" as="geometry"/>
+        </mxCell>
+        <mxCell id="gtao_badge" value="✅ 現在の標準" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=9;fontColor=#166534;fontFamily=Helvetica Neue;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="880" y="235" width="90" height="20" as="geometry"/>
+        </mxCell>
+
+        <!-- RT-AO -->
+        <mxCell id="rtao" value="Ray-Tracing&#xa;AO" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dcfce7;strokeColor=#16a34a;fontColor=#166534;fontSize=13;fontFamily=Helvetica Neue;fontStyle=1;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="1110" y="120" width="150" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="rtao_desc" value="ハードウェアRT&#xa;画面外の遮蔽も計算" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=9;fontColor=#4b5563;fontFamily=Helvetica Neue;" vertex="1" parent="1">
+          <mxGeometry x="1115" y="185" width="140" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="rtao_year" value="2018〜" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=9;fontColor=#6b7280;fontFamily=Helvetica Neue;fontStyle=2;" vertex="1" parent="1">
+          <mxGeometry x="1160" y="215" width="50" height="20" as="geometry"/>
+        </mxCell>
+
+        <!-- Arrows -->
+        <mxCell id="e1" value="リアルタイム化" style="edgeStyle=orthogonalEdgeStyle;rounded=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;strokeColor=#94a3b8;strokeWidth=1.5;fontSize=8;fontColor=#6b7280;fontFamily=Helvetica Neue;" edge="1" source="precomp" target="ssao" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e1b" value="自己遮蔽修正" style="edgeStyle=orthogonalEdgeStyle;rounded=1;exitX=0.5;exitY=1;entryX=0;entryY=0.5;strokeColor=#93c5fd;strokeWidth=1.2;fontSize=8;fontColor=#6b7280;fontFamily=Helvetica Neue;dashed=1;" edge="1" source="ssao" target="ssao_plus" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e2" value="ホライズン角度" style="edgeStyle=orthogonalEdgeStyle;rounded=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;strokeColor=#94a3b8;strokeWidth=1.5;fontSize=8;fontColor=#6b7280;fontFamily=Helvetica Neue;" edge="1" source="ssao" target="hbao" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e3" value="コサイン重み&#xa;+ マルチバウンス" style="edgeStyle=orthogonalEdgeStyle;rounded=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;strokeColor=#94a3b8;strokeWidth=1.5;fontSize=8;fontColor=#6b7280;fontFamily=Helvetica Neue;" edge="1" source="hbao" target="gtao" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e4" value="ハードウェアRT" style="edgeStyle=orthogonalEdgeStyle;rounded=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;strokeColor=#16a34a;strokeWidth=1.5;fontSize=8;fontColor=#166534;fontFamily=Helvetica Neue;" edge="1" source="gtao" target="rtao" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- Quality bar -->
+        <mxCell id="quality_box" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#e5e7eb;" vertex="1" parent="1">
+          <mxGeometry x="50" y="370" width="500" height="70" as="geometry"/>
+        </mxCell>
+        <mxCell id="quality_title" value="Unity 6 での対応" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=11;fontStyle=1;fontColor=#1e40af;fontFamily=Helvetica Neue;" vertex="1" parent="1">
+          <mxGeometry x="60" y="375" width="130" height="20" as="geometry"/>
+        </mxCell>
+        <mxCell id="q1" value="URP  → SSAO（Renderer Feature）" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=9;fontColor=#4b5563;fontFamily=Helvetica Neue;" vertex="1" parent="1">
+          <mxGeometry x="70" y="400" width="220" height="16" as="geometry"/>
+        </mxCell>
+        <mxCell id="q2" value="HDRP → Ground Truth AO（GTAO）" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=9;fontColor=#4b5563;fontFamily=Helvetica Neue;" vertex="1" parent="1">
+          <mxGeometry x="70" y="418" width="230" height="16" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

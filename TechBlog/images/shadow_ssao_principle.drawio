@@ -1,0 +1,174 @@
+<mxfile>
+  <diagram name="SSAOの原理" id="ssao_principle">
+    <mxGraphModel dx="1100" dy="700" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="650" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <!-- Title -->
+        <mxCell id="title" value="SSAO の原理 ― デプスバッファ比較による遮蔽判定" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=14;fontStyle=1;fontColor=#1e40af;fontFamily=Helvetica Neue;" vertex="1" parent="1">
+          <mxGeometry x="230" y="15" width="500" height="30" as="geometry"/>
+        </mxCell>
+
+        <!-- Left side: Sampling concept -->
+        <mxCell id="left_title" value="1. サンプリング" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=12;fontStyle=1;fontColor=#1e40af;fontFamily=Helvetica Neue;" vertex="1" parent="1">
+          <mxGeometry x="50" y="60" width="130" height="25" as="geometry"/>
+        </mxCell>
+
+        <!-- Surface line -->
+        <mxCell id="surface" value="" style="shape=mxgraph.basic.wave;fillColor=#d1d5db;strokeColor=#6b7280;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="30" y="350" width="450" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="surface_label" value="ジオメトリ表面（デプスバッファ）" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=9;fontColor=#4b5563;fontFamily=Helvetica Neue;" vertex="1" parent="1">
+          <mxGeometry x="120" y="395" width="200" height="16" as="geometry"/>
+        </mxCell>
+
+        <!-- Wall (occluder) -->
+        <mxCell id="wall" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d1d5db;strokeColor=#6b7280;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="300" y="180" width="30" height="170" as="geometry"/>
+        </mxCell>
+        <mxCell id="wall_label" value="壁（遮蔽物）" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=9;fontColor=#4b5563;fontFamily=Helvetica Neue;" vertex="1" parent="1">
+          <mxGeometry x="280" y="160" width="80" height="16" as="geometry"/>
+        </mxCell>
+
+        <!-- Center pixel P -->
+        <mxCell id="pixel_p" value="P" style="ellipse;whiteSpace=wrap;html=1;fillColor=#1e40af;strokeColor=#1e3a8a;fontColor=#ffffff;fontSize=12;fontStyle=1;fontFamily=Helvetica Neue;" vertex="1" parent="1">
+          <mxGeometry x="190" y="330" width="30" height="30" as="geometry"/>
+        </mxCell>
+
+        <!-- Sampling sphere (SSAO) -->
+        <mxCell id="sphere" value="" style="ellipse;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#93c5fd;strokeWidth=2;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="105" y="220" width="200" height="200" as="geometry"/>
+        </mxCell>
+        <mxCell id="sphere_label" value="サンプリング球体" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=9;fontColor=#1e40af;fontFamily=Helvetica Neue;fontStyle=2;" vertex="1" parent="1">
+          <mxGeometry x="130" y="200" width="110" height="16" as="geometry"/>
+        </mxCell>
+
+        <!-- Sample points: occluded (red) -->
+        <mxCell id="s_occ1" value="" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ef4444;strokeColor=#991b1b;fontSize=8;" vertex="1" parent="1">
+          <mxGeometry x="255" y="280" width="12" height="12" as="geometry"/>
+        </mxCell>
+        <mxCell id="s_occ2" value="" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ef4444;strokeColor=#991b1b;fontSize=8;" vertex="1" parent="1">
+          <mxGeometry x="230" y="370" width="12" height="12" as="geometry"/>
+        </mxCell>
+        <mxCell id="s_occ3" value="" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ef4444;strokeColor=#991b1b;fontSize=8;" vertex="1" parent="1">
+          <mxGeometry x="170" y="380" width="12" height="12" as="geometry"/>
+        </mxCell>
+        <mxCell id="s_occ4" value="" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ef4444;strokeColor=#991b1b;fontSize=8;" vertex="1" parent="1">
+          <mxGeometry x="270" y="320" width="12" height="12" as="geometry"/>
+        </mxCell>
+
+        <!-- Sample points: visible (green) -->
+        <mxCell id="s_vis1" value="" style="ellipse;whiteSpace=wrap;html=1;fillColor=#22c55e;strokeColor=#166534;fontSize=8;" vertex="1" parent="1">
+          <mxGeometry x="150" y="250" width="12" height="12" as="geometry"/>
+        </mxCell>
+        <mxCell id="s_vis2" value="" style="ellipse;whiteSpace=wrap;html=1;fillColor=#22c55e;strokeColor=#166534;fontSize=8;" vertex="1" parent="1">
+          <mxGeometry x="200" y="240" width="12" height="12" as="geometry"/>
+        </mxCell>
+        <mxCell id="s_vis3" value="" style="ellipse;whiteSpace=wrap;html=1;fillColor=#22c55e;strokeColor=#166534;fontSize=8;" vertex="1" parent="1">
+          <mxGeometry x="130" y="310" width="12" height="12" as="geometry"/>
+        </mxCell>
+        <mxCell id="s_vis4" value="" style="ellipse;whiteSpace=wrap;html=1;fillColor=#22c55e;strokeColor=#166534;fontSize=8;" vertex="1" parent="1">
+          <mxGeometry x="240" y="250" width="12" height="12" as="geometry"/>
+        </mxCell>
+
+        <!-- Legend -->
+        <mxCell id="legend_box" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#e5e7eb;" vertex="1" parent="1">
+          <mxGeometry x="50" y="430" width="400" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="leg_occ_dot" value="" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ef4444;strokeColor=#991b1b;" vertex="1" parent="1">
+          <mxGeometry x="70" y="445" width="12" height="12" as="geometry"/>
+        </mxCell>
+        <mxCell id="leg_occ" value="遮蔽されたサンプル（depth &gt; depthBuffer）→ 暗い" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=9;fontColor=#991b1b;fontFamily=Helvetica Neue;" vertex="1" parent="1">
+          <mxGeometry x="90" y="441" width="320" height="20" as="geometry"/>
+        </mxCell>
+        <mxCell id="leg_vis_dot" value="" style="ellipse;whiteSpace=wrap;html=1;fillColor=#22c55e;strokeColor=#166534;" vertex="1" parent="1">
+          <mxGeometry x="70" y="467" width="12" height="12" as="geometry"/>
+        </mxCell>
+        <mxCell id="leg_vis" value="遮蔽されていないサンプル（depth &lt; depthBuffer）→ 明るい" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=9;fontColor=#166534;fontFamily=Helvetica Neue;" vertex="1" parent="1">
+          <mxGeometry x="90" y="463" width="360" height="20" as="geometry"/>
+        </mxCell>
+
+        <!-- Right side: SSAO vs SSAO+ comparison -->
+        <mxCell id="right_title" value="2. SSAO vs SSAO+（サンプリング領域の違い）" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=12;fontStyle=1;fontColor=#1e40af;fontFamily=Helvetica Neue;" vertex="1" parent="1">
+          <mxGeometry x="530" y="60" width="370" height="25" as="geometry"/>
+        </mxCell>
+
+        <!-- SSAO sphere diagram -->
+        <mxCell id="ssao_box" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fee2e2;strokeColor=#fca5a5;" vertex="1" parent="1">
+          <mxGeometry x="530" y="100" width="240" height="220" as="geometry"/>
+        </mxCell>
+        <mxCell id="ssao_label" value="SSAO: 球体サンプリング" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=11;fontStyle=1;fontColor=#991b1b;fontFamily=Helvetica Neue;" vertex="1" parent="1">
+          <mxGeometry x="565" y="108" width="180" height="20" as="geometry"/>
+        </mxCell>
+        <!-- Surface -->
+        <mxCell id="ssao_surface" value="" style="endArrow=none;html=1;strokeColor=#6b7280;strokeWidth=2;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="560" y="240" as="sourcePoint"/>
+            <mxPoint x="740" y="240" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <!-- Full sphere -->
+        <mxCell id="ssao_sphere" value="" style="ellipse;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#93c5fd;strokeWidth=2;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="600" y="170" width="100" height="100" as="geometry"/>
+        </mxCell>
+        <mxCell id="ssao_p" value="P" style="ellipse;whiteSpace=wrap;html=1;fillColor=#1e40af;strokeColor=#1e3a8a;fontColor=#ffffff;fontSize=10;fontStyle=1;fontFamily=Helvetica Neue;" vertex="1" parent="1">
+          <mxGeometry x="640" y="210" width="20" height="20" as="geometry"/>
+        </mxCell>
+        <!-- Normal arrow -->
+        <mxCell id="ssao_normal" value="N" style="endArrow=classic;html=1;strokeColor=#1e40af;strokeWidth=1.5;fontColor=#1e40af;fontSize=9;fontFamily=Helvetica Neue;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="650" y="215" as="sourcePoint"/>
+            <mxPoint x="650" y="155" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <!-- Problem area -->
+        <mxCell id="ssao_problem" value="裏側にもサンプルが&#xa;落ちる → 自己遮蔽" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=9;fontColor=#991b1b;fontFamily=Helvetica Neue;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="580" y="280" width="140" height="30" as="geometry"/>
+        </mxCell>
+
+        <!-- SSAO+ hemisphere diagram -->
+        <mxCell id="ssao_plus_box" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dcfce7;strokeColor=#86efac;" vertex="1" parent="1">
+          <mxGeometry x="810" y="100" width="240" height="220" as="geometry"/>
+        </mxCell>
+        <mxCell id="ssao_plus_label" value="SSAO+: 半球サンプリング" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=11;fontStyle=1;fontColor=#166534;fontFamily=Helvetica Neue;" vertex="1" parent="1">
+          <mxGeometry x="840" y="108" width="190" height="20" as="geometry"/>
+        </mxCell>
+        <!-- Surface -->
+        <mxCell id="ssao_plus_surface" value="" style="endArrow=none;html=1;strokeColor=#6b7280;strokeWidth=2;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="840" y="240" as="sourcePoint"/>
+            <mxPoint x="1020" y="240" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <!-- Hemisphere only -->
+        <mxCell id="ssao_plus_hemi" value="" style="shape=mxgraph.basic.pie;startAngle=0;endAngle=0.5;fillColor=none;strokeColor=#22c55e;strokeWidth=2;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="880" y="170" width="100" height="100" as="geometry"/>
+        </mxCell>
+        <mxCell id="ssao_plus_p" value="P" style="ellipse;whiteSpace=wrap;html=1;fillColor=#166534;strokeColor=#14532d;fontColor=#ffffff;fontSize=10;fontStyle=1;fontFamily=Helvetica Neue;" vertex="1" parent="1">
+          <mxGeometry x="920" y="230" width="20" height="20" as="geometry"/>
+        </mxCell>
+        <!-- Normal arrow -->
+        <mxCell id="ssao_plus_normal" value="N" style="endArrow=classic;html=1;strokeColor=#166534;strokeWidth=1.5;fontColor=#166534;fontSize=9;fontFamily=Helvetica Neue;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="930" y="235" as="sourcePoint"/>
+            <mxPoint x="930" y="155" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ssao_plus_ok" value="法線方向のみ&#xa;→ 自己遮蔽なし" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=9;fontColor=#166534;fontFamily=Helvetica Neue;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="860" y="280" width="140" height="30" as="geometry"/>
+        </mxCell>
+
+        <!-- Formula box -->
+        <mxCell id="formula_box" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f3f4f6;strokeColor=#d1d5db;" vertex="1" parent="1">
+          <mxGeometry x="530" y="350" width="520" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="formula_title" value="計算式" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=11;fontStyle=1;fontColor=#4b5563;fontFamily=Helvetica Neue;" vertex="1" parent="1">
+          <mxGeometry x="545" y="355" width="60" height="20" as="geometry"/>
+        </mxCell>
+        <mxCell id="formula" value="AO(P) = (遮蔽サンプル数) / (全サンプル数)&#xa;遮蔽判定: depth(Sample) &gt; depthBuffer(Sample.screenPos)" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=10;fontColor=#4b5563;fontFamily=Helvetica Neue;" vertex="1" parent="1">
+          <mxGeometry x="545" y="380" width="480" height="40" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

@@ -1,0 +1,223 @@
+<mxfile>
+  <diagram name="Last of Us 球体近似ソフトシャドウ" id="soft_shadow_sphere">
+    <mxGraphModel dx="1300" dy="700" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1300" pageHeight="700" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <!-- Title -->
+        <mxCell id="title" value="The Last of Us ― 球体近似ソフトシャドウ" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=16;fontStyle=1;fontColor=#1e40af;fontFamily=Helvetica Neue;" vertex="1" parent="1">
+          <mxGeometry x="350" y="15" width="400" height="30" as="geometry"/>
+        </mxCell>
+
+        <!-- Left: Character with spheres -->
+        <mxCell id="left_title" value="1. キャラクターの球体近似" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=12;fontStyle=1;fontColor=#1e40af;fontFamily=Helvetica Neue;" vertex="1" parent="1">
+          <mxGeometry x="40" y="60" width="210" height="25" as="geometry"/>
+        </mxCell>
+
+        <!-- Character stick figure outline -->
+        <mxCell id="char_box" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f3f4f6;strokeColor=#d1d5db;" vertex="1" parent="1">
+          <mxGeometry x="40" y="95" width="260" height="380" as="geometry"/>
+        </mxCell>
+
+        <!-- Head sphere -->
+        <mxCell id="head" value="" style="ellipse;whiteSpace=wrap;html=1;fillColor=#dbeafe;strokeColor=#3b82f6;strokeWidth=2;opacity=70;" vertex="1" parent="1">
+          <mxGeometry x="140" y="110" width="50" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="head_label" value="頭" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=9;fontColor=#1e40af;fontFamily=Helvetica Neue;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="155" y="125" width="25" height="16" as="geometry"/>
+        </mxCell>
+
+        <!-- Torso sphere (large) -->
+        <mxCell id="torso" value="" style="ellipse;whiteSpace=wrap;html=1;fillColor=#dbeafe;strokeColor=#3b82f6;strokeWidth=2;opacity=70;" vertex="1" parent="1">
+          <mxGeometry x="120" y="170" width="90" height="110" as="geometry"/>
+        </mxCell>
+        <mxCell id="torso_label" value="胴体" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=9;fontColor=#1e40af;fontFamily=Helvetica Neue;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="148" y="218" width="35" height="16" as="geometry"/>
+        </mxCell>
+
+        <!-- Left arm -->
+        <mxCell id="larm" value="" style="ellipse;whiteSpace=wrap;html=1;fillColor=#dbeafe;strokeColor=#3b82f6;strokeWidth=2;opacity=70;" vertex="1" parent="1">
+          <mxGeometry x="70" y="180" width="45" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="larm_label" value="腕" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=8;fontColor=#1e40af;fontFamily=Helvetica Neue;" vertex="1" parent="1">
+          <mxGeometry x="80" y="213" width="25" height="14" as="geometry"/>
+        </mxCell>
+
+        <!-- Right arm -->
+        <mxCell id="rarm" value="" style="ellipse;whiteSpace=wrap;html=1;fillColor=#dbeafe;strokeColor=#3b82f6;strokeWidth=2;opacity=70;" vertex="1" parent="1">
+          <mxGeometry x="215" y="180" width="45" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="rarm_label" value="腕" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=8;fontColor=#1e40af;fontFamily=Helvetica Neue;" vertex="1" parent="1">
+          <mxGeometry x="225" y="213" width="25" height="14" as="geometry"/>
+        </mxCell>
+
+        <!-- Left leg -->
+        <mxCell id="lleg" value="" style="ellipse;whiteSpace=wrap;html=1;fillColor=#dbeafe;strokeColor=#3b82f6;strokeWidth=2;opacity=70;" vertex="1" parent="1">
+          <mxGeometry x="110" y="290" width="45" height="120" as="geometry"/>
+        </mxCell>
+        <mxCell id="lleg_label" value="脚" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=8;fontColor=#1e40af;fontFamily=Helvetica Neue;" vertex="1" parent="1">
+          <mxGeometry x="120" y="343" width="25" height="14" as="geometry"/>
+        </mxCell>
+
+        <!-- Right leg -->
+        <mxCell id="rleg" value="" style="ellipse;whiteSpace=wrap;html=1;fillColor=#dbeafe;strokeColor=#3b82f6;strokeWidth=2;opacity=70;" vertex="1" parent="1">
+          <mxGeometry x="175" y="290" width="45" height="120" as="geometry"/>
+        </mxCell>
+        <mxCell id="rleg_label" value="脚" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=8;fontColor=#1e40af;fontFamily=Helvetica Neue;" vertex="1" parent="1">
+          <mxGeometry x="185" y="343" width="25" height="14" as="geometry"/>
+        </mxCell>
+
+        <!-- Ground -->
+        <mxCell id="ground" value="" style="endArrow=none;html=1;strokeColor=#6b7280;strokeWidth=2;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="40" y="430" as="sourcePoint"/>
+            <mxPoint x="300" y="430" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Annotation -->
+        <mxCell id="char_note" value="各部位を球体（楕円体）で近似&#xa;→ 解析解で遮蔽量を計算可能" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=9;fontColor=#4b5563;fontFamily=Helvetica Neue;" vertex="1" parent="1">
+          <mxGeometry x="70" y="440" width="200" height="30" as="geometry"/>
+        </mxCell>
+
+        <!-- Center: Ambient Occlusion calculation -->
+        <mxCell id="center_title" value="2. Ambient 成分の遮蔽" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=12;fontStyle=1;fontColor=#1e40af;fontFamily=Helvetica Neue;" vertex="1" parent="1">
+          <mxGeometry x="350" y="60" width="190" height="25" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="ambient_box" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fef3c7;strokeColor=#fcd34d;" vertex="1" parent="1">
+          <mxGeometry x="350" y="95" width="280" height="280" as="geometry"/>
+        </mxCell>
+
+        <!-- Shading point -->
+        <mxCell id="shade_pt" value="シェーディング&#xa;ポイント" style="ellipse;whiteSpace=wrap;html=1;fillColor=#92400e;strokeColor=#78350f;fontColor=#ffffff;fontSize=8;fontStyle=1;fontFamily=Helvetica Neue;" vertex="1" parent="1">
+          <mxGeometry x="460" y="310" width="70" height="35" as="geometry"/>
+        </mxCell>
+
+        <!-- Hemisphere -->
+        <mxCell id="hemi" value="" style="shape=mxgraph.basic.pie;startAngle=0;endAngle=0.5;fillColor=none;strokeColor=#92400e;strokeWidth=2;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="390" y="190" width="200" height="160" as="geometry"/>
+        </mxCell>
+        <mxCell id="hemi_label" value="ヘミスフィア&#xa;（環境光の入射方向）" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=8;fontColor=#92400e;fontFamily=Helvetica Neue;fontStyle=2;" vertex="1" parent="1">
+          <mxGeometry x="370" y="165" width="130" height="28" as="geometry"/>
+        </mxCell>
+
+        <!-- Occluder sphere blocking part of hemisphere -->
+        <mxCell id="occ_sphere" value="オクルーダー&#xa;球体" style="ellipse;whiteSpace=wrap;html=1;fillColor=#dbeafe;strokeColor=#3b82f6;strokeWidth=2;fontSize=8;fontColor=#1e40af;fontFamily=Helvetica Neue;fontStyle=1;opacity=80;" vertex="1" parent="1">
+          <mxGeometry x="430" y="210" width="70" height="70" as="geometry"/>
+        </mxCell>
+
+        <!-- Blocked angle indicator -->
+        <mxCell id="blocked_arrow" value="" style="endArrow=none;html=1;strokeColor=#991b1b;strokeWidth=2;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="495" y="327" as="sourcePoint"/>
+            <mxPoint x="440" y="260" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="blocked_arrow2" value="" style="endArrow=none;html=1;strokeColor=#991b1b;strokeWidth=2;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="495" y="327" as="sourcePoint"/>
+            <mxPoint x="490" y="260" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="blocked_label" value="遮蔽される&#xa;立体角" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=8;fontColor=#991b1b;fontFamily=Helvetica Neue;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="510" y="260" width="70" height="28" as="geometry"/>
+        </mxCell>
+
+        <!-- Formula -->
+        <mxCell id="ambient_formula" value="AO = ∫ cos(θ) dω&#xa;（球体が覆う立体角 × コサイン重み）" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=9;fontColor=#92400e;fontFamily=Helvetica Neue;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="380" y="355" width="230" height="30" as="geometry"/>
+        </mxCell>
+
+        <!-- Right: Directional Occlusion -->
+        <mxCell id="right_title" value="3. Directional 成分の遮蔽" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=12;fontStyle=1;fontColor=#1e40af;fontFamily=Helvetica Neue;" vertex="1" parent="1">
+          <mxGeometry x="690" y="60" width="210" height="25" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="dir_box" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dcfce7;strokeColor=#86efac;" vertex="1" parent="1">
+          <mxGeometry x="690" y="95" width="280" height="280" as="geometry"/>
+        </mxCell>
+
+        <!-- Light direction cone -->
+        <mxCell id="light_dir" value="☀ 太陽光" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=10;fontColor=#92400e;fontFamily=Helvetica Neue;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="720" y="115" width="80" height="20" as="geometry"/>
+        </mxCell>
+
+        <!-- Light cone -->
+        <mxCell id="cone1" value="" style="endArrow=classic;html=1;strokeColor=#f59e0b;strokeWidth=2;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="760" y="145" as="sourcePoint"/>
+            <mxPoint x="830" y="270" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="cone2" value="" style="endArrow=classic;html=1;strokeColor=#f59e0b;strokeWidth=2;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="760" y="145" as="sourcePoint"/>
+            <mxPoint x="880" y="270" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="cone_label" value="ライトコーン" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=8;fontColor=#92400e;fontFamily=Helvetica Neue;fontStyle=2;" vertex="1" parent="1">
+          <mxGeometry x="870" y="190" width="80" height="16" as="geometry"/>
+        </mxCell>
+
+        <!-- Occluder sphere in cone path -->
+        <mxCell id="dir_occ_sphere" value="オクルーダー&#xa;球体" style="ellipse;whiteSpace=wrap;html=1;fillColor=#dbeafe;strokeColor=#3b82f6;strokeWidth=2;fontSize=8;fontColor=#1e40af;fontFamily=Helvetica Neue;fontStyle=1;opacity=80;" vertex="1" parent="1">
+          <mxGeometry x="810" y="195" width="65" height="65" as="geometry"/>
+        </mxCell>
+
+        <!-- Intersection area -->
+        <mxCell id="intersect_label" value="コーン-球体&#xa;交差量" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=9;fontColor=#166534;fontFamily=Helvetica Neue;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="880" y="215" width="80" height="28" as="geometry"/>
+        </mxCell>
+
+        <!-- Shading point -->
+        <mxCell id="dir_shade_pt" value="シェーディング&#xa;ポイント" style="ellipse;whiteSpace=wrap;html=1;fillColor=#166534;strokeColor=#14532d;fontColor=#ffffff;fontSize=8;fontStyle=1;fontFamily=Helvetica Neue;" vertex="1" parent="1">
+          <mxGeometry x="810" y="290" width="70" height="35" as="geometry"/>
+        </mxCell>
+
+        <!-- LUT note -->
+        <mxCell id="lut_note" value="交差量は事前計算 →&#xa;テクスチャLUTで参照（高速）" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=9;fontColor=#166534;fontFamily=Helvetica Neue;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="720" y="345" width="200" height="30" as="geometry"/>
+        </mxCell>
+
+        <!-- Bottom: Composition -->
+        <mxCell id="bottom_title" value="4. 複数オクルーダーの合成" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=12;fontStyle=1;fontColor=#1e40af;fontFamily=Helvetica Neue;" vertex="1" parent="1">
+          <mxGeometry x="350" y="410" width="210" height="25" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="comp_box" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f3f4f6;strokeColor=#d1d5db;" vertex="1" parent="1">
+          <mxGeometry x="350" y="445" width="620" height="90" as="geometry"/>
+        </mxCell>
+
+        <!-- Composition formula -->
+        <mxCell id="comp_formula" value="最終 AO = AO(頭) × AO(胴体) × AO(左腕) × AO(右腕) × AO(左脚) × AO(右脚)" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=11;fontColor=#4b5563;fontFamily=Helvetica Neue;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="380" y="460" width="560" height="20" as="geometry"/>
+        </mxCell>
+
+        <!-- Performance -->
+        <mxCell id="perf" value="パフォーマンス: 4-5体で 6-7ms（PS3 SPU 6基並列）" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=10;fontColor=#4b5563;fontFamily=Helvetica Neue;" vertex="1" parent="1">
+          <mxGeometry x="430" y="488" width="380" height="18" as="geometry"/>
+        </mxCell>
+
+        <!-- Optimizations -->
+        <mxCell id="opt1" value="最適化: ① 楕円体で球体数削減  ② 1/4解像度レンダリング（計算量 1/16）" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=9;fontColor=#166534;fontFamily=Helvetica Neue;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="400" y="510" width="490" height="18" as="geometry"/>
+        </mxCell>
+
+        <!-- Arrows connecting sections -->
+        <mxCell id="arr_12" value="" style="endArrow=classic;html=1;strokeColor=#94a3b8;strokeWidth=1.5;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="300" y="280" as="sourcePoint"/>
+            <mxPoint x="350" y="280" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="arr_23" value="" style="endArrow=classic;html=1;strokeColor=#94a3b8;strokeWidth=1.5;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="630" y="230" as="sourcePoint"/>
+            <mxPoint x="690" y="230" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
