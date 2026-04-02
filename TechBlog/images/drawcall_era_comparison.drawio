@@ -1,0 +1,79 @@
+<mxfile host="Electron">
+  <diagram name="Page-1" id="era_cmp">
+    <mxGraphModel dx="1100" dy="500" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="500" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="t" value="描画コスト管理の変遷" style="text;html=1;align=center;fontSize=14;fontStyle=1;fontColor=#1e40af;fontFamily=Helvetica Neue;fillColor=none;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="350" y="10" width="300" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="e1" value="" style="rounded=1;fillColor=#fee2e2;strokeColor=#fca5a5;" vertex="1" parent="1">
+          <mxGeometry x="20" y="50" width="320" height="120" as="geometry"/>
+        </mxCell>
+        <mxCell id="e1t" value="Unity 4: バッチングなし" style="text;html=1;fontSize=11;fontStyle=1;fontColor=#991b1b;fontFamily=Helvetica Neue;fillColor=none;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="30" y="55" width="200" height="20" as="geometry"/>
+        </mxCell>
+        <mxCell id="e1d1" value="Draw Calls: 100 / SetPass: 100" style="text;html=1;fontSize=10;fontColor=#991b1b;fontFamily=Helvetica Neue;fillColor=none;strokeColor=none;align=left;" vertex="1" parent="1">
+          <mxGeometry x="30" y="85" width="280" height="20" as="geometry"/>
+        </mxCell>
+        <mxCell id="e1d2" value="全オブジェクトでフル状態変更" style="text;html=1;fontSize=10;fontColor=#991b1b;fontFamily=Helvetica Neue;fillColor=none;strokeColor=none;align=left;" vertex="1" parent="1">
+          <mxGeometry x="30" y="110" width="250" height="20" as="geometry"/>
+        </mxCell>
+        <mxCell id="e2" value="" style="rounded=1;fillColor=#fef3c7;strokeColor=#fcd34d;" vertex="1" parent="1">
+          <mxGeometry x="20" y="185" width="320" height="120" as="geometry"/>
+        </mxCell>
+        <mxCell id="e2t" value="Unity 5: Dynamic Batching" style="text;html=1;fontSize=11;fontStyle=1;fontColor=#92400e;fontFamily=Helvetica Neue;fillColor=none;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="30" y="190" width="250" height="20" as="geometry"/>
+        </mxCell>
+        <mxCell id="e2d1" value="Draw Calls: ~30 / SetPass: ~30" style="text;html=1;fontSize=10;fontColor=#92400e;fontFamily=Helvetica Neue;fillColor=none;strokeColor=none;align=left;" vertex="1" parent="1">
+          <mxGeometry x="30" y="220" width="250" height="20" as="geometry"/>
+        </mxCell>
+        <mxCell id="e2d2" value="ドローコール数の削減が目標" style="text;html=1;fontSize=10;fontColor=#92400e;fontFamily=Helvetica Neue;fillColor=none;strokeColor=none;align=left;" vertex="1" parent="1">
+          <mxGeometry x="30" y="245" width="220" height="20" as="geometry"/>
+        </mxCell>
+        <mxCell id="e3" value="" style="rounded=1;fillColor=#dcfce7;strokeColor=#16a34a;strokeWidth=3;" vertex="1" parent="1">
+          <mxGeometry x="380" y="50" width="380" height="350" as="geometry"/>
+        </mxCell>
+        <mxCell id="e3t" value="Unity 6: SRP Batcher" style="text;html=1;fontSize=13;fontStyle=1;fontColor=#166534;fontFamily=Helvetica Neue;fillColor=none;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="390" y="55" width="200" height="25" as="geometry"/>
+        </mxCell>
+        <mxCell id="e3d1" value="Draw Calls: 100 (減らない)" style="text;html=1;fontSize=11;fontColor=#166534;fontFamily=Helvetica Neue;fillColor=none;strokeColor=none;align=left;" vertex="1" parent="1">
+          <mxGeometry x="400" y="90" width="200" height="20" as="geometry"/>
+        </mxCell>
+        <mxCell id="e3d2" value="SetPass: 10 (シェーダー数のみ)" style="text;html=1;fontSize=11;fontStyle=1;fontColor=#166534;fontFamily=Helvetica Neue;fillColor=none;strokeColor=none;align=left;" vertex="1" parent="1">
+          <mxGeometry x="400" y="115" width="260" height="20" as="geometry"/>
+        </mxCell>
+        <mxCell id="sg1" value="Shader A (10obj)" style="rounded=1;fillColor=#bbf7d0;strokeColor=#86efac;fontColor=#166534;fontSize=9;fontFamily=Helvetica Neue;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="400" y="155" width="140" height="25" as="geometry"/>
+        </mxCell>
+        <mxCell id="sg2" value="Shader B (10obj)" style="rounded=1;fillColor=#bbf7d0;strokeColor=#86efac;fontColor=#166534;fontSize=9;fontFamily=Helvetica Neue;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="400" y="185" width="140" height="25" as="geometry"/>
+        </mxCell>
+        <mxCell id="sg3" value="Shader C (10obj)" style="rounded=1;fillColor=#bbf7d0;strokeColor=#86efac;fontColor=#166534;fontSize=9;fontFamily=Helvetica Neue;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="400" y="215" width="140" height="25" as="geometry"/>
+        </mxCell>
+        <mxCell id="sg10" value="Shader J (10obj)" style="rounded=1;fillColor=#bbf7d0;strokeColor=#86efac;fontColor=#166534;fontSize=9;fontFamily=Helvetica Neue;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="400" y="260" width="140" height="25" as="geometry"/>
+        </mxCell>
+        <mxCell id="sp1" value="SetPass" style="text;html=1;fontSize=8;fontStyle=1;fontColor=#991b1b;fontFamily=Helvetica Neue;fillColor=none;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="550" y="159" width="50" height="16" as="geometry"/>
+        </mxCell>
+        <mxCell id="sp2" value="SetPass" style="text;html=1;fontSize=8;fontStyle=1;fontColor=#991b1b;fontFamily=Helvetica Neue;fillColor=none;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="550" y="189" width="50" height="16" as="geometry"/>
+        </mxCell>
+        <mxCell id="sp3" value="SetPass" style="text;html=1;fontSize=8;fontStyle=1;fontColor=#991b1b;fontFamily=Helvetica Neue;fillColor=none;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="550" y="219" width="50" height="16" as="geometry"/>
+        </mxCell>
+        <mxCell id="sp10" value="SetPass" style="text;html=1;fontSize=8;fontStyle=1;fontColor=#991b1b;fontFamily=Helvetica Neue;fillColor=none;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="550" y="264" width="50" height="16" as="geometry"/>
+        </mxCell>
+        <mxCell id="key" value="SRP Batcherはドローコールを減らすのではなくドローコールを軽くする" style="rounded=1;whiteSpace=wrap;fillColor=#dbeafe;strokeColor=#1e40af;fontColor=#1e40af;fontSize=11;fontFamily=Helvetica Neue;fontStyle=1;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="400" y="310" width="340" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="shift" value="数を減らす → 1回を軽くする" style="text;html=1;fontSize=11;fontStyle=1;fontColor=#1e40af;fontFamily=Helvetica Neue;fillColor=none;strokeColor=none;align=center;" vertex="1" parent="1">
+          <mxGeometry x="350" y="420" width="250" height="25" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

@@ -1,0 +1,164 @@
+<mxfile>
+  <diagram name="SRP BatcherのCBufferキャッシュ" id="srp_batcher_flow">
+    <mxGraphModel dx="1200" dy="700" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1200" pageHeight="520" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="title" value="SRP Batcher ― CBufferキャッシュによる最適化" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=14;fontStyle=1;fontColor=#1e40af;fontFamily=Helvetica Neue;" vertex="1" parent="1">
+          <mxGeometry x="320" y="10" width="400" height="30" as="geometry"/>
+        </mxCell>
+        <!-- OLD: Traditional pipeline -->
+        <mxCell id="old_bg" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fef2f2;strokeColor=#fca5a5;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="20" y="55" width="550" height="200" as="geometry"/>
+        </mxCell>
+        <mxCell id="old_label" value="従来のパイプライン（Unity 5時代）" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=11;fontStyle=1;fontColor=#991b1b;fontFamily=Helvetica Neue;" vertex="1" parent="1">
+          <mxGeometry x="30" y="60" width="250" height="20" as="geometry"/>
+        </mxCell>
+        <!-- Object A old -->
+        <mxCell id="oa_label" value="オブジェクトA" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=9;fontColor=#991b1b;fontFamily=Helvetica Neue;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="30" y="85" width="90" height="16" as="geometry"/>
+        </mxCell>
+        <mxCell id="oa1" value="Shader設定" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fee2e2;strokeColor=#fca5a5;fontColor=#991b1b;fontSize=9;fontFamily=Helvetica Neue;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="30" y="105" width="85" height="28" as="geometry"/>
+        </mxCell>
+        <mxCell id="oa2" value="Material送信" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fef3c7;strokeColor=#fcd34d;fontColor=#92400e;fontSize=9;fontFamily=Helvetica Neue;" vertex="1" parent="1">
+          <mxGeometry x="125" y="105" width="85" height="28" as="geometry"/>
+        </mxCell>
+        <mxCell id="oa3" value="Transform" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f3f4f6;strokeColor=#94a3b8;fontColor=#4b5563;fontSize=9;fontFamily=Helvetica Neue;" vertex="1" parent="1">
+          <mxGeometry x="220" y="105" width="75" height="28" as="geometry"/>
+        </mxCell>
+        <mxCell id="oa4" value="Draw" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dcfce7;strokeColor=#86efac;fontColor=#166534;fontSize=9;fontFamily=Helvetica Neue;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="305" y="105" width="50" height="28" as="geometry"/>
+        </mxCell>
+        <!-- Object B old (same shader!) -->
+        <mxCell id="ob_label" value="オブジェクトB（同シェーダー、別マテリアル）" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=9;fontColor=#991b1b;fontFamily=Helvetica Neue;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="30" y="143" width="300" height="16" as="geometry"/>
+        </mxCell>
+        <mxCell id="ob1" value="Shader設定" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fee2e2;strokeColor=#fca5a5;fontColor=#991b1b;fontSize=9;fontFamily=Helvetica Neue;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="30" y="163" width="85" height="28" as="geometry"/>
+        </mxCell>
+        <mxCell id="ob2" value="Material送信" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fef3c7;strokeColor=#fcd34d;fontColor=#92400e;fontSize=9;fontFamily=Helvetica Neue;" vertex="1" parent="1">
+          <mxGeometry x="125" y="163" width="85" height="28" as="geometry"/>
+        </mxCell>
+        <mxCell id="ob3" value="Transform" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f3f4f6;strokeColor=#94a3b8;fontColor=#4b5563;fontSize=9;fontFamily=Helvetica Neue;" vertex="1" parent="1">
+          <mxGeometry x="220" y="163" width="75" height="28" as="geometry"/>
+        </mxCell>
+        <mxCell id="ob4" value="Draw" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dcfce7;strokeColor=#86efac;fontColor=#166534;fontSize=9;fontFamily=Helvetica Neue;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="305" y="163" width="50" height="28" as="geometry"/>
+        </mxCell>
+        <!-- Waste marker -->
+        <mxCell id="waste" value="⚠ 同じシェーダーなのに&#xa;毎回再設定 = 無駄" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=10;fontStyle=1;fontColor=#991b1b;fontFamily=Helvetica Neue;" vertex="1" parent="1">
+          <mxGeometry x="380" y="130" width="170" height="35" as="geometry"/>
+        </mxCell>
+        <!-- Waste arrows -->
+        <mxCell id="w_arrow1" value="" style="shape=curlyBracket;whiteSpace=wrap;html=1;rounded=1;flipH=1;size=0.5;strokeColor=#fca5a5;rotation=-90;" vertex="1" parent="1">
+          <mxGeometry x="25" y="100" width="20" height="180" as="geometry"/>
+        </mxCell>
+        <!-- NEW: SRP Batcher -->
+        <mxCell id="new_bg" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f0fdf4;strokeColor=#86efac;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="20" y="280" width="550" height="210" as="geometry"/>
+        </mxCell>
+        <mxCell id="new_label" value="SRP Batcher（Unity 6 / URP / HDRP）" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=11;fontStyle=1;fontColor=#166534;fontFamily=Helvetica Neue;" vertex="1" parent="1">
+          <mxGeometry x="30" y="285" width="280" height="20" as="geometry"/>
+        </mxCell>
+        <!-- CBuffer area -->
+        <mxCell id="cbuf_bg" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ede9fe;strokeColor=#c4b5fd;" vertex="1" parent="1">
+          <mxGeometry x="320" y="310" width="230" height="160" as="geometry"/>
+        </mxCell>
+        <mxCell id="cbuf_title" value="GPU CBuffer（常駐）" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=10;fontStyle=1;fontColor=#6b21a8;fontFamily=Helvetica Neue;" vertex="1" parent="1">
+          <mxGeometry x="370" y="315" width="140" height="18" as="geometry"/>
+        </mxCell>
+        <mxCell id="cb_a" value="CBuffer[A]&#xa;色: 赤 / Tex: 木目&#xa;位置: (0,0,0)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f3ff;strokeColor=#c4b5fd;fontColor=#6b21a8;fontSize=8;fontFamily=Helvetica Neue;" vertex="1" parent="1">
+          <mxGeometry x="335" y="340" width="95" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="cb_b" value="CBuffer[B]&#xa;色: 青 / Tex: 石&#xa;位置: (5,0,0)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f3ff;strokeColor=#c4b5fd;fontColor=#6b21a8;fontSize=8;fontFamily=Helvetica Neue;" vertex="1" parent="1">
+          <mxGeometry x="440" y="340" width="95" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="cb_c" value="CBuffer[C]&#xa;色: 緑 / Tex: 草&#xa;位置: (10,0,0)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f3ff;strokeColor=#c4b5fd;fontColor=#6b21a8;fontSize=8;fontFamily=Helvetica Neue;" vertex="1" parent="1">
+          <mxGeometry x="335" y="400" width="95" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="cb_persist" value="パラメータは&#xa;GPUに常駐" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=9;fontStyle=2;fontColor=#6b21a8;fontFamily=Helvetica Neue;" vertex="1" parent="1">
+          <mxGeometry x="440" y="410" width="90" height="30" as="geometry"/>
+        </mxCell>
+        <!-- SRP flow -->
+        <mxCell id="na_label" value="オブジェクトA → B → C" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=9;fontColor=#166534;fontFamily=Helvetica Neue;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="30" y="315" width="160" height="16" as="geometry"/>
+        </mxCell>
+        <mxCell id="na1" value="Shader設定&#xa;(1回だけ)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dcfce7;strokeColor=#16a34a;fontColor=#166534;fontSize=9;fontFamily=Helvetica Neue;fontStyle=1;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="30" y="340" width="85" height="35" as="geometry"/>
+        </mxCell>
+        <mxCell id="na_a" value="→ [A] Draw" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=10;fontColor=#166534;fontFamily=Helvetica Neue;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="130" y="340" width="85" height="18" as="geometry"/>
+        </mxCell>
+        <mxCell id="na_b" value="→ [B] Draw" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=10;fontColor=#166534;fontFamily=Helvetica Neue;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="130" y="362" width="85" height="18" as="geometry"/>
+        </mxCell>
+        <mxCell id="na_c" value="→ [C] Draw" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=10;fontColor=#166534;fontFamily=Helvetica Neue;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="130" y="384" width="85" height="18" as="geometry"/>
+        </mxCell>
+        <mxCell id="no_setup" value="Shader再設定なし ✓&#xa;CBufferの参照先を&#xa;切り替えるだけ" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=9;fontColor=#166534;fontFamily=Helvetica Neue;fontStyle=2;" vertex="1" parent="1">
+          <mxGeometry x="220" y="345" width="130" height="45" as="geometry"/>
+        </mxCell>
+        <!-- Result comparison -->
+        <mxCell id="result_bg" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dbeafe;strokeColor=#93c5fd;" vertex="1" parent="1">
+          <mxGeometry x="600" y="55" width="370" height="435" as="geometry"/>
+        </mxCell>
+        <mxCell id="result_title" value="結果の比較" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=12;fontStyle=1;fontColor=#1e40af;fontFamily=Helvetica Neue;" vertex="1" parent="1">
+          <mxGeometry x="730" y="65" width="90" height="25" as="geometry"/>
+        </mxCell>
+        <!-- Old result -->
+        <mxCell id="old_r_bg" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fee2e2;strokeColor=#fca5a5;" vertex="1" parent="1">
+          <mxGeometry x="620" y="100" width="160" height="130" as="geometry"/>
+        </mxCell>
+        <mxCell id="old_r_title" value="従来" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=10;fontStyle=1;fontColor=#991b1b;fontFamily=Helvetica Neue;" vertex="1" parent="1">
+          <mxGeometry x="680" y="105" width="35" height="18" as="geometry"/>
+        </mxCell>
+        <mxCell id="old_r1" value="ドローコール: 100" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=10;fontColor=#991b1b;fontFamily=Helvetica Neue;" vertex="1" parent="1">
+          <mxGeometry x="630" y="130" width="130" height="18" as="geometry"/>
+        </mxCell>
+        <mxCell id="old_r2" value="セットパス: 100" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=10;fontStyle=1;fontColor=#991b1b;fontFamily=Helvetica Neue;" vertex="1" parent="1">
+          <mxGeometry x="630" y="152" width="120" height="18" as="geometry"/>
+        </mxCell>
+        <mxCell id="old_r3" value="毎回シェーダーと&#xa;パラメータを送信" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=9;fontColor=#991b1b;fontFamily=Helvetica Neue;fontStyle=2;" vertex="1" parent="1">
+          <mxGeometry x="630" y="180" width="130" height="30" as="geometry"/>
+        </mxCell>
+        <!-- New result -->
+        <mxCell id="new_r_bg" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dcfce7;strokeColor=#86efac;" vertex="1" parent="1">
+          <mxGeometry x="800" y="100" width="150" height="130" as="geometry"/>
+        </mxCell>
+        <mxCell id="new_r_title" value="SRP Batcher" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=10;fontStyle=1;fontColor=#166534;fontFamily=Helvetica Neue;" vertex="1" parent="1">
+          <mxGeometry x="830" y="105" width="90" height="18" as="geometry"/>
+        </mxCell>
+        <mxCell id="new_r1" value="ドローコール: 100" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=10;fontColor=#166534;fontFamily=Helvetica Neue;" vertex="1" parent="1">
+          <mxGeometry x="810" y="130" width="130" height="18" as="geometry"/>
+        </mxCell>
+        <mxCell id="new_r2" value="セットパス: 10" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=10;fontStyle=1;fontColor=#166534;fontFamily=Helvetica Neue;" vertex="1" parent="1">
+          <mxGeometry x="810" y="152" width="110" height="18" as="geometry"/>
+        </mxCell>
+        <mxCell id="new_r3" value="シェーダー切替時のみ&#xa;再設定（10種類分）" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=9;fontColor=#166534;fontFamily=Helvetica Neue;fontStyle=2;" vertex="1" parent="1">
+          <mxGeometry x="810" y="180" width="140" height="30" as="geometry"/>
+        </mxCell>
+        <!-- Key message -->
+        <mxCell id="key_msg" value="SRP Batcherは&#xa;「ドローコールを減らす」のではなく&#xa;「ドローコールを軽くする」" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dbeafe;strokeColor=#1e40af;fontColor=#1e40af;fontSize=12;fontFamily=Helvetica Neue;fontStyle=1;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="620" y="270" width="330" height="70" as="geometry"/>
+        </mxCell>
+        <!-- GPU Instancing note -->
+        <mxCell id="inst_bg" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fefce8;strokeColor=#fcd34d;" vertex="1" parent="1">
+          <mxGeometry x="620" y="360" width="330" height="110" as="geometry"/>
+        </mxCell>
+        <mxCell id="inst_title" value="GPU Instancingとの使い分け" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=10;fontStyle=1;fontColor=#92400e;fontFamily=Helvetica Neue;" vertex="1" parent="1">
+          <mxGeometry x="630" y="365" width="190" height="18" as="geometry"/>
+        </mxCell>
+        <mxCell id="inst1" value="SRP Batcher:&#xa;異なるメッシュ + 同シェーダー → 最適" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=9;fontColor=#92400e;fontFamily=Helvetica Neue;" vertex="1" parent="1">
+          <mxGeometry x="630" y="390" width="260" height="28" as="geometry"/>
+        </mxCell>
+        <mxCell id="inst2" value="GPU Instancing:&#xa;同一メッシュ × 数千個 → 最適" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=9;fontColor=#92400e;fontFamily=Helvetica Neue;" vertex="1" parent="1">
+          <mxGeometry x="630" y="425" width="260" height="28" as="geometry"/>
+        </mxCell>
+        <mxCell id="inst3" value="⚠ 両者は併用不可（どちらかが適用）" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=9;fontStyle=1;fontColor=#991b1b;fontFamily=Helvetica Neue;" vertex="1" parent="1">
+          <mxGeometry x="630" y="455" width="270" height="16" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

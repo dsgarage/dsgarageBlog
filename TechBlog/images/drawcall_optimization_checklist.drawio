@@ -1,0 +1,55 @@
+<mxfile>
+  <diagram name="描画コスト最適化チェックリスト" id="optimization_checklist">
+    <mxGraphModel dx="1100" dy="600" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="400" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="title" value="Unity 6 描画コスト最適化 ― 5つの実践ルール" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=14;fontStyle=1;fontColor=#1e40af;fontFamily=Helvetica Neue;" vertex="1" parent="1">
+          <mxGeometry x="280" y="10" width="400" height="30" as="geometry"/>
+        </mxCell>
+        <!-- Rule 1 -->
+        <mxCell id="r1" value="① SRP対応シェーダーを使う" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dcfce7;strokeColor=#86efac;fontColor=#166534;fontSize=11;fontFamily=Helvetica Neue;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="20" y="60" width="200" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="r1d" value="Shader Graph / URP Lit は自動互換&#xa;カスタムHLSLはCBUFFER_START&#xa;(UnityPerMaterial) が必須" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=8;fontColor=#166534;fontFamily=Helvetica Neue;" vertex="1" parent="1">
+          <mxGeometry x="20" y="105" width="200" height="45" as="geometry"/>
+        </mxCell>
+        <!-- Rule 2 -->
+        <mxCell id="r2" value="② シェーダーバリアントを減らす" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dbeafe;strokeColor=#93c5fd;fontColor=#1e40af;fontSize=11;fontFamily=Helvetica Neue;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="240" y="60" width="210" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="r2d" value="Opaque/Transparent 混在を避ける&#xa;#pragma multi_compile を最小化&#xa;Surface Options を統一" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=8;fontColor=#1e40af;fontFamily=Helvetica Neue;" vertex="1" parent="1">
+          <mxGeometry x="240" y="105" width="210" height="45" as="geometry"/>
+        </mxCell>
+        <!-- Rule 3 -->
+        <mxCell id="r3" value="③ マテリアルの違いは気にしない" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fef3c7;strokeColor=#fcd34d;fontColor=#92400e;fontSize=11;fontFamily=Helvetica Neue;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="470" y="60" width="220" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="r3d" value="色・テクスチャが違っても&#xa;同シェーダーなら同セットパス&#xa;テクスチャアトラス化は優先度↓" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=8;fontColor=#92400e;fontFamily=Helvetica Neue;" vertex="1" parent="1">
+          <mxGeometry x="470" y="105" width="210" height="45" as="geometry"/>
+        </mxCell>
+        <!-- Rule 4 -->
+        <mxCell id="r4" value="④ GPU Instancingは&#xa;同一メッシュ大量描画に限定" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ede9fe;strokeColor=#c4b5fd;fontColor=#6b21a8;fontSize=10;fontFamily=Helvetica Neue;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="80" y="180" width="220" height="45" as="geometry"/>
+        </mxCell>
+        <mxCell id="r4d" value="草・パーティクル・群衆向け&#xa;SRP Batcherとは併用不可&#xa;異なるメッシュにはSRP Batcherが有利" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=8;fontColor=#6b21a8;fontFamily=Helvetica Neue;" vertex="1" parent="1">
+          <mxGeometry x="80" y="230" width="220" height="45" as="geometry"/>
+        </mxCell>
+        <!-- Rule 5 -->
+        <mxCell id="r5" value="⑤ Dynamic/Static Batching は&#xa;基本的に不要" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f3f4f6;strokeColor=#94a3b8;fontColor=#4b5563;fontSize=10;fontFamily=Helvetica Neue;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="380" y="180" width="220" height="45" as="geometry"/>
+        </mxCell>
+        <mxCell id="r5d" value="Dynamic BatchingはSRP Batcherと競合&#xa;Static Batchingはメモリ消費大&#xa;SRP Batcherで十分な場合は無効化を検討" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=8;fontColor=#4b5563;fontFamily=Helvetica Neue;" vertex="1" parent="1">
+          <mxGeometry x="380" y="230" width="240" height="45" as="geometry"/>
+        </mxCell>
+        <!-- Bottom: Check tool -->
+        <mxCell id="check_bg" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dbeafe;strokeColor=#1e40af;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="120" y="300" width="530" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="check_text" value="確認ツール: Frame Debugger（Window → Analysis → Frame Debugger）&#xa;Stats の Batches ではなく、セットパスコール数とSRP Batch サイズを確認する" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=10;fontStyle=1;fontColor=#1e40af;fontFamily=Helvetica Neue;" vertex="1" parent="1">
+          <mxGeometry x="145" y="310" width="480" height="35" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

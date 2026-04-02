@@ -1,0 +1,90 @@
+<mxfile>
+  <diagram name="ドローコールの仕組み" id="cpu_gpu_flow">
+    <mxGraphModel dx="1200" dy="700" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1200" pageHeight="480" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="title" value="ドローコール ― CPUからGPUへの描画命令" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=14;fontStyle=1;fontColor=#1e40af;fontFamily=Helvetica Neue;" vertex="1" parent="1">
+          <mxGeometry x="300" y="10" width="400" height="30" as="geometry"/>
+        </mxCell>
+        <!-- CPU side -->
+        <mxCell id="cpu_bg" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#93c5fd;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="20" y="60" width="440" height="350" as="geometry"/>
+        </mxCell>
+        <mxCell id="cpu_label" value="CPU" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=13;fontStyle=1;fontColor=#1e40af;fontFamily=Helvetica Neue;" vertex="1" parent="1">
+          <mxGeometry x="30" y="65" width="40" height="25" as="geometry"/>
+        </mxCell>
+        <!-- State changes -->
+        <mxCell id="state_title" value="状態変更（ドローコールごとに発生）" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=11;fontStyle=1;fontColor=#92400e;fontFamily=Helvetica Neue;" vertex="1" parent="1">
+          <mxGeometry x="40" y="100" width="260" height="20" as="geometry"/>
+        </mxCell>
+        <mxCell id="s1" value="シェーダー切り替え" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fee2e2;strokeColor=#fca5a5;fontColor=#991b1b;fontSize=10;fontFamily=Helvetica Neue;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="130" width="180" height="35" as="geometry"/>
+        </mxCell>
+        <mxCell id="s1_cost" value="コスト: ■■■■■ 非常に高い" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=9;fontColor=#991b1b;fontFamily=Helvetica Neue;" vertex="1" parent="1">
+          <mxGeometry x="230" y="137" width="170" height="18" as="geometry"/>
+        </mxCell>
+        <mxCell id="s2" value="テクスチャ設定" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fef3c7;strokeColor=#fcd34d;fontColor=#92400e;fontSize=10;fontFamily=Helvetica Neue;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="175" width="180" height="35" as="geometry"/>
+        </mxCell>
+        <mxCell id="s2_cost" value="コスト: ■■■　　 高い" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=9;fontColor=#92400e;fontFamily=Helvetica Neue;" vertex="1" parent="1">
+          <mxGeometry x="230" y="182" width="150" height="18" as="geometry"/>
+        </mxCell>
+        <mxCell id="s3" value="マテリアルパラメータ送信" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dcfce7;strokeColor=#86efac;fontColor=#166534;fontSize=10;fontFamily=Helvetica Neue;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="220" width="180" height="35" as="geometry"/>
+        </mxCell>
+        <mxCell id="s3_cost" value="コスト: ■　　　　 低い" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=9;fontColor=#166534;fontFamily=Helvetica Neue;" vertex="1" parent="1">
+          <mxGeometry x="230" y="227" width="150" height="18" as="geometry"/>
+        </mxCell>
+        <mxCell id="s4" value="トランスフォーム送信" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dcfce7;strokeColor=#86efac;fontColor=#166534;fontSize=10;fontFamily=Helvetica Neue;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="265" width="180" height="35" as="geometry"/>
+        </mxCell>
+        <mxCell id="s4_cost" value="コスト: ■　　　　 低い" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=9;fontColor=#166534;fontFamily=Helvetica Neue;" vertex="1" parent="1">
+          <mxGeometry x="230" y="272" width="150" height="18" as="geometry"/>
+        </mxCell>
+        <!-- Draw call -->
+        <mxCell id="drawcall" value="ドローコール発行" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dbeafe;strokeColor=#93c5fd;fontColor=#1e40af;fontSize=11;fontFamily=Helvetica Neue;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="100" y="320" width="160" height="40" as="geometry"/>
+        </mxCell>
+        <!-- Command buffer arrow -->
+        <mxCell id="cmd_arrow" style="rounded=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;strokeColor=#1e40af;strokeWidth=3;" edge="1" source="drawcall" target="cmd_buf" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <!-- Command Buffer -->
+        <mxCell id="cmd_buf" value="Command&#xa;Buffer&#xa;(FIFO)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ede9fe;strokeColor=#c4b5fd;fontColor=#6b21a8;fontSize=11;fontFamily=Helvetica Neue;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="490" y="170" width="100" height="80" as="geometry"/>
+        </mxCell>
+        <!-- GPU side -->
+        <mxCell id="gpu_bg" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f0fdf4;strokeColor=#86efac;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="620" y="60" width="340" height="350" as="geometry"/>
+        </mxCell>
+        <mxCell id="gpu_label" value="GPU" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=13;fontStyle=1;fontColor=#166534;fontFamily=Helvetica Neue;" vertex="1" parent="1">
+          <mxGeometry x="630" y="65" width="40" height="25" as="geometry"/>
+        </mxCell>
+        <mxCell id="gpu_exec" value="描画実行" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dcfce7;strokeColor=#86efac;fontColor=#166534;fontSize=11;fontFamily=Helvetica Neue;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="680" y="170" width="120" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="cmd_gpu_arrow" style="rounded=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;strokeColor=#166534;strokeWidth=2;" edge="1" source="cmd_buf" target="gpu_exec" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <!-- Bottleneck annotation -->
+        <mxCell id="bottleneck_box" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fef3c7;strokeColor=#fcd34d;" vertex="1" parent="1">
+          <mxGeometry x="640" y="280" width="300" height="110" as="geometry"/>
+        </mxCell>
+        <mxCell id="bn_title" value="ボトルネックの種類" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=10;fontStyle=1;fontColor=#92400e;fontFamily=Helvetica Neue;" vertex="1" parent="1">
+          <mxGeometry x="650" y="285" width="130" height="18" as="geometry"/>
+        </mxCell>
+        <mxCell id="bn1" value="CPU-bound: CPUの状態変更処理が&#xa;遅く、GPUが命令待ち" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=9;fontColor=#92400e;fontFamily=Helvetica Neue;" vertex="1" parent="1">
+          <mxGeometry x="650" y="308" width="270" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="bn2" value="GPU-bound: GPUの描画が遅く、&#xa;Command Bufferが満杯" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=9;fontColor=#92400e;fontFamily=Helvetica Neue;" vertex="1" parent="1">
+          <mxGeometry x="650" y="348" width="270" height="30" as="geometry"/>
+        </mxCell>
+        <!-- Key insight -->
+        <mxCell id="insight" value="💡 ドローコールの「数」より&#xa;　 状態変更の「重さ」が問題" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=12;fontStyle=1;fontColor=#1e40af;fontFamily=Helvetica Neue;" vertex="1" parent="1">
+          <mxGeometry x="310" y="420" width="250" height="40" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

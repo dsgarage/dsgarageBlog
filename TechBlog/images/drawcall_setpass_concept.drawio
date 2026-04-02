@@ -1,0 +1,132 @@
+<mxfile>
+  <diagram name="セットパスコールの概念" id="setpass_concept">
+    <mxGraphModel dx="1200" dy="600" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1200" pageHeight="450" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="title" value="何がセットパスコールを発生させるのか？" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=14;fontStyle=1;fontColor=#1e40af;fontFamily=Helvetica Neue;" vertex="1" parent="1">
+          <mxGeometry x="330" y="10" width="350" height="30" as="geometry"/>
+        </mxCell>
+        <!-- No SetPass cases -->
+        <mxCell id="no_bg" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f0fdf4;strokeColor=#86efac;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="20" y="55" width="550" height="170" as="geometry"/>
+        </mxCell>
+        <mxCell id="no_label" value="✅ セットパス発生しない（SRP Batcherが処理）" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=12;fontStyle=1;fontColor=#166534;fontFamily=Helvetica Neue;" vertex="1" parent="1">
+          <mxGeometry x="30" y="60" width="380" height="25" as="geometry"/>
+        </mxCell>
+        <!-- Case 1: same shader, different color -->
+        <mxCell id="c1_shader" value="Lit Shader" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dbeafe;strokeColor=#93c5fd;fontColor=#1e40af;fontSize=9;fontFamily=Helvetica Neue;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="95" width="80" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="c1_mat1" value="赤マテリアル" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fee2e2;strokeColor=#fca5a5;fontColor=#991b1b;fontSize=9;fontFamily=Helvetica Neue;" vertex="1" parent="1">
+          <mxGeometry x="40" y="130" width="80" height="25" as="geometry"/>
+        </mxCell>
+        <mxCell id="c1_eq" value="→" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=16;fontColor=#94a3b8;" vertex="1" parent="1">
+          <mxGeometry x="120" y="95" width="30" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="c1_shader2" value="Lit Shader" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dbeafe;strokeColor=#93c5fd;fontColor=#1e40af;fontSize=9;fontFamily=Helvetica Neue;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="150" y="95" width="80" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="c1_mat2" value="青マテリアル" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dbeafe;strokeColor=#93c5fd;fontColor=#1e40af;fontSize=9;fontFamily=Helvetica Neue;" vertex="1" parent="1">
+          <mxGeometry x="150" y="130" width="80" height="25" as="geometry"/>
+        </mxCell>
+        <mxCell id="c1_result" value="色が違う → OK" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=9;fontStyle=1;fontColor=#166534;fontFamily=Helvetica Neue;" vertex="1" parent="1">
+          <mxGeometry x="80" y="160" width="110" height="18" as="geometry"/>
+        </mxCell>
+        <!-- Case 2: same shader, different texture -->
+        <mxCell id="c2_shader" value="Lit Shader" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dbeafe;strokeColor=#93c5fd;fontColor=#1e40af;fontSize=9;fontFamily=Helvetica Neue;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="260" y="95" width="80" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="c2_mat1" value="木目テクスチャ" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fef3c7;strokeColor=#fcd34d;fontColor=#92400e;fontSize=8;fontFamily=Helvetica Neue;" vertex="1" parent="1">
+          <mxGeometry x="260" y="130" width="80" height="25" as="geometry"/>
+        </mxCell>
+        <mxCell id="c2_eq" value="→" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=16;fontColor=#94a3b8;" vertex="1" parent="1">
+          <mxGeometry x="340" y="95" width="30" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="c2_shader2" value="Lit Shader" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dbeafe;strokeColor=#93c5fd;fontColor=#1e40af;fontSize=9;fontFamily=Helvetica Neue;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="370" y="95" width="80" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="c2_mat2" value="石テクスチャ" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f3f4f6;strokeColor=#94a3b8;fontColor=#4b5563;fontSize=8;fontFamily=Helvetica Neue;" vertex="1" parent="1">
+          <mxGeometry x="370" y="130" width="80" height="25" as="geometry"/>
+        </mxCell>
+        <mxCell id="c2_result" value="テクスチャ違う → OK" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=9;fontStyle=1;fontColor=#166534;fontFamily=Helvetica Neue;" vertex="1" parent="1">
+          <mxGeometry x="285" y="160" width="150" height="18" as="geometry"/>
+        </mxCell>
+        <!-- Same shader badge -->
+        <mxCell id="same_badge" value="同じシェーダー&#xa;= 同じセットパス" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=10;fontStyle=1;fontColor=#166534;fontFamily=Helvetica Neue;" vertex="1" parent="1">
+          <mxGeometry x="470" y="110" width="100" height="35" as="geometry"/>
+        </mxCell>
+        <!-- Yes SetPass cases -->
+        <mxCell id="yes_bg" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fef2f2;strokeColor=#fca5a5;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="20" y="240" width="550" height="170" as="geometry"/>
+        </mxCell>
+        <mxCell id="yes_label" value="❌ セットパス発生する" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=12;fontStyle=1;fontColor=#991b1b;fontFamily=Helvetica Neue;" vertex="1" parent="1">
+          <mxGeometry x="30" y="245" width="180" height="25" as="geometry"/>
+        </mxCell>
+        <!-- Case 3: different shader -->
+        <mxCell id="c3_shader" value="Lit Shader" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dbeafe;strokeColor=#93c5fd;fontColor=#1e40af;fontSize=9;fontFamily=Helvetica Neue;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="280" width="80" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="c3_eq" value="→" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=16;fontColor=#94a3b8;" vertex="1" parent="1">
+          <mxGeometry x="120" y="280" width="30" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="c3_shader2" value="Unlit Shader" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fef3c7;strokeColor=#fcd34d;fontColor=#92400e;fontSize=9;fontFamily=Helvetica Neue;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="150" y="280" width="80" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="c3_result" value="シェーダー違う → SetPass!" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=9;fontStyle=1;fontColor=#991b1b;fontFamily=Helvetica Neue;" vertex="1" parent="1">
+          <mxGeometry x="60" y="315" width="180" height="18" as="geometry"/>
+        </mxCell>
+        <!-- Case 4: same shader, different variant -->
+        <mxCell id="c4_shader" value="Lit (Opaque)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dbeafe;strokeColor=#93c5fd;fontColor=#1e40af;fontSize=9;fontFamily=Helvetica Neue;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="260" y="280" width="90" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="c4_eq" value="→" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=16;fontColor=#94a3b8;" vertex="1" parent="1">
+          <mxGeometry x="350" y="280" width="30" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="c4_shader2" value="Lit (Transparent)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fef3c7;strokeColor=#fcd34d;fontColor=#92400e;fontSize=9;fontFamily=Helvetica Neue;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="380" y="280" width="100" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="c4_result" value="バリアント違う → SetPass!" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=9;fontStyle=1;fontColor=#991b1b;fontFamily=Helvetica Neue;" vertex="1" parent="1">
+          <mxGeometry x="290" y="315" width="180" height="18" as="geometry"/>
+        </mxCell>
+        <!-- Different shader badge -->
+        <mxCell id="diff_badge" value="シェーダー/バリアント&#xa;が変わると発生" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=10;fontStyle=1;fontColor=#991b1b;fontFamily=Helvetica Neue;" vertex="1" parent="1">
+          <mxGeometry x="460" y="285" width="140" height="35" as="geometry"/>
+        </mxCell>
+        <!-- Key message -->
+        <mxCell id="key_box" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dbeafe;strokeColor=#93c5fd;" vertex="1" parent="1">
+          <mxGeometry x="600" y="55" width="370" height="355" as="geometry"/>
+        </mxCell>
+        <mxCell id="key_title" value="SRP Batcherの判定基準" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=12;fontStyle=1;fontColor=#1e40af;fontFamily=Helvetica Neue;" vertex="1" parent="1">
+          <mxGeometry x="680" y="65" width="190" height="25" as="geometry"/>
+        </mxCell>
+        <mxCell id="q1" value="シェーダーバリアントは同じ？" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fef3c7;strokeColor=#fcd34d;fontColor=#92400e;fontSize=11;fontFamily=Helvetica Neue;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="660" y="110" width="250" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="yes_path" value="Yes" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=11;fontStyle=1;fontColor=#166534;fontFamily=Helvetica Neue;" vertex="1" parent="1">
+          <mxGeometry x="700" y="155" width="35" height="20" as="geometry"/>
+        </mxCell>
+        <mxCell id="no_path" value="No" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=11;fontStyle=1;fontColor=#991b1b;fontFamily=Helvetica Neue;" vertex="1" parent="1">
+          <mxGeometry x="840" y="155" width="25" height="20" as="geometry"/>
+        </mxCell>
+        <mxCell id="yes_result" value="CBufferのポインタ切り替え&#xa;だけで描画実行&#xa;&#xa;→ セットパス不要&#xa;→ 高速" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dcfce7;strokeColor=#86efac;fontColor=#166534;fontSize=10;fontFamily=Helvetica Neue;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="630" y="185" width="180" height="90" as="geometry"/>
+        </mxCell>
+        <mxCell id="no_result" value="シェーダー&#xa;再設定&#xa;&#xa;→ SetPass&#xa;→ 低速" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fee2e2;strokeColor=#fca5a5;fontColor=#991b1b;fontSize=10;fontFamily=Helvetica Neue;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="830" y="185" width="110" height="90" as="geometry"/>
+        </mxCell>
+        <!-- Arrows -->
+        <mxCell id="a_yes" style="rounded=1;exitX=0.3;exitY=1;entryX=0.5;entryY=0;strokeColor=#166534;strokeWidth=1.5;" edge="1" source="q1" target="yes_result" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="a_no" style="rounded=1;exitX=0.8;exitY=1;entryX=0.5;entryY=0;strokeColor=#991b1b;strokeWidth=1.5;" edge="1" source="q1" target="no_result" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <!-- Bottom message -->
+        <mxCell id="msg" value="マテリアルの色・テクスチャ・数値の違いは&#xa;セットパスコールに影響しない" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dcfce7;strokeColor=#86efac;fontColor=#166534;fontSize=11;fontFamily=Helvetica Neue;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="630" y="310" width="320" height="50" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

@@ -1,0 +1,72 @@
+digraph era_comparison {
+    graph [
+        rankdir=TB
+        bgcolor="transparent"
+        fontname="Helvetica Neue"
+        fontsize=11
+        pad=0.8
+        nodesep=0.6
+        ranksep=0.8
+        label="描画コスト管理の変遷\n100オブジェクト（10シェーダー × 10マテリアル）"
+        labelloc=t
+        fontsize=14
+        fontcolor="#1e40af"
+    ]
+
+    node [
+        fontname="Helvetica Neue"
+        fontsize=10
+        style="filled,rounded"
+        shape=box
+        penwidth=0
+        margin="0.15,0.1"
+    ]
+
+    edge [
+        fontname="Helvetica Neue"
+        fontsize=9
+        penwidth=1.5
+        arrowsize=0.7
+    ]
+
+    // Era 1
+    era1 [
+        label="Unity 4: バッチングなし\n\nDraw Calls: 100\nSetPass: 100\n全オブジェクトでフル状態変更"
+        fillcolor="#fee2e2"
+        fontcolor="#991b1b"
+        fontsize=10
+    ]
+
+    // Era 2
+    era2 [
+        label="Unity 5: Dynamic Batching\n\nDraw Calls: ~30（メッシュ結合）\nSetPass: ~30\nドローコール数の削減が目標"
+        fillcolor="#fef3c7"
+        fontcolor="#92400e"
+        fontsize=10
+    ]
+
+    // Era 3
+    era3 [
+        label="Unity 6: SRP Batcher\n\nDraw Calls: 100（減らない）\nSetPass: 10（シェーダー数のみ）\n\nドローコールを軽くする"
+        fillcolor="#dcfce7"
+        fontcolor="#166534"
+        fontsize=10
+        penwidth=2
+        color="#16a34a"
+    ]
+
+    // Key insight
+    key [
+        label="パラダイムシフト\n「数を減らす」→「1回を軽くする」"
+        fillcolor="#dbeafe"
+        fontcolor="#1e40af"
+        fontsize=11
+        fontname="Helvetica Neue Bold"
+        penwidth=2
+        color="#1e40af"
+    ]
+
+    era1 -> era2 [label="バッチングで\n統合" color="#94a3b8" fontcolor="#6b7280"]
+    era2 -> era3 [label="SRP Batcherで\nパラダイム転換" color="#16a34a" fontcolor="#166534"]
+    era3 -> key [style=dashed color="#1e40af" arrowhead=none]
+}
