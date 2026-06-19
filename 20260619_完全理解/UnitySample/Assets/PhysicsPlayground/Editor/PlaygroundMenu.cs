@@ -168,59 +168,71 @@ namespace PhysicsPlayground.EditorTools
         static void BuildSliderCrank()
         {
             Hud("① スライダークランク ― 回転 → 往復",
-                "モーターは回すだけ。往復運動は“リンク幾何”が生む(力では押さない)",
-                "オレンジの回転が、リンクを通じてシアンの上下往復に変換される");
-            Cam(new Vector3(5f, 3f, -7f), new Vector3(0f, 2.2f, 0f), 12f, 12f, -12f);
+                "クランクは一定速度で回すだけ。上下の往復は“リンク幾何”が生む",
+                "オレンジの回転が、ロッドを介してシアンの上下往復に変換される");
+            Cam(new Vector3(5f, 3.2f, -7f), new Vector3(0f, 3.5f, 0f), 11f, 8f, -12f);
             Ground(6f);
 
-            var baseRb = Frame("Base", new Vector3(0f, 1.1f, 0f), new Vector3(0.5f, 2.2f, 0.5f), Metal);
+            var baseRb = Frame("Base", new Vector3(0f, 1.5f, 0f), new Vector3(0.5f, 3f, 0.5f), Metal);
 
-            // フライホイール(モーター・Z軸回転) = 入力
-            var fly = Prim.Cylinder(null, "Flywheel", new Vector3(0f, 2.3f, -0.4f),
-                                    new Vector3(1.5f, 0.18f, 1.5f), InputCol);
-            fly.transform.localRotation = Quaternion.Euler(90f, 0f, 0f);
-            var fmc = fly.GetComponent<Collider>(); if (fmc != null) Object.DestroyImmediate(fmc);
-            var flyRb = Prim.AddBody(fly, 3f);
-            var fh = fly.AddComponent<HingeJoint>();
-            fh.connectedBody = baseRb; fh.axis = new Vector3(0f, 0f, 1f);
-            fh.anchor = Vector3.zero; fh.autoConfigureConnectedAnchor = true;
-            var hm = fly.AddComponent<HingeMotor>(); hm.targetVelocity = 90f; hm.force = 400f;
+            // クランク = 入力。キネマティック剛体を Z 軸で一定回転（モーター閉ループの噛みを回避）
+            Vector3 C = new Vector3(0f, 3.0f, 0f);
+            const float r = 0.6f;                 // 偏心ピン半径
+            var crankGo = new GameObject("Crank");
+            crankGo.transform.position = C;
+            var crankRb = crankGo.AddComponent<Rigidbody>();
+            var spin = crankGo.AddComponent<KinematicSpin>();
+            spin.axis = Vector3.forward; spin.degPerSec = 120f;
+            // 見た目の円盤（子。回転は見た目だけ）
+            var disc = Prim.Cylinder(crankGo.transform, "Disc", C, new Vector3(1.3f, 0.16f, 1.3f), InputCol);
+            disc.transform.localPosition = Vector3.zero;
+            disc.transform.localRotation = Quaternion.Euler(90f, 0f, 0f);
+            var dc = disc.GetComponent<Collider>(); if (dc != null) Object.DestroyImmediate(dc);
+            // 見た目の偏心ピン（子）
+            var pinViz = Prim.Sphere(crankGo.transform, "Pin", C + new Vector3(r, 0f, 0f), 0.22f,
+                                     new Color(1f, 0.85f, 0.5f));
+            var pvc = pinViz.GetComponent<Collider>(); if (pvc != null) Object.DestroyImmediate(pvc);
 
             // ピストン(垂直スライド) = 出力
-            var piston = Prim.Box(null, "Piston", new Vector3(0f, 4.4f, -0.4f),
-                                  new Vector3(0.6f, 0.5f, 0.6f), OutputCol);
+            Vector3 pistonPos = new Vector3(0f, 4.7f, 0f);
+            var piston = Prim.Box(null, "Piston", pistonPos, new Vector3(0.7f, 0.5f, 0.7f), OutputCol);
             var pistonRb = Prim.AddBody(piston, 1f);
             var slide = piston.AddComponent<ConfigurableJoint>();
             slide.connectedBody = baseRb;
+            slide.autoConfigureConnectedAnchor = true;
             slide.xMotion = ConfigurableJointMotion.Locked;
             slide.yMotion = ConfigurableJointMotion.Free;
             slide.zMotion = ConfigurableJointMotion.Locked;
             slide.angularXMotion = slide.angularYMotion = slide.angularZMotion = ConfigurableJointMotion.Locked;
-            slide.autoConfigureConnectedAnchor = true;
 
-            // コンロッド(ピン偏心 ↔ ピストン)
-            var rod = Prim.Box(null, "Rod", new Vector3(0f, 3.4f, -0.4f),
-                               new Vector3(0.14f, 1.9f, 0.14f), Wood);
-            var rodRb = Prim.AddBody(rod, 0.4f);
+            // コンロッド: 下端=クランクの偏心ピン、上端=ピストン（アンカーは InverseTransformPoint で安全に）
+            Vector3 pinWorld = C + new Vector3(r, 0f, 0f);
+            Vector3 mid = (pinWorld + pistonPos) * 0.5f;
+            float len = (pistonPos - pinWorld).magnitude;
+            var rod = Prim.Box(null, "Rod", mid, new Vector3(0.14f, len, 0.14f), Wood);
+            rod.transform.position = mid;
+            rod.transform.rotation = Quaternion.FromToRotation(Vector3.up, (pistonPos - pinWorld).normalized);
+            var rodRb = Prim.AddBody(rod, 0.3f);
             var rc = rod.GetComponent<Collider>(); if (rc != null) Object.DestroyImmediate(rc);
+
             var jLow = rod.AddComponent<HingeJoint>();
-            jLow.connectedBody = flyRb; jLow.axis = new Vector3(0f, 0f, 1f);
-            jLow.anchor = new Vector3(0f, -0.95f, 0f);
-            jLow.connectedAnchor = new Vector3(0f, 0.6f, 0f); // 円盤外周の偏心ピン
+            jLow.axis = new Vector3(0f, 0f, 1f);
+            jLow.connectedBody = crankRb;
             jLow.autoConfigureConnectedAnchor = false;
+            jLow.anchor = rod.transform.InverseTransformPoint(pinWorld);
+            jLow.connectedAnchor = crankRb.transform.InverseTransformPoint(pinWorld);
             var jHigh = rod.AddComponent<HingeJoint>();
-            jHigh.connectedBody = pistonRb; jHigh.axis = new Vector3(0f, 0f, 1f);
-            jHigh.anchor = new Vector3(0f, 0.95f, 0f);
-            jHigh.connectedAnchor = Vector3.zero;
+            jHigh.axis = new Vector3(0f, 0f, 1f);
+            jHigh.connectedBody = pistonRb;
             jHigh.autoConfigureConnectedAnchor = false;
+            jHigh.anchor = rod.transform.InverseTransformPoint(pistonPos);
+            jHigh.connectedAnchor = pistonRb.transform.InverseTransformPoint(pistonPos);
 
-            Pivot(new Vector3(0f, 2.3f, -0.4f));   // 回転軸（フライホイール中心）
-            Trail(piston, OutputCol, 0.12f, 0.8f); // 往復ストロークを線で
-            Readout(flyRb, LiveReadout.Kind.AngularSpeedDeg, "入力 回転", 0);
-            Readout(pistonRb, LiveReadout.Kind.Speed, "出力 往復", 1);
-
+            Pivot(C, 0.18f);
+            Trail(piston, OutputCol, 0.1f, 0.7f);
+            Readout(pistonRb, LiveReadout.Kind.Speed, "出力 往復", 0);
             Label(piston, "出力：上下に往復", OutputCol, 0.7f, 13);
-            Label(fly, "入力：回転", InputCol, 1.1f, 13);
+            Label(crankGo, "入力：回転", InputCol, 1.2f, 13);
         }
 
         // ===== ② Whegs(回転 → 歩行) =====
@@ -404,39 +416,56 @@ namespace PhysicsPlayground.EditorTools
         static void BuildCatapult()
         {
             Hud("⑦ カタパルト ― てこ × 拘束開放",
-                "拘束を解いた瞬間、重い反対端が落ち、てこ比で軽い玉が遠くへ飛ぶ",
-                "オレンジの重りが落ちると、てこ比でシアンの玉が放物線を描いて飛ぶ");
-            Cam(new Vector3(8f, 4f, -6f), new Vector3(0f, 1.5f, 2f), 16f, 14f, -18f);
-            Ground(10f);
+                "①玉をのせて構える → ②腕を振り上げて発射 → ③放物線で着地（数秒ごとに繰り返す）",
+                "オレンジの腕がゆっくり振り上がり、シアンの玉が放物線を描いて飛ぶ");
+            Cam(new Vector3(10f, 5.5f, -9f), new Vector3(2.5f, 3.5f, 1.5f), 23f, 14f, -16f);
+            Ground(16f);
 
-            var postRb = Frame("Post", new Vector3(0f, 1.2f, 0f), new Vector3(0.4f, 2.4f, 0.4f), Metal);
+            var postRb = Frame("Post", new Vector3(0f, 1.3f, 0f), new Vector3(0.5f, 2.6f, 0.5f), Metal);
 
-            // 腕(単一剛体)。重心を短い側に寄せて“そっちが落ちる”→長い側が跳ね上がる
-            var arm = Prim.Box(null, "Arm", new Vector3(0.7f, 2.45f, 0f), new Vector3(4.4f, 0.2f, 0.4f), Wood);
-            var arb = Prim.AddBody(arm, 8f);
-            arb.centerOfMass = new Vector3(-1.7f, 0f, 0f); // 支点(-1.4)より外=短い側に重心
+            // 腕(てこ)。支点は左寄り → 右が長い投擲腕。CatapultDemo がモーターを段階制御する
+            Vector3 pivot = new Vector3(0f, 2.6f, 0f);
+            var arm = Prim.Box(null, "Arm", new Vector3(0.9f, 2.6f, 0f), new Vector3(4.6f, 0.22f, 0.5f), InputCol);
+            var arb = Prim.AddBody(arm, 3f);
             var hinge = arm.AddComponent<HingeJoint>();
-            hinge.connectedBody = postRb; hinge.axis = new Vector3(1f, 0f, 0f);
-            hinge.anchor = new Vector3(-1.4f, 0f, 0f);
-            hinge.autoConfigureConnectedAnchor = true;
+            hinge.axis = new Vector3(0f, 0f, 1f);
+            hinge.connectedBody = postRb;
+            hinge.autoConfigureConnectedAnchor = false;
+            hinge.anchor = arm.transform.InverseTransformPoint(pivot);
+            hinge.connectedAnchor = postRb.transform.InverseTransformPoint(pivot);
             hinge.useLimits = true;
-            var lim = hinge.limits; lim.min = -40f; lim.max = 40f; hinge.limits = lim;
+            var lim = hinge.limits; lim.min = -6f; lim.max = 56f; hinge.limits = lim;
 
-            // 見た目の重り(子・コライダー無し。質量は重心オフセットで表現) = 入力
+            // 見た目の重り(短い側・子)
             var weight = Prim.Box(arm.transform, "Counterweight", arm.transform.position,
-                                  new Vector3(0.8f, 0.8f, 0.8f), InputCol);
-            weight.transform.localPosition = new Vector3(-2.0f, -0.15f, 0f);
+                                  new Vector3(0.7f, 0.7f, 0.7f), new Color(0.55f, 0.58f, 0.65f));
+            weight.transform.localPosition = new Vector3(-1.9f, -0.1f, 0f);
             var wc = weight.GetComponent<Collider>(); if (wc != null) Object.DestroyImmediate(wc);
 
-            // 玉(長い端に乗せる)。腕が跳ね上がって発射 = 出力
-            var ball = Prim.Sphere(null, "Projectile", new Vector3(2.7f, 2.75f, 0f), 0.45f, OutputCol);
-            var ballRb = Prim.AddBody(ball, 0.4f);
+            // 玉を受けるカップ（構え中に転がり落ちないよう、長い腕の先に低い壁）
+            var cupIn = Prim.Box(arm.transform, "CupIn", arm.transform.position,
+                                 new Vector3(0.12f, 0.45f, 0.5f), new Color(0.9f, 0.7f, 0.4f));
+            cupIn.transform.localPosition = new Vector3(0.75f, 0.3f, 0f);
+            var cupOut = Prim.Box(arm.transform, "CupOut", arm.transform.position,
+                                  new Vector3(0.12f, 0.45f, 0.5f), new Color(0.9f, 0.7f, 0.4f));
+            cupOut.transform.localPosition = new Vector3(1.55f, 0.3f, 0f);
 
-            Pivot(new Vector3(-0.7f, 2.45f, 0f), 0.22f); // てこの支点
-            Trail(ball, OutputCol, 0.12f, 3.0f);          // 放物線の軌跡
+            // 玉(カップの中) = 出力
+            var ball = Prim.Sphere(null, "Projectile", new Vector3(2.05f, 3.15f, 0f), 0.42f, OutputCol);
+            var ballRb = Prim.AddBody(ball, 0.3f);
+
+            // 段階制御で「構える→発射→放物線→リセット」を繰り返す
+            var ctrlGo = new GameObject("CatapultDemo");
+            var ctrl = ctrlGo.AddComponent<CatapultDemo>();
+            ctrl.hinge = hinge; ctrl.arm = arb; ctrl.ball = ballRb;
+            ctrl.holdTime = 1.6f; ctrl.fireTime = 1.8f;
+            ctrl.holdVel = -45f; ctrl.fireVel = 210f; ctrl.motorForce = 2400f;
+
+            Pivot(pivot, 0.22f);
+            Trail(ball, OutputCol, 0.12f, 1.3f);          // 放物線の軌跡（リセット前に消える長さ）
             Readout(ballRb, LiveReadout.Kind.Height, "玉の高さ", 0);
             Label(ball, "出力：玉が飛ぶ", OutputCol, 0.8f, 13);
-            Label(weight, "入力：重い側が落ちる", InputCol, 0.7f, 12);
+            Label(arm, "入力：腕を振り上げる", InputCol, 0.6f, 12);
         }
 
         // ---- 小物 ----
