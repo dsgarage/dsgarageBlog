@@ -44,6 +44,18 @@ namespace PhysicsPlayground
             return go;
         }
 
+        public static GameObject Capsule(Transform parent, string name, Vector3 pos,
+                                         Vector3 size, Color color)
+        {
+            var go = GameObject.CreatePrimitive(PrimitiveType.Capsule);
+            go.name = name;
+            go.transform.SetParent(parent, false);
+            go.transform.position = pos;
+            go.transform.localScale = size;
+            Paint(go, color);
+            return go;
+        }
+
         public static Rigidbody AddBody(GameObject go, float mass)
         {
             var rb = go.GetComponent<Rigidbody>();

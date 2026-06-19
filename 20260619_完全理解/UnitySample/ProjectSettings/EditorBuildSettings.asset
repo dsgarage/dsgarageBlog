@@ -4,6 +4,36 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/00_Menu.unity
+    guid: 038a94784f64d4532a30488927bb5f8a
+  - enabled: 1
+    path: Assets/Scenes/01_SliderCrank.unity
+    guid: 97c940c3d61af4fd98167b2d972f44b4
+  - enabled: 1
+    path: Assets/Scenes/02_Whegs.unity
+    guid: 1da60f835b85c42428d9d0be14b14d02
+  - enabled: 1
+    path: Assets/Scenes/03_DoublePendulum.unity
+    guid: dab150fc2c502473481bbe9d5f4697e0
+  - enabled: 1
+    path: Assets/Scenes/04_NewtonsCradle.unity
+    guid: 77bcc6c3ec7214c2497394b44255f860
+  - enabled: 1
+    path: Assets/Scenes/05_PendulumWave.unity
+    guid: a8f472e1da9fe4e8db5e8e02354834ed
+  - enabled: 1
+    path: Assets/Scenes/06_RimlessWheel.unity
+    guid: 29042ca8016784d149b42b500475e4bd
+  - enabled: 1
+    path: Assets/Scenes/07_Catapult.unity
+    guid: 1765118d9e18d4e0ca13bf73225c9ece
+  - enabled: 1
+    path: Assets/Scenes/08_Garage.unity
+    guid: 327a88bec8b87432790c5f6f73b973e4
+  - enabled: 1
+    path: Assets/Scenes/09_Collapse.unity
+    guid: 65df19fa8beba4bc8994df4dc7cfa111
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0

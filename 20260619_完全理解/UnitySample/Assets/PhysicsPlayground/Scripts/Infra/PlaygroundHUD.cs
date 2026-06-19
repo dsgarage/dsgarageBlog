@@ -32,6 +32,7 @@ namespace PhysicsPlayground
 
         void OnGUI()
         {
+            UIFont.Apply();
             if (_box == null) InitStyles();
             if (bootstrap == null) return;
 
