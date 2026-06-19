@@ -423,9 +423,9 @@ namespace PhysicsPlayground.EditorTools
 
             var postRb = Frame("Post", new Vector3(0f, 1.3f, 0f), new Vector3(0.5f, 2.6f, 0.5f), Metal);
 
-            // 腕(てこ)。支点は左寄り → 右が長い投擲腕。CatapultDemo がモーターを段階制御する
+            // 腕(てこ)。支点は左寄り → 右が長い投擲腕。長く・幅広にして玉が落ちないように
             Vector3 pivot = new Vector3(0f, 2.6f, 0f);
-            var arm = Prim.Box(null, "Arm", new Vector3(0.9f, 2.6f, 0f), new Vector3(4.6f, 0.22f, 0.5f), InputCol);
+            var arm = Prim.Box(null, "Arm", new Vector3(1.0f, 2.6f, 0f), new Vector3(5.4f, 0.24f, 0.9f), InputCol);
             var arb = Prim.AddBody(arm, 3f);
             var hinge = arm.AddComponent<HingeJoint>();
             hinge.axis = new Vector3(0f, 0f, 1f);
@@ -434,32 +434,35 @@ namespace PhysicsPlayground.EditorTools
             hinge.anchor = arm.transform.InverseTransformPoint(pivot);
             hinge.connectedAnchor = postRb.transform.InverseTransformPoint(pivot);
             hinge.useLimits = true;
-            var lim = hinge.limits; lim.min = -6f; lim.max = 56f; hinge.limits = lim;
+            var lim = hinge.limits; lim.min = -6f; lim.max = 58f; hinge.limits = lim;
 
             // 見た目の重り(短い側・子)
             var weight = Prim.Box(arm.transform, "Counterweight", arm.transform.position,
-                                  new Vector3(0.7f, 0.7f, 0.7f), new Color(0.55f, 0.58f, 0.65f));
-            weight.transform.localPosition = new Vector3(-1.9f, -0.1f, 0f);
+                                  new Vector3(0.8f, 0.8f, 0.8f), new Color(0.55f, 0.58f, 0.65f));
+            weight.transform.localPosition = new Vector3(-2.0f, -0.1f, 0f);
             var wc = weight.GetComponent<Collider>(); if (wc != null) Object.DestroyImmediate(wc);
 
-            // 玉を受けるカップ（構え中に転がり落ちないよう、長い腕の先に低い壁）
-            var cupIn = Prim.Box(arm.transform, "CupIn", arm.transform.position,
-                                 new Vector3(0.12f, 0.45f, 0.5f), new Color(0.9f, 0.7f, 0.4f));
-            cupIn.transform.localPosition = new Vector3(0.75f, 0.3f, 0f);
-            var cupOut = Prim.Box(arm.transform, "CupOut", arm.transform.position,
-                                  new Vector3(0.12f, 0.45f, 0.5f), new Color(0.9f, 0.7f, 0.4f));
-            cupOut.transform.localPosition = new Vector3(1.55f, 0.3f, 0f);
+            // 玉を受けるカップ（玉がすっぽり収まる幅・深さの壁。前後左右に壁を置く）
+            void CupWall(string n, Vector3 lp, Vector3 sz)
+            {
+                var w = Prim.Box(arm.transform, n, arm.transform.position, sz, new Color(0.9f, 0.7f, 0.4f));
+                w.transform.localPosition = lp;
+            }
+            CupWall("CupIn", new Vector3(0.40f, 0.36f, 0f), new Vector3(0.14f, 0.6f, 0.9f));   // 支点側の壁
+            CupWall("CupOut", new Vector3(1.95f, 0.36f, 0f), new Vector3(0.14f, 0.6f, 0.9f));  // 先端側の壁
+            CupWall("CupZ1", new Vector3(1.18f, 0.34f, 0.42f), new Vector3(1.7f, 0.5f, 0.1f)); // 横壁
+            CupWall("CupZ2", new Vector3(1.18f, 0.34f, -0.42f), new Vector3(1.7f, 0.5f, 0.1f));// 横壁
 
             // 玉(カップの中) = 出力
-            var ball = Prim.Sphere(null, "Projectile", new Vector3(2.05f, 3.15f, 0f), 0.42f, OutputCol);
-            var ballRb = Prim.AddBody(ball, 0.3f);
+            var ball = Prim.Sphere(null, "Projectile", new Vector3(2.18f, 3.15f, 0f), 0.4f, OutputCol);
+            var ballRb = Prim.AddBody(ball, 0.35f);
 
             // 段階制御で「構える→発射→放物線→リセット」を繰り返す
             var ctrlGo = new GameObject("CatapultDemo");
             var ctrl = ctrlGo.AddComponent<CatapultDemo>();
             ctrl.hinge = hinge; ctrl.arm = arb; ctrl.ball = ballRb;
-            ctrl.holdTime = 1.6f; ctrl.fireTime = 1.8f;
-            ctrl.holdVel = -45f; ctrl.fireVel = 210f; ctrl.motorForce = 2400f;
+            ctrl.holdTime = 1.7f; ctrl.fireTime = 1.9f;
+            ctrl.holdVel = -45f; ctrl.fireVel = 200f; ctrl.motorForce = 2600f;
 
             Pivot(pivot, 0.22f);
             Trail(ball, OutputCol, 0.12f, 1.3f);          // 放物線の軌跡（リセット前に消える長さ）
