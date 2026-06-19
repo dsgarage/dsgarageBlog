@@ -1,83 +1,75 @@
-# GDC 2024 物理演算プレイグラウンド（Unity サンプル）
+# 物理の掛け合わせ プレイグラウンド（Unity サンプル）
 
-記事「[GDC 2024に学ぶ、物理演算で「創発するゲームプレイ」をつくる](../)」で解説した物理実装を、**実際に手を動かして体験できる** Unity サンプルです。シーンの手組みは不要で、コードがシーンを丸ごと組み立てます。
+GDC 2024 に学ぶ「**創発するゲームプレイ**」を、実際に手を動かして体験できる Unity サンプル集です。
+動力で無理やり動かすのではなく、**Joint・重力・衝突といった物理の基本ルールの“掛け合わせ”から挙動が生まれる**様子を、トレイル（軌跡）や色分け、実況 HUD で見えるようにしています。
 
-## 動作環境
+## ▶ ブラウザですぐ遊ぶ（WebGL）
 
-- Unity **2021.3 LTS 以降**（Built-in / URP どちらでも色が付きます）
-- Input は **旧 Input Manager** を使用します
-  - 新規プロジェクトで動かないときは `Edit > Project Settings > Player > Active Input Handling` を **「Both」** または **「Input Manager (Old)」** にしてください
+**https://dsgarage.github.io/dsgarageBlog/playground/**
 
-## 使い方（30秒）
+インストール不要。ブラウザで開くとメニューが出ます（初回の読み込みに十数秒かかります）。
 
-### 方法A: メニューから生成（おすすめ）
+## 収録デモ（全 9 種）
 
-1. `UnitySample/Assets/PhysicsPlayground/` を Unity プロジェクトの `Assets/` 配下にコピー
-2. メニュー **`Tools > GDC Physics Playground > Create Demo Scene`** を実行
-3. **Play** を押す
+メニュー（`00_Menu`）から各デモへ移動し、各デモ中は右上の「≡ メニュー」または `Esc` / `M` で戻れます。
 
-### 方法B: 手動
+### 7 つの機構デモ（動力ゼロ／物理が解く）
+| # | デモ | 見どころ |
+|---|------|----------|
+| ① | スライダークランク | 回転 → 往復（モーターは回すだけ、往復はリンク幾何が生む） |
+| ② | Whegs（脚車輪） | 回転 → 歩行（3 本脚の車輪が接地で前進に変わる） |
+| ③ | 二重振り子 | 結合が生むカオス（先端の軌跡は二度と同じにならない） |
+| ④ | ニュートンのゆりかご | 運動量の伝達（端の 1 球が反対端の 1 球だけを弾く） |
+| ⑤ | 振り子ウェーブ | 長さの差が生む波（揃う→ばらける→再び揃う） |
+| ⑥ | 受動歩行（リムレスホイール） | 動力ゼロ、坂の重力だけで歩いて降りる |
+| ⑦ | カタパルト | てこ × 拘束開放（重い側が落ち、軽い玉が遠くへ飛ぶ） |
 
-1. 同じくフォルダをコピー
-2. 空のシーンに空の GameObject を作り、**`PhysicsPlaygroundBootstrap`** を 1 つだけアタッチ
-3. **Play** を押す
+### 体験デモ
+| デモ | 内容 |
+|------|------|
+| 掛け算ガレージ | 車にファンを溶接するほど推力が積み上がる（Tears of the Kingdom 的な掛け算の創発） |
+| 構造崩壊 | 鉄球を撃ち込み、接続を破断させて連鎖崩落させる（構造的完全性） |
 
-地面・ライト・カメラ・HUD・デモは自動生成されます。
+## 見せ方の工夫（分かりやすさ）
+
+- **入力＝オレンジ / 出力＝シアン** で「何が原因で何が結果か」を色分け
+- **支点（ヒンジ）を白い小球マーカー**で明示
+- **残像トレイル**で速い／カオスな動きの軌跡を可視化
+- **実況 HUD**（速さ・角速度・高さ）と「👀 注目ポイント」を表示
+- `T` キーで**スロー再生（0.25x）**
 
 ## 操作
 
-| キー | 動作 |
+| 操作 | 動作 |
 |------|------|
-| **1** | デモ1「掛け算ガレージ」に切替 |
-| **2** | デモ2「構造崩壊」に切替 |
-| **R** | 現在のデモをリセット |
 | 右ドラッグ | カメラ旋回 |
-| ホイール | ズーム |
+| マウスホイール | ズーム |
+| `T` | スロー再生のオン/オフ |
+| `Esc` / `M` / 右上ボタン | メニューへ戻る |
+| `W A S D`・矢印 / `Space` / 左クリック | （掛け算ガレージ）前後・操舵 / ファン噴射 / ファン溶接 |
 
-### デモ1: 掛け算ガレージ（Tears of the Kingdom）
+## Unity で開く
 
-| キー | 動作 |
-|------|------|
-| W / S・↑↓ | 前後 |
-| A / D・←→ | 操舵 |
-| Space | ファン噴射 |
-| 左クリック | 地面のファンを車体に溶接（取り付け） |
+- 対応バージョン: **Unity 6（6000.x）**。`Built-in` / `URP` どちらでも色が付きます
+- 入力は旧 Input Manager を使用します（`Project Settings > Player > Active Input Handling` を「Both」に）
 
-車 + 4 輪で走る土台に、ファンを溶接していきます。ファンを増やすほど推力が積み上がり、やがて車体が前のめりに浮き上がります。部品の組み合わせから挙動が生まれる「掛け算の創発」を体験できます。
+### シーン・ビルドのセットアップ
+メニューから一括生成できます。
 
-### デモ2: 構造崩壊（Red Faction / The Finals）
+1. `Assets/PhysicsPlayground/` をプロジェクトの `Assets/` に配置
+2. メニュー **`Tools > GDC Physics Playground > ▶ Setup Menu + Scenes`**
+   → `00_Menu` ＋ 全デモシーンを生成し、Build Settings に登録します
+3. `00_Menu` を開いて Play
 
-| キー | 動作 |
-|------|------|
-| 左クリック | その方向へ鉄球を発射 |
+### WebGL ビルド
+メニュー **`Tools > GDC Physics Playground > ▶ Build WebGL`** を実行すると、
+`Build/WebGL/` に出力されます（IL2CPP、非圧縮）。`docs/playground/` に置けば GitHub Pages で配信できます。
 
-ブロックは隣接ブロックと `FixedJoint`（破断強度つき）で接続されています。鉄球を撃ち込むと、力が限界を超えた接続から破断し、支えを失った上部が連鎖的に崩落します。HUD の「健全な接続数」が減っていく様子も見られます。
+> WebGL では IMGUI 既定フォントと日本語グリフが含まれないため、UI 用に
+> `Assets/PhysicsPlayground/Resources/PlaygroundFont.otf`（Noto Sans JP, SIL OFL）を同梱し、
+> 全 OnGUI へ適用しています。
 
-## 記事のどのコードに対応するか
+## ライセンス
 
-| スクリプト | 記事の対応箇所 |
-|------------|----------------|
-| `Core/AttachmentSystem.cs` | 掛け算のゲームデザイン → `ConfigurableJoint` による接続 |
-| `Functions/VehicleController.cs` | WheelFunction（`WheelCollider` で駆動・操舵） |
-| `Functions/PropellerThruster.cs` | PropellerFunction（推力・反トルク） |
-| `Demos/StructuralBlock.cs` + `StructuralCollapseDemo.cs` | StructuralIntegrity（接続強度を超えると破断） |
-
-> 記事ではアルゴリズムの中身（応力の再分配、Voronoi 分割など）を直接書いていましたが、本サンプルでは体験しやすさと安定性を優先し、その役割を Unity の拘束ソルバー（Joint の `breakForce`）に委ねています。記事のコードと読み比べると、「自前で計算する版」と「エンジンに委ねる版」の対応が見えてきます。
-
-## ファイル構成
-
-```
-Assets/PhysicsPlayground/
-  Scripts/
-    Core/        AttachmentSystem.cs, Prim.cs
-    Functions/   VehicleController.cs, WheelVisual.cs, PropellerThruster.cs
-    Demos/       MultiplicativeGarageDemo.cs, StructuralCollapseDemo.cs, StructuralBlock.cs
-    Infra/       PhysicsPlaygroundBootstrap.cs, OrbitCamera.cs, PlaygroundHUD.cs, IPlaygroundDemo.cs
-  Editor/        PlaygroundMenu.cs
-```
-
-## うまく動かないとき
-
-- **キー入力が効かない** → Active Input Handling を「Both」に（上記）
-- **車輪が地面にめり込む / 跳ねる** → `MultiplicativeGarageDemo` の `suspensionSpring`（spring / damper）や `Chassis` の `centerOfMass` を調整
-- **崩れない / 崩れすぎる** → `StructuralCollapseDemo` の `BreakForce`（既定 350）と鉄球の質量・速度を調整
+- 同梱フォント: **Noto Sans JP**（SIL Open Font License 1.1）
+- サンプルコード: 学習・改変自由
