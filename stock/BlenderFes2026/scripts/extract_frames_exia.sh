@@ -15,6 +15,9 @@
 #   - まず枚数だけ数え(書き出しなし)、MAX_FRAMES を超えたら閾値を上げてから書き出す
 #   - 幅 1280 の JPEG(-q:v 4)。frames.tsv に 切り出し内秒 / 配信内秒 / 壁時計 を記録する
 #   - 既に frames.tsv があるセッションはスキップする(削除・上書きはしない)
+#   - START_SEC(切り出し内秒)を指定すると、その秒以降だけを frame_t<START_SEC>_%04d.jpg で抽出し、
+#     既存の frames.tsv に追記する(切り出しを延長したセッションの延長分用)。例:
+#       ssh exiamac-mini 'START_SEC=4200 zsh /Volumes/Disk4TB/BlenderFes2026AW/extract_frames_exia.sh 02'
 set -u
 ROOT=${ROOT:-/Volumes/Disk4TB/BlenderFes2026AW}
 IN=$ROOT/Day1
@@ -24,6 +27,7 @@ MIN_GAP=${MIN_GAP:-15}
 MAX_FRAMES=${MAX_FRAMES:-300}
 THRESHOLDS=(0.3 0.4 0.5 0.6 0.7 0.8)
 [[ -n "${THRESHOLDS_OVERRIDE:-}" ]] && THRESHOLDS=(${=THRESHOLDS_OVERRIDE})   # 例: THRESHOLDS_OVERRIDE="0.15 0.2 0.3"
+START_SEC=${START_SEC:-0}
 STREAM_START_SEC=35101   # 09:45:01 を 0 時からの秒にしたもの
 
 SESSIONS=(
@@ -45,12 +49,19 @@ for s in $SESSIONS; do
   [[ -n "$ONLY" && "$ONLY" != "$nn" ]] && continue
   src="$IN/$name.mp4"; dst="$OUT/$name"
   [[ -f "$src" ]] || { echo "[miss] $src"; continue; }
-  if [[ -f "$dst/frames.tsv" ]]; then echo "[skip] $name (frames.tsv 既存)"; continue; fi
+  if (( START_SEC > 0 )); then
+    prefix="frame_t${START_SEC}_"; ss=(-ss "$START_SEC"); log="$dst/showinfo_t${START_SEC}.log"
+    [[ -f "$dst/frames.tsv" ]] || { echo "[skip] $name (追記先の frames.tsv がない)"; continue; }
+    if [[ -e "$dst/${prefix}0001.jpg" ]]; then echo "[skip] $name (${prefix}* 既存)"; continue; fi
+  else
+    prefix="frame_"; ss=(); log="$dst/showinfo.log"
+    if [[ -f "$dst/frames.tsv" ]]; then echo "[skip] $name (frames.tsv 既存)"; continue; fi
+  fi
 
   # 1) 枚数だけ数えて閾値を決める
   th=""
   for t in $THRESHOLDS; do
-    cnt=$("$FFMPEG" -hide_banner -nostats -skip_frame nokey -i "$src" -an \
+    cnt=$("$FFMPEG" -hide_banner -nostats -skip_frame nokey $ss -i "$src" -an \
             -vf "$(vf_select $t),showinfo" -f null - 2>&1 | grep -c 'Parsed_showinfo.*pts_time:')
     echo "[count] $name scene>$t -> $cnt"
     th=$t
@@ -59,18 +70,18 @@ for s in $SESSIONS; do
 
   # 2) 書き出し
   mkdir -p "$dst"
-  "$FFMPEG" -hide_banner -nostats -n -skip_frame nokey -i "$src" -an \
+  "$FFMPEG" -hide_banner -nostats -n -skip_frame nokey $ss -i "$src" -an \
     -vf "$(vf_select $th),scale=1280:-2,showinfo" -fps_mode vfr -q:v 4 \
-    "$dst/frame_%04d.jpg" 2> "$dst/showinfo.log" || { echo "EXTRACT FAILED $name"; continue; }
+    "$dst/${prefix}%04d.jpg" 2> "$log" || { echo "EXTRACT FAILED $name"; continue; }
 
-  # 3) showinfo の n(0 始まり)= ファイル番号 - 1 として frames.tsv を作る
+  # 3) showinfo の n(0 始まり)= ファイル番号 - 1 として frames.tsv を作る(START_SEC 指定時は追記)
   {
-    printf 'file\tclip_sec\tstream_sec\twallclock\n'
-    grep 'Parsed_showinfo.*pts_time:' "$dst/showinfo.log" \
+    (( START_SEC > 0 )) || printf 'file\tclip_sec\tstream_sec\twallclock\n'
+    grep 'Parsed_showinfo.*pts_time:' "$log" \
       | sed -E 's/.* n: *([0-9]+) .*pts_time:([0-9.]+).*/\1 \2/' \
-      | awk -v off="$off" -v base="$STREAM_START_SEC" '{
-          st = off + $2; w = int(base + st);
-          printf "frame_%04d.jpg\t%.3f\t%.3f\t2026-09-26 %02d:%02d:%02d\n", $1+1, $2, st, int(w/3600), int(w%3600/60), w%60 }'
-  } > "$dst/frames.tsv"
-  echo "[done] $name threshold=$th frames=$(ls "$dst"/frame_*.jpg | wc -l | tr -d ' ') size=$(du -sh "$dst" | cut -f1)"
+      | awk -v off="$off" -v base="$STREAM_START_SEC" -v s0="$START_SEC" -v pre="$prefix" '{
+          cs = s0 + $2; st = off + cs; w = int(base + st);
+          printf "%s%04d.jpg\t%.3f\t%.3f\t2026-09-26 %02d:%02d:%02d\n", pre, $1+1, cs, st, int(w/3600), int(w%3600/60), w%60 }'
+  } >> "$dst/frames.tsv"
+  echo "[done] $name start=$START_SEC threshold=$th frames=$(ls "$dst"/${prefix}[0-9]*.jpg | wc -l | tr -d ' ') size=$(du -sh "$dst" | cut -f1)"
 done

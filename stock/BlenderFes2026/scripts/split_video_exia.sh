@@ -17,31 +17,34 @@ FFMPEG=/opt/homebrew/bin/ffmpeg
 FFPROBE=/opt/homebrew/bin/ffprobe
 DUR=4200
 
-# 番号:配信内オフセット秒:ディレクトリ名
+# 番号:配信内オフセット秒:ディレクトリ名[:長さ秒]  長さ省略時は DUR(4200)。
+# 予定終了を超えて続いた S2/S4 は 4800 秒、S8 は配信終端まで(4802 秒)に延長。
 SESSIONS=(
   "01:599:01_KaguyahimeCGBackground_QoonPlant"
-  "02:5099:02_CharacterShading_Eight"
+  "02:5099:02_CharacterShading_Eight:4800"
   "03:9599:03_MoruReal2_JennyKaori"
-  "04:14099:04_AnimeLook_SuminekoBebe"
+  "04:14099:04_AnimeLook_SuminekoBebe:4800"
   "05:18599:05_KireAction_Tatsumura"
   "06:23099:06_Effects_Gyunyubin"
   "07:27599:07_Rigging_minusT"
-  "08:32099:08_Addons_3Dnin"
+  "08:32099:08_Addons_3Dnin:4802"
 )
 
 [[ -f "$SRC" ]] || { echo "入力がありません: $SRC"; exit 1; }
 mkdir -p "$OUT"
 for s in $SESSIONS; do
-  IFS=: read nn off name <<< "$s"
+  IFS=: read nn off name len <<< "$s"
+  len=${len:-$DUR}
   dst="$OUT/$name.mp4"
   if [[ -e "$dst" ]]; then echo "[skip] $name (既存)"; continue; fi
-  echo "[split] $name ss=$off t=$DUR"
-  "$FFMPEG" -hide_banner -loglevel error -n -ss "$off" -i "$SRC" -t "$DUR" \
+  echo "[split] $name ss=$off t=$len"
+  "$FFMPEG" -hide_banner -loglevel error -n -ss "$off" -i "$SRC" -t "$len" \
     -map 0 -c copy -avoid_negative_ts make_zero -movflags +faststart "$dst" \
     || { echo "SPLIT FAILED $name"; exit 2; }
 done
 
 echo "[verify] duration(秒)"
 for f in "$OUT"/*.mp4; do
+  [[ "$f" == *.short*.mp4 ]] && continue   # 延長前に退避した旧版は対象外
   echo "$f $("$FFPROBE" -v error -show_entries format=duration -of csv=p=0 "$f")"
 done
