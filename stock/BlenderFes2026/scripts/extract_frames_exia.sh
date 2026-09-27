@@ -5,6 +5,8 @@
 #   scp stock/BlenderFes2026/scripts/extract_frames_exia.sh exiamac-mini:/Volumes/Disk4TB/BlenderFes2026AW/
 #   ssh exiamac-mini 'zsh /Volumes/Disk4TB/BlenderFes2026AW/extract_frames_exia.sh'        # 全セッション
 #   ssh exiamac-mini 'zsh /Volumes/Disk4TB/BlenderFes2026AW/extract_frames_exia.sh 03'     # 1 セッションだけ
+#   ssh exiamac-mini 'DAY=2 zsh /Volumes/Disk4TB/BlenderFes2026AW/extract_frames_exia.sh'  # Day2(09〜16)
+#   DAY(既定 1)で入力 Day${DAY}/、出力 Day${DAY}/frames(OUT 未指定時)、SESSIONS、壁時計の日付を切り替える
 # 取り込み(ローカルで):
 #   for d in stock/BlenderFes2026/0?_*/; do n=$(basename $d)
 #     rsync -a exiamac-mini:/Volumes/Disk4TB/BlenderFes2026AW/Day1/frames/$n/ $d/source/images/; done
@@ -20,7 +22,8 @@
 #       ssh exiamac-mini 'START_SEC=4200 zsh /Volumes/Disk4TB/BlenderFes2026AW/extract_frames_exia.sh 02'
 set -u
 ROOT=${ROOT:-/Volumes/Disk4TB/BlenderFes2026AW}
-IN=$ROOT/Day1
+DAY=${DAY:-1}
+IN=$ROOT/Day${DAY}
 OUT=${OUT:-$IN/frames}
 FFMPEG=/opt/homebrew/bin/ffmpeg
 MIN_GAP=${MIN_GAP:-15}
@@ -28,8 +31,22 @@ MAX_FRAMES=${MAX_FRAMES:-300}
 THRESHOLDS=(0.3 0.4 0.5 0.6 0.7 0.8)
 [[ -n "${THRESHOLDS_OVERRIDE:-}" ]] && THRESHOLDS=(${=THRESHOLDS_OVERRIDE})   # 例: THRESHOLDS_OVERRIDE="0.15 0.2 0.3"
 START_SEC=${START_SEC:-0}
-STREAM_START_SEC=35101   # 09:45:01 を 0 時からの秒にしたもの
+STREAM_START_SEC=35101   # 09:45:01 を 0 時からの秒にしたもの(Day1・Day2 共通)
 
+if [[ "$DAY" == 2 ]]; then
+STREAM_DATE=2026-09-27
+SESSIONS=(
+  "09:599:09_ShortFilm_FUKUPOLY"
+  "10:5099:10_MotionGraphicsNodes_cerbalance"
+  "11:9599:11_RealtimeContent_raw"
+  "12:14099:12_3DPrint_Shiotsuki_Hagiwara"
+  "13:18599:13_PhotorealCG_Iori"
+  "14:23099:14_VRChatWorld_Fujito"
+  "15:27599:15_VibeModeling_KOBATAKA_posiposi"
+  "16:32099:16_SuzanneAwards"
+)
+else
+STREAM_DATE=2026-09-26
 SESSIONS=(
   "01:599:01_KaguyahimeCGBackground_QoonPlant"
   "02:5099:02_CharacterShading_Eight"
@@ -40,6 +57,7 @@ SESSIONS=(
   "07:27599:07_Rigging_minusT"
   "08:32099:08_Addons_3Dnin"
 )
+fi
 ONLY=${1:-}
 
 vf_select() { echo "select='gt(scene,$1)*(isnan(prev_selected_t)+gte(t-prev_selected_t,$MIN_GAP))'"; }
@@ -79,9 +97,9 @@ for s in $SESSIONS; do
     (( START_SEC > 0 )) || printf 'file\tclip_sec\tstream_sec\twallclock\n'
     grep 'Parsed_showinfo.*pts_time:' "$log" \
       | sed -E 's/.* n: *([0-9]+) .*pts_time:([0-9.]+).*/\1 \2/' \
-      | awk -v off="$off" -v base="$STREAM_START_SEC" -v s0="$START_SEC" -v pre="$prefix" '{
+      | awk -v off="$off" -v base="$STREAM_START_SEC" -v s0="$START_SEC" -v pre="$prefix" -v day="$STREAM_DATE" '{
           cs = s0 + $2; st = off + cs; w = int(base + st);
-          printf "%s%04d.jpg\t%.3f\t%.3f\t2026-09-26 %02d:%02d:%02d\n", pre, $1+1, cs, st, int(w/3600), int(w%3600/60), w%60 }'
+          printf "%s%04d.jpg\t%.3f\t%.3f\t%s %02d:%02d:%02d\n", pre, $1+1, cs, st, day, int(w/3600), int(w%3600/60), w%60 }'
   } >> "$dst/frames.tsv"
   echo "[done] $name start=$START_SEC threshold=$th frames=$(ls "$dst"/${prefix}[0-9]*.jpg | wc -l | tr -d ' ') size=$(du -sh "$dst" | cut -f1)"
 done

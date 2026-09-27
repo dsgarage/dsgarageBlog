@@ -15,6 +15,11 @@ Talksribe 形式:
 使い方:
   python3 srt_to_talksribe.py --src ~/Downloads/vimeo_event_6144090/sessions \
       --stock stock/BlenderFes2026 --sessions 1-8
+
+  # Day2(配信開始 2026-09-27 09:45:01、S1〜S8 はディレクトリ 09_〜16_、出力名は 20260927_S{n}_<slug>.txt)
+  python3 srt_to_talksribe.py --src ~/Downloads/vimeo_event_6213809/sessions \
+      --stock stock/BlenderFes2026 --sessions 1-8 \
+      --stream-start "2026-09-27 09:45:01" --dir-offset 8
 """
 from __future__ import annotations
 
@@ -80,12 +85,13 @@ def find_session_dir(stock: Path, n: int) -> Path:
     return matches[0]
 
 
-def convert(n: int, offset: float, stream_start: datetime, src: Path, stock: Path) -> Path | None:
+def convert(n: int, offset: float, stream_start: datetime, src: Path, stock: Path,
+            dir_offset: int = 0) -> Path | None:
     srt = src / f"S{n}.srt"
     if not srt.exists():
         print(f"[skip] S{n}: {srt} がありません", file=sys.stderr)
         return None
-    sdir = find_session_dir(stock, n)
+    sdir = find_session_dir(stock, n + dir_offset)
     slug = sdir.name.split("_", 1)[1]
     out_dir = sdir / "source" / "transcripts"
     out_dir.mkdir(parents=True, exist_ok=True)
@@ -114,6 +120,8 @@ def main() -> int:
     ap.add_argument("--sessions", default="1-8", help="対象セッション番号(例: 1-8, 1,3)")
     ap.add_argument("--offsets", default=DEFAULT_OFFSETS, help="番号:配信内オフセット秒 のカンマ区切り")
     ap.add_argument("--stream-start", default=DEFAULT_STREAM_START, help="配信開始の壁時計")
+    ap.add_argument("--dir-offset", type=int, default=0,
+                    help="セッション番号に足してディレクトリ番号にする値(Day2 は 8 で S1→09_)")
     args = ap.parse_args()
 
     stream_start = datetime.strptime(args.stream_start, "%Y-%m-%d %H:%M:%S")
@@ -122,7 +130,8 @@ def main() -> int:
     for n in parse_sessions(args.sessions):
         if n not in offsets:
             raise SystemExit(f"S{n} のオフセットがありません")
-        if convert(n, offsets[n], stream_start, args.src.expanduser(), args.stock) is None:
+        if convert(n, offsets[n], stream_start, args.src.expanduser(), args.stock,
+                   args.dir_offset) is None:
             missing += 1
     return 1 if missing else 0
 
