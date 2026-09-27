@@ -22,7 +22,7 @@ DUR=4200
 
 # 番号:配信内オフセット秒:ディレクトリ名[:長さ秒]  長さ省略時は DUR(4200)。
 # Day1: 予定終了を超えて続いた S2/S4 は 4800 秒、S8 は配信終端まで(4802 秒)に延長。
-# Day2: S8 は配信終端(36001 秒)までの 3902 秒。
+# Day2: 予定終了を超えて続いた S7 は 4800 秒、S8 は配信終端(36001 秒)までの 3902 秒。
 if [[ "$DAY" == 2 ]]; then
 SESSIONS=(
   "09:599:09_ShortFilm_FUKUPOLY"
@@ -31,7 +31,7 @@ SESSIONS=(
   "12:14099:12_3DPrint_Shiotsuki_Hagiwara"
   "13:18599:13_PhotorealCG_Iori"
   "14:23099:14_VRChatWorld_Fujito"
-  "15:27599:15_VibeModeling_KOBATAKA_posiposi"
+  "15:27599:15_VibeModeling_KOBATAKA_posiposi:4800"
   "16:32099:16_SuzanneAwards:3902"
 )
 else
