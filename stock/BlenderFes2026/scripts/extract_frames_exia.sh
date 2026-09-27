@@ -18,11 +18,12 @@
 set -u
 ROOT=${ROOT:-/Volumes/Disk4TB/BlenderFes2026AW}
 IN=$ROOT/Day1
-OUT=$IN/frames
+OUT=${OUT:-$IN/frames}
 FFMPEG=/opt/homebrew/bin/ffmpeg
 MIN_GAP=${MIN_GAP:-15}
 MAX_FRAMES=${MAX_FRAMES:-300}
 THRESHOLDS=(0.3 0.4 0.5 0.6 0.7 0.8)
+[[ -n "${THRESHOLDS_OVERRIDE:-}" ]] && THRESHOLDS=(${=THRESHOLDS_OVERRIDE})   # 例: THRESHOLDS_OVERRIDE="0.15 0.2 0.3"
 STREAM_START_SEC=35101   # 09:45:01 を 0 時からの秒にしたもの
 
 SESSIONS=(

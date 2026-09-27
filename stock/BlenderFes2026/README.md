@@ -109,6 +109,8 @@ NN_<slug>/
    ```bash
    scp stock/BlenderFes2026/scripts/extract_frames_exia.sh exiamac-mini:/Volumes/Disk4TB/BlenderFes2026AW/
    ssh exiamac-mini 'zsh /Volumes/Disk4TB/BlenderFes2026AW/extract_frames_exia.sh'
+   # 出力先と閾値列は環境変数で上書きできる(既定: frames/、0.3 0.4 0.5 0.6 0.7 0.8)。
+   #   ssh exiamac-mini 'OUT=/Volumes/Disk4TB/BlenderFes2026AW/Day1/frames_t015 THRESHOLDS_OVERRIDE="0.15 0.2 0.25 0.3 0.4 0.5" zsh .../extract_frames_exia.sh'
    for d in stock/BlenderFes2026/0?_*/; do n=$(basename $d)
      rsync -a exiamac-mini:/Volumes/Disk4TB/BlenderFes2026AW/Day1/frames/$n/ $d/source/images/; done
    ```
