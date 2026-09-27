@@ -123,7 +123,7 @@
 - 【話者】Target と Owner の Space を Local Space にする → ローカル回転値をコピーする
 - 【話者】Axis は X のみ残す → 曲げ方向（ローカル X）だけをコピーし、他の軸はコピーしない
 - 【話者】Mix を Add にする → コピーした角度に加えて、そのボーンを手で追加回転できる
-- 【話者】finger_*.003 にも同じ Copy Rotation を貼る → 1 本目を回すだけで指全体が曲がる
+- 【話者】finger_*.003 にも同じ Copy Rotation を貼る（貼り付けなので Target は 1 本目のままと推定、要確認）→ 1 本目を回すだけで指全体が曲がる
 - 【話者】他の指へは Copy to Selected で貼り、各 Target を差し替える
 - 【話者】palm.002 に Copy Rotation（Target: palm.003、Local Space、Influence 0.5）→ palm.003 の 50% だけ追従
 - 【話者】palm.001 に同じ Copy Rotation を Influence をさらに下げて追加。加えて palm.001 に Target: palm.L の Copy Rotation を弱い Influence で追加 → 両端の palm 2 本で手の丸みを作れる（具体値は要確認）
@@ -192,7 +192,8 @@
 
 - 【話者】手を回すと前腕が不自然にねじれる。通常は前腕にツイストボーンを追加してウェイトを設定して解決する
 - 【話者】代わりに lower_arm の Bone プロパティ > Bendy Bones で Segments を増やす（講演では 4）
-- 【話者】Armature の Display As を B-Bone にすると分割が見える。太すぎる表示は Pose Mode の Transform > Scale B-Bone（Ctrl+Alt+S）で細くする
+- 【話者】Armature の Display As を B-Bone にすると分割が見える。太すぎる表示は Pose Mode の Transform > Scale B-Bone で細くする
+- 【事実】Scale B-Bone のショートカットは Ctrl+Alt+S
 - 【話者】Edit Mode で Bendy Bones の Ease In / Ease Out をどちらも 0 → 前腕が曲線状に曲がらず、手の回転に合わせてねじれだけが分散される（ツイストボーン相当）
 
 ## 17. 検証手順

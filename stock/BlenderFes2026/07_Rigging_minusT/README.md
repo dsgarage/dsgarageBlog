@@ -19,20 +19,24 @@
 
 | # | スピーカー | 所属 | 肩書 |
 |:---|:---|:---|:---|
-| 1 | minusT | 未確認 | 未確認 |
+| 1 | minusT | 記載なし（公式タイムテーブル） | 3DCGアーティスト |
 
 ## スライド画像
 
 - `source/images/` にアーカイブ動画から抽出したスライド候補フレーム（`frame_NNNN.jpg`）と `frames.tsv`（切り出し内秒・配信内秒・壁時計）を置く
-- 記事で使う画像は選別・加工して `images/` に置く（未作成）
+- 記事で使う画像は `source/images_t015/` から選別コピーして `images/` に置いた（10 枚）
+  - `bf2026_s07_rig_overview.jpg`（17:30:32）/ `bf2026_s07_basics_skinning.jpg`（17:36:36）/ `bf2026_s07_spine_torso_bones.jpg`（17:40:18）/ `bf2026_s07_hand_finger_bones.jpg`（17:43:15）/ `bf2026_s07_weight_paint_hips.jpg`（17:50:15）
+  - `bf2026_s07_finger_bend_euler.jpg`（17:52:45）/ `bf2026_s07_finger_copy_rotation.jpg`（18:03:12）/ `bf2026_s07_driver_generator.jpg`（18:15:09）/ `bf2026_s07_ik_controls_collections.jpg`（18:21:00）/ `bf2026_s07_skirt_bones.jpg`（18:27:12）
 
 ## 成果物
 
-- 記事: 未作成
+- 記事: `20260926_BlenderFes2026AW_S07_ボーン1本から始めるリギング.md`（講演は韓国語、記事は日本語で要約）
+- 要点: `summary.md` / Skill 化用ノート: `skill_notes.md`
 
 ## トランスクリプトファイル
 
 - `source/transcripts/20260926_S7_Rigging_minusT.txt` — whisper 文字起こし（Talksribe 形式、壁時計付き）
+- 文字起こしは韓国語(`-l ko`)。日本語強制版は S7.origja.* として ~/Downloads 側に保存
 - `source/transcripts/S7.srt` / `S7.vtt` / `S7.txt` — whisper-cli の元出力（切り出し開始からの相対時刻）
 - `transcripts/` — 記事用に整形した transcript（未作成）
 
