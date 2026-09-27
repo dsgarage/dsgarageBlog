@@ -138,6 +138,13 @@ NN_<slug>/
 4. **記事化** — `source/transcripts/` とスライドを元に、セッション直下に記事ドラフトを書く（`transcripts/` に整形版、`images/` に記事用画像）
 5. **Re:VIEW 変換** — GDC2026 と同じく `md2review` で電子書籍原稿に変換する（`stock/GDC2026/md2review.py` を参照）
 
+   `scripts/setup_ebook.sh` が雛形の展開、記事 8 本の変換（`scripts/md2review.py`）、画像のコピーと参照チェック、catalog.yml / config.yml の書き換えまでを行い、`ebook/blenderfes2026-day1/`（Git 管理外）に 1 冊を組みます。序文と後書きの原稿は `scripts/ebook_src/` にあります。ビルドは Starter の対応版に合わせて Re:VIEW 2.5 で行います（Docker なら `./local-ci.sh build`）。
+
+   ```bash
+   bash stock/BlenderFes2026/scripts/setup_ebook.sh
+   cd stock/BlenderFes2026/ebook/blenderfes2026-day1 && rake prepare && review-pdfmaker _2.5.0_ config.yml
+   ```
+
 ## 注意
 
 - whisper の出力には無音区間のハルシネーション（「ご視聴ありがとうございました」の反復など）が含まれる。生データとして残し、整形時に取り除く。
