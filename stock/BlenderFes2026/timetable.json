@@ -1,0 +1,210 @@
+[
+ {
+  "day": 1,
+  "start": "10:00",
+  "end": "11:00",
+  "url": "https://cgworld.jp/special/blenderfes/vol7/?channel=channel-952",
+  "short_title": "Blenderで作る『超かぐや姫！』のCG背景",
+  "title": "Blenderで作る『超かぐや姫！』のCG背景",
+  "og_title": "Blenderで作る『超かぐや姫！』のCG背景 | Blender Fes 2026AW",
+  "og_description": "Blenderで作る『超かぐや姫！』のCG背景 背景超かぐや姫！AfterEffects 「塗る」「描く」だけ",
+  "paragraphs": [
+   "「塗る」「描く」だけが背景じゃない！ アニメ背景屋ならではの3DCGワークフローを、『超かぐや姫！』で実際に使用したモデルを参考に説明します。 ・CG背景の目的は3D背動！ペイントよりもプロシージャルに拘った理由。 ・Blenderは魔法のキャンパス！シェーディングとライティングで表現する色の世界。 ・アニメ背景に流儀無し！ルック実現のために使えるアセットやアドオンは躊躇なく使うべし。 これからアニメ背景を目指す方も、CGを取り入れたいと考えている同業の方も、一度筆を置いて「こういった手法や考え方もあるんだ」と感じていただければ幸いです。"
+  ]
+ },
+ {
+  "day": 1,
+  "start": "11:15",
+  "end": "12:15",
+  "url": "https://cgworld.jp/special/blenderfes/vol7/?channel=channel-946",
+  "short_title": "絵作りと効率を両立させる、キャラクターシェーディング技…",
+  "title": "絵作りと効率を両立させる、キャラクターシェーディング技法",
+  "og_title": "絵作りと効率を両立させる、キャラクターシェーディング技法 自主制作アニメ映画『砂塵ノ中デ』メイキング | Blender Fes 2026AW",
+  "og_description": "絵作りと効率を両立させる、キャラクターシェーディング技法自主制作アニメ映画『砂塵ノ中デ』メイキング 中級者向け",
+  "paragraphs": [
+   "・クオリティと作業量のバランスを取りながら、数百カットのビジュアルをコントロールする考え方 ・よりイラスト的で魅力的なビジュアルを作るための、キャラシェーディング技法 ・GeometoryNpdesとShaderNodesを活用した、効率とビジュアルを両立させるキャラシェーディング技法 ・レタッチに頼らずに、仕組みで絵作りをする為のシェーダーワークフロー ・リムライトやSDFテクスチャを活用したフェイスシェーディングなど、より絵的なキャラクターライティングのセットアップ技法"
+  ]
+ },
+ {
+  "day": 1,
+  "start": "12:30",
+  "end": "13:30",
+  "url": "https://cgworld.jp/special/blenderfes/vol7/?channel=channel-948",
+  "short_title": "現実より「盛る」！ゥチらの3D制作～ Blenderで…",
+  "title": "現実より「盛る」！ゥチらの3D制作～ Blenderでリアル²の世界へ～",
+  "og_title": "現実より「盛る」！ゥチらの3D制作～ Blenderでリアル²の世界へ～ | Blender Fes 2026AW",
+  "og_description": "現実より「盛る」！ゥチらの3D制作～ Blenderでリアル²の世界へ～ Substance 3D Paint",
+  "paragraphs": [
+   "「なんかゥチ、これ好き🌺もっとこういうものが現実にあったらいいのに🌺🌺🌺」 そんな個人的な「好き」や「欲しい」を出発点に、Blenderで世界をつくってみる。 個人制作だからこそできる、制約のない自由な創造性。その中で、現実をそのまま再現するのではなく、**現実にありそうで、現実には存在しない“リアル²”**を目指そ☝️ 車やSF、リッチなアニメーションだけが3Dじゃない。「ガーリー」「ファッション」「カルチャー」「ファンシー」「日常のちょっとした妄想」まで。 大事なのは＜ゥチ的創作態度＞。「自分が見たい現実以上を、自分でつくる」。Blenderで広がる表現の可能性を作品とともに考えます。"
+  ]
+ },
+ {
+  "day": 1,
+  "start": "13:45",
+  "end": "14:45",
+  "url": "https://cgworld.jp/special/blenderfes/vol7/?channel=channel-944",
+  "short_title": "アニメルックのつくりかた",
+  "title": "アニメルックのつくりかた",
+  "og_title": "アニメルックのつくりかた | Blender Fes 2026AW",
+  "og_description": "アニメルックのつくりかた 初心者向けセルルックアニメーションAfter EffectsIllustratorP",
+  "paragraphs": [
+   "【セッション内容】 短編アニメを作るにあたって、脚本から完成までの総合的な 知識をどのように培うか情報の提供。 アニメ風の見た目をどのようにつくるのか、テクスチャとシェーダーの設定、グリースペンシルの設定の解説。"
+  ]
+ },
+ {
+  "day": 1,
+  "start": "15:00",
+  "end": "16:00",
+  "url": "https://cgworld.jp/special/blenderfes/vol7/?channel=16",
+  "short_title": "「キレ」を意識した2Dアニメ的アクション演出",
+  "title": "「キレ」を意識した2Dアニメ的アクション演出",
+  "og_title": "「キレ」を意識した2Dアニメ的アクション演出 | Blender Fes 2026AW",
+  "og_description": "「キレ」を意識した2Dアニメ的アクション演出 アニメーション 3DCGでキャラクターを動かすと、普通は「滑らか",
+  "paragraphs": [
+   "3DCGでキャラクターを動かすと、普通は「滑らかで立体的な動き」になりやすいです。 しかし、2Dアニメらしい動きは必ずしも滑らかではありません。 あえて動きを飛ばす、形を崩す、タイミングを極端にする、カメラから見たシルエットを優先する。 こうした「正確な3D」から意図的に外れる操作によって、2Dアニメ特有の気持ちよさを3DCGでも再現できます。 ここではBlenderを使って、3Dキャラクターを2Dアニメのように動かすための考え方を解説します。"
+  ]
+ },
+ {
+  "day": 1,
+  "start": "16:15",
+  "end": "17:15",
+  "url": "https://cgworld.jp/special/blenderfes/vol7/?channel=channel-941",
+  "short_title": "エフェクトを作ろう",
+  "title": "エフェクトを作ろう",
+  "og_title": "エフェクトを作ろう | Blender Fes 2026AW",
+  "og_description": "エフェクトを作ろう 初・中級者向け Blenderの標準機能を使ったシンプルなエフェクトの制作方法と、それらを",
+  "paragraphs": [
+   "Blenderの標準機能を使ったシンプルなエフェクトの制作方法と、それらを組み合わせて一つの見栄えする演出に仕上げるまでの考え方を学んでいただけます。複雑なシミュレーションに頼りすぎず、形状・動き・タイミングを整理しながら、映像の中で効果的に見せるための組み立て方をご紹介します。"
+  ]
+ },
+ {
+  "day": 1,
+  "start": "17:30",
+  "end": "18:30",
+  "url": "https://cgworld.jp/special/blenderfes/vol7/?channel=channel-943",
+  "short_title": "ボーン1本から始めるキャラクターリギング",
+  "title": "ボーン1本から始めるキャラクターリギング",
+  "og_title": "ボーン1本から始めるキャラクターリギング | Blender Fes 2026AW",
+  "og_description": "ボーン1本から始めるキャラクターリギング リギング 本セッションでは、リギングの基礎からキャラクターリギングま",
+  "paragraphs": [
+   "本セッションでは、リギングの基礎からキャラクターリギングまで紹介します。 リギングの基礎では、ボーンの操作と作成方法からウェイト設定まで、リギング作業の流れを解説します。 効率的な頂点とボーンの位置設定、Boneの回転(Euler、Quaternion)の違いなど、数学的原理を簡単に解説します。 キャラクターリギングではadd-onを使わずに一つのボーンから直接設定する工程の流れを解説します。 ・人体のボーンの作成 ・Weight Painting ・腕と脚のIK設定 ・Shape KeyとDriverを使った表情のリギング また、blenderの機能を応用した効率的なリギングを紹介します。 ・ 色々なConstraintsを活用した指と足のコントローラー ・ Deform Modifierを使った効率的な衣装リギング ・ 衣装のオブジェクトをvertex parentingで簡単にリギング などのポイントを紹介する予定です。"
+  ]
+ },
+ {
+  "day": 1,
+  "start": "18:45",
+  "end": "19:45",
+  "url": "https://cgworld.jp/special/blenderfes/vol7/?channel=channel-949",
+  "short_title": "＜第7回＞3D人と選ぶ、注目のBlenderアドオン！",
+  "title": "＜第7回＞3D人と選ぶ、注目のBlenderアドオン！",
+  "og_title": "＜第7回＞3D人と選ぶ、注目のBlenderアドオン！ | Blender Fes 2026AW",
+  "og_description": "＜第7回＞3D人と選ぶ、注目のBlenderアドオン！ アドオン 大好評企画「3D人が選ぶ注目のBlender",
+  "paragraphs": [
+   "大好評企画「3D人が選ぶ注目のBlenderアドオン」第7回！ 今回のゲストは、cvELDの主宰で、Blender向けリギング補助アドオン「 cvELD_QuickRig 」「 cvELD_QuickBBone 」の開発者としても知られるLand-Y氏。 長年にわたるリギング・アドオン開発の経験を持つ氏の視点から、 選りすぐりのアドオンをピックアップし、その活用法や魅力を徹底的に語っていただきます。 プロならではの厳選アドオンと、その選出理由をたっぷりと語る本企画。 制作現場の生の声が詰まった、ここでしか聞けない情報満載のセッションをどうぞお見逃しなく！"
+  ]
+ },
+ {
+  "day": 2,
+  "start": "10:00",
+  "end": "11:00",
+  "url": "https://cgworld.jp/special/blenderfes/vol7/?channel=channel-945",
+  "short_title": "短時間で心を掴む！自主制作から学ぶ、魅力的なショート映…",
+  "title": "短時間で心を掴む！自主制作から学ぶ、魅力的なショート映像制作",
+  "og_title": "短時間で心を掴む！自主制作から学ぶ、魅力的なショート映像制作 | Blender Fes 2026AW",
+  "og_description": "短時間で心を掴む！自主制作から学ぶ、魅力的なショート映像制作 ジオメトリノード初級者向け 【セッション内容】1",
+  "paragraphs": [
+   "【セッション内容】 1. 導入：なぜ「自主制作」を発信し続けるのか ・自己紹介・デモリール紹介。 ・作り続ける理由と、発信がもたらすクリエイターとしての生存戦略。 2. ステップ1：アイデアの種を見つける ・アイデアが出ない時の荒療治（「コンペ」や「お題」を強制力にする方法など）。 3. ステップ2：短時間で組み上げるシーン構成 コミュニティ3Dチャレンジ『GAUNTLET OF GODS』と 〜↑↑ -KARAAGE- / 赤城ウェンMVのブレイクダウンを観ながら紹介する 『効率的なワークフローと時短テクニック7選』 ①簡単なジオメトリノードで作る動かし小物 ②疑似流体 ③Linkの活用 ④エッジを多用したモデリング ⑤ドライバを使った動き制御 ⑥eeveeを使った表現 ⑦マテリアルでベベル 5. ステップ3：魅力を底上げするショート映像演出 ・『GAUNTLET OF GODS』の仕上げ部分 コンポジット、エフェクトなどを紹介 ・限られた時間・リソースの中でクオリティを最大化するポイント。"
+  ]
+ },
+ {
+  "day": 2,
+  "start": "11:15",
+  "end": "12:15",
+  "url": "https://cgworld.jp/special/blenderfes/vol7/?channel=channel-947",
+  "short_title": "ノードで楽しむモーショングラフィックス表現",
+  "title": "ノードで楽しむモーショングラフィックス表現",
+  "og_title": "ノードで楽しむモーショングラフィックス表現 | Blender Fes 2026AW",
+  "og_description": "ノードで楽しむモーショングラフィックス表現 モーショングラフィックスGeometry Nodes Blende",
+  "paragraphs": [
+   "Blender1年目、モーショングラフィックデザイナーのNodes活用方法と制作アプローチをご紹介いたします。 このセッションでは、私がBlenderを学び、作業に活用しながら身につけた方法を基に、Geometry Nodesをより簡単に理解し、望む表現を実現するためにどのようにアプローチするかをお話しします。 代表作やさまざまな習作の実際のノード構成を見ながら、Geometry Nodesだけでなく、Compositor Nodes、Shader Nodesなど、Blenderの多様なNode Systemをモーショングラフィック制作にどのように活用できるかをご紹介いたします。 【セッションに含まれる内容】 １.モーショングラフィックデザイナーがBlenderのNodesを見る方法 これまで行ってきたモーショングラフィックの作業や制作方法が、Blenderを学ぶ過程にどのような影響を与えたのか、そして望む結果を作るために必要な機能を見つけて組み合わせる、私独自の制作アプローチをご紹介いたします。 2.Geometry Nodes制作アプローチ 複雑に見えるGeometry Nodesを理解し活用するために、どのように問題を分割し、必要なノードを見つけ、さまざまなNode Systemへと発展させていったか、その方法を説明いたします。 3.代表作および習作を通じたNodes活用事例 3-1. [Geometry Nodes] 最初の習作のアプローチ方法 3-2. DJMAX「Dreamscape by GhostFinal」MVのノード使用解説 3-3. [Geometry Nodes] Raycastを活用した2D Tracking Interface制作解説 3-4. [Compositor Nodes] Object Tracking Interface制作解説 4.モーショングラフィック表現に活用しやすいNodesの用例紹介 最近実験している作業をもとに、セッションを視聴される皆様にぜひ使っていただきたいNodesの活用法をまとめました。 [Geometry Nodes] Math Nodesを活用したアニメーション自動化システム [Geometry Nodes] Cloth Simulation Nodeを活用したテキストアニメーション表現 [Shader Nodes] Raycastを活用したグラフィックデザイン表現"
+  ]
+ },
+ {
+  "day": 2,
+  "start": "12:30",
+  "end": "13:30",
+  "url": "https://cgworld.jp/special/blenderfes/vol7/?channel=channel-951",
+  "short_title": "Blenderから広がる、体験型リアルタイムコンテンツ…",
+  "title": "Blenderから広がる、体験型リアルタイムコンテンツのつくり方",
+  "og_title": "Blenderから広がる、体験型リアルタイムコンテンツのつくり方 | Blender Fes 2026AW",
+  "og_description": "Blenderから広がる、体験型リアルタイムコンテンツのつくり方 Geometry Nodesリアルタイムコン",
+  "paragraphs": [
+   "Blenderを起点に、Geometry Nodesを活用したアセット制作や、ゲームエンジンをはじめとするリアルタイムツールへのデータ連携、リアルタイム描画を前提としたアニメーションの設計など、体験型リアルタイムコンテンツ制作の具体的なワークフローを紹介します。実際の制作事例をもとに、3DCG制作からリアルタイム環境への実装、ディスプレイや空間条件に合わせた演出設計まで、各工程での考え方や実践的なポイントを解説します。 また、複数のツールを横断するコンテンツ制作において、なぜBlenderを制作のベースとして採用しているのか。制作効率やツール間のデータ連携、試行錯誤のしやすさ、表現の自由度といった観点から、リアルタイムコンテンツ制作にBlenderを活用するメリットや考え方を紹介します。"
+  ]
+ },
+ {
+  "day": 2,
+  "start": "13:45",
+  "end": "14:45",
+  "url": "https://cgworld.jp/special/blenderfes/vol7/?channel=channel-940",
+  "short_title": "Blender × 3Dプリント クリエイターが語る制…",
+  "title": "Blender × 3Dプリント クリエイターが語る制作の裏側",
+  "og_title": "Blender × 3Dプリント クリエイターが語る制作の裏側 | Blender Fes 2026AW",
+  "og_description": "Blender × 3Dプリント クリエイターが語る制作の裏側 3Dプリント Blenderでつくったモデルを",
+  "paragraphs": [
+   "Blenderでつくったモデルを3Dプリントしてみたい。でも、どんな機材や素材を選べばよいのか、出力するためにデータをどう調整すればよいのか、分からないことも多いのではないでしょうか。 本セッションでは、3Dプリントを制作に取り入れている塩月卓也氏と萩原亮氏をお招きし、Blenderでのモデリングから出力、仕上げまで、3Dプリントを作品づくりに取り入れるうえで気になるポイントをテーマごとに伺います。機材や素材の選び方、サポート材や表面処理の工夫、試作や生産に関することまで、お二人の経験をもとにしたTipsや考え方をご紹介いただきます。 3Dプリントをすでに活用している方はもちろん、これから自分の作品を形にしてみたい方にも、より身近に楽しむためのヒントをお届けします。"
+  ]
+ },
+ {
+  "day": 2,
+  "start": "15:00",
+  "end": "16:00",
+  "url": "https://cgworld.jp/special/blenderfes/vol7/?channel=channel-950",
+  "short_title": "フォトリアルCGテクニック",
+  "title": "フォトリアルCGテクニック",
+  "og_title": "フォトリアルCGテクニック | Blender Fes 2026AW",
+  "og_description": "フォトリアルCGテクニック 初・中級者向け このセッションでは3DCGを簡単にフォトリアルに見せる方法を解説し",
+  "paragraphs": [
+   "このセッションでは3DCGを簡単にフォトリアルに見せる方法を解説します。 フォトリアルCGにはさまざまな手法がありますが、このセッションでは特に「簡単」で汎用的なテクニックをモデリング、テクスチャリング、シェーディング、ライティング、コンポジティングの各工程ごとに解説します。 モデリング：リアルに見せるディテールの加え方や直線的な印象を崩してリアルに見せる方法 テクスチャリング：写真を使った表現や、汚れやデカールを自然に加える方法 シェーディング：環境に合わせた汚し方やノーマルマップやランダム値の活用方法 ライティング：HDRIを使って自然な印象を素早く作る方法 コンポジティング：ノイズや色収差などを使って手軽にCG感を抑える方法 などをご紹介します。 このセッションを通して、初心者の方が比較的簡単な工夫やテクニックの積み重ねで手軽にリアルな仕上がりに近づけられることを実感していただけるようになれば幸いです。"
+  ]
+ },
+ {
+  "day": 2,
+  "start": "16:15",
+  "end": "17:15",
+  "url": "https://cgworld.jp/special/blenderfes/vol7/?channel=channel-991",
+  "short_title": "VRChatワールドができるまで BlenderとUn…",
+  "title": "VRChatワールドができるまで",
+  "og_title": "VRChatワールドができるまで BlenderとUnityをつなぐ空間制作の基本ワークフロー | Blender Fes 2026AW",
+  "og_description": "VRChatワールドができるまでBlenderとUnityをつなぐ空間制作の基本ワークフロー VRChatワー",
+  "paragraphs": [
+   "VRChatワールド制作を題材に、Blenderで空間をつくり、Unityへ持ち込み、VRChat上で確認・調整するまでの基本的なワークフローを、自身の制作例を交えて紹介します。 Blenderでは、リファレンスの集め方、人体や実寸を基準にしたラフモデル、VRでのスケール確認、詳細モデリング、UV・テクスチャ制作などを扱います。Unityでは、Blenderからのデータ移行、Material・Texture・Shaderの設定、Lighting、Light Probe・Reflection Probe、Post Processing、VRChatでの動作確認までを取り上げます。 Blenderでモデリングはできるものの、その前後に何をすればVRChatワールドとして完成するのか、その制作工程全体を把握できる内容です。"
+  ]
+ },
+ {
+  "day": 2,
+  "start": "17:30",
+  "end": "18:30",
+  "url": "https://cgworld.jp/special/blenderfes/vol7/?channel=channel-942",
+  "short_title": "AIエージェント × Blenderで挑む Vibe …",
+  "title": "AIエージェント × Blenderで挑む Vibe Modeling",
+  "og_title": "AIエージェント × Blenderで挑む Vibe Modeling | Blender Fes 2026AW",
+  "og_description": "AIエージェント × Blenderで挑む Vibe Modeling AIVibe Modeling AIエ",
+  "paragraphs": [
+   "AIエージェントと会話しながら、コードでBlenderを動かしてモデリングを進めていく”Vibe Modeling”。自分でポリゴンを触らないのに、本当に作品は作れるのか？ そして、それはどこまで通用するのか？ 本セッションでは、Blender初心者の状態からこの手法で作品づくりに挑んできたKOBATAKA氏とposi_posi氏が、実際に作り上げた作例を交えながらその実態を語ります。 「AIが得意な形状と、意外なほど苦手な形状」の境界線。その線引きがわかると、他の3D生成AIとの使い分けや、Vibe Modelingを活かすべき場面がはっきり見えてきます。さらに、AIに「ポン出し」させるだけでは絶対にたどり着けないクオリティに到達するための、お二人ならではのイテレーションの回し方や、手作業では面倒な工程をコードならではの発想で一気に片づけるテクニックなど、実践者だからこそ語れる知見が次々と登場します。 そして「人間が握るべき工程」と「AIに任せていい工程」は結局どこで分かれるのか。 AI×Blenderに興味はあるけれど何から始めればいいかわからない方、すでに試してみたものの伸び悩んでいる方、どちらにも「次の一歩」が見つかるはずです。"
+  ]
+ },
+ {
+  "day": 2,
+  "start": "18:45",
+  "end": "19:45",
+  "url": "https://cgworld.jp/special/blenderfes/vol7/?channel=channel-919",
+  "short_title": "b3d創作祭「スザンヌ」 結果発表&講評セッシ…",
+  "title": "b3d創作祭「スザンヌ」 結果発表&講評セッション",
+  "og_title": "b3d創作祭「スザンヌ」 結果発表&講評セッション | Blender Fes 2026AW",
+  "og_description": "b3d創作祭「スザンヌ」 結果発表&講評セッション b3d創作祭3DCGコンテスト Blenderユー",
+  "paragraphs": [
+   "Blenderユーザー限定CGコンテスト「b3d創作祭」、ついに結果発表！ 今回のテーマは「スザンヌ」 応募者各々が思い描く”スザンヌ”が集結。 応募は9/10（木）まで受付中です！ぜひご応募ください！ ▼b3d創作祭「スザンヌ」 特設サイト https://cgworld.jp/special/promo/b3dcontestsuzanne/"
+  ]
+ }
+]
