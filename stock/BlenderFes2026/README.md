@@ -137,6 +137,7 @@ NN_<slug>/
 
 4. **記事化** — `source/transcripts/` とスライドを元に、セッション直下に記事ドラフトを書く（`transcripts/` に整形版、`images/` に記事用画像）
 5. **Re:VIEW 変換** — GDC2026 と同じく `md2review` で電子書籍原稿に変換する（`stock/GDC2026/md2review.py` を参照）
+6. **Extra「3D衣装の作り方」の単巻（#14）** — `bash stock/BlenderFes2026/scripts/setup_ebook_extra.sh` で、統合記事を `17_Extra_3DCostume/book_outline.md` の章立てで 10 章に分割して変換し、`ebook/blenderfes-extra-3dcostume/` に組む（序文・あとがき・付録 3 本は `scripts/ebook_src_extra/`）。ビルドはその中で `rake prepare && review-pdfmaker _2.5.0_ config.yml`。完成一式は `dsgarageBooks/Game/BlenderFesExtra-3DCostume/` にコピーする（node_modules は除く）
 
 ## 注意
 
