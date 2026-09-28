@@ -24,16 +24,28 @@
 ## スライド画像
 
 - `source/images/` にアーカイブ動画から抽出したスライド候補フレーム（`frame_NNNN.jpg`）と `frames.tsv`（切り出し内秒・配信内秒・壁時計）を置く
-- 記事で使う画像は選別・加工して `images/` に置く（未作成）
+- 記事で使う画像は `images/` に選別コピー済み（元フレームは `source/` に残置）
+  - `bf2026_d2s01_gauntlet_of_gods.jpg` ← images/frame_0016（10:07:35）
+  - `bf2026_d2s01_edge_modeling_slide.jpg` ← images_t015/frame_0022（10:07:00）
+  - `bf2026_d2s01_material_bevel_dot_product.jpg` ← images_t015/frame_0032（10:17:09）
+  - `bf2026_d2s01_pseudo_fluid_boolean.jpg` ← images_t015/frame_0037（10:21:09）
+  - `bf2026_d2s01_pseudo_fluid_iv_bags.jpg` ← images_t015/frame_0038（10:22:00）
+  - `bf2026_d2s01_link_slide.jpg` ← images_t015/frame_0047（10:32:19）
+  - `bf2026_d2s01_composite_after_effects.jpg` ← images_t015/frame_0054（10:36:51）
+  - `bf2026_d2s01_bike_character_rig.jpg` ← images_t015/frame_0058（10:42:11）
+  - `bf2026_d2s01_eevee_karaage_stage.jpg` ← images_t015/frame_0063（10:44:48）
+  - `bf2026_d2s01_gn_led_string.jpg` ← images_t015/frame_0070（10:50:27）
 
 ## 成果物
 
-- 記事: 未作成
+- 記事: `20260927_BlenderFes2026AW_S09_ショート映像制作.md`（ドラフト）
+- 要点: `summary.md`
+- Skill 化用ノート: `skill_notes.md`
 
 ## トランスクリプトファイル
 
 - `source/transcripts/20260927_S1_ShortFilm_FUKUPOLY.txt` — whisper 文字起こし（Talksribe 形式、壁時計付き）
 - `source/transcripts/S1.srt` / `S1.vtt` / `S1.txt` — whisper-cli の元出力（切り出し開始からの相対時刻）
-- `transcripts/` — 記事用に整形した transcript（未作成）
+- `transcripts/` — 記事用に整形した transcript（未作成。記事は `source/transcripts/20260927_S1_ShortFilm_FUKUPOLY.txt` の本編 10:01:09〜10:52:24 を要約して執筆）
 
 `source/` 配下は Git 管理外（主催者方針により録画・録音の再配布は不可）。

@@ -24,15 +24,19 @@ Blender1年目、モーショングラフィックデザイナーのNodes活用�
 ## スライド画像
 
 - `source/images/` にアーカイブ動画から抽出したスライド候補フレーム（`frame_NNNN.jpg`）と `frames.tsv`（切り出し内秒・配信内秒・壁時計）を置く
-- 記事で使う画像は選別・加工して `images/` に置く（未作成）
+- 記事で使う画像は `source/images_t015/` から選別コピーして `images/` に置いた（10 枚）
+  - `bf2026_d2s02_approach_decompose.jpg`（11:18:36）/ `bf2026_d2s02_world_star_voronoi.jpg`（11:33:48）/ `bf2026_d2s02_pillar_dot_product.jpg`（11:35:45）/ `bf2026_d2s02_shader_raycast_fog.jpg`（11:39:48）/ `bf2026_d2s02_cell_fracture.jpg`（11:42:30）
+  - `bf2026_d2s02_trail_2d_convert.jpg`（11:45:45）/ `bf2026_d2s02_trail_ndc_tracking.jpg`（11:47:54）/ `bf2026_d2s02_compositor_pixelize_uv.jpg`（11:52:42）/ `bf2026_d2s02_motion_fraction_bpm.jpg`（12:00:36）/ `bf2026_d2s02_shader_raycast_halftone.jpg`（12:08:03）
 
 ## 成果物
 
-- 記事: 未作成
+- 記事: `20260927_BlenderFes2026AW_S10_ノードで楽しむモーショングラフィックス.md`（講演は韓国語、記事は日本語で要約）
+- 要点: `summary.md` / Skill 化用ノート: `skill_notes.md`
 
 ## トランスクリプトファイル
 
 - `source/transcripts/20260927_S2_MotionGraphicsNodes_cerbalance.txt` — whisper 文字起こし（Talksribe 形式、壁時計付き）
+- 文字起こしは韓国語(`-l ko`)。本編は 11:15:10〜12:08:46 で切り出し範囲内に完結
 - `source/transcripts/S2.srt` / `S2.vtt` / `S2.txt` — whisper-cli の元出力（切り出し開始からの相対時刻）
 - `transcripts/` — 記事用に整形した transcript（未作成）
 
