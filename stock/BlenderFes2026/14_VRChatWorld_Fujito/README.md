@@ -24,16 +24,28 @@ VRChatワールド制作を題材に、Blenderで空間をつくり、Unityへ�
 ## スライド画像
 
 - `source/images/` にアーカイブ動画から抽出したスライド候補フレーム（`frame_NNNN.jpg`）と `frames.tsv`（切り出し内秒・配信内秒・壁時計）を置く
-- 記事で使う画像は選別・加工して `images/` に置く（未作成）
+- 記事で使う画像は `images/` に選別コピー済み（元フレームは `source/images_t015/` に残置）
+  - `bf2026_d2s06_world_pool_terrace.jpg` ← images_t015/frame_0020（16:18:07）
+  - `bf2026_d2s06_bubble_diagram_plan_sketch.jpg` ← images_t015/frame_0023（16:20:31）
+  - `bf2026_d2s06_reference_structuring_section.jpg` ← images_t015/frame_0025（16:22:57）
+  - `bf2026_d2s06_workflow_two_phases.jpg` ← images_t015/frame_0026（16:23:57）
+  - `bf2026_d2s06_rough_model_human_scale.jpg` ← images_t015/frame_0030（16:25:27）
+  - `bf2026_d2s06_unity_vcc_setup.jpg` ← images_t015/frame_0034（16:27:24）
+  - `bf2026_d2s06_unity_material_shader_texture.jpg` ← images_t015/frame_0059（16:48:49）
+  - `bf2026_d2s06_lightmapping_settings.jpg` ← images_t015/frame_0062（16:53:11）
+  - `bf2026_d2s06_post_processing_compare.jpg` ← images_t015/frame_0063（16:56:08）
+  - `bf2026_d2s06_in_world_third_person.jpg` ← images_t015/frame_0074（17:08:18）
 
 ## 成果物
 
-- 記事: 未作成
+- 記事: `20260927_BlenderFes2026AW_S14_VRChatワールドができるまで.md`（ドラフト）
+- 要点: `summary.md`
+- Skill 化用ノート: `skill_notes.md`
 
 ## トランスクリプトファイル
 
 - `source/transcripts/20260927_S6_VRChatWorld_Fujito.txt` — whisper 文字起こし（Talksribe 形式、壁時計付き）
 - `source/transcripts/S6.srt` / `S6.vtt` / `S6.txt` — whisper-cli の元出力（切り出し開始からの相対時刻）
-- `transcripts/` — 記事用に整形した transcript（未作成）
+- `transcripts/` — 記事用に整形した transcript（未作成。記事は `source/transcripts/20260927_S6_VRChatWorld_Fujito.txt` の本編 16:14:59〜17:09:45 を要約して執筆）
 
 `source/` 配下は Git 管理外（主催者方針により録画・録音の再配布は不可）。

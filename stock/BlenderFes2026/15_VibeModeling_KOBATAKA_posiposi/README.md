@@ -25,16 +25,29 @@ AIエージェントと会話しながら、コードでBlenderを動かして�
 ## スライド画像
 
 - `source/images/` にアーカイブ動画から抽出したスライド候補フレーム（`frame_NNNN.jpg`）と `frames.tsv`（切り出し内秒・配信内秒・壁時計）を置く
-- 記事で使う画像は選別・加工して `images/` に置く（未作成）
+- `source/images_t015/` に閾値 0.15 の抽出フレーム（延長分まで含む 91 枚）を置く
+- 記事で使う画像は `images/` に選別コピー済み（元フレームは `source/images_t015/` に残置）
+  - `bf2026_d2s07_works_without_blender.jpg` ← images_t015/frame_0019（17:34:22）
+  - `bf2026_d2s07_strong_weak_12shapes.jpg` ← images_t015/frame_0028（17:38:55）
+  - `bf2026_d2s07_tree_11rounds.jpg` ← images_t015/frame_0032（17:43:55）
+  - `bf2026_d2s07_hand_and_eye_overview.jpg` ← images_t015/frame_0041（17:58:08）
+  - `bf2026_d2s07_llm_wiki_library.jpg` ← images_t015/frame_0042（18:00:39）
+  - `bf2026_d2s07_mug_decision.jpg` ← images_t015/frame_0048（18:10:33）
+  - `bf2026_d2s07_human_ai_process_map.jpg` ← images_t015/frame_0053（18:14:24）
+  - `bf2026_d2s07_fox_blocking.jpg` ← images_t015/frame_0059（18:18:14）
+  - `bf2026_d2s07_fixed_camera_time_study.jpg` ← images_t015/frame_0061（18:22:33）
+  - `bf2026_d2s07_gn_api_pitfall.jpg` ← images_t015/frame_0065（18:26:14）
 
 ## 成果物
 
-- 記事: 未作成
+- 記事: `20260927_BlenderFes2026AW_S15_AIエージェントとVibeModeling.md`（ドラフト）
+- 要点: `summary.md`
+- Skill 化用ノート: `skill_notes.md`
 
 ## トランスクリプトファイル
 
 - `source/transcripts/20260927_S7_VibeModeling_KOBATAKA_posiposi.txt` — whisper 文字起こし（Talksribe 形式、壁時計付き）
 - `source/transcripts/S7.srt` / `S7.vtt` / `S7.txt` — whisper-cli の元出力（切り出し開始からの相対時刻）
-- `transcripts/` — 記事用に整形した transcript（未作成）
+- `transcripts/` — 記事用に整形した transcript（未作成。記事は `source/transcripts/20260927_S7_VibeModeling_KOBATAKA_posiposi.txt` の本編 17:30:00〜18:42 頃を要約して執筆。事前収録で、収録日は講演中の発言で 9/5）
 
 `source/` 配下は Git 管理外（主催者方針により録画・録音の再配布は不可）。

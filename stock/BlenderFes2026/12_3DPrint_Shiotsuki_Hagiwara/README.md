@@ -26,15 +26,26 @@ Blenderでつくったモデルを3Dプリントしてみたい。でも、ど�
 ## スライド画像
 
 - `source/images/` にアーカイブ動画から抽出したスライド候補フレーム（`frame_NNNN.jpg`）と `frames.tsv`（切り出し内秒・配信内秒・壁時計）を置く
-- 記事で使う画像は選別・加工して `images/` に置く（未作成）
+- 記事で使う画像は `images/` に置く（`source/images/` と `source/images_t015/` からコピーして改名。9 枚）
+  - `bf2026_d2s04_horse_gallery.jpg` ← images_t015/frame_0020（13:47:24）萩原さんの等身大の馬の展示
+  - `bf2026_d2s04_ceramic.jpg` ← frame_0016（13:46:54）萩原さんの陶器作品
+  - `bf2026_d2s04_mortar_printer.jpg` ← frame_0023（13:51:18）モルタルの建設用 3D プリンター
+  - `bf2026_d2s04_geonodes_wall.jpg` ← frame_0024（13:51:51）ジオメトリーノードによる壁と柱の検討
+  - `bf2026_d2s04_pellet.jpg` ← images_t015/frame_0038（13:55:18）フィラメントとペレットの説明
+  - `bf2026_d2s04_cascade_chair.jpg` ← frame_0029（13:55:27）椅子 CASCADE（2023）
+  - `bf2026_d2s04_horse_split_blender.jpg` ← frame_0071（14:12:42）Blender 上の馬の分割データ
+  - `bf2026_d2s04_bambu_support.jpg` ← images_t015/frame_0129（14:32:03）Bambu Lab のスライサーのサポート表示
+  - `bf2026_d2s04_kongo_yasha_print.jpg` ← images_t015/frame_0137（14:35:15）金剛夜叉明王像の出力結果
 
 ## 成果物
 
-- 記事: 未作成
+- 記事: `20260927_BlenderFes2026AW_S12_Blenderと3Dプリント.md`（ドラフト、dsgarage/dsgarageBlog#8）
+- 要点: `summary.md`
+- Skill 化用ノート: `skill_notes.md`
 
 ## トランスクリプトファイル
 
-- `source/transcripts/20260927_S4_3DPrint_Shiotsuki_Hagiwara.txt` — whisper 文字起こし（Talksribe 形式、壁時計付き）
+- `source/transcripts/20260927_S4_3DPrint_Shiotsuki_Hagiwara.txt` — whisper 文字起こし（Talksribe 形式、壁時計付き）。本編は 13:45 から 14:44 まで（切り出し範囲内で完結、以降は告知 CM）。記事の執筆に使用
 - `source/transcripts/S4.srt` / `S4.vtt` / `S4.txt` — whisper-cli の元出力（切り出し開始からの相対時刻）
 - `transcripts/` — 記事用に整形した transcript（未作成）
 
