@@ -10,8 +10,8 @@ CGWORLD 主催のオンラインイベント「Blender Fes 2026 AW」の素材�
 | 開催日 | 2026年9月26日（土）Day1 / 9月27日（日）Day2 |
 | 形式 | オンライン配信（チャンネル制） |
 | 公式ページ | https://cgworld.jp/special/blenderfes/vol7/ |
-| アーカイブ | Vimeo event 6144090（Day1、長さ 36901 秒） |
-| GitHub Issue | dsgarage/dsgarageBlog#2 |
+| アーカイブ | Vimeo event 6144090（Day1、長さ 36901 秒）/ Vimeo event 6213809（Day2、長さ 36001 秒） |
+| GitHub Issue | dsgarage/dsgarageBlog#2（Day1）/ dsgarage/dsgarageBlog#8（Day2） |
 
 ### 配信内時刻と壁時計の対応
 
@@ -19,6 +19,8 @@ CGWORLD 主催のオンラインイベント「Blender Fes 2026 AW」の素材�
 - 配信開始 = 20:00:02 − 36901 秒 = **2026-09-26 09:45:01**
 - 配信内 t 秒 → 壁時計 = 09:45:01 + t
 - 試し書き起こしで、13:30〜17:30 付近に司会アナウンスと 1 番目セッションの開始が入っていることを確認済み（10:00 開始と整合）
+- Day2 の `info.json` の timestamp は 2026-09-27 19:45:02（配信終了時刻）、duration は 36001 秒
+- Day2 の配信開始 = 19:45:02 − 36001 秒 = **2026-09-27 09:45:01**（Day1 と同じ時刻なので、配信内オフセットも Day1 と同じ値を使う）
 
 ## タイムテーブル
 
@@ -37,18 +39,20 @@ CGWORLD 主催のオンラインイベント「Blender Fes 2026 AW」の素材�
 | S7 | 17:30–18:30 | [ボーン1本から始めるキャラクターリギング](https://cgworld.jp/special/blenderfes/vol7/?channel=channel-943) | minusT | `07_Rigging_minusT/` |
 | S8 | 18:45–19:45 | [＜第7回＞3D人と選ぶ、注目のBlenderアドオン！](https://cgworld.jp/special/blenderfes/vol7/?channel=channel-949) | 3D人・ますく・Land-Y（MC 涌井嶺） | `08_Addons_3Dnin/` |
 
-### Day2（2026-09-27）— 未着手
+### Day2（2026-09-27）— 素材整理対象
 
-| 時間 | タイトル | 登壇者 |
-|:---|:---|:---|
-| 10:00–11:00 | [短時間で心を掴む！自主制作から学ぶ、魅力的なショート映像制作](https://cgworld.jp/special/blenderfes/vol7/?channel=channel-945) | 未確認 |
-| 11:15–12:15 | [ノードで楽しむモーショングラフィックス表現](https://cgworld.jp/special/blenderfes/vol7/?channel=channel-947) | 未確認 |
-| 12:30–13:30 | [Blenderから広がる、体験型リアルタイムコンテンツのつくり方](https://cgworld.jp/special/blenderfes/vol7/?channel=channel-951) | 未確認 |
-| 13:45–14:45 | [Blender × 3Dプリント クリエイターが語る制作の裏側](https://cgworld.jp/special/blenderfes/vol7/?channel=channel-940) | 未確認 |
-| 15:00–16:00 | [フォトリアルCGテクニック](https://cgworld.jp/special/blenderfes/vol7/?channel=channel-950) | 未確認 |
-| 16:15–17:15 | [VRChatワールドができるまで BlenderとUnityをつなぐ空間制作の基本ワークフロー](https://cgworld.jp/special/blenderfes/vol7/?channel=channel-991) | 未確認 |
-| 17:30–18:30 | [AIエージェント × Blenderで挑む Vibe Modeling](https://cgworld.jp/special/blenderfes/vol7/?channel=channel-942) | 未確認 |
-| 18:45–19:45 | [b3d創作祭「スザンヌ」 結果発表&講評セッション](https://cgworld.jp/special/blenderfes/vol7/?channel=channel-919) | 未確認 |
+| # | 時間 | タイトル | 登壇者 | ディレクトリ |
+|:---|:---|:---|:---|:---|
+| S1 | 10:00–11:00 | [短時間で心を掴む！自主制作から学ぶ、魅力的なショート映像制作](https://cgworld.jp/special/blenderfes/vol7/?channel=channel-945) | 福田泰崇（FUKUPOLY） | `09_ShortFilm_FUKUPOLY/` |
+| S2 | 11:15–12:15 | [ノードで楽しむモーショングラフィックス表現](https://cgworld.jp/special/blenderfes/vol7/?channel=channel-947) | cerbalance | `10_MotionGraphicsNodes_cerbalance/` |
+| S3 | 12:30–13:30 | [Blenderから広がる、体験型リアルタイムコンテンツのつくり方](https://cgworld.jp/special/blenderfes/vol7/?channel=channel-951) | 中野雄太・寺澤佑希斗（raw inc.） | `11_RealtimeContent_raw/` |
+| S4 | 13:45–14:45 | [Blender × 3Dプリント クリエイターが語る制作の裏側](https://cgworld.jp/special/blenderfes/vol7/?channel=channel-940) | 塩月卓也・萩原亮（MC ますく） | `12_3DPrint_Shiotsuki_Hagiwara/` |
+| S5 | 15:00–16:00 | [フォトリアルCGテクニック](https://cgworld.jp/special/blenderfes/vol7/?channel=channel-950) | イオリ | `13_PhotorealCG_Iori/` |
+| S6 | 16:15–17:15 | [VRChatワールドができるまで BlenderとUnityをつなぐ空間制作の基本ワークフロー](https://cgworld.jp/special/blenderfes/vol7/?channel=channel-991) | Fujito | `14_VRChatWorld_Fujito/` |
+| S7 | 17:30–18:30 | [AIエージェント × Blenderで挑む Vibe Modeling](https://cgworld.jp/special/blenderfes/vol7/?channel=channel-942) | KOBATAKA・posi_posi | `15_VibeModeling_KOBATAKA_posiposi/` |
+| S8 | 18:45–19:45 | [b3d創作祭「スザンヌ」 結果発表&講評セッション](https://cgworld.jp/special/blenderfes/vol7/?channel=channel-919) | 涌井嶺・3D人・FUKUPOLY・ますく | `16_SuzanneAwards/` |
+
+Day2 のディレクトリ番号は Day1 から続けて 09〜16 とし、セッション番号（S1〜S8）は日ごとに振り直しています。
 
 ## Directory Rules
 
@@ -90,12 +94,12 @@ NN_<slug>/
 
 | 素材 | 場所 |
 |:---|:---|
-| 1080p アーカイブ全体 | exia `/Volumes/Disk4TB/BlenderFes2026AW/BlenderFes2026AW_Day1_1080p.mp4` |
-| セッション別動画 | exia `/Volumes/Disk4TB/BlenderFes2026AW/Day1/NN_<slug>.mp4` |
-| セッション別フレーム | exia `/Volumes/Disk4TB/BlenderFes2026AW/Day1/frames/NN_<slug>/` |
-| 音声切り出し・whisper 出力 | ローカル `~/Downloads/vimeo_event_6144090/sessions/S{n}.{wav,srt,vtt,txt}` |
+| 1080p アーカイブ全体 | exia `/Volumes/Disk4TB/BlenderFes2026AW/BlenderFes2026AW_Day{1,2}_1080p.mp4` |
+| セッション別動画 | exia `/Volumes/Disk4TB/BlenderFes2026AW/Day{1,2}/NN_<slug>.mp4` |
+| セッション別フレーム | exia `/Volumes/Disk4TB/BlenderFes2026AW/Day{1,2}/frames/NN_<slug>/`（閾値を下げた版は `frames_t015/`） |
+| 音声切り出し・whisper 出力 | ローカル `~/Downloads/vimeo_event_6144090/sessions/S{n}.*`（Day1）/ `~/Downloads/vimeo_event_6213809/sessions/S{n}.*`（Day2） |
 
-各セッションの切り出しは「壁時計で開始 5 分前 〜 終了 5 分後」（4200 秒）が基本です。予定終了を超えて続いた S2・S4・S8 は延長しています。
+各セッションの切り出しは「壁時計で開始 5 分前 〜 終了 5 分後」（4200 秒）が基本です。Day1 で予定終了を超えて続いた S2・S4・S8 は延長しています。
 
 | # | 配信内オフセット（秒） | 長さ（秒） | 壁時計 |
 |:---|---:|---:|:---|
@@ -110,12 +114,28 @@ NN_<slug>/
 
 延長した 3 本の延長前の版は exia に `NN_<slug>.short4200.mp4` として残しています。延長分のフレームは `START_SEC=4200` で追加抽出し、`frame_t4200_NNNN.jpg` として既存の `frames.tsv` に追記しています。
 
+Day2 は予定終了を超えて 18:44:31 まで続いた S7 を 4800 秒に延長し、S8 は配信終端（36001 秒）までの 3902 秒です。延長前の S7 は exia に `15_VibeModeling_KOBATAKA_posiposi.short4200.mp4` として残しています。
+
+| # | 配信内オフセット（秒） | 長さ（秒） | 壁時計（2026-09-27） | ディレクトリ |
+|:---|---:|---:|:---|:---|
+| S1 | 599 | 4200 | 09:55–11:05 | `09_ShortFilm_FUKUPOLY` |
+| S2 | 5099 | 4200 | 11:10–12:20 | `10_MotionGraphicsNodes_cerbalance` |
+| S3 | 9599 | 4200 | 12:25–13:35 | `11_RealtimeContent_raw` |
+| S4 | 14099 | 4200 | 13:40–14:50 | `12_3DPrint_Shiotsuki_Hagiwara` |
+| S5 | 18599 | 4200 | 14:55–16:05 | `13_PhotorealCG_Iori` |
+| S6 | 23099 | 4200 | 16:10–17:20 | `14_VRChatWorld_Fujito` |
+| S7 | 27599 | 4800 | 17:25–18:45 | `15_VibeModeling_KOBATAKA_posiposi` |
+| S8 | 32099 | 3902（配信終端まで） | 18:40–19:45:02 | `16_SuzanneAwards` |
+
 1. **exia で分割**（`-c copy` の無劣化分割。開始はキーフレーム境界で数秒前後する）
 
    ```bash
    scp stock/BlenderFes2026/scripts/split_video_exia.sh exiamac-mini:/Volumes/Disk4TB/BlenderFes2026AW/
-   ssh exiamac-mini 'zsh /Volumes/Disk4TB/BlenderFes2026AW/split_video_exia.sh'
+   ssh exiamac-mini 'zsh /Volumes/Disk4TB/BlenderFes2026AW/split_video_exia.sh'          # Day1
+   ssh exiamac-mini 'DAY=2 zsh /Volumes/Disk4TB/BlenderFes2026AW/split_video_exia.sh'    # Day2
    ```
+
+   環境変数 `DAY`（既定 1）で入力 `BlenderFes2026AW_Day${DAY}_1080p.mp4`・出力 `Day${DAY}/`・セッション定義を切り替えます。フレーム抽出スクリプトも同じ `DAY` で入力・出力・`frames.tsv` の日付を切り替えます。
 
 2. **exia でスライド候補フレームを抽出して取り込む**（キーフレームのシーン変化 > 0.3、最短間隔 15 秒、300 枚を超えたら閾値を上げる。幅 1280 の JPEG）
 
@@ -126,6 +146,13 @@ NN_<slug>/
    #   ssh exiamac-mini 'OUT=/Volumes/Disk4TB/BlenderFes2026AW/Day1/frames_t015 THRESHOLDS_OVERRIDE="0.15 0.2 0.25 0.3 0.4 0.5" zsh .../extract_frames_exia.sh'
    for d in stock/BlenderFes2026/0?_*/; do n=$(basename $d)
      rsync -a exiamac-mini:/Volumes/Disk4TB/BlenderFes2026AW/Day1/frames/$n/ $d/source/images/; done
+
+   # Day2(既定閾値と閾値を下げた版の 2 系統)
+   ssh exiamac-mini 'DAY=2 zsh /Volumes/Disk4TB/BlenderFes2026AW/extract_frames_exia.sh'
+   ssh exiamac-mini 'DAY=2 OUT=/Volumes/Disk4TB/BlenderFes2026AW/Day2/frames_t015 THRESHOLDS_OVERRIDE="0.15 0.2 0.25 0.3 0.4 0.5" zsh /Volumes/Disk4TB/BlenderFes2026AW/extract_frames_exia.sh'
+   for d in stock/BlenderFes2026/{09,1?}_*/; do n=$(basename $d)
+     rsync -a exiamac-mini:/Volumes/Disk4TB/BlenderFes2026AW/Day2/frames/$n/ $d/source/images/
+     rsync -a exiamac-mini:/Volumes/Disk4TB/BlenderFes2026AW/Day2/frames_t015/$n/ $d/source/images_t015/; done
    ```
 
 3. **文字起こしを Talksribe 形式に変換**（whisper-cli large-v3-turbo, `-l ja` の srt を壁時計付きに変換し、元ファイルもコピー）
@@ -133,6 +160,11 @@ NN_<slug>/
    ```bash
    python3 stock/BlenderFes2026/scripts/srt_to_talksribe.py \
      --src ~/Downloads/vimeo_event_6144090/sessions --stock stock/BlenderFes2026 --sessions 1-8
+
+   # Day2: 配信開始を指定し、S1〜S8 をディレクトリ 09_〜16_ に対応させる(出力名は 20260927_S{n}_<slug>.txt)
+   python3 stock/BlenderFes2026/scripts/srt_to_talksribe.py \
+     --src ~/Downloads/vimeo_event_6213809/sessions --stock stock/BlenderFes2026 --sessions 1-8 \
+     --stream-start "2026-09-27 09:45:01" --dir-offset 8
    ```
 
 4. **記事化** — `source/transcripts/` とスライドを元に、セッション直下に記事ドラフトを書く（`transcripts/` に整形版、`images/` に記事用画像）
