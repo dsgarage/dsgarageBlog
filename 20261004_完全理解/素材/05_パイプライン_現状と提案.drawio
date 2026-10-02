@@ -1,0 +1,25 @@
+<mxfile><diagram name="pipeline"><mxGraphModel><root>
+<mxCell id="0"/><mxCell id="1" parent="0"/>
+<mxCell id="l1" value="現状" style="text;fontSize=14;fontStyle=1;fontColor=#5c6b78;align=left;" vertex="1" parent="1"><mxGeometry x="20" y="10" width="80" height="24" as="geometry"/></mxCell>
+<mxCell id="a1" value="AR 背景&#10;(カメラ映像を直描き)" style="rounded=1;whiteSpace=wrap;fillColor=#eef1f4;strokeColor=#9aa7b3;fontColor=#1b2733;fontSize=12;" vertex="1" parent="1"><mxGeometry x="20" y="40" width="150" height="56" as="geometry"/></mxCell>
+<mxCell id="a2" value="アバター&#10;(V1nToon)" style="rounded=1;whiteSpace=wrap;fillColor=#eef1f4;strokeColor=#9aa7b3;fontColor=#1b2733;fontSize=12;" vertex="1" parent="1"><mxGeometry x="210" y="40" width="130" height="56" as="geometry"/></mxCell>
+<mxCell id="a3" value="最終画面&#10;(録画が掴む)" style="rounded=1;whiteSpace=wrap;fillColor=#eef1f4;strokeColor=#9aa7b3;fontColor=#1b2733;fontSize=12;" vertex="1" parent="1"><mxGeometry x="380" y="40" width="130" height="56" as="geometry"/></mxCell>
+<mxCell id="a4" value="ArLightMatch: 実光推定でアバターの色味を実写へ寄せる(逆方向)。調整レイヤーはゼロ" style="text;fontSize=11;fontColor=#b23a52;align=left;whiteSpace=wrap;" vertex="1" parent="1"><mxGeometry x="20" y="100" width="520" height="24" as="geometry"/></mxCell>
+<mxCell id="e1" style="endArrow=block;strokeColor=#9aa7b3;strokeWidth=1.5;" edge="1" parent="1" source="a1" target="a2"><mxGeometry relative="1" as="geometry"/></mxCell>
+<mxCell id="e2" style="endArrow=block;strokeColor=#9aa7b3;strokeWidth=1.5;" edge="1" parent="1" source="a2" target="a3"><mxGeometry relative="1" as="geometry"/></mxCell>
+
+<mxCell id="l2" value="提案(#458)" style="text;fontSize=14;fontStyle=1;fontColor=#2b6ca6;align=left;" vertex="1" parent="1"><mxGeometry x="20" y="150" width="120" height="24" as="geometry"/></mxCell>
+<mxCell id="b1" value="AR 背景&#10;(実写のみ)" style="rounded=1;whiteSpace=wrap;fillColor=#eef1f4;strokeColor=#9aa7b3;fontColor=#1b2733;fontSize=12;" vertex="1" parent="1"><mxGeometry x="20" y="180" width="120" height="56" as="geometry"/></mxCell>
+<mxCell id="b2" value="Pass A RealToToon&#10;実写を整地して Toon へ&#10;(マスク不要)" style="rounded=1;whiteSpace=wrap;fillColor=#eef4fb;strokeColor=#2b6ca6;strokeWidth=2;fontColor=#1b2733;fontSize=12;" vertex="1" parent="1"><mxGeometry x="170" y="180" width="170" height="56" as="geometry"/></mxCell>
+<mxCell id="b3" value="アバター&#10;(V1nToon・無変更)" style="rounded=1;whiteSpace=wrap;fillColor=#eef1f4;strokeColor=#9aa7b3;fontColor=#1b2733;fontSize=12;" vertex="1" parent="1"><mxGeometry x="370" y="180" width="130" height="56" as="geometry"/></mxCell>
+<mxCell id="b4" value="ダスト&#10;(3D パーティクル・深度で隠れる)" style="rounded=1;whiteSpace=wrap;fillColor=#eef4fb;strokeColor=#2b6ca6;strokeWidth=2;fontColor=#1b2733;fontSize=12;" vertex="1" parent="1"><mxGeometry x="370" y="270" width="130" height="56" as="geometry"/></mxCell>
+<mxCell id="b5" value="Pass B AirLayer&#10;空気層(ポジ型グレイン・暗部清浄・ハレーション)&#10;背景+アバター両方" style="rounded=1;whiteSpace=wrap;fillColor=#eef4fb;strokeColor=#2b6ca6;strokeWidth=2;fontColor=#1b2733;fontSize=12;" vertex="1" parent="1"><mxGeometry x="150" y="266" width="205" height="64" as="geometry"/></mxCell>
+<mxCell id="b6" value="最終画面&#10;(録画にそのまま入る)" style="rounded=1;whiteSpace=wrap;fillColor=#eef1f4;strokeColor=#9aa7b3;fontColor=#1b2733;fontSize=12;" vertex="1" parent="1"><mxGeometry x="5" y="270" width="130" height="56" as="geometry"/></mxCell>
+<mxCell id="f1" style="endArrow=block;strokeColor=#2b6ca6;strokeWidth=1.5;" edge="1" parent="1" source="b1" target="b2"><mxGeometry relative="1" as="geometry"/></mxCell>
+<mxCell id="f2" style="endArrow=block;strokeColor=#2b6ca6;strokeWidth=1.5;" edge="1" parent="1" source="b2" target="b3"><mxGeometry relative="1" as="geometry"/></mxCell>
+<mxCell id="f3" style="endArrow=block;strokeColor=#2b6ca6;strokeWidth=1.5;" edge="1" parent="1" source="b3" target="b4"><mxGeometry relative="1" as="geometry"/></mxCell>
+<mxCell id="f4" style="endArrow=block;strokeColor=#2b6ca6;strokeWidth=1.5;" edge="1" parent="1" source="b4" target="b5"><mxGeometry relative="1" as="geometry"/></mxCell>
+<mxCell id="f5" style="endArrow=block;strokeColor=#2b6ca6;strokeWidth=1.5;" edge="1" parent="1" source="b5" target="b6"><mxGeometry relative="1" as="geometry"/></mxCell>
+<mxCell id="n1" value="BeforeRenderingOpaques+1" style="text;fontSize=10;fontColor=#5c6b78;align=center;" vertex="1" parent="1"><mxGeometry x="170" y="238" width="170" height="20" as="geometry"/></mxCell>
+<mxCell id="n2" value="AfterRenderingPostProcessing" style="text;fontSize=10;fontColor=#5c6b78;align=center;" vertex="1" parent="1"><mxGeometry x="150" y="332" width="205" height="20" as="geometry"/></mxCell>
+</root></mxGraphModel></diagram></mxfile>

@@ -1,0 +1,16 @@
+digraph ar_toon_pipeline {
+    graph [rankdir=TB bgcolor="white" fontname="Hiragino Sans" fontsize=11 pad=0.5 nodesep=0.4 ranksep=0.35]
+    node  [fontname="Hiragino Sans" fontsize=10 style="filled,rounded" shape=box penwidth=0 margin="0.18,0.08" width=3.6]
+    edge  [fontname="Hiragino Sans" fontsize=9 penwidth=1.2 arrowsize=0.6 color="#94a3b8"]
+
+    light [label="ArLightMatch\nARKit の光推定 → アバターの色味（雰囲気合わせ）" fillcolor="#fef3c7" fontcolor="#92400e"]
+    bg    [label="AR 背景\nカメラ映像をカラーバッファへ直接描く" fillcolor="#f3f4f6" fontcolor="#4b5563"]
+    passA [label="Pass A  P2cRealToToon\n実写だけを整える\nKuwahara／背景ぼかし／陰の段階化／陰色転写／彩度" fillcolor="#dbeafe" fontcolor="#1e40af"]
+    avatar[label="アバター描画（V1nToon、手を入れない）" fillcolor="#f3f4f6" fontcolor="#4b5563"]
+    dust  [label="ダスト（3D パーティクル、深度で隠れる）" fillcolor="#f3f4f6" fontcolor="#4b5563"]
+    passB [label="Pass B  P2cAirLayer\n背景とアバターの両方に空気層\n暗部の平滑／ライトラップ／ハレーション／黒持ち上げ" fillcolor="#dbeafe" fontcolor="#1e40af"]
+    out   [label="最終画面（そのまま録画される）" fillcolor="#f3f4f6" fontcolor="#4b5563"]
+
+    bg -> passA -> avatar -> dust -> passB -> out
+    light -> avatar [style=dashed color="#cbd5e1"]
+}
