@@ -1,17 +1,9 @@
 ---
-title: 'AR合成では実写をToonに寄せる ― V1nStudio の World モードと AR モード、2 つのシェーダー実装を比べる'
-tags:
-  - Unity
-  - Shader
-  - URP
-  - AR
-  - ARKit
-private: false
-updated_at: ''
-id: null
-organization_url_name: null
-slide: false
-ignorePublish: false
+title: "AR合成では実写をToonに寄せる ― V1nStudio の World モードと AR モード、2 つのシェーダー実装を比べる"
+emoji: "🎥"
+type: "tech"
+topics: ["Unity", "Shader", "URP", "AR", "ARKit"]
+published: true
 ---
 
 # AR合成では実写をToonに寄せる ― V1nStudio の World モードと AR モード、2 つのシェーダー実装を比べる
@@ -26,11 +18,11 @@ ignorePublish: false
 
 同じ内容を 2026-10-04 の LT でも話します。LT では時間の都合で省いた実装の詳細を、記事の後半の「LT の補足」にまとめました。
 
-![合成処理なし（左）と、現在の既定値（右）](https://raw.githubusercontent.com/dsgarage/dsgarageBlog/main/TechBlog/images/ar_toon_before_after.jpg)
+![合成処理なし（左）と、現在の既定値（右）](/images/ar_toon_before_after.jpg)
 
 *左が合成処理なし、右が現在の既定値です。この比較はエディタ上の検証用素材で、アバターが焼き込まれた実機スクリーンショットに処理を通しているため、アバターにも処理がかかっています。実機ではアバターには Pass A がかかりません。*
 
-:::note info
+:::message
 **Unity開発者の方へ**
 
 Claude CodeのようなAIエージェントは強力ですが、Unity Editorを直接操作することはできません。
@@ -57,7 +49,7 @@ World モードは、ネオン管を張りめぐらせたスタジオのよう�
 
 トーンマップを Neutral にしたのは、ACES だとトゥーンの彩度が沈んだためです。ネオンの強さも 3.2 では白飛びして色が乗らず、2.0 に落としました。どれも空間の情報がそろっている前提で、ライトとポストエフェクトの値を詰めていく作業です。
 
-![World モードの実機画面](https://raw.githubusercontent.com/dsgarage/dsgarageBlog/main/TechBlog/images/ar_toon_world.jpg)
+![World モードの実機画面](/images/ar_toon_world.jpg)
 
 *World モードの実機の画面録画から切り出した 2 コマです。後ろの LED ビジョンにリリック動画が流れ、手前のアバターにピントが合っています。*
 
@@ -88,7 +80,7 @@ AR モードの背景は、AR Foundation の `ARBackgroundRendererFeature` が�
 
 この方針が取れるのは、先ほどの描画順のおかげです。AR 背景を描いた直後のカラーバッファには実写しか入っていません。そこでシェーダーを 1 本通せば、アバターのマスクを用意しなくても背景だけを加工できます。
 
-![AR 合成のパイプライン](https://raw.githubusercontent.com/dsgarage/dsgarageBlog/main/TechBlog/images/ar_toon_pipeline.png)
+![AR 合成のパイプライン](/images/ar_toon_pipeline.png)
 
 足したパスは 2 本です。
 
@@ -108,7 +100,7 @@ AR モードの背景は、AR Foundation の `ARBackgroundRendererFeature` が�
 
 アバターを少しだけ実写に寄せ、実写をそれより大きくアバターに寄せる、という配分です。実機では「色合いはちょうどいい」という評価で、この 2 つが両方効いた状態が今の既定値になっています。
 
-![明るい屋外と薄暗い室内での AR モード](https://raw.githubusercontent.com/dsgarage/dsgarageBlog/main/TechBlog/images/ar_toon_lightmatch.jpg)
+![明るい屋外と薄暗い室内での AR モード](/images/ar_toon_lightmatch.jpg)
 
 *AR モードの実機の画面録画から切り出したものです。左が明るい屋外（夜の街）、右が薄暗い室内です。同じアバターでも、場所の明るさと色に合わせて色味が変わります。どちらも Pass A・Pass B を含む合成処理がかかった状態です。*
 
@@ -153,7 +145,7 @@ return half4(SRGBToLinear(saturate(c)), 1.0h);
 
 陰色の転写でも 1 つ直しています。アバターの陰色（既定 0.62, 0.60, 0.72）をそのまま掛けると、陰色の輝度の分だけ暗部が一様に約 38% 暗くなります。これだと、色を移すつもりが暗くしているだけになります。そこで陰色を輝度 1 に正規化して色味だけを取り出し、暗さは `_ShadeDarken`（既定 0.15）で別に控えめに足すようにしました。
 
-![陰色転写の強さ 0.3 / 0.5 / 0.8](https://raw.githubusercontent.com/dsgarage/dsgarageBlog/main/TechBlog/images/ar_toon_shade.jpg)
+![陰色転写の強さ 0.3 / 0.5 / 0.8](/images/ar_toon_shade.jpg)
 
 *陰色転写の強さを 0.3 / 0.5（既定）/ 0.8 で比べたものです。強くしても暗く沈まず、色味だけが青紫側に動きます。*
 
@@ -165,7 +157,7 @@ World モードでは、URP の Depth of Field が 3D の奥行きからぼか�
 
 最初は、Pass A の中で背景を一律にぼかしました。9 タップの円形サンプルで、半径は画面の高さ 1080 px を基準に 3 px です。Pass A はアバターを描く前の背景にしかかからないので、アバターはシャープなまま背景だけがぼけます。
 
-![アバターはシャープなまま、背景だけがぼける](https://raw.githubusercontent.com/dsgarage/dsgarageBlog/main/TechBlog/images/ar_toon_blur.jpg)
+![アバターはシャープなまま、背景だけがぼける](/images/ar_toon_blur.jpg)
 
 *左から合成処理なし、旧既定値（ぼかし 0、粒 0.06）、現在の既定値（ぼかし 3、粒 0）。後ろの人物だけが柔らかくなっています。*
 
@@ -173,7 +165,7 @@ World モードでは、URP の Depth of Field が 3D の奥行きからぼか�
 
 ここにも罠が 1 つありました。このプロジェクトは MSAA 4 なので、深度アタッチメントは MSAA テクスチャになっていて、普通の `TEXTURE2D` としては読めません。URP の `CopyDepthPass` で単一サンプルの `R32_SFloat` へコピーしてから渡しています。LiDAR が無い機種では深度が一定値になるので、自然に一律ぼかしへ戻ります。
 
-![一律ぼかしと距離依存ぼかし](https://raw.githubusercontent.com/dsgarage/dsgarageBlog/main/TechBlog/images/ar_toon_depthblur.jpg)
+![一律ぼかしと距離依存ぼかし](/images/ar_toon_depthblur.jpg)
 
 *左から合成処理なし、一律 3 px、距離依存。距離依存では手前の床がシャープなまま、奥の扉がぼけます。*
 
@@ -190,7 +182,7 @@ World モードでは、URP の Depth of Field が 3D の奥行きからぼか�
 - **ハレーション**：明るい部分のまわりに暖色のにじみを出します。最初は加算合成にしていて、アバターの白い衣装が飽和しました。スクリーン合成に変えて解決しています
 - **黒の持ち上げ**：CG の純黒を、実写の少し浮いた黒にそろえます（既定 0.03）
 
-![ライトラップで髪の縁に背景の色が回り込む](https://raw.githubusercontent.com/dsgarage/dsgarageBlog/main/TechBlog/images/ar_toon_wrap.jpg)
+![ライトラップで髪の縁に背景の色が回り込む](/images/ar_toon_wrap.jpg)
 
 *ライトラップの強さを変えて、髪の縁を 3 倍に拡大したものです。強いほど輪郭の内側が背景色に寄り、貼り付けた印象が減ります。*
 
