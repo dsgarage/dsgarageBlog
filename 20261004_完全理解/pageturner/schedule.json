@@ -1,0 +1,18 @@
+{
+  "ntfy_topic": "p2c-talk-6bf2bdc82531462a",
+  "ntfy_server": "https://ntfy.sh",
+  "warn_before_sec": 10,
+  "slides": [
+    {"title": "タイトル", "sec": 30},
+    {"title": "V1nStudio とは", "sec": 30},
+    {"title": "World モード：3D 空間を描く", "sec": 90},
+    {"title": "AR モードの課題：アバターが浮く", "sec": 60},
+    {"title": "コンセプト：実写を Toon に寄せる", "sec": 45},
+    {"title": "① 外光と色温度をアバターに反映", "sec": 45},
+    {"title": "② 実写をカラコレしてトーンを合わせる", "sec": 75},
+    {"title": "③ 被写界深度：World と AR で作り方が違う", "sec": 45},
+    {"title": "④ 空気層：背景とアバターを同じ空気に置く", "sec": 90},
+    {"title": "Before / After", "sec": 45},
+    {"title": "まとめ", "sec": 45}
+  ]
+}
